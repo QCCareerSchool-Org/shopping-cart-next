@@ -1,6 +1,9 @@
 import type { FC } from 'react';
 
+import { Makeup20231023Promo } from './promo';
+import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { courseGroups } from '@/app/sites/makeup/courseGroups';
+import { Guarantee } from '@/app/sites/makeup/guarantee';
 import { Form } from '@/components/form';
 
 type Props = {
@@ -9,7 +12,14 @@ type Props = {
 
 export const Makeup20231023: FC<Props> = ({ date }) => (
   <>
-    <h1>2023-10-23 the date is {date}</h1>
-    <Form courseGroups={courseGroups} defaultPromoCode="SKINCARE" />
+    <Makeup20231023Promo date={date} />
+    <Form
+      courseGroups={courseGroups}
+      school="QC Makeup Academy"
+      guarantee={Guarantee}
+      promoCodeDefault="SKINCARE"
+      successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
+      agreementLinks={agreementLinks}
+    />
   </>
 );

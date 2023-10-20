@@ -1,6 +1,11 @@
+'use server';
+
 export const getDate = (dateParam?: string | string[]): number => {
   if (process.env.NODE_ENV === 'development' && typeof dateParam === 'string') {
-    return new Date(dateParam).getTime();
+    const override = new Date(dateParam).getTime();
+    if (!isNaN(override)) {
+      return override;
+    }
   }
   return new Date().getTime();
 };

@@ -20,11 +20,11 @@ const middleware = (req: NextRequest): NextResponse => {
   const hostname = req.headers.get('host');
   const site = findSite(hostname);
 
-  if (!site || url.pathname.startsWith(`/sites`)) {
+  if (url.pathname.startsWith(`/sites`)) {
     // Prevent security issues – users should not be able to canonically access
     // the pages/sites folder and its respective contents.
     url.pathname = '/404';
-  } else {
+  } else if (site) {
     // rewrite to the current subdomain under the app/sites folder
     url.pathname = `/sites${site.path}${url.pathname}`;
   }

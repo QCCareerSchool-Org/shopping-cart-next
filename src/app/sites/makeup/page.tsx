@@ -5,8 +5,7 @@ import type { ServerComponent } from '@/serverComponent';
 
 const MakeupPage: ServerComponent = ({ searchParams }) => {
   const date = getDate(searchParams.date);
-
-  if (date >= Date.UTC(2023, 9, 20)) {
+  if (date >= Date.UTC(2023, 9, 23)) {
     return <Makeup20231023 date={date} />;
   }
   return <MakeupFallback />;
