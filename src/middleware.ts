@@ -11,7 +11,8 @@ export const config = {
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    // '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|makeup/|event/|design/|pet/|wellness/|writing/).*)', // also ignore requests to /makeup/, /event/, etc. (they refer to the public directory)
   ],
 };
 
@@ -22,7 +23,7 @@ const middleware = (req: NextRequest): NextResponse => {
 
   if (url.pathname.startsWith(`/sites`)) {
     // Prevent security issues – users should not be able to canonically access
-    // the pages/sites folder and its respective contents.
+    // the app/sites folder and its respective contents.
     url.pathname = '/404';
   } else if (site) {
     // rewrite to the current subdomain under the app/sites folder

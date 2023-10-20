@@ -1,0 +1,22 @@
+{
+  "short_name": "Shopping Cart",
+  "name": "QC Makeup Academy Shopping Cart",
+  "icons": [
+    {
+      "src": "/makeup/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/makeup/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "display": "minimal-ui",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

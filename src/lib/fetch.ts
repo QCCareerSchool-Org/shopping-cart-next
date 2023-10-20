@@ -83,6 +83,8 @@ export const fetchPrice = async (countryCode: string, provinceCode: string | nul
       return responseBody;
     }
   } catch (err) {
-    console.error(err);
+    if (!controller?.signal.aborted) {
+      console.error(err);
+    }
   }
 };

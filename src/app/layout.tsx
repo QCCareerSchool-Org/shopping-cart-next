@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 // eslint-disable-next-line camelcase
 import { Open_Sans, Playfair_Display } from 'next/font/google';
+import Script from 'next/script';
 import type { FC, PropsWithChildren } from 'react';
 
 import { defaultGeoLocation } from '@/domain/geoLocation';
@@ -41,6 +42,9 @@ const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
   return (
     <StateProvider geoLocation={geoLocation} countries={countries} provinces={provinces}>
       <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable}`}>
+        <head>
+          <Script src="https://hosted.paysafe.com/js/v1/latest/paysafe.min.js" />
+        </head>
         <body>{children}</body>
       </html>
     </StateProvider>
