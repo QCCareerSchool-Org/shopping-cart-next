@@ -1,8 +1,12 @@
 type Site = { domains: Array<string | RegExp>; path: string };
 
 const sites: Site[] = [
-  { domains: [ 'enroll.qcmakeupacademy.com', /^makeup.localhost(?::\d+)$/iu ], path: '/makeup' },
-  { domains: [ 'enroll.qceventplanning.com', /^event.localhost(?::\d+)$/iu ], path: '/event' },
+  { domains: [ 'enroll.qcdesignschool.com', 'design.enrolltest.qccareerschool.com', /^design.localhost(?::\d+)$/iu ], path: '/design' },
+  { domains: [ 'enroll.qceventplanning.com', 'event.enrolltest.qccareerschool.com', /^event.localhost(?::\d+)$/iu ], path: '/event' },
+  { domains: [ 'enroll.qcmakeupacademy.com', 'makeup.enrolltest.qccareerschool.com', /^makeup.localhost(?::\d+)$/iu ], path: '/makeup' },
+  { domains: [ 'enroll.qcpetstudies.com', 'pet.enrolltest.qccareerschool.com', /^pet.localhost(?::\d+)$/iu ], path: '/pet' },
+  { domains: [ 'enroll.qcwellnessstudies.com', 'wellness.enrolltest.qccareerschool.com', /^wellness.localhost(?::\d+)$/iu ], path: '/wellness' },
+  { domains: [ 'enroll.winghill.com', 'writing.enrolltest.qccareerschool.com', /^writing.localhost(?::\d+)$/iu ], path: '/writing' },
 ];
 
 export const findSite = (hostname: string | null): Site | undefined => {
