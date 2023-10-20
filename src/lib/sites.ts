@@ -1,8 +1,8 @@
-type Site = { domains: Array<string | RegExp>, path: string };
+type Site = { domains: Array<string | RegExp>; path: string };
 
 const sites: Site[] = [
-  { domains: ['enroll.qcmakeupacademy.com', /^makeup.localhost(?:\:\d+)$/], path: '/makeup' },
-  { domains: ['enroll.qceventplanning.com', /^event.localhost(?:\:\d+)$/], path: '/event' }
+  { domains: [ 'enroll.qcmakeupacademy.com', /^makeup.localhost(?::\d+)$/iu ], path: '/makeup' },
+  { domains: [ 'enroll.qceventplanning.com', /^event.localhost(?::\d+)$/iu ], path: '/event' },
 ];
 
 export const findSite = (hostname: string | null): Site | undefined => {
@@ -15,4 +15,4 @@ export const findSite = (hostname: string | null): Site | undefined => {
     }
     return d.test(hostname);
   }));
-}
+};

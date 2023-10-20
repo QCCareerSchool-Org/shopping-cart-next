@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { findSite } from './lib/sites';
 
 export const config = {
@@ -12,10 +13,10 @@ export const config = {
      */
     '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
-}
+};
 
-export default async function middleware(req: NextRequest, res: NextResponse) {
-  const url = req.nextUrl
+const middleware = (req: NextRequest): NextResponse => {
+  const url = req.nextUrl;
   const hostname = req.headers.get('host');
   const site = findSite(hostname);
 
@@ -25,8 +26,10 @@ export default async function middleware(req: NextRequest, res: NextResponse) {
     url.pathname = '/404';
   } else {
     // rewrite to the current subdomain under the app/sites folder
-    url.pathname = `/sites${site.path}${url.pathname}`
+    url.pathname = `/sites${site.path}${url.pathname}`;
   }
-  
+
   return NextResponse.rewrite(url);
-}
+};
+
+export default middleware;

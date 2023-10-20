@@ -1,4 +1,3 @@
-import type { Country } from './country';
 import type { Province } from './province';
 
 export type Title = 'Mrs.' | 'Miss' | 'Ms.' | 'Mr.';
