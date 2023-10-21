@@ -1,15 +1,4 @@
-export type Course = {
-  code: string;
-  name: string;
-  description?: string;
-  disabledMessage?: string | JSX.Element;
-  badge?: JSX.Element;
-};
-
-export type CourseGroup = {
-  name?: string;
-  items: Course[];
-};
+import type { CourseGroup } from '@/domain/courseGroup';
 
 export type CoursesState = {
   courseGroups: CourseGroup[];
@@ -33,7 +22,7 @@ export const initialCoursesState: CoursesState = {
   showMS: false,
 };
 
-export function coursesReducer(state: CoursesState, action: CoursesAction): CoursesState {
+export const coursesReducer = (state: CoursesState, action: CoursesAction): CoursesState => {
   switch (action.type) {
     case 'CLEAR_COURSES': {
       return {
@@ -88,23 +77,22 @@ export function coursesReducer(state: CoursesState, action: CoursesAction): Cour
     default:
       return state;
   }
-}
+};
 
-function convert(course: string): string {
+const convert = (course: string): string => {
   if (course.toUpperCase() === 'MM') {
     return 'MZ';
   } else if (course.toUpperCase() === 'MA') {
     return 'MK';
   }
   return course.toUpperCase();
-
-}
+};
 
 /**
  * Returns an array indicating which courses should be disabled based on which courses are selected
  * @param selectedCourses which courses are selected
  */
-function disabledCourses(selectedCourses: string[], options: { internal: boolean; showMS?: boolean }): string[] {
+const disabledCourses = (selectedCourses: string[], options: { internal: boolean; showMS?: boolean }): string[] => {
   const result = [];
   /* design */
   if (!options.internal && !selectedCourses.includes('I2')) {
@@ -161,17 +149,17 @@ function disabledCourses(selectedCourses: string[], options: { internal: boolean
     result.push('FA');
   }
   return result;
-}
+};
 
 /**
  * Returns an array indicating which courses should be hidden based on which courses are selected
  * @param selectedCourses which courses are selected
  */
-function hiddenCourses(selectedCourses: string[], options: { internal: boolean; showMS?: boolean }): string[] {
+const hiddenCourses = (selectedCourses: string[], options: { internal: boolean; showMS?: boolean }): string[] => {
   const result = [];
   /* design */
   if (!options.internal && !selectedCourses.includes('I2') && !options.showMS) {
     result.push('MS');
   }
   return result;
-}
+};

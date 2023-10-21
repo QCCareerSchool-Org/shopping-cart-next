@@ -1,9 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 
-type NextProps = {
+type PageProps = {
   params: {};
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export type ServerComponent<P = {}> = FC<P & NextProps>;
+type LayoutProps = {
+  children: ReactNode;
+};
+
+export type PageComponent<P = {}> = FC<P & PageProps>;
+
+export type LayoutComponent = FC<LayoutProps>;

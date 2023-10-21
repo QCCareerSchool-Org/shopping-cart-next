@@ -1,11 +1,10 @@
-import type { FC } from 'react';
-
 import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { Form } from '@/components/form';
+import type { PageComponent } from '@/serverComponent';
 
-const MakeupStudentsPage: FC = () => (
+const MakeupStudentsPage: PageComponent = () => (
   <>
     <h1>Students</h1>
     <Form

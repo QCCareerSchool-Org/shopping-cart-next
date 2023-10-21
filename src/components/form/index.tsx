@@ -1,15 +1,16 @@
 'use client';
 
 import type { FC } from 'react';
-import { useEffect } from 'react';
 
 import { Address } from './address';
+import { BillingAddress } from './billingAddress';
 import { CourseSelection } from './courseSelection';
 import type { AgreementLinks } from '@/domain/agreementLinks';
-import type { CourseGroup } from '@/domain/courses';
+import type { CourseGroup } from '@/domain/courseGroup';
 import type { School } from '@/domain/school';
-import { useGlobalState } from '@/hooks/useGlobalState';
-import { fetchPrice } from '@/lib/fetch';
+import { useCourseGroups } from '@/hooks/useCourseGroups';
+import { usePriceUpdater } from '@/hooks/usePriceUpdater';
+import { useQueryStringData } from '@/hooks/useQueryStringData';
 
 type Props = {
   courseGroups: CourseGroup[];
@@ -31,32 +32,28 @@ type Props = {
   showPromoCodeInput?: boolean;
   /** a default promo code */
   promoCodeDefault?: string;
+  /** whether MS should be shown regardless of I2 */
+  showMS?: boolean;
   /** display the visual payment plans */
   visualPaymentPlans?: boolean;
   /** enable the billing address section */
   billingAddress?: boolean;
 };
 
-export const Form: FC<Props> = props => {
-  const [ globalState, setGlobalState ] = useGlobalState();
+const showBillingAddress = (school: School): boolean => {
+  return school === 'QC Pet Studies';
+};
 
-  useEffect(() => {
-    const controller = new AbortController();
-    fetchPrice(globalState.countryCode, globalState.provinceCode, globalState.courses, globalState.promoCode ?? props.promoCodeDefault, controller).then(p => {
-      if (!p) {
-        throw Error('Unable to fetch price');
-      }
-      setGlobalState(s => ({ ...s, price: p }));
-    }).catch(err => {
-      console.error(err);
-    });
-    return () => controller.abort();
-  }, [ setGlobalState, globalState.countryCode, globalState.provinceCode, globalState.courses, globalState.promoCode, props.promoCodeDefault ]);
+export const Form: FC<Props> = props => {
+  usePriceUpdater(!!props.internal, props.school, props.promoCodeDefault);
+  useCourseGroups(props.courseGroups, !!props.showMS);
+  useQueryStringData(!!props.internal);
 
   return (
     <>
       <CourseSelection courseGroups={props.courseGroups} dynamicCourseMessages={props.dynamicCourseMessages} />
-      <Address />
+      <Address school={props.school} />
+      {showBillingAddress(props.school) && <BillingAddress />}
       {props.guarantee && <props.guarantee />}
     </>
   );

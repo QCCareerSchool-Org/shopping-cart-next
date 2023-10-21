@@ -1,20 +1,33 @@
 import type { ChangeEventHandler, FC } from 'react';
 import { useId } from 'react';
 
-import { useGlobalState } from '@/hooks/useGlobalState';
+import { useAddressDispatch } from '@/hooks/useAddressDispatch';
+import { useAddressState } from '@/hooks/useAddressState';
 
 export const LastName: FC = () => {
   const id = useId();
-  const [ globalState, setGlobalState ] = useGlobalState();
+  const addressState = useAddressState();
+  const addressDispatch = useAddressDispatch();
 
-  const handleLastNameChange: ChangeEventHandler<HTMLInputElement> = e => {
-    setGlobalState(s => ({ ...s, lastName: e.target.value }));
+  const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
+    addressDispatch({ type: 'SET_LAST_NAME', payload: e.target.value });
   };
 
   return (
     <>
       <label htmlFor={`${id}lastName`} className="form-label">Last Name</label>
-      <input onChange={handleLastNameChange} value={globalState.address.lastName} type="text" name="lastName" id={`${id}lastName`} className="form-control" />
+      <input
+        onChange={handleChange}
+        value={addressState.lastName}
+        type="text"
+        name="lastName"
+        id={`${id}lastName`}
+        className="form-control"
+        autoComplete="shipping family-name"
+        autoCapitalize="words"
+        autoCorrect="off"
+        required
+      />
     </>
   );
 };

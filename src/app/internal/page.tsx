@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { Section } from '@/components/section';
-import type { ServerComponent } from '@/serverComponent';
+import type { PageComponent } from '@/serverComponent';
 
-const InternalPage: ServerComponent = () => (
+const InternalPage: PageComponent = () => (
   <Section>
     <h1>Internal Enrollment Form</h1>
     <p className="lead">Please choose a school</p>

@@ -1,7 +1,7 @@
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { Form } from '@/components/form';
-import type { CourseGroup } from '@/domain/courses';
-import type { ServerComponent } from '@/serverComponent';
+import type { CourseGroup } from '@/domain/courseGroup';
+import type { PageComponent } from '@/serverComponent';
 
 const courseGroups: CourseGroup[] = [
   {
@@ -26,7 +26,7 @@ const courseGroups: CourseGroup[] = [
   },
 ];
 
-const InternalMakeupPage: ServerComponent = () => (
+const InternalMakeupPage: PageComponent = () => (
   <>
     <Form
       courseGroups={courseGroups}

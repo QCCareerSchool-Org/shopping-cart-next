@@ -1,11 +1,17 @@
+import qs from 'qs';
+
 import type { Country } from '@/domain/country';
 import { isCountries } from '@/domain/country';
+import type { CurrencyCode } from '@/domain/currencyCode';
 import type { GeoLocation } from '@/domain/geoLocation';
 import { isGeoLocation } from '@/domain/geoLocation';
 import type { Price } from '@/domain/price';
 import { isPrice } from '@/domain/price';
 import type { Province } from '@/domain/province';
 import { isProvinces } from '@/domain/province';
+import type { School } from '@/domain/school';
+
+const pricesUrl = process.env.NEXT_PUBLIC_PRICES_ENDPOINT;
 
 export const fetchGeoLocation = async (controller?: AbortController): Promise<GeoLocation | undefined> => {
   try {
@@ -58,21 +64,11 @@ export const fetchProvinces = async (countryCode: string, controller?: AbortCont
   }
 };
 
-export const fetchPrice = async (countryCode: string, provinceCode: string | null, courses: string[], promoCode?: string, controller?: AbortController): Promise<Price | undefined> => {
+export const fetchPrice = async (priceQuery: PriceQuery, controller?: AbortController): Promise<Price | undefined> => {
   try {
-    const urlSearchParams = new URLSearchParams({ countryCode });
-    if (provinceCode) {
-      urlSearchParams.append('provinceCode', provinceCode);
-    }
-    if (promoCode) {
-      urlSearchParams.append('promoCode', promoCode);
-    }
-    for (const c of courses) {
-      urlSearchParams.append('courses', c);
-    }
-
-    const url = 'https://api.qccareerschool.com/prices?' + urlSearchParams.toString();
+    const url = pricesUrl + '?' + qs.stringify(priceQuery);
     const response = await fetch(url, {
+      headers: { 'X-API-Version': '2' },
       signal: controller?.signal,
     });
     if (!response.ok) {
@@ -87,4 +83,24 @@ export const fetchPrice = async (countryCode: string, provinceCode: string | nul
       console.error(err);
     }
   }
+};
+
+export interface PriceQuery {
+  courses: string[];
+  countryCode: string;
+  provinceCode?: string;
+  options?: PriceQueryOptions;
+}
+
+type PriceQueryOptions = {
+  noShipping?: boolean;
+  discountAll?: boolean;
+  discount?: { [d in CurrencyCode]?: number } & { default: number };
+  discountSignature?: string;
+  depositOverrides?: { [code: string]: number };
+  installmentsOverride?: number;
+  studentDiscount?: boolean;
+  school?: School;
+  promoCode?: string;
+  dateOverride?: Date;
 };

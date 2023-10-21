@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
-import type { PropsWithChildren } from 'react';
 
 import { Footer } from './footer';
 import { Header } from './header';
-import type { ServerComponent } from '@/serverComponent';
+import type { LayoutComponent } from '@/serverComponent';
 
 import './global.scss';
 
@@ -22,7 +21,7 @@ export const metadata: Metadata = {
   manifest: '/makeup/manifest.json',
 };
 
-const MakeupLayout: ServerComponent<PropsWithChildren> = ({ children }) => {
+const MakeupLayout: LayoutComponent = ({ children }) => {
   return (
     <div>
       <Header />

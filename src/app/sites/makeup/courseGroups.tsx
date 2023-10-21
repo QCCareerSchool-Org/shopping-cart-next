@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 
 import MostPopular from '../../most-pop.svg';
-import type { CourseGroup } from '@/domain/courses';
+import type { CourseGroup } from '@/domain/courseGroup';
 
 export const courseGroups: CourseGroup[] = [
   {

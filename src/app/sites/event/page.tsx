@@ -1,7 +1,7 @@
 import { getDate } from '@/lib/getDate';
-import type { ServerComponent } from '@/serverComponent';
+import type { PageComponent } from '@/serverComponent';
 
-const EventPage: ServerComponent = ({ searchParams }) => {
+const EventPage: PageComponent = ({ searchParams }) => {
   const date = getDate(searchParams.date);
   console.log(date);
   return (

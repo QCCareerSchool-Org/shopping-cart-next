@@ -2,11 +2,13 @@ import type { Metadata } from 'next';
 // eslint-disable-next-line camelcase
 import { Open_Sans, Playfair_Display } from 'next/font/google';
 import Script from 'next/script';
-import type { FC, PropsWithChildren } from 'react';
 
 import { defaultGeoLocation } from '@/domain/geoLocation';
+import type { Province } from '@/domain/province';
 import { fetchCountries, fetchGeoLocation, fetchProvinces } from '@/lib/fetch';
-import { StateProvider } from '@/providers/stateProvider';
+import { needsProvince } from '@/lib/needProvince';
+import { Provider } from '@/providers';
+import type { LayoutComponent } from '@/serverComponent';
 
 export const metadata: Metadata = {
   title: 'QC Career School',
@@ -26,28 +28,46 @@ const openSans = Open_Sans({
   variable: '--qc-open-sans',
 });
 
-const RootLayout: FC<PropsWithChildren> = async ({ children }) => {
+const RootLayout: LayoutComponent = async ({ children }) => {
   const [ detectedGeoLocation, countries ] = await Promise.all([
     fetchGeoLocation(),
     fetchCountries(),
   ]);
+
   const geoLocation = detectedGeoLocation ?? defaultGeoLocation;
+
   if (!countries) {
     throw Error('Couldn\'t fetch countries');
   }
-  const provinces = await fetchProvinces(geoLocation.countryCode);
-  if (!provinces) {
-    throw Error('Couldn\'t fetch provinces');
+
+  let provinces: Province[];
+
+  if (needsProvince(geoLocation.countryCode)) {
+    const provincesResult = await fetchProvinces(geoLocation.countryCode);
+    if (!provincesResult || provincesResult.length === 0) {
+      throw Error('Couldn\'t fetch provinces');
+    }
+
+    provinces = provincesResult;
+
+    // replace invalid province code
+    if (!provinces.some(p => p.code === geoLocation.provinceCode)) {
+      geoLocation.provinceCode = provinces[0].code;
+    }
+  } else {
+    geoLocation.provinceCode = null;
+    provinces = [];
   }
+
   return (
-    <StateProvider geoLocation={geoLocation} countries={countries} provinces={provinces}>
+    <Provider geoLocation={geoLocation} countries={countries} provinces={provinces}>
       <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable}`}>
         <head>
           <Script src="https://hosted.paysafe.com/js/v1/latest/paysafe.min.js" />
         </head>
         <body>{children}</body>
       </html>
-    </StateProvider>
+    </Provider>
   );
 };
 

@@ -1,21 +1,49 @@
 import type { ChangeEventHandler, FC } from 'react';
 import { useId } from 'react';
 
-import { useGlobalState } from '@/hooks/useGlobalState';
+import { useAddressDispatch } from '@/hooks/useAddressDispatch';
+import { useAddressState } from '@/hooks/useAddressState';
+import { useCountriesState } from '@/hooks/useCountriesState';
+import { fetchProvinces } from '@/lib/fetch';
+import { needsProvince } from '@/lib/needProvince';
 
 export const CountryCode: FC = () => {
   const id = useId();
-  const [ globalState, setGlobalState ] = useGlobalState();
+  const countriesState = useCountriesState();
+  const addressState = useAddressState();
+  const addressDispatch = useAddressDispatch();
 
-  const handleCountryCodeChange: ChangeEventHandler<HTMLSelectElement> = e => {
-    setGlobalState(s => ({ ...s, countryCode: e.target.value }));
+  const handleChange: ChangeEventHandler<HTMLSelectElement> = e => {
+    const countryCode = e.target.value;
+    if (needsProvince(countryCode)) {
+      fetchProvinces(countryCode).then(provinces => {
+        if (!provinces) {
+          throw Error('No provinces returned');
+        }
+        addressDispatch({ type: 'SET_COUNTRY_CODE_WITH_PROVINCES', payload: { countryCode, provinces } });
+      }).catch(err => {
+        console.error(err);
+      });
+    } else {
+      addressDispatch({ type: 'SET_COUNTRY_CODE', payload: { countryCode } });
+    }
   };
 
   return (
     <>
       <label htmlFor={`${id}countryCode`} className="form-label">Country</label>
-      <select onChange={handleCountryCodeChange} value={globalState.countryCode} name="countryCode" id={`${id}countryCode`} className="form-control" required>
-        {globalState.countries.map(c => <option key={c.code} value={c.code}>{c.name}</option>)}
+      <select
+        onChange={handleChange}
+        value={addressState.countryCode}
+        name="countryCode"
+        id={`${id}countryCode`}
+        className="form-select"
+        autoComplete="shipping country"
+        autoCapitalize="characters"
+        autoCorrect="off"
+        required
+      >
+        {countriesState.map(c => <option key={c.code} value={c.code}>{c.name}</option>)}
       </select>
     </>
   );

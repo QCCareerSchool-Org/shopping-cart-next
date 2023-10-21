@@ -1,27 +1,81 @@
 import type { FC } from 'react';
 
+import { Address1 } from './fields/address1';
+import { Address2 } from './fields/address2';
+import { City } from './fields/city';
 import { CountryCode } from './fields/countryCode';
+import { EmailAddress } from './fields/emailAddress';
 import { FirstName } from './fields/firstName';
 import { LastName } from './fields/lastName';
+import { PostalCode } from './fields/postalCode';
 import { ProvinceCode } from './fields/provinceCode';
+import { TelephoneNumber } from './fields/telephoneNumber';
+import { Title } from './fields/title';
 import { FormGroup } from '@/components/formGroup';
+import { NoShippingAlert } from '@/components/noShippingAlert';
 import { Section } from '@/components/section';
+import type { School } from '@/domain/school';
+import { useAddressState } from '@/hooks/useAddressState';
+import { usePriceState } from '@/hooks/usePriceState';
+import { needsProvince } from '@/lib/needProvince';
+import { needsPostal } from '@/lib/needsPostal';
 
-export const Address: FC = () => {
+type Props = {
+  school: School;
+};
+
+export const Address: FC<Props> = ({ school }) => {
+  const { countryCode } = useAddressState();
+  const price = usePriceState();
+
+  const showPostal = needsPostal(countryCode);
+  const showProvince = needsProvince(countryCode);
+
   return (
     <Section>
-      <h2 className="h1 text-center">Student Address</h2>
       <div className="row justify-content-center">
-        <div className="col-12 col-md-6 col-lg-5 col-xxl-4">
+        <div className="col-12 col-lg-8 text-center">
+          {school === 'QC Design School'
+            ? (
+              <>
+                <h2 className="h1 mb-3">Student Address</h2>
+                <p className="lead text-center mb-4">Course materials will be shipped to this address.</p>
+              </>
+            )
+            : <h2 className="h1">Student Address</h2>
+          }
+        </div>
+      </div>
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-6 col-lg-4">
+          <FormGroup><Title /></FormGroup>
           <FormGroup><FirstName /></FormGroup>
           <FormGroup><LastName /></FormGroup>
+          <FormGroup><EmailAddress /></FormGroup>
+          <FormGroup><TelephoneNumber /></FormGroup>
+        </div>
+        <div className="col-12 col-md-6 col-lg-4">
           <FormGroup><CountryCode /></FormGroup>
-          <FormGroup><ProvinceCode /></FormGroup>
+          <FormGroup><Address1 /></FormGroup>
+          <FormGroup><Address2 /></FormGroup>
+          <FormGroup><City /></FormGroup>
+          {showPostal
+            ? showProvince
+              ? (
+                <div className="row">
+                  <div className="col"><FormGroup><ProvinceCode /></FormGroup></div>
+                  <div className="col"><FormGroup><PostalCode /></FormGroup></div>
+                </div>
+              )
+              : <FormGroup><PostalCode /></FormGroup>
+            : showProvince && <FormGroup><ProvinceCode /></FormGroup>
+          }
         </div>
-        <div className="col-12 col-md-6 col-lg-5 col-xxl-4">
-          <FormGroup><FirstName /></FormGroup>
-          <FormGroup><LastName /></FormGroup>
-        </div>
+        {price?.noShipping && (
+          <div className="col-12 col-lg-8 mt-">
+            <NoShippingAlert />
+          </div>
+        )}
       </div>
     </Section>
   );
