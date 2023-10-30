@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
@@ -7,14 +9,16 @@ import type { PageComponent } from '@/serverComponent';
 const MakeupStudentsPage: PageComponent = () => (
   <>
     <h1>Students</h1>
-    <Form
-      courseGroups={courseGroups}
-      school="QC Makeup Academy"
-      guarantee={Guarantee}
-      student={true}
-      successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
-      agreementLinks={agreementLinks}
-    />
+    <Suspense>
+      <Form
+        courseGroups={courseGroups}
+        school="QC Makeup Academy"
+        guarantee={Guarantee}
+        student={true}
+        successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
+        agreementLinks={agreementLinks}
+      />
+    </Suspense>
   </>
 );
 

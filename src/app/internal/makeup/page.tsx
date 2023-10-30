@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { Form } from '@/components/form';
 import type { CourseGroup } from '@/domain/courseGroup';
@@ -28,14 +29,16 @@ const courseGroups: CourseGroup[] = [
 
 const InternalMakeupPage: PageComponent = () => (
   <>
-    <Form
-      courseGroups={courseGroups}
-      school="QC Makeup Academy"
-      guarantee={null}
-      internal={true}
-      successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
-      agreementLinks={agreementLinks}
-    />
+    <Suspense>
+      <Form
+        courseGroups={courseGroups}
+        school="QC Makeup Academy"
+        guarantee={null}
+        internal={true}
+        successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
+        agreementLinks={agreementLinks}
+      />
+    </Suspense>
   </>
 );
 

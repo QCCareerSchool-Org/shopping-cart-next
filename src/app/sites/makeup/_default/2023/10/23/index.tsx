@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { Suspense } from 'react';
 
 import { Makeup20231023Promo } from './promo';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
@@ -13,15 +14,17 @@ type Props = {
 export const Makeup20231023: FC<Props> = ({ date }) => (
   <>
     <Makeup20231023Promo date={date} />
-    <Form
-      courseGroups={courseGroups}
-      school="QC Makeup Academy"
-      guarantee={Guarantee}
-      promoCodeDefault="SKINCARE"
-      successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
-      agreementLinks={agreementLinks}
-      dynamicCourseDescriptions="SHOW"
+    <Suspense>
+      <Form
+        courseGroups={courseGroups}
+        school="QC Makeup Academy"
+        guarantee={Guarantee}
+        promoCodeDefault="SKINCARE"
+        successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
+        agreementLinks={agreementLinks}
+        dynamicCourseDescriptions="SHOW"
       // dynamicCourseMessages={}
-    />
+      />
+    </Suspense>
   </>
 );
