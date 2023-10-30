@@ -8,14 +8,15 @@ import { CourseSelection } from './courseSelection';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
 import type { School } from '@/domain/school';
-import { useCourseGroups } from '@/hooks/useCourseGroups';
 import { usePriceUpdater } from '@/hooks/usePriceUpdater';
 import { useQueryStringData } from '@/hooks/useQueryStringData';
+
+export type DynamicCourseDescriptions = 'SHOW' | 'HIDE' | 'REPLACE';
 
 type Props = {
   courseGroups: CourseGroup[];
   school: School;
-  courseOverride?: string[];
+  coursesOverride?: string[];
   /** the guarantee component to display in the summary section */
   guarantee: FC | null;
   /** an array of components to display below the course selection checkboxes */
@@ -32,12 +33,14 @@ type Props = {
   showPromoCodeInput?: boolean;
   /** a default promo code */
   promoCodeDefault?: string;
-  /** whether MS should be shown regardless of I2 */
-  showMS?: boolean;
+  /** whether to show the dynamic course descriptions */
+  dynamicCourseDescriptions?: DynamicCourseDescriptions;
   /** display the visual payment plans */
   visualPaymentPlans?: boolean;
   /** enable the billing address section */
   billingAddress?: boolean;
+  /** special name to use for discount */
+  discountName?: string;
 };
 
 const showBillingAddress = (school: School): boolean => {
@@ -46,12 +49,11 @@ const showBillingAddress = (school: School): boolean => {
 
 export const Form: FC<Props> = props => {
   usePriceUpdater(!!props.internal, props.school, props.promoCodeDefault);
-  useCourseGroups(props.courseGroups, !!props.showMS);
-  useQueryStringData(!!props.internal);
+  useQueryStringData();
 
   return (
     <>
-      <CourseSelection courseGroups={props.courseGroups} dynamicCourseMessages={props.dynamicCourseMessages} />
+      <CourseSelection courseGroups={props.courseGroups} dynamicCourseDescriptions={props.dynamicCourseDescriptions} dynamicCourseMessages={props.dynamicCourseMessages} discountName={props.discountName} internal={!!props.internal} coursesOverride={!!props.coursesOverride} />
       <Address school={props.school} />
       {showBillingAddress(props.school) && <BillingAddress />}
       {props.guarantee && <props.guarantee />}

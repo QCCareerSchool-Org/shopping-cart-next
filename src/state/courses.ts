@@ -1,25 +1,18 @@
-import type { CourseGroup } from '@/domain/courseGroup';
-
 export type CoursesState = {
-  courseGroups: CourseGroup[];
   selected: string[];
   disabled: string[];
   hidden: string[];
-  showMS: boolean;
 };
 
 export type CoursesAction =
-  | { type: 'CLEAR_COURSES'; payload: { internal: boolean } }
-  | { type: 'ADD_COURSE'; payload: { courseCode: string; internal: boolean } }
-  | { type: 'REMOVE_COURSE'; payload: { courseCode: string; internal: boolean } }
-  | { type: 'SET_COURSE_GROUPS'; payload: { courseGroups: CourseGroup[]; showMS: boolean } };
+  | { type: 'CLEAR_COURSES' }
+  | { type: 'ADD_COURSE'; payload: { courseCode: string } }
+  | { type: 'REMOVE_COURSE'; payload: { courseCode: string } };
 
 export const initialCoursesState: CoursesState = {
-  courseGroups: [],
   selected: [],
   disabled: [],
-  hidden: [],
-  showMS: false,
+  hidden: [ 'MS' ],
 };
 
 export const coursesReducer = (state: CoursesState, action: CoursesAction): CoursesState => {
@@ -28,24 +21,23 @@ export const coursesReducer = (state: CoursesState, action: CoursesAction): Cour
       return {
         ...state,
         selected: [],
-        disabled: disabledCourses([], { internal: action.payload.internal, showMS: state.showMS }), // recalculate which courses are disabled,
-        hidden: hiddenCourses([], { internal: action.payload.internal, showMS: state.showMS }), // recalculate which courses are hidden,
+        disabled: disabledCourses([]), // recalculate which courses are disabled,
+        hidden: hiddenCourses([]), // recalculate which courses are hidden,
       };
     }
     case 'ADD_COURSE': {
       const courseCode = convert(action.payload.courseCode);
-      // a course can only be selected if it's available, not hidden, not disabled, and not already selected
-      const isAvailable = state.courseGroups.some(g => g.items.some(i => i.code === courseCode));
+      // a course can only be selected if it's not hidden, not disabled, and not already selected
       const isDisabled = state.disabled.includes(courseCode);
       const isHidden = state.hidden.includes(courseCode);
       const isSelected = state.selected.includes(courseCode);
-      if (isAvailable && !isDisabled && !isHidden && !isSelected) {
+      if (!isDisabled && !isHidden && !isSelected) {
         const selected = [ ...state.selected, courseCode ]; // add the course
         return {
           ...state,
           selected,
-          disabled: disabledCourses(selected, { internal: action.payload.internal, showMS: state.showMS }), // recalculate which courses are disabled
-          hidden: hiddenCourses(selected, { internal: action.payload.internal, showMS: state.showMS }), // recalculate which courses are hidden
+          disabled: disabledCourses(selected), // recalculate which courses are disabled
+          hidden: hiddenCourses(selected), // recalculate which courses are hidden
         };
       }
       return state; // no change
@@ -56,26 +48,18 @@ export const coursesReducer = (state: CoursesState, action: CoursesAction): Cour
         // remove the course
         let selected = state.selected.filter(c => c !== courseCode);
         // also remove MS if I2 is being removed
-        if (!action.payload.internal && !selected.includes('I2')) {
+        if (!selected.includes('I2')) {
           selected = selected.filter(c => c !== 'MS');
         }
         return {
           ...state,
           selected,
-          disabled: disabledCourses(selected, { internal: action.payload.internal, showMS: state.showMS }), // recalculate which courses are disabled
-          hidden: hiddenCourses(selected, { internal: action.payload.internal, showMS: state.showMS }), // recalculate which courses are hidden
+          disabled: disabledCourses(selected), // recalculate which courses are disabled
+          hidden: hiddenCourses(selected), // recalculate which courses are hidden
         };
       }
       return state; // no change
     }
-    case 'SET_COURSE_GROUPS':
-      return {
-        ...state,
-        courseGroups: action.payload.courseGroups,
-        showMS: action.payload.showMS,
-      };
-    default:
-      return state;
   }
 };
 
@@ -92,10 +76,10 @@ const convert = (course: string): string => {
  * Returns an array indicating which courses should be disabled based on which courses are selected
  * @param selectedCourses which courses are selected
  */
-const disabledCourses = (selectedCourses: string[], options: { internal: boolean; showMS?: boolean }): string[] => {
+const disabledCourses = (selectedCourses: string[]): string[] => {
   const result = [];
   /* design */
-  if (!options.internal && !selectedCourses.includes('I2')) {
+  if (!selectedCourses.includes('I2')) {
     result.push('MS');
   }
   if (selectedCourses.includes('I2') || selectedCourses.includes('MS')) {
@@ -155,10 +139,10 @@ const disabledCourses = (selectedCourses: string[], options: { internal: boolean
  * Returns an array indicating which courses should be hidden based on which courses are selected
  * @param selectedCourses which courses are selected
  */
-const hiddenCourses = (selectedCourses: string[], options: { internal: boolean; showMS?: boolean }): string[] => {
+const hiddenCourses = (selectedCourses: string[]): string[] => {
   const result = [];
   /* design */
-  if (!options.internal && !selectedCourses.includes('I2') && !options.showMS) {
+  if (!selectedCourses.includes('I2')) {
     result.push('MS');
   }
   return result;

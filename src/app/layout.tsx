@@ -11,7 +11,7 @@ import { Provider } from '@/providers';
 import type { LayoutComponent } from '@/serverComponent';
 
 export const metadata: Metadata = {
-  title: 'QC Career School',
+  title: 'Enroll Online - QC Career School',
 };
 
 const playfairDisplay = Playfair_Display({

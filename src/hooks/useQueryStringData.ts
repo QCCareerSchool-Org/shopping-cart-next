@@ -1,7 +1,6 @@
-'use client';
-
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useRef } from 'react';
+
 import { useAddressDispatch } from './useAddressDispatch';
 import { useAddressState } from './useAddressState';
 import { useCountriesState } from './useCountriesState';
@@ -14,7 +13,7 @@ import { fetchProvinces } from '@/lib/fetch';
 import { needsProvince } from '@/lib/needProvince';
 import { needsPostal } from '@/lib/needsPostal';
 
-export const useQueryStringData = (internal: boolean): void => {
+export const useQueryStringData = (): void => {
   const searchParams = useSearchParams();
   const countries = useCountriesState();
   const addressState = useAddressState();
@@ -126,10 +125,10 @@ export const useQueryStringData = (internal: boolean): void => {
       const courseCodes = searchParams.getAll('c');
       if (courseCodes.length) {
         console.log('clearing');
-        coursesDispatch({ type: 'CLEAR_COURSES', payload: { internal } });
+        coursesDispatch({ type: 'CLEAR_COURSES' });
         for (const courseCode of courseCodes) {
           console.log('adding', courseCode);
-          coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode, internal } });
+          coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode } });
         }
       }
 
@@ -146,5 +145,5 @@ export const useQueryStringData = (internal: boolean): void => {
       }
     };
     void updateData();
-  }, [ addressDispatch, coursesDispatch, metaDispatch, paymentDispatch, addressState.countryCode, addressState.provinceCode, addressState.provinces, countries, searchParams, internal ]);
+  }, [ addressDispatch, coursesDispatch, metaDispatch, paymentDispatch, addressState.countryCode, addressState.provinceCode, addressState.provinces, countries, searchParams ]);
 };

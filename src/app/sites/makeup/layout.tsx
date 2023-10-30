@@ -7,7 +7,7 @@ import type { LayoutComponent } from '@/serverComponent';
 import './global.scss';
 
 export const metadata: Metadata = {
-  title: 'QC Makeup Academy',
+  title: 'Enroll Online - QC Makeup Academy',
   icons: {
     icon: [
       { type: 'image/png', url: '/makeup/favicon-16x16.png', sizes: '16x16' },

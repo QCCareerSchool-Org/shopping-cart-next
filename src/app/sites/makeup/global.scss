@@ -2,11 +2,12 @@
 @import "~bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
+@import 'src/styles.before.scss';
+
 $primary: rgb(255, 0, 105);
 
 $font-family-sans-serif: var(--qc-open-sans), system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $headings-font-family: var(--qc-playfair-display), serif;
-$headings-margin-bottom: 1.5rem;
 
 $border-radius: 0;
 $border-radius-sm: 0;
@@ -70,72 +71,4 @@ $focus-ring-width: 0.125rem;
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "~bootstrap/scss/utilities/api";
 
-$section-padding: 3rem;
-$section-padding-lg: 4rem;
-
-html { overflow-y: scroll; }
-
-.btn { text-transform: uppercase; } 
-.btn-primary {
-  color: white;
-  &:hover, &:focus { color: white; }
-}
-
-section {
-  position: relative;
-  overflow: hidden;
-  padding: $section-padding 0;
-}
-
-section > div.container {
-  position: relative; /* so that if we use a cover image, the content will display on top */
-}
-
-section:nth-of-type(2n+1) {
-  background-color: #f8f8f8;
-}
-
-.p-s { padding: $section-padding }
-.py-s { padding-top: $section-padding; padding-bottom: $section-padding; }
-.px-s { padding-left: $section-padding; padding-right: $section-padding; }
-.pt-s { padding-top: $section-padding; }
-.pb-s { padding-bottom: $section-padding; }
-.ps-s { padding-left: $section-padding; }
-.pe-s { padding-right: $section-padding; }
-
-.m-s { margin: $section-padding }
-.my-s { margin-top: $section-padding; margin-bottom: $section-padding; }
-.mx-s { margin-left: $section-padding; margin-right: $section-padding; }
-.mt-s { margin-top: $section-padding; }
-.mb-s { margin-bottom: $section-padding; }
-.ms-s { margin-left: $section-padding; }
-.me-s { margin-right: $section-padding; }
-
-@include media-breakpoint-up(lg) {
-  section {
-    padding: $section-padding-lg 0;
-  }
-
-  .p-s { padding: $section-padding-lg }
-  .py-s { padding-top: $section-padding-lg; padding-bottom: $section-padding-lg; }
-  .px-s { padding-left: $section-padding-lg; padding-right: $section-padding-lg; }
-  .pt-s { padding-top: $section-padding-lg; }
-  .pb-s { padding-bottom: $section-padding-lg; }
-  .ps-s { padding-left: $section-padding-lg; }
-  .pe-s { padding-right: $section-padding-lg; }
-
-  .m-s { margin: $section-padding-lg }
-  .my-s { margin-top: $section-padding-lg; margin-bottom: $section-padding-lg; }
-  .mx-s { margin-left: $section-padding-lg; margin-right: $section-padding-lg; }
-  .mt-s { margin-top: $section-padding-lg; }
-  .mb-s { margin-bottom: $section-padding-lg; }
-  .ms-s { margin-left: $section-padding-lg; }
-  .me-s { margin-right: $section-padding-lg; }
-}
-
-.serif { font-family: $headings-font-family; }
-
-h1, .h1 { font-size: 2.625rem }
-h2, .h2 { font-size: 2rem }
-h3, .h3 { font-size: 1.625rem }
-h4, .h4 { font-size: 1.375rem }
+@import 'src/styles.after.scss';

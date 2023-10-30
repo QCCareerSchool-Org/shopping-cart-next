@@ -4,4 +4,6 @@ export type Course = {
   description?: string;
   disabledMessage?: string | JSX.Element;
   badge?: JSX.Element;
+  alwaysShown?: boolean;
+  alwaysEnabled?: boolean;
 };

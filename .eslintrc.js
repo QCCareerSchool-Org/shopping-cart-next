@@ -197,7 +197,12 @@ module.exports = {
     'react/jsx-equals-spacing': 'error',
     'react/jsx-first-prop-new-line': [ 'error', 'multiline' ],
     'react/jsx-fragments': 'error',
-    'react/jsx-handler-names': 'error',
+    'react/jsx-handler-names': [ 'error', {
+      eventHandlerPrefix: 'handle',
+      eventHandlerPropPrefix: 'on',
+      checkLocalVariables: true,
+      checkInlineFunction: true,
+    } ],
     'react/jsx-indent': [ 'error', 2, { checkAttributes: true, indentLogicalExpressions: true } ],
     'react/jsx-indent-props': [ 'error', 2 ],
     'react/jsx-pascal-case': [ 'error', { allowAllCaps: true, allowNamespace: true } ],

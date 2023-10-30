@@ -1,0 +1,36 @@
+
+.wrapper {
+  position: relative;
+  top: 0;
+  z-index: 100;
+  text-align: center;
+  &.fixed {
+    position: sticky;
+    -webkit-box-shadow: 0 .125rem .25rem rgba(0,0,0,.15)!important;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.15)!important;
+    .close { display: block; }
+  }
+  .padding {
+    padding: 0.5rem 0;
+  }
+  .message {
+    margin: 0 48px 6px; /* don't overlap the close button */
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.button {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.inverse {
+  color: white !important;
+}
