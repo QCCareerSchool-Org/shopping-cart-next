@@ -5,12 +5,17 @@ import { courseGroups } from '../../../courseGroups';
 import { Form } from '@/components/form';
 import { Section } from '@/components/section';
 
-export const Design202310: FC = () => (
+type Props = {
+  date: number;
+};
+
+export const Design202310: FC<Props> = ({ date }) => (
   <>
     <Section>
       Design
     </Section>
     <Form
+      date={date}
       courseGroups={courseGroups}
       school="QC Design School"
       guarantee={null}

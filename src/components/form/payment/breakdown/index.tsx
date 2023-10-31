@@ -26,7 +26,7 @@ export const Breakdown: FC = () => {
   return (
     <>
       <h3 className="text-center text-lg-right">{paymentState.plan === 'full' ? 'Pay in Full' : 'Installment Plan'}</h3>
-      <table className={`${styles.table} table table-borderless table-sm w-auto mx-auto mr-lg-0`}>
+      <table className={`${styles.table} table table-borderless table-sm w-auto mx-auto me-lg-0`}>
         <tbody>
           {paymentState.plan === 'full' ? <Full /> : <Part />}
         </tbody>

@@ -1,0 +1,107 @@
+.fullColumn, .partColumn {
+  display: flex;
+  align-items: stretch;
+}
+
+.planList {
+  padding: 0 0 0 1rem;
+}
+
+.rounded {
+  border-radius: 1.1875rem !important;
+}
+
+.roundedBottom {
+  border-top-right-radius: 1.1875rem !important;
+  border-bottom-left-radius: 1.1875rem !important;
+  border-bottom-right-radius: 1.1875rem !important;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc;
+  padding: 0.75rem 0 1rem;
+  padding: calc(0.75rem + var(--qc-visual-payment-selection-border-width) - 1px) calc(var(--qc-visual-payment-selection-border-width) - 1px) calc(1rem + var(--qc-visual-payment-selection-border-width) - 1px);
+}
+
+.faded {
+  opacity: 0.8;
+}
+
+.boxTitle {
+  font-size: 1.6rem;
+}
+
+.sidePadding {
+  padding: 0 1rem;
+}
+
+.fullBox {
+  background: white;
+  background-repeat: no-repeat !important;
+  background-position: right top !important;
+}
+
+.designCorner {
+  background-image: url('/images/most-popular.svg'), url('/images/corner-design.svg');
+}
+.eventCorner {
+  background-image: url('/images/most-popular.svg'), url('/images/corner-event.svg');
+}
+.makeupCorner {
+  background-image: url('/images/most-popular.svg'), url('/images/corner-makeup.svg');
+}
+.petCorner {
+  background-image: url('/images/most-popular.svg'), url('/images/corner-pet.svg');
+}
+.wellnessCorner {
+  background-image: url('/images/most-popular.svg'), url('/images/corner-wellness.svg');
+}
+.writingCorner {
+  background-image: url('/images/most-popular.svg'), url('/images/corner-writing.svg');
+}
+
+.partBox {
+  background-color: #fafafa;
+}
+
+.box.selected {
+  padding: 0.75rem 0 1rem;
+  box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.4);
+  border-width: var(--qc-visual-payment-selection-border-width);
+  border-color: var(--bs-primary) !important;
+}
+
+.fullBox.selected {
+  background-position: calc(100% + var(--qc-visual-payment-selection-border-width) - 1px) calc(1px - var(--qc-visual-payment-selection-border-width)) !important;
+}
+
+.navTabs .navLink {
+  margin-bottom: -1px;
+  background-color: white;
+  border: 1px solid #ccc;
+  color: #333;
+  border-top-left-radius: 1.1875rem !important;
+  border-top-right-radius: 1.1875rem !important;
+}
+
+.navTabs .partNavLink {
+  background-color: #fafafa;
+}
+
+.navLink {
+  display: block;
+  padding: 0.75rem 1rem 0.5rem;
+}
+
+.navLink:hover, .navLink:focus {
+  text-decoration: none;
+}
+
+.muted { opacity: 0.25; }

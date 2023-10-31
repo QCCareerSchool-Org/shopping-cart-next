@@ -12,7 +12,7 @@ export const config = {
      * - favicon.ico (favicon file)
      */
     // '/((?!api|_next/static|_next/image|favicon.ico).*)',
-    '/((?!api|_next/static|_next/image|favicon.ico|makeup/|event/|design/|pet/|wellness/|writing/).*)', // also ignore requests to /makeup/, /event/, etc. (they refer to the public directory)
+    '/((?!api|_next/static|_next/image|favicon.ico|images/|makeup/|event/|design/|pet/|wellness/|writing/).*)', // also ignore requests to /makeup/, /event/, etc. (they refer to the public directory)
   ],
 };
 

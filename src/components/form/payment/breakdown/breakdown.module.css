@@ -1,3 +1,7 @@
+.table > :not(caption) > * > * {
+  background-color: inherit;
+}
+
 .table th, .table td {
   padding: 1px 0.25rem;
 }

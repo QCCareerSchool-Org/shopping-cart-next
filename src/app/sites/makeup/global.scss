@@ -28,6 +28,7 @@ $focus-ring-width: 0.125rem;
 @import "~bootstrap/scss/variables-dark";
 
 // 4. Include any default map overrides here
+@import 'src/styles.maps.scss';
 
 // 5. Include remainder of required parts
 @import "~bootstrap/scss/maps";

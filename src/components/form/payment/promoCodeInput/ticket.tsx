@@ -1,7 +1,7 @@
 import type { FC, MouseEventHandler } from 'react';
 import { Card, CardBody } from 'react-bootstrap';
+import { FaTag } from 'react-icons/fa';
 
-import { FaChevronUp, FaTag } from 'react-icons/fa';
 import { PromoCode } from '@/components/promoCode';
 import type { Promo } from '@/domain/promo';
 import { useScreenWidth } from '@/hooks/useScreenWidth';

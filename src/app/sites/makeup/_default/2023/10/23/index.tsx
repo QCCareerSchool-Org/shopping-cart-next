@@ -22,10 +22,10 @@ export const Makeup20231023: FC<Props> = ({ date }) => (
         guarantee={Guarantee}
         successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
+        visualPaymentPlans={true}
         dynamicCourseDescriptions="SHOW"
-        // promoCodeDefault="SKINCARE"
-        showPromoCodeInput={true}
-      // dynamicCourseMessages={}
+        promoCodeDefault="SKINCARE"
+        // dynamicCourseMessages={}
       />
     </Suspense>
   </>
