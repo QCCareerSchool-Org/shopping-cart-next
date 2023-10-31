@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { Form } from '@/components/form';
 import type { CourseGroup } from '@/domain/courseGroup';
+import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
 const courseGroups: CourseGroup[] = [
@@ -27,19 +28,23 @@ const courseGroups: CourseGroup[] = [
   },
 ];
 
-const InternalMakeupPage: PageComponent = () => (
-  <>
-    <Suspense>
-      <Form
-        courseGroups={courseGroups}
-        school="QC Makeup Academy"
-        guarantee={null}
-        internal={true}
-        successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
-        agreementLinks={agreementLinks}
-      />
-    </Suspense>
-  </>
-);
+const InternalMakeupPage: PageComponent = ({ searchParams }) => {
+  const date = getDate(searchParams.date);
+  return (
+    <>
+      <Suspense>
+        <Form
+          date={date}
+          courseGroups={courseGroups}
+          school="QC Makeup Academy"
+          guarantee={null}
+          internal={true}
+          successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
+          agreementLinks={agreementLinks}
+        />
+      </Suspense>
+    </>
+  );
+};
 
 export default InternalMakeupPage;

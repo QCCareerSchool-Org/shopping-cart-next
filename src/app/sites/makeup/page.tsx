@@ -8,7 +8,7 @@ const MakeupPage: PageComponent = ({ searchParams }) => {
   if (date >= Date.UTC(2023, 9, 23)) {
     return <Makeup20231023 date={date} />;
   }
-  return <MakeupFallback />;
+  return <MakeupFallback date={date} />;
 };
 
 export default MakeupPage;

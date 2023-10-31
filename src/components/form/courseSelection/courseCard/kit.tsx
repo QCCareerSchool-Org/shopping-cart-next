@@ -65,7 +65,7 @@ export const Kit: FC<Props> = ({ courseCode }) => {
   if (image) {
     return (
       <div className="mt-4">
-        <Image src={image} className="img-fluid" alt="course kit" />
+        <Image src={image} className="img-fluid" style={{ width: '100%', height: 'auto' }} alt="course kit" />
       </div>
     );
   }

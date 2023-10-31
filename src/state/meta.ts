@@ -37,11 +37,13 @@ export function metaReducer(state: MetaState, action: MetaAction): MetaState {
         ...state,
         promoCode: '',
       };
-    case 'SET_PROMO_CODE_INPUT_VALUE':
+    case 'SET_PROMO_CODE_INPUT_VALUE': {
+      const promoCode = action.payload.toLocaleUpperCase();
       return {
         ...state,
-        promoCodeInputValue: action.payload.toLocaleUpperCase(),
+        promoCodeInputValue: promoCode,
       };
+    }
     default:
       return state;
   }

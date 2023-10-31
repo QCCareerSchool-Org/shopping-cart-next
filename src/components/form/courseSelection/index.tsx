@@ -63,7 +63,7 @@ const Standard: FC<Props> = props => {
 
   return (
     <div className="row">
-      <h2 className="h1 text-center">Choose Your Courses</h2>
+      <h2 className="h1">Choose Your Courses</h2>
       {props.coursesSubtitle && <props.coursesSubtitle />}
       <div className="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-0">
         {/* {enrollmentErrors.courses && (

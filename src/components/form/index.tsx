@@ -5,6 +5,7 @@ import type { FC } from 'react';
 import { Address } from './address';
 import { BillingAddress } from './billingAddress';
 import { CourseSelection } from './courseSelection';
+import { Payment } from './payment';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
 import type { School } from '@/domain/school';
@@ -14,6 +15,7 @@ import { useQueryStringData } from '@/hooks/useQueryStringData';
 export type DynamicCourseDescriptions = 'SHOW' | 'HIDE' | 'REPLACE';
 
 type Props = {
+  date: number;
   courseGroups: CourseGroup[];
   school: School;
   coursesOverride?: string[];
@@ -56,6 +58,7 @@ export const Form: FC<Props> = props => {
       <CourseSelection courseGroups={props.courseGroups} dynamicCourseDescriptions={props.dynamicCourseDescriptions} dynamicCourseMessages={props.dynamicCourseMessages} discountName={props.discountName} internal={!!props.internal} coursesOverride={!!props.coursesOverride} />
       <Address school={props.school} />
       {showBillingAddress(props.school) && <BillingAddress />}
+      <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} />
       {props.guarantee && <props.guarantee />}
     </>
   );

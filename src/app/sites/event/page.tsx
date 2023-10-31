@@ -6,7 +6,7 @@ const EventPage: PageComponent = ({ searchParams }) => {
   const date = getDate(searchParams.date);
 
   if (date > Date.UTC(2023, 9, 1)) {
-    return <Event202310 />;
+    return <Event202310 date={date} />;
   }
 };
 

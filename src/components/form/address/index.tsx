@@ -38,7 +38,7 @@ export const Address: FC<Props> = ({ school }) => {
           {school === 'QC Design School'
             ? (
               <>
-                <h2 className="h1 mb-3">Student Address</h2>
+                <h2 className="h1">Student Address</h2>
                 <p className="lead text-center mb-4">Course materials will be shipped to this address.</p>
               </>
             )
@@ -72,7 +72,7 @@ export const Address: FC<Props> = ({ school }) => {
           }
         </div>
         {price?.noShipping && (
-          <div className="col-12 col-lg-8 mt-">
+          <div className="col-12 col-lg-8 mt-4">
             <NoShippingAlert />
           </div>
         )}

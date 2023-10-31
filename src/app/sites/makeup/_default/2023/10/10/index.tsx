@@ -6,11 +6,16 @@ import { courseGroups } from '@/app/sites/makeup/courseGroups';
 import { Guarantee } from '@/app/sites/makeup/guarantee';
 import { Form } from '@/components/form';
 
-export const Makeup20231010: FC = () => (
+type Props = {
+  date: number;
+};
+
+export const Makeup20231010: FC<Props> = ({ date }) => (
   <>
     <h1>2023-10-10</h1>
     <Suspense>
       <Form
+        date={date}
         courseGroups={courseGroups}
         school="QC Makeup Academy"
         guarantee={Guarantee}

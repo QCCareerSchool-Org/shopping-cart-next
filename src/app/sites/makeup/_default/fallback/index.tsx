@@ -6,11 +6,16 @@ import { Guarantee } from '../../guarantee';
 import { MakeupFallbackPromo } from './promo';
 import { Form } from '@/components/form';
 
-export const MakeupFallback: FC = () => {
+type Props = {
+  date: number;
+};
+
+export const MakeupFallback: FC<Props> = ({ date }) => {
   return (
     <>
       <MakeupFallbackPromo />
       <Form
+        date={date}
         courseGroups={courseGroups}
         school="QC Makeup Academy"
         guarantee={Guarantee}

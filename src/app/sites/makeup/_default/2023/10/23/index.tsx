@@ -16,13 +16,15 @@ export const Makeup20231023: FC<Props> = ({ date }) => (
     <Makeup20231023Promo date={date} />
     <Suspense>
       <Form
+        date={date}
         courseGroups={courseGroups}
         school="QC Makeup Academy"
         guarantee={Guarantee}
-        promoCodeDefault="SKINCARE"
         successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
+        // promoCodeDefault="SKINCARE"
+        showPromoCodeInput={true}
       // dynamicCourseMessages={}
       />
     </Suspense>
