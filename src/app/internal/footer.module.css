@@ -1,0 +1,6 @@
+.footer {
+  flex-shrink: 0;
+  padding: 24px 0;
+  background-color: var(--bs-dark);
+  color: white;
+}

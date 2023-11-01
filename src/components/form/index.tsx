@@ -14,6 +14,7 @@ import type { School } from '@/domain/school';
 import { usePriceUpdater } from '@/hooks/usePriceUpdater';
 import { useQueryStringData } from '@/hooks/useQueryStringData';
 
+const Internal = lazy(async () => import('./internal').then(m => ({ default: m.Internal })));
 const Address = lazy(async () => import('./address').then(m => ({ default: m.Address })));
 const BillingAddress = lazy(async () => import('./billingAddress').then(m => ({ default: m.BillingAddress })));
 const CourseSelection = lazy(async () => import('./courseSelection').then(m => ({ default: m.CourseSelection })));
@@ -63,6 +64,7 @@ export const Form: FC<Props> = props => {
 
   return (
     <>
+      <Suspense>{!!props.internal && <Internal />}</Suspense>
       <Suspense><CourseSelection courseGroups={props.courseGroups} dynamicCourseDescriptions={props.dynamicCourseDescriptions} dynamicCourseMessages={props.dynamicCourseMessages} discountName={props.discountName} internal={!!props.internal} coursesOverride={!!props.coursesOverride} /></Suspense>
       <Suspense><Address school={props.school} /></Suspense>
       <Suspense>{showBillingAddress(props.school) && <BillingAddress />}</Suspense>
