@@ -38,7 +38,7 @@ export const CourseCard: React.FC<Props> = ({ courseCode, name }) => {
               <div style={{ margin: '-1rem -1rem 1rem -1rem' }}>
                 <Banner courseCode={courseCode} />
               </div>
-              <h2 className="h3 mb-2 text-left">{name}</h2>
+              <h2 className="h3 mb-2 text-start">{name}</h2>
             </>
           )
           : (

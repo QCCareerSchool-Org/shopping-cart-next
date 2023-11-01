@@ -22,7 +22,7 @@ export const PromotionalDiscountRow: FC<Props> = ({ discountName }) => {
       <tr><td colSpan={2}><hr /></td></tr>
       <tr>
         <td>{discountName ?? 'Promotional Discount'}</td>
-        <td className="text-right text-nowrap align-bottom">&minus; {priceState.currency.symbol}{priceState.promoDiscount.toFixed(2)}</td>
+        <td className="text-end text-nowrap align-bottom">&minus; {priceState.currency.symbol}{priceState.promoDiscount.toFixed(2)}</td>
       </tr>
     </>
   );

@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { useMemo } from 'react';
 
-import styles from './breakdown.module.css';
 import { Full } from './full';
+import styles from './index.module.css';
 import { Part } from './part';
 import { useCoursesState } from '@/hooks/useCoursesState';
 import { usePaymentState } from '@/hooks/usePaymentState';
@@ -25,14 +25,14 @@ export const Breakdown: FC = () => {
 
   return (
     <>
-      <h3 className="text-center text-lg-right">{paymentState.plan === 'full' ? 'Pay in Full' : 'Installment Plan'}</h3>
+      <h3 className="text-center text-lg-end">{paymentState.plan === 'full' ? 'Pay in Full' : 'Installment Plan'}</h3>
       <table className={`${styles.table} table table-borderless table-sm w-auto mx-auto me-lg-0`}>
         <tbody>
           {paymentState.plan === 'full' ? <Full /> : <Part />}
         </tbody>
       </table>
-      <p className="text-center text-lg-right">All prices are in {priceState.currency.name}.</p>
-      {showFreeShippingMessage && <p className="text-center text-lg-right text-primary">This purchase qualifies for free shipping.</p>}
+      <p className="text-center text-lg-end">All prices are in {priceState.currency.name}.</p>
+      {showFreeShippingMessage && <p className="text-center text-lg-end text-primary small">This purchase qualifies for free shipping.</p>}
     </>
   );
 };

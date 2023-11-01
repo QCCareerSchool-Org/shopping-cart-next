@@ -3,7 +3,7 @@ import Image from 'next/image';
 import type { FC } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'react-bootstrap';
 
-import styles from './canadaTaxCredits.module.css';
+import styles from './index.module.css';
 import MapleLeaf from './maple-leaf-red.svg';
 import { useToggle } from '@/hooks/useToggle';
 

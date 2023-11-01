@@ -1,6 +1,8 @@
 import type { FC } from 'react';
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 
+// import { Desktop } from './desktop';
+// import { Mobile } from './mobile';
 import type { School } from '@/domain/school';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 
@@ -21,7 +23,9 @@ export const VisualPaymentPlans: FC<Props> = ({ school, date }) => {
     return;
   }
 
-  return md
-    ? <Desktop date={date} school={school} />
-    : <Mobile date={date} school={school} />;
+  return (
+    <Suspense>
+      {md ? <Desktop date={date} school={school} /> : <Mobile date={date} school={school} />}
+    </Suspense>
+  );
 };

@@ -6,7 +6,7 @@ import LuminousKitImage from './deluxe-kit-numbers-no-description.jpg';
 import styles from './index.module.css';
 
 export const LuminousKit: FC = () => (
-  <>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
     <div>
       <Image src={LuminousKitImage} width="650" height="1056" className="img-fluid" alt="Luminous Kit" />
     </div>
@@ -22,5 +22,5 @@ export const LuminousKit: FC = () => (
       <li>4 sets of faux lashes</li>
       <li>Pro palette &amp; spatula</li>
     </ol>
-  </>
+  </div>
 );

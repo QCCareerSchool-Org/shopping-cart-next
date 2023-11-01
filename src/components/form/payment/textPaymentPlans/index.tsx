@@ -1,11 +1,11 @@
 import type { FC } from 'react';
 import { lazy, Suspense } from 'react';
-
 import { Card, CardBody } from 'react-bootstrap';
+
 import { Breakdown } from '../breakdown';
-import { CanadaTaxCredits } from '../canadaTaxCredits';
 import { PaymentOptions } from './paymentOptions';
 import { Schedule } from './schedule';
+import { CanadaTaxCredits } from '@/components/canadaTaxCredits';
 import type { School } from '@/domain/school';
 import { usePaymentState } from '@/hooks/usePaymentState';
 import { usePriceState } from '@/hooks/usePriceState';
@@ -33,8 +33,8 @@ export const TextPaymentPlans: FC<Props> = ({ date, school, showPromoCodeInput }
         {paymentState.plan === 'part' && <div className="mt-4"><Schedule /></div>}
         {showPromoCodeInput && <Suspense><PromoCodeInput date={date} school={school} /></Suspense>}
       </div>
-      {priceState?.courses && priceState.courses.length > 0 && (
-        <div className="col-12 col-sm-10 col-md-7">
+      <div className="col-12 col-sm-10 col-md-7">
+        {priceState?.courses && priceState.courses.length > 0 && (
           <div className="d-flex justify-content-center justify-content-md-end">
             <div>
               <Card className="d-inline-block w-auto">
@@ -49,8 +49,8 @@ export const TextPaymentPlans: FC<Props> = ({ date, school, showPromoCodeInput }
               )}
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

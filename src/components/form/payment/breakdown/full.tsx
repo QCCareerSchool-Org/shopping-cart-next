@@ -2,7 +2,7 @@ import Big from 'big.js';
 import type { FC } from 'react';
 import { Fragment } from 'react';
 
-import styles from './breakdown.module.css';
+import styles from './index.module.css';
 import { usePriceState } from '@/hooks/usePriceState';
 
 export const Full: FC = () => {

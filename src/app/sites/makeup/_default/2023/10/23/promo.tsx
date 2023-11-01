@@ -6,6 +6,7 @@ import { Modal } from 'react-bootstrap';
 
 import { Hero } from './hero';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
+import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
 
 type Props = {
@@ -26,7 +27,7 @@ export const Makeup20231023Promo: FC<Props> = ({ date }) => {
   return (
     <>
       <Section style={{ backgroundColor }} noPadding>
-        <div onClick={handleClick}>
+        <div onClick={handleClick} style={{ cursor: 'pointer' }}>
           <Hero lastChance={date >= lastChanceDate} />
         </div>
       </Section>
@@ -40,11 +41,12 @@ export const Makeup20231023Promo: FC<Props> = ({ date }) => {
       />
       <Modal show={showPopup} onHide={handleClick}>
         <Modal.Header closeButton>
-          <Modal.Title>Test</Modal.Title>
+          <Modal.Title>Free Pro Makeup Workshop</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          sdfdskjfh
+          <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
+          <LuminousKit />
         </Modal.Body>
       </Modal>
     </>

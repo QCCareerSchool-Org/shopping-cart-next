@@ -1,16 +1,22 @@
 'use client';
 
 import type { FC } from 'react';
+import { lazy, Suspense } from 'react';
 
-import { Address } from './address';
-import { BillingAddress } from './billingAddress';
-import { CourseSelection } from './courseSelection';
-import { Payment } from './payment';
+// import { Address } from './address';
+// import { BillingAddress } from './billingAddress';
+// import { CourseSelection } from './courseSelection';
+// import { Payment } from './payment';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
 import type { School } from '@/domain/school';
 import { usePriceUpdater } from '@/hooks/usePriceUpdater';
 import { useQueryStringData } from '@/hooks/useQueryStringData';
+
+const Address = lazy(async () => import('./address').then(m => ({ default: m.Address })));
+const BillingAddress = lazy(async () => import('./billingAddress').then(m => ({ default: m.BillingAddress })));
+const CourseSelection = lazy(async () => import('./courseSelection').then(m => ({ default: m.CourseSelection })));
+const Payment = lazy(async () => import('./payment').then(m => ({ default: m.Payment })));
 
 export type DynamicCourseDescriptions = 'SHOW' | 'HIDE' | 'REPLACE';
 
@@ -55,10 +61,10 @@ export const Form: FC<Props> = props => {
 
   return (
     <>
-      <CourseSelection courseGroups={props.courseGroups} dynamicCourseDescriptions={props.dynamicCourseDescriptions} dynamicCourseMessages={props.dynamicCourseMessages} discountName={props.discountName} internal={!!props.internal} coursesOverride={!!props.coursesOverride} />
-      <Address school={props.school} />
-      {showBillingAddress(props.school) && <BillingAddress />}
-      <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} />
+      <Suspense><CourseSelection courseGroups={props.courseGroups} dynamicCourseDescriptions={props.dynamicCourseDescriptions} dynamicCourseMessages={props.dynamicCourseMessages} discountName={props.discountName} internal={!!props.internal} coursesOverride={!!props.coursesOverride} /></Suspense>
+      <Suspense><Address school={props.school} /></Suspense>
+      <Suspense>{showBillingAddress(props.school) && <BillingAddress />}</Suspense>
+      <Suspense><Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} /></Suspense>
       {props.guarantee && <props.guarantee />}
     </>
   );
