@@ -7,6 +7,7 @@ import { lazy, Suspense } from 'react';
 // import { BillingAddress } from './billingAddress';
 // import { CourseSelection } from './courseSelection';
 // import { Payment } from './payment';
+// import { Overrides } from './overrides';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
 import type { School } from '@/domain/school';
@@ -17,6 +18,7 @@ const Address = lazy(async () => import('./address').then(m => ({ default: m.Add
 const BillingAddress = lazy(async () => import('./billingAddress').then(m => ({ default: m.BillingAddress })));
 const CourseSelection = lazy(async () => import('./courseSelection').then(m => ({ default: m.CourseSelection })));
 const Payment = lazy(async () => import('./payment').then(m => ({ default: m.Payment })));
+const Overrides = lazy(async () => import('./overrides').then(m => ({ default: m.Overrides })));
 
 export type DynamicCourseDescriptions = 'SHOW' | 'HIDE' | 'REPLACE';
 
@@ -56,7 +58,7 @@ const showBillingAddress = (school: School): boolean => {
 };
 
 export const Form: FC<Props> = props => {
-  usePriceUpdater(!!props.internal, props.school, props.promoCodeDefault);
+  usePriceUpdater(props.date, !!props.internal, props.school, props.promoCodeDefault);
   useQueryStringData();
 
   return (
@@ -65,6 +67,7 @@ export const Form: FC<Props> = props => {
       <Suspense><Address school={props.school} /></Suspense>
       <Suspense>{showBillingAddress(props.school) && <BillingAddress />}</Suspense>
       <Suspense><Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} /></Suspense>
+      <Suspense>{!!props.internal && <Overrides />}</Suspense>
       {props.guarantee && <props.guarantee />}
     </>
   );
