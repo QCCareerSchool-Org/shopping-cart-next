@@ -1,5 +1,6 @@
 import Slider from 'rc-slider';
 import type { FC } from 'react';
+import { useId } from 'react';
 import 'rc-slider/assets/index.css';
 
 import { Section } from '@/components/section';
@@ -8,6 +9,7 @@ import { useOverridesState } from '@/hooks/useOverridesState';
 import { usePaymentState } from '@/hooks/usePaymentState';
 
 export const Overrides: FC = () => {
+  const id = useId();
   const paymentState = usePaymentState();
   const overridesState = useOverridesState();
   const overridesDispatch = useOverridesDispatch();
@@ -47,7 +49,7 @@ export const Overrides: FC = () => {
         <div className="col-12 col-lg-6">
           <div className="form-group">
             <div className="alert alert-primary p-4">
-              <label htmlFor="totalDeposit">Total Deposit</label>
+              <label htmlFor={`${id}depositOverride`}>Total Deposit</label>
               <div className="row">
                 <div className="col-7 col-sm-9 col-lg-8">
                   <Slider
@@ -67,7 +69,7 @@ export const Overrides: FC = () => {
                   />
                 </div>
                 <div className="col-5 col-sm-3 col-lg-4">
-                  <input type="number" id="totalDeposit" className="form-control d-inline-block mx-2" value={overridesState.value} min={overridesState.min} max={overridesState.max} onChange={e => handleChange(parseFloat(e.target.value))} />
+                  <input type="number" id={`${id}depositOverride`} className="form-control d-inline-block mx-2" value={overridesState.value} min={overridesState.min} max={overridesState.max} onChange={e => handleChange(parseFloat(e.target.value))} />
                 </div>
               </div>
             </div>
@@ -79,7 +81,7 @@ export const Overrides: FC = () => {
             <div className="alert alert-secondary p-4">
               {overridesState.courses.filter(d => d.max > 0).map(d => (
                 <div className="form-group" key={d.code}>
-                  <label htmlFor={'depositOverride' + d.code}>{d.name} Deposit</label>
+                  <label htmlFor={`${id}depositOverride${d.code}`}>{d.name} Deposit</label>
                   <div className="row">
                     <div className="col-7 col-sm-9 col-lg-8">
                       <Slider
@@ -97,7 +99,7 @@ export const Overrides: FC = () => {
                       />
                     </div>
                     <div className="col-5 col-sm-3 col-lg-4">
-                      <input type="number" id={'depositOverride' + d.code} className="form-control d-inline-block mx-2" value={d.value} min={d.min} max={d.max} onChange={e => handleCourseChange(parseFloat(e.target.value), d.code)} />
+                      <input type="number" id={`${id}depositOverride${d.code}`} className="form-control d-inline-block mx-2" value={d.value} min={d.min} max={d.max} onChange={e => handleCourseChange(parseFloat(e.target.value), d.code)} />
                     </div>
                   </div>
                 </div>
@@ -109,7 +111,7 @@ export const Overrides: FC = () => {
         <div className="col-12 col-lg-6 order-lg-2">
           <div className="form-group">
             <div className="alert alert-primary p-4">
-              <label htmlFor="totalDeposit">Installments</label>
+              <label htmlFor={`${id}installmentOverride`}>Installments</label>
               <div className="row">
                 <div className="col-8 col-sm-10 col-lg-9">
                   <Slider
@@ -130,7 +132,7 @@ export const Overrides: FC = () => {
                   />
                 </div>
                 <div className="col-4 col-sm-2 col-lg-3">
-                  <input type="number" id="totalDeposit" className="form-control d-inline-block mx-2" value={overridesState.installments.toFixed(0)} step={1} min={1} max={overridesState.maxInstallments} onChange={e => handleChange(parseFloat(e.target.value))} />
+                  <input type="number" id={`${id}installmentOverride`} className="form-control d-inline-block mx-2" value={overridesState.installments.toFixed(0)} step={1} min={1} max={overridesState.maxInstallments} onChange={e => handleChange(parseFloat(e.target.value))} />
                 </div>
               </div>
             </div>
