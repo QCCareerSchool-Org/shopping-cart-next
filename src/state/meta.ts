@@ -3,6 +3,7 @@ export type MetaState = {
   studentDiscount: boolean;
   promoCode: string;
   promoCodeInputValue: string;
+  enrollment?: { id: number; code: number };
 };
 
 export type MetaAction =
@@ -10,7 +11,8 @@ export type MetaAction =
   | { type: 'SET_STUDENT_DISCOUNT'; payload: boolean }
   | { type: 'SET_PROMO_CODE'; payload: string }
   | { type: 'CLEAR_PROMO_CODE' }
-  | { type: 'SET_PROMO_CODE_INPUT_VALUE'; payload: string };
+  | { type: 'SET_PROMO_CODE_INPUT_VALUE'; payload: string }
+  | { type: 'SET_ENROLLMENT'; payload?: { id: number; code: number } };
 
 export function metaReducer(state: MetaState, action: MetaAction): MetaState {
   switch (action.type) {
@@ -44,8 +46,8 @@ export function metaReducer(state: MetaState, action: MetaAction): MetaState {
         promoCodeInputValue: promoCode,
       };
     }
-    default:
-      return state;
+    case 'SET_ENROLLMENT':
+      return { ...state, enrollment: action.payload };
   }
 }
 

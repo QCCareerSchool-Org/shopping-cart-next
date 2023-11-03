@@ -1,18 +1,28 @@
 'use client';
 
 import type { FC } from 'react';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 
-// import { Address } from './address';
-// import { BillingAddress } from './billingAddress';
-// import { CourseSelection } from './courseSelection';
-// import { Payment } from './payment';
-// import { Overrides } from './overrides';
+import { ConfirmPopup } from './confirmPopup';
+import { PaysafeModal } from './paysafeModal';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
 import type { School } from '@/domain/school';
+import { useAddressState } from '@/hooks/useAddressState';
+import { useCoursesState } from '@/hooks/useCoursesState';
+import { useEnroll } from '@/hooks/useEnroll';
+import { useMetaState } from '@/hooks/useMetaState';
+import { usePaymentState } from '@/hooks/usePaymentState';
+import { usePriceState } from '@/hooks/usePriceState';
 import { usePriceUpdater } from '@/hooks/usePriceUpdater';
 import { useQueryStringData } from '@/hooks/useQueryStringData';
+import { useToggle } from '@/hooks/useToggle';
+import { getPaysafeCompany } from '@/lib/getPaysafeCompany';
+import type { Paysafe } from '@/lib/paysafe';
+import type { AddressState } from '@/state/address';
+import type { MetaState } from '@/state/meta';
+import type { PaymentState } from '@/state/payment';
+import type { PriceState } from '@/state/price';
 
 const Internal = lazy(async () => import('./internal').then(m => ({ default: m.Internal })));
 const Address = lazy(async () => import('./address').then(m => ({ default: m.Address })));
@@ -20,6 +30,9 @@ const BillingAddress = lazy(async () => import('./billingAddress').then(m => ({ 
 const CourseSelection = lazy(async () => import('./courseSelection').then(m => ({ default: m.CourseSelection })));
 const Payment = lazy(async () => import('./payment').then(m => ({ default: m.Payment })));
 const Overrides = lazy(async () => import('./overrides').then(m => ({ default: m.Overrides })));
+const Summary = lazy(async () => import('./summary').then(m => ({ default: m.Summary })));
+
+declare const paysafe: Paysafe | undefined;
 
 export type DynamicCourseDescriptions = 'SHOW' | 'HIDE' | 'REPLACE';
 
@@ -52,6 +65,12 @@ type Props = {
   billingAddress?: boolean;
   /** special name to use for discount */
   discountName?: string;
+  /** a function that determines whether we should show a confirmation message before proceeding to payment */
+  showConfirmation?: (courses: string[], addressState: AddressState, priceState: PriceState, paymentState: PaymentState, metaState: MetaState) => boolean;
+  /** a component for the confirmation message (will appear in a popup) */
+  confirmationBody?: FC;
+  /** the heading of the confirmation popup */
+  confirmationHeading?: string;
 };
 
 const showBillingAddress = (school: School): boolean => {
@@ -59,8 +78,68 @@ const showBillingAddress = (school: School): boolean => {
 };
 
 export const Form: FC<Props> = props => {
+  useEffect(() => {
+    if (typeof paysafe === 'undefined') {
+      if (window.confirm('There was an error loading required resources. Do you want to retry?')) {
+        window.location.reload();
+      } else {
+        throw Error('Paysafe.js is not loaded');
+      }
+    }
+  }, []);
+
   usePriceUpdater(props.date, !!props.internal, props.school, props.promoCodeDefault);
   useQueryStringData();
+
+  const [ showConfirmationPopup, toggleConfirmationPopup ] = useToggle(false);
+  const [ showPaysafeForm, togglePaysafeForm ] = useToggle(false);
+
+  const coursesState = useCoursesState();
+  const addressState = useAddressState();
+  const priceState = usePriceState();
+  const paymentState = usePaymentState();
+  const metaState = useMetaState();
+
+  const paysafeCompany = priceState ? getPaysafeCompany(priceState.currency.code) : undefined;
+
+  const [ addToDatabase, handleCharge ] = useEnroll(!!props.internal, props.school, props.successLink, props.promoCodeDefault);
+
+  const handlePaymentFormHide = (): void => {
+    togglePaysafeForm();
+  };
+
+  const handleSubmit = (): void => {
+    console.log('A');
+    if (props.confirmationBody && props.showConfirmation?.(coursesState.selected, addressState, priceState, paymentState, metaState)) {
+      console.log('A1');
+      toggleConfirmationPopup();
+    } else {
+      console.log('A2');
+      showPaymentForm();
+    }
+  };
+
+  const handleConfirmationCancel = (): void => {
+    toggleConfirmationPopup();
+  };
+
+  const handleConfirmationProceed = (): void => {
+    toggleConfirmationPopup();
+    showPaymentForm();
+  };
+
+  const showPaymentForm = (): void => {
+    console.log('B');
+    if (!priceState) {
+      console.log('B1');
+      return;
+    }
+    void addToDatabase().then(result => {
+      if (result) {
+        togglePaysafeForm();
+      }
+    });
+  };
 
   return (
     <>
@@ -70,7 +149,9 @@ export const Form: FC<Props> = props => {
       <Suspense>{showBillingAddress(props.school) && <BillingAddress />}</Suspense>
       <Suspense><Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} /></Suspense>
       <Suspense>{!!props.internal && <Overrides />}</Suspense>
-      {props.guarantee && <props.guarantee />}
+      <Suspense><Summary onSubmit={handleSubmit} agreementLinks={props.agreementLinks} showPromoCodeInput={!!props.showPromoCodeInput} guarantee={props.guarantee} /></Suspense>
+      {props.confirmationBody && props.confirmationHeading && <ConfirmPopup show={showConfirmationPopup} onCancel={handleConfirmationCancel} onProceed={handleConfirmationProceed} />}
+      {paysafeCompany && <PaysafeModal company={paysafeCompany} show={showPaysafeForm} onHide={handlePaymentFormHide} onCharge={handleCharge} />}
     </>
   );
 };

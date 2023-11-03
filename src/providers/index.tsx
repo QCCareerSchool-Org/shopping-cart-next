@@ -4,6 +4,7 @@ import { AddressProvider } from './addressProvider';
 import { BillingAddressProvider } from './billingAddressProvider';
 import { CountriesProvider } from './countriesProvider';
 import { CoursesProvider } from './coursesProvider';
+import { ErrorsProvider } from './errorsProvider';
 import { MetaProvider } from './metaProvider';
 import { OverridesProvider } from './overridesProvider';
 import { PaymentProvider } from './paymentProvider';
@@ -20,23 +21,25 @@ type Props = {
 };
 
 export const Provider: FC<PropsWithChildren<Props>> = ({ geoLocation, countries, provinces, children }) => (
-  <CountriesProvider countries={countries}>
-    <CoursesProvider>
-      <PriceProvider>
-        <AddressProvider geoLocation={geoLocation} provinces={provinces}>
-          <BillingAddressProvider geoLocation={geoLocation} provinces={provinces}>
-            <PaymentProvider>
-              <OverridesProvider>
-                <MetaProvider>
-                  <ScreenWidthProvider>
-                    {children}
-                  </ScreenWidthProvider>
-                </MetaProvider>
-              </OverridesProvider>
-            </PaymentProvider>
-          </BillingAddressProvider>
-        </AddressProvider>
-      </PriceProvider>
-    </CoursesProvider>
-  </CountriesProvider>
+  <ErrorsProvider>
+    <CountriesProvider countries={countries}>
+      <CoursesProvider>
+        <PriceProvider>
+          <AddressProvider geoLocation={geoLocation} provinces={provinces}>
+            <BillingAddressProvider geoLocation={geoLocation} provinces={provinces}>
+              <PaymentProvider>
+                <OverridesProvider>
+                  <MetaProvider>
+                    <ScreenWidthProvider>
+                      {children}
+                    </ScreenWidthProvider>
+                  </MetaProvider>
+                </OverridesProvider>
+              </PaymentProvider>
+            </BillingAddressProvider>
+          </AddressProvider>
+        </PriceProvider>
+      </CoursesProvider>
+    </CountriesProvider>
+  </ErrorsProvider>
 );

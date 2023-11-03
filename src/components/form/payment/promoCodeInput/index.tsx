@@ -1,7 +1,7 @@
 import type { FC, MouseEventHandler } from 'react';
 import { useMemo } from 'react';
-
 import { FaTag } from 'react-icons/fa';
+
 import { Popup } from './popup';
 import { getPromos } from './promos';
 import { FormGroup } from '@/components/formGroup';
@@ -81,7 +81,11 @@ export const PromoCodeInput: FC<Props> = ({ date, school }) => {
                 </div>
               )}
             </form>
-            {priceState?.promoCodeRecognized === false && (<div className="alert alert-danger mt-3">Unrecognized code</div>)}
+            {priceState?.promoCodeRecognized === false && (
+              <div className="alert alert-danger mt-3">
+                Unrecognized code
+              </div>
+            )}
             <Popup date={date} popup={popup} onHide={handlePopupHide} apply={popupApply} promos={promos} />
           </>
         )}

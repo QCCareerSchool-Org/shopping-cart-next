@@ -63,7 +63,10 @@ const RootLayout: LayoutComponent = async ({ children }) => {
     <Provider geoLocation={geoLocation} countries={countries} provinces={provinces}>
       <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable}`}>
         <head>
-          <Script src="https://hosted.paysafe.com/js/v1/latest/paysafe.min.js" />
+          {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
+          <Script id="paysafe" src="https://hosted.paysafe.com/js/v1/latest/paysafe.min.js" strategy="beforeInteractive" />
+          {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+          {/* <script id="paysafe" src="https://hosted.paysafe.com/js/v1/latest/paysafe.min.js" /> */}
         </head>
         <body>{children}</body>
       </html>

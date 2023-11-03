@@ -41,6 +41,7 @@ const InternalMakeupPage: PageComponent = ({ searchParams }) => {
           internal={true}
           successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
           agreementLinks={agreementLinks}
+          showPromoCodeInput={true}
         />
       </Suspense>
     </>

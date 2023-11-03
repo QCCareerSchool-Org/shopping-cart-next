@@ -7,7 +7,6 @@ body {
   --scrollbar-width: calc(100vw - 100%);
 }
 
-.btn { text-transform: uppercase; } 
 .btn-primary {
   color: white;
   &:hover, &:focus { color: white; }

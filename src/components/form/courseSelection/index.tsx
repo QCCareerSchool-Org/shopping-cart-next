@@ -23,7 +23,7 @@ type Props = {
 
 export const CourseSelection: FC<Props> = props => {
   return (
-    <Section>
+    <Section className="courses-section">
       {props.coursesOverride ? <Override {...props} /> : <Standard {...props} />}
     </Section>
   );
@@ -74,7 +74,7 @@ const Standard: FC<Props> = props => {
         )} */}
         {props.courseGroups.map((g, i) => (
           <Fragment key={i}>
-            {g.name && <h5 className={i > 0 ? 'mt-4' : ''}>{g.name}</h5>}
+            {g.name && <h3 className={i > 0 ? 'mt-4 h5' : 'h5'}>{g.name}</h3>}
             {g.items.filter(c => !coursesState.hidden.includes(c.code) || c.alwaysShown).map(c => <CheckBox key={c.code} course={c} onCheck={handleCheck} onUncheck={handleUncheck} internal={props.internal} onMouseOver={() => handleMouseOver(c.code)} />)}
           </Fragment>
         ))}
