@@ -37,8 +37,9 @@ export const Desktop: FC<Props> = ({ date, school }) => {
   const md = screenWidth >= 768;
   const lg = screenWidth >= 992;
   const xl = screenWidth >= 1200;
+  const xxl = screenWidth >= 1400;
 
-  const screenSize = xl ? 'xl' : lg ? 'lg' : md ? 'md' : sm ? 'sm' : 'xs' as const;
+  const screenSize = xxl ? 'xxl' : xl ? 'xl' : lg ? 'lg' : md ? 'md' : sm ? 'sm' : 'xs' as const;
 
   const handleFullClick = (): void => {
     paymentDispatch({ type: 'SET_PAYMENT_PLAN', payload: 'full' });

@@ -10,7 +10,7 @@ import { scrollToPosition } from '@/components/scroller';
 import type { PaysafeCompany } from '@/domain/paysafeCompany';
 import type { School } from '@/domain/school';
 import { addEnrollment, chargeEnrollment, createEnrollmentPayload, EnrollmentError, updateEnrollment } from '@/lib/enroll';
-import { clearForm, saveForm } from '@/lib/saveForm';
+import { clearForm, saveForm } from '@/lib/persist';
 
 type AddToDatabaseFunction = () => Promise<boolean>;
 type ChargeFunction = (token: string, company: PaysafeCompany) => Promise<boolean>;

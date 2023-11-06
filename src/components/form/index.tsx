@@ -11,11 +11,11 @@ import type { School } from '@/domain/school';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useCoursesState } from '@/hooks/useCoursesState';
 import { useEnroll } from '@/hooks/useEnroll';
+import { useInitialData } from '@/hooks/useInitialData';
 import { useMetaState } from '@/hooks/useMetaState';
 import { usePaymentState } from '@/hooks/usePaymentState';
 import { usePriceState } from '@/hooks/usePriceState';
 import { usePriceUpdater } from '@/hooks/usePriceUpdater';
-import { useQueryStringData } from '@/hooks/useQueryStringData';
 import { useToggle } from '@/hooks/useToggle';
 import { getPaysafeCompany } from '@/lib/getPaysafeCompany';
 import type { Paysafe } from '@/lib/paysafe';
@@ -89,7 +89,7 @@ export const Form: FC<Props> = props => {
   }, []);
 
   usePriceUpdater(props.date, !!props.internal, props.school, props.promoCodeDefault);
-  useQueryStringData();
+  useInitialData();
 
   const [ showConfirmationPopup, toggleConfirmationPopup ] = useToggle(false);
   const [ showPaysafeForm, togglePaysafeForm ] = useToggle(false);
@@ -109,12 +109,9 @@ export const Form: FC<Props> = props => {
   };
 
   const handleSubmit = (): void => {
-    console.log('A');
     if (props.confirmationBody && props.showConfirmation?.(coursesState.selected, addressState, priceState, paymentState, metaState)) {
-      console.log('A1');
       toggleConfirmationPopup();
     } else {
-      console.log('A2');
       showPaymentForm();
     }
   };
@@ -129,9 +126,7 @@ export const Form: FC<Props> = props => {
   };
 
   const showPaymentForm = (): void => {
-    console.log('B');
     if (!priceState) {
-      console.log('B1');
       return;
     }
     void addToDatabase().then(result => {

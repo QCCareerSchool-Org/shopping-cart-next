@@ -15,7 +15,7 @@ export type KitImage = {
   buttonVariant?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'black' | 'dark-grey';
 };
 
-type ScreenSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+type ScreenSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 type Images = {
   full: KitImage;
@@ -124,8 +124,8 @@ const getCourseKits = (date: number): CourseKit[] => [
     images: {
       full: { src: MZ },
       part: { src: MZ, backgroundColor: 'white' },
-      height: { xs: undefined, sm: undefined, md: 148, lg: 130, xl: 157 },
-      buttonOffset: { xs: undefined, sm: undefined, md: 62, lg: 49, xl: 68 },
+      height: { xs: undefined, sm: undefined, md: 148, lg: 130, xl: 157, xxl: 183 },
+      buttonOffset: { xs: undefined, sm: undefined, md: 62, lg: 49, xl: 68, xxl: 68 },
       buttonBelow: true,
     },
     fullBullets: [ <strong key={0}>Bonus Luminous Kit</strong>, ...makeupBullets ],
@@ -137,8 +137,8 @@ const getCourseKits = (date: number): CourseKit[] => [
     images: {
       full: { src: DesignBooks },
       part: { src: DesignBooks },
-      height: { xs: undefined, sm: undefined, md: 140, lg: 122, xl: 148 },
-      buttonOffset: { xs: undefined, sm: undefined, md: 51, lg: 45, xl: 55 },
+      height: { xs: undefined, sm: undefined, md: 140, lg: 122, xl: 148, xxl: 173 },
+      buttonOffset: { xs: undefined, sm: undefined, md: 51, lg: 45, xl: 55, xxl: 64 },
     },
     fullBullets: [ <strong key={0}>Printed textbooks included</strong> ],
     partBullets: [ <strong key={0}>Printed textbooks included</strong> ],

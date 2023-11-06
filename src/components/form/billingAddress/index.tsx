@@ -1,4 +1,5 @@
-import type { FC } from 'react';
+import type { ChangeEventHandler, FC } from 'react';
+import { useId } from 'react';
 
 import { Address1 } from './fields/address1';
 import { Address2 } from './fields/address2';
@@ -13,26 +14,37 @@ import { TelephoneNumber } from './fields/telephoneNumber';
 import { Title } from './fields/title';
 import { FormGroup } from '@/components/formGroup';
 import { Section } from '@/components/section';
+import { useBillingAddressDispatch } from '@/hooks/useBillingAddressDispatch';
 import { useBillingAddressState } from '@/hooks/useBillingAddressState';
 import { needsProvince } from '@/lib/needProvince';
 import { needsPostal } from '@/lib/needsPostal';
 
 export const BillingAddress: FC = () => {
+  const id = useId();
   const { countryCode } = useBillingAddressState();
   const { sameAsShipping } = useBillingAddressState();
+  const billingAddressDispatch = useBillingAddressDispatch();
 
   const showPostal = needsPostal(countryCode);
   const showProvince = needsProvince(countryCode);
 
+  const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
+    billingAddressDispatch({ type: 'SET_BILLING_DISABLED', payload: e.target.checked });
+  };
+
   return (
     <Section>
       <div className="row justify-content-center">
-        <div className="col-12 col-lg-8 text-center">
+        <div className="col-12 col-lg-8 d-flex flex-column justify-content-center">
           <h2 className="h1">Billing Address</h2>
+          <div className="form-check">
+            <input onChange={handleChange} checked={sameAsShipping} type="checkbox" id={`${id}SameAsShipping`} className="form-check-input" />
+            <label className="form-check-label" htmlFor={`${id}SameAsShipping`}>Use student address for billing address</label>
+          </div>
         </div>
       </div>
-      {sameAsShipping && (
-        <div className="row justify-content-center">
+      {!sameAsShipping && (
+        <div className="row justify-content-center mt-4">
           <div className="col-12 col-md-6 col-lg-4">
             <FormGroup><Title /></FormGroup>
             <FormGroup><FirstName /></FormGroup>
