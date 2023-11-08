@@ -32,7 +32,7 @@ export const Address: FC<Props> = ({ school }) => {
   const showProvince = needsProvince(countryCode);
 
   return (
-    <Section>
+    <Section className="addressSection">
       <div className="row justify-content-center">
         <div className="col-12 col-lg-8 text-center">
           {school === 'QC Design School'

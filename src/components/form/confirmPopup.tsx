@@ -5,20 +5,16 @@ type Props = {
   show: boolean;
   onCancel: () => void;
   onProceed: () => void;
-  confirmationBody?: FC;
-  confirmationHeading?: string;
+  body: FC;
+  heading?: string;
 };
 
 export const ConfirmPopup: FC<Props> = props => {
-  if (!props.confirmationBody) {
-    return;
-  }
-
   return (
     <Modal show={props.show} onHide={props.onCancel}>
-      <ModalHeader>{props.confirmationHeading ?? 'Confirmation'}</ModalHeader>
+      <ModalHeader>{props.heading ?? 'Confirmation'}</ModalHeader>
       <ModalBody>
-        <props.confirmationBody />
+        <props.body />
       </ModalBody>
       <ModalFooter>
         <button className="btn btn-danger" onClick={props.onProceed}>Proceed Anyway</button>

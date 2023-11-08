@@ -25,7 +25,7 @@ export const Guarantee: FC = () => {
         <button type="button" className="btn btn-link p-0 btn-no-hover-shadow" onClick={handleClick}><Image src={TwentyOneDays as StaticImageData} width="97" height="100" className="img-fluid" alt="21-Day Money-Back Guarantee" /></button>
       </div>
       <div className="col-12 col-md-6 text-center text-md-start">
-        <h5>21-Day Money-Back Guarantee</h5>
+        <h3 className="h5">21-Day Money-Back Guarantee</h3>
         <button type="button" className="btn btn-link p-0 p-0 btn-no-hover-shadow" onClick={handleClick}>Learn More</button>
       </div>
       <GuaranteeModal show={showPopup} onHide={handleHide} />

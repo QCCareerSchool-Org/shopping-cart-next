@@ -16,7 +16,7 @@ type Props = {
 
 export const Payment: FC<Props> = ({ date, school, showPromoCodeInput, visualPaymentPlans }) => {
   return (
-    <Section>
+    <Section className="paymentSection">
       <h2 className="h1">Select a Payment Plan</h2>
       <Suspense>
         {visualPaymentPlans

@@ -3,15 +3,23 @@ import { useId } from 'react';
 
 import { useAddressDispatch } from '@/hooks/useAddressDispatch';
 import { useAddressState } from '@/hooks/useAddressState';
+import { useErrorsState } from '@/hooks/useErrorsState';
 
 export const Address2: FC = () => {
   const id = useId();
   const addressState = useAddressState();
   const addressDispatch = useAddressDispatch();
+  const { errors } = useErrorsState();
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
     addressDispatch({ type: 'SET_ADDRESS2', payload: e.target.value });
   };
+
+  let className = 'form-control';
+
+  if (errors.studentAddress.address2) {
+    className += ' is-invalid';
+  }
 
   return (
     <>
@@ -22,7 +30,7 @@ export const Address2: FC = () => {
         type="text"
         name="address2"
         id={`${id}address2`}
-        className="form-control"
+        className={className}
         maxLength={50}
         autoComplete="shipping address-line2"
         autoCapitalize="words"

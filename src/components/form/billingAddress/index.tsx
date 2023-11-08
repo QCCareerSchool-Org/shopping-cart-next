@@ -33,7 +33,7 @@ export const BillingAddress: FC = () => {
   };
 
   return (
-    <Section>
+    <Section className="billingAddressSection">
       <div className="row justify-content-center">
         <div className="col-12 col-lg-8 d-flex flex-column justify-content-center">
           <h2 className="h1">Billing Address</h2>

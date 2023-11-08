@@ -4,6 +4,7 @@ import { useId } from 'react';
 import { useBillingAddressDispatch } from '@/hooks/useBillingAddressDispatch';
 import { useBillingAddressState } from '@/hooks/useBillingAddressState';
 import { useCountriesState } from '@/hooks/useCountriesState';
+import { useErrorsState } from '@/hooks/useErrorsState';
 import { fetchProvinces } from '@/lib/fetch';
 import { needsProvince } from '@/lib/needProvince';
 
@@ -12,6 +13,7 @@ export const CountryCode: FC = () => {
   const countriesState = useCountriesState();
   const billingAddressState = useBillingAddressState();
   const billingAddressDispatch = useBillingAddressDispatch();
+  const { errors } = useErrorsState();
 
   const handleChange: ChangeEventHandler<HTMLSelectElement> = e => {
     const countryCode = e.target.value;
@@ -29,6 +31,12 @@ export const CountryCode: FC = () => {
     }
   };
 
+  let className = 'form-select';
+
+  if (errors.billingAddress.countryCode) {
+    className += ' is-invalid';
+  }
+
   return (
     <>
       <label htmlFor={`${id}countryCode`} className="form-label">Country</label>
@@ -37,7 +45,7 @@ export const CountryCode: FC = () => {
         value={billingAddressState.countryCode}
         name="countryCode"
         id={`${id}countryCode`}
-        className="form-select"
+        className={className}
         autoComplete="billing country"
         autoCapitalize="characters"
         autoCorrect="off"

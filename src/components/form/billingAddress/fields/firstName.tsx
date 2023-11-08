@@ -3,15 +3,23 @@ import { useId } from 'react';
 
 import { useBillingAddressDispatch } from '@/hooks/useBillingAddressDispatch';
 import { useBillingAddressState } from '@/hooks/useBillingAddressState';
+import { useErrorsState } from '@/hooks/useErrorsState';
 
 export const FirstName: FC = () => {
   const id = useId();
   const billingAddressState = useBillingAddressState();
   const billingAddressDispatch = useBillingAddressDispatch();
+  const { errors } = useErrorsState();
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
     billingAddressDispatch({ type: 'SET_BILLING_FIRST_NAME', payload: e.target.value });
   };
+
+  let className = 'form-control';
+
+  if (errors.billingAddress.firstName) {
+    className += ' is-invalid';
+  }
 
   return (
     <>
@@ -22,7 +30,7 @@ export const FirstName: FC = () => {
         type="text"
         name="firstName"
         id={`${id}firstName`}
-        className="form-control"
+        className={className}
         maxLength={50}
         autoComplete="billing given-name"
         autoCapitalize="words"

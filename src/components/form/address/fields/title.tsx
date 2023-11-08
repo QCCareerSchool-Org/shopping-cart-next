@@ -4,11 +4,13 @@ import { useId } from 'react';
 import { isTitle, titles } from '@/domain/title';
 import { useAddressDispatch } from '@/hooks/useAddressDispatch';
 import { useAddressState } from '@/hooks/useAddressState';
+import { useErrorsState } from '@/hooks/useErrorsState';
 
 export const Title: FC = () => {
   const id = useId();
   const addressState = useAddressState();
   const addressDispatch = useAddressDispatch();
+  const { errors } = useErrorsState();
 
   const handleChange: ChangeEventHandler<HTMLSelectElement> = e => {
     const title = e.target.value;
@@ -18,6 +20,12 @@ export const Title: FC = () => {
     addressDispatch({ type: 'SET_TITLE', payload: title });
   };
 
+  let className = 'form-select';
+
+  if (errors.studentAddress.title) {
+    className += ' is-invalid';
+  }
+
   return (
     <>
       <label htmlFor={`${id}title`} className="form-label">Title</label>
@@ -26,7 +34,7 @@ export const Title: FC = () => {
         value={addressState.title}
         name="title"
         id={`${id}title`}
-        className="form-select"
+        className={className}
         autoComplete="shipping honorific-prefix"
         autoCapitalize="words"
         autoCorrect="off"

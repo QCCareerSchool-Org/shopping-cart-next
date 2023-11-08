@@ -56,7 +56,7 @@ type Options = {
   depositOverrides?: { [key: string]: number };
 };
 
-export type AddEnrollmentResponse = { id: number; code: number };
+export type AddEnrollmentResponse = { id: number; code: string };
 
 export type AddEnrollmentErrorResponse = {
   errorCode: number;
@@ -66,7 +66,7 @@ export type AddEnrollmentErrorResponse = {
 const isAddEnrollmentResponse = (obj: unknown): obj is AddEnrollmentResponse => {
   return obj !== null && typeof obj === 'object' &&
     'id' in obj && typeof obj.id === 'number' &&
-    'code' in obj && typeof obj.code === 'number';
+    'code' in obj && typeof obj.code === 'string';
 };
 
 const isAddEnrollmentErrorResponse = (obj: unknown): obj is AddEnrollmentErrorResponse => {
@@ -137,7 +137,9 @@ export const createEnrollmentPayload = (internal: boolean, school: School, cours
 const baseUrl = process.env.NEXT_PUBLIC_ENROLLMENT_ENDPOINT ?? 'https://api.qccareerschool.com/enrollments';
 
 export const addEnrollment = async (payload: EnrollmentPayload): Promise<AddEnrollmentResponse> => {
+  console.log('c', baseUrl);
   const response = await fetch(baseUrl, {
+    method: 'post',
     headers: {
       'Content-Type': 'application/json',
       'X-API-Version': '2',
@@ -153,8 +155,9 @@ export const addEnrollment = async (payload: EnrollmentPayload): Promise<AddEnro
     }
     throw Error(response.statusText);
   }
-  const responseBody = response.json();
+  const responseBody: unknown = await response.json();
   if (!isAddEnrollmentResponse(responseBody)) {
+    console.log(responseBody);
     throw Error('Invalid response');
   }
   return responseBody;
@@ -162,6 +165,7 @@ export const addEnrollment = async (payload: EnrollmentPayload): Promise<AddEnro
 
 export const updateEnrollment = async (id: number, payload: EnrollmentPayload): Promise<AddEnrollmentResponse> => {
   const response = await fetch(`${baseUrl}/${id}`, {
+    method: 'put',
     headers: {
       'Content-Type': 'application/json',
       'X-API-Version': '2',
@@ -177,7 +181,7 @@ export const updateEnrollment = async (id: number, payload: EnrollmentPayload): 
     }
     throw Error(response.statusText);
   }
-  const responseBody = response.json();
+  const responseBody: unknown = await response.json();
   if (!isAddEnrollmentResponse(responseBody)) {
     throw Error('Invalid response');
   }

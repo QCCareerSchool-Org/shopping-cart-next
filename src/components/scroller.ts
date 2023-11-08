@@ -8,15 +8,15 @@ const scrollProps = {
 export const scrollToPosition = (section: 'courses' | 'shipping' | 'plan' | 'billing'): void => {
   if (section === 'courses') {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    scroller.scrollTo('courses-section', scrollProps);
+    scroller.scrollTo('coursesSection', scrollProps);
   } else if (section === 'shipping') {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    scroller.scrollTo('address-section', scrollProps);
+    scroller.scrollTo('addressSection', scrollProps);
   } else if (section === 'plan') {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    scroller.scrollTo('payment-section', scrollProps);
+    scroller.scrollTo('paymentSection', scrollProps);
   } else if (section === 'billing') {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    scroller.scrollTo('billing-section', scrollProps);
+    scroller.scrollTo('summarySection', scrollProps);
   }
 };

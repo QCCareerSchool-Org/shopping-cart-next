@@ -30,15 +30,20 @@ export const useEnroll = (internal: boolean, school: School, successLink: string
     errorsDispatch({ type: 'CLEAR_ERRORS' });
     const payload = createEnrollmentPayload(internal, school, coursesState.selected, addressState, billingAddressState, paymentState, overridesState, metaState, promoCodeDefault);
     try {
+      console.log('b');
       if (metaState.enrollment) {
+        console.log('b1');
         const addEnrollmentResponse = await updateEnrollment(metaState.enrollment.id, payload);
         metaDispatch({ type: 'SET_ENROLLMENT', payload: addEnrollmentResponse });
       } else {
+        console.log('b2');
         const addEnrollmentResponse = await addEnrollment(payload);
         metaDispatch({ type: 'SET_ENROLLMENT', payload: addEnrollmentResponse });
       }
+      console.log('b3');
       return true;
     } catch (err) {
+      console.log('b4', err);
       if (err instanceof EnrollmentError) {
         if (err.code === 1) { // course error
           scrollToPosition('courses');

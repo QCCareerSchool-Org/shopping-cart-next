@@ -4,11 +4,13 @@ import { useId } from 'react';
 import { isTitle, titles } from '@/domain/title';
 import { useBillingAddressDispatch } from '@/hooks/useBillingAddressDispatch';
 import { useBillingAddressState } from '@/hooks/useBillingAddressState';
+import { useErrorsState } from '@/hooks/useErrorsState';
 
 export const Title: FC = () => {
   const id = useId();
   const billingAddressState = useBillingAddressState();
   const billingAddressDispatch = useBillingAddressDispatch();
+  const { errors } = useErrorsState();
 
   const handleChange: ChangeEventHandler<HTMLSelectElement> = e => {
     const title = e.target.value;
@@ -18,6 +20,12 @@ export const Title: FC = () => {
     billingAddressDispatch({ type: 'SET_BILLING_TITLE', payload: title });
   };
 
+  let className = 'form-select';
+
+  if (errors.billingAddress.title) {
+    className += ' is-invalid';
+  }
+
   return (
     <>
       <label htmlFor={`${id}title`} className="form-label">Title</label>
@@ -26,7 +34,7 @@ export const Title: FC = () => {
         value={billingAddressState.title}
         name="title"
         id={`${id}title`}
-        className="form-select"
+        className={className}
         autoComplete="billing honorific-prefix"
         autoCapitalize="words"
         autoCorrect="off"

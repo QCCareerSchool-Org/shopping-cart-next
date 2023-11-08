@@ -4,6 +4,7 @@ import type { FC } from 'react';
 import { lazy, Suspense, useEffect } from 'react';
 
 import { ConfirmPopup } from './confirmPopup';
+import { ErrorModal } from './errorModal';
 import { PaysafeModal } from './paysafeModal';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
@@ -65,12 +66,14 @@ type Props = {
   billingAddress?: boolean;
   /** special name to use for discount */
   discountName?: string;
-  /** a function that determines whether we should show a confirmation message before proceeding to payment */
-  showConfirmation?: (courses: string[], addressState: AddressState, priceState: PriceState, paymentState: PaymentState, metaState: MetaState) => boolean;
-  /** a component for the confirmation message (will appear in a popup) */
-  confirmationBody?: FC;
-  /** the heading of the confirmation popup */
-  confirmationHeading?: string;
+  confirmation?: {
+    /** a function that determines whether we should show a confirmation message before proceeding to payment */
+    show: (courses: string[], addressState: AddressState, priceState: PriceState, paymentState: PaymentState, metaState: MetaState) => boolean;
+    /** a component for the confirmation message (will appear in a popup) */
+    body: FC;
+    /** the heading of the confirmation popup */
+    heading?: string;
+  };
 };
 
 const showBillingAddress = (school: School): boolean => {
@@ -109,7 +112,7 @@ export const Form: FC<Props> = props => {
   };
 
   const handleSubmit = (): void => {
-    if (props.confirmationBody && props.showConfirmation?.(coursesState.selected, addressState, priceState, paymentState, metaState)) {
+    if (props.confirmation?.show?.(coursesState.selected, addressState, priceState, paymentState, metaState)) {
       toggleConfirmationPopup();
     } else {
       showPaymentForm();
@@ -129,7 +132,9 @@ export const Form: FC<Props> = props => {
     if (!priceState) {
       return;
     }
+    console.log('d');
     void addToDatabase().then(result => {
+      console.log('d2', result);
       if (result) {
         togglePaysafeForm();
       }
@@ -145,8 +150,9 @@ export const Form: FC<Props> = props => {
       <Suspense><Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} /></Suspense>
       <Suspense>{!!props.internal && <Overrides />}</Suspense>
       <Suspense><Summary onSubmit={handleSubmit} agreementLinks={props.agreementLinks} showPromoCodeInput={!!props.showPromoCodeInput} guarantee={props.guarantee} /></Suspense>
-      {props.confirmationBody && props.confirmationHeading && <ConfirmPopup show={showConfirmationPopup} onCancel={handleConfirmationCancel} onProceed={handleConfirmationProceed} />}
+      {props.confirmation && <ConfirmPopup show={showConfirmationPopup} onCancel={handleConfirmationCancel} onProceed={handleConfirmationProceed} body={props.confirmation.body} heading={props.confirmation.heading} />}
       {paysafeCompany && <PaysafeModal company={paysafeCompany} show={showPaysafeForm} onHide={handlePaymentFormHide} onCharge={handleCharge} />}
+      <ErrorModal />
     </>
   );
 };

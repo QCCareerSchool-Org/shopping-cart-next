@@ -3,6 +3,7 @@ import { useId } from 'react';
 
 import { useAddressDispatch } from '@/hooks/useAddressDispatch';
 import { useAddressState } from '@/hooks/useAddressState';
+import { useErrorsState } from '@/hooks/useErrorsState';
 import { provinceState } from '@/lib/provinceState';
 import { ucWords } from '@/lib/ucWords';
 
@@ -10,6 +11,7 @@ export const ProvinceCode: FC = () => {
   const id = useId();
   const addressState = useAddressState();
   const addressDispatch = useAddressDispatch();
+  const { errors } = useErrorsState();
 
   const handleChange: ChangeEventHandler<HTMLSelectElement> = e => {
     const provinceCode = e.target.value;
@@ -20,6 +22,12 @@ export const ProvinceCode: FC = () => {
     return null;
   }
 
+  let className = 'form-select';
+
+  if (errors.studentAddress.provinceCode) {
+    className += ' is-invalid';
+  }
+
   return (
     <>
       <label htmlFor={`${id}provinceCode`} className="form-label">{ucWords(provinceState(addressState.countryCode))}</label>
@@ -28,7 +36,7 @@ export const ProvinceCode: FC = () => {
         value={addressState.provinceCode}
         name="provinceCode"
         id={`${id}provinceCode`}
-        className="form-select"
+        className={className}
         autoComplete="shipping address-level1"
         autoCapitalize="characters"
         autoCorrect="off"

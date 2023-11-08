@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import type { FC, FormEventHandler } from 'react';
+import { useEffect, useState } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'react-bootstrap';
 import { FaCalendarAlt, FaCcMastercard, FaCcVisa, FaCreditCard, FaShieldAlt } from 'react-icons/fa';
 
+import { FormGroup } from '../formGroup';
 import type { PaysafeCompany } from '@/domain/paysafeCompany';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useBillingAddressState } from '@/hooks/useBillingAddressState';
@@ -19,6 +21,8 @@ type Props = {
   onCharge: (token: string, compay: PaysafeCompany) => Promise<boolean>;
 };
 
+type Errors = { displayMessage?: string };
+
 type Status = {
   instance?: PaysafeInstance;
   panValid: boolean;
@@ -28,7 +32,11 @@ type Status = {
   expFilled: boolean;
   cvvFilled: boolean;
   submitted?: boolean;
-  errors?: { displayMessage?: string };
+  errors?: Errors;
+};
+
+const isErrors = (obj: unknown): obj is Errors => {
+  return obj !== null && typeof obj === 'object' && 'displayMessage' in obj && (typeof obj.displayMessage === 'undefined' || typeof obj.displayMessage === 'string');
 };
 
 const apiKeys = {
@@ -58,7 +66,7 @@ const accounts = {
  * When isOpen is set to true for the first time, we need to initialize a paysafe instance, but we can't do it until after all the DOM elements are rendered.
  * The initialized state will only be set to true after the first render where isOpen is true. After that we can create the instance.
  */
-export const PaysafeModal: React.FC<Props> = props => {
+export const PaysafeModal: FC<Props> = props => {
   const priceState = usePriceState();
   const addressState = useAddressState();
   const billingAddressState = useBillingAddressState();
@@ -77,6 +85,7 @@ export const PaysafeModal: React.FC<Props> = props => {
   const [ success, setSuccess ] = useState(false);
 
   useEffect(() => {
+    console.log('effect', props.company, props.show, initialized, status.instance);
     if (props.show) {
       if (!initialized) {
         setInitialized(true);
@@ -120,98 +129,97 @@ export const PaysafeModal: React.FC<Props> = props => {
     return null;
   }
 
-  const handleSubmit = (e: React.FormEvent): void => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
     if (submitting || success) {
       return;
     }
     setSubmitting(true);
-    const options = getTokenizeOptions(props.company, priceState, addressState, billingAddressState);
-    if (!status.instance) {
-      throw Error('instance not defined');
-    }
-    setStatus(s => ({ ...s, submitted: true }));
-    tokenize(status.instance, options).then(async token => {
-      return props.onCharge(token, props.company);
-    }).then(chargeResult => {
-      if (chargeResult === false) {
-        props.onHide();
-      } else {
-        setSuccess(true);
+    void (async () => {
+      try {
+        if (!status.instance) {
+          throw Error('instance not defined');
+        }
+        const options = getTokenizeOptions(props.company, priceState, addressState, billingAddressState);
+        setStatus(s => ({ ...s, submitted: true }));
+        const token = await tokenize(status.instance, options);
+        const chargeResult = await props.onCharge(token, props.company);
+        if (chargeResult === false) {
+          props.onHide();
+        } else {
+          setSuccess(true);
+        }
+      } catch (err) {
+        if (isErrors(err)) {
+          setStatus(s => ({ ...s, errors: err as Errors }));
+        } else {
+          console.error(err);
+        }
+      } finally {
+        setSubmitting(false);
       }
-    }).catch(err => {
-      console.error(err);
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      setStatus(s => ({ ...s, errors: err }));
-    }).finally(() => {
-      setSubmitting(false);
-    });
+    })();
   };
 
   const buttonDisabled = submitting || !status.panValid || !status.expValid || !status.cvvValid || success;
 
   return (
-    // <Modal size="sm" show={props.show} onHide={props.onHide} unmountOnClose={false}>
-    <Modal size="sm" show={props.show} onHide={props.onHide}>
-      <ModalHeader closeButton>Payment Details</ModalHeader>
-      <ModalBody>
-        <form id="payment-form" method="POST" onSubmit={handleSubmit}>
-          <div className="row">
-            <div className="col-12">
-              <div className="form-group">
-                <label htmlFor={'cardNumber' + props.company}>Card Number</label>
-                <div className="input-group">
-                  <div className={'form-control' + ((status.submitted ?? status.panFilled) && !status.panValid ? ' is-invalid' : '')} style={{ height: '36px', paddingTop: 0, paddingBottom: 0, paddingRight: 0 }} id={'cardNumber' + props.company} />
-                  <div className="input-group-append">
+    <>
+      <Modal size="sm" show={props.show} onHide={props.onHide}>
+        <ModalHeader closeButton>Payment Details</ModalHeader>
+        <ModalBody>
+          <form id="payment-form" method="POST" onSubmit={handleSubmit}>
+            <div className="row">
+              <div className="col-12">
+                <FormGroup>
+                  <label htmlFor={'cardNumber' + props.company}>Card Number</label>
+                  <div className="input-group">
                     <span className="input-group-text"><FaCreditCard /></span>
+                    <div className={'form-control' + ((status.submitted ?? status.panFilled) && !status.panValid ? ' is-invalid' : '')} style={{ height: '36px', paddingTop: 0, paddingBottom: 0, paddingRight: 0 }} id={'cardNumber' + props.company} />
                   </div>
-                </div>
+                </FormGroup>
               </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-7">
-              <div className="form-group">
-                <label htmlFor="expiryDate"><span className="d-none d-small-inline">Expiration</span><span className="d-inline d-small-none">Exp</span> Date</label>
-                <div className="input-group">
-                  <div className={'form-control' + ((status.submitted ?? status.expFilled) && !status.expValid ? ' is-invalid' : '')} style={{ height: '36px', paddingTop: 0, paddingBottom: 0, paddingRight: 0 }} id={'expiryDate' + props.company} />
-                  <div className="input-group-append">
+            <div className="row">
+              <div className="col-7">
+                <FormGroup>
+                  <label htmlFor="expiryDate"><span className="d-none d-small-inline">Expiration</span><span className="d-inline d-small-none">Exp</span> Date</label>
+                  <div className="input-group">
                     <span className="input-group-text"><FaCalendarAlt /></span>
+                    <div className={'form-control' + ((status.submitted ?? status.expFilled) && !status.expValid ? ' is-invalid' : '')} style={{ height: '36px', paddingTop: 0, paddingBottom: 0, paddingRight: 0 }} id={'expiryDate' + props.company} />
                   </div>
-                </div>
+                </FormGroup>
               </div>
-            </div>
-            <div className="col-5">
-              <div className="form-group">
-                <label htmlFor="cvv">CSC</label>
-                <div className="input-group">
-                  <div className={'form-control' + ((status.submitted ?? status.cvvFilled) && !status.cvvValid ? ' is-invalid' : '')} style={{ height: '36px', paddingTop: 0, paddingBottom: 0, paddingRight: 0 }} id={'cvv' + props.company} />
-                  <div className="input-group-append">
+              <div className="col-5">
+                <FormGroup>
+                  <label htmlFor="cvv">CSC</label>
+                  <div className="input-group">
                     <span className="input-group-text"><FaShieldAlt /></span>
+                    <div className={'form-control' + ((status.submitted ?? status.cvvFilled) && !status.cvvValid ? ' is-invalid' : '')} style={{ height: '36px', paddingTop: 0, paddingBottom: 0, paddingRight: 0 }} id={'cvv' + props.company} />
                   </div>
+                </FormGroup>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12">
+                <button className={`btn ${buttonDisabled ? 'btn-secondary' : 'btn-success'} btn-lg w-100`} disabled={buttonDisabled}>Enroll Now</button>
+                <div className="d-flex align-items-center mt-3">
+                  <FaCcVisa size="36" className="me-2 text-dark" />
+                  <FaCcMastercard size="36" className="me-2 text-dark" />
                 </div>
               </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-12">
-              <button className={`btn ${buttonDisabled ? 'btn-secondary' : 'btn-success'} btn-lg btn-block`} disabled={buttonDisabled}>Enroll Now</button>
-              <div className="d-flex align-items-center mt-3">
-                <FaCcVisa size="2x" className="mr-2 text-dark" />
-                <FaCcMastercard size="2x" className="mr-2 text-dark" />
-              </div>
+          </form>
+
+          {status.errors && (
+            <div className="alert alert-danger mt-3 mb-0">
+              {status.errors.displayMessage ?? 'Unknown Error'}
             </div>
-          </div>
-        </form>
+          )}
 
-        {status.errors && (
-          <div className="alert alert-danger mt-3 mb-0">
-            {status.errors.displayMessage ?? 'Unknown Error'}
-          </div>
-        )}
-
-      </ModalBody>
-    </Modal>
+        </ModalBody>
+      </Modal>
+    </>
   );
 };
 

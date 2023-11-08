@@ -23,7 +23,7 @@ type Props = {
 
 export const Summary: FC<Props> = props => {
   return (
-    <Section>
+    <Section className="summarySection">
       <h2 className="h1">Complete Your Enrollment</h2>
       <div className="row">
         <div className="col-12 col-md-6 col-lg-8 mb-4 mb-md-0">

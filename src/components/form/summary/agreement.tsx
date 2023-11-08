@@ -11,7 +11,7 @@ export const Agreement: FC<Props> = ({ agreementLinks }) => {
   const { countryCode } = useAddressState();
 
   const href = getHref(agreementLinks, countryCode);
-  return <p>By clicking &quot;Proceed to Payment&quot; below, you agree to the terms of the <a rel="noopener noreferrer" target="_blank" href={href}>Enrollment Agreement</a>.</p>;
+  return <p>By clicking the &quot;Proceed to Payment&quot; button below, you agree to the terms of the <a rel="noopener noreferrer" target="_blank" href={href}>Enrollment Agreement</a>.</p>;
 };
 
 const getHref = (agreementLinks: AgreementLinks, countryCode: string): string => {

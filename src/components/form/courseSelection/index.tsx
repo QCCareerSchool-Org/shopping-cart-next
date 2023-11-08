@@ -23,7 +23,7 @@ type Props = {
 
 export const CourseSelection: FC<Props> = props => {
   return (
-    <Section className="courses-section">
+    <Section className="coursesSection">
       {props.coursesOverride ? <Override {...props} /> : <Standard {...props} />}
     </Section>
   );
