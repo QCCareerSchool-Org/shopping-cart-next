@@ -1,15 +1,15 @@
 import type { FC, FormEventHandler } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'react-bootstrap';
 import { FaCalendarAlt, FaCcMastercard, FaCcVisa, FaCreditCard, FaShieldAlt } from 'react-icons/fa';
 
-import { FormGroup } from '../formGroup';
+import { FormGroup } from '@/components/formGroup';
 import type { PaysafeCompany } from '@/domain/paysafeCompany';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useBillingAddressState } from '@/hooks/useBillingAddressState';
 import { usePriceState } from '@/hooks/usePriceState';
 import type { PaysafeInstance, TokenizeOptions } from '@/lib/paysafe';
-import { createInstance, tokenize } from '@/lib/paysafe';
+import { accounts, apiKeys, createInstance, tokenize } from '@/lib/paysafe';
 import type { AddressState } from '@/state/address';
 import type { BillingAddressState } from '@/state/billingAddress';
 import type { PriceState } from '@/state/price';
@@ -24,7 +24,6 @@ type Props = {
 type Errors = { displayMessage?: string };
 
 type Status = {
-  instance?: PaysafeInstance;
   panValid: boolean;
   expValid: boolean;
   cvvValid: boolean;
@@ -39,29 +38,6 @@ const isErrors = (obj: unknown): obj is Errors => {
   return obj !== null && typeof obj === 'object' && 'displayMessage' in obj && (typeof obj.displayMessage === 'undefined' || typeof obj.displayMessage === 'string');
 };
 
-const apiKeys = {
-  CA: 'T1QtMjM2NjU0OkItcDEtMC01OWY5ZTIzNS0wLTMwMmMwMjE0MzAzYTA1ZDYzNTYwMGMyMzBhNzdhMzk4MDU4NDkzY2I2NTFhOGI2NTAyMTQxOTBjMzM3NzhlZGFkMGVmNzQ4NDkzYjE5NDEyMzk2NGNkYjU3NGFh',
-  US: 'T1QtMjM2NjU0OkItcDEtMC01OWY5ZTIzNS0wLTMwMmMwMjE0MzAzYTA1ZDYzNTYwMGMyMzBhNzdhMzk4MDU4NDkzY2I2NTFhOGI2NTAyMTQxOTBjMzM3NzhlZGFkMGVmNzQ4NDkzYjE5NDEyMzk2NGNkYjU3NGFh',
-  GB: 'T1QtMzEyOTc0OkItcDEtMC01ZDFlMDAwYS0wLTMwMmMwMjE0NTY4ZmM1MjE4M2MyYTI3YWQ1MWMxNzA2NGVjM2Y1NjEwZDIwNjc0OTAyMTQ2ZTQ5OTBkOGM0MTY3NDlkZWZlYThiZGU2NDY3MDA2NGJlNDA1Njc3',
-};
-
-const accounts = {
-  CA: {
-    CAD: 1002521124, // eslint-disable-line @typescript-eslint/no-magic-numbers
-    NZD: 1002567684, // eslint-disable-line @typescript-eslint/no-magic-numbers
-    AUD: 1002567744, // eslint-disable-line @typescript-eslint/no-magic-numbers
-    GBP: 1002567754, // eslint-disable-line @typescript-eslint/no-magic-numbers
-  },
-  US: {
-    USD: 1002704564, // eslint-disable-line @typescript-eslint/no-magic-numbers
-  },
-  GB: {
-    GBP: 1002659124, // eslint-disable-line @typescript-eslint/no-magic-numbers
-    AUD: 1002649432, // eslint-disable-line @typescript-eslint/no-magic-numbers
-    NZD: 1002818994, // eslint-disable-line @typescript-eslint/no-magic-numbers
-  },
-};
-
 /**
  * When isOpen is set to true for the first time, we need to initialize a paysafe instance, but we can't do it until after all the DOM elements are rendered.
  * The initialized state will only be set to true after the first render where isOpen is true. After that we can create the instance.
@@ -70,6 +46,8 @@ export const PaysafeModal: FC<Props> = props => {
   const priceState = usePriceState();
   const addressState = useAddressState();
   const billingAddressState = useBillingAddressState();
+
+  const instance = useRef<PaysafeInstance>();
 
   const [ status, setStatus ] = useState<Status>({
     panValid: false,
@@ -80,50 +58,46 @@ export const PaysafeModal: FC<Props> = props => {
     cvvFilled: false,
     submitted: false,
   });
-  const [ initialized, setInitialized ] = useState(false);
+
   const [ submitting, setSubmitting ] = useState(false);
   const [ success, setSuccess ] = useState(false);
 
   useEffect(() => {
-    console.log('effect', props.company, props.show, initialized, status.instance);
-    if (props.show) {
-      if (!initialized) {
-        setInitialized(true);
-      } else if (!status.instance) {
-        const options = {
-          environment: 'LIVE',
-          fields: {
-            cardNumber: { selector: `#cardNumber${props.company}`, placeholder: 'Card Number' },
-            expiryDate: { selector: `#expiryDate${props.company}`, placeholder: 'Exp. Date' },
-            cvv: { selector: `#cvv${props.company}`, placeholder: 'CSC' },
-          },
-          style: {
-            input: {
-              'font-family': 'Helvetica,Arial,sans-serif',
-              'font-weight': 'normal',
-              'font-size': '14px',
-              'color': 'black',
-            },
-          },
-        };
-        createInstance(apiKeys[props.company], options).then(instance => {
-          instance.fields('cardNumber').valid(() => setStatus(s => ({ ...s, panValid: true })));
-          instance.fields('expiryDate').valid(() => setStatus(s => ({ ...s, expValid: true })));
-          instance.fields('cvv').valid(() => setStatus(s => ({ ...s, cvvValid: true })));
-          instance.fields('cardNumber').invalid(() => setStatus(s => ({ ...s, panValid: false })));
-          instance.fields('expiryDate').invalid(() => setStatus(s => ({ ...s, expValid: false })));
-          instance.fields('cvv').invalid(() => setStatus(s => ({ ...s, cvvValid: false })));
-          instance.fields('cardNumber expiryDate cvv').on('FieldValueChange', () => setStatus(s => ({ ...s, submitted: false, errors: undefined })));
-          instance.fields('cardNumber').on('Blur', () => setStatus(s => ({ ...s, panFilled: true })));
-          instance.fields('expiryDate').on('Blur', () => setStatus(s => ({ ...s, expFilled: true })));
-          instance.fields('cvv').on('Blur', () => setStatus(s => ({ ...s, cvvFilled: true })));
-          setStatus(s => ({ ...s, instance }));
-        }).catch(err => {
-          console.error(err);
-        });
-      }
+    if (!props.show) {
+      return;
     }
-  }, [ props.company, props.show, initialized, status.instance ]);
+    const options = {
+      environment: 'LIVE',
+      fields: {
+        cardNumber: { selector: `#cardNumber${props.company}`, placeholder: 'Card Number' },
+        expiryDate: { selector: `#expiryDate${props.company}`, placeholder: 'Exp. Date' },
+        cvv: { selector: `#cvv${props.company}`, placeholder: 'CSC' },
+      },
+      style: {
+        input: {
+          'font-family': 'Helvetica,Arial,sans-serif',
+          'font-weight': 'normal',
+          'font-size': '14px',
+          'color': 'black',
+        },
+      },
+    };
+    createInstance(apiKeys[props.company], options).then(i => {
+      i.fields('cardNumber').valid(() => setStatus(s => ({ ...s, panValid: true })));
+      i.fields('expiryDate').valid(() => setStatus(s => ({ ...s, expValid: true })));
+      i.fields('cvv').valid(() => setStatus(s => ({ ...s, cvvValid: true })));
+      i.fields('cardNumber').invalid(() => setStatus(s => ({ ...s, panValid: false })));
+      i.fields('expiryDate').invalid(() => setStatus(s => ({ ...s, expValid: false })));
+      i.fields('cvv').invalid(() => setStatus(s => ({ ...s, cvvValid: false })));
+      i.fields('cardNumber expiryDate cvv').on('FieldValueChange', () => setStatus(s => ({ ...s, submitted: false, errors: undefined })));
+      i.fields('cardNumber').on('Blur', () => setStatus(s => ({ ...s, panFilled: true })));
+      i.fields('expiryDate').on('Blur', () => setStatus(s => ({ ...s, expFilled: true })));
+      i.fields('cvv').on('Blur', () => setStatus(s => ({ ...s, cvvFilled: true })));
+      instance.current = i;
+    }).catch(err => {
+      console.error(err);
+    });
+  }, [ props.company, props.show ]);
 
   if (!priceState) {
     return null;
@@ -137,12 +111,12 @@ export const PaysafeModal: FC<Props> = props => {
     setSubmitting(true);
     void (async () => {
       try {
-        if (!status.instance) {
+        if (!instance.current) {
           throw Error('instance not defined');
         }
         const options = getTokenizeOptions(props.company, priceState, addressState, billingAddressState);
         setStatus(s => ({ ...s, submitted: true }));
-        const token = await tokenize(status.instance, options);
+        const token = await tokenize(instance.current, options);
         const chargeResult = await props.onCharge(token, props.company);
         if (chargeResult === false) {
           props.onHide();
@@ -165,8 +139,8 @@ export const PaysafeModal: FC<Props> = props => {
 
   return (
     <>
-      <Modal size="sm" show={props.show} onHide={props.onHide}>
-        <ModalHeader closeButton>Payment Details</ModalHeader>
+      <Modal size="sm" show={props.show} onHide={props.onHide} backdrop="static">
+        <ModalHeader closeButton><strong>Card Details</strong></ModalHeader>
         <ModalBody>
           <form id="payment-form" method="POST" onSubmit={handleSubmit}>
             <div className="row">
