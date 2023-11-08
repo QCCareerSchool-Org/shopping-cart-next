@@ -21,7 +21,7 @@ export const DetailsModal: FC<Props> = props => {
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
-      <ModalHeader closeButton>Detailed Payment Breakdown</ModalHeader>
+      <ModalHeader closeButton><strong>Detailed Payment Breakdown</strong></ModalHeader>
       <ModalBody>
         {paymentState.plan === 'full' ? <FullBreakdown price={priceState} /> : <PartBreakdown price={priceState} />}
         <p className="mb-0">All prices are in {priceState.currency.name}.</p>

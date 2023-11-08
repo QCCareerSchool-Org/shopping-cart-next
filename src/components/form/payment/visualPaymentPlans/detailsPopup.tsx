@@ -27,7 +27,7 @@ export const DetailsPopup: FC<PropsWithChildren<Props>> = ({ anchor, title, foot
         <a href="#" onClick={handleClick}>{anchor ?? 'View Kit Details'}</a>
       </div>
       <Modal show={popup} onHide={handleHide}>
-        <ModalHeader closeButton>{title}</ModalHeader>
+        <ModalHeader closeButton><strong>{title}</strong></ModalHeader>
         <ModalBody>
           {children}
         </ModalBody>

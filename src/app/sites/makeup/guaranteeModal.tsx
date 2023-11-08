@@ -12,7 +12,7 @@ type Props = {
 
 export const GuaranteeModal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
-    <ModalHeader closeButton><h5 className="mb-0">21-Day Money-Back Guarantee</h5></ModalHeader>
+    <ModalHeader closeButton><strong>21-Day Money-Back Guarantee</strong></ModalHeader>
     <ModalBody>
       <div className="row">
         <div className="col-4 d-none d-sm-block">

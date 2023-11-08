@@ -12,7 +12,7 @@ type Props = {
 export const ConfirmPopup: FC<Props> = props => {
   return (
     <Modal show={props.show} onHide={props.onCancel}>
-      <ModalHeader>{props.heading ?? 'Confirmation'}</ModalHeader>
+      <ModalHeader><strong>{props.heading ?? 'Confirmation'}</strong></ModalHeader>
       <ModalBody>
         <props.body />
       </ModalBody>
