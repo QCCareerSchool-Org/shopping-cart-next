@@ -17,7 +17,6 @@ export const ErrorModal: FC = () => {
       <ModalHeader closeButton>{errorState.popupTitle}</ModalHeader>
       <ModalBody>
         {errorState.popupMessage}
-        <pre>{JSON.stringify(errorState.errors)}</pre>
       </ModalBody>
     </Modal>
   );

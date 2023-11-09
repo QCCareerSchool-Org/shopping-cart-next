@@ -63,6 +63,13 @@ export type AddEnrollmentErrorResponse = {
   errors: EnrollmentErrors;
 };
 
+type ChargeResponse = { success: boolean };
+
+const isChargeResponse = (obj: unknown): obj is ChargeResponse => {
+  return obj !== null && typeof obj === 'object' &&
+    'success' in obj && typeof obj.success === 'boolean';
+};
+
 const isAddEnrollmentResponse = (obj: unknown): obj is AddEnrollmentResponse => {
   return obj !== null && typeof obj === 'object' &&
     'id' in obj && typeof obj.id === 'number' &&
@@ -137,7 +144,6 @@ export const createEnrollmentPayload = (internal: boolean, school: School, cours
 const baseUrl = process.env.NEXT_PUBLIC_ENROLLMENT_ENDPOINT ?? 'https://api.qccareerschool.com/enrollments';
 
 export const addEnrollment = async (payload: EnrollmentPayload): Promise<AddEnrollmentResponse> => {
-  console.log('c', baseUrl);
   const response = await fetch(baseUrl, {
     method: 'post',
     headers: {
@@ -157,7 +163,6 @@ export const addEnrollment = async (payload: EnrollmentPayload): Promise<AddEnro
   }
   const responseBody: unknown = await response.json();
   if (!isAddEnrollmentResponse(responseBody)) {
-    console.log(responseBody);
     throw Error('Invalid response');
   }
   return responseBody;
@@ -188,8 +193,9 @@ export const updateEnrollment = async (id: number, payload: EnrollmentPayload): 
   return responseBody;
 };
 
-export const chargeEnrollment = async (id: number, token: string, company: 'CA' | 'US' | 'GB'): Promise<number> => {
-  const response = await fetch(`${baseUrl}/${id}`, {
+export const chargeEnrollment = async (id: number, token: string, company: 'CA' | 'US' | 'GB'): Promise<void> => {
+  const response = await fetch(`${baseUrl}/${id}/profiles`, {
+    method: 'post',
     headers: {
       'Content-Type': 'application/json',
       'X-API-Version': '2',
@@ -213,11 +219,13 @@ export const chargeEnrollment = async (id: number, token: string, company: 'CA' 
     }
     throw Error(response.statusText);
   }
-  const responseBody = response.json();
-  if (typeof responseBody !== 'number') {
+  const responseBody: unknown = await response.json();
+  if (!isChargeResponse(responseBody)) {
     throw Error('Invalid response');
   }
-  return responseBody;
+  if (!responseBody.success) {
+    throw Error('Charge unsucessful');
+  }
 };
 
 export class EnrollmentError extends Error {

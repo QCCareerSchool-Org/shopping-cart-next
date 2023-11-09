@@ -1,5 +1,7 @@
+import type { CurrencyCode } from './currencyCode';
+
 export type Currency = {
-  code: string;
+  code: CurrencyCode;
   symbol: string;
   name: string;
   exchangeRate: number;

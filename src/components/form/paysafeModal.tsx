@@ -1,5 +1,5 @@
 import type { FC, FormEventHandler } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'react-bootstrap';
 import { FaCalendarAlt, FaCcMastercard, FaCcVisa, FaCreditCard, FaShieldAlt } from 'react-icons/fa';
 
@@ -8,11 +8,8 @@ import type { PaysafeCompany } from '@/domain/paysafeCompany';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useBillingAddressState } from '@/hooks/useBillingAddressState';
 import { usePriceState } from '@/hooks/usePriceState';
-import type { PaysafeInstance, TokenizeOptions } from '@/lib/paysafe';
-import { accounts, apiKeys, createInstance, tokenize } from '@/lib/paysafe';
-import type { AddressState } from '@/state/address';
-import type { BillingAddressState } from '@/state/billingAddress';
-import type { PriceState } from '@/state/price';
+import type { PaysafeInstance } from '@/lib/paysafe';
+import { createInstance, getToken } from '@/lib/paysafe';
 
 type Props = {
   company: PaysafeCompany;
@@ -43,6 +40,7 @@ const isErrors = (obj: unknown): obj is Errors => {
  * The initialized state will only be set to true after the first render where isOpen is true. After that we can create the instance.
  */
 export const PaysafeModal: FC<Props> = props => {
+  const id = useId();
   const priceState = usePriceState();
   const addressState = useAddressState();
   const billingAddressState = useBillingAddressState();
@@ -62,27 +60,15 @@ export const PaysafeModal: FC<Props> = props => {
   const [ submitting, setSubmitting ] = useState(false);
   const [ success, setSuccess ] = useState(false);
 
+  const cardNumberId = `${id.replace(/:/ug, '_')}cardNumber${props.company}`;
+  const expiryDateId = `${id.replace(/:/ug, '_')}expiryDate${props.company}`;
+  const cvvId = `${id.replace(/:/ug, '_')}cvv${props.company}`;
+
   useEffect(() => {
     if (!props.show) {
       return;
     }
-    const options = {
-      environment: 'LIVE',
-      fields: {
-        cardNumber: { selector: `#cardNumber${props.company}`, placeholder: 'Card Number' },
-        expiryDate: { selector: `#expiryDate${props.company}`, placeholder: 'Exp. Date' },
-        cvv: { selector: `#cvv${props.company}`, placeholder: 'CSC' },
-      },
-      style: {
-        input: {
-          'font-family': 'Helvetica,Arial,sans-serif',
-          'font-weight': 'normal',
-          'font-size': '14px',
-          'color': 'black',
-        },
-      },
-    };
-    createInstance(apiKeys[props.company], options).then(i => {
+    createInstance(props.company, cardNumberId, expiryDateId, cvvId).then(i => {
       i.fields('cardNumber').valid(() => setStatus(s => ({ ...s, panValid: true })));
       i.fields('expiryDate').valid(() => setStatus(s => ({ ...s, expValid: true })));
       i.fields('cvv').valid(() => setStatus(s => ({ ...s, cvvValid: true })));
@@ -97,7 +83,7 @@ export const PaysafeModal: FC<Props> = props => {
     }).catch(err => {
       console.error(err);
     });
-  }, [ props.company, props.show ]);
+  }, [ props.company, props.show, cardNumberId, expiryDateId, cvvId ]);
 
   if (!priceState) {
     return null;
@@ -114,9 +100,8 @@ export const PaysafeModal: FC<Props> = props => {
         if (!instance.current) {
           throw Error('instance not defined');
         }
-        const options = getTokenizeOptions(props.company, priceState, addressState, billingAddressState);
         setStatus(s => ({ ...s, submitted: true }));
-        const token = await tokenize(instance.current, options);
+        const token = await getToken(instance.current, props.company, priceState.currency.code, addressState, billingAddressState, billingAddressState.sameAsShipping);
         const chargeResult = await props.onCharge(token, props.company);
         if (chargeResult === false) {
           props.onHide();
@@ -146,10 +131,10 @@ export const PaysafeModal: FC<Props> = props => {
             <div className="row">
               <div className="col-12">
                 <FormGroup>
-                  <label htmlFor={'cardNumber' + props.company}>Card Number</label>
+                  <label htmlFor={cardNumberId}>Card Number</label>
                   <div className="input-group">
                     <span className="input-group-text"><FaCreditCard /></span>
-                    <div className={'form-control' + ((status.submitted ?? status.panFilled) && !status.panValid ? ' is-invalid' : '')} style={{ height: '36px', paddingTop: 0, paddingBottom: 0, paddingRight: 0 }} id={'cardNumber' + props.company} />
+                    <div className={'form-control' + ((status.submitted ?? status.panFilled) && !status.panValid ? ' is-invalid' : '')} style={{ height: '36px', paddingTop: 0, paddingBottom: 0, paddingRight: 0 }} id={cardNumberId} />
                   </div>
                 </FormGroup>
               </div>
@@ -157,26 +142,26 @@ export const PaysafeModal: FC<Props> = props => {
             <div className="row">
               <div className="col-7">
                 <FormGroup>
-                  <label htmlFor="expiryDate"><span className="d-none d-small-inline">Expiration</span><span className="d-inline d-small-none">Exp</span> Date</label>
+                  <label htmlFor={expiryDateId}><span className="d-none d-small-inline">Expiration</span><span className="d-inline d-small-none">Exp</span> Date</label>
                   <div className="input-group">
                     <span className="input-group-text"><FaCalendarAlt /></span>
-                    <div className={'form-control' + ((status.submitted ?? status.expFilled) && !status.expValid ? ' is-invalid' : '')} style={{ height: '36px', paddingTop: 0, paddingBottom: 0, paddingRight: 0 }} id={'expiryDate' + props.company} />
+                    <div className={'form-control' + ((status.submitted ?? status.expFilled) && !status.expValid ? ' is-invalid' : '')} style={{ height: '36px', paddingTop: 0, paddingBottom: 0, paddingRight: 0 }} id={expiryDateId} />
                   </div>
                 </FormGroup>
               </div>
               <div className="col-5">
                 <FormGroup>
-                  <label htmlFor="cvv">CSC</label>
+                  <label htmlFor={cvvId}>CSC</label>
                   <div className="input-group">
                     <span className="input-group-text"><FaShieldAlt /></span>
-                    <div className={'form-control' + ((status.submitted ?? status.cvvFilled) && !status.cvvValid ? ' is-invalid' : '')} style={{ height: '36px', paddingTop: 0, paddingBottom: 0, paddingRight: 0 }} id={'cvv' + props.company} />
+                    <div className={'form-control' + ((status.submitted ?? status.cvvFilled) && !status.cvvValid ? ' is-invalid' : '')} style={{ height: '36px', paddingTop: 0, paddingBottom: 0, paddingRight: 0 }} id={cvvId} />
                   </div>
                 </FormGroup>
               </div>
             </div>
             <div className="row">
               <div className="col-12">
-                <button className={`btn ${buttonDisabled ? 'btn-secondary' : 'btn-success'} btn-lg w-100`} disabled={buttonDisabled}>Enroll Now</button>
+                <button type="submit" className={`btn ${buttonDisabled ? 'btn-secondary' : 'btn-success'} btn-lg w-100`} disabled={buttonDisabled}>Enroll Now</button>
                 <div className="d-flex align-items-center mt-3">
                   <FaCcVisa size="36" className="me-2 text-dark" />
                   <FaCcMastercard size="36" className="me-2 text-dark" />
@@ -195,78 +180,4 @@ export const PaysafeModal: FC<Props> = props => {
       </Modal>
     </>
   );
-};
-
-const getTokenizeOptions = (company: PaysafeCompany, priceState: PriceState, addressState: AddressState, billingAddressState: BillingAddressState): TokenizeOptions | undefined => {
-  if (!priceState) {
-    throw Error('Price is undefined');
-  }
-  if (company === 'GB' && priceState.currency.code === 'GBP') {
-    const accountId = (accounts[company] as { [key: string]: number })[priceState.currency.code];
-    if (typeof accountId === 'undefined') {
-      throw Error(`Currency ${priceState.currency.code} not supported by ${company} company`);
-    }
-    const options: TokenizeOptions = {
-      threeDS: {
-        amount: 0,
-        currency: priceState.currency.code,
-        accountId,
-        useThreeDSecureVersion2: true,
-        requestorChallengePreference: 'CHALLENGE_MANDATED',
-      },
-      vault: {
-        holderName: `${addressState.firstName} ${addressState.lastName}`,
-        billingAddress: billingAddressState.sameAsShipping
-          ? {
-            country: addressState.countryCode,
-            zip: addressState.postalCode || '0',
-            city: addressState.city,
-            street: addressState.address1,
-          }
-          : {
-            country: billingAddressState.countryCode,
-            zip: billingAddressState.postalCode || '0',
-            city: billingAddressState.city,
-            street: billingAddressState.address1,
-          },
-        shippingAddress: {
-          recipientName: `${addressState.firstName} ${addressState.lastName}`,
-          street: addressState.address1,
-          city: addressState.city,
-          country: addressState.countryCode,
-          zip: addressState.postalCode || '0',
-          shipMethod: 'S',
-        },
-      },
-    };
-
-    if (options.vault?.billingAddress) {
-      if (billingAddressState.sameAsShipping) {
-        if (addressState.address2) {
-          options.vault.billingAddress.street2 = addressState.address2;
-        }
-        if (addressState.provinceCode) {
-          options.vault.billingAddress.state = addressState.provinceCode;
-        }
-      } else {
-        if (billingAddressState.address2) {
-          options.vault.billingAddress.street2 = billingAddressState.address2;
-        }
-        if (billingAddressState.provinceCode) {
-          options.vault.billingAddress.state = billingAddressState.provinceCode;
-        }
-      }
-    }
-
-    if (options.vault?.shippingAddress) {
-      if (addressState.address2) {
-        options.vault.shippingAddress.street2 = addressState.address2;
-      }
-      if (addressState.provinceCode) {
-        options.vault.shippingAddress.state = addressState.provinceCode;
-      }
-    }
-
-    return options;
-  }
 };

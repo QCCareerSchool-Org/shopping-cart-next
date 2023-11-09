@@ -132,9 +132,7 @@ export const Form: FC<Props> = props => {
     if (!priceState) {
       return;
     }
-    console.log('d');
     void addToDatabase().then(result => {
-      console.log('d2', result);
       if (result) {
         togglePaysafeForm();
       }
