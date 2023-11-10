@@ -10,7 +10,7 @@ import { useToggle } from '@/hooks/useToggle';
 export const CanadaTaxCredits: FC = () => {
   const [ popup, togglePopup ] = useToggle(false);
 
-  const handleClick: MouseEventHandler<HTMLAnchorElement> = e => {
+  const handleClick: MouseEventHandler = e => {
     e.preventDefault();
     togglePopup();
   };

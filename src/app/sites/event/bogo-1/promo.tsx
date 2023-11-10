@@ -8,9 +8,9 @@ import { Hero } from './hero';
 import { Section } from '@/components/section';
 import { usePriceState } from '@/hooks/usePriceState';
 
-const backgroundColor = '#8ef0c0';
+const backgroundColor = '#a4cb96';
 
-export const EventFallbackPromo: FC = () => {
+export const EventBogo1Promo: FC = () => {
   const priceState = usePriceState();
   const [ showPopup, togglePopup ] = useReducer(state => !state, false);
 
@@ -35,21 +35,11 @@ export const EventFallbackPromo: FC = () => {
         </Modal.Header>
         <Modal.Body>
           <p>Ready to start your event planning career?</p>
-          <p>Enroll in any foundation course and get a specialty course for free.</p>
-          <p>This means you'll graduate with two professional certifications for the price of one (saving up to {potentialSavings(priceState?.currency.code ?? 'USD')} on your training)!</p>
+          <p>For a limited time only, enroll in any foundation course and get a second course for free!</p>
+          <p>This means you'll graduate with two professional certifications for the price of one.</p>
           <p className="mb-0">Get started for {deposit}, or save up to {fullDiscount} when you pay your tuition in full.</p>
         </Modal.Body>
       </Modal>
     </>
   );
-};
-
-const potentialSavings = (currencyCode: string): string => {
-  return currencyCode === 'GBP'
-    ? '£778'
-    : currencyCode === 'AUD'
-      ? '$1289'
-      : currencyCode === 'NZD'
-        ? '$1358'
-        : '$1039';
 };

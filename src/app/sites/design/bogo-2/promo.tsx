@@ -10,14 +10,6 @@ import { usePriceState } from '@/hooks/usePriceState';
 
 const backgroundColor = '#f7e1e3';
 
-const potentialSavings = (currencyCode: string): string => {
-  return currencyCode === 'GBP'
-    ? '£1298'
-    : currencyCode === 'AUD' || currencyCode === 'NZD'
-      ? '$1849'
-      : '$1698';
-};
-
 export const DesignBogo2Promo: FC = () => {
   const priceState = usePriceState();
   const [ showPopup, togglePopup ] = useReducer(state => !state, false);
@@ -48,4 +40,12 @@ export const DesignBogo2Promo: FC = () => {
       </Modal>
     </>
   );
+};
+
+const potentialSavings = (currencyCode: string): string => {
+  return currencyCode === 'GBP'
+    ? '£1298'
+    : currencyCode === 'AUD' || currencyCode === 'NZD'
+      ? '$1849'
+      : '$1698';
 };

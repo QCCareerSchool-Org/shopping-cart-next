@@ -16,15 +16,8 @@ export const initialCoursesState: CoursesState = {
 };
 
 export const coursesReducer = (state: CoursesState, action: CoursesAction): CoursesState => {
-  console.log(action);
   switch (action.type) {
     case 'CLEAR_COURSES': {
-      console.log({
-        ...state,
-        selected: [],
-        disabled: disabledCourses([], !!action.payload.internal), // recalculate which courses are disabled,
-        hidden: hiddenCourses([], !!action.payload.internal), // recalculate which courses are hidden,
-      });
       return {
         ...state,
         selected: [],

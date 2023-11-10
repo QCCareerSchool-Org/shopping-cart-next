@@ -10,14 +10,6 @@ import { usePriceState } from '@/hooks/usePriceState';
 
 const backgroundColor = '#090a0c';
 
-const potentialSavings = (currencyCode: string): string => {
-  return currencyCode === 'GBP'
-    ? '£1298'
-    : currencyCode === 'AUD' || currencyCode === 'NZD'
-      ? '$1849'
-      : '$1698';
-};
-
 export const DesignBogo1Promo: FC = () => {
   const priceState = usePriceState();
   const [ showPopup, togglePopup ] = useReducer(state => !state, false);
@@ -25,6 +17,10 @@ export const DesignBogo1Promo: FC = () => {
   const handleClick = (): void => {
     togglePopup();
   };
+
+  const [ deposit, fullDiscount ] = priceState?.currency.code === 'GBP'
+    ? [ '£40', '£350' ]
+    : [ '$75', '$400' ];
 
   return (
     <>
@@ -40,7 +36,7 @@ export const DesignBogo1Promo: FC = () => {
         <Modal.Body>
           <p>Ready to start your home design career?</p>
           <p>For a limited time only, enroll in any design course and get a second certification course for FREE! This means you could save up to {potentialSavings(priceState?.currency.code ?? 'USD')} on your tuition.</p>
-          <p className="mb-1">Get started for {priceState?.currency.code === 'GBP' ? '£40' : '$75'}, or save up to {priceState?.currency.code === 'GBP' ? '£350' : '$400'} when you pay your tuition in full.</p>
+          <p className="mb-0">Get started for {deposit}, or save up to {fullDiscount} when you pay your tuition in full.</p>
         </Modal.Body>
         <Modal.Footer>
           <small><strong>The following courses also include printed books:</strong> Interior Decorating, Home Staging, Landscape Design, Color Consultant, Floral Design, and Event Decor. Textbooks will automatically be sent to you when you enroll.</small>
@@ -48,4 +44,12 @@ export const DesignBogo1Promo: FC = () => {
       </Modal>
     </>
   );
+};
+
+const potentialSavings = (currencyCode: string): string => {
+  return currencyCode === 'GBP'
+    ? '£1298'
+    : currencyCode === 'AUD' || currencyCode === 'NZD'
+      ? '$1849'
+      : '$1698';
 };
