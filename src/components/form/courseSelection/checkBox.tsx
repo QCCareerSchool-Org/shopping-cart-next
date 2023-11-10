@@ -9,7 +9,6 @@ import { useToggle } from '@/hooks/useToggle';
 
 type Props = {
   course: Course;
-  internal: boolean;
   onMouseOver?: () => void;
   onCheck: (courseCode: string) => void;
   onUncheck: (courseCode: string) => void;
@@ -34,7 +33,7 @@ export const CheckBox: React.FC<Props> = props => {
     toggleDisabledMessage();
   };
 
-  const disabled = coursesState.disabled.includes(props.course.code) && !props.course.alwaysEnabled;
+  const disabled = coursesState.disabled.includes(props.course.code);
 
   return (
     <div className="form-check mt-2">

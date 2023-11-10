@@ -11,6 +11,7 @@ import { useMetaDispatch } from './useMetaDispatch';
 import { usePaymentDispatch } from './usePaymentDispatch';
 import type { PaymentPlan } from '@/domain/paymentPlan';
 import { isPaymentPlan } from '@/domain/paymentPlan';
+import type { School } from '@/domain/school';
 import { isTitle } from '@/domain/title';
 import { fetchProvinces } from '@/lib/fetch';
 import { needsProvince } from '@/lib/needProvince';
@@ -41,7 +42,7 @@ type Data = {
   paymentPlan: PaymentPlan | null;
 };
 
-export const useInitialData = (): void => {
+export const useInitialData = (school: School, student: boolean, internal?: boolean): void => {
   const searchParams = useSearchParams();
   const countries = useCountriesState();
   const addressState = useAddressState();
@@ -62,6 +63,14 @@ export const useInitialData = (): void => {
     }
 
     alreadyRun.current = true;
+
+    paymentDispatch({ type: 'SET_PAYMENT_PLAN', payload: school === 'QC Pet Studies' || school === 'QC Design School' || school === 'QC Event School' ? 'full' : 'part' });
+
+    if (student) {
+      metaDispatch({ type: 'SET_STUDENT', payload: student });
+    }
+
+    coursesDispatch({ type: 'CLEAR_COURSES', payload: { internal } });
 
     // we need to keep track of these here because we're going to run updateData twice and we need the latest value available
     let currentCountryCode = addressState.countryCode;
@@ -204,9 +213,8 @@ export const useInitialData = (): void => {
       }
 
       if (courses?.length) {
-        coursesDispatch({ type: 'CLEAR_COURSES' });
         for (const courseCode of courses) {
-          coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode } });
+          coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode, internal } });
         }
       }
 
@@ -270,5 +278,5 @@ export const useInitialData = (): void => {
       await updateData(querystringData);
     })();
 
-  }, [ addressDispatch, billingAddressDispatch, coursesDispatch, metaDispatch, paymentDispatch, addressState.countryCode, addressState.provinceCode, addressState.provinces, billingAddressState.countryCode, billingAddressState.provinceCode, billingAddressState.provinces, countries, searchParams ]);
+  }, [ school, student, internal, addressDispatch, billingAddressDispatch, coursesDispatch, metaDispatch, paymentDispatch, addressState.countryCode, addressState.provinceCode, addressState.provinces, billingAddressState.countryCode, billingAddressState.provinceCode, billingAddressState.provinces, countries, searchParams ]);
 };

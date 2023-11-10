@@ -5,5 +5,4 @@ export type Course = {
   disabledMessage?: string | JSX.Element;
   badge?: JSX.Element;
   alwaysShown?: boolean;
-  alwaysEnabled?: boolean;
 };

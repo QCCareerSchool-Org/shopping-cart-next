@@ -4,7 +4,9 @@ import type { FC } from 'react';
 import { lazy, Suspense, useEffect } from 'react';
 
 import { ConfirmPopup } from './confirmPopup';
+import { CourseSelection } from './courseSelection';
 import { ErrorModal } from './errorModal';
+import { Internal } from './internal';
 import { PaysafeModal } from './paysafeModal';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
@@ -25,10 +27,8 @@ import type { MetaState } from '@/state/meta';
 import type { PaymentState } from '@/state/payment';
 import type { PriceState } from '@/state/price';
 
-const Internal = lazy(async () => import('./internal').then(m => ({ default: m.Internal })));
 const Address = lazy(async () => import('./address').then(m => ({ default: m.Address })));
 const BillingAddress = lazy(async () => import('./billingAddress').then(m => ({ default: m.BillingAddress })));
-const CourseSelection = lazy(async () => import('./courseSelection').then(m => ({ default: m.CourseSelection })));
 const Payment = lazy(async () => import('./payment').then(m => ({ default: m.Payment })));
 const Overrides = lazy(async () => import('./overrides').then(m => ({ default: m.Overrides })));
 const Summary = lazy(async () => import('./summary').then(m => ({ default: m.Summary })));
@@ -40,12 +40,11 @@ export type DynamicCourseDescriptions = 'SHOW' | 'HIDE' | 'REPLACE';
 type Props = {
   date: number;
   courseGroups: CourseGroup[];
+  showHiddenCourses?: boolean;
   school: School;
   coursesOverride?: string[];
   /** the guarantee component to display in the summary section */
   guarantee: FC | null;
-  /** an array of components to display below the course selection checkboxes */
-  dynamicCourseMessages?: FC[];
   /** where to send the visitor after a sucessfull enrollment */
   successLink: string;
   /** url of enrollment agreement */
@@ -66,6 +65,8 @@ type Props = {
   billingAddress?: boolean;
   /** special name to use for discount */
   discountName?: string;
+  /** component to display below the course selection checkboxes */
+  dynamicCourseMessages?: FC[];
   confirmation?: {
     /** a function that determines whether we should show a confirmation message before proceeding to payment */
     show: (courses: string[], addressState: AddressState, priceState: PriceState, paymentState: PaymentState, metaState: MetaState) => boolean;
@@ -91,8 +92,8 @@ export const Form: FC<Props> = props => {
     }
   }, []);
 
+  useInitialData(props.school, !!props.student, props.internal);
   usePriceUpdater(props.date, !!props.internal, props.school, props.promoCodeDefault);
-  useInitialData();
 
   const [ showConfirmationPopup, toggleConfirmationPopup ] = useToggle(false);
   const [ showPaysafeForm, togglePaysafeForm ] = useToggle(false);
@@ -141,8 +142,8 @@ export const Form: FC<Props> = props => {
 
   return (
     <>
-      <Suspense>{!!props.internal && <Internal />}</Suspense>
-      <Suspense><CourseSelection courseGroups={props.courseGroups} dynamicCourseDescriptions={props.dynamicCourseDescriptions} dynamicCourseMessages={props.dynamicCourseMessages} discountName={props.discountName} internal={!!props.internal} coursesOverride={!!props.coursesOverride} /></Suspense>
+      {!!props.internal && <Internal />}
+      <CourseSelection courseGroups={props.courseGroups} showHiddenCourses={props.showHiddenCourses} dynamicCourseDescriptions={props.dynamicCourseDescriptions} dynamicCourseMessages={props.dynamicCourseMessages} discountName={props.discountName} internal={!!props.internal} coursesOverride={!!props.coursesOverride} />
       <Suspense><Address school={props.school} /></Suspense>
       <Suspense>{showBillingAddress(props.school) && <BillingAddress />}</Suspense>
       <Suspense><Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} /></Suspense>

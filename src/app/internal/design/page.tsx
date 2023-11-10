@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { Form } from '@/components/form';
 import type { CourseGroup } from '@/domain/courseGroup';
@@ -25,8 +24,6 @@ const courseGroups: CourseGroup[] = [
         disabledMessage: (
           <><span className="text-primary">Staging for Designers</span> is an add-on to <span className="text-primary">Interior Decorating</span>. To enroll in <span className="text-primary">Staging for Designers</span>, please select <span className="text-primary">Interior Decorating</span> first.</>
         ),
-        alwaysShown: true,
-        alwaysEnabled: true,
       },
       {
         code: 'ST',
@@ -55,17 +52,15 @@ const InternalDesignPage: PageComponent = ({ searchParams }) => {
   const date = getDate(searchParams.date);
   return (
     <>
-      <Suspense>
-        <Form
-          date={date}
-          courseGroups={courseGroups}
-          school="QC Makeup Academy"
-          guarantee={null}
-          internal={true}
-          successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
-          agreementLinks={agreementLinks}
-        />
-      </Suspense>
+      <Form
+        date={date}
+        courseGroups={courseGroups}
+        school="QC Makeup Academy"
+        guarantee={null}
+        internal={true}
+        successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
+        agreementLinks={agreementLinks}
+      />
     </>
   );
 };

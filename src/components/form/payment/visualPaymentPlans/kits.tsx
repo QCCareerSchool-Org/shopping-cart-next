@@ -140,8 +140,8 @@ const getCourseKits = (date: number): CourseKit[] => [
       height: { xs: undefined, sm: undefined, md: 140, lg: 122, xl: 148, xxl: 173 },
       buttonOffset: { xs: undefined, sm: undefined, md: 51, lg: 45, xl: 55, xxl: 64 },
     },
-    fullBullets: [ <strong key={0}>Printed textbooks included</strong> ],
-    partBullets: [ <strong key={0}>Printed textbooks included</strong> ],
+    fullBullets: [ <strong key={0}>Printed textbooks included</strong>, ...designBullets ],
+    partBullets: [ <strong key={0}>Printed textbooks included</strong>, ...designBullets ],
   },
 ];
 

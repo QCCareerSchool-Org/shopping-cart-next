@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 const playfairDisplay = Playfair_Display({
   display: 'swap',
-  weight: [ '500' ],
+  weight: [ '700' ],
   subsets: [ 'latin' ],
   variable: '--qc-playfair-display',
 });

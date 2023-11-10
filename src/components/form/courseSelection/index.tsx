@@ -13,6 +13,7 @@ import { usePriceState } from '@/hooks/usePriceState';
 
 type Props = {
   courseGroups: CourseGroup[];
+  showHiddenCourses?: boolean;
   internal: boolean;
   coursesSubtitle?: FC;
   dynamicCourseMessages?: FC[];
@@ -53,12 +54,12 @@ const Standard: FC<Props> = props => {
   const handleCheck = (courseCode: string): void => {
     const isAvailable = props.courseGroups.some(g => g.items.some(i => i.code === courseCode));
     if (isAvailable) {
-      coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode } });
+      coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode, internal: props.internal } });
     }
   };
 
   const handleUncheck = (courseCode: string): void => {
-    coursesDispatch({ type: 'REMOVE_COURSE', payload: { courseCode } });
+    coursesDispatch({ type: 'REMOVE_COURSE', payload: { courseCode, internal: props.internal } });
   };
 
   return (
@@ -75,10 +76,11 @@ const Standard: FC<Props> = props => {
         {props.courseGroups.map((g, i) => (
           <Fragment key={i}>
             {g.name && <h3 className={i > 0 ? 'mt-4 h5' : 'h5'}>{g.name}</h3>}
-            {g.items.filter(c => !coursesState.hidden.includes(c.code) || c.alwaysShown).map(c => <CheckBox key={c.code} course={c} onCheck={handleCheck} onUncheck={handleUncheck} internal={props.internal} onMouseOver={() => handleMouseOver(c.code)} />)}
+            {g.items.filter(c => !!props.showHiddenCourses || !!c.alwaysShown || !coursesState.hidden.includes(c.code)).map(c => <CheckBox key={c.code} course={c} onCheck={handleCheck} onUncheck={handleUncheck} onMouseOver={() => handleMouseOver(c.code)} />)}
           </Fragment>
         ))}
-        {!!priceState && props.dynamicCourseDescriptions === 'SHOW' && <div className="mt-4"><CourseTable discountName={props.discountName} /></div>}
+        {props.dynamicCourseMessages?.map((C, i) => <div key={i} className={i === 0 ? 'mt-4' : 'mt-3'}><C /></div>)}
+        {priceState && props.dynamicCourseDescriptions === 'SHOW' && <div className="mt-4"><CourseTable discountName={props.discountName} /></div>}
       </div>
       {(props.dynamicCourseDescriptions === 'SHOW' || props.dynamicCourseDescriptions === 'REPLACE') && hoveredCourseCode && hoveredCourseName
         ? (
@@ -88,7 +90,7 @@ const Standard: FC<Props> = props => {
         )
         : (
           <div className="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-0 mt-4 mt-md-0">
-            {!!priceState && <CourseTable discountName={props.discountName} />}
+            {priceState && <CourseTable discountName={props.discountName} />}
           </div>
         )
       }
