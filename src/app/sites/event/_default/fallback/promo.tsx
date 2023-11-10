@@ -8,9 +8,9 @@ import { Hero } from './hero';
 import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
 
-const backgroundColor = '#000';
+const backgroundColor = '#8ef0c0';
 
-export const MakeupFallbackPromo: FC = () => {
+export const EventFallbackPromo: FC = () => {
   const [ showPopup, togglePopup ] = useReducer(state => !state, false);
 
   const handleClick = (): void => {
@@ -26,7 +26,7 @@ export const MakeupFallbackPromo: FC = () => {
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
         <Modal.Header closeButton>
-          <Modal.Title>Luminous Collection</Modal.Title>
+          <Modal.Title>Free Pro Makeup Workshop</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>

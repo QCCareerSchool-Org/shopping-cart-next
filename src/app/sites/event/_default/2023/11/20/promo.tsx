@@ -10,7 +10,7 @@ import { Section } from '@/components/section';
 
 const backgroundColor = '#000';
 
-export const MakeupFallbackPromo: FC = () => {
+export const Event20231120Promo: FC = () => {
   const [ showPopup, togglePopup ] = useReducer(state => !state, false);
 
   const handleClick = (): void => {
@@ -26,7 +26,7 @@ export const MakeupFallbackPromo: FC = () => {
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
         <Modal.Header closeButton>
-          <Modal.Title>Luminous Collection</Modal.Title>
+          <Modal.Title>Free Pro Makeup Workshop</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>

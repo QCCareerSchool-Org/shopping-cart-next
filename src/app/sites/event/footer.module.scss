@@ -1,0 +1,26 @@
+.footer {
+  text-align: center;
+  background-color: #252525;
+  color: #999;
+  padding: 20px 0;
+}
+.footerItem {
+  display: block;
+  margin: 0 0 18px;
+  font-size: smaller;
+  a {
+    color: white;
+    text-decoration: none;
+  } 
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    text-align: start;
+  }
+  .footerItem {
+    display: inline;
+    margin: 0 16px 0 0;
+  }
+}
+

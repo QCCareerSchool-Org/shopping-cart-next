@@ -2,8 +2,10 @@ import type { FC } from 'react';
 
 import { agreementLinks } from '../../agreementLinks';
 import { courseGroups } from '../../courseGroups';
+import { EventFallbackPromo } from './promo';
+import { Guarantee } from '@/app/sites/event/guarantee';
+import { FreeEventSpecialtyDynamicMessage } from '@/components/dynamicCourseMessages/freeEventSpecialty';
 import { Form } from '@/components/form';
-import { Section } from '@/components/section';
 
 type Props = {
   date: number;
@@ -11,17 +13,18 @@ type Props = {
 
 export const EventFallback: FC<Props> = ({ date }) => (
   <>
-    <Section>
-      <h1>Event</h1>
-    </Section>
+    <EventFallbackPromo />
     <Form
       date={date}
       courseGroups={courseGroups}
       school="QC Event School"
-      guarantee={null}
+      guarantee={Guarantee}
       successLink="https://www.qceventplanning.com/welcome-to-the-school"
       agreementLinks={agreementLinks}
       dynamicCourseDescriptions="HIDE"
+      visualPaymentPlans
+      promoCodeDefault="SPECIALTY"
+      dynamicCourseMessages={[ FreeEventSpecialtyDynamicMessage ]}
     />
   </>
 );
