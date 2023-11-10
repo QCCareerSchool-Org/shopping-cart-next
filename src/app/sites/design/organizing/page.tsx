@@ -5,11 +5,8 @@ import { DesignOrganizingPromo } from './promo';
 import { Form } from '@/components/form';
 import type { Course } from '@/domain/course';
 import type { CourseGroup } from '@/domain/courseGroup';
+import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
-
-type Props = {
-  date: number;
-};
 
 /**
  * Creates a modified version of an array of CourseGroups where the PO course is moved to the first item of the first group
@@ -38,7 +35,8 @@ export const getModifiedCourseGroups = (defaultCourseGroups: CourseGroup[]): Cou
 
 const orderedCourseGroups = getModifiedCourseGroups(courseGroups);
 
-const DesignOrganizingPage: PageComponent<Props> = ({ date }) => {
+const DesignOrganizingPage: PageComponent = ({ searchParams }) => {
+  const date = getDate(searchParams.date);
   return (
     <>
       <DesignOrganizingPromo date={date} />

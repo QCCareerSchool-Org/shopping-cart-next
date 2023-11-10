@@ -3,13 +3,11 @@ import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { DesignStudentPromo } from './promo';
 import { Form } from '@/components/form';
+import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-type Props = {
-  date: number;
-};
-
-const DesignStudentPage: PageComponent<Props> = ({ date }) => {
+const DesignStudentPage: PageComponent = ({ searchParams }) => {
+  const date = getDate(searchParams.date);
   return (
     <>
       <DesignStudentPromo />

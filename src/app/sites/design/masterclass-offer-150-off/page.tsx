@@ -3,11 +3,8 @@ import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { DesignMasterclass150OffPromo } from './promo';
 import { Form } from '@/components/form';
+import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
-
-type Props = {
-  date: number;
-};
 
 // only show I2, MS, PO, and DB
 const filteredCourseGroups = [
@@ -25,7 +22,8 @@ for (const group of filteredCourseGroups) {
   }
 }
 
-const DesignMasterclass150OffPage: PageComponent<Props> = ({ date }) => {
+const DesignMasterclass150OffPage: PageComponent = ({ searchParams }) => {
+  const date = getDate(searchParams.date);
   return (
     <>
       <DesignMasterclass150OffPromo />

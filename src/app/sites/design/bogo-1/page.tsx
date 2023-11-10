@@ -4,13 +4,11 @@ import { Guarantee } from '../guarantee';
 import { DesignBogo1Promo } from './promo';
 import { BogoDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogo';
 import { Form } from '@/components/form';
+import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-type Props = {
-  date: number;
-};
-
-const DesignBogo1Page: PageComponent<Props> = ({ date }) => {
+const DesignBogo1Page: PageComponent = ({ searchParams }) => {
+  const date = getDate(searchParams.date);
   return (
     <>
       <DesignBogo1Promo />

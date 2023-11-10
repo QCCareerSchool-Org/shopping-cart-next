@@ -3,13 +3,11 @@ import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { DesignFreePortfolioPromo } from './promo';
 import { Form } from '@/components/form';
+import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-type Props = {
-  date: number;
-};
-
-const DesignFreePortfolioPage: PageComponent<Props> = ({ date }) => {
+const DesignFreePortfolioPage: PageComponent = ({ searchParams }) => {
+  const date = getDate(searchParams.date);
   return (
     <>
       <DesignFreePortfolioPromo />
