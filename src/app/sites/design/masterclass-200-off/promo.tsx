@@ -34,7 +34,7 @@ export const DesignMasterclass200OffPromo: FC = () => {
           <Modal.Title>Masterclass</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>As a special gift for attending the masterclass, when you enroll in Interior Decorating, we&apos;ll give you a second certification course absolutely FREE!</p>
+          <p>As a special gift for attending the masterclass, when you enroll in Interior Decorating, we'll give you a second certification course absolutely FREE!</p>
           <p>We're also giving you {savings} off your tuition! Get started for only {deposit} or save up to {fullDiscount} when you pay in full.</p>
           <p className="mb-0"><em>This offer is only available for a limited time.</em></p>
         </Modal.Body>

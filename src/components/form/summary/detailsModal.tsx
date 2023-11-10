@@ -61,7 +61,7 @@ const PartBreakdown: FC<{ price: PriceState }> = ({ price }) => {
         </tbody>
       </table>
       <h6>Deposit</h6>
-      <p>When you enroll you&apos;ll be charged a deposit of <strong>{price.currency.symbol}{price.plans.part.deposit.toFixed(2)}</strong>:</p>
+      <p>When you enroll you'll be charged a deposit of <strong>{price.currency.symbol}{price.plans.part.deposit.toFixed(2)}</strong>:</p>
       <table className="w-100">
         <tbody>
           <DepositRows price={price} plan="part" />

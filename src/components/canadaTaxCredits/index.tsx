@@ -22,8 +22,8 @@ export const CanadaTaxCredits: FC = () => {
         <Modal show={popup} onHide={handleClick}>
           <ModalHeader closeButton><Image src={MapleLeaf as StaticImageData} height="18" style={{ position: 'relative', top: 1, marginRight: '0.375rem' }} alt="maple leaf" />Canadian, Eh?</ModalHeader>
           <ModalBody>
-            <p><strong>QC is a certified educational institution</strong> with Employment and Social Development Canada (ESDC). At the end of the year, we&apos;ll be sending you a T2202 tax receipt for the course fees you paid during the year. You can use the receipt to get a tax refund.</p>
-            <p>You&apos;ll be able to claim:</p>
+            <p><strong>QC is a certified educational institution</strong> with Employment and Social Development Canada (ESDC). At the end of the year, we'll be sending you a T2202 tax receipt for the course fees you paid during the year. You can use the receipt to get a tax refund.</p>
+            <p>You'll be able to claim:</p>
             <ul className="mb-0">
               <li><span className={styles.red}>The Canada Training Credit</span> and</li>
               <li><span className={styles.red}>The Tuition Tax Credit</span></li>

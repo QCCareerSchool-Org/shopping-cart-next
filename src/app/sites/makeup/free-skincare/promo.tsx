@@ -29,8 +29,8 @@ export const MakeupFreeSkincarePromo: FC = () => {
           <strong>Limited-Time Offer</strong>
         </Modal.Header>
         <Modal.Body>
-          <p className="lead">Free Pro Makeup Workshop</p>
-          <p>When you enroll in <strong>Master Makeup Artistry</strong>, you&apos;ll get QC&apos;s <strong>Pro Makeup Workshop</strong> for free!</p>
+          <p className="lead">Free Skincare Course</p>
+          <p>When you enroll in <strong>Master Makeup Artistry</strong>, you'll get QC's <strong>Skincare course</strong> for free!</p>
           <p className="lead">Free Luminous Collection Makeup Kit</p>
           <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
           <p>Graduate as a Master International Makeup Professional™ (MIMP™) in just a few short months and build your beauty empire!</p>

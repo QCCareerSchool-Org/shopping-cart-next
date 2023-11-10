@@ -17,8 +17,8 @@ export const FreeProMakeupDynamicMessage: FC = () => {
   }
 
   if (!coursesState.selected.includes('MW')) {
-    return <DynamicCourseAlert variant="warning">Don&apos;t forget to select your free <strong>Pro Makeup Workshop</strong></DynamicCourseAlert>;
+    return <DynamicCourseAlert variant="warning">Don't forget to select your free <strong>Pro Makeup Workshop</strong></DynamicCourseAlert>;
   }
 
-  return <DynamicCourseAlert variant="success">You&apos;ll get the <strong>Pro Makeup Workshop</strong> FREE!</DynamicCourseAlert>;
+  return <DynamicCourseAlert variant="success">You'll get the <strong>Pro Makeup Workshop</strong> FREE!</DynamicCourseAlert>;
 };

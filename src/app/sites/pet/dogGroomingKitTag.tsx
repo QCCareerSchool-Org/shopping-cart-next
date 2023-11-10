@@ -27,7 +27,7 @@ export const DogGroomingKitTag: FC = () => {
       <Modal show={showPopup} onHide={handleClose}>
         <ModalHeader closeButton><strong>Dog Grooming Starter Kit</strong></ModalHeader>
         <ModalBody>
-          <p>When you enroll in <strong>Dog Grooming</strong>, you&apos;ll get QC&apos;s <strong>Dog Grooming Starter Kit</strong> for free!</p>
+          <p>When you enroll in <strong>Dog Grooming</strong>, you'll get QC's <strong>Dog Grooming Starter Kit</strong> for free!</p>
           <div style={{ display: 'flex', justifyContent: 'center', margin: '-1rem' }}><Image src={Kit} className="img-fluid" alt="dog grooming starter kit" /></div>
         </ModalBody>
         <ModalFooter>

@@ -8,7 +8,7 @@ export const getPromos = (date: number, price: PriceState, school: School, stude
       schools: [ 'QC Design School' ],
       student: 'DENIED',
       code: 'BOGO100',
-      description: <>Enroll in one course and get a second course free. You&apos;ll also get a {price?.currency.code === 'GBP' ? '£75' : '$100'} discount</>,
+      description: <>Enroll in one course and get a second course free. You'll also get a {price?.currency.code === 'GBP' ? '£75' : '$100'} discount</>,
       altText: `BOGO + ${price?.currency.code === 'GBP' ? '£75' : '$100'} off`,
     },
     {

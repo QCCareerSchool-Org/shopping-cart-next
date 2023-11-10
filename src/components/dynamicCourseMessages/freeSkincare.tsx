@@ -17,8 +17,8 @@ export const FreeSkincareDynamicMessage: FC = () => {
   }
 
   if (!coursesState.selected.includes('SK')) {
-    return <DynamicCourseAlert variant="warning">Don&apos;t forget to select your free <strong>Skincare Consultant</strong> course</DynamicCourseAlert>;
+    return <DynamicCourseAlert variant="warning">Don't forget to select your free <strong>Skincare Consultant</strong> course</DynamicCourseAlert>;
   }
 
-  return <DynamicCourseAlert variant="success">You&apos;ll get the <strong>Skincare Consultant</strong> course FREE!</DynamicCourseAlert>;
+  return <DynamicCourseAlert variant="success">You'll get the <strong>Skincare Consultant</strong> course FREE!</DynamicCourseAlert>;
 };
