@@ -10,10 +10,8 @@ import type { PageComponent } from '@/serverComponent';
 
 /**
  * Creates a modified version of an array of CourseGroups where the PO course is moved to the first item of the first group
- * @param defaultCourseGroups the original CourseGroups
- * @returns the modified CourseGroups
  */
-export const getModifiedCourseGroups = (defaultCourseGroups: CourseGroup[]): CourseGroup[] => {
+const getModifiedCourseGroups = (defaultCourseGroups: CourseGroup[]): CourseGroup[] => {
   const isPOCourse = (i: Course): boolean => i.code === 'PO';
 
   // make a copy of the default course groups, where the PO course is filtered out of the items of each of them
