@@ -23,9 +23,9 @@ export const Part: FC = () => {
                 <td className="text-end text-nowrap align-bottom">{course.free ? <strong className="text-primary">FREE!</strong> : <>{priceState.currency.symbol}{course.cost.toFixed(2)}</>}</td>
               </tr>
               {!course.free && course.multiCourseDiscount > 0 && (
-                <tr className="text-primary">
-                  <td className="text-md-end">{course.discountMessage ? course.discountMessage : <>{Math.round(course.multiCourseDiscount / course.cost * 100)}% Discount</>}</td>
-                  <td className="text-end text-nowrap align-bottom">&minus; {priceState.currency.symbol}{course.multiCourseDiscount.toFixed(2)}</td>
+                <tr>
+                  <td className="text-primary text-md-end">{course.discountMessage ? course.discountMessage : <>{Math.round(course.multiCourseDiscount / course.cost * 100)}% Discount</>}</td>
+                  <td className="text-primary text-end text-nowrap align-bottom">&minus; {priceState.currency.symbol}{course.multiCourseDiscount.toFixed(2)}</td>
                 </tr>
               )}
             </Fragment>
