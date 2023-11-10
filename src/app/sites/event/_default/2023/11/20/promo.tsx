@@ -1,17 +1,17 @@
 'use client';
 
-import { useReducer } from 'react';
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
 import { Hero } from './hero';
 import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
+import { useToggle } from '@/hooks/useToggle';
 
 const backgroundColor = '#000';
 
 export const Event20231120Promo: FC = () => {
-  const [ showPopup, togglePopup ] = useReducer(state => !state, false);
+  const [ showPopup, togglePopup ] = useToggle(false);
 
   const handleClick = (): void => {
     togglePopup();

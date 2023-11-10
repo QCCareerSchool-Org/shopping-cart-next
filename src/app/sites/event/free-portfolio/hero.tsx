@@ -5,5 +5,5 @@ import Mobile from './mobile.jpg';
 import { PromoImage } from '@/components/promoImage';
 
 export const Hero: FC = () => {
-  return <PromoImage desktopSrc={Desktop} mobileSrc={Mobile} maxWidth={1000} />;
+  return <PromoImage desktopSrc={Desktop} mobileSrc={Mobile} />;
 };

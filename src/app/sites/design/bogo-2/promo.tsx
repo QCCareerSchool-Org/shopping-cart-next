@@ -1,18 +1,18 @@
 'use client';
 
-import { useReducer } from 'react';
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
 import { Hero } from './hero';
 import { Section } from '@/components/section';
 import { usePriceState } from '@/hooks/usePriceState';
+import { useToggle } from '@/hooks/useToggle';
 
 const backgroundColor = '#f7e1e3';
 
 export const DesignBogo2Promo: FC = () => {
   const priceState = usePriceState();
-  const [ showPopup, togglePopup ] = useReducer(state => !state, false);
+  const [ showPopup, togglePopup ] = useToggle(false);
 
   const handleClick = (): void => {
     togglePopup();

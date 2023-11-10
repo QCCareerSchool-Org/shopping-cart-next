@@ -1,6 +1,5 @@
 'use client';
 
-import { useReducer } from 'react';
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
@@ -8,6 +7,7 @@ import { Hero } from './hero';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
+import { useToggle } from '@/hooks/useToggle';
 
 type Props = {
   date: number;
@@ -18,7 +18,7 @@ const endDate = Date.UTC(2023, 10, 5);
 const backgroundColor = 'black';
 
 export const Makeup20231111Promo: FC<Props> = ({ date }) => {
-  const [ showPopup, togglePopup ] = useReducer(state => !state, false);
+  const [ showPopup, togglePopup ] = useToggle(false);
 
   const handleClick = (): void => {
     togglePopup();

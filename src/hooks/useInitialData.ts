@@ -42,7 +42,7 @@ type Data = {
   paymentPlan: PaymentPlan | null;
 };
 
-export const useInitialData = (school: School, student: boolean, internal?: boolean): void => {
+export const useInitialData = (school: School, student: boolean, coursesOverride?: string[], internal?: boolean): void => {
   const searchParams = useSearchParams();
   const countries = useCountriesState();
   const addressState = useAddressState();
@@ -71,6 +71,11 @@ export const useInitialData = (school: School, student: boolean, internal?: bool
     }
 
     coursesDispatch({ type: 'CLEAR_COURSES', payload: { internal } });
+    if (coursesOverride) {
+      for (const c of coursesOverride) {
+        coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode: c, internal } });
+      }
+    }
 
     // we need to keep track of these here because we're going to run updateData twice and we need the latest value available
     let currentCountryCode = addressState.countryCode;

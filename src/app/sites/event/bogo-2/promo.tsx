@@ -8,9 +8,9 @@ import { Section } from '@/components/section';
 import { usePriceState } from '@/hooks/usePriceState';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#8ef0c0';
+const backgroundColor = '#8b8b8d';
 
-export const EventFallbackPromo: FC = () => {
+export const EventBogo2Promo: FC = () => {
   const priceState = usePriceState();
   const [ showPopup, togglePopup ] = useToggle(false);
 
@@ -35,21 +35,11 @@ export const EventFallbackPromo: FC = () => {
         </Modal.Header>
         <Modal.Body>
           <p>Ready to start your event planning career?</p>
-          <p>Enroll in any foundation course and get a specialty course for free.</p>
-          <p>This means you'll graduate with two professional certifications for the price of one (saving up to {potentialSavings(priceState?.currency.code ?? 'USD')} on your training)!</p>
+          <p>For a limited time only, enroll in any foundation course and get a second course for free!</p>
+          <p>This means you'll graduate with two professional certifications for the price of one.</p>
           <p className="mb-0">Get started for {deposit}, or save up to {fullDiscount} when you pay your tuition in full.</p>
         </Modal.Body>
       </Modal>
     </>
   );
-};
-
-const potentialSavings = (currencyCode: string): string => {
-  return currencyCode === 'GBP'
-    ? '£778'
-    : currencyCode === 'AUD'
-      ? '$1289'
-      : currencyCode === 'NZD'
-        ? '$1358'
-        : '$1039';
 };
