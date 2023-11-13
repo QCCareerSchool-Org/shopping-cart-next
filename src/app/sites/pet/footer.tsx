@@ -11,7 +11,7 @@ export const Footer: FC = () => {
   return (
     <footer className="bg-black text-white">
       <div className="container">
-        &copy;{new Date().getFullYear()} QC Makeup Academy
+        &copy;{new Date().getFullYear()} QC Pet Studies
         <a href={`tel:${tel}`}>{tel}</a>
       </div>
     </footer>
