@@ -9,7 +9,7 @@ import Logo from './logo.svg';
 import { useAddressState } from '@/hooks/useAddressState';
 import { telephoneNumber } from '@/lib/telephone';
 
-const backgroundColor = '#252525';
+const backgroundColor = '#fff';
 
 export const Header: FC = () => {
   const { countryCode } = useAddressState();

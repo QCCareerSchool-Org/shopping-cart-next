@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     apple: { type: 'image/png', url: '/design/apple-touch-icon.png' },
   },
   manifest: '/design/manifest.json',
+  other: { 'msapplication-config': '/design/browserconfig.xml' },
 };
 
 const DesignLayout: LayoutComponent = ({ children }) => {

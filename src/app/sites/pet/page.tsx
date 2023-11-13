@@ -1,13 +1,18 @@
-import { Design202310 } from './_default/2023/10';
+import { lazy, Suspense } from 'react';
+
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
+
+const PetFallback = lazy(async () => import('./_default/fallback').then(m => ({ default: m.PetFallback })));
 
 const DesignPage: PageComponent = ({ searchParams }) => {
   const date = getDate(searchParams.date);
 
-  if (date > Date.UTC(2023, 9, 1)) {
-    return <Design202310 date={date} />;
-  }
+  return (
+    <Suspense>
+      <PetFallback date={date} />
+    </Suspense>
+  );
 };
 
 export default DesignPage;

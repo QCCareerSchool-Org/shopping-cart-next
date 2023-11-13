@@ -14,7 +14,7 @@ type Props = {
  */
 export const DisabledCourseModal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
-    <ModalHeader closeButton>Why Can't I Take {props.name}?</ModalHeader>
+    <ModalHeader closeButton><strong>Why Can't I Take {props.name}?</strong></ModalHeader>
     <ModalBody>{props.message}</ModalBody>
   </Modal>
 );

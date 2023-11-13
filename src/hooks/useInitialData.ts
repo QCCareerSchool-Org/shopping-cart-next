@@ -42,7 +42,7 @@ type Data = {
   paymentPlan: PaymentPlan | null;
 };
 
-export const useInitialData = (school: School, student: boolean, coursesOverride?: string[], internal?: boolean): void => {
+export const useInitialData = (school: School, student: boolean, coursesOverride?: string[]): void => {
   const searchParams = useSearchParams();
   const countries = useCountriesState();
   const addressState = useAddressState();
@@ -70,10 +70,10 @@ export const useInitialData = (school: School, student: boolean, coursesOverride
       metaDispatch({ type: 'SET_STUDENT', payload: student });
     }
 
-    coursesDispatch({ type: 'CLEAR_COURSES', payload: { internal } });
+    coursesDispatch({ type: 'CLEAR_COURSES', payload: { student } });
     if (coursesOverride) {
       for (const c of coursesOverride) {
-        coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode: c, internal } });
+        coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode: c, student } });
       }
     }
 
@@ -219,7 +219,7 @@ export const useInitialData = (school: School, student: boolean, coursesOverride
 
       if (courses?.length) {
         for (const courseCode of courses) {
-          coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode, internal } });
+          coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode, student } });
         }
       }
 
@@ -283,5 +283,5 @@ export const useInitialData = (school: School, student: boolean, coursesOverride
       await updateData(querystringData);
     })();
 
-  }, [ school, student, internal, addressDispatch, billingAddressDispatch, coursesDispatch, metaDispatch, paymentDispatch, addressState.countryCode, addressState.provinceCode, addressState.provinces, billingAddressState.countryCode, billingAddressState.provinceCode, billingAddressState.provinces, countries, searchParams ]);
+  }, [ school, student, coursesOverride, addressDispatch, billingAddressDispatch, coursesDispatch, metaDispatch, paymentDispatch, addressState.countryCode, addressState.provinceCode, addressState.provinces, billingAddressState.countryCode, billingAddressState.provinceCode, billingAddressState.provinces, countries, searchParams ]);
 };

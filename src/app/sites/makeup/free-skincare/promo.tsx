@@ -26,7 +26,7 @@ export const MakeupFreeSkincarePromo: FC = () => {
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
         <Modal.Header closeButton>
-          <strong>Limited-Time Offer</strong>
+          <Modal.Title>Limited-Time Offer</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p className="lead">Free Skincare Course</p>

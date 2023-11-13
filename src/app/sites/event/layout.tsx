@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     apple: { type: 'image/png', url: '/event/apple-touch-icon.png' },
   },
   manifest: '/event/manifest.json',
+  other: { 'msapplication-config': '/event/browserconfig.xml' },
 };
 
 const EventLayout: LayoutComponent = ({ children }) => {

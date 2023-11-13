@@ -7,21 +7,22 @@ import type { LayoutComponent } from '@/serverComponent';
 import './global.scss';
 
 export const metadata: Metadata = {
-  title: 'Enroll Online - QC Design School',
+  title: 'Enroll Online - QC Pet Studies',
   icons: {
     icon: [
-      { type: 'image/png', url: '/makeup/favicon-16x16.png', sizes: '16x16' },
-      { type: 'image/png', url: '/makeup/favicon-32x32.png', sizes: '32x32' },
-      { type: 'image/x-icon', url: '/makeup/favicon.ico', sizes: '48x48' },
-      { rel: 'mask icon', type: 'image/png', url: '/makeup/safari-pinned-tab.svg', color: '#5bbad5' },
+      { type: 'image/png', url: '/pet/favicon-16x16.png', sizes: '16x16' },
+      { type: 'image/png', url: '/pet/favicon-32x32.png', sizes: '32x32' },
+      { type: 'image/x-icon', url: '/pet/favicon.ico', sizes: '48x48' },
+      { rel: 'mask icon', type: 'image/png', url: '/pet/safari-pinned-tab.svg', color: '#5bbad5' },
     ],
-    shortcut: { type: 'image/x-icon', url: '/makeup/favicon.ico' },
-    apple: { type: 'image/png', url: '/makeup/apple-touch-icon.png' },
+    shortcut: { type: 'image/x-icon', url: '/pet/favicon.ico' },
+    apple: { type: 'image/png', url: '/pet/apple-touch-icon.png' },
   },
-  manifest: '/makeup/manifest.json',
+  manifest: '/pet/manifest.json',
+  other: { 'msapplication-config': '/pet/browserconfig.xml' },
 };
 
-const DesignLayout: LayoutComponent = ({ children }) => {
+const PetLayout: LayoutComponent = ({ children }) => {
   return (
     <div>
       <Header />
@@ -31,4 +32,4 @@ const DesignLayout: LayoutComponent = ({ children }) => {
   );
 };
 
-export default DesignLayout;
+export default PetLayout;

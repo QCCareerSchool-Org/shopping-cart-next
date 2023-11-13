@@ -5,9 +5,9 @@ export type CoursesState = {
 };
 
 export type CoursesAction =
-  | { type: 'CLEAR_COURSES'; payload: { internal?: boolean } }
-  | { type: 'ADD_COURSE'; payload: { courseCode: string; internal?: boolean } }
-  | { type: 'REMOVE_COURSE'; payload: { courseCode: string; internal?: boolean } };
+  | { type: 'CLEAR_COURSES'; payload: { student?: boolean } }
+  | { type: 'ADD_COURSE'; payload: { courseCode: string; student?: boolean } }
+  | { type: 'REMOVE_COURSE'; payload: { courseCode: string; student?: boolean } };
 
 export const initialCoursesState: CoursesState = {
   selected: [],
@@ -21,8 +21,8 @@ export const coursesReducer = (state: CoursesState, action: CoursesAction): Cour
       return {
         ...state,
         selected: [],
-        disabled: disabledCourses([], !!action.payload.internal), // recalculate which courses are disabled,
-        hidden: hiddenCourses([], !!action.payload.internal), // recalculate which courses are hidden,
+        disabled: disabledCourses([], !!action.payload.student), // recalculate which courses are disabled,
+        hidden: hiddenCourses([], !!action.payload.student), // recalculate which courses are hidden,
       };
     }
     case 'ADD_COURSE': {
@@ -36,8 +36,8 @@ export const coursesReducer = (state: CoursesState, action: CoursesAction): Cour
         return {
           ...state,
           selected,
-          disabled: disabledCourses(selected, !!action.payload.internal), // recalculate which courses are disabled
-          hidden: hiddenCourses(selected, !!action.payload.internal), // recalculate which courses are hidden
+          disabled: disabledCourses(selected, !!action.payload.student), // recalculate which courses are disabled
+          hidden: hiddenCourses(selected, !!action.payload.student), // recalculate which courses are hidden
         };
       }
       return state; // no change
@@ -48,14 +48,14 @@ export const coursesReducer = (state: CoursesState, action: CoursesAction): Cour
         // remove the course
         let selected = state.selected.filter(c => c !== courseCode);
         // also remove MS if I2 is being removed
-        if (!action.payload.internal && !selected.includes('I2')) {
+        if (!action.payload.student && !selected.includes('I2')) {
           selected = selected.filter(c => c !== 'MS');
         }
         return {
           ...state,
           selected,
-          disabled: disabledCourses(selected, !!action.payload.internal), // recalculate which courses are disabled
-          hidden: hiddenCourses(selected, !!action.payload.internal), // recalculate which courses are hidden
+          disabled: disabledCourses(selected, !!action.payload.student), // recalculate which courses are disabled
+          hidden: hiddenCourses(selected, !!action.payload.student), // recalculate which courses are hidden
         };
       }
       return state; // no change
@@ -76,10 +76,10 @@ const convert = (course: string): string => {
  * Returns an array indicating which courses should be disabled based on which courses are selected
  * @param selectedCourses which courses are selected
  */
-const disabledCourses = (selectedCourses: string[], internal: boolean): string[] => {
+const disabledCourses = (selectedCourses: string[], student: boolean): string[] => {
   const result = [];
   /* design */
-  if (!internal && !selectedCourses.includes('I2')) {
+  if (!student && !selectedCourses.includes('I2')) {
     result.push('MS');
   }
   if (selectedCourses.includes('I2') || selectedCourses.includes('MS')) {
@@ -139,10 +139,10 @@ const disabledCourses = (selectedCourses: string[], internal: boolean): string[]
  * Returns an array indicating which courses should be hidden based on which courses are selected
  * @param selectedCourses which courses are selected
  */
-const hiddenCourses = (selectedCourses: string[], internal: boolean): string[] => {
+const hiddenCourses = (selectedCourses: string[], student: boolean): string[] => {
   const result = [];
   /* design */
-  if (!internal && !selectedCourses.includes('I2')) {
+  if (!student && !selectedCourses.includes('I2')) {
     result.push('MS');
   }
   return result;

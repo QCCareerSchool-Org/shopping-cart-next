@@ -45,6 +45,8 @@ type Props = {
   coursesOverride?: string[];
   /** the guarantee component to display in the summary section */
   guarantee: FC | null;
+  /** a component to display below the courses title */
+  coursesSubtitle?: FC;
   /** where to send the visitor after a sucessfull enrollment */
   successLink: string;
   /** url of enrollment agreement */
@@ -92,7 +94,7 @@ export const Form: FC<Props> = props => {
     }
   }, []);
 
-  useInitialData(props.school, !!props.student, props.coursesOverride, props.internal);
+  useInitialData(props.school, !!props.student || !!props.internal, props.coursesOverride);
   usePriceUpdater(props.date, !!props.internal, props.school, props.promoCodeDefault);
 
   const [ showConfirmationPopup, toggleConfirmationPopup ] = useToggle(false);
@@ -143,7 +145,16 @@ export const Form: FC<Props> = props => {
   return (
     <>
       {!!props.internal && <Internal />}
-      <CourseSelection courseGroups={props.courseGroups} showHiddenCourses={props.showHiddenCourses} dynamicCourseDescriptions={props.dynamicCourseDescriptions} dynamicCourseMessages={props.dynamicCourseMessages} discountName={props.discountName} internal={!!props.internal} coursesOverride={!!props.coursesOverride} />
+      <CourseSelection
+        internal={!!props.internal}
+        courseGroups={props.courseGroups}
+        showHiddenCourses={props.showHiddenCourses}
+        dynamicCourseDescriptions={props.dynamicCourseDescriptions}
+        dynamicCourseMessages={props.dynamicCourseMessages}
+        discountName={props.discountName}
+        coursesSubtitle={props.coursesSubtitle}
+        coursesOverride={!!props.coursesOverride}
+      />
       <Suspense><Address school={props.school} /></Suspense>
       <Suspense>{showBillingAddress(props.school) && <BillingAddress />}</Suspense>
       <Suspense><Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} /></Suspense>

@@ -4,6 +4,7 @@ import type { CSSProperties, FC } from 'react';
 import { DetailsPopup } from './detailsPopup';
 import DesignBooks from './kits/design-books.png';
 import MZ from './kits/mz/deluxe-kit-white-384.jpg';
+import { GroomingKit } from '@/components/groomingKit';
 import { LuminousKit } from '@/components/luminousKit';
 import type { School } from '@/domain/school';
 
@@ -67,8 +68,8 @@ const petBullets = [
   'Vibrant student community',
   'Unlimited student support access',
   'VIP deals on continued learning',
-  'BONUS first-aid training',
-  'BONUS business start-up training',
+  <><strong>BONUS</strong> first-aid training</>,
+  <><strong>BONUS</strong> business start-up training</>,
   'Professional pet-care certification',
 ];
 
@@ -143,6 +144,12 @@ const getCourseKits = (date: number): CourseKit[] => [
     fullBullets: [ <strong key={0}>Printed textbooks included</strong>, ...designBullets ],
     partBullets: [ <strong key={0}>Printed textbooks included</strong>, ...designBullets ],
   },
+  {
+    courseCode: 'DG',
+    fullBullets: [ <strong key={0}>Dog Grooming Starter Kit</strong>, ...petBullets ],
+    partBullets: [ <strong key={0}>Dog Grooming Starter Kit</strong>, ...petBullets ],
+    details: <DGDetails />,
+  },
 ];
 
 export const getKit = (date: number, courses: string[], school: School): Kit | undefined => {
@@ -163,5 +170,12 @@ const MZDetails: FC = () => (
   <DetailsPopup title="Luminous Collection" footerText={<div className="text-start"><small>Your items will be automatically sent to you after you have submitted Unit A of the course in the Online Student Center. Items in the kit are subject to change.</small></div>}>
     <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
     <LuminousKit />
+  </DetailsPopup>
+);
+
+const DGDetails: FC = () => (
+  <DetailsPopup title="Dog Grooming Starter Kit" footerText={<div className="text-start"><small>The kit pictured above is included only when you enroll in the <strong>Dog Grooming</strong> course. Your kit will be automatically sent to you after you have submitted Unit B of the course in the Online Student Center. Items in the kit are subject to change.</small></div>}>
+    <p>When you enroll in <strong>Dog Grooming</strong>, you'll get QC's <strong>Dog Grooming Starter Kit</strong> for free!</p>
+    <GroomingKit />
   </DetailsPopup>
 );

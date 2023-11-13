@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     apple: { type: 'image/png', url: '/makeup/apple-touch-icon.png' },
   },
   manifest: '/makeup/manifest.json',
+  other: { 'msapplication-config': '/makeup/browserconfig.xml' },
 };
 
 const MakeupLayout: LayoutComponent = ({ children }) => {

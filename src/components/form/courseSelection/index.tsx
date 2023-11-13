@@ -9,12 +9,13 @@ import { Section } from '@/components/section';
 import type { CourseGroup } from '@/domain/courseGroup';
 import { useCoursesDispatch } from '@/hooks/useCoursesDispatch';
 import { useCoursesState } from '@/hooks/useCoursesState';
+import { useMetaState } from '@/hooks/useMetaState';
 import { usePriceState } from '@/hooks/usePriceState';
 
 type Props = {
+  internal: boolean;
   courseGroups: CourseGroup[];
   showHiddenCourses?: boolean;
-  internal: boolean;
   coursesSubtitle?: FC;
   dynamicCourseMessages?: FC[];
   coursesOverride: boolean;
@@ -34,6 +35,7 @@ const Standard: FC<Props> = props => {
   const coursesState = useCoursesState();
   const coursesDispatch = useCoursesDispatch();
   const priceState = usePriceState();
+  const { student } = useMetaState();
 
   const [ hoveredCourseCode, setHoveredCourseCode ] = useState<string | undefined>();
 
@@ -54,12 +56,12 @@ const Standard: FC<Props> = props => {
   const handleCheck = (courseCode: string): void => {
     const isAvailable = props.courseGroups.some(g => g.items.some(i => i.code === courseCode));
     if (isAvailable) {
-      coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode, internal: props.internal } });
+      coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode, student: student || props.internal } });
     }
   };
 
   const handleUncheck = (courseCode: string): void => {
-    coursesDispatch({ type: 'REMOVE_COURSE', payload: { courseCode, internal: props.internal } });
+    coursesDispatch({ type: 'REMOVE_COURSE', payload: { courseCode, student: student || props.internal } });
   };
 
   return (
@@ -76,7 +78,9 @@ const Standard: FC<Props> = props => {
         {props.courseGroups.map((g, i) => (
           <Fragment key={i}>
             {g.name && <h3 className={i > 0 ? 'mt-4 h5' : 'h5'}>{g.name}</h3>}
-            {g.items.filter(c => !!props.showHiddenCourses || !!c.alwaysShown || !coursesState.hidden.includes(c.code)).map(c => <CheckBox key={c.code} course={c} onCheck={handleCheck} onUncheck={handleUncheck} onMouseOver={() => handleMouseOver(c.code)} />)}
+            {g.items.filter(c => !!props.showHiddenCourses || student || props.internal || !!c.alwaysShown || !coursesState.hidden.includes(c.code)).map(c => (
+              <CheckBox key={c.code} course={c} onCheck={handleCheck} onUncheck={handleUncheck} onMouseOver={() => handleMouseOver(c.code)} />
+            ))}
           </Fragment>
         ))}
         {props.dynamicCourseMessages?.map((C, i) => <div key={i} className={i === 0 ? 'mt-4' : 'mt-3'}><C /></div>)}

@@ -1,8 +1,6 @@
 import type { FC } from 'react';
 import { lazy, Suspense } from 'react';
 
-// import { Desktop } from './desktop';
-// import { Mobile } from './mobile';
 import type { School } from '@/domain/school';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 

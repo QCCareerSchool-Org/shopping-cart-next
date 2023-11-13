@@ -46,11 +46,13 @@ export const CheckBox: React.FC<Props> = props => {
         onChange={handleCourseChange}
         onMouseOver={props.onMouseOver}
       />
-      <label className={'form-check-label' + (disabled ? ' text-medium' : '')} htmlFor={`${id}${props.course.code}`} onMouseOver={props.onMouseOver}>
-        {props.course.description
-          ? <><strong>{props.course.description}:</strong><br />{props.course.name}</>
-          : props.course.name
-        }
+      <label className="form-check-label" htmlFor={`${id}${props.course.code}`} style={{ opacity: 1 }} onMouseOver={props.onMouseOver}>
+        <span style={disabled ? { opacity: 0.5 } : undefined}>
+          {props.course.description
+            ? <><strong>{props.course.description}:</strong><br />{props.course.name}</>
+            : props.course.name
+          }
+        </span>
         {props.course.disabledMessage && disabled && (
           <button type="button" className="btn btn-link p-0 ms-2 btn-no-hover-shadow" style={{ height: '1rem' }} onClick={handleToggle}>
             <FaQuestionCircle style={{ verticalAlign: 0, position: 'relative', top: -3 }} />
