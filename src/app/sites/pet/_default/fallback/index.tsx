@@ -4,6 +4,7 @@ import { agreementLinks } from '../../agreementLinks';
 import { courseGroups } from '../../courseGroups';
 import { Guarantee } from '../../guarantee';
 import { PetFallbackPromo } from './promo';
+import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 
 type Props = {
@@ -23,6 +24,7 @@ export const PetFallback: FC<Props> = ({ date }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
+        dynamicCourseMessages={[ Save50CourseMessage ]}
       />
     </>
   );
