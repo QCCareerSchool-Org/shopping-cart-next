@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 // eslint-disable-next-line camelcase
 import { Open_Sans, Playfair_Display } from 'next/font/google';
+import { headers } from 'next/headers';
 import Script from 'next/script';
 
 import { defaultGeoLocation } from '@/domain/geoLocation';
@@ -29,8 +30,19 @@ const openSans = Open_Sans({
 });
 
 const RootLayout: LayoutComponent = async ({ children }) => {
+  const headersList = headers();
+
+  // copy headers so that we can make a request as if we are the client
+  const clientHeaders: { 'x-forwarded-for'?: string } = {};
+  for (const [ key, value ] of headersList.entries()) {
+    if (key === 'x-vercel-forwarded-for') {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      clientHeaders['x-forwarded-for'] = value;
+    }
+  }
+
   const [ detectedGeoLocation, countries ] = await Promise.all([
-    fetchGeoLocation(),
+    fetchGeoLocation(clientHeaders),
     fetchCountries(),
   ]);
 
