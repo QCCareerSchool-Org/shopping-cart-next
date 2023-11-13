@@ -15,10 +15,11 @@ import { isTitle, type Title } from '@/domain/title';
 
 const pricesUrl = process.env.NEXT_PUBLIC_PRICES_ENDPOINT;
 
-export const fetchGeoLocation = async (controller?: AbortController): Promise<GeoLocation | undefined> => {
+export const fetchGeoLocation = async (headers: Record<string, string>, controller?: AbortController): Promise<GeoLocation | undefined> => {
   try {
     const url = 'https://api.qccareerschool.com/geoLocation/ip';
     const response = await fetch(url, {
+      headers,
       signal: controller?.signal,
     });
     if (response.ok) {
