@@ -11,7 +11,7 @@ export const Footer: FC = () => {
   const { countryCode } = useAddressState();
   const tel = telephoneNumber(countryCode);
 
-  const termsLink = gbpCountry(countryCode) ? 'https://www.qcpetsudies.com/terms-gb' : 'https://www.qcpetsudies.com/terms';
+  const termsLink = gbpCountry(countryCode) ? 'https://www.qcpetstudies.com/terms-gb' : 'https://www.qcpetstudies.com/terms';
 
   return (
     <footer className={styles.footer}>
