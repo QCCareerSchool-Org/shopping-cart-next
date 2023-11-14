@@ -2,6 +2,7 @@ import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { DesignMasterclass150OffPromo } from './promo';
+import { MasterClassDynamicMessage } from '@/components/dynamicCourseMessages/masterclass';
 import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -38,6 +39,7 @@ const DesignMasterclass150OffPage: PageComponent = ({ searchParams }) => {
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
         promoCodeDefault="MASTERCLASS150"
+        dynamicCourseMessages={[ MasterClassDynamicMessage ]}
       />
     </>
   );
