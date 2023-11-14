@@ -24,7 +24,9 @@ export const CanadaTaxCredits: FC = () => {
       <h3 className="h5 mb-1"><Image src={MapleLeaf as StaticImageData} height="20" alt="maple leaf" /> Canadian Students Save!</h3>
       <p className="mb-0">You could save more than 50% on your course fees. <a onClick={handleClick} style={{ whiteSpace: 'nowrap' }} href="#">Learn more</a></p>
       <Modal show={popup} onHide={handleHide}>
-        <ModalHeader closeButton><Image src={MapleLeaf as StaticImageData} height="18" style={{ position: 'relative', top: 1, marginRight: '0.375rem' }} alt="maple leaf" />Canadian, Eh?</ModalHeader>
+        <ModalHeader closeButton>
+          <strong><Image src={MapleLeaf as StaticImageData} height="18" style={{ marginRight: '0.375rem' }} alt="maple leaf" />Canadian, Eh?</strong>
+        </ModalHeader>
         <ModalBody>
           <p><strong>QC is a certified educational institution</strong> with Employment and Social Development Canada (ESDC). At the end of the year, we'll be sending you a T2202 tax receipt for the course fees you paid during the year. You can use the receipt to get a tax refund.</p>
           <p>You'll be able to claim:</p>
