@@ -24,7 +24,7 @@ const PetTraining300OffPage: PageComponent = ({ searchParams }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
-        promoCodeDefault="PET300OFF"
+        promoCodeDefault="DT300"
         dynamicCourseMessages={[ DynamicMessage ]}
       />
     </>
