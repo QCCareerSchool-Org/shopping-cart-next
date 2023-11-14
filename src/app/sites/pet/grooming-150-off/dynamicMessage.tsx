@@ -16,7 +16,7 @@ export const DynamicMessage: FC = () => {
     return null;
   }
 
-  if (!coursesState.selected.includes('DT')) {
+  if (!coursesState.selected.includes('DG')) {
     return <DynamicCourseAlert variant="warning">Select the <strong>Dog Grooming</strong> course to get {discount} off your tuition</DynamicCourseAlert>;
   }
 
