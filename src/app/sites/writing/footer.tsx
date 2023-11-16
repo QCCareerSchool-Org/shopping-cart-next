@@ -11,7 +11,7 @@ export const Footer: FC = () => {
   const { countryCode } = useAddressState();
   const tel = telephoneNumber(countryCode);
 
-  const termsLink = gbpCountry(countryCode) ? 'https://www.winghill.com/terms-gb' : 'https://www.winghill.com/terms';
+  const termsLink = gbpCountry(countryCode) ? 'https://www.winghill.com/terms-gb.html' : 'https://www.winghill.com/terms.html';
 
   return (
     <footer className={styles.footer}>
