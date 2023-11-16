@@ -3,7 +3,7 @@ import { Section } from '@/components/section';
 import type { PageComponent } from '@/serverComponent';
 
 const InternalPage: PageComponent = () => (
-  <Section>
+  <Section className="pt-0">
     <h1>Internal Enrollment Form</h1>
     <p className="lead">Please choose a school</p>
     <ul>

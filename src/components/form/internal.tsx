@@ -19,7 +19,7 @@ export const Internal: FC = () => {
   };
 
   return (
-    <Section style={{ paddingTop: '2rem' }}>
+    <Section className="pt-0">
       <div className="row">
         <div className="col-12 col-lg-7 col-xl-8 mb-4 mb-lg-0">
           Use this form to enroll someone in one or more courses from the same school. If the person is already a student, check the &ldquo;Existing Student&rdquo; checkbox to add the multiple-course discount to all courses.
