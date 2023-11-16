@@ -15,8 +15,8 @@
       "purpose": "any"
     }
   ],
-  "start_url": ".",
-  "display": "browser",
+  "start_url": "/",
+  "display": "minimal-ui",
   "theme_color": "#061f3a",
   "background_color": "#ffffff"
 }
