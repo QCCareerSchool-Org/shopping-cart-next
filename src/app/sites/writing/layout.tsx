@@ -16,19 +16,19 @@ import type { LayoutComponent } from '@/serverComponent';
 import './global.scss';
 
 export const metadata: Metadata = {
-  title: 'Enroll Online - QC Wellness Studies',
+  title: 'Enroll Online - Winghill Writing School',
   icons: {
     icon: [
-      { type: 'image/png', url: '/wellness/favicon-16x16.png', sizes: '16x16' },
-      { type: 'image/png', url: '/wellness/favicon-32x32.png', sizes: '32x32' },
-      { type: 'image/x-icon', url: '/wellness/favicon.ico', sizes: '48x48' },
-      { rel: 'mask icon', type: 'image/png', url: '/wellness/safari-pinned-tab.svg', color: '#5bbad5' },
+      { type: 'image/png', url: '/writing/favicon-16x16.png', sizes: '16x16' },
+      { type: 'image/png', url: '/writing/favicon-32x32.png', sizes: '32x32' },
+      { type: 'image/x-icon', url: '/writing/favicon.ico', sizes: '48x48' },
+      { rel: 'mask icon', type: 'image/png', url: '/writing/safari-pinned-tab.svg', color: '#5bbad5' },
     ],
-    shortcut: { type: 'image/x-icon', url: '/wellness/favicon.ico' },
-    apple: { type: 'image/png', url: '/wellness/apple-touch-icon.png' },
+    shortcut: { type: 'image/x-icon', url: '/writing/favicon.ico' },
+    apple: { type: 'image/png', url: '/writing/apple-touch-icon.png' },
   },
-  manifest: '/wellness/manifest.json',
-  other: { 'msapplication-config': '/wellness/browserconfig.xml' },
+  manifest: '/writing/manifest.json',
+  other: { 'msapplication-config': '/writing/browserconfig.xml' },
 };
 
 const PetLayout: LayoutComponent = ({ children }) => {
@@ -44,7 +44,7 @@ const PetLayout: LayoutComponent = ({ children }) => {
       {process.env.PARDOT_ACCOUNT_ID && process.env.PARDOT_CAMPAIGN_ID && <Pardot accountId={process.env.PARDOT_ACCOUNT_ID} campaignId={process.env.PARDOT_CAMPAIGN_ID} />}
       {process.env.BING_ID && <Bing id={process.env.BING_ID} />}
       {process.env.TRUSTPULSE_ID && <TrustPulse id={parseInt(process.env.TRUSTPULSE_ID, 10)} />}
-      <LiveChat license={1056788} group={19} />
+      <LiveChat license={1056788} group={13} />
       <Script id="perfect-audience" src="/makeup/perfectAudience.js" />
     </div>
   );

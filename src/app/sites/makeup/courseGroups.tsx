@@ -1,6 +1,5 @@
 import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
-import React from 'react';
 
 import MostPopular from '../../most-pop.svg';
 import type { CourseGroup } from '@/domain/courseGroup';
