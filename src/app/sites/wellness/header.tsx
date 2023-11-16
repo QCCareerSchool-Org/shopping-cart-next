@@ -5,20 +5,23 @@ import Image from 'next/image';
 import type { FC } from 'react';
 import { FaPhone } from 'react-icons/fa';
 
-import Logo from './logo.svg';
+import styles from './header.module.scss';
+import LogoLg from './logo-lg.svg';
+import LogoSm from './logo-sm.svg';
 import { useAddressState } from '@/hooks/useAddressState';
 import { telephoneNumber } from '@/lib/telephone';
-
-const backgroundColor = '#fff';
 
 export const Header: FC = () => {
   const { countryCode } = useAddressState();
   const tel = telephoneNumber(countryCode);
   return (
-    <header className="text-white" style={{ backgroundColor }}>
-      <div className="container py-3 py-sm-4">
+    <header className={styles.header}>
+      <div className="container-fluid">
         <div className="row">
-          <div className="col-9 col-sm-12 text-start text-sm-center"><a href="https://www.qcpetstudies.com/"><Image src={Logo as StaticImageData} className="img-fluid" alt="QC Pet Studies" style={{ height: 32 }} /></a></div>
+          <div className="col-9 col-sm-12 text-start"><a href="https://www.qcwellnessstudies.com/">
+            <Image src={LogoSm as StaticImageData} className={`img-fluid d-sm-none`} alt="QC Wellness studies" style={{ height: 36, width: 'auto' }} />
+            <Image src={LogoLg as StaticImageData} className={`img-fluid d-none d-sm-inline`} alt="QC Wellness studies" style={{ height: 36, width: 'auto' }} />
+          </a></div>
           <div className="col-3 d-sm-none text-end"><a title="Click to Call" href={'tel:' + tel}><FaPhone size={32} /></a></div>
         </div>
       </div>
