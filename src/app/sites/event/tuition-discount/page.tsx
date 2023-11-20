@@ -2,6 +2,7 @@ import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { EventTuitionDiscountPromo } from './promo';
+import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -21,6 +22,7 @@ const EventTuitionDiscountPage: PageComponent = ({ searchParams }) => {
         dynamicCourseDescriptions="HIDE"
         visualPaymentPlans
         promoCodeDefault="EVENT200OFF"
+        dynamicCourseMessages={[ Save50CourseMessage ]}
       />
     </>
   );
