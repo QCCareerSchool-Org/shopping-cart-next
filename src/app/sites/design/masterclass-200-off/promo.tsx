@@ -18,9 +18,9 @@ export const DesignMasterclass200OffPromo: FC = () => {
     togglePopup();
   };
 
-  const [ savings, deposit, fullDiscount ] = priceState?.currency.code === 'GBP'
-    ? [ '£200', '£40', '£300' ]
-    : [ '$200', '$75', '$350' ];
+  const [ savings, deposit, combinedDiscount ] = priceState?.currency.code === 'GBP'
+    ? [ '£200', '£40', '£350' ]
+    : [ '$200', '$75', '$500' ];
 
   return (
     <>
@@ -35,7 +35,7 @@ export const DesignMasterclass200OffPromo: FC = () => {
         </Modal.Header>
         <Modal.Body>
           <p>As a special gift for attending the masterclass, when you enroll in Interior Decorating, we'll give you a second certification course absolutely FREE!</p>
-          <p>We're also giving you {savings} off your tuition! Get started for only {deposit} or save up to {fullDiscount} when you pay in full.</p>
+          <p>We're also giving you {savings} off your tuition! Get started for only {deposit} or save up to {combinedDiscount} when you pay in full.</p>
           <p className="mb-0"><em>This offer is only available for a limited time.</em></p>
         </Modal.Body>
       </Modal>
