@@ -1,5 +1,7 @@
 import type { Currency } from './currency';
+import { isCurrency } from './currency';
 import type { NoShipping } from './noShipping';
+import { isNoShipping } from './noShipping';
 
 type Plan = {
   /** the discount based on the payment plan */
@@ -59,19 +61,57 @@ export type CoursePrice = {
   discountMessage: string | null;
 } & PriceDetails;
 
-// export interface PriceRow {
-//   noShipping: number;
-//   currencyCode: string;
-//   cost: number;
-//   multiCourseDiscountRate: number;
-//   deposit: number;
-//   discount: number;
-//   installments: number;
-//   courseCode: string;
-//   courseName: string;
-//   shipping: number;
-// }
-
 export const isPrice = (obj: unknown): obj is Price => {
-  return true;
+  return obj !== null && typeof obj === 'object' &&
+    'countryCode' in obj && typeof obj.countryCode === 'string' &&
+    (('provinceCode' in obj && (typeof obj.provinceCode === 'string' || typeof obj.provinceCode === 'undefined')) || !('provinceCode' in obj)) &&
+    'currency' in obj && isCurrency(obj.currency) &&
+    'disclaimers' in obj && Array.isArray(obj.disclaimers) && obj.disclaimers.every(d => typeof d === 'string') &&
+    'notes' in obj && Array.isArray(obj.notes) && obj.notes.every(d => typeof d === 'string') &&
+    'promoWarnings' in obj && Array.isArray(obj.promoWarnings) && obj.promoWarnings.every(d => typeof d === 'string') &&
+    'noShipping' in obj && isNoShipping(obj.noShipping) &&
+    (('noShippingMessage' in obj && (typeof obj.noShippingMessage === 'string' || typeof obj.noShippingMessage === 'undefined')) || !('noShippingMessage' in obj)) &&
+    (('promoCodeRecognized' in obj && (typeof obj.promoCodeRecognized === 'boolean' || typeof obj.promoCodeRecognized === 'undefined')) || !('promoCodeRecognized' in obj)) &&
+    (('promoCode' in obj && (typeof obj.promoCode === 'string' || typeof obj.promoCode === 'undefined')) || !('promoCode' in obj)) &&
+    'courses' in obj && Array.isArray(obj.courses) && obj.courses.every(isCoursePrice) &&
+    isPriceDetails(obj);
+};
+
+const isCoursePrice = (obj: unknown): obj is CoursePrice => {
+  return obj !== null && typeof obj === 'object' &&
+    'code' in obj && typeof obj.code === 'string' &&
+    'name' in obj && typeof obj.name === 'string' &&
+    'primary' in obj && typeof obj.primary === 'boolean' &&
+    'free' in obj && typeof obj.free === 'boolean' &&
+    'discountMessage' in obj && (typeof obj.discountMessage === 'string' || obj.discountMessage === null) &&
+    isPriceDetails(obj);
+};
+
+const isPriceDetails = (obj: unknown): obj is PriceDetails => {
+  return obj !== null && typeof obj === 'object' &&
+    'cost' in obj && typeof obj.cost === 'number' &&
+    'multiCourseDiscount' in obj && typeof obj.multiCourseDiscount === 'number' &&
+    'promoDiscount' in obj && typeof obj.promoDiscount === 'number' &&
+    'shippingDiscount' in obj && typeof obj.shippingDiscount === 'number' &&
+    'discountedCost' in obj && typeof obj.discountedCost === 'number' &&
+    'plans' in obj && isPlans(obj.plans) &&
+    'shipping' in obj && typeof obj.shipping === 'number';
+};
+
+const isPlans = (obj: unknown): obj is { full: Plan; part: Plan } => {
+  return obj !== null && typeof obj === 'object' &&
+    'full' in obj && isPlan(obj.full) &&
+    'part' in obj && isPlan(obj.part);
+};
+
+const isPlan = (obj: unknown): obj is Plan => {
+  return obj !== null && typeof obj === 'object' &&
+    'discount' in obj && typeof obj.discount === 'number' &&
+    'deposit' in obj && typeof obj.deposit === 'number' &&
+    'installmentSize' in obj && typeof obj.installmentSize === 'number' &&
+    'installments' in obj && typeof obj.installments === 'number' &&
+    'remainder' in obj && typeof obj.remainder === 'number' &&
+    'total' in obj && typeof obj.total === 'number' &&
+    'originalDeposit' in obj && typeof obj.originalDeposit === 'number' &&
+    'originalInstallments' in obj && typeof obj.originalInstallments === 'number';
 };
