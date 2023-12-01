@@ -2,7 +2,6 @@ import type { StaticImageData } from 'next/image';
 import type { CSSProperties, FC } from 'react';
 
 import { DetailsPopup } from './detailsPopup';
-import DesignBooks from './kits/design-books.png';
 import MZ from './kits/mz/deluxe-kit-white-384.jpg';
 import { GroomingKit } from '@/components/groomingKit';
 import { LuminousKit } from '@/components/luminousKit';
@@ -133,17 +132,17 @@ const getCourseKits = (date: number): CourseKit[] => [
     partBullets: [ <strong key={0}>Bonus Luminous Kit</strong>, ...makeupBullets ],
     details: <MZDetails />,
   },
-  {
-    courseCode: [ 'I2', 'ST', 'LD', 'CC' ], // exclude FD and ED, because we don't want it showing on the event carts
-    images: {
-      full: { src: DesignBooks },
-      part: { src: DesignBooks },
-      height: { xs: undefined, sm: undefined, md: 140, lg: 122, xl: 148, xxl: 173 },
-      buttonOffset: { xs: undefined, sm: undefined, md: 51, lg: 45, xl: 55, xxl: 64 },
-    },
-    fullBullets: [ <strong key={0}>Printed textbooks included</strong>, ...designBullets ],
-    partBullets: [ <strong key={0}>Printed textbooks included</strong>, ...designBullets ],
-  },
+  // {
+  //   courseCode: [ 'I2', 'ST', 'LD', 'CC' ], // exclude FD and ED, because we don't want it showing on the event carts
+  //   images: {
+  //     full: { src: DesignBooks },
+  //     part: { src: DesignBooks },
+  //     height: { xs: undefined, sm: undefined, md: 140, lg: 122, xl: 148, xxl: 173 },
+  //     buttonOffset: { xs: undefined, sm: undefined, md: 51, lg: 45, xl: 55, xxl: 64 },
+  //   },
+  //   fullBullets: [ <strong key={0}>Printed textbooks included</strong>, ...designBullets ],
+  //   partBullets: [ <strong key={0}>Printed textbooks included</strong>, ...designBullets ],
+  // },
   {
     courseCode: 'DG',
     fullBullets: [ <strong key={0}>Dog Grooming Starter Kit</strong>, ...petBullets ],
