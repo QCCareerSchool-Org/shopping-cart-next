@@ -1,13 +1,13 @@
 'use client';
 
 import type { FC } from 'react';
-import { Modal } from 'react-bootstrap';
 
 import { Hero } from './hero';
+import { DesignFallbackModal } from './modal';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#615849';
+const backgroundColor = '#4f4c43';
 
 export const DesignFallbackPromo: FC = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
@@ -23,14 +23,7 @@ export const DesignFallbackPromo: FC = () => {
           <Hero />
         </div>
       </Section>
-      <Modal show={showPopup} onHide={handleClick}>
-        <Modal.Header closeButton>
-          <Modal.Title>Printed Textbooks Included</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p className="mb-0"><strong>The following courses also include printed books:</strong> Interior Decorating, Home Staging, Landscape Design, Color Consultant, Floral Design, and Event Decor. Textbooks will automatically be sent to you when you enroll.</p>
-        </Modal.Body>
-      </Modal>
+      <DesignFallbackModal show={showPopup} onHide={handleClick} />
     </>
   );
 };

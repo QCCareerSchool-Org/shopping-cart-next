@@ -8,7 +8,7 @@ import { Section } from '@/components/section';
 import { usePriceState } from '@/hooks/usePriceState';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#090a0c';
+const backgroundColor = '#73725e';
 
 export const DesignBogo1Promo: FC = () => {
   const priceState = usePriceState();
@@ -39,7 +39,7 @@ export const DesignBogo1Promo: FC = () => {
           <p className="mb-0">Get started for {deposit}, or save up to {fullDiscount} when you pay your tuition in full.</p>
         </Modal.Body>
         <Modal.Footer>
-          <small><strong>The following courses also include printed books:</strong> Interior Decorating, Home Staging, Landscape Design, Color Consultant, Floral Design, and Event Decor. Textbooks will automatically be sent to you when you enroll.</small>
+          <small>Enroll in any design course to receive free design software as well as our brand new Career Essentials Collection filled with business &amp; social media templates!</small>
         </Modal.Footer>
       </Modal>
     </>
