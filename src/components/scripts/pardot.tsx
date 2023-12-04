@@ -4,16 +4,17 @@ import type { FC } from 'react';
 type Props = {
   accountId: string;
   campaignId: string;
+  domain: string;
 };
 
-export const Pardot: FC<Props> = ({ accountId, campaignId }) => (
-  <Script id="pardot" dangerouslySetInnerHTML={{ __html: getScript(accountId, campaignId) }} />
+export const Pardot: FC<Props> = ({ accountId, campaignId, domain }) => (
+  <Script id="pardot" dangerouslySetInnerHTML={{ __html: getScript(accountId, campaignId, domain) }} />
 );
 
-const getScript = (accountId: string, campaignId: string): string => `
+const getScript = (accountId: string, campaignId: string, domain: string): string => `
 piAId = \`${accountId.replace(/`/ug, '\\`')}\`;
 picampaignId = \`${campaignId.replace(/`/ug, '\\`')}\`;
-piHostname = 'go.qcmakeupacademy.com';
+piHostname = \`${domain.replace(/`/ug, '\\`')}\`;
 
 (function() {
   function async_load(){
