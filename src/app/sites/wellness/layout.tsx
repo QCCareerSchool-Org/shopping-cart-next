@@ -36,7 +36,7 @@ const WellnessLayout: LayoutComponent = ({ children }) => {
       <Footer />
       <Facebook id="1725004270923176" />
       {/* <Tiktok id="" /> */}
-      <Pardot accountId="948642" campaignId="" domain="go.qcwellnessstudies.com" />
+      <Pardot accountId="948642" campaignId="34909" domain="go.qcwellnessstudies.com" />
       <Bing id="28484716" />
       <LiveChat license={1056788} group={19} />
       {/* <Script id="perfect-audience" src="/wellness/perfectAudience.js" /> */}

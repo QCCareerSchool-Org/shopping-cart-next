@@ -36,7 +36,7 @@ const PetLayout: LayoutComponent = ({ children }) => {
       <Footer />
       <Facebook id="3226622604235515" />
       {/* <Tiktok id="" /> */}
-      <Pardot accountId="948642" campaignId="" domain="go.qcpetstudies.com" />
+      <Pardot accountId="948642" campaignId="34913" domain="go.qcpetstudies.com" />
       <Bing id="5751420" />
       <LiveChat license={1056788} group={18} />
       {/* <Script id="perfect-audience" src="/pet/perfectAudience.js" /> */}
