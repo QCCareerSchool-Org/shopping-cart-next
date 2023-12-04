@@ -26,6 +26,7 @@ export const PetFallback: FC<Props> = ({ date }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
+        promoCodeDefault="100OFF"
         dynamicCourseMessages={[ Save50CourseMessage ]}
       />
     </>
