@@ -36,6 +36,9 @@ export const MakeupProPlusLuminousPromo: FC = () => {
           <p>Graduate as a Master International Makeup Professional™ (MIMP™) in just a few short months and build your beauty empire!</p>
           <LuminousKit />
         </Modal.Body>
+        <Modal.Footer>
+          <p className="small">Your items will be automatically sent to you after you have submitted Unit A of the course in the Online Student Center. Items in the kit are subject to change.</p>
+        </Modal.Footer>
       </Modal>
     </>
   );
