@@ -13,6 +13,10 @@ import { isProvinces } from '@/domain/province';
 import { isSchool, type School } from '@/domain/school';
 import { isTitle, type Title } from '@/domain/title';
 
+const isAborted = (err: unknown, controller?: AbortController): boolean => {
+  return (err instanceof Error && (err.message.startsWith('Fetch is aborted'))) || !!controller?.signal.aborted;
+};
+
 const pricesUrl = process.env.NEXT_PUBLIC_PRICES_ENDPOINT;
 
 export const fetchGeoLocation = async (headers: Record<string, string>, controller?: AbortController): Promise<GeoLocation | undefined> => {
@@ -29,7 +33,7 @@ export const fetchGeoLocation = async (headers: Record<string, string>, controll
       }
     }
   } catch (err) {
-    if (!controller?.signal.aborted && !(err instanceof Error && err.message.startsWith('Fetch is aborted'))) {
+    if (!isAborted(err, controller)) {
       console.error(err);
     }
   }
@@ -48,7 +52,7 @@ export const fetchCountries = async (controller?: AbortController): Promise<Coun
       }
     }
   } catch (err) {
-    if (!controller?.signal.aborted && !(err instanceof Error && err.message.startsWith('Fetch is aborted'))) {
+    if (!isAborted(err, controller)) {
       console.error(err);
     }
   }
@@ -67,7 +71,7 @@ export const fetchProvinces = async (countryCode: string, controller?: AbortCont
       }
     }
   } catch (err) {
-    if (!controller?.signal.aborted && !(err instanceof Error && err.message.startsWith('Fetch is aborted'))) {
+    if (!isAborted(err, controller)) {
       console.error(err);
     }
   }
@@ -88,7 +92,7 @@ export const fetchPrice = async (priceQuery: PriceQuery, controller?: AbortContr
       return responseBody;
     }
   } catch (err) {
-    if (!controller?.signal.aborted && !(err instanceof Error && err.message.startsWith('Fetch is aborted'))) {
+    if (!isAborted(err, controller)) {
       console.error(err);
     }
   }
