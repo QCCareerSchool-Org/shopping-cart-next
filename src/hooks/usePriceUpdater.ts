@@ -42,23 +42,22 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
       priceQuery.options.dateOverride = new Date(date);
     }
     fetchPrice(priceQuery, controller).then(price => {
-      if (!price) {
-        throw Error('Unable to fetch price');
+      if (price) {
+        overridesDispatch({
+          type: 'INITIALIZE_OVERRIDES',
+          payload: {
+            installments: Math.max(1, price.plans.part.originalInstallments),
+            courses: price.courses.map(c => ({
+              code: c.code,
+              name: c.name,
+              min: c.plans.part.originalDeposit,
+              max: c.plans.part.total,
+              default: c.plans.part.originalDeposit,
+              value: c.plans.part.deposit,
+            })),
+          },
+        });
       }
-      overridesDispatch({
-        type: 'INITIALIZE_OVERRIDES',
-        payload: {
-          installments: Math.max(1, price.plans.part.originalInstallments),
-          courses: price.courses.map(c => ({
-            code: c.code,
-            name: c.name,
-            min: c.plans.part.originalDeposit,
-            max: c.plans.part.total,
-            default: c.plans.part.originalDeposit,
-            value: c.plans.part.deposit,
-          })),
-        },
-      });
     }).catch(err => {
       console.error(err);
     });
@@ -93,10 +92,9 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
       };
     }
     fetchPrice(priceQuery, controller).then(price => {
-      if (!price) {
-        throw Error('Unable to fetch price');
+      if (price) {
+        priceDispatch({ type: 'SET_PRICE', payload: price });
       }
-      priceDispatch({ type: 'SET_PRICE', payload: price });
     }).catch(err => {
       console.error(err);
     });

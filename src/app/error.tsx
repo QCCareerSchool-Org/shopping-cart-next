@@ -3,6 +3,8 @@
 import type { FC } from 'react';
 import { useEffect } from 'react';
 
+import TrackJs from '@/lib/trackJsIsomorphic';
+
 type Props = {
   error: Error & { digest?: string };
   reset: () => void;
@@ -11,6 +13,7 @@ type Props = {
 const ErrorBoundary: FC<Props> = ({ error, reset }) => {
   useEffect(() => {
     // Log the error to an error reporting service
+    TrackJs.track(error);
     console.error(error);
   }, [ error ]);
 
