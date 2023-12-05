@@ -40,6 +40,7 @@ type Data = {
   billingAddress: BillingAddress;
   paymentDay: number | null;
   paymentPlan: PaymentPlan | null;
+  promoCode: string | null;
 };
 
 export const useInitialData = (school: School, student: boolean, coursesOverride?: string[]): void => {
@@ -85,7 +86,7 @@ export const useInitialData = (school: School, student: boolean, coursesOverride
     let currentBillingProvinceCode = billingAddressState.provinceCode;
     let currentBillingProvinces = billingAddressState.provinces;
 
-    const updateData = async ({ courses, studentAddress, billingAddress, paymentDay, paymentPlan }: Data): Promise<void> => {
+    const updateData = async ({ courses, studentAddress, billingAddress, paymentDay, paymentPlan, promoCode }: Data): Promise<void> => {
       // student address
       if (studentAddress.countryCode) {
         if (studentAddress.countryCode !== currentCountryCode && countries.some(c => c.code === studentAddress.countryCode)) { // we have a new country code
@@ -230,6 +231,10 @@ export const useInitialData = (school: School, student: boolean, coursesOverride
       if (paymentDay) {
         paymentDispatch({ type: 'SET_PAYMENT_DATE', payload: paymentDay });
       }
+
+      if (promoCode) {
+        metaDispatch({ type: 'SET_PROMO_CODE', payload: promoCode });
+      }
     };
 
     const getQuerystringData = (): Data => {
@@ -265,19 +270,22 @@ export const useInitialData = (school: School, student: boolean, coursesOverride
       const paymentDayString = searchParams.get('paymentDay');
       const paymentDay = paymentDayString ? parseInt(paymentDayString, 10) : NaN;
 
+      const promoCode = searchParams.get('promoCode');
+
       return {
         courses,
         studentAddress: { title, firstName, lastName, emailAddress, telephoneNumber, address1, address2, city, provinceCode, postalCode, countryCode },
         billingAddress: { sameAsShipping: billingSameAsShipping, title: billingTitle, firstName: billingFirstName, lastName: billingLastName, emailAddress: billingEmailAddress, telephoneNumber: billingTelephoneNumber, address1: billingAddress1, address2: billingAddress2, city: billingCity, provinceCode: billingProvinceCode, postalCode: billingPostalCode, countryCode: billingCountryCode },
         paymentPlan: isPaymentPlan(paymentPlan) ? paymentPlan : null,
         paymentDay: isNaN(paymentDay) ? null : paymentDay,
+        promoCode,
       };
     };
 
     void (async (): Promise<void> => {
       const storedData = loadForm();
       if (storedData) {
-        await updateData(storedData);
+        await updateData({ ...storedData, promoCode: null });
       }
       const querystringData = getQuerystringData();
       await updateData(querystringData);

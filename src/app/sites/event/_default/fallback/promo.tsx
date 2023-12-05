@@ -30,9 +30,7 @@ export const EventFallbackPromo: FC = () => {
         </div>
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
-        <Modal.Header closeButton>
-          <Modal.Title>Special Offer</Modal.Title>
-        </Modal.Header>
+        <Modal.Header closeButton>Special Offer</Modal.Header>
         <Modal.Body>
           <p>Ready to start your event planning career?</p>
           <p>Enroll in any foundation course and get a specialty course for free.</p>

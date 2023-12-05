@@ -1,16 +1,22 @@
 'use client';
 
 import type { FC } from 'react';
-import { Modal } from 'react-bootstrap';
 
 import { Hero } from './hero';
-import { LuminousKit } from '@/components/luminousKit';
+import { Design20231206Modal } from './modal';
+import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#000';
+const backgroundColor = '#73725e';
+const lastChanceDate = Date.UTC(2023, 11, 11, 5); // 2023-12-11T00:00 (05:00 UTC)
+const endDate = Date.UTC(2023, 11, 16, 5); // 2023-12-16T00:00 (05:00 UTC)
 
-export const Design20231120Promo: FC = () => {
+type Props = {
+  date: number;
+};
+
+export const Design20231206Promo: FC<Props> = ({ date }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
 
   const handleClick = (): void => {
@@ -21,20 +27,17 @@ export const Design20231120Promo: FC = () => {
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero />
+          <Hero lastChance={date >= lastChanceDate} />
         </div>
       </Section>
-      <Modal show={showPopup} onHide={handleClick}>
-        <Modal.Header closeButton>
-          <Modal.Title>Free Pro Makeup Workshop</Modal.Title>
-        </Modal.Header>
-
-        <Modal.Body>
-          <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
-          <p>Graduate as a Master International Makeup Professional™ (MIMP™) in just a few short months and build your beauty empire!</p>
-          <LuminousKit />
-        </Modal.Body>
-      </Modal>
+      <Design20231206Modal show={showPopup} onHide={handleClick} />
+      <CountDownTimerWrapper
+        date={date}
+        showDate={lastChanceDate}
+        endDate={endDate}
+        message={<span style={{ textTransform: 'uppercase' }}><strong>LAST CHANCE</strong> This holiday offer ends soon! 🔔⛄</span>}
+        className="bg-black text-light"
+      />
     </>
   );
 };
