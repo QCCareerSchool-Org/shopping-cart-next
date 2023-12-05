@@ -14,7 +14,7 @@ import { isSchool, type School } from '@/domain/school';
 import { isTitle, type Title } from '@/domain/title';
 
 const isAborted = (err: unknown, controller?: AbortController): boolean => {
-  return (err instanceof Error && (err.message.startsWith('Fetch is aborted'))) || !!controller?.signal.aborted;
+  return !!controller?.signal.aborted || (err instanceof Error && (err.message.startsWith('Fetch is aborted') || (err.message.startsWith('The user aborted a request'))));
 };
 
 const pricesUrl = process.env.NEXT_PUBLIC_PRICES_ENDPOINT;
