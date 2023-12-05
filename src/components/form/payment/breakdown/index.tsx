@@ -8,7 +8,7 @@ import { useCoursesState } from '@/hooks/useCoursesState';
 import { usePaymentState } from '@/hooks/usePaymentState';
 import { usePriceState } from '@/hooks/usePriceState';
 
-const freeShippingCourses = [ 'DG', 'I2', 'ST', 'LD', 'CC', 'FD', 'ED', 'MZ', 'SF', 'HS' ];
+const freeShippingCourses = [ 'DG', 'MZ', 'SF', 'HS' ];
 
 export const Breakdown: FC = () => {
   const priceState = usePriceState();

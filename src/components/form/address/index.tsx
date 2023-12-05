@@ -14,17 +14,12 @@ import { Title } from './fields/title';
 import { FormGroup } from '@/components/formGroup';
 import { NoShippingAlert } from '@/components/noShippingAlert';
 import { Section } from '@/components/section';
-import type { School } from '@/domain/school';
 import { useAddressState } from '@/hooks/useAddressState';
 import { usePriceState } from '@/hooks/usePriceState';
 import { needsProvince } from '@/lib/needProvince';
 import { needsPostal } from '@/lib/needsPostal';
 
-type Props = {
-  school: School;
-};
-
-export const Address: FC<Props> = ({ school }) => {
+export const Address: FC = () => {
   const { countryCode } = useAddressState();
   const price = usePriceState();
 
@@ -35,15 +30,7 @@ export const Address: FC<Props> = ({ school }) => {
     <Section className="addressSection">
       <div className="row justify-content-center">
         <div className="col-12 col-lg-8 text-center">
-          {school === 'QC Design School'
-            ? (
-              <>
-                <h2 className="h1">Student Address</h2>
-                <p className="lead text-center mb-4">Course materials will be shipped to this address.</p>
-              </>
-            )
-            : <h2 className="h1">Student Address</h2>
-          }
+          <h2 className="h1">Student Address</h2>
         </div>
       </div>
       <div className="row justify-content-center">

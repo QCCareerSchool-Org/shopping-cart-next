@@ -1,10 +1,6 @@
-import { lazy } from 'react';
-
+import { DesignFallback } from './_default/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
-
-// const Design20231120 = lazy(async () => import('./_default/2023/11/20').then(m => ({ default: m.Design20231120 })));
-const DesignFallback = lazy(async () => import('./_default/fallback').then(m => ({ default: m.DesignFallback })));
 
 const DesignPage: PageComponent = ({ searchParams }) => {
   const date = getDate(searchParams.date);
