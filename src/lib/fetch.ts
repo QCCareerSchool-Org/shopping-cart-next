@@ -13,8 +13,14 @@ import { isProvinces } from '@/domain/province';
 import { isSchool, type School } from '@/domain/school';
 import { isTitle, type Title } from '@/domain/title';
 
+type ErrorLike = {
+  message: string;
+};
+
+const isErrorLike = (err: unknown): err is ErrorLike => typeof err === 'object' && err !== null && 'message' in err && typeof err.message === 'string';
+
 const isAborted = (err: unknown, controller?: AbortController): boolean => {
-  return !!controller?.signal.aborted || (err instanceof Error && (err.message.startsWith('Fetch is aborted') || (err.message.startsWith('The user aborted a request'))));
+  return !!controller?.signal.aborted || (isErrorLike(err) && (err.message.startsWith('Fetch is aborted') || (err.message.startsWith('The user aborted a request'))));
 };
 
 const pricesUrl = process.env.NEXT_PUBLIC_PRICES_ENDPOINT;
