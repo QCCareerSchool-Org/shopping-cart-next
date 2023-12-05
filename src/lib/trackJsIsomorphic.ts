@@ -11,7 +11,7 @@ if (!TrackJS.isInstalled()) {
       if (payload.entry === 'ajax') {
         if (Array.isArray(payload.network)) {
           const latestRequest = payload.network[payload.network.length - 1];
-          return !(latestRequest && latestRequest.statusCode < 500);
+          return !(latestRequest && typeof latestRequest.statusCode === 'number' && latestRequest.statusCode < 500);
         }
         return true;
       // } else if (payload.message.startsWith('Failed to register a ServiceWorker')) {
