@@ -29,7 +29,9 @@ export const fetchGeoLocation = async (headers: Record<string, string>, controll
       }
     }
   } catch (err) {
-    console.error(err);
+    if (!controller?.signal.aborted && !(err instanceof Error && err.message.startsWith('Fetch is aborted'))) {
+      console.error(err);
+    }
   }
 };
 
@@ -46,7 +48,9 @@ export const fetchCountries = async (controller?: AbortController): Promise<Coun
       }
     }
   } catch (err) {
-    console.error(err);
+    if (!controller?.signal.aborted && !(err instanceof Error && err.message.startsWith('Fetch is aborted'))) {
+      console.error(err);
+    }
   }
 };
 
@@ -63,7 +67,9 @@ export const fetchProvinces = async (countryCode: string, controller?: AbortCont
       }
     }
   } catch (err) {
-    console.error(err);
+    if (!controller?.signal.aborted && !(err instanceof Error && err.message.startsWith('Fetch is aborted'))) {
+      console.error(err);
+    }
   }
 };
 
@@ -82,7 +88,7 @@ export const fetchPrice = async (priceQuery: PriceQuery, controller?: AbortContr
       return responseBody;
     }
   } catch (err) {
-    if (!controller?.signal.aborted) {
+    if (!controller?.signal.aborted && !(err instanceof Error && err.message.startsWith('Fetch is aborted'))) {
       console.error(err);
     }
   }
