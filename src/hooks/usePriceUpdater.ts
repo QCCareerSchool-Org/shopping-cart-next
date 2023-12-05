@@ -35,7 +35,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
         discountAll: metaState.student,
         studentDiscount: metaState.studentDiscount,
         school,
-        promoCode: promoCodeDefault ?? metaState.promoCode,
+        promoCode: metaState.promoCode || promoCodeDefault,
       },
     };
     if ((process.env.VERCEL_ENV === 'development' || process.env.VERCEL_ENV === 'preview') && priceQuery.options) {
@@ -74,7 +74,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
         discountAll: metaState.student,
         studentDiscount: metaState.studentDiscount,
         school,
-        promoCode: promoCodeDefault ?? metaState.promoCode,
+        promoCode: metaState.promoCode || promoCodeDefault,
       },
     };
     if (addressState.provinceCode !== null) {
