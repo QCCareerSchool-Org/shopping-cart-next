@@ -3,7 +3,7 @@ import { TrackJS } from 'trackjs';
 
 // const trackJs = typeof window !== 'undefined' ? trackJS.TrackJS : trackJSNode.TrackJS;
 
-if (process.env.NODE_ENV === 'production' && !TrackJS.isInstalled()) {
+if (process.env.VERCEL_ENV === 'production' && !TrackJS.isInstalled()) {
   TrackJS.install({
     token: '0377457a8a0c41c2a11da5e34f786bba',
     application: 'react-shopping-cart',

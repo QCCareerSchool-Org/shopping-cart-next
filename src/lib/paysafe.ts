@@ -101,7 +101,7 @@ export interface PaysafeInstance {
 }
 
 const getSetupOptions = (company: PaysafeCompany, cardNumberId: string, expiryDateId: string, cvvId: string): SetupOptions => ({
-  environment: process.env.NODE_ENV === 'production' ? 'LIVE' : 'TEST',
+  environment: process.env.VERCEL_ENV === 'production' ? 'LIVE' : 'TEST',
   fields: {
     cardNumber: { selector: `#${cardNumberId}`, placeholder: 'Card Number' },
     expiryDate: { selector: `#${expiryDateId}`, placeholder: 'Exp. Date' },
@@ -252,7 +252,7 @@ export const getToken = async (instance: PaysafeInstance, company: PaysafeCompan
 export async function threeDSecureStart(apiKey: string, accountId: number, paymentToken: string): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     const data: ThreeDSecureData = {
-      environment: process.env.NODE_ENV === 'production' ? 'LIVE' : 'TEST',
+      environment: process.env.VERCEL_ENV === 'production' ? 'LIVE' : 'TEST',
       accountId,
       card: {
         paymentToken,
@@ -267,7 +267,7 @@ export async function threeDSecureStart(apiKey: string, accountId: number, payme
   });
 }
 
-const accounts = process.env.NODE_ENV === 'production'
+const accounts = process.env.VERCEL_ENV === 'production'
   ? {
     CA: {
       CAD: 1002521124,
@@ -301,7 +301,7 @@ const accounts = process.env.NODE_ENV === 'production'
     },
   };
 
-const apiKeys = process.env.NODE_ENV === 'production'
+const apiKeys = process.env.VERCEL_ENV === 'production'
   ? {
     CA: 'T1QtMjM2NjU0OkItcDEtMC01OWY5ZTIzNS0wLTMwMmMwMjE0MzAzYTA1ZDYzNTYwMGMyMzBhNzdhMzk4MDU4NDkzY2I2NTFhOGI2NTAyMTQxOTBjMzM3NzhlZGFkMGVmNzQ4NDkzYjE5NDEyMzk2NGNkYjU3NGFh',
     US: 'T1QtMjM2NjU0OkItcDEtMC01OWY5ZTIzNS0wLTMwMmMwMjE0MzAzYTA1ZDYzNTYwMGMyMzBhNzdhMzk4MDU4NDkzY2I2NTFhOGI2NTAyMTQxOTBjMzM3NzhlZGFkMGVmNzQ4NDkzYjE5NDEyMzk2NGNkYjU3NGFh',
