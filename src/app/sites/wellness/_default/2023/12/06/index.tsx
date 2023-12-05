@@ -3,7 +3,6 @@ import type { FC } from 'react';
 import { agreementLinks } from '../../../../agreementLinks';
 import { courseGroups } from '../../../../courseGroups';
 import { Guarantee } from '../../../../guarantee';
-import { PetCoursesSubtitleBogoFirstAid } from '../../../../petCoursesSubtitleBogoFirstAid';
 import { Wellness20231206Promo } from './promo';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
