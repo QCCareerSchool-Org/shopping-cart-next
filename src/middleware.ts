@@ -21,6 +21,11 @@ const middleware = (req: NextRequest): NextResponse => {
   const hostname = req.headers.get('host');
   const site = findSite(hostname);
 
+  if (url.pathname === '/course.php') {
+    url.pathname = `/`;
+    return NextResponse.redirect(url);
+  }
+
   if (url.pathname.startsWith(`/sites`)) {
     // Prevent security issues – users should not be able to canonically access
     // the app/sites folder and its respective contents.

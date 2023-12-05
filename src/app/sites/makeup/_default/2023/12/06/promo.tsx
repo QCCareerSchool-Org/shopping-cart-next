@@ -9,15 +9,15 @@ import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
+const backgroundColor = '#fff';
+const lastChanceDate = Date.UTC(2023, 11, 11, 5); // 2023-12-11T00:00 (05:00 UTC)
+const endDate = Date.UTC(2023, 11, 16, 5); // 2023-12-16T00:00 (05:00 UTC)
+
 type Props = {
   date: number;
 };
 
-const lastChanceDate = Date.UTC(2023, 9, 30);
-const endDate = Date.UTC(2023, 10, 5);
-const backgroundColor = 'black';
-
-export const Makeup20231111Promo: FC<Props> = ({ date }) => {
+export const Makeup20231206Promo: FC<Props> = ({ date }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
 
   const handleClick = (): void => {
@@ -31,24 +31,20 @@ export const Makeup20231111Promo: FC<Props> = ({ date }) => {
           <Hero lastChance={date >= lastChanceDate} />
         </div>
       </Section>
+      <Modal show={showPopup} onHide={handleClick}>
+        <Modal.Header closeButton>Start Your Makeup Career This Holiday Season</Modal.Header>
+        <Modal.Body>
+          <p>For a limited time, enroll in <strong>Master Makeup Artistry</strong> and get QC's <strong>Skincare course</strong> FREE. You'll also get the ENTIRE Luminous Makeup Collection!</p>
+          <LuminousKit />
+        </Modal.Body>
+      </Modal>
       <CountDownTimerWrapper
         date={date}
         showDate={lastChanceDate}
         endDate={endDate}
-        buttonInverse={true}
-        className="bg-black text-white"
-        message={<><span style={{ textTransform: 'uppercase' }}>Last chance!</span> This exclusive offer ends soon!</>}
+        message={<span style={{ textTransform: 'uppercase' }}><strong>LAST CHANCE</strong> This holiday offer ends soon! 🔔⛄</span>}
+        className="bg-black text-light"
       />
-      <Modal show={showPopup} onHide={handleClick}>
-        <Modal.Header closeButton>
-          <Modal.Title>Free Pro Makeup Workshop</Modal.Title>
-        </Modal.Header>
-
-        <Modal.Body>
-          <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
-          <LuminousKit />
-        </Modal.Body>
-      </Modal>
     </>
   );
 };

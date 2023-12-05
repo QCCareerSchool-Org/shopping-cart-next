@@ -38,7 +38,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
         promoCode: promoCodeDefault ?? metaState.promoCode,
       },
     };
-    if (process.env.NODE_ENV === 'development' && priceQuery.options) {
+    if ((process.env.VERCEL_ENV === 'development' || process.env.VERCEL_ENV === 'preview') && priceQuery.options) {
       priceQuery.options.dateOverride = new Date(date);
     }
     fetchPrice(priceQuery, controller).then(price => {

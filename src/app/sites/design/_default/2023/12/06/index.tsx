@@ -2,7 +2,7 @@ import type { FC } from 'react';
 
 import { agreementLinks } from '../../../../agreementLinks';
 import { courseGroups } from '../../../../courseGroups';
-import { Design20231120Promo } from './promo';
+import { Design20231206Promo } from './promo';
 import { Guarantee } from '@/app/sites/design/guarantee';
 import { BogoDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogo';
 import { Form } from '@/components/form';
@@ -11,10 +11,10 @@ type Props = {
   date: number;
 };
 
-export const Design20231120: FC<Props> = ({ date }) => {
+export const Design20231206: FC<Props> = ({ date }) => {
   return (
     <>
-      <Design20231120Promo />
+      <Design20231206Promo date={date} />
       <Form
         date={date}
         courseGroups={courseGroups}
@@ -24,6 +24,7 @@ export const Design20231120: FC<Props> = ({ date }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
+        promoCodeDefault="BOGO"
         dynamicCourseMessages={[ BogoDynamicCourseMessage ]}
       />
     </>

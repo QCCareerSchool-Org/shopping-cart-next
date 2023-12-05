@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { Makeup20231111Promo } from './promo';
+import { Makeup20231206Promo } from './promo';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { courseGroups } from '@/app/sites/makeup/courseGroups';
 import { Guarantee } from '@/app/sites/makeup/guarantee';
@@ -12,9 +12,9 @@ type Props = {
   date: number;
 };
 
-export const Makeup20231111: FC<Props> = ({ date }) => (
+export const Makeup20231206: FC<Props> = ({ date }) => (
   <>
-    <Makeup20231111Promo date={date} />
+    <Makeup20231206Promo date={date} />
     <Form
       date={date}
       courseGroups={courseGroups}
