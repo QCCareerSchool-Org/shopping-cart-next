@@ -1,9 +1,8 @@
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
 
+import { WritingFallback } from './_default/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
-
-const WritingFallback = lazy(async () => import('./_default/fallback').then(m => ({ default: m.WritingFallback })));
 
 const DesignPage: PageComponent = ({ searchParams }) => {
   const date = getDate(searchParams.date);

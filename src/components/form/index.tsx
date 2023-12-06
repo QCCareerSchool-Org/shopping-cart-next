@@ -3,11 +3,12 @@
 import type { FC } from 'react';
 import { lazy, Suspense, useEffect } from 'react';
 
+import { Address } from './address';
 import { ConfirmPopup } from './confirmPopup';
 import { CourseSelection } from './courseSelection';
 import { ErrorModal } from './errorModal';
-import { Internal } from './internal';
-import { PaysafeModal } from './paysafeModal';
+import { Payment } from './payment';
+import { Summary } from './summary';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
 import type { School } from '@/domain/school';
@@ -27,11 +28,10 @@ import type { MetaState } from '@/state/meta';
 import type { PaymentState } from '@/state/payment';
 import type { PriceState } from '@/state/price';
 
-const Address = lazy(async () => import('./address').then(m => ({ default: m.Address })));
-const BillingAddress = lazy(async () => import('./billingAddress').then(m => ({ default: m.BillingAddress })));
-const Payment = lazy(async () => import('./payment').then(m => ({ default: m.Payment })));
+const Internal = lazy(async () => import('./internal').then(m => ({ default: m.Internal })));
 const Overrides = lazy(async () => import('./overrides').then(m => ({ default: m.Overrides })));
-const Summary = lazy(async () => import('./summary').then(m => ({ default: m.Summary })));
+const BillingAddress = lazy(async () => import('./billingAddress').then(m => ({ default: m.BillingAddress })));
+const PaysafeModal = lazy(async () => import('./paysafeModal').then(m => ({ default: m.PaysafeModal })));
 
 declare const paysafe: Paysafe | undefined;
 
@@ -144,7 +144,7 @@ export const Form: FC<Props> = props => {
 
   return (
     <>
-      {!!props.internal && <Internal />}
+      <Suspense>{!!props.internal && <Internal />}</Suspense>
       <CourseSelection
         internal={!!props.internal}
         courseGroups={props.courseGroups}
@@ -155,13 +155,13 @@ export const Form: FC<Props> = props => {
         coursesSubtitle={props.coursesSubtitle}
         coursesOverride={!!props.coursesOverride}
       />
-      <Suspense><Address /></Suspense>
+      <Address />
       <Suspense>{showBillingAddress(props.school) && <BillingAddress />}</Suspense>
-      <Suspense><Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} /></Suspense>
+      <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} />
       <Suspense>{!!props.internal && <Overrides />}</Suspense>
-      <Suspense><Summary onSubmit={handleSubmit} agreementLinks={props.agreementLinks} showPromoCodeInput={!!props.showPromoCodeInput} guarantee={props.guarantee} /></Suspense>
+      <Summary onSubmit={handleSubmit} agreementLinks={props.agreementLinks} showPromoCodeInput={!!props.showPromoCodeInput} guarantee={props.guarantee} />
       {props.confirmation && <ConfirmPopup show={showConfirmationPopup} onCancel={handleConfirmationCancel} onProceed={handleConfirmationProceed} body={props.confirmation.body} heading={props.confirmation.heading} />}
-      {paysafeCompany && <PaysafeModal company={paysafeCompany} show={showPaysafeForm} onHide={handlePaymentFormHide} onCharge={handleCharge} />}
+      <Suspense>{paysafeCompany && <PaysafeModal company={paysafeCompany} show={showPaysafeForm} onHide={handlePaymentFormHide} onCharge={handleCharge} />}</Suspense>
       <ErrorModal />
     </>
   );

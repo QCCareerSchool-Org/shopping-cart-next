@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+
 import { Design20231206 } from './_default/2023/12/06';
 import { Design20231226 } from './_default/2023/12/26';
 import { DesignFallback } from './_default/fallback';
