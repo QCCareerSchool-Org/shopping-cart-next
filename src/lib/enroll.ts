@@ -125,7 +125,7 @@ export const createEnrollmentPayload = (internal: boolean, school: School, cours
     discountAll: metaState.student,
     studentDiscount: metaState.studentDiscount,
     school,
-    promoCode: promoCodeDefault ?? metaState.promoCode,
+    promoCode: metaState.promoCode || promoCodeDefault,
   };
 
   if (internal) {
