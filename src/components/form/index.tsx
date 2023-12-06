@@ -4,7 +4,6 @@ import type { FC } from 'react';
 import { lazy, Suspense, useEffect } from 'react';
 
 import { Address } from './address';
-import { ConfirmPopup } from './confirmPopup';
 import { CourseSelection } from './courseSelection';
 import { ErrorModal } from './errorModal';
 import { Payment } from './payment';
@@ -31,6 +30,7 @@ import type { PriceState } from '@/state/price';
 const Internal = lazy(async () => import('./internal').then(m => ({ default: m.Internal })));
 const Overrides = lazy(async () => import('./overrides').then(m => ({ default: m.Overrides })));
 const BillingAddress = lazy(async () => import('./billingAddress').then(m => ({ default: m.BillingAddress })));
+const ConfirmPopup = lazy(async () => import('./confirmPopup').then(m => ({ default: m.ConfirmPopup })));
 const PaysafeModal = lazy(async () => import('./paysafeModal').then(m => ({ default: m.PaysafeModal })));
 
 declare const paysafe: Paysafe | undefined;
@@ -160,7 +160,7 @@ export const Form: FC<Props> = props => {
       <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} />
       <Suspense>{!!props.internal && <Overrides />}</Suspense>
       <Summary onSubmit={handleSubmit} agreementLinks={props.agreementLinks} showPromoCodeInput={!!props.showPromoCodeInput} guarantee={props.guarantee} />
-      {props.confirmation && <ConfirmPopup show={showConfirmationPopup} onCancel={handleConfirmationCancel} onProceed={handleConfirmationProceed} body={props.confirmation.body} heading={props.confirmation.heading} />}
+      <Suspense>{props.confirmation && <ConfirmPopup show={showConfirmationPopup} onCancel={handleConfirmationCancel} onProceed={handleConfirmationProceed} body={props.confirmation.body} heading={props.confirmation.heading} />}</Suspense>
       <Suspense>{paysafeCompany && <PaysafeModal company={paysafeCompany} show={showPaysafeForm} onHide={handlePaymentFormHide} onCharge={handleCharge} />}</Suspense>
       <ErrorModal />
     </>
