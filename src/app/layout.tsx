@@ -4,9 +4,9 @@ import { Open_Sans, Playfair_Display } from 'next/font/google';
 import { headers } from 'next/headers';
 import Script from 'next/script';
 
+import type { GeoLocation } from '@/domain/geoLocation';
 import { defaultGeoLocation } from '@/domain/geoLocation';
-import type { Province } from '@/domain/province';
-import { fetchCountries, fetchGeoLocation, fetchProvinces } from '@/lib/fetch';
+import { fetchCountries, fetchProvinces } from '@/lib/fetch';
 import { needsProvince } from '@/lib/needProvince';
 import { Provider } from '@/providers';
 import type { LayoutComponent } from '@/serverComponent';
@@ -30,45 +30,29 @@ const openSans = Open_Sans({
 });
 
 const RootLayout: LayoutComponent = async ({ children }) => {
-  const headersList = headers();
+  const headerList = headers();
 
-  // copy headers so that we can make a request as if we are the client
-  const clientHeaders: { 'x-forwarded-for'?: string } = {};
-  for (const [ key, value ] of headersList.entries()) {
-    if (key === 'x-vercel-forwarded-for') {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      clientHeaders['x-forwarded-for'] = value;
-    }
-  }
+  const countryCodeHeader = headerList.get('x-vercel-ip-country') ?? 'US';
+  const provinceCodeHeader = headerList.get('x-vercel-ip-country-region');
 
-  const [ detectedGeoLocation, countries ] = await Promise.all([
-    fetchGeoLocation(clientHeaders),
+  const geoLocation: GeoLocation = countryCodeHeader ? { countryCode: countryCodeHeader, provinceCode: provinceCodeHeader } : defaultGeoLocation;
+
+  const [ countries, provinces ] = await Promise.all([
     fetchCountries(),
+    needsProvince(geoLocation.countryCode) ? fetchProvinces(geoLocation.countryCode) : Promise.resolve([]),
   ]);
-
-  const geoLocation = detectedGeoLocation ?? defaultGeoLocation;
 
   if (!countries) {
     throw Error('Couldn\'t fetch countries');
   }
 
-  let provinces: Province[];
+  if (!provinces) {
+    throw Error('Couldn\'t fetch provinces');
+  }
 
-  if (needsProvince(geoLocation.countryCode)) {
-    const provincesResult = await fetchProvinces(geoLocation.countryCode);
-    if (!provincesResult || provincesResult.length === 0) {
-      throw Error('Couldn\'t fetch provinces');
-    }
-
-    provinces = provincesResult;
-
-    // replace invalid province code
-    if (!provinces.some(p => p.code === geoLocation.provinceCode)) {
-      geoLocation.provinceCode = provinces[0].code;
-    }
-  } else {
-    geoLocation.provinceCode = null;
-    provinces = [];
+  // replace invalid province code
+  if (!provinces.some(p => p.code === geoLocation.provinceCode)) {
+    geoLocation.provinceCode = provinces[0].code;
   }
 
   return (
