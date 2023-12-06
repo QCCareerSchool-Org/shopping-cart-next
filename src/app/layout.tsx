@@ -37,22 +37,28 @@ const RootLayout: LayoutComponent = async ({ children }) => {
 
   const geoLocation: GeoLocation = countryCodeHeader ? { countryCode: countryCodeHeader, provinceCode: provinceCodeHeader } : defaultGeoLocation;
 
+  const provinceRequired = needsProvince(geoLocation.countryCode);
+
   const [ countries, provinces ] = await Promise.all([
     fetchCountries(),
-    needsProvince(geoLocation.countryCode) ? fetchProvinces(geoLocation.countryCode) : Promise.resolve([]),
+    provinceRequired ? fetchProvinces(geoLocation.countryCode) : Promise.resolve([]),
   ]);
 
   if (!countries) {
     throw Error('Couldn\'t fetch countries');
   }
 
-  if (!provinces) {
+  if (!provinces || (provinceRequired && provinces.length === 0)) {
     throw Error('Couldn\'t fetch provinces');
   }
 
   // replace invalid province code
-  if (!provinces.some(p => p.code === geoLocation.provinceCode)) {
-    geoLocation.provinceCode = provinces[0].code;
+  if (provinceRequired) {
+    if (!provinces.some(p => p.code === geoLocation.provinceCode)) {
+      geoLocation.provinceCode = provinces[0].code;
+    }
+  } else {
+    geoLocation.provinceCode = null;
   }
 
   return (
