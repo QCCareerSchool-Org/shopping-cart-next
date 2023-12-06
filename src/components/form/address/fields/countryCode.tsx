@@ -1,12 +1,21 @@
 import type { ChangeEventHandler, FC } from 'react';
 import { useId } from 'react';
 
+import type { Country } from '@/domain/country';
 import { useAddressDispatch } from '@/hooks/useAddressDispatch';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useCountriesState } from '@/hooks/useCountriesState';
 import { useErrorsState } from '@/hooks/useErrorsState';
 import { fetchProvinces } from '@/lib/fetch';
 import { needsProvince } from '@/lib/needProvince';
+
+const popularCountries: Country[] = [
+  { code: 'AU', name: 'Australia' },
+  { code: 'CA', name: 'Canada' },
+  { code: 'NZ', name: 'New Zealand' },
+  { code: 'GB', name: 'United Kingdom' },
+  { code: 'US', name: 'United States' },
+];
 
 export const CountryCode: FC = () => {
   const id = useId();
@@ -16,7 +25,7 @@ export const CountryCode: FC = () => {
   const { errors } = useErrorsState();
 
   const handleChange: ChangeEventHandler<HTMLSelectElement> = e => {
-    const countryCode = e.target.value;
+    const countryCode = e.target.value.startsWith('-') ? e.target.value.slice(1) : e.target.value;
     if (needsProvince(countryCode)) {
       fetchProvinces(countryCode).then(provinces => {
         if (!provinces) {
@@ -37,12 +46,14 @@ export const CountryCode: FC = () => {
     className += ' is-invalid';
   }
 
+  const value = popularCountries.some(c => c.code === addressState.countryCode) ? `-${addressState.countryCode}` : addressState.countryCode;
+
   return (
     <>
       <label htmlFor={`${id}countryCode`} className="form-label">Country</label>
       <select
         onChange={handleChange}
-        value={addressState.countryCode}
+        value={value}
         name="countryCode"
         id={`${id}countryCode`}
         className={className}
@@ -51,6 +62,8 @@ export const CountryCode: FC = () => {
         autoCorrect="off"
         required
       >
+        {popularCountries.map(c => <option key={`-${c.code}`} value={`-${c.code}`}>{c.name}</option>)}
+        <option>---</option>
         {countriesState.map(c => <option key={c.code} value={c.code}>{c.name}</option>)}
       </select>
     </>
