@@ -8,20 +8,26 @@ import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#131f2e';
+type Props = {
+  date: number;
+};
 
-export const MakeupProPlusLuminousPromo: FC = () => {
+export const MakeupProPlusLuminousPromo: FC<Props> = ({ date }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
 
   const handleClick = (): void => {
     togglePopup();
   };
 
+  const newImages = date >= Date.UTC(2023, 11, 26, 14, 30); // Dec 26 at 09:30 (14:30 UTC)
+
+  const backgroundColor = newImages ? '#151a20' : '#131f2e';
+
   return (
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero />
+          <Hero newImages={newImages} />
         </div>
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
