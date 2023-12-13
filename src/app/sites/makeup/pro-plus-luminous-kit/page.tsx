@@ -11,7 +11,7 @@ const MakeupProPlusLuminousPage: PageComponent = ({ searchParams }) => {
   const date = getDate(searchParams.date);
   return (
     <>
-      <MakeupProPlusLuminousPromo />
+      <MakeupProPlusLuminousPromo date={date} />
       <Form
         date={date}
         courseGroups={courseGroups}
