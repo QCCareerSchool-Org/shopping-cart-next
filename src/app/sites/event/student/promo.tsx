@@ -3,13 +3,16 @@ import type { FC } from 'react';
 import { Hero } from './hero';
 import { Section } from '@/components/section';
 
-const backgroundColor = '#727274';
+type Props = {
+  newYears: boolean;
+};
 
-export const EventStudentPromo: FC = () => {
+export const EventStudentPromo: FC<Props> = ({ newYears }) => {
+  const backgroundColor = newYears ? '#84796c' : '#727274';
   return (
     <>
       <Section style={{ backgroundColor }} noPadding>
-        <Hero />
+        <Hero newYears={newYears} />
       </Section>
     </>
   );
