@@ -13,8 +13,8 @@ export const Hero: FC = () => {
   const priceState = usePriceState();
 
   const [ desktopSrc, mobileSrc ] = priceState?.currency.code === 'GBP'
-    ? [ Desktop, Mobile ]
-    : [ DesktopUK, MobileUK ];
+    ? [ DesktopUK, MobileUK ]
+    : [ Desktop, Mobile ];
 
   return <PromoImage desktopSrc={desktopSrc} mobileSrc={mobileSrc} />;
 };
