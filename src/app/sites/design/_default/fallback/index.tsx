@@ -4,6 +4,7 @@ import { agreementLinks } from '../../agreementLinks';
 import { courseGroups } from '../../courseGroups';
 import { Guarantee } from '../../guarantee';
 import { DesignFallbackPromo } from './promo';
+import { FreeVirtualDesignDynamicMessage } from '@/components/dynamicCourseMessages/freeVirtualDesign';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 
@@ -24,7 +25,8 @@ export const DesignFallback: FC<Props> = ({ date }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
-        dynamicCourseMessages={[ Save50CourseMessage ]}
+        promoCodeDefault="FREEVIRTUAL"
+        dynamicCourseMessages={[ FreeVirtualDesignDynamicMessage, Save50CourseMessage ]}
       />
     </>
   );
