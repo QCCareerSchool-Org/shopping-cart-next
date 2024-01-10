@@ -4,6 +4,7 @@ import { agreementLinks } from '../../agreementLinks';
 import { courseGroups } from '../../courseGroups';
 import { Guarantee } from '../../guarantee';
 import { MakeupFallbackPromo } from './promo';
+import { FreeProMakeupDynamicMessage } from '@/components/dynamicCourseMessages/freeProMakeup';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 
@@ -23,8 +24,9 @@ export const MakeupFallback: FC<Props> = ({ date }) => {
         successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
+        promoCodeDefault="PROLUMINOUS"
         visualPaymentPlans
-        dynamicCourseMessages={[ Save50CourseMessage ]}
+        dynamicCourseMessages={[ FreeProMakeupDynamicMessage, Save50CourseMessage ]}
       />
     </>
   );

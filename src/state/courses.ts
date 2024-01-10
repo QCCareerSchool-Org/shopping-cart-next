@@ -11,8 +11,8 @@ export type CoursesAction =
 
 export const initialCoursesState: CoursesState = {
   selected: [],
-  disabled: [ 'MS' ],
-  hidden: [ 'MS' ],
+  disabled: [ 'MS', 'DC' ],
+  hidden: [ 'MS', 'DC' ],
 };
 
 export const coursesReducer = (state: CoursesState, action: CoursesAction): CoursesState => {
@@ -50,6 +50,10 @@ export const coursesReducer = (state: CoursesState, action: CoursesAction): Cour
         // also remove MS if I2 is being removed
         if (!action.payload.student && !selected.includes('I2')) {
           selected = selected.filter(c => c !== 'MS');
+        }
+        // also remove DC if DT is being removed
+        if (!action.payload.student && !selected.includes('DT')) {
+          selected = selected.filter(c => c !== 'DC');
         }
         return {
           ...state,
@@ -132,6 +136,9 @@ const disabledCourses = (selectedCourses: string[], student: boolean): string[] 
     result.push('DG');
     result.push('FA');
   }
+  if (!selectedCourses.includes('DT')) {
+    result.push('DC');
+  }
   return result;
 };
 
@@ -144,6 +151,10 @@ const hiddenCourses = (selectedCourses: string[], student: boolean): string[] =>
   /* design */
   if (!student && !selectedCourses.includes('I2')) {
     result.push('MS');
+  }
+  /* pet */
+  if (!selectedCourses.includes('DT')) {
+    result.push('DC');
   }
   return result;
 };

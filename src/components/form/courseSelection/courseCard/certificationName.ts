@@ -1,5 +1,7 @@
 export const getCertificationName = (courseCode: string): string | undefined => {
   switch (courseCode) {
+    case 'DC':
+      return 'International Dog Behavior Specialist';
     case 'DG':
       return 'International Dog Grooming Professional';
     case 'DT':
