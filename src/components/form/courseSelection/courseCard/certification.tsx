@@ -6,6 +6,7 @@ import AB from './certifications/ab.svg';
 import AP from './certifications/ap.svg';
 import CC from './certifications/cc.svg';
 import DB from './certifications/db.svg';
+import DC from './certifications/dc.svg';
 import DD from './certifications/dd.svg';
 import DG from './certifications/dg.svg';
 import DT from './certifications/dt.svg';
@@ -39,6 +40,8 @@ const getImage = (courseCode: string): StaticImageData | undefined => {
       return CC as StaticImageData;
     case 'DB':
       return DB as StaticImageData;
+    case 'DC':
+      return DC as StaticImageData;
     case 'DD':
       return DD as StaticImageData;
     case 'DG':

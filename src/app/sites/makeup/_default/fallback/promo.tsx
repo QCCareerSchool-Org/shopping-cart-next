@@ -8,7 +8,7 @@ import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#000';
+const backgroundColor = '#151a20';
 
 export const MakeupFallbackPromo: FC = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
@@ -26,10 +26,10 @@ export const MakeupFallbackPromo: FC = () => {
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
         <Modal.Header closeButton>
-          <Modal.Title>Luminous Collection</Modal.Title>
+          <Modal.Title>Special Offer</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
+          <p>Enroll in Master Makeup Artistry and get the Pro Makeup Workshop free. You'll also receive the entire Luminous Collection filled with makeup and tools.</p>
           <p>Graduate as a Master International Makeup Professional™ (MIMP™) in just a few short months and build your beauty empire!</p>
           <LuminousKit />
         </Modal.Body>
