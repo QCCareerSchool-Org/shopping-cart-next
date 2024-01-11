@@ -86,10 +86,10 @@ const Standard: FC<Props> = props => {
         {props.dynamicCourseMessages?.map((C, i) => <div key={i} className={i === 0 ? 'mt-4' : 'mt-3'}><C /></div>)}
         {priceState && props.dynamicCourseDescriptions === 'SHOW' && <div className="mt-4"><CourseTable discountName={props.discountName} /></div>}
       </div>
-      {(props.dynamicCourseDescriptions === 'SHOW' || props.dynamicCourseDescriptions === 'REPLACE') && hoveredCourseCode && hoveredCourseName
+      {(props.dynamicCourseDescriptions === 'SHOW' || props.dynamicCourseDescriptions === 'REPLACE')
         ? (
           <div className="d-none d-md-block col-12 col-md-6">
-            <CourseCard courseCode={hoveredCourseCode} name={hoveredCourseName} />
+            {hoveredCourseCode && hoveredCourseName && <CourseCard courseCode={hoveredCourseCode} name={hoveredCourseName} />}
           </div>
         )
         : (
