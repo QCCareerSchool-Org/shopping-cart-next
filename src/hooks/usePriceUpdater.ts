@@ -34,6 +34,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
       options: {
         discountAll: metaState.student,
         studentDiscount: metaState.studentDiscount,
+        withoutTools: metaState.withoutTools,
         school,
         promoCode: metaState.promoCode || promoCodeDefault,
       },
@@ -63,7 +64,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     });
 
     return () => controller.abort();
-  }, [ date, internal, overridesDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.promoCode, school, promoCodeDefault ]);
+  }, [ date, internal, overridesDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, promoCodeDefault ]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -73,6 +74,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
       options: {
         discountAll: metaState.student,
         studentDiscount: metaState.studentDiscount,
+        withoutTools: metaState.withoutTools,
         school,
         promoCode: metaState.promoCode || promoCodeDefault,
       },
@@ -99,5 +101,5 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
       console.error(err);
     });
     return () => controller.abort();
-  }, [ date, internal, priceDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.promoCode, school, promoCodeDefault, overridesState ]);
+  }, [ date, internal, priceDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, promoCodeDefault, overridesState ]);
 };

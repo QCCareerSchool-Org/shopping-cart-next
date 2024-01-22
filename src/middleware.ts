@@ -32,7 +32,10 @@ const middleware = (req: NextRequest): NextResponse => {
     url.pathname = '/404';
   } else if (site) {
     // rewrite to the current subdomain under the app/sites folder
-    url.pathname = `/sites${site.path}${url.pathname}`;
+    const pathname = url.pathname.startsWith('/continued-education')
+      ? url.pathname.replace(/^\/continued-education/ui, '/student')
+      : url.pathname;
+    url.pathname = `/sites${site.path}${pathname}`;
   }
 
   return NextResponse.rewrite(url);

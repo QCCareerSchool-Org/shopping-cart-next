@@ -2,10 +2,15 @@ import type { ChangeEventHandler, FC } from 'react';
 import { useId } from 'react';
 
 import { Section } from '../section';
+import type { School } from '@/domain/school';
 import { useMetaDispatch } from '@/hooks/useMetaDispatch';
 import { useMetaState } from '@/hooks/useMetaState';
 
-export const Internal: FC = () => {
+type Props = {
+  school: School;
+};
+
+export const Internal: FC<Props> = ({ school }) => {
   const id = useId();
   const metaState = useMetaState();
   const metaDispatch = useMetaDispatch();
@@ -16,6 +21,10 @@ export const Internal: FC = () => {
 
   const handleStudentDiscountChange: ChangeEventHandler<HTMLInputElement> = e => {
     metaDispatch({ type: 'SET_STUDENT_DISCOUNT', payload: e.target.checked });
+  };
+
+  const handleToolsChange: ChangeEventHandler<HTMLInputElement> = e => {
+    metaDispatch({ type: 'SET_WITHOUT_TOOLS', payload: e.target.checked });
   };
 
   return (
@@ -33,6 +42,12 @@ export const Internal: FC = () => {
             <input onChange={handleStudentDiscountChange} checked={metaState.studentDiscount} type="checkbox" className="form-check-input" id={`${id}additionalDiscount`} />
             <label className="form-check-label" htmlFor={`${id}additionalDiscount`}>Extra $50 (or £25) Discount per Course</label>
           </div>
+          {school === 'QC Pet Studies' && (
+            <div className="form-check">
+              <input onChange={handleToolsChange} checked={metaState.withoutTools} type="checkbox" className="form-check-input" id={`${id}withoutTools`} />
+              <label className="form-check-label" htmlFor={`${id}withoutTools`}>No Tools</label>
+            </div>
+          )}
         </div>
       </div>
     </Section>

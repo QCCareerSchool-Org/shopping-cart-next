@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { WritingFallback } from './_default/fallback';
+import { WritingFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
