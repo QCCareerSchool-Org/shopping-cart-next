@@ -144,7 +144,7 @@ export const Form: FC<Props> = props => {
 
   return (
     <>
-      <Suspense>{!!props.internal && <Internal />}</Suspense>
+      <Suspense>{!!props.internal && <Internal school={props.school} />}</Suspense>
       <CourseSelection
         internal={!!props.internal}
         courseGroups={props.courseGroups}
