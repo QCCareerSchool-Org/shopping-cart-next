@@ -20,9 +20,10 @@ import { formatCurrency } from '@/lib/formatCurrency';
 type Props = {
   date: number;
   school: School;
+  discountName?: string;
 };
 
-export const Mobile: FC<Props> = ({ date, school }) => {
+export const Mobile: FC<Props> = ({ date, school, discountName }) => {
   const screenWidth = useScreenWidth();
   const priceState = usePriceState();
   const paymentState = usePaymentState();
@@ -108,7 +109,7 @@ export const Mobile: FC<Props> = ({ date, school }) => {
           )}
         </div>
         <div className="col-12 col-sm-10">
-          <Breakdown />
+          <Breakdown discountName={discountName} />
           {priceState && priceState.courses.length > 0 && priceState?.countryCode === 'CA' && (
             <div>
               <Card className="mt-4 text-center" style={{ marginLeft: 'auto' }}>

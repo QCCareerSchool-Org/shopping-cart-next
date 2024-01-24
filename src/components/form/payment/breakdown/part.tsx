@@ -5,7 +5,11 @@ import { Fragment } from 'react';
 import styles from './index.module.css';
 import { usePriceState } from '@/hooks/usePriceState';
 
-export const Part: FC = () => {
+type Props = {
+  discountName?: string;
+};
+
+export const Part: FC<Props> = ({ discountName }) => {
   const priceState = usePriceState();
 
   if (!priceState) {
@@ -42,7 +46,7 @@ export const Part: FC = () => {
           {priceState.promoDiscount > 0 && (
             <>
               <tr>
-                <td className="text-md-end">Promotional Discount:</td>
+                <td className="text-md-end">{discountName ?? 'Promotional Discount'}:</td>
                 <td className="text-end">&minus; {priceState.currency.symbol}{priceState.promoDiscount.toFixed(2)}</td>
               </tr>
             </>

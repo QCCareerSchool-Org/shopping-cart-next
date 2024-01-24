@@ -16,11 +16,12 @@ type Props = {
   date: number;
   school: School;
   showPromoCodeInput: boolean;
+  discountName?: string;
 };
 
 const getReverse = (school: School): boolean => school === 'QC Makeup Academy';
 
-export const TextPaymentPlans: FC<Props> = ({ date, school, showPromoCodeInput }) => {
+export const TextPaymentPlans: FC<Props> = ({ date, school, showPromoCodeInput, discountName }) => {
   const paymentState = usePaymentState();
   const priceState = usePriceState();
 
@@ -39,7 +40,7 @@ export const TextPaymentPlans: FC<Props> = ({ date, school, showPromoCodeInput }
             <div>
               <Card className="d-inline-block w-auto">
                 <CardBody className="pb-0">
-                  <Breakdown />
+                  <Breakdown discountName={discountName} />
                 </CardBody>
               </Card>
               {priceState?.countryCode === 'CA' && (

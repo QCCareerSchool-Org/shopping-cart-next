@@ -22,11 +22,12 @@ import { formatCurrency } from '@/lib/formatCurrency';
 type Props = {
   date: number;
   school: School;
+  discountName?: string;
 };
 
 const checkCircleStyle: CSSProperties = { position: 'relative', top: -1 };
 
-export const Desktop: FC<Props> = ({ date, school }) => {
+export const Desktop: FC<Props> = ({ date, school, discountName }) => {
   const screenWidth = useScreenWidth();
   const priceState = usePriceState();
   const paymentState = usePaymentState();
@@ -164,7 +165,7 @@ export const Desktop: FC<Props> = ({ date, school }) => {
 
       {/* result column */}
       <div className="col-12 col-md-6 col-lg-4">
-        <Breakdown />
+        <Breakdown discountName={discountName} />
         {priceState && priceState.courses.length > 0 && priceState.countryCode === 'CA' && (
           <div>
             <Card className="mt-4 text-center" style={{ marginLeft: 'auto' }}>
