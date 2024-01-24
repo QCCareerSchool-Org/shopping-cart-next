@@ -10,9 +10,10 @@ const Mobile = lazy(async () => import('./mobile').then(m => ({ default: m.Mobil
 type Props = {
   date: number;
   school: School;
+  discountName?: string;
 };
 
-export const VisualPaymentPlans: FC<Props> = ({ school, date }) => {
+export const VisualPaymentPlans: FC<Props> = ({ school, date, discountName }) => {
   const screenWidth = useScreenWidth();
 
   const md = screenWidth >= 768;
@@ -23,7 +24,7 @@ export const VisualPaymentPlans: FC<Props> = ({ school, date }) => {
 
   return (
     <Suspense>
-      {md ? <Desktop date={date} school={school} /> : <Mobile date={date} school={school} />}
+      {md ? <Desktop date={date} school={school} discountName={discountName} /> : <Mobile date={date} school={school} discountName={discountName} />}
     </Suspense>
   );
 };

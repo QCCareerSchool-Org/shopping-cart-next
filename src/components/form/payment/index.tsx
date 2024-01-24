@@ -12,16 +12,17 @@ type Props = {
   school: School;
   showPromoCodeInput: boolean;
   visualPaymentPlans: boolean;
+  discountName?: string;
 };
 
-export const Payment: FC<Props> = ({ date, school, showPromoCodeInput, visualPaymentPlans }) => {
+export const Payment: FC<Props> = ({ date, school, showPromoCodeInput, visualPaymentPlans, discountName }) => {
   return (
     <Section className="paymentSection">
       <h2 className="h1">Select a Payment Plan</h2>
       <Suspense>
         {visualPaymentPlans
-          ? <VisualPaymentPlans date={date} school={school} />
-          : <TextPaymentPlans date={date} school={school} showPromoCodeInput={showPromoCodeInput} />
+          ? <VisualPaymentPlans date={date} school={school} discountName={discountName} />
+          : <TextPaymentPlans date={date} school={school} showPromoCodeInput={showPromoCodeInput} discountName={discountName} />
         }
       </Suspense>
     </Section>

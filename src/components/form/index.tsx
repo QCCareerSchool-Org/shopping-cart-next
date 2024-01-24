@@ -157,7 +157,7 @@ export const Form: FC<Props> = props => {
       />
       <Address />
       <Suspense>{showBillingAddress(props.school) && <BillingAddress />}</Suspense>
-      <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} />
+      <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} discountName={props.discountName} />
       <Suspense>{!!props.internal && <Overrides />}</Suspense>
       <Summary onSubmit={handleSubmit} agreementLinks={props.agreementLinks} showPromoCodeInput={!!props.showPromoCodeInput} guarantee={props.guarantee} />
       <Suspense>{props.confirmation && <ConfirmPopup show={showConfirmationPopup} onCancel={handleConfirmationCancel} onProceed={handleConfirmationProceed} body={props.confirmation.body} heading={props.confirmation.heading} />}</Suspense>
