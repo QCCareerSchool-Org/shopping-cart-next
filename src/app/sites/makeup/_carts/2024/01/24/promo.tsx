@@ -5,7 +5,7 @@ import { Modal } from 'react-bootstrap';
 
 import { Hero } from './hero';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
-import { LuminousKitWithBag } from '@/components/luminousKitWithBag';
+import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
@@ -35,7 +35,7 @@ export const Makeup20240124Promo: FC<Props> = ({ date }) => {
         <Modal.Header closeButton>Start Your Makeup Career This New Year</Modal.Header>
         <Modal.Body>
           <p>Until January 31st, enroll in Master Makeup Artistry and get QC's Skincare Course FREE. You'll also get the ENTIRE Luminous Makeup Collection!</p>
-          <LuminousKitWithBag />
+          <LuminousKit />
         </Modal.Body>
       </Modal>
       <CountDownTimerWrapper
