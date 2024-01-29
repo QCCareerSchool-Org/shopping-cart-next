@@ -11,7 +11,8 @@ export const courseGroups: CourseGroup[] = [
         name: 'Dog Behavior',
         disabledMessage: (
           <>
-            The <span className="text-primary">Dog Behavior</span> course is designed to be taken after the <span className="text-primary">Dog Training</span> course. To enroll in Dog Behavior, please select Dog Training first.
+            <p>The <span className="text-primary">Dog Behavior</span> course is designed to be taken after the <span className="text-primary">Dog Training</span> course. To enroll in Dog Behavior, please select Dog Training first.</p>
+            <p className="mb-0">If you have already taken a comparable course elsewhere, please <a target="_blank" rel="noreferrer" href="https://www.qcpetstudies.com/contact-us">contact the School</a> to confirm your eligibility.</p>
           </>
         ),
       },
