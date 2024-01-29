@@ -11,7 +11,7 @@ export type CoursesAction =
 
 export const initialCoursesState: CoursesState = {
   selected: [],
-  disabled: [ 'MS', 'DC' ],
+  disabled: [ 'MS' ],
   hidden: [ 'MS', 'DC' ],
 };
 
@@ -136,7 +136,7 @@ const disabledCourses = (selectedCourses: string[], student: boolean): string[] 
     result.push('DG');
     result.push('FA');
   }
-  if (!selectedCourses.includes('DT')) {
+  if (!student && !selectedCourses.includes('DT')) {
     result.push('DC');
   }
   return result;
@@ -153,8 +153,8 @@ const hiddenCourses = (selectedCourses: string[], student: boolean): string[] =>
     result.push('MS');
   }
   /* pet */
-  if (!selectedCourses.includes('DT')) {
-    result.push('DC');
-  }
+  // if (!selectedCourses.includes('DT')) {
+  //   result.push('DC');
+  // }
   return result;
 };
