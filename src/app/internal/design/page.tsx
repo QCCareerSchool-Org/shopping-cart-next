@@ -55,11 +55,12 @@ const InternalDesignPage: PageComponent = ({ searchParams }) => {
       <Form
         date={date}
         courseGroups={courseGroups}
-        school="QC Makeup Academy"
+        school="QC Design School"
         guarantee={null}
-        internal={true}
+        internal
         successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
+        showPromoCodeInput
       />
     </>
   );

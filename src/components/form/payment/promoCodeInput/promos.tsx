@@ -115,7 +115,7 @@ export const getPromos = (date: number, price: PriceState, school: School, stude
       altText: 'Get virtual training for free',
     },
 
-    ...[ 150, 200, 300 ].map((d): Promo => ({
+    ...[ 150, 200, 300, 500 ].map((d): Promo => ({
       schools: [ 'QC Pet Studies' ],
       student: 'DENIED',
       code: `DG${d}`,
@@ -123,7 +123,7 @@ export const getPromos = (date: number, price: PriceState, school: School, stude
       altText: `${price?.currency.code === 'GBP' ? '£' : '$'}${d} off the Dog Grooming course`,
     })),
 
-    ...[ 150, 200, 300 ].map((d): Promo => ({
+    ...[ 150, 200, 300, 500 ].map((d): Promo => ({
       schools: [ 'QC Pet Studies' ],
       student: 'DENIED',
       code: `DT${d}`,
