@@ -77,10 +77,12 @@ type Props = {
     /** the heading of the confirmation popup */
     heading?: string;
   };
+  /** the default setting for "same as student address" */
+  billingAddressDefault?: 'same' | 'different';
 };
 
-const showBillingAddress = (school: School): boolean => {
-  return school === 'QC Pet Studies';
+const showBillingAddress = (school: School, billingAddressDefault?: 'same' | 'different'): boolean => {
+  return typeof billingAddressDefault !== 'undefined' || school === 'QC Pet Studies';
 };
 
 export const Form: FC<Props> = props => {
@@ -94,7 +96,7 @@ export const Form: FC<Props> = props => {
     }
   }, []);
 
-  useInitialData(props.school, !!props.student || !!props.internal, props.coursesOverride);
+  useInitialData(props.school, !!props.student || !!props.internal, props.coursesOverride, props.billingAddressDefault);
   usePriceUpdater(props.date, !!props.internal, props.school, props.promoCodeDefault);
 
   const [ showConfirmationPopup, toggleConfirmationPopup ] = useToggle(false);
@@ -156,7 +158,7 @@ export const Form: FC<Props> = props => {
         coursesOverride={!!props.coursesOverride}
       />
       <Address />
-      <Suspense>{showBillingAddress(props.school) && <BillingAddress />}</Suspense>
+      <Suspense>{showBillingAddress(props.school, props.billingAddressDefault) && <BillingAddress />}</Suspense>
       <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} discountName={props.discountName} />
       <Suspense>{!!props.internal && <Overrides />}</Suspense>
       <Summary onSubmit={handleSubmit} agreementLinks={props.agreementLinks} showPromoCodeInput={!!props.showPromoCodeInput} guarantee={props.guarantee} />

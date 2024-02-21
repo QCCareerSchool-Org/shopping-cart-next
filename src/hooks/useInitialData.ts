@@ -43,7 +43,7 @@ type Data = {
   promoCode: string | null;
 };
 
-export const useInitialData = (school: School, student: boolean, coursesOverride?: string[]): void => {
+export const useInitialData = (school: School, student: boolean, coursesOverride?: string[], billingAddressDefault?: 'same' | 'different'): void => {
   const searchParams = useSearchParams();
   const countries = useCountriesState();
   const addressState = useAddressState();
@@ -76,6 +76,11 @@ export const useInitialData = (school: School, student: boolean, coursesOverride
       for (const c of coursesOverride) {
         coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode: c, student } });
       }
+    }
+
+    console.log('billingAddressDefault', billingAddressDefault);
+    if (billingAddressDefault) {
+      billingAddressDispatch({ type: 'SET_BILLING_DISABLED', payload: billingAddressDefault === 'same' });
     }
 
     // we need to keep track of these here because we're going to run updateData twice and we need the latest value available

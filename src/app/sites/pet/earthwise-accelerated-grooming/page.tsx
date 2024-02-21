@@ -1,6 +1,5 @@
 import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
-import { PetEarthwiseAcceleratedGroomingPromo } from './promo';
 import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -12,7 +11,6 @@ const PetEarthwiseAcceleratedGroomingPage: PageComponent = ({ searchParams }) =>
 
   return (
     <>
-      <PetEarthwiseAcceleratedGroomingPromo />
       <Form
         date={date}
         courseGroups={courseGroups}
@@ -23,6 +21,7 @@ const PetEarthwiseAcceleratedGroomingPage: PageComponent = ({ searchParams }) =>
         dynamicCourseDescriptions="HIDE"
         visualPaymentPlans
         coursesOverride={coursesOverride}
+        billingAddressDefault="different"
       />
     </>
   );
