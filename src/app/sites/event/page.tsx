@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { Event20240207 } from './_carts/2024/02/07';
+import { Event20240222 } from './_carts/2024/02/22';
 import { EventFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -10,8 +10,8 @@ const EventPage: PageComponent = ({ searchParams }) => {
 
   return (
     <Suspense>
-      {date >= Date.UTC(2024, 1, 7, 14, 30) && date < Date.UTC(2024, 1, 15, 5) // Feb 7, 2024 at 09:30 (14:30 UTC) to Feb 15, 2024 at 00:00 (05:00 UTC)
-        ? <Event20240207 date={date} />
+      {date >= Date.UTC(2024, 1, 22, 14, 30) && date < Date.UTC(2024, 2, 1, 5) // Feb 22, 2024 at 09:30 (14:30 UTC) to Mar 1, 2024 at 00:00 (05:00 UTC)
+        ? <Event20240222 date={date} />
         : <EventFallback date={date} />
       }
     </Suspense>
