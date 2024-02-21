@@ -7,6 +7,7 @@ import { useCoursesState } from './useCoursesState';
 import { useMetaState } from './useMetaState';
 import { useOverridesDispatch } from './useOverridesDispatch';
 import { useOverridesState } from './useOverridesState';
+import { usePaymentDispatch } from './usePaymentDispatch';
 import { usePriceDispatch } from './usePriceDispatch';
 import type { School } from '@/domain/school';
 import { fetchPrice } from '@/lib/fetch';
@@ -19,6 +20,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
   const overridesState = useOverridesState();
   const priceDispatch = usePriceDispatch();
   const overridesDispatch = useOverridesDispatch();
+  const paymentDispatch = usePaymentDispatch();
 
   useEffect(() => {
     if (!internal) {
@@ -96,10 +98,13 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     fetchPrice(priceQuery, controller).then(price => {
       if (price) {
         priceDispatch({ type: 'SET_PRICE', payload: price });
+        if (price.plans.part.installmentSize === 0) {
+          paymentDispatch({ type: 'SET_PAYMENT_PLAN', payload: 'full' });
+        }
       }
     }).catch(err => {
       console.error(err);
     });
     return () => controller.abort();
-  }, [ date, internal, priceDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, promoCodeDefault, overridesState ]);
+  }, [ date, internal, priceDispatch, paymentDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, promoCodeDefault, overridesState ]);
 };

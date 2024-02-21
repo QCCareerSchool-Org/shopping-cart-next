@@ -67,8 +67,6 @@ const petBullets = [
   'Vibrant student community',
   'Unlimited student support access',
   'VIP deals on continued learning',
-  <><strong>BONUS</strong> first-aid training</>,
-  <><strong>BONUS</strong> business start-up training</>,
   'Professional pet-care certification',
 ];
 
@@ -145,9 +143,14 @@ const getCourseKits = (date: number): CourseKit[] => [
   // },
   {
     courseCode: 'DG',
-    fullBullets: [ <strong key={0}>Dog Grooming Starter Kit</strong>, ...petBullets ],
-    partBullets: [ <strong key={0}>Dog Grooming Starter Kit</strong>, ...petBullets ],
+    fullBullets: [ <strong key={0}>Dog Grooming Starter Kit</strong>, ...petBullets, <><strong>BONUS</strong> first-aid training</>, <><strong>BONUS</strong> business start-up training</> ],
+    partBullets: [ <strong key={0}>Dog Grooming Starter Kit</strong>, ...petBullets, <><strong>BONUS</strong> first-aid training</>, <><strong>BONUS</strong> business start-up training</> ],
     details: <DGDetails />,
+  },
+  {
+    courseCode: [ 'DT', 'DD' ],
+    fullBullets: [ ...petBullets, <><strong>BONUS</strong> first-aid training</>, <><strong>BONUS</strong> business start-up training</> ],
+    partBullets: [ ...petBullets, <><strong>BONUS</strong> first-aid training</>, <><strong>BONUS</strong> business start-up training</> ],
   },
 ];
 
