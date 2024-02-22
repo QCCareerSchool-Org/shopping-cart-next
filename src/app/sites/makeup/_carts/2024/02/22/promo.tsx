@@ -28,7 +28,7 @@ export const Makeup20240222Promo: FC<Props> = ({ date }) => {
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero lastChance={date >= lastChanceDate} />
+          <Hero />
         </div>
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
