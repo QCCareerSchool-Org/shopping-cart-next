@@ -1,10 +1,8 @@
 import type { FC } from 'react';
 
-// import Desktop from './desktop.jpg';
-// import Mobile from './mobile.jpg';
-// import { PromoImage } from '@/components/promoImage';
+import Desktop from './desktop.jpg';
+import { PromoImage } from '@/components/promoImage';
 
 export const Hero: FC = () => {
-  return null;
-  // return <PromoImage desktopSrc={Desktop} mobileSrc={Mobile} />;
+  return <PromoImage desktopSrc={Desktop} mobileSrc={Desktop} />;
 };
