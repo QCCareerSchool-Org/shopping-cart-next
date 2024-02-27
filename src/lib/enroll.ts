@@ -1,6 +1,6 @@
 import { type EnrollmentErrors, isEnrollmentErrors } from '@/domain/enrollmentErrors';
 import type { PaymentPlan } from '@/domain/paymentPlan';
-import type { School } from '@/domain/school';
+import type { School, SchoolVariant } from '@/domain/school';
 import type { Title } from '@/domain/title';
 import type { AddressState } from '@/state/address';
 import type { BillingAddressState } from '@/state/billingAddress';
@@ -40,6 +40,7 @@ export type EnrollmentPayload = {
   paymentPlan: PaymentPlan;
   paymentDay: number;
   school: School;
+  schoolVariant?: SchoolVariant;
   url: string;
   discountCode: string;
   campaignId: string | null;
@@ -82,7 +83,7 @@ const isAddEnrollmentErrorResponse = (obj: unknown): obj is AddEnrollmentErrorRe
     'errors' in obj && isEnrollmentErrors(obj.errors);
 };
 
-export const createEnrollmentPayload = (internal: boolean, school: School, courses: string[], addressState: AddressState, billingAddressState: BillingAddressState, paymentState: PaymentState, overridesState: OverridesState, metaState: MetaState, promoCodeDefault?: string): EnrollmentPayload => {
+export const createEnrollmentPayload = (internal: boolean, school: School, schoolVariant: SchoolVariant | undefined, courses: string[], addressState: AddressState, billingAddressState: BillingAddressState, paymentState: PaymentState, overridesState: OverridesState, metaState: MetaState, promoCodeDefault?: string): EnrollmentPayload => {
   const payload: EnrollmentPayload = {
     courses,
     studentAddress: {
@@ -115,6 +116,7 @@ export const createEnrollmentPayload = (internal: boolean, school: School, cours
     paymentPlan: paymentState.plan,
     paymentDay: paymentState.day,
     school: school,
+    schoolVariant: schoolVariant,
     url: window.location.pathname,
     discountCode: '',
     campaignId: null,

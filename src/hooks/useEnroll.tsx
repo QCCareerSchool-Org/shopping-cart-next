@@ -8,14 +8,14 @@ import { useOverridesState } from './useOverridesState';
 import { usePaymentState } from './usePaymentState';
 import { scrollToPosition } from '@/components/scroller';
 import type { PaysafeCompany } from '@/domain/paysafeCompany';
-import type { School } from '@/domain/school';
+import type { School, SchoolVariant } from '@/domain/school';
 import { addEnrollment, chargeEnrollment, createEnrollmentPayload, EnrollmentError, updateEnrollment } from '@/lib/enroll';
 import { clearForm, saveForm } from '@/lib/persist';
 
 type AddToDatabaseFunction = () => Promise<boolean>;
 type ChargeFunction = (token: string, company: PaysafeCompany) => Promise<boolean>;
 
-export const useEnroll = (internal: boolean, school: School, successLink: string, promoCodeDefault?: string): [addToDatabase: AddToDatabaseFunction, charge: ChargeFunction] => {
+export const useEnroll = (internal: boolean, school: School, schoolVariant: SchoolVariant | undefined, successLink: string, promoCodeDefault?: string): [addToDatabase: AddToDatabaseFunction, charge: ChargeFunction] => {
   const coursesState = useCoursesState();
   const addressState = useAddressState();
   const billingAddressState = useBillingAddressState();
@@ -28,7 +28,7 @@ export const useEnroll = (internal: boolean, school: School, successLink: string
   const addToDatabase: AddToDatabaseFunction = async () => {
     saveForm(coursesState.selected, addressState, billingAddressState, paymentState);
     errorsDispatch({ type: 'CLEAR_ERRORS' });
-    const payload = createEnrollmentPayload(internal, school, coursesState.selected, addressState, billingAddressState, paymentState, overridesState, metaState, promoCodeDefault);
+    const payload = createEnrollmentPayload(internal, school, schoolVariant, coursesState.selected, addressState, billingAddressState, paymentState, overridesState, metaState, promoCodeDefault);
     try {
       if (metaState.enrollment) {
         const addEnrollmentResponse = await updateEnrollment(metaState.enrollment.id, payload);
