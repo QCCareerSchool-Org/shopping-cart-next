@@ -10,7 +10,7 @@ import { Payment } from './payment';
 import { Summary } from './summary';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
-import type { School } from '@/domain/school';
+import { type School, type SchoolVariant, validVariant } from '@/domain/school';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useCoursesState } from '@/hooks/useCoursesState';
 import { useEnroll } from '@/hooks/useEnroll';
@@ -42,6 +42,7 @@ type Props = {
   courseGroups: CourseGroup[];
   showHiddenCourses?: boolean;
   school: School;
+  schoolVariant?: SchoolVariant;
   coursesOverride?: string[];
   /** the guarantee component to display in the summary section */
   guarantee: FC | null;
@@ -96,8 +97,8 @@ export const Form: FC<Props> = props => {
     }
   }, []);
 
-  useInitialData(props.school, !!props.student || !!props.internal, props.coursesOverride, props.billingAddressDefault);
-  usePriceUpdater(props.date, !!props.internal, props.school, props.promoCodeDefault);
+  useInitialData(props.school, props.schoolVariant, !!props.student || !!props.internal, props.coursesOverride, props.billingAddressDefault);
+  usePriceUpdater(props.date, !!props.internal, props.school, props.schoolVariant, props.promoCodeDefault);
 
   const [ showConfirmationPopup, toggleConfirmationPopup ] = useToggle(false);
   const [ showPaysafeForm, togglePaysafeForm ] = useToggle(false);
@@ -110,7 +111,11 @@ export const Form: FC<Props> = props => {
 
   const paysafeCompany = priceState ? getPaysafeCompany(priceState.currency.code) : undefined;
 
-  const [ addToDatabase, handleCharge ] = useEnroll(!!props.internal, props.school, props.successLink, props.promoCodeDefault);
+  const [ addToDatabase, handleCharge ] = useEnroll(!!props.internal, props.school, props.schoolVariant, props.successLink, props.promoCodeDefault);
+
+  if (!validVariant(props.school, props.schoolVariant)) {
+    throw Error('Invalid variant');
+  }
 
   const handlePaymentFormHide = (): void => {
     togglePaysafeForm();

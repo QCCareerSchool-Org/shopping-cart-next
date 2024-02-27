@@ -10,7 +10,8 @@ import type { Price } from '@/domain/price';
 import { isPrice } from '@/domain/price';
 import type { Province } from '@/domain/province';
 import { isProvinces } from '@/domain/province';
-import { isSchool, type School } from '@/domain/school';
+import { isSchool } from '@/domain/school';
+import type { type School, SchoolVariant } from '@/domain/school';
 import { isTitle, type Title } from '@/domain/title';
 
 const pricesUrl = process.env.NEXT_PUBLIC_PRICES_ENDPOINT;
@@ -111,6 +112,7 @@ type PriceQueryOptions = {
   studentDiscount?: boolean;
   withoutTools?: boolean;
   school?: School;
+  schoolVariant?: SchoolVariant;
   promoCode?: string;
   dateOverride?: Date;
 };

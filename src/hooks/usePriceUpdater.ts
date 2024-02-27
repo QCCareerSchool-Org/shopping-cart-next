@@ -9,11 +9,11 @@ import { useOverridesDispatch } from './useOverridesDispatch';
 import { useOverridesState } from './useOverridesState';
 import { usePaymentDispatch } from './usePaymentDispatch';
 import { usePriceDispatch } from './usePriceDispatch';
-import type { School } from '@/domain/school';
+import type { School, SchoolVariant } from '@/domain/school';
 import { fetchPrice } from '@/lib/fetch';
 import type { PriceQuery } from '@/lib/fetch';
 
-export const usePriceUpdater = (date: number, internal: boolean, school: School, promoCodeDefault?: string): void => {
+export const usePriceUpdater = (date: number, internal: boolean, school: School, schoolVariant?: SchoolVariant, promoCodeDefault?: string): void => {
   const addressState = useAddressState();
   const coursesState = useCoursesState();
   const metaState = useMetaState();
@@ -38,6 +38,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
         studentDiscount: metaState.studentDiscount,
         withoutTools: metaState.withoutTools,
         school,
+        schoolVariant,
         promoCode: metaState.promoCode || promoCodeDefault,
       },
     };
@@ -66,7 +67,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     });
 
     return () => controller.abort();
-  }, [ date, internal, overridesDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, promoCodeDefault ]);
+  }, [ date, internal, overridesDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, schoolVariant, promoCodeDefault ]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -78,6 +79,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
         studentDiscount: metaState.studentDiscount,
         withoutTools: metaState.withoutTools,
         school,
+        schoolVariant,
         promoCode: metaState.promoCode || promoCodeDefault,
       },
     };
@@ -106,5 +108,5 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
       console.error(err);
     });
     return () => controller.abort();
-  }, [ date, internal, priceDispatch, paymentDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, promoCodeDefault, overridesState ]);
+  }, [ date, internal, priceDispatch, paymentDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, schoolVariant, promoCodeDefault, overridesState ]);
 };
