@@ -24,7 +24,7 @@ const PetEarthwiseAcceleratedGroomingPage: PageComponent = ({ searchParams }) =>
         school="QC Pet Studies"
         schoolVariant="EarthWise Pet"
         guarantee={null}
-        successLink="https://www.qcpetstudies.com/welcome-to-the-school"
+        successLink="https://www.qcpetstudies.com/welcome-to-the-school-third-party"
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="HIDE"
         visualPaymentPlans
