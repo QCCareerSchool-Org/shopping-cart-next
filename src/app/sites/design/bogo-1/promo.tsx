@@ -8,7 +8,7 @@ import { Section } from '@/components/section';
 import { usePriceState } from '@/hooks/usePriceState';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#73725e';
+const backgroundColor = '#fcfcfc';
 
 export const DesignBogo1Promo: FC = () => {
   const priceState = usePriceState();
@@ -38,9 +38,6 @@ export const DesignBogo1Promo: FC = () => {
           <p>For a limited time only, enroll in any design course and get a second certification course for FREE! This means you could save up to {potentialSavings(priceState?.currency.code ?? 'USD')} on your tuition.</p>
           <p className="mb-0">Get started for {deposit}, or save up to {fullDiscount} when you pay your tuition in full.</p>
         </Modal.Body>
-        <Modal.Footer>
-          <small>Enroll in any design course to receive free design software as well as our brand new Career Essentials Collection filled with business &amp; social media templates!</small>
-        </Modal.Footer>
       </Modal>
     </>
   );
