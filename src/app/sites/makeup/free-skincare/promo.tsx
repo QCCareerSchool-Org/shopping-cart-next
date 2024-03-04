@@ -14,20 +14,18 @@ type Props = {
   date: number;
 };
 
-export const MakeupFreeSkincarePromo: FC<Props> = ({ date }) => {
+export const MakeupFreeSkincarePromo: FC<Props> = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
 
   const handleClick = (): void => {
     togglePopup();
   };
 
-  const newImages = date >= Date.UTC(2023, 11, 26, 14, 30); // Dec 26 at 09:30 (14:30 UTC)
-
   return (
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero newImages={newImages} />
+          <Hero />
         </div>
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
