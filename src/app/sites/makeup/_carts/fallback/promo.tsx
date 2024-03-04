@@ -8,7 +8,7 @@ import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#151a20';
+const backgroundColor = '#131f2e';
 
 export const MakeupFallbackPromo: FC = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
