@@ -8,7 +8,7 @@ import { useCoursesState } from '@/hooks/useCoursesState';
 import { usePaymentState } from '@/hooks/usePaymentState';
 import { usePriceState } from '@/hooks/usePriceState';
 
-const freeShippingCourses = [ 'DG', 'MZ', 'SF', 'HS' ];
+const freeShippingCourses = [ 'DG', 'MZ', 'SF', 'HS', 'I2', 'ST', 'LD', 'CC' ];
 
 type Props = {
   discountName?: string;

@@ -14,23 +14,31 @@ import { Title } from './fields/title';
 import { FormGroup } from '@/components/formGroup';
 import { NoShippingAlert } from '@/components/noShippingAlert';
 import { Section } from '@/components/section';
+import type { School, SchoolVariant } from '@/domain/school';
 import { useAddressState } from '@/hooks/useAddressState';
 import { usePriceState } from '@/hooks/usePriceState';
 import { needsProvince } from '@/lib/needProvince';
 import { needsPostal } from '@/lib/needsPostal';
 
-export const Address: FC = () => {
+type Props = {
+  school: School;
+  schoolVariant?: SchoolVariant;
+};
+
+export const Address: FC<Props> = ({ school }) => {
   const { countryCode } = useAddressState();
   const price = usePriceState();
 
   const showPostal = needsPostal(countryCode);
   const showProvince = needsProvince(countryCode);
 
+  const heading = school === 'QC Design School' ? 'Shipping Address' : 'Student Address';
+
   return (
     <Section className="addressSection">
       <div className="row justify-content-center">
         <div className="col-12 col-lg-8 text-center">
-          <h2 className="h1">Student Address</h2>
+          <h2 className="h1">{heading}</h2>
         </div>
       </div>
       <div className="row justify-content-center">

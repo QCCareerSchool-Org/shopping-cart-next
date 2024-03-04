@@ -162,7 +162,7 @@ export const Form: FC<Props> = props => {
         coursesSubtitle={props.coursesSubtitle}
         coursesOverride={!!props.coursesOverride}
       />
-      <Address />
+      <Address school={props.school} schoolVariant={props.schoolVariant} />
       <Suspense>{showBillingAddress(props.school, props.billingAddressDefault) && <BillingAddress />}</Suspense>
       <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} discountName={props.discountName} />
       <Suspense>{!!props.internal && <Overrides />}</Suspense>
