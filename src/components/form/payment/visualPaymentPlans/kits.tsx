@@ -3,7 +3,7 @@ import type { CSSProperties, FC } from 'react';
 
 import { DetailsPopup } from './detailsPopup';
 import DesignBooks from './kits/design-books.png';
-import MZ from './kits/mz/deluxe-kit-white-384.jpg';
+import MZ from './kits/mz/makeup-kit-white.jpg';
 import { GroomingKit } from '@/components/groomingKit';
 import { LuminousKit } from '@/components/luminousKit';
 import type { School } from '@/domain/school';

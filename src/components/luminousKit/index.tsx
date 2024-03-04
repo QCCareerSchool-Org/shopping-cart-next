@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import type { FC } from 'react';
 
-import LuminousKitImage from './deluxe-kit-numbers-no-description.jpg';
+import LuminousKitImage from './deluxe-no-lashes-kit-numbers-no-description.jpg';
 
 import styles from './index.module.css';
 
@@ -19,8 +19,6 @@ export const LuminousKit: FC = () => (
       <li>9-shade contour palette</li>
       <li>4-shade highlight palette</li>
       <li>5-shade eyebrow palette</li>
-      <li>4 sets of faux lashes</li>
-      <li>Pro palette &amp; spatula</li>
     </ol>
   </div>
 );
