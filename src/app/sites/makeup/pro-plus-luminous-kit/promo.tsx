@@ -12,22 +12,20 @@ type Props = {
   date: number;
 };
 
-export const MakeupProPlusLuminousPromo: FC<Props> = ({ date }) => {
+const backgroundColor = '#131f2e';
+
+export const MakeupProPlusLuminousPromo: FC<Props> = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
 
   const handleClick = (): void => {
     togglePopup();
   };
 
-  const newImages = date >= Date.UTC(2023, 11, 26, 14, 30); // Dec 26 at 09:30 (14:30 UTC)
-
-  const backgroundColor = newImages ? '#151a20' : '#131f2e';
-
   return (
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero newImages={newImages} />
+          <Hero />
         </div>
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
