@@ -12,10 +12,14 @@ type Props = {
   date: number;
 };
 
+const newPromoDate = Date.UTC(2024, 2, 16, 4); // March 16, 2024 at 00:00 (04:00 UTC)
+
 export const MakeupFallback: FC<Props> = ({ date }) => {
+  const newPromo = date >= newPromoDate;
+
   return (
     <>
-      <MakeupFallbackPromo />
+      <MakeupFallbackPromo newPromo={newPromo} />
       <Form
         date={date}
         courseGroups={courseGroups}
@@ -24,9 +28,9 @@ export const MakeupFallback: FC<Props> = ({ date }) => {
         successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
-        promoCodeDefault="PROLUMINOUS"
+        promoCodeDefault={newPromo ? undefined : 'PROLUMINOUS'}
         visualPaymentPlans
-        dynamicCourseMessages={[ FreeProMakeupDynamicMessage, Save50CourseMessage ]}
+        dynamicCourseMessages={newPromo ? [ Save50CourseMessage ] : [ FreeProMakeupDynamicMessage, Save50CourseMessage ]}
       />
     </>
   );
