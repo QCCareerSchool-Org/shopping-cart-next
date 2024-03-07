@@ -2,10 +2,12 @@
 
 import type { FC } from 'react';
 
+import Desktop116 from './desktop-116.jpg';
 import Desktop from './desktop-92.jpg';
 import DesktopAU from './desktop-au.jpg';
 import DesktopGB from './desktop-gb.jpg';
 import DesktopNZ from './desktop-nz.jpg';
+import Mobile116 from './mobile-116.jpg';
 import Mobile from './mobile-92.jpg';
 import MobileAU from './mobile-au.jpg';
 import MobileGB from './mobile-gb.jpg';
@@ -23,7 +25,9 @@ export const Hero: FC = () => {
       ? [ DesktopAU, MobileAU ]
       : priceState?.currency.code === 'NZD'
         ? [ DesktopNZ, MobileNZ ]
-        : [ Desktop, Mobile ];
+        : priceState?.courses.some(c => c.plans.part.deposit === 116)
+          ? [ Desktop116, Mobile116 ]
+          : [ Desktop, Mobile ];
 
   return <PromoImage desktopSrc={desktopSrc} mobileSrc={mobileSrc} />;
 };
