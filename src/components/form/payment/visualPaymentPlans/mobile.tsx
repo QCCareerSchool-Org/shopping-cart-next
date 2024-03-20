@@ -80,7 +80,7 @@ export const Mobile: FC<Props> = ({ date, school, discountName }) => {
                 </div>
                 {kit?.images?.full.src && (
                   <div className="mt-3">
-                    <Image src={kit.images.full.src} style={{ width: '100%' }} alt="kit" />
+                    <Image src={kit.images.full.src} style={{ width: '100%', height: 'auto' }} alt="kit" />
                   </div>
                 )}
               </div>
@@ -96,7 +96,7 @@ export const Mobile: FC<Props> = ({ date, school, discountName }) => {
                 </div>
                 {kit?.images?.part.src && (
                   <div className="mt-3">
-                    <Image src={kit.images.part.src} style={{ width: '100%' }} alt="kit" />
+                    <Image src={kit.images.part.src} style={{ width: '100%', height: 'auto' }} alt="kit" />
                   </div>
                 )}
               </div>
