@@ -13,7 +13,7 @@ export const Design20240321Modal: FC<Props> = props => {
     <Modal show={props.show} onHide={props.onHide}>
       <Modal.Header closeButton>Start Your Design Career</Modal.Header>
       <Modal.Body>
-        <p className="lead mb-0">Until March 15th, enroll in any design course and <strong>get a second course free</strong>. You'll also get corresponding course textbooks! This is the perfect opportunity to specialize in your design training and become a certified expert.</p>
+        <p className="lead mb-0">For a limited time, enroll in any design course and <strong>get a second course free</strong>. This is the perfect opportunity to specialize in your design training and become a certified expert.</p>
       </Modal.Body>
     </Modal>
   );
