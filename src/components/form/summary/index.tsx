@@ -2,13 +2,13 @@ import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import type { FC } from 'react';
 
-import { FaLock } from 'react-icons/fa';
 import { Agreement } from './agreement';
 import { Details } from './details';
 import { Disclaimers } from './disclaimers';
 import MasterCardLogo from './mastercard.svg';
 import { NoCoursesMessage } from './noCoursesMessage';
 import { Notes } from './notes';
+import RightArrowIcon from './right-arrow-alt.svg';
 import TrustedLogo from './trusted-site-seal.png';
 import VisaLogo from './visa.svg';
 import { Section } from '@/components/section';
@@ -32,7 +32,7 @@ export const Summary: FC<Props> = props => {
           <Agreement agreementLinks={props.agreementLinks} />
           <div className="text-center text-sm-start">
             <div className="mb-4">
-              <button onClick={props.onSubmit} className="btn btn-primary"><FaLock style={{ position: 'relative', top: -1 }} /> Proceed to Payment</button>
+              <button onClick={props.onSubmit} className="btn btn-primary">Proceed to Payment<Image src={RightArrowIcon as StaticImageData} alt="🡒" /></button>
             </div>
             <NoCoursesMessage />
             <Image src={VisaLogo as StaticImageData} className="me-2" style={{ height: 32 }} alt="Visa" />
