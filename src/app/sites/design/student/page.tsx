@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { DesignStudent20240222 } from './_carts/2024/02/22';
+import { DesignStudent20240321 } from './_carts/2024/03/21';
 import { DesignStudentFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -10,8 +10,8 @@ const DesignStudentPage: PageComponent = ({ searchParams }) => {
 
   return (
     <Suspense>
-      {date >= Date.UTC(2024, 1, 22, 14, 30) && date < Date.UTC(2024, 2, 1, 5) // Feb 22, 2024 at 09:30 (14:30 UTC) to Mar 1, 2024 at 00:00 (05:00 UTC)
-        ? <DesignStudent20240222 date={date} />
+      {date >= Date.UTC(2024, 2, 21, 13, 30) && date < Date.UTC(2024, 3, 1, 4) // March 21, 2024 at 09:30 (13:30 UTC) to April 1, 2024 at 00:00 (04:00 UTC)
+        ? <DesignStudent20240321 date={date} />
         : <DesignStudentFallback date={date} />
       }
     </Suspense>
