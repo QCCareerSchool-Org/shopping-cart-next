@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { Pet20240404 } from './_carts/2024/04/04';
+import { Pet20240420 } from './_carts/2024/04/20';
 import { PetFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -10,8 +10,8 @@ const DesignPage: PageComponent = ({ searchParams }) => {
 
   return (
     <Suspense>
-      {date >= Date.UTC(2024, 3, 4, 13, 30) && date < Date.UTC(2024, 3, 13, 4) // April 4, 2024 at 09:30 (13:30 UTC) to April 13, 2024 at 00:00 (04:00 UTC)
-        ? <Pet20240404 date={date} />
+      {date >= Date.UTC(2024, 3, 22, 13, 30) && date < Date.UTC(2024, 4, 1, 4) // April 22, 2024 at 09:30 (13:30 UTC) to May 1, 2024 at 00:00 (04:00 UTC)
+        ? <Pet20240420 date={date} />
         : <PetFallback date={date} />
       }
     </Suspense>
