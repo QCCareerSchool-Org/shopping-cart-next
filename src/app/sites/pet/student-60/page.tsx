@@ -2,6 +2,7 @@ import { agreementLinks } from '../agreementLinks';
 import { DogGroomingKitTag } from '../dogGroomingKitTag';
 import { Guarantee } from '../guarantee';
 import { PetCoursesSubtitleFirstAid } from '../petCoursesSubtitleFirstAid';
+import { PetStudent60Promo } from './promo';
 import { Form } from '@/components/form';
 import type { CourseGroup } from '@/domain/courseGroup';
 import { getDate } from '@/lib/getDate';
@@ -18,11 +19,12 @@ const courseGroups: CourseGroup[] = [
   },
 ];
 
-const PetStudentPage: PageComponent = ({ searchParams }) => {
+const PetStudent60Page: PageComponent = ({ searchParams }) => {
   const date = getDate(searchParams.date);
 
   return (
     <>
+      <PetStudent60Promo date={date} />
       <Form
         date={date}
         courseGroups={courseGroups}
@@ -40,4 +42,4 @@ const PetStudentPage: PageComponent = ({ searchParams }) => {
   );
 };
 
-export default PetStudentPage;
+export default PetStudent60Page;
