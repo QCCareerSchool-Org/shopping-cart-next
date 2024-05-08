@@ -1,7 +1,7 @@
 import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
-import { EventStudentFallbackPromo } from './promo';
+import { EventStudent60Promo } from './promo';
 import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -11,7 +11,7 @@ const EventSave60Page: PageComponent = ({ searchParams }) => {
 
   return (
     <>
-      <EventStudentFallbackPromo />
+      <EventStudent60Promo date={date} />
       <Form
         date={date}
         courseGroups={courseGroups}
