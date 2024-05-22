@@ -97,7 +97,7 @@ export const Form: FC<Props> = props => {
     }
   }, []);
 
-  useInitialData(props.school, props.schoolVariant, !!props.student || !!props.internal, props.coursesOverride, props.billingAddressDefault);
+  useInitialData(props.school, props.schoolVariant, !!props.student, props.coursesOverride, props.billingAddressDefault);
   usePriceUpdater(props.date, !!props.internal, props.school, props.schoolVariant, props.promoCodeDefault);
 
   const [ showConfirmationPopup, toggleConfirmationPopup ] = useToggle(false);
