@@ -8,6 +8,8 @@ export const getCertificationName = (courseCode: string): string | undefined => 
       return 'International Dog Training Professional';
     case 'DD':
       return 'International Dog Care Professional';
+    case 'GT':
+      return 'Certified Grooming Technician';
     case 'I2':
       return 'International Design and Decorating Professional';
     case 'ST':

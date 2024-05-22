@@ -14,6 +14,7 @@ import ED from './certifications/ed.svg';
 import FD from './certifications/fd.svg';
 import FS from './certifications/fs.svg';
 import GB from './certifications/gb.svg';
+import GT from './certifications/gt.svg';
 import HS from './certifications/hs.svg';
 import I2 from './certifications/i2.svg';
 import LD from './certifications/ld.svg';
@@ -48,6 +49,8 @@ const getImage = (courseCode: string): StaticImageData | undefined => {
       return DG as StaticImageData;
     case 'DT':
       return DT as StaticImageData;
+    case 'GT':
+      return GT as StaticImageData;
     case 'ED':
       return ED as StaticImageData;
     case 'FD':
