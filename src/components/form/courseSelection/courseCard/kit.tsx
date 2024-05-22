@@ -10,6 +10,7 @@ import DG from './kits/dg.jpg';
 import ED from './kits/ed.jpg';
 import FD from './kits/fd.jpg';
 import FS from './kits/fs.jpg';
+import GT from './kits/gt.jpg';
 import HS from './kits/hs.jpg';
 import I2 from './kits/i2.jpg';
 import LD from './kits/ld.jpg';
@@ -31,6 +32,8 @@ const getImage = (courseCode: string): StaticImageData | undefined => {
       return DB;
     case 'DG':
       return DG;
+    case 'GT':
+      return GT;
     case 'ED':
       return ED;
     case 'FD':
