@@ -131,6 +131,14 @@ export const getPromos = (date: number, price: PriceState, school: School, stude
       altText: `${price?.currency.code === 'GBP' ? '£' : '$'}${d} off the Dog Training course`,
     })),
 
+    ...[ 200, 300 ].map((d): Promo => ({
+      schools: [ 'QC Pet Studies' ],
+      student: 'DENIED',
+      code: `PET${d}OFF`,
+      description: <>Get {price?.currency.code === 'GBP' ? '£' : '$'}{d} off the <strong>Dog Grooming</strong> course</>,
+      altText: `${price?.currency.code === 'GBP' ? '£' : '$'}${d} off any QC Pet Studies course`,
+    })),
+
     ...[ 50, 100, 150 ].map((d): Promo => {
       return {
         schools: [ 'QC Wellness Studies' ],
