@@ -58,7 +58,7 @@ const InternalDesignPage: PageComponent = ({ searchParams }) => {
         school="QC Design School"
         guarantee={null}
         internal
-        successLink="https://www.qcdesignschool.com/welcome-to-the-school"
+        successLink="https://www.qcdesignschool.com/welcome-to-the-school?utm_source=secure.qccareerschool.com&utm_medium=phone"
         agreementLinks={agreementLinks}
         showPromoCodeInput
       />
