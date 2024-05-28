@@ -14,7 +14,7 @@ const InternalEventPage: PageComponent = ({ searchParams }) => {
         school="QC Event School"
         guarantee={null}
         internal
-        successLink="https://www.qceventplanning.com/welcome-to-the-school"
+        successLink="https://www.qceventplanning.com/welcome-to-the-school?utm_source=secure.qccareerschool.com&utm_medium=phone"
         agreementLinks={agreementLinks}
         showPromoCodeInput
       />
