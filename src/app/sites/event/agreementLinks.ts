@@ -1,8 +1,8 @@
 import type { AgreementLinks } from '@/domain/agreementLinks';
 
 export const agreementLinks: AgreementLinks = {
-  default: 'https://www.qcmakeupacademy.com/enrollment-agreement.html',
+  default: 'https://www.qceventplanning.com/enrollment-agreement',
   custom: [
-    { countryCodes: [ 'GB', 'GG', 'JE' ], link: 'https://www.qcmakeupacademy.com/enrollment-agreement-gb.html' },
+    { countryCodes: [ 'GB', 'GG', 'JE' ], link: 'https://www.qceventplanning.com/enrollment-agreement-gb' },
   ],
 };
