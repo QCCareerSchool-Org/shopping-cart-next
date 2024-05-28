@@ -128,6 +128,7 @@ const disabledCourses = (selectedCourses: string[], student: boolean): string[] 
   /* pet */
   if (selectedCourses.includes('DG')) {
     result.push('DS');
+    result.push('GT');
   }
   if (selectedCourses.includes('FA')) {
     result.push('DS');
@@ -138,6 +139,9 @@ const disabledCourses = (selectedCourses: string[], student: boolean): string[] 
   }
   if (!student && !selectedCourses.includes('DT')) {
     result.push('DC');
+  }
+  if (selectedCourses.includes('GT')) {
+    result.push('DG');
   }
   return result;
 };
