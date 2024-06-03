@@ -31,10 +31,16 @@ const middleware = (req: NextRequest): NextResponse => {
     // the app/sites folder and its respective contents.
     url.pathname = '/404';
   } else if (site) {
+    let pathname: string;
+    if (site.name === 'QC Event School' && url.pathname.startsWith('/bogo-1')) {
+      pathname = url.pathname.replace(/^\/bogo-1/ui, '/free-specialty');
+    } else if (url.pathname.startsWith('/continued-education')) {
+      pathname = url.pathname.replace(/^\/continued-education/ui, '/student');
+    } else {
+      pathname = url.pathname;
+    }
+
     // rewrite to the current subdomain under the app/sites folder
-    const pathname = url.pathname.startsWith('/continued-education')
-      ? url.pathname.replace(/^\/continued-education/ui, '/student')
-      : url.pathname;
     url.pathname = `/sites${site.path}${pathname}`;
   }
 
