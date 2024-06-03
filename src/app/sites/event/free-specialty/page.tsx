@@ -21,7 +21,7 @@ const EventFreeSpecialtyPage: PageComponent = ({ searchParams }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="HIDE"
         visualPaymentPlans
-        promoCodeDefault="SPECIALTY"
+        promoCodeDefault="2SPECIALTY"
         dynamicCourseMessages={[ FreeEventSpecialtyDynamicMessage ]}
       />
     </>
