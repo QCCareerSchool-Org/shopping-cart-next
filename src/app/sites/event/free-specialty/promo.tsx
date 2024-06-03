@@ -8,7 +8,7 @@ import { Section } from '@/components/section';
 import { usePriceState } from '@/hooks/usePriceState';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#8ef0c0';
+const backgroundColor = '#2d232b';
 
 export const EventFreeSpecialtyPromo: FC = () => {
   const priceState = usePriceState();

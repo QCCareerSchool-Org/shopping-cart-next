@@ -1,19 +1,18 @@
-'use client';
-
 import type { FC } from 'react';
 
-import DesktopUK from './desktop-uk.jpg';
+import DesktopEnds from './desktop-ends.jpg';
 import Desktop from './desktop.jpg';
-import MobileUK from './mobile-uk.jpg';
+import MobileEnds from './mobile-ends.jpg';
 import Mobile from './mobile.jpg';
 import { PromoImage } from '@/components/promoImage';
-import { usePriceState } from '@/hooks/usePriceState';
 
-export const Hero: FC = () => {
-  const priceState = usePriceState();
+type Props = {
+  lastChance?: boolean;
+};
 
-  const [ desktopSrc, mobileSrc ] = priceState?.currency.code === 'GBP'
-    ? [ DesktopUK, MobileUK ]
+export const Hero: FC<Props> = ({ lastChance }) => {
+  const [ desktopSrc, mobileSrc ] = lastChance
+    ? [ DesktopEnds, MobileEnds ]
     : [ Desktop, Mobile ];
 
   return <PromoImage desktopSrc={desktopSrc} mobileSrc={mobileSrc} />;
