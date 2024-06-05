@@ -62,7 +62,11 @@ export const useEnroll = (internal: boolean, school: School, schoolVariant: Scho
       }
       await chargeEnrollment(metaState.enrollment.id, token, company);
       clearForm();
-      window.location.href = `${successLink}?enrollmentId=${metaState.enrollment.id}&code=${metaState.enrollment.code}`;
+      if (internal) {
+        window.location.href = `${successLink}?enrollmentId=${metaState.enrollment.id}&code=${metaState.enrollment.code}&utm_source=secure.qccareerschool.com&utm_medium=phone`;
+      } else {
+        window.location.href = `${successLink}?enrollmentId=${metaState.enrollment.id}&code=${metaState.enrollment.code}`;
+      }
       return true;
     } catch (err) {
       metaDispatch({ type: 'SET_ENROLLMENT', payload: undefined }); // we'll start over with a new enrollment record if the user tries again

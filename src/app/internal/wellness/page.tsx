@@ -14,7 +14,7 @@ const InternalWellnessPage: PageComponent = ({ searchParams }) => {
         school="QC Wellness Studies"
         guarantee={null}
         internal
-        successLink="https://www.qcwellnessstudies.com/welcome-to-the-school?utm_source=secure.qccareerschool.com&utm_medium=phone"
+        successLink="https://www.qcwellnessstudies.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
         showPromoCodeInput
       />
