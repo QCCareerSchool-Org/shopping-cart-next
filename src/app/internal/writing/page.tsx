@@ -14,7 +14,7 @@ const InternalWritingPage: PageComponent = ({ searchParams }) => {
         school="Winghill Writing School"
         guarantee={null}
         internal
-        successLink="https://www.winghill.com/welcome-to-the-school?utm_source=secure.qccareerschool.com&utm_medium=phone"
+        successLink="https://www.winghill.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
         showPromoCodeInput
       />
