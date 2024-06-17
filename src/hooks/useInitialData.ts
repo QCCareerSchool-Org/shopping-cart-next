@@ -9,6 +9,7 @@ import { useCountriesState } from './useCountriesState';
 import { useCoursesDispatch } from './useCoursesDispatch';
 import { useMetaDispatch } from './useMetaDispatch';
 import { usePaymentDispatch } from './usePaymentDispatch';
+import type { CourseGroup } from '@/domain/courseGroup';
 import type { PaymentPlan } from '@/domain/paymentPlan';
 import { isPaymentPlan } from '@/domain/paymentPlan';
 import type { School, SchoolVariant } from '@/domain/school';
@@ -43,7 +44,7 @@ type Data = {
   promoCode: string | null;
 };
 
-export const useInitialData = (school: School, schoolVariant: SchoolVariant | undefined, student: boolean, coursesOverride?: string[], billingAddressDefault?: 'same' | 'different'): void => {
+export const useInitialData = (school: School, schoolVariant: SchoolVariant | undefined, student: boolean, courseGroups: CourseGroup[], coursesOverride?: string[], billingAddressDefault?: 'same' | 'different'): void => {
   const searchParams = useSearchParams();
   const countries = useCountriesState();
   const addressState = useAddressState();
@@ -74,7 +75,9 @@ export const useInitialData = (school: School, schoolVariant: SchoolVariant | un
     coursesDispatch({ type: 'CLEAR_COURSES', payload: { student } });
     if (coursesOverride) {
       for (const c of coursesOverride) {
-        coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode: c, student } });
+        if (courseGroups.some(g => g.items.some(i => i.code.toUpperCase() === c.toUpperCase()))) {
+          coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode: c, student } });
+        }
       }
     }
 
@@ -224,7 +227,9 @@ export const useInitialData = (school: School, schoolVariant: SchoolVariant | un
 
       if (courses?.length) {
         for (const courseCode of courses) {
-          coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode, student } });
+          if (courseGroups.some(g => g.items.some(i => i.code.toUpperCase() === courseCode.toUpperCase()))) {
+            coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode, student } });
+          }
         }
       }
 
@@ -295,5 +300,5 @@ export const useInitialData = (school: School, schoolVariant: SchoolVariant | un
       await updateData(querystringData);
     })();
 
-  }, [ school, schoolVariant, student, coursesOverride, addressDispatch, billingAddressDispatch, coursesDispatch, metaDispatch, paymentDispatch, addressState.countryCode, addressState.provinceCode, addressState.provinces, billingAddressState.countryCode, billingAddressState.provinceCode, billingAddressState.provinces, countries, searchParams, billingAddressDefault ]);
+  }, [ school, schoolVariant, student, courseGroups, coursesOverride, addressDispatch, billingAddressDispatch, coursesDispatch, metaDispatch, paymentDispatch, addressState.countryCode, addressState.provinceCode, addressState.provinces, billingAddressState.countryCode, billingAddressState.provinceCode, billingAddressState.provinces, countries, searchParams, billingAddressDefault ]);
 };
