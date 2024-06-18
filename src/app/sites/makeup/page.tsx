@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { Makeup20240606 } from './_carts/2024/06/06';
+import { Makeup20240619 } from './_carts/2024/06/19';
 import { MakeupFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -10,8 +10,8 @@ const MakeupPage: PageComponent = ({ searchParams }) => {
 
   return (
     <Suspense>
-      {date >= Date.UTC(2024, 5, 6, 13, 30) && date < Date.UTC(2024, 5, 14, 4) // June 6, 2024 at 09:30 (13:30 UTC) to June 14, 2024 at 00:00 (04:00 UTC)
-        ? <Makeup20240606 date={date} />
+      {date >= Date.UTC(2024, 5, 19, 13, 30) && date < Date.UTC(2024, 5, 29, 4) // June 19, 2024 at 09:30 (13:30 UTC) to June 29, 2024 at 00:00 (04:00 UTC)
+        ? <Makeup20240619 date={date} />
         : <MakeupFallback date={date} />
       }
     </Suspense>
