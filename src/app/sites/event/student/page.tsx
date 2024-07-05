@@ -5,8 +5,8 @@ import { EventStudentFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const EventStudentPage: PageComponent = ({ searchParams }) => {
-  const date = getDate(searchParams.date);
+const EventStudentPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
 
   return (
     <Suspense>

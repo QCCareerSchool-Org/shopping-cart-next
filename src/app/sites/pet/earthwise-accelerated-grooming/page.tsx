@@ -12,8 +12,8 @@ const agreementLinks: AgreementLinks = {
 
 const coursesOverride = [ 'EA' ];
 
-const PetEarthwiseAcceleratedGroomingPage: PageComponent = ({ searchParams }) => {
-  const date = getDate(searchParams.date);
+const PetEarthwiseAcceleratedGroomingPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
 
   return (
     <>

@@ -7,8 +7,8 @@ import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const DesignMasterclass200OffPage: PageComponent = ({ searchParams }) => {
-  const date = getDate(searchParams.date);
+const DesignMasterclass200OffPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
   return (
     <>
       <DesignMasterclass200OffPromo />
