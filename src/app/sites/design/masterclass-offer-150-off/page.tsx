@@ -23,8 +23,8 @@ for (const group of filteredCourseGroups) {
   }
 }
 
-const DesignMasterclass150OffPage: PageComponent = ({ searchParams }) => {
-  const date = getDate(searchParams.date);
+const DesignMasterclass150OffPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
   return (
     <>
       <DesignMasterclass150OffPromo />

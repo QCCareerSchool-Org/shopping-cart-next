@@ -8,8 +8,8 @@ import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const PetTraining500OffPage: PageComponent = ({ searchParams }) => {
-  const date = getDate(searchParams.date);
+const PetTraining500OffPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
 
   return (
     <>

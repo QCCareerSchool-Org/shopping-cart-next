@@ -19,8 +19,8 @@ const courseGroups: CourseGroup[] = [
   },
 ];
 
-const PetStudentPage: PageComponent = ({ searchParams }) => {
-  const date = getDate(searchParams.date);
+const PetStudentPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
 
   return (
     <>

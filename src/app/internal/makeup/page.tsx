@@ -27,8 +27,8 @@ const courseGroups: CourseGroup[] = [
   },
 ];
 
-const InternalMakeupPage: PageComponent = ({ searchParams }) => {
-  const date = getDate(searchParams.date);
+const InternalMakeupPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
   return (
     <>
       <Form

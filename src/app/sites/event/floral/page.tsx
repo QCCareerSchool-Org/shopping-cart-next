@@ -14,8 +14,8 @@ const courseGroups: CourseGroup[] = [
 
 const coursesOverride = [ 'FD' ];
 
-const EventFloralPage: PageComponent = ({ searchParams }) => {
-  const date = getDate(searchParams.date);
+const EventFloralPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
   return (
     <>
       <EventFloralPromo />

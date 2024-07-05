@@ -33,8 +33,8 @@ const getModifiedCourseGroups = (defaultCourseGroups: CourseGroup[]): CourseGrou
 
 const orderedCourseGroups = getModifiedCourseGroups(courseGroups);
 
-const DesignOrganizingPage: PageComponent = ({ searchParams }) => {
-  const date = getDate(searchParams.date);
+const DesignOrganizingPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
   return (
     <>
       <DesignOrganizingPromo date={date} />

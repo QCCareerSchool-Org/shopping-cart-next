@@ -17,8 +17,8 @@ const courseGroups: CourseGroup[] = [
   },
 ];
 
-const InternalPetPage: PageComponent = ({ searchParams }) => {
-  const date = getDate(searchParams.date);
+const InternalPetPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
   return (
     <>
       <Form

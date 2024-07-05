@@ -5,8 +5,8 @@ import { MakeupStudentFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const MakeupStudentPage: PageComponent = ({ searchParams }) => {
-  const date = getDate(searchParams.date);
+const MakeupStudentPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
 
   return (
     <Suspense>

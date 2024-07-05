@@ -5,8 +5,8 @@ import { DesignStudentFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const DesignStudentPage: PageComponent = ({ searchParams }) => {
-  const date = getDate(searchParams.date);
+const DesignStudentPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
 
   return (
     <Suspense>

@@ -5,8 +5,8 @@ import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const WritingContinuedEducationPage: PageComponent = ({ searchParams }) => {
-  const date = getDate(searchParams.date);
+const WritingContinuedEducationPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
   return (
     <Form
       date={date}
