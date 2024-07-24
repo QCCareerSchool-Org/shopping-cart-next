@@ -13,12 +13,13 @@ export const Design20240724Modal: FC<Props> = props => {
     <Modal show={props.show} onHide={props.onHide}>
       <Modal.Header closeButton>Start Your Design Career</Modal.Header>
       <Modal.Body>
-        <p className="lead">For a limited time, enroll in any design course and <strong>get a second course free</strong>. This is the perfect opportunity to specialize in your design training and become a certified expert.</p>
-        <h6>Learn From Expert Instructors</h6>
+        <p>For a limited time, enroll in any design course and <strong>get a second course free</strong>. This is the perfect opportunity to specialize in your design training and become a certified expert.</p>
+        <hr />
+        <h6 className="sans-serif">Learn From Expert Instructors</h6>
         <p>We've hand-selected the top home design professionals in the industry to guide you through your course material.</p>
-        <h6>Industry-Recognized Certifications</h6>
+        <h6 className="sans-serif">Industry-Recognized Certifications</h6>
         <p>Graduate with professional design certifications and open up a world of career & business opportunities.</p>
-        <h6>Business Training Included</h6>
+        <h6 className="sans-serif">Business Training Included</h6>
         <p className="mb-0">Each course includes built-in business training to help you launch your career and grow your clientele as a newly certified decorator or designer.</p>
       </Modal.Body>
     </Modal>
