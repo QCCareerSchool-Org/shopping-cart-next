@@ -4,7 +4,7 @@ import { agreementLinks } from '../../agreementLinks';
 import { courseGroups } from '../../courseGroups';
 import { Guarantee } from '../../guarantee';
 import { DesignFallbackPromo } from './promo';
-import { FreeVirtualDesignDynamicMessage } from '@/components/dynamicCourseMessages/freeVirtualDesign';
+import { FreeColorConsultantMessage } from '@/components/dynamicCourseMessages/freeColorConsultant';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 
@@ -25,8 +25,8 @@ export const DesignFallback: FC<Props> = ({ date }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
-        promoCodeDefault="FREEVIRTUAL"
-        dynamicCourseMessages={[ FreeVirtualDesignDynamicMessage, Save50CourseMessage ]}
+        promoCodeDefault="FREECOLOR"
+        dynamicCourseMessages={[ FreeColorConsultantMessage ]}
       />
     </>
   );

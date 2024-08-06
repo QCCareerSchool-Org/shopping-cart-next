@@ -8,9 +8,9 @@ type Props = {
 
 export const DesignFallbackModal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
-    <Modal.Header closeButton>Gain Specialized Design Training</Modal.Header>
+    <Modal.Header closeButton>Limited-Time Offer</Modal.Header>
     <Modal.Body>
-      <p className="lead mb-0">For a limited time, enroll in any design course and get Virtual Design FREE!</p>
+      <p className="lead mb-0">For a limited time, get the <strong>Color Consultant Course FREE</strong> when you also enroll in any other course of equal or greater value.</p>
     </Modal.Body>
   </Modal>
 );
