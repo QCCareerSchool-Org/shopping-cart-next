@@ -5,7 +5,6 @@ import { courseGroups } from '../../courseGroups';
 import { Guarantee } from '../../guarantee';
 import { DesignFallbackPromo } from './promo';
 import { FreeColorConsultantMessage } from '@/components/dynamicCourseMessages/freeColorConsultant';
-import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 
 type Props = {
