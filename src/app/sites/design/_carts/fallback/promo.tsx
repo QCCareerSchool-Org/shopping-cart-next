@@ -7,7 +7,7 @@ import { DesignFallbackModal } from './modal';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#8d7960';
+const backgroundColor = '#000';
 
 export const DesignFallbackPromo: FC = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
@@ -20,7 +20,7 @@ export const DesignFallbackPromo: FC = () => {
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero />
+          <Hero lastChance={false} />
         </div>
       </Section>
       <DesignFallbackModal show={showPopup} onHide={handleClick} />
