@@ -2,7 +2,7 @@ import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { EventBogo1Promo } from './promo';
-import { BogoDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogo';
+import { TwoFreeEventSpecialtyDynamicMessage } from '@/components/dynamicCourseMessages/twoFreeEventSpecialty';
 import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -21,8 +21,8 @@ const EventBogo1Page: PageComponent = async ({ searchParams }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="HIDE"
         visualPaymentPlans
-        promoCodeDefault="EVENTFREECOURSE"
-        dynamicCourseMessages={[ BogoDynamicCourseMessage ]}
+        promoCodeDefault="2SPECIALTY100"
+        dynamicCourseMessages={[ TwoFreeEventSpecialtyDynamicMessage ]}
       />
     </>
   );
