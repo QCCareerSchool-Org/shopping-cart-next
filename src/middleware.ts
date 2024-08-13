@@ -32,9 +32,7 @@ const middleware = (req: NextRequest): NextResponse => {
     url.pathname = '/404';
   } else if (site) {
     let pathname: string;
-    if (site.name === 'QC Event School' && url.pathname.startsWith('/bogo-1')) {
-      pathname = url.pathname.replace(/^\/bogo-1/ui, '/free-specialty');
-    } else if (url.pathname.startsWith('/continued-education')) {
+    if (url.pathname.startsWith('/continued-education')) {
       pathname = url.pathname.replace(/^\/continued-education/ui, '/student');
     } else {
       pathname = url.pathname;
