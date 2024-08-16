@@ -1,31 +1,29 @@
 import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
-import { DesignBogo1Promo } from './promo';
-import { BogoDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogo';
+import { Wellness150OffPromo } from './promo';
 import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const DesignBogo1Page: PageComponent = async ({ searchParams }) => {
+const Wellness150OffPage: PageComponent = async ({ searchParams }) => {
   const date = await getDate(searchParams.date);
   return (
     <>
-      <DesignBogo1Promo />
+      <Wellness150OffPromo />
       <Form
         date={date}
         courseGroups={courseGroups}
-        school="QC Design School"
+        school="QC Wellness Studies"
         guarantee={Guarantee}
-        successLink="https://www.qcdesignschool.com/welcome-to-the-school"
+        successLink="https://www.qcwellnessstudies.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
-        dynamicCourseDescriptions="SHOW"
+        dynamicCourseDescriptions="HIDE"
         visualPaymentPlans
-        promoCodeDefault="BOGO100"
-        dynamicCourseMessages={[ BogoDynamicCourseMessage ]}
+        promoCodeDefault="300OFF"
       />
     </>
   );
 };
 
-export default DesignBogo1Page;
+export default Wellness150OffPage;
