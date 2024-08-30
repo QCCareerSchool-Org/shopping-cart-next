@@ -9,9 +9,11 @@ import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTime
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#223d4d';
-const lastChanceDate = Date.UTC(2024, 7, 26, 4); // 2024-08-26T00:00 (04:00 UTC)
+const firstBackgroundColor = '#223d4d';
+const firstLastChanceDate = Date.UTC(2024, 7, 26, 4); // 2024-08-26T00:00 (04:00 UTC)
 const firstEndDate = Date.UTC(2024, 7, 31, 4); //  2024-08-31T00:00 (04:00 UTC)
+const secondBackgroundColor = '#7f766d';
+const secondLastChanceDate = Date.UTC(2024, 8, 4, 4); // 2024-09-04T00:00 (04:00 UTC)
 const secondEndDate = Date.UTC(2024, 8, 7, 4); // 2024-09-07T00:00 (04:00 UTC)
 
 type Props = {
@@ -21,7 +23,12 @@ type Props = {
 export const Design20240821Promo: FC<Props> = ({ date }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
 
-  const endDate = useMemo(() => (date < firstEndDate ? firstEndDate : secondEndDate), [ date ]);
+  const [ backgroundColor, lastChanceDate, endDate ] = useMemo(() => {
+    if (date < firstEndDate) {
+      return [ firstBackgroundColor, firstLastChanceDate, firstEndDate ];
+    }
+    return [ secondBackgroundColor, secondLastChanceDate, secondEndDate ];
+  }, [ date ]);
 
   const handleClick = (): void => {
     togglePopup();
@@ -31,7 +38,7 @@ export const Design20240821Promo: FC<Props> = ({ date }) => {
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero />
+          <Hero round2={date >= firstEndDate} lastChance={date >= lastChanceDate} />
         </div>
       </Section>
       <Design20240821Modal show={showPopup} onHide={handleClick} />
