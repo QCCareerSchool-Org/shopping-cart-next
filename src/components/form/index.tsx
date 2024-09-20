@@ -147,6 +147,7 @@ export const Form: FC<Props> = props => {
       return;
     }
     void addToDatabase().then(result => {
+      setRefreshCaptcha(r => !r);
       if (result) {
         togglePaysafeForm();
       }
