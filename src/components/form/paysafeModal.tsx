@@ -110,7 +110,7 @@ export const PaysafeModal: FC<Props> = props => {
         }
       } catch (err) {
         if (isErrors(err)) {
-          setStatus(s => ({ ...s, errors: err as Errors }));
+          setStatus(s => ({ ...s, errors: err }));
         } else {
           console.error(err);
         }
