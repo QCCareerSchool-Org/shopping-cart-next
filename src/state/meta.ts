@@ -5,6 +5,7 @@ export type MetaState = {
   promoCode: string;
   promoCodeInputValue: string;
   enrollment?: { id: number; code: string };
+  captchaToken: string;
 };
 
 export type MetaAction =
@@ -14,7 +15,8 @@ export type MetaAction =
   | { type: 'SET_PROMO_CODE'; payload: string }
   | { type: 'CLEAR_PROMO_CODE' }
   | { type: 'SET_PROMO_CODE_INPUT_VALUE'; payload: string }
-  | { type: 'SET_ENROLLMENT'; payload?: { id: number; code: string } };
+  | { type: 'SET_ENROLLMENT'; payload?: { id: number; code: string } }
+  | { type: 'SET_CAPTCHA_TOKEN'; payload: string };
 
 export function metaReducer(state: MetaState, action: MetaAction): MetaState {
   switch (action.type) {
@@ -55,6 +57,8 @@ export function metaReducer(state: MetaState, action: MetaAction): MetaState {
     }
     case 'SET_ENROLLMENT':
       return { ...state, enrollment: action.payload };
+    case 'SET_CAPTCHA_TOKEN':
+      return { ...state, captchaToken: action.payload };
   }
 }
 
@@ -64,4 +68,5 @@ export const initialMetaState: MetaState = {
   withoutTools: false,
   promoCode: '',
   promoCodeInputValue: '',
+  captchaToken: '',
 };

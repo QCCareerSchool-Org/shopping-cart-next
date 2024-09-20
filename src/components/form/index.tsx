@@ -1,7 +1,8 @@
 'use client';
 
 import type { FC } from 'react';
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
+import { GoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 import { Address } from './address';
 import { CourseSelection } from './courseSelection';
@@ -15,6 +16,7 @@ import { useAddressState } from '@/hooks/useAddressState';
 import { useCoursesState } from '@/hooks/useCoursesState';
 import { useEnroll } from '@/hooks/useEnroll';
 import { useInitialData } from '@/hooks/useInitialData';
+import { useMetaDispatch } from '@/hooks/useMetaDispatch';
 import { useMetaState } from '@/hooks/useMetaState';
 import { usePaymentState } from '@/hooks/usePaymentState';
 import { usePriceState } from '@/hooks/usePriceState';
@@ -102,12 +104,14 @@ export const Form: FC<Props> = props => {
 
   const [ showConfirmationPopup, toggleConfirmationPopup ] = useToggle(false);
   const [ showPaysafeForm, togglePaysafeForm ] = useToggle(false);
+  const [ refreshCaptcha, setRefreshCaptcha ] = useState(false);
 
   const coursesState = useCoursesState();
   const addressState = useAddressState();
   const priceState = usePriceState();
   const paymentState = usePaymentState();
   const metaState = useMetaState();
+  const metaDispatch = useMetaDispatch();
 
   const paysafeCompany = priceState ? getPaysafeCompany(priceState.currency.code) : undefined;
 
@@ -149,8 +153,22 @@ export const Form: FC<Props> = props => {
     });
   };
 
+  const handleRecaptchaVerify = useCallback((token: string): void => {
+    metaDispatch({ type: 'SET_CAPTCHA_TOKEN', payload: token });
+  }, [ metaDispatch ]);
+
+  useEffect(() => {
+    // refresh the token periodically because it only lasts for two minutes
+    const id = setInterval(() => {
+      setRefreshCaptcha(r => !r);
+    }, 105_000); // 1.75 minutes
+
+    return () => clearInterval(id);
+  });
+
   return (
     <>
+      <GoogleReCaptcha onVerify={handleRecaptchaVerify} refreshReCaptcha={refreshCaptcha} />
       <Suspense>{!!props.internal && <Internal school={props.school} />}</Suspense>
       <CourseSelection
         internal={!!props.internal}
