@@ -46,6 +46,7 @@ export type EnrollmentPayload = {
   campaignId: string | null;
   existingStudent: boolean;
   options?: Options;
+  captchaToken: string;
 };
 
 type Options = {
@@ -121,6 +122,7 @@ export const createEnrollmentPayload = (internal: boolean, school: School, schoo
     discountCode: '',
     campaignId: null,
     existingStudent: metaState.student,
+    captchaToken: metaState.captchaToken,
   };
 
   const options: Options = {

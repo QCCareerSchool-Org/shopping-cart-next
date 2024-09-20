@@ -2,6 +2,7 @@ import type { FC, PropsWithChildren } from 'react';
 
 import { AddressProvider } from './addressProvider';
 import { BillingAddressProvider } from './billingAddressProvider';
+import { CaptchaProvider } from './captchaProvider';
 import { CountriesProvider } from './countriesProvider';
 import { CoursesProvider } from './coursesProvider';
 import { ErrorsProvider } from './errorsProvider';
@@ -31,7 +32,9 @@ export const Provider: FC<PropsWithChildren<Props>> = ({ geoLocation, countries,
                 <OverridesProvider>
                   <MetaProvider>
                     <ScreenWidthProvider>
-                      {children}
+                      <CaptchaProvider>
+                        {children}
+                      </CaptchaProvider>
                     </ScreenWidthProvider>
                   </MetaProvider>
                 </OverridesProvider>
