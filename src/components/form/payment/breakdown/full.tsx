@@ -1,4 +1,4 @@
-import Big from 'big.js';
+import { Big } from 'big.js';
 import type { FC } from 'react';
 import { Fragment } from 'react';
 
