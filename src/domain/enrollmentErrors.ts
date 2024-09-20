@@ -22,6 +22,7 @@ export type EnrollmentErrors = {
   billingAddress: Address;
   paymentPlan?: MissingEmptyInvalid;
   paymentDay?: MissingEmptyInvalid;
+  captchaToken?: MissingInvalid;
 };
 
 export const isEnrollmentErrors = (obj: unknown): obj is EnrollmentErrors => {

@@ -50,6 +50,10 @@ export const useEnroll = (internal: boolean, school: School, schoolVariant: Scho
           scrollToPosition('billing');
         }
         errorsDispatch({ type: 'SET_ERRORS', payload: err.enrollmentErrors });
+
+        if (err.code === 5) {
+          errorsDispatch({ type: 'SHOW_POPUP', payload: { title: 'reCAPTCHA Error', message: <><p><strong>Your browser is blocking the reCAPTCHA script.</strong></p><p>To continue, please enable the script. It helps us prevent spam and automated form submissions.</p></> } });
+        }
       }
       return false;
     }
