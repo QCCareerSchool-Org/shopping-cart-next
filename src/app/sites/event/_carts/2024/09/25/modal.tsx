@@ -13,7 +13,7 @@ export const Event20240925Modal: FC<Props> = props => {
     <Modal show={props.show} onHide={props.onHide}>
       <Modal.Header closeButton>Start Your Event Planning Career</Modal.Header>
       <Modal.Body>
-        <p>For a limited time, enroll in any foundation course and <strong>get TWO specialty courses free!</strong> This is the perfect opportunity to specialize in your event planning training and become a certified expert.</p>
+        <p>For a limited time, enroll in any course and <strong>get a second course free!</strong> This is the perfect opportunity to specialize in your event planning training and become a certified expert.</p>
         <hr />
         <h6 className="sans-serif">Learn From Expert Instructors</h6>
         <p>We've hand-selected the top event planning professionals in the industry to guide you through your course material.</p>
