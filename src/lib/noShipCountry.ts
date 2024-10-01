@@ -1,7 +1,7 @@
 const usEmbargoCountries = [ 'IR', 'KP', 'CU', 'MM', 'SD', 'SY' ];
 const africanCountries = [ 'DZ', 'AO', 'BJ', 'BW', 'BF', 'BI', 'CM', 'CV', 'CF', 'TD', 'KM', 'CD', 'DJ', 'GQ', 'EG', 'ER', 'ET', 'GA', 'GH', 'GN', 'GW', 'CI', 'KE', 'LS', 'LR', 'LY', 'MG', 'MW', 'ML', 'MR', 'MU', 'MA', 'MZ', 'NA', 'NE', 'NG', 'CG', 'RW', 'ST', 'SN', 'SC', 'SL', 'SO', 'SS', 'SD', 'SZ', 'TZ', 'GM', 'TG', 'TN', 'UG', 'ZA', 'ZM', 'ZW' ];
 const fedexCountries = [ 'CF', 'KM', 'CU', 'GQ', 'FK', 'GW', 'IR', 'KI', 'KP', 'YT', 'MM', 'NR', 'NU', 'PM', 'ST', 'SL', 'SB', 'SO', 'SH', 'SD', 'SY', 'TJ', 'TK', 'TM', 'TV', 'UM' ];
-const euCountries = [ 'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'GB' ];
+const euCountries = [ 'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE' ];
 
 /** determines if we are able to ship to a country */
 export const noShipCountry = (countryCode: string | null): boolean => {
@@ -40,7 +40,11 @@ export const noShipCountry = (countryCode: string | null): boolean => {
     return true;
   }
 
-  if (countryCode !== 'GB' && euCountry(countryCode)) { // EU makeup restriction (except GB)
+  if (euCountry(countryCode)) { // EU makeup restriction
+    return true;
+  }
+
+  if (countryCode === 'IL') { // Israel
     return true;
   }
 
