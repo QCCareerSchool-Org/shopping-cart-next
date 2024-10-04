@@ -1,7 +1,6 @@
 'use client';
 
 import type { FC, PropsWithChildren } from 'react';
-
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 export const CaptchaProvider: FC<PropsWithChildren> = ({ children }) => (

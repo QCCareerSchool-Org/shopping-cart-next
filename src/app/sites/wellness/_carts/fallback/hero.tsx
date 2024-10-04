@@ -10,7 +10,6 @@ import MobileEnds from './mobile-ends.jpg';
 import MobileUKEnds from './mobile-uk-ends.jpg';
 import MobileUK from './mobile-uk.jpg';
 import Mobile from './mobile.jpg';
-
 import { PromoImage } from '@/components/promoImage';
 import { usePriceState } from '@/hooks/usePriceState';
 

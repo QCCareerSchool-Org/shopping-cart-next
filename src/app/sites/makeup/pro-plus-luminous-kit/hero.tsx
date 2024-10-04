@@ -6,7 +6,6 @@ import DesktopUK from './desktop-uk.jpg';
 import Desktop from './desktop.jpg';
 import MobileUK from './mobile-uk.jpg';
 import Mobile from './mobile.jpg';
-
 import { PromoImage } from '@/components/promoImage';
 import { usePriceState } from '@/hooks/usePriceState';
 

@@ -10,8 +10,8 @@ import { useOverridesState } from './useOverridesState';
 import { usePaymentDispatch } from './usePaymentDispatch';
 import { usePriceDispatch } from './usePriceDispatch';
 import type { School, SchoolVariant } from '@/domain/school';
-import { fetchPrice } from '@/lib/fetch';
 import type { PriceQuery } from '@/lib/fetch';
+import { fetchPrice } from '@/lib/fetch';
 
 export const usePriceUpdater = (date: number, internal: boolean, school: School, schoolVariant?: SchoolVariant, promoCodeDefault?: string): void => {
   const addressState = useAddressState();

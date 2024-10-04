@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { Fragment } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'react-bootstrap';
+
 import { usePaymentState } from '@/hooks/usePaymentState';
 import { usePriceState } from '@/hooks/usePriceState';
 import { formatCurrency } from '@/lib/formatCurrency';

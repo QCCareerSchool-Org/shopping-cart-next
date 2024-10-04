@@ -1,8 +1,8 @@
 'use client';
 
 import type { FC } from 'react';
-
 import { Modal } from 'react-bootstrap';
+
 import { Hero } from './hero';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';

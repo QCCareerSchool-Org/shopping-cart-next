@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 
+import { DesignFallbackPromo } from './promo';
 import { agreementLinks } from '../../agreementLinks';
 import { courseGroups } from '../../courseGroups';
 import { Guarantee } from '../../guarantee';
-import { DesignFallbackPromo } from './promo';
 import { FreeColorConsultantMessage } from '@/components/dynamicCourseMessages/freeColorConsultant';
 import { Form } from '@/components/form';
 

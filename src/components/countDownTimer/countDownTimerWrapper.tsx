@@ -5,7 +5,6 @@ import type { CSSProperties, ReactElement } from 'react';
 import React, { memo, useEffect, useRef, useState } from 'react';
 
 import { CountDownTimer } from './countDownTimer';
-
 import styles from './countDownTimerWrapper.module.css';
 
 const browser = detect();

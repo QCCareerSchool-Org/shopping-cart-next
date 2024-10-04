@@ -3,8 +3,8 @@
 import type { Dispatch, FC, PropsWithChildren } from 'react';
 import { createContext, useReducer } from 'react';
 
-import { initialPriceState, priceReducer } from '@/state/price';
 import type { PriceAction, PriceState } from '@/state/price';
+import { initialPriceState, priceReducer } from '@/state/price';
 
 export const PriceStateContext = createContext<PriceState | undefined>(undefined);
 export const PriceDispatchContext = createContext<Dispatch<PriceAction> | undefined>(undefined);
