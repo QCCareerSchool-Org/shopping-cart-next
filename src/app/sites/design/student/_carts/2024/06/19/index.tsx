@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 
+import { DesignStudent20240619Promo } from './promo';
 import { agreementLinks } from '../../../../../agreementLinks';
 import { courseGroups } from '../../../../../courseGroups';
 import { Guarantee } from '../../../../../guarantee';
-import { DesignStudent20240619Promo } from './promo';
 import { Form } from '@/components/form';
 
 type Props = {

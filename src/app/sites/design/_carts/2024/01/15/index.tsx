@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 
+import { Design20240115Promo } from './promo';
 import { agreementLinks } from '../../../../agreementLinks';
 import { courseGroups } from '../../../../courseGroups';
-import { Design20240115Promo } from './promo';
 import { Guarantee } from '@/app/sites/design/guarantee';
 import { BogoDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogo';
 import { Form } from '@/components/form';

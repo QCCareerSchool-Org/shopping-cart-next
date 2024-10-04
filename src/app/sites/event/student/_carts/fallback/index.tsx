@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 
+import { EventStudentFallbackPromo } from './promo';
 import { agreementLinks } from '../../../agreementLinks';
 import { courseGroups } from '../../../courseGroups';
 import { Guarantee } from '../../../guarantee';
-import { EventStudentFallbackPromo } from './promo';
 import { Form } from '@/components/form';
 
 type Props = {

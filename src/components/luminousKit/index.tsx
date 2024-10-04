@@ -2,7 +2,6 @@ import Image from 'next/image';
 import type { FC } from 'react';
 
 import LuminousKitImage from './deluxe-no-lashes-kit-numbers-no-description.jpg';
-
 import styles from './index.module.css';
 
 export const LuminousKit: FC = () => (

@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 
+import { Wellness20240912Promo } from './promo';
 import { agreementLinks } from '../../../../agreementLinks';
 import { courseGroups } from '../../../../courseGroups';
 import { Guarantee } from '../../../../guarantee';
-import { Wellness20240912Promo } from './promo';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 

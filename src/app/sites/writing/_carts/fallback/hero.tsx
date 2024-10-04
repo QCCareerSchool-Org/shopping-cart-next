@@ -12,7 +12,6 @@ import Mobile from './mobile-92.jpg';
 import MobileAU from './mobile-au.jpg';
 import MobileGB from './mobile-gb.jpg';
 import MobileNZ from './mobile-nz.jpg';
-
 import { PromoImage } from '@/components/promoImage';
 import { usePriceState } from '@/hooks/usePriceState';
 

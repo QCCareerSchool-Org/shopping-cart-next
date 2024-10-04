@@ -1,5 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+
 import { findSite } from './lib/sites';
 
 export const config = {

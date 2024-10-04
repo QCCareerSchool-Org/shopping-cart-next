@@ -1,10 +1,10 @@
 import type { FC } from 'react';
 
+import { PetFallbackPromo } from './promo';
 import { agreementLinks } from '../../agreementLinks';
 import { courseGroups } from '../../courseGroups';
 import { Guarantee } from '../../guarantee';
 import { PetCoursesSubtitleBogoFirstAid } from '../../petCoursesSubtitleBogoFirstAid';
-import { PetFallbackPromo } from './promo';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 

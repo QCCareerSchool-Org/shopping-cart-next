@@ -10,8 +10,8 @@ import type { Price } from '@/domain/price';
 import { isPrice } from '@/domain/price';
 import type { Province } from '@/domain/province';
 import { isProvinces } from '@/domain/province';
-import { isSchool } from '@/domain/school';
 import type { School, SchoolVariant } from '@/domain/school';
+import { isSchool } from '@/domain/school';
 import type { Title } from '@/domain/title';
 import { isTitle } from '@/domain/title';
 

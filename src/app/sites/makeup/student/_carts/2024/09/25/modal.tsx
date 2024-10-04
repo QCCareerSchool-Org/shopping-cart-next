@@ -2,6 +2,7 @@
 
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
+
 import { usePriceState } from '@/hooks/usePriceState';
 
 type Props = {

@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 
+import { EventFallbackPromo } from './promo';
 import { agreementLinks } from '../../agreementLinks';
 import { courseGroups } from '../../courseGroups';
-import { EventFallbackPromo } from './promo';
 import { Guarantee } from '@/app/sites/event/guarantee';
 import { FreeEventSpecialtyDynamicMessage } from '@/components/dynamicCourseMessages/freeEventSpecialty';
 import { Form } from '@/components/form';

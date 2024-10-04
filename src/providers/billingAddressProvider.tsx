@@ -5,8 +5,8 @@ import { createContext, useReducer } from 'react';
 
 import type { GeoLocation } from '@/domain/geoLocation';
 import type { Province } from '@/domain/province';
-import { billingAddressReducer, initialBillingAddressState } from '@/state/billingAddress';
 import type { BillingAddressAction, BillingAddressState } from '@/state/billingAddress';
+import { billingAddressReducer, initialBillingAddressState } from '@/state/billingAddress';
 
 export const BillingAddressStateContext = createContext<BillingAddressState | undefined>(undefined);
 export const BillingAddressDispatchContext = createContext<Dispatch<BillingAddressAction> | undefined>(undefined);
