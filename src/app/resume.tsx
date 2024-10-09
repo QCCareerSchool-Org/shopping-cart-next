@@ -1,4 +1,4 @@
-'use server';
+import 'server-only';
 
 import { redirect } from 'next/navigation';
 import qs from 'qs';

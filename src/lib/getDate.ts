@@ -1,4 +1,4 @@
-'use server';
+import 'server-only';
 
 // eslint-disable-next-line @typescript-eslint/require-await
 export const getDate = async (dateParam?: string | string[]): Promise<number> => {
