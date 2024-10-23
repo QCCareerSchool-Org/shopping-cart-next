@@ -18,7 +18,7 @@ export const Design20241023Modal: FC<Props> = props => {
     <Modal show={props.show} onHide={props.onHide}>
       <Modal.Header closeButton>Start Your Design Career</Modal.Header>
       <Modal.Body>
-        <p>For a limited time, enroll in any design course and <strong>get a second course FREE!</strong> This is the perfect opportunity to specialize in your design training and become a certified expert. Plus, you can get started with a deposit of just {deposit}. Don't miss out on this amazing offer!</p>
+        <p>For a limited time, enroll in any design course and <strong>get a second course FREE!</strong> Plus, enjoy 4 months free with Design Files, an innovative platform for managing your design projects and collaborating with clients. Start your journey toward becoming a certified expert with just a {deposit} deposit. Don't miss this amazing offer!</p>
         <hr />
         <h6 className="sans-serif">Learn From Expert Instructors</h6>
         <p>We've hand-selected the top home design professionals in the industry to guide you through your course material.</p>
