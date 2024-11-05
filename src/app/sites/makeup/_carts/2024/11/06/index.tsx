@@ -4,7 +4,7 @@ import { Makeup20241106Promo } from './promo';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { courseGroups } from '@/app/sites/makeup/courseGroups';
 import { Guarantee } from '@/app/sites/makeup/guarantee';
-import { FreeSpecialFXDynamicMessage } from '@/components/dynamicCourseMessages/freeSpecialFX';
+import { BogoMZ } from '@/components/dynamicCourseMessages/bogoMZ';
 import { Form } from '@/components/form';
 
 type Props = {
@@ -23,8 +23,8 @@ export const Makeup20241106: FC<Props> = ({ date }) => (
       agreementLinks={agreementLinks}
       visualPaymentPlans={true}
       dynamicCourseDescriptions="SHOW"
-      promoCodeDefault="HALLOWEENSFX"
-      dynamicCourseMessages={[ FreeSpecialFXDynamicMessage ]}
+      promoCodeDefault="BOGOMZ"
+      dynamicCourseMessages={[ BogoMZ ]}
     />
   </>
 );

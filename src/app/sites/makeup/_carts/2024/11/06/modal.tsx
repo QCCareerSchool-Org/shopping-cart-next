@@ -12,9 +12,9 @@ type Props = {
 
 export const Makeup20241106Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
-    <Modal.Header closeButton>Start Your Makeup Career</Modal.Header>
+    <Modal.Header closeButton>Early Black Friday Offer</Modal.Header>
     <Modal.Body>
-      <p>For a limited time, enroll in <strong>Master Makeup Artistry</strong> and get QC's <strong>Special FX Makeup</strong> course FREE. You'll also get the ENTIRE Luminous Makeup Collection and a special FX makeup kit.</p>
+      <p>For a limited time, enroll in <strong>Master Makeup Artistry</strong> and get ANY second course FREE of equal or lesser value. You'll also get the <strong>ENTIRE Luminous Makeup Collection</strong>.</p>
       <LuminousPlusSFXKit />
     </Modal.Body>
   </Modal>
