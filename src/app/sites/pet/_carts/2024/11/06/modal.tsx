@@ -17,9 +17,9 @@ export const Pet20241106Modal: FC<Props> = props => {
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
-      <Modal.Header closeButton>Start Your Pet Care Career</Modal.Header>
+      <Modal.Header closeButton>Early Black Friday Offer</Modal.Header>
       <Modal.Body>
-        <p>For a limited time, enroll in any pet course and get {discount} off your tuition PLUS join us for exclusive student webinars with pet industry experts!</p>
+        <p>For a limited time, enroll in any pet course and get {discount} off your tuition PLUS get our Dog Daycare course FREE!</p>
         <hr />
         <h6 className="sans-serif">Learn From Expert Instructors</h6>
         <p>We've hand-selected the top pet care professionals in the industry to guide you through your course material.</p>
