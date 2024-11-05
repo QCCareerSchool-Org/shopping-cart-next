@@ -2,12 +2,12 @@
 
 import type { FC } from 'react';
 
+import DesktopUKEnds from './desktop-ends-uk.jpg';
 import DesktopEnds from './desktop-ends.jpg';
-import DesktopUKEnds from './desktop-uk-ends.jpg';
 import DesktopUK from './desktop-uk.jpg';
 import Desktop from './desktop.jpg';
+import MobileUKEnds from './mobile-ends-uk.jpg';
 import MobileEnds from './mobile-ends.jpg';
-import MobileUKEnds from './mobile-uk-ends.jpg';
 import MobileUK from './mobile-uk.jpg';
 import Mobile from './mobile.jpg';
 import { PromoImage } from '@/components/promoImage';
