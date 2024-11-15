@@ -17,7 +17,7 @@ type Props = {
   lastChance: boolean;
 };
 
-export const Hero20241115: FC<Props> = ({ lastChance }) => {
+export const Hero20241106: FC<Props> = ({ lastChance }) => {
   const priceState = usePriceState();
 
   const [ desktopSrc, mobileSrc ] = lastChance
