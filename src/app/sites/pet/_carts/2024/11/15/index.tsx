@@ -5,7 +5,7 @@ import { agreementLinks } from '../../../../agreementLinks';
 import { courseGroups } from '../../../../courseGroups';
 import { Guarantee } from '../../../../guarantee';
 import { PetCoursesSubtitleBogoFirstAid } from '../../../../petCoursesSubtitleBogoFirstAid';
-import { BogoDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogo';
+import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 
 type Props = {
@@ -26,7 +26,7 @@ export const Pet20241115: FC<Props> = ({ date }) => (
       dynamicCourseDescriptions="SHOW"
       visualPaymentPlans
       promoCodeDefault="PET400"
-      dynamicCourseMessages={[ BogoDynamicCourseMessage ]}
+      dynamicCourseMessages={[ Save50CourseMessage ]}
     />
   </>
 );
