@@ -14,10 +14,10 @@ export const Design20241115Modal: FC<Props> = props => {
       <Modal.Header closeButton>Black Friday Special</Modal.Header>
       <Modal.Body>
         <p>Enroll in one QC Design School course and get a second course of equal or lesser value FREE! Plus, save an additional $100 on your tuition.</p>
-        <h3>Pay in Full for Even Bigger Savings</h3>
+        <h6 className="sans-serif">Pay in Full for Even Bigger Savings</h6>
         <p>When you pay in full, you'll unlock even lower tuition rates, helping you save even more!</p>
         <p>Limited time only—don't miss out!</p>
-        <h3>BONUS: Career Catalyst Toolkit Included</h3>
+        <h6 className="sans-serif">BONUS: Career Catalyst Toolkit Included</h6>
         <p>Everyone who enrolls will also receive our Career Catalyst Toolkit, which includes:</p>
         <ul>
           <li>Personalized Video Call: One-on-one mentorship with an industry expert</li>
