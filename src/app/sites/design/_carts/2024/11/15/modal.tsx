@@ -3,17 +3,22 @@
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
+import { usePriceState } from '@/hooks/usePriceState';
+
 type Props = {
   show: boolean;
   onHide: () => void;
 };
 
 export const Design20241115Modal: FC<Props> = props => {
+  const priceState = usePriceState();
+  const discount = priceState?.currency.code === 'GBP' ? '£100' : '$100';
+
   return (
     <Modal show={props.show} onHide={props.onHide}>
       <Modal.Header closeButton>Black Friday Special</Modal.Header>
       <Modal.Body>
-        <p>Enroll in one QC Design School course and get a second course of equal or lesser value FREE! Plus, save an additional $100 on your tuition.</p>
+        <p>Enroll in one QC Design School course and get a second course of equal or lesser value FREE! Plus, save an additional {discount} on your tuition.</p>
         <h6 className="sans-serif">Pay in Full for Even Bigger Savings</h6>
         <p>When you pay in full, you'll unlock even lower tuition rates, helping you save even more!</p>
         <p><em>Limited time only—don't miss out!</em></p>
