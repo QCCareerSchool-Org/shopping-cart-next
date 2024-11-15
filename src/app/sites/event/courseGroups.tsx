@@ -21,7 +21,6 @@ export const courseGroups: CourseGroup[] = [
       { code: 'EP', name: 'Event & Wedding Planning' },
       { code: 'CP', name: 'Corporate Event Planning' },
       { code: 'CE', name: 'Event Planning' },
-      { code: 'ED', name: 'Event Decor' },
       { code: 'WP', name: 'Wedding Planning' },
       { code: 'FD', name: 'Floral Design' },
     ],
@@ -29,6 +28,7 @@ export const courseGroups: CourseGroup[] = [
   {
     name: 'Specialty Courses',
     items: [
+      { code: 'ED', name: 'Event Decor' },
       { code: 'LW', name: 'Luxury Wedding & Event Planning' },
       { code: 'DW', name: 'Destination Wedding Planning' },
       { code: 'PE', name: 'Promotional Event Planning', disabledMessage: peDisabledMessage },
