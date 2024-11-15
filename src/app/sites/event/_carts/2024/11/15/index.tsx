@@ -23,7 +23,7 @@ export const Event20241115: FC<Props> = ({ date }) => (
       agreementLinks={agreementLinks}
       dynamicCourseDescriptions="HIDE"
       visualPaymentPlans
-      promoCodeDefault="2FREESPECIALTY"
+      promoCodeDefault="2SPECIALTY"
       dynamicCourseMessages={[ TwoFreeEventSpecialtyDynamicMessage ]}
     />
   </>
