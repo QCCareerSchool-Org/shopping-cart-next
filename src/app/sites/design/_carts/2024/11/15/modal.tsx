@@ -12,22 +12,28 @@ type Props = {
 
 export const Design20241115Modal: FC<Props> = props => {
   const priceState = usePriceState();
-  const discount = priceState?.currency.code === 'GBP' ? '£100' : '$100';
+  const [ discount, fullPaymentDiscount, totalDiscount ] = priceState?.currency.code === 'GBP'
+    ? [ '£100', '£200', '£300' ]
+    : [ '$100', '$400', '$500' ];
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
       <Modal.Header closeButton>Black Friday Special</Modal.Header>
       <Modal.Body>
-        <p>Enroll in one QC Design School course and get a second course of equal or lesser value FREE! Plus, save an additional {discount} on your tuition.</p>
-        <h6 className="sans-serif">Pay in Full for Even Bigger Savings</h6>
-        <p>When you pay in full, you'll unlock even lower tuition rates, helping you save even more!</p>
-        <p><em>Limited time only—don't miss out!</em></p>
-        <h6 className="sans-serif">BONUS: Career Catalyst Toolkit Included</h6>
-        <p>Everyone who enrolls will also receive our Career Catalyst Toolkit, which includes:</p>
+        <h6 className="sans-serif">Enroll in One QC Design School Course and Get a Second Course FREE!</h6>
+        <p>Take advantage of this Black Friday deal and jumpstart your design career! Here's what you'll get:</p>
         <ul>
-          <li><b>Personalized Video Call:</b> One-on-one mentorship with an industry expert</li>
-          <li><b>4 Months of FREE Access to Design Files:</b> Hands-on experience with essential design tools</li>
-          <li><b>Exclusive Canva Templates:</b> Ready-to-use business templates to streamline your work</li>
+          <li><b>BOGO Offer:</b> Get a second course of equal or lesser value absolutely FREE.</li>
+          <li><b>{discount} Off Tuition:</b> Save instantly when you enroll.</li>
+          <li><b>Pay in Full Discount:</b> Save up to {fullPaymentDiscount} more when you pay in full—bringing your total savings to as much as {totalDiscount}!</li>
+        </ul>
+        <p><em>Limited time only—don't miss out!</em></p>
+        <h6 className="sans-serif">BONUS: Career Catalyst Toolkit</h6>
+        <p>Every enrollment comes with tools to launch your design career:</p>
+        <ul>
+          <li>A personalized video call with an industry expert for tailored mentorship</li>
+          <li>4 months of free access to Design Files for practical, hands-on experience</li>
+          <li>Exclusive Canva templates to streamline your business</li>
         </ul>
       </Modal.Body>
     </Modal>
