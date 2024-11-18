@@ -10,8 +10,7 @@ const EventStudentPage: PageComponent = async ({ searchParams }) => {
 
   return (
     <Suspense>
-      {/* {date < Date.UTC(2024, 10, 30, 8) // November 30, 2024 at 03:00 (08:00 UTC) */}
-      {date >= Date.UTC(2024, 10, 6, 13) && date < Date.UTC(2024, 10, 13, 5) // November 6, 2024 at 08:00 (13:00 UTC) to Nov 13, 2024 at 00:00 (05:00 UTC)
+      {date < Date.UTC(2024, 10, 30, 8) // November 30, 2024 at 03:00 (08:00 UTC)
         ? <EventStudent20241115 date={date} />
         : <EventStudentFallback date={date} />
       }
