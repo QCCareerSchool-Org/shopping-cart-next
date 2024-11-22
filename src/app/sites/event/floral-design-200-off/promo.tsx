@@ -20,7 +20,7 @@ export const EventFloralDesign200OffPromo: FC = () => {
 
   const [ savings, deposit, fullDiscount ] = priceState?.currency.code === 'GBP'
     ? [ '£200', '£49', '£150' ]
-    : [ '$200', '$49', '$300' ];
+    : [ '$200', '$49', '$400' ];
 
   return (
     <>
