@@ -18,9 +18,7 @@ export const EventBogo1Promo: FC = () => {
     togglePopup();
   };
 
-  const [ deposit, fullDiscount ] = priceState?.currency.code === 'GBP'
-    ? [ '£49', '£150' ]
-    : [ '$49', '$300' ];
+  const discount = priceState?.currency.code === 'GBP' ? '£100' : '$100';
 
   return (
     <>
@@ -34,10 +32,14 @@ export const EventBogo1Promo: FC = () => {
           <Modal.Title>Special Offer</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Ready to start your event planning career?</p>
-          <p>For a limited time only, enroll in any foundation course and get a second course for free!</p>
-          <p>This means you'll graduate with two professional certifications for the price of one.</p>
-          <p className="mb-0">Get started for {deposit}, or save up to {fullDiscount} when you pay your tuition in full.</p>
+          <p>Ready to Start Your Event Planning Career?</p>
+          <p>Enroll in any foundation course and get two specialty courses FREE! Plus save {discount}!</p>
+          <h4 className="h6">Learn From Expert Instructors</h4>
+          <p>We've hand-selected the top event planning professionals in the industry to guide you through your course material.</p>
+          <h4 className="h6">Industry-Recognized Certifications</h4>
+          <p>Graduate with three professional event planning certifications and open up a world of career & business opportunities.</p>
+          <h4 className="h6">Business Training Included</h4>
+          <p className="mb-0">Each course includes built-in business training to help you launch your career and grow your clientele as a newly certified event planner.</p>
         </Modal.Body>
       </Modal>
     </>
