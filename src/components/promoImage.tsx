@@ -8,7 +8,7 @@ type Props = {
   maxWidth?: number;
 };
 
-export const PromoImage: FC<Props> = ({ desktopSrc, mobileSrc, maxWidth = 800 }) => (
+export const PromoImage: FC<Props> = ({ desktopSrc, mobileSrc, maxWidth = 1200 }) => (
   <div style={{ textAlign: 'center' }}>
     <Image src={desktopSrc} priority alt="" className="img-fluid d-none d-sm-inline" style={{ width: '100%', maxWidth }} />
     <Image src={mobileSrc} priority alt="" className="img-fluid d-sm-none" style={{ width: '100%' }} />
