@@ -71,6 +71,13 @@ export const Address: FC<Props> = ({ school }) => {
             <NoShippingAlert />
           </div>
         )}
+        {countryCode === 'CA' && (
+          <div className="col-12 col-lg-8 mt-4">
+            <div className="alert alert-success">
+              Your shipment will not be affected by the current Canada Post strike.
+            </div>
+          </div>
+        )}
       </div>
     </Section>
   );
