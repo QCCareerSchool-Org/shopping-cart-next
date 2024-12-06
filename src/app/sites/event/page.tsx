@@ -13,7 +13,7 @@ const EventPage: PageComponent = async ({ searchParams }) => {
     <Suspense>
       {date < Date.UTC(2024, 11, 1, 8)
         ? <Event20241115 date={date} />
-        : date >= Date.UTC(2024, 11, 1, 8) && date < Date.UTC(2024, 11, 7, 8) // December 1, 2024 at 03:00 (08:00 UTC) to December 7, 2024 at 03:00 (08:00 UTC)
+        : date >= Date.UTC(2024, 11, 1, 8) && date < Date.UTC(2024, 11, 8, 8) // December 1, 2024 at 03:00 (08:00 UTC) to December 8, 2024 at 03:00 (08:00 UTC)
           ? <Event20241201 date={date} />
           : <EventFallback date={date} />
       }
