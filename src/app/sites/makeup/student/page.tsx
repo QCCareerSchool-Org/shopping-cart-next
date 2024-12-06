@@ -10,7 +10,7 @@ const MakeupStudentPage: PageComponent = async ({ searchParams }) => {
 
   return (
     <Suspense>
-      {date < Date.UTC(2024, 11, 7, 8) // Dec 7, 2024 at 03:00 (08:00 UTC)
+      {date < Date.UTC(2024, 11, 8, 8) // Dec 8, 2024 at 03:00 (08:00 UTC)
         ? <MakeupStudent20241115 date={date} />
         : <MakeupStudentFallback date={date} />
       }
