@@ -23,12 +23,12 @@ export const courseGroups: CourseGroup[] = [
       { code: 'CE', name: 'Event Planning' },
       { code: 'WP', name: 'Wedding Planning' },
       { code: 'FD', name: 'Floral Design' },
+      { code: 'ED', name: 'Event Decor' },
     ],
   },
   {
     name: 'Specialty Courses',
     items: [
-      { code: 'ED', name: 'Event Decor' },
       { code: 'LW', name: 'Luxury Wedding & Event Planning' },
       { code: 'DW', name: 'Destination Wedding Planning' },
       { code: 'PE', name: 'Promotional Event Planning', disabledMessage: peDisabledMessage },

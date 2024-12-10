@@ -4,8 +4,8 @@ const makeupSpecialtyCourses = [ 'AB', 'SF', 'HS', 'PF', 'VM' ];
 
 const designCourses = [ 'I2', 'ST', 'PO', 'FS', 'CC', 'AP', 'DB', 'MS', 'VD', 'FD', 'LD', 'ED' ];
 
-const eventFoundationCourses = [ 'EP', 'CP', 'CE', 'WP', 'FD' ];
-const eventSpecialtyCourses = [ 'ED', 'EB', 'LW', 'DW', 'FL', 'PE', 'TT', 'TG', 'VE' ];
+const eventFoundationCourses = [ 'EP', 'CP', 'CE', 'WP', 'FD', 'ED' ];
+const eventSpecialtyCourses = [ 'EB', 'LW', 'DW', 'FL', 'PE', 'TT', 'TG', 'VE' ];
 
 export const isMakeupFoundationCourse = (course: string, exclude?: string[]): boolean => {
   return makeupFoundationCourses.filter(c => !exclude?.includes(c)).includes(course);
