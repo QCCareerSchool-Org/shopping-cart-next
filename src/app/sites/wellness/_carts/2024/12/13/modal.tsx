@@ -13,11 +13,11 @@ type Props = {
 export const Wellness20241213Modal: FC<Props> = props => {
   const priceState = usePriceState();
 
-  const discount = priceState?.currency.code === 'GBP' ? '£300' : '$300';
+  const discount = priceState?.currency.code === 'GBP' ? '£150' : '$200';
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
-      <Modal.Header closeButton>Cyber Monday Starts Now</Modal.Header>
+      <Modal.Header closeButton>Start Your Sleep Consulting Career</Modal.Header>
       <Modal.Body>
         <p>For a limited time, enroll in Sleep Consulting and get {discount} off your tuition!</p>
         <hr />
