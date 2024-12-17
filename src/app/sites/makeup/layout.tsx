@@ -39,7 +39,7 @@ const MakeupLayout: LayoutComponent = ({ children }) => {
       <Tiktok id="CJ6H6NBC77UC1837TT70" />
       <Pardot accountId="948642" campaignId="34199" domain="go.qcmakeupacademy.com" />
       <Bing id="5105215" />
-      <LiveChat license={1056788} group={14} />
+      <Script src="/makeup/chat.js" />
       <Script id="perfect-audience" src="/makeup/perfectAudience.js" />
     </div>
   );
