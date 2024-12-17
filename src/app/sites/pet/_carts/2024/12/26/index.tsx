@@ -25,7 +25,7 @@ export const Pet20241226: FC<Props> = ({ date }) => (
       agreementLinks={agreementLinks}
       dynamicCourseDescriptions="SHOW"
       visualPaymentPlans
-      promoCodeDefault="PET30OFF"
+      promoCodeDefault="PET300OFF"
       dynamicCourseMessages={[ Save50CourseMessage ]}
     />
   </>
