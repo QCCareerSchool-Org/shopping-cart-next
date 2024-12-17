@@ -25,14 +25,14 @@ export const Wellness20241226Promo: FC<Props> = ({ date }) => {
       return [
         lcDate,
         extensionDate,
-        date > lcDate ? 'lastChance' as const : undefined,
+        date >= lcDate ? 'lastChance' as const : undefined,
       ];
     }
     const lcDate = Date.UTC(2025, 0, 5, 8); // 2025-01-05T03:00 (08:00 UTC);
     return [
       lcDate,
       Date.UTC(2025, 0, 6, 8), // 2024-01-04T03:00 (08:00 UTC)
-      date > lcDate ? 'lastChance' as const : 'extended' as const,
+      date >= lcDate ? 'lastChance' as const : 'extended' as const,
     ];
   }, [ date ]);
 
