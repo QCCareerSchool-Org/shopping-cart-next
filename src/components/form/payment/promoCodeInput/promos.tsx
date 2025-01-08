@@ -5,6 +5,13 @@ import type { PriceState } from '@/state/price';
 export const getPromos = (date: number, price: PriceState, school: School, student: boolean): Promo[] => {
   const promos: Promo[] = [
     {
+      schools: [ 'QC Design School', 'QC Event School', 'QC Makeup Academy', 'QC Pet Studies', 'QC Wellness Studies', 'Winghill Writing School' ],
+      student: 'DENIED',
+      code: 'QCGROUP',
+      description: 'Enroll as part of a group and get 25% off your first course—valid for installment-payment plan only',
+      altText: 'Enroll as part of a group and get 25% off your first course',
+    },
+    {
       schools: [ 'QC Design School' ],
       student: 'DENIED',
       code: 'BOGO100',
