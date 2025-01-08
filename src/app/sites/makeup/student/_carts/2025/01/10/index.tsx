@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { DesignStudent20250110Promo } from './promo';
+import { MakeupStudent20250110Promo } from './promo';
 import { agreementLinks } from '../../../../../agreementLinks';
 import { courseGroups } from '../../../../../courseGroups';
 import { Guarantee } from '../../../../../guarantee';
@@ -10,21 +10,21 @@ type Props = {
   date: number;
 };
 
-export const DesignStudent20250110: FC<Props> = ({ date }) => {
+export const MakeupStudent20250110: FC<Props> = ({ date }) => {
   return (
     <>
-      <DesignStudent20250110Promo date={date} />
+      <MakeupStudent20250110Promo date={date} />
       <Form
         date={date}
         courseGroups={courseGroups}
-        school="QC Design School"
+        school="QC Makeup Academy"
         guarantee={Guarantee}
-        successLink="https://www.qcdesignschool.com/welcome-to-the-school"
+        successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
         student
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
-        promoCodeDefault="FANDECK50"
+        promoCodeDefault="BRUSHSET50"
       />
     </>
   );

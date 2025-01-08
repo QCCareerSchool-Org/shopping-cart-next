@@ -6,7 +6,7 @@ import { Hero20250110 } from './hero';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 
-const backgroundColor = '#423f38';
+const backgroundColor = '#84796c';
 const lastChanceDate = Date.UTC(2025, 0, 17, 8); // 2025-01-17T03:00 (08:00 UTC)
 const endDate = Date.UTC(2025, 0, 18, 8); // 2025-01-18T03:00 (08:00 UTC)
 
@@ -14,7 +14,7 @@ type Props = {
   date: number;
 };
 
-export const DesignStudent20250110Promo: FC<Props> = ({ date }) => (
+export const EventStudent20250110Promo: FC<Props> = ({ date }) => (
   <>
     <Section style={{ backgroundColor }} noPadding>
       <Hero20250110 />
