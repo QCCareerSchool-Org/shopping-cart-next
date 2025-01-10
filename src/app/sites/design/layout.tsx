@@ -39,7 +39,7 @@ const DesignLayout: LayoutComponent = ({ children }) => {
       {/* <Tiktok id="" /> */}
       <Pardot accountId="948642" campaignId="34199" domain="go.qcdesignschool.com" />
       <Bing id="5105217" />
-      <LiveChat license={1056788} group={3} />
+      <Script src="/design/chat.js" />
       <Script id="perfect-audience" src="/design/perfectAudience.js" />
     </div>
   );

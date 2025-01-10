@@ -8,6 +8,12 @@
   s.src = 'https://conversations-widget.brevo.com/brevo-conversations.js';
   if (d.head) d.head.appendChild(s);
 })(document, window, 'BrevoConversations');
+BrevoConversations('setColors', {
+  buttonText: '#f5f5f5', /* chat button text/icon color */
+  buttonBg: '#ff0069', /* chat button background color */
+  visitorBubbleBg: '#ff0069', /* visitor's message bubble color */
+  agentBubbleBg: '#ddd', /* agent's message bubble color */
+});
 BrevoConversations('updateIntegrationData', {
-    school: 'QC Makeup Academy',
+  school: 'QC Makeup Academy',
 });
