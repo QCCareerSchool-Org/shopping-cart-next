@@ -20,6 +20,7 @@ const courseGroups: CourseGroup[] = [
       { code: 'HS', name: 'Hair Styling Essentials' },
       { code: 'AB', name: 'Airbrush Makeup Workshop' },
       { code: 'PW', name: 'Portfolio Development' },
+      { code: 'PF', name: 'Personal Styling' },
     ],
   },
   {
