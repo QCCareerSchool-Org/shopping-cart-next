@@ -7,7 +7,6 @@ import './global.scss';
 import { Bing } from '@/components/scripts/bing';
 import { Facebook } from '@/components/scripts/facebook';
 import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
-import { LiveChat } from '@/components/scripts/liveChat';
 import { Pardot } from '@/components/scripts/pardot';
 import type { LayoutComponent } from '@/serverComponent';
 
