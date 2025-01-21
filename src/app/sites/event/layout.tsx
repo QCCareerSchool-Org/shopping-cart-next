@@ -38,7 +38,7 @@ const EventLayout: LayoutComponent = ({ children }) => {
       {/* <Tiktok id="" /> */}
       <Pardot accountId="948642" campaignId="34199" domain="go.qceventplanning.com" />
       <Bing id="5105216" />
-      <LiveChat license={1056788} group={1} />
+      <Script src="/design/chat.js" />
       <Script id="perfect-audience" src="/event/perfectAudience.js" />
     </div>
   );
