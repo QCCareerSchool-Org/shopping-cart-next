@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 
 import { Footer } from './footer';
 import { Header } from './header';
 import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
-import { LiveChat } from '@/components/scripts/liveChat';
-// import { Pardot } from '@/components/scripts/pardot';
 import type { LayoutComponent } from '@/serverComponent';
 
 import './global.scss';
@@ -34,9 +33,8 @@ const WritingLayout: LayoutComponent = ({ children }) => {
       <Footer />
       {/* <Facebook id="" /> */}
       {/* <Tiktok id="" /> */}
-      {/* <Pardot accountId="" campaignId="" domain="" /> */}
       {/* <Bing id="" /> */}
-      <LiveChat license={1056788} group={13} />
+      <Script src="/wellness/chat.js" />
       {/* <Script id="perfect-audience" src="/writing/perfectAudience.js" /> */}
     </div>
   );

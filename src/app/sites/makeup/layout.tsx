@@ -7,7 +7,6 @@ import './global.scss';
 import { Bing } from '@/components/scripts/bing';
 import { Facebook } from '@/components/scripts/facebook';
 import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
-import { Pardot } from '@/components/scripts/pardot';
 import { Tiktok } from '@/components/scripts/tiktok';
 import type { LayoutComponent } from '@/serverComponent';
 
@@ -36,7 +35,6 @@ const MakeupLayout: LayoutComponent = ({ children }) => {
       <Footer />
       <Facebook id="1531219047676834" />
       <Tiktok id="CJ6H6NBC77UC1837TT70" />
-      <Pardot accountId="948642" campaignId="34199" domain="go.qcmakeupacademy.com" />
       <Bing id="5105215" />
       <Script src="/makeup/chat.js" />
       <Script id="perfect-audience" src="/makeup/perfectAudience.js" />
