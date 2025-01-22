@@ -6,7 +6,6 @@ import { Header } from './header';
 import { Bing } from '@/components/scripts/bing';
 import { Facebook } from '@/components/scripts/facebook';
 import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
-import { Pardot } from '@/components/scripts/pardot';
 import type { LayoutComponent } from '@/serverComponent';
 
 import './global.scss';
@@ -36,7 +35,6 @@ const DesignLayout: LayoutComponent = ({ children }) => {
       <Footer />
       <Facebook id="5372705592757225" />
       {/* <Tiktok id="" /> */}
-      <Pardot accountId="948642" campaignId="34199" domain="go.qcdesignschool.com" />
       <Bing id="5105217" />
       <Script src="/design/chat.js" />
       <Script id="perfect-audience" src="/design/perfectAudience.js" />

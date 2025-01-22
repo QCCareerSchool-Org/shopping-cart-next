@@ -7,7 +7,6 @@ import './global.scss';
 import { Bing } from '@/components/scripts/bing';
 import { Facebook } from '@/components/scripts/facebook';
 import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
-import { Pardot } from '@/components/scripts/pardot';
 import type { LayoutComponent } from '@/serverComponent';
 
 export const metadata: Metadata = {
@@ -35,7 +34,6 @@ const EventLayout: LayoutComponent = ({ children }) => {
       <Footer />
       <Facebook id="520626392908502" />
       {/* <Tiktok id="" /> */}
-      <Pardot accountId="948642" campaignId="34199" domain="go.qceventplanning.com" />
       <Bing id="5105216" />
       <Script src="/event/chat.js" />
       <Script id="perfect-audience" src="/event/perfectAudience.js" />

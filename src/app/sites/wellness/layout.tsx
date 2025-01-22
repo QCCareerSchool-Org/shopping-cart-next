@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 
 import { Footer } from './footer';
 import { Header } from './header';
 import { Bing } from '@/components/scripts/bing';
 import { Facebook } from '@/components/scripts/facebook';
 import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
-import { LiveChat } from '@/components/scripts/liveChat';
-import { Pardot } from '@/components/scripts/pardot';
 import type { LayoutComponent } from '@/serverComponent';
 
 import './global.scss';
@@ -36,9 +35,8 @@ const WellnessLayout: LayoutComponent = ({ children }) => {
       <Footer />
       <Facebook id="1725004270923176" />
       {/* <Tiktok id="" /> */}
-      <Pardot accountId="948642" campaignId="34909" domain="go.qcwellnessstudies.com" />
       <Bing id="28484716" />
-      <LiveChat license={1056788} group={19} />
+      <Script src="/wellness/chat.js" />
       {/* <Script id="perfect-audience" src="/wellness/perfectAudience.js" /> */}
     </div>
   );
