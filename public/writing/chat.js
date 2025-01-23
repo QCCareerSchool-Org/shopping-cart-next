@@ -10,8 +10,8 @@
 })(document, window, 'BrevoConversations');
 BrevoConversations('setColors', {
   buttonText: '#f5f5f5', /* chat button text/icon color */
-  buttonBg: '#57c3d7', /* chat button background color */
-  visitorBubbleBg: '#57c3d7', /* visitor's message bubble color */
+  buttonBg: '#8c0a1e', /* chat button background color */
+  visitorBubbleBg: '#8c0a1e', /* visitor's message bubble color */
   agentBubbleBg: '#ddd', /* agent's message bubble color */
 });
 BrevoConversations('updateIntegrationData', {
