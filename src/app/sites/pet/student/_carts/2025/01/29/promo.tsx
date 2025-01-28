@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { Hero20250129 } from './hero';
 import { Section } from '@/components/section';
 
-const backgroundColor = '#605960';
+const backgroundColor = '#478798';
 
 export const PetStudent20250129Promo: FC = () => {
   return (
