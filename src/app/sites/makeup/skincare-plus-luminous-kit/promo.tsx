@@ -8,7 +8,7 @@ import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#450101';
+const backgroundColor = '#fff';
 
 type Props = {
   date: number;
