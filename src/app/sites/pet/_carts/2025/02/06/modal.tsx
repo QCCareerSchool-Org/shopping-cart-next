@@ -12,7 +12,7 @@ export const Pet20250206Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
     <Modal.Header closeButton>Start Your Pet Care Career</Modal.Header>
     <Modal.Body>
-      <p>For a limited time, enroll in any pet course and get a second course free.</p>
+      <p>For a limited time, enroll in any pet course and get a second course of equal or lesser value for free.</p>
       <hr />
       <h6 className="sans-serif">Learn From Expert Instructors</h6>
       <p>We've hand-selected the top pet care professionals in the industry to guide you through your course material.</p>
