@@ -26,7 +26,7 @@ export const MakeupFallbackModal: FC<Props> = props => {
         <LuminousKit />
       </Modal.Body>
       <Modal.Footer>
-        <p className="small">Your items will be automatically sent to you after you have submitted Unit A of the course in the Online Student Center. Items in the kit are subject to change.</p>
+        <p className="small">Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a href="https://www.qcmakeupacademy.com/enrollment-agreement.html">Ream more</a></p>
       </Modal.Footer>
     </Modal>
   );

@@ -17,5 +17,8 @@ export const Makeup20250206Modal: FC<Props> = props => (
       <p>For a limited time, enroll in <strong>Master Makeup Artistry</strong> and get QC's <strong>Personal Styling</strong> course FREE.</p>
       <LuminousKit />
     </Modal.Body>
+    <Modal.Footer>
+      <p className="small">Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a href="https://www.qcmakeupacademy.com/enrollment-agreement.html">Ream more</a></p>
+    </Modal.Footer>
   </Modal>
 );
