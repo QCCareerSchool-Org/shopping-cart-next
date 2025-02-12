@@ -16,6 +16,7 @@ export const Makeup20250206Modal: FC<Props> = props => (
     <Modal.Header closeButton>Start Your Makeup Career</Modal.Header>
     <Modal.Body>
       <p>For a limited time, enroll in <strong>Master Makeup Artistry</strong> and get QC's <strong>Personal Styling</strong> course FREE.</p>
+      <p>You'll also get the ENTIRE Luminous Makeup Collection:</p>
       <LuminousKit />
     </Modal.Body>
     <Modal.Footer>
