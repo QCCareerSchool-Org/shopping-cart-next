@@ -22,7 +22,7 @@ export const Wellness20250216Promo: FC<Props> = ({ date }) => {
     if (date >= extensionDate) {
       return [
         Date.UTC(2025, 1, 21, 8), // 2025-02-21T03:00 (08:00 UTC)
-        Date.UTC(2025, 1, 23, 8), // 2025-02-23T03:00 (08:00 UTC)
+        Date.UTC(2025, 1, 22, 8), // 2025-02-22T03:00 (08:00 UTC)
       ];
     }
     return [
