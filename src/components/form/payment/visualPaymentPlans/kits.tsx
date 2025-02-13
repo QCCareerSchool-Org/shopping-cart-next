@@ -4,6 +4,7 @@ import type { CSSProperties, FC } from 'react';
 import { DetailsPopup } from './detailsPopup';
 // import DesignBooks from './kits/design-books.png';
 import MZ from './kits/mz/makeup-kit-white.jpg';
+import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { GroomingKit } from '@/components/groomingKit';
 import { LuminousKit } from '@/components/luminousKit';
 import type { School } from '@/domain/school';
@@ -170,7 +171,7 @@ export const getKit = (date: number, courses: string[], school: School): Kit | u
 };
 
 const MZDetails: FC = () => (
-  <DetailsPopup title="Luminous Collection" footerText={<div className="text-start"><small>Your items will be automatically sent to you after you have submitted Unit A of the course in the Online Student Center. Items in the kit are subject to change.</small></div>}>
+  <DetailsPopup title="Luminous Collection" footerText={<div className="text-start"><small>Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></small></div>}>
     <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
     <LuminousKit />
   </DetailsPopup>
