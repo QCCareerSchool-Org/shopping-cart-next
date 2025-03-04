@@ -1,6 +1,6 @@
 'use client';
 
-import { type FC, useMemo } from 'react';
+import type { FC } from 'react';
 
 import { Hero20250305 } from './hero';
 import { Wellness20250305Modal } from './modal';
@@ -9,7 +9,8 @@ import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
 const backgroundColor = '#d7d8dc';
-const extensionDate = Date.UTC(2025, 1, 20, 4); // 2025-02-20T00:00 (04:00 UTC)
+const lastChanceDate = Date.UTC(2025, 2, 10, 7); // 2025-03-10T03:00 (07:00 UTC)
+const endDate = Date.UTC(2025, 2, 11, 7); // 2025-03-11T03:00 (07:00 UTC)
 
 type Props = {
   date: number;
@@ -17,19 +18,6 @@ type Props = {
 
 export const Wellness20250305Promo: FC<Props> = ({ date }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
-
-  const [ lastChanceDate, endDate ] = useMemo(() => {
-    if (date >= extensionDate) {
-      return [
-        Date.UTC(2025, 1, 21, 8), // 2025-02-21T03:00 (08:00 UTC)
-        Date.UTC(2025, 1, 22, 8), // 2025-02-22T03:00 (08:00 UTC)
-      ];
-    }
-    return [
-      Date.UTC(2025, 1, 19, 8), // 2025-02-19T03:00 (08:00 UTC)
-      Date.UTC(2025, 1, 20, 4), // 2025-02-20T00:00 (08:00 UTC)
-    ];
-  }, [ date ]);
 
   const variant = date >= lastChanceDate ? 'lastChance' : undefined;
 
