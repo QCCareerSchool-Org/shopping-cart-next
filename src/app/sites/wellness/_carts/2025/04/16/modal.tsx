@@ -10,10 +10,10 @@ type Props = {
   onHide: () => void;
 };
 
-export const Wellness20250407Modal: FC<Props> = props => {
+export const Wellness20250416Modal: FC<Props> = props => {
   const priceState = usePriceState();
 
-  const discount = priceState?.currency.code === 'GBP' ? '£200' : '$200';
+  const discount = priceState?.currency.code === 'GBP' ? '£300' : '$300';
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
