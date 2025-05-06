@@ -15,7 +15,7 @@ export const Makeup20250507Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
     <Modal.Header closeButton>Start Your Makeup Career</Modal.Header>
     <Modal.Body>
-      <p>For a limited time, enroll in <strong>Master Makeup Artistry</strong> and get the <strong>Pro Makeup Workshop</strong> FREE.</p>
+      <p>For a limited time, enroll in <strong>Master Makeup Artistry</strong> and get the Skincare course FREE.</p>
       <p>You'll also get the ENTIRE Luminous Makeup Collection:</p>
       <LuminousKit />
     </Modal.Body>
