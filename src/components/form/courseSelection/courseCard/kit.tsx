@@ -4,8 +4,6 @@ import type { FC } from 'react';
 
 import DG from './kits/dg.jpg';
 import GT from './kits/gt.jpg';
-import HS from './kits/hs.jpg';
-import SF from './kits/sf.jpg';
 
 const getImage = (courseCode: string): StaticImageData | undefined => {
   switch (courseCode) {
@@ -13,10 +11,6 @@ const getImage = (courseCode: string): StaticImageData | undefined => {
       return DG;
     case 'GT':
       return GT;
-    case 'HS':
-      return HS;
-    case 'SF':
-      return SF;
   }
 };
 
