@@ -171,7 +171,7 @@ export const getKit = (date: number, courses: string[], school: School): Kit | u
 };
 
 const MZDetails: FC = () => (
-  <DetailsPopup title="Luminous Collection" footerText={<div className="text-start"><small>Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></small></div>}>
+  <DetailsPopup title="Luminous Collection" footerText={<div className="text-start"><small>Kits will be sent after 60 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></small></div>}>
     <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
     <LuminousKit />
   </DetailsPopup>
