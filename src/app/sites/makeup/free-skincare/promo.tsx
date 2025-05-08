@@ -4,6 +4,7 @@ import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
 import { Hero } from './hero';
+import { agreementLinks } from '../agreementLinks';
 import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
 import { usePriceState } from '@/hooks/usePriceState';
