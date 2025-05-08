@@ -4,6 +4,7 @@ import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
 import { Hero } from './hero';
+import { agreementLinks } from '../agreementLinks';
 import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
@@ -41,7 +42,7 @@ export const MakeupProPlusLuminousPromo: FC<Props> = () => {
           <LuminousKit />
         </Modal.Body>
         <Modal.Footer>
-          <p className="small">Your items will be automatically sent to you after you have submitted Unit A of the course in the Online Student Center. Items in the kit are subject to change.</p>
+          <p className="small">Kits will be sent after 60 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
         </Modal.Footer>
       </Modal>
     </>
