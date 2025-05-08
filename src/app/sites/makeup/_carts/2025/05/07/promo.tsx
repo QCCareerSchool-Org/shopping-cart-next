@@ -9,8 +9,8 @@ import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
 const backgroundColor = '#450001';
-const lastChanceDate = Date.UTC(2025, 4, 8, 7); // 2025-05-08T03:00 (07:00 UTC)
-const endDate = Date.UTC(2025, 4, 9, 7); // 2025-05-09T03:00 (07:00 UTC)
+const lastChanceDate = Date.UTC(2025, 4, 9, 7); // 2025-05-09T03:00 (07:00 UTC)
+const endDate = Date.UTC(2025, 4, 10, 7); // 2025-05-10T03:00 (07:00 UTC)
 
 type Props = {
   date: number;
