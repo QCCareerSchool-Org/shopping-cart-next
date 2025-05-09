@@ -5,7 +5,7 @@ import { Modal } from 'react-bootstrap';
 
 import { Hero } from './hero';
 import { agreementLinks } from '../agreementLinks';
-import { LuminousKit } from '@/components/luminousKit';
+import { LuxeProCollection } from '@/components/luxeProCollection';
 import { Section } from '@/components/section';
 import { usePriceState } from '@/hooks/usePriceState';
 import { useToggle } from '@/hooks/useToggle';
@@ -41,9 +41,9 @@ export const MakeupFreeSkincarePromo: FC<Props> = () => {
           <p className="lead">{discount} Off and Free Skincare Course</p>
           <p>When you enroll in <strong>Master Makeup Artistry</strong>, you'll get {discount} off and QC's <strong>Skincare Consultant</strong> course for free!</p>
           <p className="lead">Free Luminous Collection Makeup Kit</p>
-          <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
+          <p>Get the entire <strong>Luxe Pro Brush Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
           <p>Graduate as a Master International Makeup Professional™ (MIMP™) in just a few short months and build your beauty empire!</p>
-          <LuminousKit />
+          <LuxeProCollection />
         </Modal.Body>
         <Modal.Footer>
           <p className="small">Kits will be sent after 60 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
