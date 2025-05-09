@@ -2,7 +2,7 @@ import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { MakeupProPlusLuminousPromo } from './promo';
-import { FreeProMakeupDynamicMessage } from '@/components/dynamicCourseMessages/freeProMakeup';
+import { FreeProMakeupMasterclassDynamicMessage } from '@/components/dynamicCourseMessages/freeProMakeupMasterclass';
 import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -21,7 +21,7 @@ const MakeupProPlusLuminousPage: PageComponent = async ({ searchParams }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
-        dynamicCourseMessages={[ FreeProMakeupDynamicMessage ]}
+        dynamicCourseMessages={[ FreeProMakeupMasterclassDynamicMessage ]}
         promoCodeDefault="PROLUMINOUS"
       />
     </>
