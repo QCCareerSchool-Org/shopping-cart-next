@@ -6,7 +6,6 @@ import { DetailsPopup } from './detailsPopup';
 import MZ from './kits/brush-kit-luxe.jpg';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { GroomingKit } from '@/components/groomingKit';
-import { LuminousKit } from '@/components/luminousKit';
 import { LuxeProCollection } from '@/components/luxeProCollection';
 import type { School } from '@/domain/school';
 
