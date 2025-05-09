@@ -35,4 +35,9 @@ const descriptions: Descriptions = {
   VD: '<p class="card-text">Expand your clientele by taking your services online! Virtual consultations are more popular than ever.</p><p class="card-text">Virtual Design Training prepares you to</p><ul><li>Confidently navigate online meeting room technology.</li><li>Conduct design consultations online.</li><li>Market your new online design services.</li></ul>',
 };
 
-export const getCourseCardDescription = (courseCode: string): string | undefined => descriptions[courseCode];
+export const getCourseCardDescription = (courseCode: string): string | undefined => {
+  if (courseCode === 'MZ' && new Date().getTime() >= Date.UTC(2025, 4, 10, 7)) {
+    return '<p class="card-text">Learn everything you need to know to become a successful professional makeup artist. This course is ideal for beginners and experienced MUAs alike!</p><ul><li>You\'ll master core makeup techniques including blending, contouring, highlighting, and more</li><li>Become an expert in daytime, nighttime, bridal, and glamour makeup</li><li>Learn how to confidently work with all types of clients</li><li>Launch your own makeup business, or freelance</li></ul><p class="card-text">This course comes with the <strong>Luxe Pro Brush Collection!</strong></p>';
+  }
+  return descriptions[courseCode];
+};

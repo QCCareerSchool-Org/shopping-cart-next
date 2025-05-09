@@ -3,10 +3,11 @@ import type { CSSProperties, FC } from 'react';
 
 import { DetailsPopup } from './detailsPopup';
 // import DesignBooks from './kits/design-books.png';
-import MZ from './kits/mz/makeup-kit-white.jpg';
+import MZ from './kits/brush-kit-luxe.jpg';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { GroomingKit } from '@/components/groomingKit';
 import { LuminousKit } from '@/components/luminousKit';
+import { LuxeProCollection } from '@/components/luxeProCollection';
 import type { School } from '@/domain/school';
 
 export type KitImage = {
@@ -117,20 +118,24 @@ const getSchoolKits = (date: number): SchoolKits => ({
   'QC Career School': undefined,
 });
 
+const tariffSwitchDate = Date.UTC(2025, 4, 10, 7);
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getCourseKits = (date: number): CourseKit[] => [
   {
     courseCode: 'MZ',
-    images: {
-      full: { src: MZ },
-      part: { src: MZ, backgroundColor: 'white' },
-      height: { xs: undefined, sm: undefined, md: 148, lg: 130, xl: 157, xxl: 183 },
-      buttonOffset: { xs: undefined, sm: undefined, md: 62, lg: 49, xl: 68, xxl: 68 },
-      buttonBelow: true,
-    },
-    fullBullets: [ <strong key={0}>Bonus Luminous Kit</strong>, ...makeupBullets ],
-    partBullets: [ <strong key={0}>Bonus Luminous Kit</strong>, ...makeupBullets ],
-    details: <MZDetails />,
+    images: date >= tariffSwitchDate
+      ? {
+        full: { src: MZ },
+        part: { src: MZ, backgroundColor: 'white' },
+        height: { xs: undefined, sm: undefined, md: 168, lg: 150, xl: 180, xxl: 212 },
+        buttonOffset: { xs: undefined, sm: undefined, md: 62, lg: 49, xl: 68, xxl: 0 },
+        buttonBelow: true,
+      }
+      : undefined,
+    fullBullets: date >= tariffSwitchDate ? [ <strong key={0}>Luxe Pro Brush Collection</strong>, ...makeupBullets ] : makeupBullets,
+    partBullets: date >= tariffSwitchDate ? [ <strong key={0}>Luxe Pro Brush Collection</strong>, ...makeupBullets ] : makeupBullets,
+    details: date >= tariffSwitchDate ? <MZDetails /> : undefined,
   },
   // {
   //   courseCode: [ 'I2', 'ST', 'LD', 'CC' ], // exclude FD and ED, because we don't want it showing on the event carts
@@ -171,9 +176,10 @@ export const getKit = (date: number, courses: string[], school: School): Kit | u
 };
 
 const MZDetails: FC = () => (
-  <DetailsPopup title="Luminous Collection" footerText={<div className="text-start"><small>Kits will be sent after 60 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></small></div>}>
-    <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
-    <LuminousKit />
+  <DetailsPopup title="Luxe Pro Brush Collection" footerText={<div className="text-start"><small>Kits will be sent after 60 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></small></div>}>
+    <p>Get the entire <strong>Luxe Pro Brush Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
+    <LuxeProCollection />
+    <p><strong>Start today and claim your professional-grade brush set!</strong></p>
   </DetailsPopup>
 );
 
