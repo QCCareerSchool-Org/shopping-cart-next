@@ -5,6 +5,7 @@ import { Modal } from 'react-bootstrap';
 
 import { agreementLinks } from '../../agreementLinks';
 import { LuxeProCollection } from '@/components/luxeProCollection';
+import { usePriceState } from '@/hooks/usePriceState';
 
 type Props = {
   show: boolean;
@@ -12,14 +13,16 @@ type Props = {
 };
 
 export const MakeupFallbackModal: FC<Props> = props => {
+  const priceState = usePriceState();
+  const discount = priceState?.currency.code === 'GBP' ? '£100' : '$100';
+
   return (
     <Modal show={props.show} onHide={props.onHide}>
       <Modal.Header closeButton>
         <Modal.Title>Special Offer</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p>Enroll in Master Makeup Artistry and you'll <strong>get the entire Luxe Pro Brush Collection</strong>, filled with makeup and tools.</p>
-        <p>Graduate as a Master International Makeup Professional™ (MIMP™) in just a few short months and build your beauty empire!</p>
+        <p><strong>Enroll today and save {discount} on your tuition!</strong> Plus, when you enroll in Master Makeup Artistry, you'll receive the entire Luxe Pro Brush Collection for free!</p>
         <LuxeProCollection />
       </Modal.Body>
       <Modal.Footer>
