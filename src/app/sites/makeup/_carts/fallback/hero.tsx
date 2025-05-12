@@ -16,5 +16,5 @@ export const Hero: FC = () => {
     ? [ DesktopUK, MobileUK ]
     : [ Desktop, Mobile ];
 
-  return <PromoImage desktopSrc={desktopSrc} mobileSrc={mobileSrc} />;
+  return <PromoImage desktopSrc={desktopSrc} mobileSrc={mobileSrc} maxWidth={1060} />;
 };
