@@ -8,7 +8,7 @@ import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTime
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#450001';
+const backgroundColor = '#fff';
 const lastChanceDate = Date.UTC(2025, 4, 23, 7); // 2025-05-23T03:00 (07:00 UTC)
 const endDate = Date.UTC(2025, 4, 24, 7); // 2025-05-24T03:00 (07:00 UTC)
 
