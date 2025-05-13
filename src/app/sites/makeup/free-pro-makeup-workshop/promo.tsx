@@ -3,7 +3,7 @@
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
-import { MakeupProMakeupWorkshopHero } from './hero';
+import { MakeupFreeProMakeupWorkshopHero } from './hero';
 import { agreementLinks } from '../agreementLinks';
 import { LuxeProCollection } from '@/components/luxeProCollection';
 import { Section } from '@/components/section';
@@ -15,7 +15,7 @@ type Props = {
 
 const backgroundColor = '#fff';
 
-export const MakeupProMakeupWorkshopPromo: FC<Props> = () => {
+export const MakeupFreeProMakeupWorkshopPromo: FC<Props> = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
 
   const handleClick = (): void => {
@@ -26,7 +26,7 @@ export const MakeupProMakeupWorkshopPromo: FC<Props> = () => {
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <MakeupProMakeupWorkshopHero />
+          <MakeupFreeProMakeupWorkshopHero />
         </div>
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
@@ -35,7 +35,7 @@ export const MakeupProMakeupWorkshopPromo: FC<Props> = () => {
         </Modal.Header>
         <Modal.Body>
           <p className="lead">Free 3-Part Masterclass</p>
-          <p>When you enroll in <strong>Master Makeup Artistry</strong>, you'll get QC's <strong>Pro Makeup Workshop</strong> Free 3-Part Masterclass for free!</p>
+          <p>When you enroll in <strong>Master Makeup Artistry</strong>, you'll get QC's <strong>Pro Makeup Workshop</strong> for free!</p>
           <p className="lead">Free Luxe Pro Brush Collection</p>
           <p>Get the entire <strong>Luxe Pro Brush Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
           <p>Graduate as a Master International Makeup Professional™ (MIMP™) in just a few short months and build your beauty empire!</p>

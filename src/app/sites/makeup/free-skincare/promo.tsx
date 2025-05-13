@@ -3,7 +3,7 @@
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
-import { Hero } from './hero';
+import { MakeupFreeSkincareHero } from './hero';
 import { agreementLinks } from '../agreementLinks';
 import { LuxeProCollection } from '@/components/luxeProCollection';
 import { Section } from '@/components/section';
@@ -30,7 +30,7 @@ export const MakeupFreeSkincarePromo: FC<Props> = () => {
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero />
+          <MakeupFreeSkincareHero />
         </div>
       </Section>
       <Modal show={showPopup} onHide={handleClick}>

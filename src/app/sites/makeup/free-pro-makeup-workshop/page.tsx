@@ -1,17 +1,17 @@
 import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
-import { MakeupProMakeupWorkshopPromo } from './promo';
+import { MakeupFreeProMakeupWorkshopPromo } from './promo';
 import { FreeProMakeupMasterclassDynamicMessage } from '@/components/dynamicCourseMessages/freeProMakeupMasterclass';
 import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const MakeupProMakeupWorkshopPage: PageComponent = async ({ searchParams }) => {
+const MakeupFreeProMakeupWorkshopPage: PageComponent = async ({ searchParams }) => {
   const date = await getDate(searchParams.date);
   return (
     <>
-      <MakeupProMakeupWorkshopPromo date={date} />
+      <MakeupFreeProMakeupWorkshopPromo date={date} />
       <Form
         date={date}
         courseGroups={courseGroups}
@@ -28,4 +28,4 @@ const MakeupProMakeupWorkshopPage: PageComponent = async ({ searchParams }) => {
   );
 };
 
-export default MakeupProMakeupWorkshopPage;
+export default MakeupFreeProMakeupWorkshopPage;

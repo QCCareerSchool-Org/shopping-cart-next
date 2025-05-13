@@ -4,4 +4,4 @@ import Desktop from './desktop.jpg';
 import Mobile from './mobile.jpg';
 import { PromoImage } from '@/components/promoImage';
 
-export const MakeupMasterclassHero: FC = () => <PromoImage desktopSrc={Desktop} mobileSrc={Mobile} maxWidth={1060} />;
+export const MakeupFreeMasterclassHero: FC = () => <PromoImage desktopSrc={Desktop} mobileSrc={Mobile} maxWidth={1060} />;
