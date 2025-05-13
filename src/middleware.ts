@@ -35,8 +35,6 @@ const middleware = (req: NextRequest): NextResponse => {
     let pathname: string;
     if (url.pathname.startsWith('/continued-education')) {
       pathname = url.pathname.replace(/^\/continued-education/ui, '/student');
-    } if (url.pathname.startsWith('/pro-plus-luminous-kit')) {
-      pathname = '/free-masterclass';
     } else {
       pathname = url.pathname;
     }
