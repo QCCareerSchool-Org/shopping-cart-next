@@ -27,9 +27,6 @@ const middleware = (req: NextRequest): NextResponse => {
     return NextResponse.redirect(url);
   }
 
-  const date = new Date().getTime();
-  const tariffDate = Date.UTC(2025, 4, 10, 7);
-
   if (url.pathname.startsWith(`/sites`)) {
     // Prevent security issues – users should not be able to canonically access
     // the app/sites folder and its respective contents.
@@ -38,7 +35,7 @@ const middleware = (req: NextRequest): NextResponse => {
     let pathname: string;
     if (url.pathname.startsWith('/continued-education')) {
       pathname = url.pathname.replace(/^\/continued-education/ui, '/student');
-    } if (url.pathname.startsWith('/pro-plus-luminous-kit') && date >= tariffDate) {
+    } if (url.pathname.startsWith('/pro-plus-luminous-kit')) {
       pathname = '/free-masterclass';
     } else {
       pathname = url.pathname;
