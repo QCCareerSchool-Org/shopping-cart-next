@@ -15,7 +15,7 @@ export const Makeup20250514Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
     <Modal.Header closeButton>Start Your Makeup Career</Modal.Header>
     <Modal.Body>
-      <h2>Start Today and Receive these Bonuses:</h2>
+      <h2 className="h4">Start Today and Receive these Bonuses:</h2>
       <p>Enroll in Master Makeup Artistry and get QC's Pro Makeup Workshop FREE!</p>
       <p>This 3-part masterclass led by celebrity makeup artist Nathan Johnson is designed to build on your foundational training and take your career to the next level! You'll learn:</p>
       <ul>
