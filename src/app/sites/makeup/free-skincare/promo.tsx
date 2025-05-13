@@ -46,7 +46,7 @@ export const MakeupFreeSkincarePromo: FC<Props> = () => {
           <LuxeProCollection />
         </Modal.Body>
         <Modal.Footer>
-          <p className="small">Kits will be sent after 60 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
+          <p className="small">Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
         </Modal.Footer>
       </Modal>
     </>

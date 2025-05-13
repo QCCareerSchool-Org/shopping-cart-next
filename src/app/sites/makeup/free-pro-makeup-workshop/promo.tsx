@@ -3,7 +3,7 @@
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
-import { MakeupMasterclassHero } from './hero';
+import { MakeupProMakeupWorkshopHero } from './hero';
 import { agreementLinks } from '../agreementLinks';
 import { LuxeProCollection } from '@/components/luxeProCollection';
 import { Section } from '@/components/section';
@@ -15,7 +15,7 @@ type Props = {
 
 const backgroundColor = '#fff';
 
-export const MakeupMasterclassPromo: FC<Props> = () => {
+export const MakeupProMakeupWorkshopPromo: FC<Props> = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
 
   const handleClick = (): void => {
@@ -26,7 +26,7 @@ export const MakeupMasterclassPromo: FC<Props> = () => {
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <MakeupMasterclassHero />
+          <MakeupProMakeupWorkshopHero />
         </div>
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
