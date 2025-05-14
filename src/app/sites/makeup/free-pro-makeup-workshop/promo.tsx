@@ -3,9 +3,9 @@
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
-import { Hero } from './hero';
+import { MakeupFreeProMakeupWorkshopHero } from './hero';
 import { agreementLinks } from '../agreementLinks';
-import { LuminousKit } from '@/components/luminousKit';
+import { LuxeProCollection } from '@/components/luxeProCollection';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
@@ -13,9 +13,9 @@ type Props = {
   date: number;
 };
 
-const backgroundColor = '#0a0a0a';
+const backgroundColor = '#fff';
 
-export const MakeupProPlusLuminousPromo: FC<Props> = () => {
+export const MakeupFreeProMakeupWorkshopPromo: FC<Props> = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
 
   const handleClick = (): void => {
@@ -26,7 +26,7 @@ export const MakeupProPlusLuminousPromo: FC<Props> = () => {
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero />
+          <MakeupFreeProMakeupWorkshopHero />
         </div>
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
@@ -34,15 +34,15 @@ export const MakeupProPlusLuminousPromo: FC<Props> = () => {
           <strong>Limited-Time Offer</strong>
         </Modal.Header>
         <Modal.Body>
-          <p className="lead">Free Pro Makeup Workshop</p>
+          <p className="lead">Free 3-Part Masterclass</p>
           <p>When you enroll in <strong>Master Makeup Artistry</strong>, you'll get QC's <strong>Pro Makeup Workshop</strong> for free!</p>
-          <p className="lead">Free Luminous Collection Makeup Kit</p>
-          <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
+          <p className="lead">Free Luxe Pro Brush Collection</p>
+          <p>Get the entire <strong>Luxe Pro Brush Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
           <p>Graduate as a Master International Makeup Professional™ (MIMP™) in just a few short months and build your beauty empire!</p>
-          <LuminousKit />
+          <LuxeProCollection />
         </Modal.Body>
         <Modal.Footer>
-          <p className="small">Kits will be sent after 60 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
+          <p className="small">Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
         </Modal.Footer>
       </Modal>
     </>

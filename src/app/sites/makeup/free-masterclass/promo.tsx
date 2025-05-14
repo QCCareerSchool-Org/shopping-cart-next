@@ -3,7 +3,7 @@
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
-import { Hero } from './hero';
+import { MakeupFreeMasterclassHero } from './hero';
 import { agreementLinks } from '../agreementLinks';
 import { LuxeProCollection } from '@/components/luxeProCollection';
 import { Section } from '@/components/section';
@@ -15,7 +15,7 @@ type Props = {
 
 const backgroundColor = '#fff';
 
-export const MakeupProPlusLuminousPromo: FC<Props> = () => {
+export const MakeupFreeMasterclassPromo: FC<Props> = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
 
   const handleClick = (): void => {
@@ -26,7 +26,7 @@ export const MakeupProPlusLuminousPromo: FC<Props> = () => {
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero />
+          <MakeupFreeMasterclassHero />
         </div>
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
@@ -42,7 +42,7 @@ export const MakeupProPlusLuminousPromo: FC<Props> = () => {
           <LuxeProCollection />
         </Modal.Body>
         <Modal.Footer>
-          <p className="small">Kits will be sent after 60 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
+          <p className="small">Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
         </Modal.Footer>
       </Modal>
     </>

@@ -2,8 +2,8 @@
 
 import type { FC } from 'react';
 
-import { Hero20250522 } from './hero';
-import { Makeup20250522Modal } from './modal';
+import { Hero20250523 } from './hero';
+import { Makeup20250523Modal } from './modal';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
@@ -16,7 +16,7 @@ type Props = {
   date: number;
 };
 
-export const Makeup20250522Promo: FC<Props> = ({ date }) => {
+export const Makeup20250523Promo: FC<Props> = ({ date }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const variant = date >= lastChanceDate ? 'lastChance' : undefined;
 
@@ -28,10 +28,10 @@ export const Makeup20250522Promo: FC<Props> = ({ date }) => {
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero20250522 variant={variant} />
+          <Hero20250523 variant={variant} />
         </div>
       </Section>
-      <Makeup20250522Modal show={showPopup} onHide={handleClick} />
+      <Makeup20250523Modal show={showPopup} onHide={handleClick} />
       <CountDownTimerWrapper
         date={date}
         showDate={lastChanceDate}

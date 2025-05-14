@@ -1,17 +1,17 @@
 import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
-import { MakeupProPlusLuminousPromo } from './promo';
-import { FreeProMakeupDynamicMessage } from '@/components/dynamicCourseMessages/freeProMakeup';
+import { MakeupFreeProMakeupWorkshopPromo } from './promo';
+import { FreeProMakeupMasterclassDynamicMessage } from '@/components/dynamicCourseMessages/freeProMakeupMasterclass';
 import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const MakeupProPlusLuminousPage: PageComponent = async ({ searchParams }) => {
+const MakeupFreeProMakeupWorkshopPage: PageComponent = async ({ searchParams }) => {
   const date = await getDate(searchParams.date);
   return (
     <>
-      <MakeupProPlusLuminousPromo date={date} />
+      <MakeupFreeProMakeupWorkshopPromo date={date} />
       <Form
         date={date}
         courseGroups={courseGroups}
@@ -21,11 +21,11 @@ const MakeupProPlusLuminousPage: PageComponent = async ({ searchParams }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
-        dynamicCourseMessages={[ FreeProMakeupDynamicMessage ]}
+        dynamicCourseMessages={[ FreeProMakeupMasterclassDynamicMessage ]}
         promoCodeDefault="PROLUMINOUS"
       />
     </>
   );
 };
 
-export default MakeupProPlusLuminousPage;
+export default MakeupFreeProMakeupWorkshopPage;
