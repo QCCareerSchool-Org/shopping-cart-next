@@ -21,9 +21,9 @@ export const getPromos = (date: number, price: PriceState, school: School, stude
     {
       schools: [ 'QC Makeup Academy' ],
       student: 'DENIED',
-      code: 'PROLUMINOUS',
-      description: <>Enroll in <strong>Master Makeup Artistry</strong> and get the <strong>Pro Makeup Workshop</strong> and the Luminous Collection free</>,
-      altText: 'Free Pro Makeup Workshop and Luminous Collection',
+      code: 'FREEPRO',
+      description: <>Enroll in <strong>Master Makeup Artistry</strong> and get the <strong>Pro Makeup Workshop</strong> free</>,
+      altText: 'Free Pro Makeup Workshop',
     },
     {
       schools: [ 'QC Makeup Academy' ],
