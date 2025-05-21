@@ -10,7 +10,7 @@ const DesignPage: PageComponent = async ({ searchParams }) => {
 
   return (
     <Suspense>
-      {date >= Date.UTC(2025, 4, 22, 7) && date < Date.UTC(2025, 4, 30, 7) // 2025-05-22T03:00 (07:00 UTC) to 2025-05-30T03:00 (07:00 UTC)
+      {date >= Date.UTC(2025, 4, 22, 7) && date < Date.UTC(2025, 4, 31, 7) // 2025-05-22T03:00 (07:00 UTC) to 2025-05-31T03:00 (07:00 UTC)
         ? <Design20250522 date={date} />
         : <DesignFallback date={date} />
       }
