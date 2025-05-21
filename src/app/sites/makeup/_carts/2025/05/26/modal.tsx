@@ -11,7 +11,7 @@ type Props = {
   onHide: () => void;
 };
 
-export const Makeup20250523Modal: FC<Props> = props => (
+export const Makeup20250526Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
     <Modal.Header closeButton>Start Your Makeup Career</Modal.Header>
     <Modal.Body>
