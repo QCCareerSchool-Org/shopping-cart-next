@@ -24,7 +24,7 @@ export const DesignStudent20250522: FC<Props> = ({ date }) => {
         student
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
-        promoCodeDefault="SAVE60"
+        promoCodeDefault="FREEVIRTUAL"
       />
     </>
   );
