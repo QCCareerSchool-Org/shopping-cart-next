@@ -4,6 +4,7 @@ import { MakeupStudent20250522Promo } from './promo';
 import { agreementLinks } from '../../../../../agreementLinks';
 import { courseGroups } from '../../../../../courseGroups';
 import { Guarantee } from '../../../../../guarantee';
+import { PersonalStyling60DynamicMessage } from '@/components/dynamicCourseMessages/personalStyling60';
 import { Form } from '@/components/form';
 
 type Props = {
@@ -24,6 +25,7 @@ export const MakeupStudent20250522: FC<Props> = ({ date }) => {
         student
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
+        dynamicCourseMessages={[ PersonalStyling60DynamicMessage ]}
         promoCodeDefault="STYLING60"
       />
     </>

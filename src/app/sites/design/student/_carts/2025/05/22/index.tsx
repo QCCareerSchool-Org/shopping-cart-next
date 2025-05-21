@@ -4,6 +4,7 @@ import { DesignStudent20250522Promo } from './promo';
 import { agreementLinks } from '../../../../../agreementLinks';
 import { courseGroups } from '../../../../../courseGroups';
 import { Guarantee } from '../../../../../guarantee';
+import { FreeVirtualDesignDynamicMessage } from '@/components/dynamicCourseMessages/freeVirtualDesign';
 import { Form } from '@/components/form';
 
 type Props = {
@@ -24,6 +25,7 @@ export const DesignStudent20250522: FC<Props> = ({ date }) => {
         student
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
+        dynamicCourseMessages={[ FreeVirtualDesignDynamicMessage ]}
         promoCodeDefault="FREEVIRTUAL"
       />
     </>
