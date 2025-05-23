@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
-import { LuminousKit } from '@/components/luminousKit';
+import { LuxeProCollection } from '@/components/luxeProCollection';
 
 type Props = {
   show: boolean;
@@ -13,14 +13,20 @@ type Props = {
 
 export const Makeup20250526Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
-    <Modal.Header closeButton>Start Your Makeup Career</Modal.Header>
+    <Modal.Header closeButton>Start Today and Receive These Bonuses</Modal.Header>
     <Modal.Body>
-      <p>For a limited time, enroll in <strong>Master Makeup Artistry</strong> and get the Skincare course FREE.</p>
-      <p>You'll also get the ENTIRE Luminous Makeup Collection:</p>
-      <LuminousKit />
+      <p>Enroll in Master Makeup Artistry and get QC's Skincare Consultant Course FREE!</p>
+      <p>This course lets you expand your makeup expertise while opening doors to a new career as a skincare consultant. You'll learn to:</p>
+      <ul>
+        <li>Assess skin types and conditions</li>
+        <li>Conduct personalized skincare consultations and recommend products</li>
+        <li>Create DIY skincare recipes and understand anti-aging techniques</li>
+      </ul>
+      <p>Plus, you'll receive QC's 16-Piece Luxe Pro Brush Collection, expertly designed to help professional makeup artists achieve flawless, polished results for every client.</p>
+      <LuxeProCollection />
     </Modal.Body>
     <Modal.Footer>
-      <p className="small">Kits will be sent after 60 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
+      <p className="small">Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
     </Modal.Footer>
   </Modal>
 );
