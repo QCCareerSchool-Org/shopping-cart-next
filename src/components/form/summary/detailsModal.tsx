@@ -2,6 +2,9 @@ import type { FC } from 'react';
 import { Fragment } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'react-bootstrap';
 
+import type { CourseGroup } from '@/domain/courseGroup';
+import { getCourse } from '@/domain/courseGroup';
+import { useAddressState } from '@/hooks/useAddressState';
 import { usePaymentState } from '@/hooks/usePaymentState';
 import { usePriceState } from '@/hooks/usePriceState';
 import { formatCurrency } from '@/lib/formatCurrency';
@@ -10,11 +13,13 @@ import type { PriceState } from '@/state/price';
 type Props = {
   show: boolean;
   onHide: () => void;
+  courseGroups: CourseGroup[];
 };
 
 export const DetailsModal: FC<Props> = props => {
   const priceState = usePriceState();
   const paymentState = usePaymentState();
+  const { countryCode, provinceCode } = useAddressState();
 
   if (!priceState) {
     return;
@@ -24,14 +29,24 @@ export const DetailsModal: FC<Props> = props => {
     <Modal show={props.show} onHide={props.onHide}>
       <ModalHeader closeButton><strong>Detailed Payment Breakdown</strong></ModalHeader>
       <ModalBody>
-        {paymentState.plan === 'full' ? <FullBreakdown price={priceState} /> : <PartBreakdown price={priceState} />}
+        {paymentState.plan === 'full'
+          ? <FullBreakdown price={priceState} countryCode={countryCode} provinceCode={provinceCode} courseGroups={props.courseGroups} />
+          : <PartBreakdown price={priceState} countryCode={countryCode} provinceCode={provinceCode} courseGroups={props.courseGroups} />
+        }
         <p className="mb-0">All prices are in {priceState.currency.name}.</p>
       </ModalBody>
     </Modal>
   );
 };
 
-const FullBreakdown: FC<{ price: PriceState }> = ({ price }) => {
+type OuterProps = {
+  price: PriceState;
+  countryCode: string;
+  provinceCode: string | null;
+  courseGroups: CourseGroup[];
+};
+
+const FullBreakdown: FC<OuterProps> = ({ price, countryCode, provinceCode, courseGroups }) => {
   if (!price) {
     return;
   }
@@ -41,14 +56,14 @@ const FullBreakdown: FC<{ price: PriceState }> = ({ price }) => {
       <p>The total cost of your courses is <strong>{price.currency.symbol}{formatCurrency(price.plans.full.total)}</strong>. Your payments are broken down as follows:</p>
       <table className="w-100">
         <tbody>
-          <CostRows price={price} plan="full" />
+          <CostRows price={price} plan="full" countryCode={countryCode} provinceCode={provinceCode} courseGroups={courseGroups} />
         </tbody>
       </table>
     </div>
   );
 };
 
-const PartBreakdown: FC<{ price: PriceState }> = ({ price }) => {
+const PartBreakdown: FC<OuterProps> = ({ price, countryCode, provinceCode, courseGroups }) => {
   if (!price) {
     return;
   }
@@ -58,28 +73,36 @@ const PartBreakdown: FC<{ price: PriceState }> = ({ price }) => {
       <p>The total cost of your courses is <strong>{price.currency.symbol}{price.plans.part.total.toFixed(2)}</strong>. Your payments are broken down as follows:</p>
       <table className="w-100">
         <tbody>
-          <CostRows price={price} plan="part" />
+          <CostRows price={price} plan="part" countryCode={countryCode} provinceCode={provinceCode} courseGroups={courseGroups} />
         </tbody>
       </table>
       <h6>Deposit</h6>
       <p>When you enroll you'll be charged a deposit of <strong>{price.currency.symbol}{price.plans.part.deposit.toFixed(2)}</strong>:</p>
       <table className="w-100">
         <tbody>
-          <DepositRows price={price} plan="part" />
+          <DepositRows price={price} plan="part" countryCode={countryCode} provinceCode={provinceCode} courseGroups={courseGroups} />
         </tbody>
       </table>
       <h6>Monthly Installments</h6>
       <p>Each month, for <strong>{price.plans.part.installments} months</strong>, your card will automatically be charged as follows:</p>
       <table className="w-100">
         <tbody>
-          <InstallmentRows price={price} plan="part" />
+          <InstallmentRows price={price} plan="part" countryCode={countryCode} provinceCode={provinceCode} courseGroups={courseGroups} />
         </tbody>
       </table>
     </div>
   );
 };
 
-const CostRows: React.FC<{ price: PriceState; plan: 'full' | 'part' }> = ({ price, plan }) => {
+type InnerProps = {
+  price: PriceState;
+  plan: 'full' | 'part';
+  countryCode: string;
+  provinceCode: string | null;
+  courseGroups: CourseGroup[];
+};
+
+const CostRows: React.FC<InnerProps> = ({ price, plan, countryCode, provinceCode, courseGroups }) => {
   if (!price) {
     return;
   }
@@ -87,46 +110,60 @@ const CostRows: React.FC<{ price: PriceState; plan: 'full' | 'part' }> = ({ pric
   let key = 0;
   return (
     <>
-      {price.courses.filter(course => course.primary).map(course => (
-        <Fragment key={key++}>
-          <tr>
-            <td>{course.name}{course.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
-            <td className="text-end text-nowrap align-bottom">{price.currency.symbol}{(course.free ? 0 : course.cost).toFixed(2)}</td>
-          </tr>
-          {course.plans[plan].discount > 0 && (
+      {price.courses.filter(coursePrice => coursePrice.primary).map(coursePrice => {
+        const course = getCourse(coursePrice.code, courseGroups);
+        if (!course) {
+          return null;
+        }
+        const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+        return (
+          <Fragment key={key++}>
             <tr>
-              <td>Payment Plan Discount</td>
-              <td className="text-end text-primary text-nowrap align-bottom">&minus; {price.currency.symbol}{course.plans[plan].discount.toFixed(2)}</td>
+              <td>{name}{coursePrice.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
+              <td className="text-end text-nowrap align-bottom">{price.currency.symbol}{(coursePrice.free ? 0 : coursePrice.cost).toFixed(2)}</td>
             </tr>
-          )}
-          {!course.free && course.multiCourseDiscount > 0 && (
+            {coursePrice.plans[plan].discount > 0 && (
+              <tr>
+                <td>Payment Plan Discount</td>
+                <td className="text-end text-primary text-nowrap align-bottom">&minus; {price.currency.symbol}{coursePrice.plans[plan].discount.toFixed(2)}</td>
+              </tr>
+            )}
+            {!coursePrice.free && coursePrice.multiCourseDiscount > 0 && (
+              <tr>
+                <td>Multi-Course Discount</td>
+                <td className="text-end text-primary text-nowrap align-bottom">&minus; {price.currency.symbol}{coursePrice.multiCourseDiscount.toFixed(2)}</td>
+              </tr>
+            )}
+          </Fragment>
+        );
+      })}
+      {price.courses.filter(coursePrice => !coursePrice.primary).map(coursePrice => {
+        const course = getCourse(coursePrice.code, courseGroups);
+        if (!course) {
+          return null;
+        }
+        const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+        return (
+          <Fragment key={key++}>
             <tr>
-              <td>Multi-Course Discount</td>
-              <td className="text-end text-primary text-nowrap align-bottom">&minus; {price.currency.symbol}{course.multiCourseDiscount.toFixed(2)}</td>
+              <td>{name}{coursePrice.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
+              <td className="text-end text-nowrap align-bottom">{price.currency.symbol}{(coursePrice.free ? 0 : coursePrice.cost).toFixed(2)}</td>
             </tr>
-          )}
-        </Fragment>
-      ))}
-      {price.courses.filter(course => !course.primary).map(course => (
-        <Fragment key={key++}>
-          <tr>
-            <td>{course.name}{course.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
-            <td className="text-end text-nowrap align-bottom">{price.currency.symbol}{(course.free ? 0 : course.cost).toFixed(2)}</td>
-          </tr>
-          {course.plans[plan].discount > 0 && (
-            <tr>
-              <td>Payment Plan Discount</td>
-              <td className="text-end text-primary text-nowrap align-bottom">&minus; {price.currency.symbol}{course.plans[plan].discount.toFixed(2)}</td>
-            </tr>
-          )}
-          {!course.free && course.multiCourseDiscount > 0 && (
-            <tr>
-              <td>{Math.round(course.multiCourseDiscount / course.cost * 100)}% Off Discount</td>
-              <td className="text-end text-primary text-nowrap align-bottom">&minus; {price.currency.symbol}{course.multiCourseDiscount.toFixed(2)}</td>
-            </tr>
-          )}
-        </Fragment>
-      ))}
+            {coursePrice.plans[plan].discount > 0 && (
+              <tr>
+                <td>Payment Plan Discount</td>
+                <td className="text-end text-primary text-nowrap align-bottom">&minus; {price.currency.symbol}{coursePrice.plans[plan].discount.toFixed(2)}</td>
+              </tr>
+            )}
+            {!coursePrice.free && coursePrice.multiCourseDiscount > 0 && (
+              <tr>
+                <td>{Math.round(coursePrice.multiCourseDiscount / coursePrice.cost * 100)}% Off Discount</td>
+                <td className="text-end text-primary text-nowrap align-bottom">&minus; {price.currency.symbol}{coursePrice.multiCourseDiscount.toFixed(2)}</td>
+              </tr>
+            )}
+          </Fragment>
+        );
+      })}
       {price.promoDiscount > 0 && (
         <tr>
           <td>Promo Discount</td>
@@ -151,7 +188,7 @@ const CostRows: React.FC<{ price: PriceState; plan: 'full' | 'part' }> = ({ pric
   );
 };
 
-const DepositRows: FC<{ price: PriceState; plan: 'full' | 'part' }> = ({ price, plan }) => {
+const DepositRows: FC<InnerProps> = ({ price, plan, countryCode, provinceCode, courseGroups }) => {
   if (!price) {
     return;
   }
@@ -159,18 +196,32 @@ const DepositRows: FC<{ price: PriceState; plan: 'full' | 'part' }> = ({ price, 
   let key = 0;
   return (
     <>
-      {price.courses.filter(course => course.primary).map(course => (
-        <tr key={key++}>
-          <td>{course.name}{course.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
-          <td className="text-end text-nowrap align-bottom">{price.currency.symbol}{course.plans[plan].deposit.toFixed(2)}</td>
-        </tr>
-      ))}
-      {price.courses.filter(course => !course.primary).map(course => (
-        <tr key={key++}>
-          <td>{course.name}{course.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
-          <td className="text-end text-nowrap align-bottom">{price.currency.symbol}{course.plans[plan].deposit.toFixed(2)}</td>
-        </tr>
-      ))}
+      {price.courses.filter(coursePrice => coursePrice.primary).map(coursePrice => {
+        const course = getCourse(coursePrice.code, courseGroups);
+        if (!course) {
+          return null;
+        }
+        const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+        return (
+          <tr key={key++}>
+            <td>{name}{coursePrice.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
+            <td className="text-end text-nowrap align-bottom">{price.currency.symbol}{coursePrice.plans[plan].deposit.toFixed(2)}</td>
+          </tr>
+        );
+      })}
+      {price.courses.filter(coursePrice => !coursePrice.primary).map(coursePrice => {
+        const course = getCourse(coursePrice.code, courseGroups);
+        if (!course) {
+          return null;
+        }
+        const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+        return (
+          <tr key={key++}>
+            <td>{name}{coursePrice.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
+            <td className="text-end text-nowrap align-bottom">{price.currency.symbol}{coursePrice.plans[plan].deposit.toFixed(2)}</td>
+          </tr>
+        );
+      })}
       <tr>
         <td />
         <td><hr className="my-1" /></td>
@@ -183,7 +234,7 @@ const DepositRows: FC<{ price: PriceState; plan: 'full' | 'part' }> = ({ price, 
   );
 };
 
-const InstallmentRows: FC<{ price: PriceState; plan: 'full' | 'part' }> = ({ price, plan }) => {
+const InstallmentRows: FC<InnerProps> = ({ price, plan, countryCode, provinceCode, courseGroups }) => {
   if (!price) {
     return;
   }
@@ -191,18 +242,32 @@ const InstallmentRows: FC<{ price: PriceState; plan: 'full' | 'part' }> = ({ pri
   let key = 0;
   return (
     <>
-      {price.courses.filter(course => course.primary).map(course => (
-        <tr key={key++}>
-          <td>{course.name}{course.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
-          <td className="text-end text-nowrap align-bottom">{price.currency.symbol}{course.plans[plan].installmentSize.toFixed(2)}</td>
-        </tr>
-      ))}
-      {price.courses.filter(course => !course.primary).map(course => (
-        <tr key={key++}>
-          <td>{course.name}{course.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
-          <td className="text-end text-nowrap align-bottom">{price.currency.symbol}{course.plans[plan].installmentSize.toFixed(2)}</td>
-        </tr>
-      ))}
+      {price.courses.filter(coursePrice => coursePrice.primary).map(coursePrice => {
+        const course = getCourse(coursePrice.code, courseGroups);
+        if (!course) {
+          return null;
+        }
+        const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+        return (
+          <tr key={key++}>
+            <td>{name}{coursePrice.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
+            <td className="text-end text-nowrap align-bottom">{price.currency.symbol}{coursePrice.plans[plan].installmentSize.toFixed(2)}</td>
+          </tr>
+        );
+      })}
+      {price.courses.filter(coursePrice => !coursePrice.primary).map(coursePrice => {
+        const course = getCourse(coursePrice.code, courseGroups);
+        if (!course) {
+          return null;
+        }
+        const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+        return (
+          <tr key={key++}>
+            <td>{name}{coursePrice.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
+            <td className="text-end text-nowrap align-bottom">{price.currency.symbol}{coursePrice.plans[plan].installmentSize.toFixed(2)}</td>
+          </tr>
+        );
+      })}
       <tr>
         <td />
         <td><hr className="my-1" /></td>

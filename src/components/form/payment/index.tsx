@@ -4,6 +4,7 @@ import type { FC } from 'react';
 import { lazy, Suspense } from 'react';
 
 import { Section } from '@/components/section';
+import type { CourseGroup } from '@/domain/courseGroup';
 import type { School } from '@/domain/school';
 import { usePriceState } from '@/hooks/usePriceState';
 
@@ -16,9 +17,10 @@ type Props = {
   showPromoCodeInput: boolean;
   visualPaymentPlans: boolean;
   discountName?: string;
+  courseGroups: CourseGroup[];
 };
 
-export const Payment: FC<Props> = ({ date, school, showPromoCodeInput, visualPaymentPlans, discountName }) => {
+export const Payment: FC<Props> = ({ date, school, showPromoCodeInput, visualPaymentPlans, discountName, courseGroups }) => {
   const priceState = usePriceState();
 
   if (priceState && priceState.cost > 0 && priceState.plans.part.installmentSize === 0) {
@@ -30,8 +32,8 @@ export const Payment: FC<Props> = ({ date, school, showPromoCodeInput, visualPay
       <h2 className="h1">Select a Payment Plan</h2>
       <Suspense>
         {visualPaymentPlans
-          ? <VisualPaymentPlans date={date} school={school} discountName={discountName} />
-          : <TextPaymentPlans date={date} school={school} showPromoCodeInput={showPromoCodeInput} discountName={discountName} />
+          ? <VisualPaymentPlans date={date} school={school} discountName={discountName} courseGroups={courseGroups} />
+          : <TextPaymentPlans date={date} school={school} showPromoCodeInput={showPromoCodeInput} discountName={discountName} courseGroups={courseGroups} />
         }
       </Suspense>
     </Section>

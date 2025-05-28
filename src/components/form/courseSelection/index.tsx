@@ -7,6 +7,7 @@ import { CourseTable } from './courseTable';
 import type { DynamicCourseDescriptions } from '@/components/form';
 import { Section } from '@/components/section';
 import type { CourseGroup } from '@/domain/courseGroup';
+import { useAddressState } from '@/hooks/useAddressState';
 import { useCoursesDispatch } from '@/hooks/useCoursesDispatch';
 import { useCoursesState } from '@/hooks/useCoursesState';
 import { useMetaState } from '@/hooks/useMetaState';
@@ -36,6 +37,7 @@ const Standard: FC<Props> = props => {
   const coursesDispatch = useCoursesDispatch();
   const priceState = usePriceState();
   const { student } = useMetaState();
+  const { countryCode, provinceCode } = useAddressState();
 
   const [ hoveredCourseCode, setHoveredCourseCode ] = useState<string | undefined>();
 
@@ -47,7 +49,7 @@ const Standard: FC<Props> = props => {
   for (const group of props.courseGroups) {
     for (const item of group.items) {
       if (item.code === hoveredCourseCode) {
-        hoveredCourseName = item.name;
+        hoveredCourseName = typeof item.name === 'string' ? item.name : item.name({ countryCode, provinceCode });
         break;
       }
     }
@@ -75,16 +77,21 @@ const Standard: FC<Props> = props => {
             <p className="mb-0">Please select one or more courses.</p>
           </div>
         )} */}
-        {props.courseGroups.map((g, i) => (
-          <Fragment key={i}>
-            {g.name && <h3 className={i > 0 ? 'mt-4 h5' : 'h5'}>{g.name}</h3>}
-            {g.items.filter(c => !!props.showHiddenCourses || student || props.internal || !!c.alwaysShown || !coursesState.hidden.includes(c.code)).map(c => (
-              <CheckBox key={c.code} course={c} onCheck={handleCheck} onUncheck={handleUncheck} onMouseOver={() => handleMouseOver(c.code)} />
-            ))}
-          </Fragment>
-        ))}
+        {props.courseGroups.map((g, i) => {
+          if (g.items.length === 0) {
+            return null;
+          }
+          return (
+            <Fragment key={i}>
+              {g.name && <h3 className={i > 0 ? 'mt-4 h5' : 'h5'}>{g.name}</h3>}
+              {g.items.filter(c => !!props.showHiddenCourses || student || props.internal || !!c.alwaysShown || !coursesState.hidden.includes(c.code)).map(c => (
+                <CheckBox key={c.code} course={c} onCheck={handleCheck} onUncheck={handleUncheck} onMouseOver={() => handleMouseOver(c.code)} />
+              ))}
+            </Fragment>
+          );
+        })}
         {props.dynamicCourseMessages?.map((C, i) => <div key={i} className={i === 0 ? 'mt-4' : 'mt-3'}><C /></div>)}
-        {priceState && props.dynamicCourseDescriptions === 'SHOW' && <div className="mt-4"><CourseTable discountName={props.discountName} /></div>}
+        {priceState && props.dynamicCourseDescriptions === 'SHOW' && <div className="mt-4"><CourseTable discountName={props.discountName} courseGroups={props.courseGroups} /></div>}
       </div>
       {(props.dynamicCourseDescriptions === 'SHOW' || props.dynamicCourseDescriptions === 'REPLACE')
         ? (
@@ -94,7 +101,7 @@ const Standard: FC<Props> = props => {
         )
         : (
           <div className="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-0 mt-4 mt-md-0">
-            {priceState && <CourseTable discountName={props.discountName} />}
+            {priceState && <CourseTable discountName={props.discountName} courseGroups={props.courseGroups} />}
           </div>
         )
       }
@@ -108,7 +115,7 @@ const Override: FC<Props> = props => {
   return (
     <div className="row">
       <div className="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
-        {!!priceState && <CourseTable discountName={props.discountName} />}
+        {!!priceState && <CourseTable discountName={props.discountName} courseGroups={props.courseGroups} />}
       </div>
     </div>
   );

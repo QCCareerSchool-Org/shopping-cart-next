@@ -3,6 +3,7 @@ import { FaQuestionCircle } from 'react-icons/fa';
 
 import { DisabledCourseModal } from './disabledCourseModal';
 import type { Course } from '@/domain/course';
+import { useAddressState } from '@/hooks/useAddressState';
 import { useCoursesState } from '@/hooks/useCoursesState';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 import { useToggle } from '@/hooks/useToggle';
@@ -17,6 +18,7 @@ type Props = {
 export const CheckBox: React.FC<Props> = props => {
   const id = useId();
   const coursesState = useCoursesState();
+  const { countryCode, provinceCode } = useAddressState();
   // const coursesDispatch = useCoursesDispatch();
   const screenWidth = useScreenWidth();
   const [ showDisabledMessage, toggleDisabledMessage ] = useToggle(false);
@@ -35,6 +37,18 @@ export const CheckBox: React.FC<Props> = props => {
 
   const disabled = coursesState.disabled.includes(props.course.code);
 
+  const name = typeof props.course.name === 'string'
+    ? props.course.name
+    : props.course.name({ countryCode, provinceCode });
+
+  let disabledMessage: string | JSX.Element | undefined;
+
+  if (typeof props.course.disabledMessage === 'function') {
+    disabledMessage = props.course.disabledMessage({ countryCode, provinceCode });
+  } else if (typeof props.course.disabledMessage !== 'undefined') {
+    disabledMessage = props.course.disabledMessage;
+  }
+
   return (
     <div className="form-check mt-2">
       <input
@@ -49,8 +63,8 @@ export const CheckBox: React.FC<Props> = props => {
       <label className="form-check-label" htmlFor={`${id}${props.course.code}`} style={{ opacity: 1 }} onMouseOver={props.onMouseOver}>
         <span style={disabled ? { opacity: 0.5 } : undefined}>
           {props.course.description
-            ? <><strong>{props.course.description}:</strong><br />{props.course.name}</>
-            : props.course.name
+            ? <><strong>{props.course.description}:</strong><br />{name}</>
+            : name
           }
         </span>
         {props.course.disabledMessage && disabled && (
@@ -60,7 +74,7 @@ export const CheckBox: React.FC<Props> = props => {
         )}
       </label>
       {screenWidth >= 375 && props.course.badge}
-      {props.course.disabledMessage && <DisabledCourseModal course={props.course.code} name={props.course.name} message={props.course.disabledMessage} show={showDisabledMessage} onHide={handleToggle} />}
+      {disabledMessage && <DisabledCourseModal course={props.course.code} name={name} message={disabledMessage} show={showDisabledMessage} onHide={handleToggle} />}
     </div>
   );
 };

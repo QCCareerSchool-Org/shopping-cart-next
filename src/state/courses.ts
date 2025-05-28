@@ -83,14 +83,15 @@ const convert = (course: string): string => {
 const disabledCourses = (selectedCourses: string[], student: boolean): string[] => {
   const result = [];
   /* design */
-  if (!student && !selectedCourses.includes('I2')) {
+  if (!student && !selectedCourses.includes('I2') && !selectedCourses.includes('ID')) {
     result.push('MS');
   }
-  if (selectedCourses.includes('I2') || selectedCourses.includes('MS')) {
+  if (selectedCourses.includes('I2') || selectedCourses.includes('ID') || selectedCourses.includes('MS')) {
     result.push('ST');
   }
   if (selectedCourses.includes('ST')) {
     result.push('I2');
+    result.push('ID');
     result.push('MS');
   }
   /* event */

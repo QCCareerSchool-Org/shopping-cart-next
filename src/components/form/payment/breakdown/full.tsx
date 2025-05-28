@@ -3,14 +3,19 @@ import type { FC } from 'react';
 import { Fragment } from 'react';
 
 import styles from './index.module.css';
+import type { CourseGroup } from '@/domain/courseGroup';
+import { getCourse } from '@/domain/courseGroup';
+import { useAddressState } from '@/hooks/useAddressState';
 import { usePriceState } from '@/hooks/usePriceState';
 
 type Props = {
   discountName?: string;
+  courseGroups: CourseGroup[];
 };
 
-export const Full: FC<Props> = ({ discountName }) => {
+export const Full: FC<Props> = ({ discountName, courseGroups }) => {
   const priceState = usePriceState();
+  const { countryCode, provinceCode } = useAddressState();
 
   if (!priceState) {
     return;
@@ -20,20 +25,27 @@ export const Full: FC<Props> = ({ discountName }) => {
     <>
       {((priceState.courses.length > 1) || (priceState.courses.length > 0 && (priceState.courses[0].multiCourseDiscount > 0 || priceState.courses[0].free))) && (
         <>
-          {priceState.courses.map(course => (
-            <Fragment key={course.code}>
-              <tr>
-                <td className="text-md-end">{course.name}</td>
-                <td className="text-end text-nowrap align-bottom">{course.free ? <strong className="text-primary">FREE!</strong> : <>{priceState.currency.symbol}{course.cost.toFixed(2)}</>}</td>
-              </tr>
-              {!course.free && course.multiCourseDiscount > 0 && (
+          {priceState.courses.map(coursePrice => {
+            const course = getCourse(coursePrice.code, courseGroups);
+            if (!course) {
+              return null;
+            }
+            const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+            return (
+              <Fragment key={coursePrice.code}>
                 <tr>
-                  <td className="text-primary text-md-end">{course.discountMessage ? course.discountMessage : <>{Math.round(course.multiCourseDiscount / course.cost * 100)}% Discount</>}</td>
-                  <td className="text-primary text-end text-nowrap align-bottom">&minus; {priceState.currency.symbol}{course.multiCourseDiscount.toFixed(2)}</td>
+                  <td className="text-md-end">{name}</td>
+                  <td className="text-end text-nowrap align-bottom">{coursePrice.free ? <strong className="text-primary">FREE!</strong> : <>{priceState.currency.symbol}{coursePrice.cost.toFixed(2)}</>}</td>
                 </tr>
-              )}
-            </Fragment>
-          ))}
+                {!coursePrice.free && coursePrice.multiCourseDiscount > 0 && (
+                  <tr>
+                    <td className="text-primary text-md-end">{coursePrice.discountMessage ? coursePrice.discountMessage : <>{Math.round(coursePrice.multiCourseDiscount / coursePrice.cost * 100)}% Discount</>}</td>
+                    <td className="text-primary text-end text-nowrap align-bottom">&minus; {priceState.currency.symbol}{coursePrice.multiCourseDiscount.toFixed(2)}</td>
+                  </tr>
+                )}
+              </Fragment>
+            );
+          })}
           <tr><td colSpan={2}><hr className={`${styles.separator} my-1`} /></td></tr>
         </>
       )}

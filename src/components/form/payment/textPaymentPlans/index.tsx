@@ -6,6 +6,7 @@ import { Breakdown } from '../breakdown';
 import { PaymentOptions } from './paymentOptions';
 import { Schedule } from './schedule';
 import { CanadaTaxCredits } from '@/components/canadaTaxCredits';
+import type { CourseGroup } from '@/domain/courseGroup';
 import type { School } from '@/domain/school';
 import { usePaymentState } from '@/hooks/usePaymentState';
 import { usePriceState } from '@/hooks/usePriceState';
@@ -17,11 +18,12 @@ type Props = {
   school: School;
   showPromoCodeInput: boolean;
   discountName?: string;
+  courseGroups: CourseGroup[];
 };
 
 const getReverse = (school: School): boolean => school === 'QC Makeup Academy';
 
-export const TextPaymentPlans: FC<Props> = ({ date, school, showPromoCodeInput, discountName }) => {
+export const TextPaymentPlans: FC<Props> = ({ date, school, showPromoCodeInput, discountName, courseGroups }) => {
   const paymentState = usePaymentState();
   const priceState = usePriceState();
 
@@ -40,7 +42,7 @@ export const TextPaymentPlans: FC<Props> = ({ date, school, showPromoCodeInput, 
             <div>
               <Card className="d-inline-block w-auto">
                 <CardBody className="pb-0">
-                  <Breakdown discountName={discountName} />
+                  <Breakdown discountName={discountName} courseGroups={courseGroups} />
                 </CardBody>
               </Card>
               {priceState?.countryCode === 'CA' && (
