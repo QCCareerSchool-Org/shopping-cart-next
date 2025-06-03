@@ -13,12 +13,14 @@ import TrustedLogo from './trusted-site-seal.png';
 import VisaLogo from './visa.svg';
 import { Section } from '@/components/section';
 import type { AgreementLinks } from '@/domain/agreementLinks';
+import type { CourseGroup } from '@/domain/courseGroup';
 
 type Props = {
   showPromoCodeInput: boolean;
   agreementLinks: AgreementLinks;
   guarantee: FC | null;
   onSubmit: () => void;
+  courseGroups: CourseGroup[];
 };
 
 export const Summary: FC<Props> = props => {
@@ -28,7 +30,7 @@ export const Summary: FC<Props> = props => {
       <div className="row">
         <div className="col-12 col-md-6 col-lg-8 mb-4 mb-md-0">
           <Notes />
-          <Details />
+          <Details courseGroups={props.courseGroups} />
           <Agreement agreementLinks={props.agreementLinks} />
           <div className="text-center text-sm-start">
             <div className="mb-4">

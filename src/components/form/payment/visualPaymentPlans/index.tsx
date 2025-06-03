@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { lazy, Suspense } from 'react';
 
+import type { CourseGroup } from '@/domain/courseGroup';
 import type { School } from '@/domain/school';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 
@@ -11,9 +12,10 @@ type Props = {
   date: number;
   school: School;
   discountName?: string;
+  courseGroups: CourseGroup[];
 };
 
-export const VisualPaymentPlans: FC<Props> = ({ school, date, discountName }) => {
+export const VisualPaymentPlans: FC<Props> = ({ school, date, discountName, courseGroups }) => {
   const screenWidth = useScreenWidth();
 
   const md = screenWidth >= 768;
@@ -24,7 +26,7 @@ export const VisualPaymentPlans: FC<Props> = ({ school, date, discountName }) =>
 
   return (
     <Suspense>
-      {md ? <Desktop date={date} school={school} discountName={discountName} /> : <Mobile date={date} school={school} discountName={discountName} />}
+      {md ? <Desktop date={date} school={school} discountName={discountName} courseGroups={courseGroups} /> : <Mobile date={date} school={school} discountName={discountName} courseGroups={courseGroups} />}
     </Suspense>
   );
 };

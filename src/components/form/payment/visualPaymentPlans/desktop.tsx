@@ -11,6 +11,7 @@ import styles from './index.module.scss';
 import type { KitImage } from './kits';
 import { getKit } from './kits';
 import { CanadaTaxCredits } from '@/components/canadaTaxCredits';
+import type { CourseGroup } from '@/domain/courseGroup';
 import type { School } from '@/domain/school';
 import { useCoursesState } from '@/hooks/useCoursesState';
 import { usePaymentDispatch } from '@/hooks/usePaymentDispatch';
@@ -23,11 +24,12 @@ type Props = {
   date: number;
   school: School;
   discountName?: string;
+  courseGroups: CourseGroup[];
 };
 
 const checkCircleStyle: CSSProperties = { position: 'relative', top: -1 };
 
-export const Desktop: FC<Props> = ({ date, school, discountName }) => {
+export const Desktop: FC<Props> = ({ date, school, discountName, courseGroups }) => {
   const screenWidth = useScreenWidth();
   const priceState = usePriceState();
   const paymentState = usePaymentState();
@@ -165,7 +167,7 @@ export const Desktop: FC<Props> = ({ date, school, discountName }) => {
 
       {/* result column */}
       <div className="col-12 col-md-6 col-lg-4">
-        <Breakdown discountName={discountName} />
+        <Breakdown discountName={discountName} courseGroups={courseGroups} />
         {priceState && priceState.courses.length > 0 && priceState.countryCode === 'CA' && (
           <div>
             <Card className="mt-4 text-center" style={{ marginLeft: 'auto' }}>
