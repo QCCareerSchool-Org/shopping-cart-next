@@ -3,13 +3,11 @@
 import type { CourseGroup } from '@/domain/courseGroup';
 import type { GeoLocation } from '@/domain/geoLocation';
 
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const decorating = (geoLocation: GeoLocation): boolean => {
-  return true;
-  // return geoLocation.countryCode === 'CA' ||
-  //   (geoLocation.countryCode === 'US' && geoLocation.provinceCode === 'LA') ||
-  //   (geoLocation.countryCode === 'US' && geoLocation.provinceCode === 'NV') ||
-  //   (geoLocation.countryCode === 'US' && geoLocation.provinceCode === 'DC');
+  return geoLocation.countryCode === 'CA' ||
+    (geoLocation.countryCode === 'US' && geoLocation.provinceCode === 'LA') ||
+    (geoLocation.countryCode === 'US' && geoLocation.provinceCode === 'NV') ||
+    (geoLocation.countryCode === 'US' && geoLocation.provinceCode === 'DC');
 };
 
 export const courseGroups: CourseGroup[] = [
