@@ -9,15 +9,14 @@ const subsequentDelayMs = 6_000;
 const interval = 300;
 
 type Props = {
-  scrollPosition: number;
-  maxScroll: number;
+  scrolledFarEnough: boolean;
 };
 
-export const Tracker: FC<PropsWithChildren<Props>> = ({ scrollPosition, maxScroll, children }) => {
+export const Tracker: FC<PropsWithChildren<Props>> = ({ scrolledFarEnough, children }) => {
   const [ elapsedTime, setElapsedTime ] = useState(0);
   const [ delayMs, setDelayMs ] = useState(initialDelayMs);
 
-  const show = elapsedTime >= delayMs && scrollPosition <= maxScroll;
+  const show = elapsedTime >= delayMs && !scrolledFarEnough;
 
   useEffect(() => {
     const id = setInterval(() => setElapsedTime(e => e + interval), interval);

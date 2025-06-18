@@ -3,33 +3,17 @@ import { memo } from 'react';
 
 import { Icon } from './icon';
 import { Tracker } from './tracker';
-import { useScreenWidth } from '@/hooks/useScreenWidth';
-import { useScrollPosition } from '@/hooks/useScrollPosition';
 
-export const ScrollIndicator: FC = memo(() => {
-  const scrollPosition = useScrollPosition();
-  const screenWidth = useScreenWidth();
-  const maxScroll = getMaxScroll(screenWidth);
+type Props = {
+  scrolledFarEnough: boolean;
+};
 
+export const ScrollIndicator: FC<Props> = memo(({ scrolledFarEnough }) => {
   return (
-    <Tracker scrollPosition={scrollPosition} maxScroll={maxScroll}>
+    <Tracker scrolledFarEnough={scrolledFarEnough}>
       <Icon />
     </Tracker>
   );
 });
 
 ScrollIndicator.displayName = 'ScrollIndicator';
-
-const getMaxScroll = (screenWidth: number): number => {
-  if (screenWidth >= 992) {
-    return 1700;
-  }
-  if (screenWidth >= 768) {
-    return 1500;
-  }
-  if (screenWidth >= 576) {
-    return 1900;
-  }
-
-  return 2200;
-};
