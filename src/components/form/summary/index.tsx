@@ -1,6 +1,6 @@
 import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
-import type { FC } from 'react';
+import { type FC, useEffect, useRef } from 'react';
 
 import { Agreement } from './agreement';
 import { Details } from './details';
@@ -14,6 +14,7 @@ import VisaLogo from './visa.svg';
 import { Section } from '@/components/section';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 type Props = {
   showPromoCodeInput: boolean;
@@ -21,9 +22,18 @@ type Props = {
   guarantee: FC | null;
   onSubmit: () => void;
   courseGroups: CourseGroup[];
+  onButtonVisibilityChange?: (visible: boolean) => void;
 };
 
 export const Summary: FC<Props> = props => {
+  const { onButtonVisibilityChange } = props;
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonVisible = useIntersectionObserver(buttonRef, { threshold: 1 });
+
+  useEffect(() => {
+    onButtonVisibilityChange?.(buttonVisible);
+  }, [ onButtonVisibilityChange, buttonVisible ]);
+
   return (
     <Section className="summarySection">
       <h2 className="h1">Complete Your Enrollment</h2>
@@ -34,7 +44,7 @@ export const Summary: FC<Props> = props => {
           <Agreement agreementLinks={props.agreementLinks} />
           <div className="text-center text-sm-start">
             <div className="mb-4">
-              <button onClick={props.onSubmit} className="btn btn-primary">Proceed to Payment<Image src={RightArrowIcon as StaticImageData} alt="🡒" /></button>
+              <button ref={buttonRef} onClick={props.onSubmit} className="btn btn-primary">Proceed to Payment<Image src={RightArrowIcon as StaticImageData} alt="🡒" /></button>
             </div>
             <NoCoursesMessage />
             <Image src={VisaLogo as StaticImageData} className="me-2" style={{ height: 32 }} alt="Visa" />

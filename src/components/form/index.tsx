@@ -168,6 +168,11 @@ export const Form: FC<Props> = props => {
     return () => clearInterval(id);
   });
 
+  const [ paymentButtonVisible, setPaymentButtonVisible ] = useState(false);
+  const handleButtonVisiblityChange = (visible: boolean): void => {
+    setPaymentButtonVisible(visible);
+  };
+
   return (
     <>
       <GoogleReCaptcha onVerify={handleRecaptchaVerify} refreshReCaptcha={refreshCaptcha} />
@@ -186,10 +191,10 @@ export const Form: FC<Props> = props => {
       <Suspense>{showBillingAddress(props.school, props.billingAddressDefault) && <BillingAddress />}</Suspense>
       <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} discountName={props.discountName} courseGroups={props.courseGroups} />
       <Suspense>{!!props.internal && <Overrides />}</Suspense>
-      <Summary onSubmit={handleSubmit} agreementLinks={props.agreementLinks} showPromoCodeInput={!!props.showPromoCodeInput} guarantee={props.guarantee} courseGroups={props.courseGroups} />
+      <Summary onSubmit={handleSubmit} agreementLinks={props.agreementLinks} showPromoCodeInput={!!props.showPromoCodeInput} guarantee={props.guarantee} courseGroups={props.courseGroups} onButtonVisibilityChange={handleButtonVisiblityChange} />
       <Suspense>{props.confirmation && <ConfirmPopup show={showConfirmationPopup} onCancel={handleConfirmationCancel} onProceed={handleConfirmationProceed} body={props.confirmation.body} heading={props.confirmation.heading} />}</Suspense>
       <Suspense>{paysafeCompany && <PaysafeModal company={paysafeCompany} show={showPaysafeForm} onHide={handlePaymentFormHide} onCharge={handleCharge} />}</Suspense>
-      <ScrollIndicator />
+      <ScrollIndicator scrolledFarEnough={paymentButtonVisible} />
       <ErrorModal />
     </>
   );
