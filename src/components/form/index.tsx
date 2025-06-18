@@ -8,6 +8,7 @@ import { Address } from './address';
 import { CourseSelection } from './courseSelection';
 import { ErrorModal } from './errorModal';
 import { Payment } from './payment';
+import { ScrollIndicator } from './scrollIndicator';
 import { Summary } from './summary';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
@@ -188,6 +189,7 @@ export const Form: FC<Props> = props => {
       <Summary onSubmit={handleSubmit} agreementLinks={props.agreementLinks} showPromoCodeInput={!!props.showPromoCodeInput} guarantee={props.guarantee} courseGroups={props.courseGroups} />
       <Suspense>{props.confirmation && <ConfirmPopup show={showConfirmationPopup} onCancel={handleConfirmationCancel} onProceed={handleConfirmationProceed} body={props.confirmation.body} heading={props.confirmation.heading} />}</Suspense>
       <Suspense>{paysafeCompany && <PaysafeModal company={paysafeCompany} show={showPaysafeForm} onHide={handlePaymentFormHide} onCharge={handleCharge} />}</Suspense>
+      <ScrollIndicator />
       <ErrorModal />
     </>
   );
