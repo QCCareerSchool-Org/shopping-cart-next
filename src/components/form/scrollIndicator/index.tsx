@@ -2,17 +2,20 @@ import type { FC } from 'react';
 import { memo } from 'react';
 
 import { Icon } from './icon';
+import { Tracker } from './tracker';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 
 export const ScrollIndicator: FC = memo(() => {
   const scrollPosition = useScrollPosition();
   const screenWidth = useScreenWidth();
-
   const maxScroll = getMaxScroll(screenWidth);
-  console.log(screenWidth, maxScroll);
 
-  return <Icon scrollPosition={scrollPosition} maxScroll={maxScroll} />;
+  return (
+    <Tracker scrollPosition={scrollPosition} maxScroll={maxScroll}>
+      <Icon />
+    </Tracker>
+  );
 });
 
 ScrollIndicator.displayName = 'ScrollIndicator';
