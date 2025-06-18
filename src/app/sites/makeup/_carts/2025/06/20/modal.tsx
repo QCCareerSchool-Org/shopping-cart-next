@@ -15,14 +15,15 @@ export const Makeup20250620Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
     <Modal.Header closeButton>Start Today and Receive These Bonuses</Modal.Header>
     <Modal.Body>
-      <p>Enroll in Master Makeup Artistry and get QC's Skincare Consultant Course FREE!</p>
-      <p>This course lets you expand your makeup expertise while opening doors to a new career as a skincare consultant. You'll learn to:</p>
+      <p>Enroll in Master Makeup Artistry and get QC's Pro Makeup Workshop FREE!</p>
+      <p>This 3-part masterclass led by celebrity makeup artist Nathan Johnson is designed to build on your foundational training and take your career to the next level! You'll learn:</p>
       <ul>
-        <li>Assess skin types and conditions</li>
-        <li>Conduct personalized skincare consultations and recommend products</li>
-        <li>Create DIY skincare recipes and understand anti-aging techniques</li>
+        <li>Glamour Makeup for the Limelight</li>
+        <li>Creative Smoky Eye & Pin-Up Looks</li>
+        <li>Advanced Bridal Applications</li>
       </ul>
-      <p>Plus, you'll receive QC's 16-Piece Luxe Pro Brush Collection, expertly designed to help professional makeup artists achieve flawless, polished results for every client.</p>
+      <h4 className="h5">Plus, Get a 16-Piece Luxe Pro Brush Collection</h4>
+      <p>You'll also receive QC's Luxe Pro Brush Collection, crafted for professional makeup artists who want to deliver flawless results for their clients. Professional makeup artists achieve flawless, polished results for every client.</p>
       <LuxeProCollection />
     </Modal.Body>
     <Modal.Footer>
