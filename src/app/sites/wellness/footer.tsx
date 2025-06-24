@@ -21,6 +21,9 @@ export const Footer: FC = () => {
         <span className={styles.footerItem}><a href={`tel:${tel}`}>{tel}</a></span>
         <span className={styles.footerItem}><a target="_blank" rel="noreferrer" href="https://www.bbb.org/ca/on/ottawa/profile/correspondence-schools/qc-career-school-0117-4175">BBB Accredited A+</a></span>
       </div>
+      <div className="container">
+        <span className={styles.footerItem}>This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" className="link-light" target="_blank" rel="noreferrer">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noreferrer">Terms of Service</a> apply.</span>
+      </div>
     </footer>
   );
 };
