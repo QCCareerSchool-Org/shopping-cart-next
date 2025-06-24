@@ -169,9 +169,7 @@ export const Form: FC<Props> = props => {
   });
 
   const [ paymentButtonVisible, setPaymentButtonVisible ] = useState(false);
-  const handleButtonVisiblityChange = (visible: boolean): void => {
-    setPaymentButtonVisible(visible);
-  };
+  const handleButtonVisiblityChange = setPaymentButtonVisible;
 
   return (
     <>
