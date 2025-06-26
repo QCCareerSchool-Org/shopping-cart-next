@@ -2,9 +2,9 @@ import type { FC, PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 
 /** how long to wait before showing the indicator the first time  */
-const initialDelayMs = 3_000;
+const initialDelayMs = 5_000;
 /** how long to wait before showing the indicator subsequent times  */
-const subsequentDelayMs = 6_000;
+const subsequentDelayMs = 15_000;
 /** how often to update the elapsed time */
 const interval = 300;
 
