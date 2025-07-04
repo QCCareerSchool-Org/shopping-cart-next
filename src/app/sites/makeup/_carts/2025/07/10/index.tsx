@@ -4,7 +4,7 @@ import { Makeup20250710Promo } from './promo';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { courseGroups } from '@/app/sites/makeup/courseGroups';
 import { Guarantee } from '@/app/sites/makeup/guarantee';
-import { FreeSkincareDynamicMessage } from '@/components/dynamicCourseMessages/freeSkincare';
+import { FreeProMakeupMasterclassDynamicMessage } from '@/components/dynamicCourseMessages/freeProMakeupMasterclass';
 import { Form } from '@/components/form';
 
 type Props = {
@@ -23,8 +23,8 @@ export const Makeup20250710: FC<Props> = ({ date }) => (
       agreementLinks={agreementLinks}
       visualPaymentPlans={true}
       dynamicCourseDescriptions="SHOW"
-      promoCodeDefault="SKINCARE"
-      dynamicCourseMessages={[ FreeSkincareDynamicMessage ]}
+      promoCodeDefault="FREEPRO"
+      dynamicCourseMessages={[ FreeProMakeupMasterclassDynamicMessage ]}
     />
   </>
 );
