@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { EventStudent20250701 } from './_carts/2025/07/01';
+import { EventStudent20250723 } from './_carts/2025/07/23';
 import { EventStudentFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -10,8 +10,8 @@ const EventStudentPage: PageComponent = async ({ searchParams }) => {
 
   return (
     <Suspense>
-      {date >= Date.UTC(2025, 6, 1, 12) && date < Date.UTC(2025, 6, 5, 7) // 2025-07-01T08:00 (12:00 UTC) to 2025-07-05T03:00 (07:00 UTC)
-        ? <EventStudent20250701 date={date} />
+      {date >= Date.UTC(2025, 6, 23, 12) && date < Date.UTC(2025, 7, 2, 12) // 2025-07-23T08:00 (12:00 UTC) to 2025-08-02T03:00 (12:00 UTC)
+        ? <EventStudent20250723 date={date} />
         : <EventStudentFallback date={date} />
       }
     </Suspense>
