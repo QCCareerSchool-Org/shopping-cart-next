@@ -24,7 +24,7 @@ export const Design20250723: FC<Props> = ({ date }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
-        promoCodeDefault="BOGO100"
+        promoCodeDefault="BOGO"
         dynamicCourseMessages={[ BogoDynamicCourseMessage ]}
       />
     </>
