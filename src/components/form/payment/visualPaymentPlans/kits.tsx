@@ -120,7 +120,7 @@ const getSchoolKits = (date: number): SchoolKits => ({
 });
 
 const tariffSwitchDate = Date.UTC(2025, 4, 10, 7);
-const makeupKitDate = Date.UTC(2025, 7, 15, 12);
+const makeupKitDate = Date.UTC(2025, 7, 6, 12);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getCourseKits = (date: number): CourseKit[] => [

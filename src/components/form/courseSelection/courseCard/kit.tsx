@@ -4,15 +4,18 @@ import type { FC } from 'react';
 
 import DG from './kits/dg.jpg';
 import GT from './kits/gt.jpg';
+import MZKit from './kits/mz-kit.jpg';
 import MZ from './kits/mz.jpg';
 
 const getImage = (courseCode: string): StaticImageData | undefined => {
   switch (courseCode) {
-    case 'MZ':
-      if (new Date().getTime() >= Date.UTC(2025, 4, 10, 7)) {
+    case 'MZ': {
+      const d = new Date().getTime();
+      if (d >= Date.UTC(2025, 4, 10, 7) && d < Date.UTC(2025, 7, 6, 12)) {
         return MZ;
       }
-      return;
+      return MZKit;
+    }
     case 'DG':
       return DG;
     case 'GT':
