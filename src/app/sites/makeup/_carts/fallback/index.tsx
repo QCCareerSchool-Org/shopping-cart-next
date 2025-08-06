@@ -23,7 +23,6 @@ export const MakeupFallback: FC<Props> = ({ date }) => {
         successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
-        promoCodeDefault="MZ100"
         visualPaymentPlans
         dynamicCourseMessages={[ Save50CourseMessage ]}
       />
