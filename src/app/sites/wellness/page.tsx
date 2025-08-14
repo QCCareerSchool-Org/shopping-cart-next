@@ -22,5 +22,3 @@ const DesignPage: PageComponent = async ({ searchParams }) => {
 };
 
 export default DesignPage;
-
-// 2025-08-20T8:00 (12:00 UTC) to 2025-08-26T03:00 (07:00 UTC)

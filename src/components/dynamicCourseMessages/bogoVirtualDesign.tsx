@@ -8,7 +8,7 @@ import { useCoursesState } from '@/hooks/useCoursesState';
 export const BogoVirtualDesignDynamicCourseMessage: FC = () => {
   const coursesState = useCoursesState();
   const courseCount = coursesState.selected.length;
-  const ve = coursesState.selected.includes('VE');
+  const ve = coursesState.selected.includes('VD');
 
   if (courseCount === 0) {
     return null;

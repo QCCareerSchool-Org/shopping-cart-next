@@ -15,15 +15,14 @@ export const Makeup20250820Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
     <Modal.Header closeButton>Start Today and Receive These Bonuses</Modal.Header>
     <Modal.Body>
-      <p>Enroll in Master Makeup Artistry and get QC's Pro Makeup Workshop FREE!</p>
-      <p>This 3-part masterclass led by celebrity makeup artist Nathan Johnson is designed to build on your foundational training and take your career to the next level! You'll learn:</p>
+      <p>Enroll in Master Makeup Artistry and get QC's Portfolio Development Course FREE!</p>
+      <p>This course helps you create a stunning, professional portfolio that showcases your artistry and attracts clients. You'll learn to:</p>
       <ul>
-        <li>Glamour Makeup for the Limelight</li>
-        <li>Creative Smoky Eye & Pin-Up Looks</li>
-        <li>Advanced Bridal Applications</li>
+        <li>Plan, style, and photograph shoots to capture flawless images of your work</li>
+        <li>Build targeted portfolios—online and in print—to appeal to different audiences</li>
+        <li>Present your portfolio to impress clients, reflect your brand, and secure publications</li>
       </ul>
-      <p>Plus, <strong>get the entire Luminous Makeup Collection</strong> to build your professional makeup kit.</p>
-      <p>Don't miss out—<strong>Enroll now</strong> and secure your spot!</p>
+      <p>Plus, you'll receive QC's Luminous Makeup Kit, expertly designed to help professional makeup artists achieve flawless, polished results for every client.</p>
       <LuminousKit />
     </Modal.Body>
     <Modal.Footer>
