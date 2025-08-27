@@ -4,13 +4,12 @@ import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
+import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-type Props = {
-  date: number;
-};
+const DesignAllCoursesPage: PageComponent = async ({ searchParams }) => {
+  const date = await getDate(searchParams.date);
 
-const DesignAllCourses: PageComponent<Props> = ({ date }) => {
   return (
     <>
       <DesignAllCoursesPromo date={date} />
@@ -29,4 +28,4 @@ const DesignAllCourses: PageComponent<Props> = ({ date }) => {
   );
 };
 
-export default DesignAllCourses;
+export default DesignAllCoursesPage;
