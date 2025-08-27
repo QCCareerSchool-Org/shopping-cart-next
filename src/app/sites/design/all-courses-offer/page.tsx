@@ -1,17 +1,16 @@
-import type { FC } from 'react';
-
 import { DesignAllCoursesPromo } from './promo';
 import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
+import type { PageComponent } from '@/serverComponent';
 
 type Props = {
   date: number;
 };
 
-export const DesignFallback: FC<Props> = ({ date }) => {
+const DesignAllCourses: PageComponent<Props> = ({ date }) => {
   return (
     <>
       <DesignAllCoursesPromo date={date} />
@@ -29,3 +28,5 @@ export const DesignFallback: FC<Props> = ({ date }) => {
     </>
   );
 };
+
+export default DesignAllCourses;
