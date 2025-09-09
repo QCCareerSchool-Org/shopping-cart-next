@@ -17,6 +17,7 @@ const getImage = (courseCode: string): StaticImageData | undefined => {
       return MZKit;
     }
     case 'DG':
+    case 'DE':
       return DG;
     case 'GT':
       return GT;
