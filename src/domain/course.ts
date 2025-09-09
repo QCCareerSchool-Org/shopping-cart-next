@@ -7,6 +7,7 @@ export type Course = {
   name: GeoLocationFunction<string>;
   description?: string;
   disabledMessage?: GeoLocationFunction<string | JSX.Element>;
+  hidden?: GeoLocationFunction<boolean>;
   badge?: JSX.Element;
   alwaysShown?: boolean;
 };

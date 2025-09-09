@@ -72,11 +72,11 @@ export const useInitialData = (school: School, schoolVariant: SchoolVariant | un
       metaDispatch({ type: 'SET_STUDENT', payload: student });
     }
 
-    coursesDispatch({ type: 'CLEAR_COURSES', payload: { student } });
+    coursesDispatch({ type: 'CLEAR_COURSES', payload: { student, countryCode: addressState.countryCode, provinceCode: addressState.provinceCode } });
     if (coursesOverride) {
       for (const c of coursesOverride) {
         if (courseGroups.some(g => g.items.some(i => i.code.toUpperCase() === c.toUpperCase()))) {
-          coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode: c, student } });
+          coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode: c, student, countryCode: addressState.countryCode, provinceCode: addressState.provinceCode } });
         }
       }
     }
@@ -228,7 +228,7 @@ export const useInitialData = (school: School, schoolVariant: SchoolVariant | un
       if (courses?.length) {
         for (const courseCode of courses) {
           if (courseGroups.some(g => g.items.some(i => i.code.toUpperCase() === courseCode.toUpperCase()))) {
-            coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode, student } });
+            coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode, student, countryCode: addressState.countryCode, provinceCode: addressState.provinceCode } });
           }
         }
       }

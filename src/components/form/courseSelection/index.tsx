@@ -58,12 +58,12 @@ const Standard: FC<Props> = props => {
   const handleCheck = (courseCode: string): void => {
     const isAvailable = props.courseGroups.some(g => g.items.some(i => i.code === courseCode));
     if (isAvailable) {
-      coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode, student: student || props.internal } });
+      coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode, student: student || props.internal, countryCode, provinceCode } });
     }
   };
 
   const handleUncheck = (courseCode: string): void => {
-    coursesDispatch({ type: 'REMOVE_COURSE', payload: { courseCode, student: student || props.internal } });
+    coursesDispatch({ type: 'REMOVE_COURSE', payload: { courseCode, student: student || props.internal, countryCode, provinceCode } });
   };
 
   return (

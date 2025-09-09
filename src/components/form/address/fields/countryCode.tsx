@@ -5,7 +5,9 @@ import type { Country } from '@/domain/country';
 import { useAddressDispatch } from '@/hooks/useAddressDispatch';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useCountriesState } from '@/hooks/useCountriesState';
+import { useCoursesDispatch } from '@/hooks/useCoursesDispatch';
 import { useErrorsState } from '@/hooks/useErrorsState';
+import { useMetaState } from '@/hooks/useMetaState';
 import { fetchProvinces } from '@/lib/fetch';
 import { needsProvince } from '@/lib/needProvince';
 
@@ -23,6 +25,8 @@ export const CountryCode: FC = () => {
   const addressState = useAddressState();
   const addressDispatch = useAddressDispatch();
   const { errors } = useErrorsState();
+  const coursesDispatch = useCoursesDispatch();
+  const metaState = useMetaState();
 
   const handleChange: ChangeEventHandler<HTMLSelectElement> = e => {
     const countryCode = e.target.value.startsWith('-') ? e.target.value.slice(1) : e.target.value;
@@ -32,11 +36,13 @@ export const CountryCode: FC = () => {
           throw Error('No provinces returned');
         }
         addressDispatch({ type: 'SET_COUNTRY_CODE_WITH_PROVINCES', payload: { countryCode, provinces } });
+        coursesDispatch({ type: 'RECALCULATE', payload: { student: metaState.student, countryCode, provinceCode: provinces[0].code } });
       }).catch(err => {
         console.error(err);
       });
     } else {
       addressDispatch({ type: 'SET_COUNTRY_CODE', payload: { countryCode } });
+      coursesDispatch({ type: 'RECALCULATE', payload: { student: metaState.student, countryCode, provinceCode: null } });
     }
   };
 

@@ -3,7 +3,9 @@ import { useId } from 'react';
 
 import { useAddressDispatch } from '@/hooks/useAddressDispatch';
 import { useAddressState } from '@/hooks/useAddressState';
+import { useCoursesDispatch } from '@/hooks/useCoursesDispatch';
 import { useErrorsState } from '@/hooks/useErrorsState';
+import { useMetaState } from '@/hooks/useMetaState';
 import { provinceState } from '@/lib/provinceState';
 import { ucWords } from '@/lib/ucWords';
 
@@ -12,10 +14,13 @@ export const ProvinceCode: FC = () => {
   const addressState = useAddressState();
   const addressDispatch = useAddressDispatch();
   const { errors } = useErrorsState();
+  const coursesDispatch = useCoursesDispatch();
+  const metaState = useMetaState();
 
   const handleChange: ChangeEventHandler<HTMLSelectElement> = e => {
     const provinceCode = e.target.value;
     addressDispatch({ type: 'SET_PROVINCE_CODE', payload: { provinceCode } });
+    coursesDispatch({ type: 'RECALCULATE', payload: { student: metaState.student, countryCode: addressState.countryCode, provinceCode } });
   };
 
   if (addressState.provinceCode === null) {

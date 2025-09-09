@@ -5,9 +5,10 @@ export type CoursesState = {
 };
 
 export type CoursesAction =
-  | { type: 'CLEAR_COURSES'; payload: { student?: boolean } }
-  | { type: 'ADD_COURSE'; payload: { courseCode: string; student?: boolean } }
-  | { type: 'REMOVE_COURSE'; payload: { courseCode: string; student?: boolean } };
+  | { type: 'CLEAR_COURSES'; payload: { student?: boolean; countryCode: string; provinceCode: string | null } }
+  | { type: 'ADD_COURSE'; payload: { courseCode: string; student?: boolean; countryCode: string; provinceCode: string | null } }
+  | { type: 'REMOVE_COURSE'; payload: { courseCode: string; student?: boolean; countryCode: string; provinceCode: string | null } }
+  | { type: 'RECALCULATE'; payload: { student?: boolean; countryCode: string; provinceCode: string | null } };
 
 export const initialCoursesState: CoursesState = {
   selected: [],
@@ -17,12 +18,21 @@ export const initialCoursesState: CoursesState = {
 
 export const coursesReducer = (state: CoursesState, action: CoursesAction): CoursesState => {
   switch (action.type) {
+    case 'RECALCULATE': {
+      const hidden = hiddenCourses([], !!action.payload.student, action.payload.countryCode, action.payload.provinceCode); // recalculate which courses are hidden
+      return {
+        ...state,
+        selected: state.selected.filter(c => !hidden.includes(c)),
+        disabled: disabledCourses([], !!action.payload.student), // recalculate which courses are disabled,
+        hidden,
+      };
+    }
     case 'CLEAR_COURSES': {
       return {
         ...state,
         selected: [],
         disabled: disabledCourses([], !!action.payload.student), // recalculate which courses are disabled,
-        hidden: hiddenCourses([], !!action.payload.student), // recalculate which courses are hidden,
+        hidden: hiddenCourses([], !!action.payload.student, action.payload.countryCode, action.payload.provinceCode), // recalculate which courses are hidden,
       };
     }
     case 'ADD_COURSE': {
@@ -37,7 +47,7 @@ export const coursesReducer = (state: CoursesState, action: CoursesAction): Cour
           ...state,
           selected,
           disabled: disabledCourses(selected, !!action.payload.student), // recalculate which courses are disabled
-          hidden: hiddenCourses(selected, !!action.payload.student), // recalculate which courses are hidden
+          hidden: hiddenCourses(selected, !!action.payload.student, action.payload.countryCode, action.payload.provinceCode), // recalculate which courses are hidden
         };
       }
       return state; // no change
@@ -59,7 +69,7 @@ export const coursesReducer = (state: CoursesState, action: CoursesAction): Cour
           ...state,
           selected,
           disabled: disabledCourses(selected, !!action.payload.student), // recalculate which courses are disabled
-          hidden: hiddenCourses(selected, !!action.payload.student), // recalculate which courses are hidden
+          hidden: hiddenCourses(selected, !!action.payload.student, action.payload.countryCode, action.payload.provinceCode), // recalculate which courses are hidden
         };
       }
       return state; // no change
@@ -151,13 +161,17 @@ const disabledCourses = (selectedCourses: string[], student: boolean): string[] 
  * Returns an array indicating which courses should be hidden based on which courses are selected
  * @param selectedCourses which courses are selected
  */
-const hiddenCourses = (selectedCourses: string[], student: boolean): string[] => {
+const hiddenCourses = (selectedCourses: string[], student: boolean, countryCode: string, provinceCode: string | null): string[] => {
   const result = [];
   /* design */
   if (!student && !selectedCourses.includes('I2')) {
     result.push('MS');
   }
   /* pet */
+  console.log(countryCode, provinceCode);
+  if (!(countryCode === 'US' || (countryCode === 'CA' && provinceCode !== 'ON'))) {
+    result.push('DE');
+  }
   // if (!selectedCourses.includes('DT')) {
   //   result.push('DC');
   // }
