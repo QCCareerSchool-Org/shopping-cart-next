@@ -140,12 +140,17 @@ const disabledCourses = (selectedCourses: string[], student: boolean): string[] 
   if (selectedCourses.includes('DG')) {
     result.push('DS');
     result.push('GT');
+    result.push('DE');
+  }
+  if (selectedCourses.includes('DE')) {
+    result.push('DG');
   }
   if (selectedCourses.includes('FA')) {
     result.push('DS');
   }
   if (selectedCourses.includes('DS')) {
     result.push('DG');
+    result.push('DE');
     result.push('FA');
   }
   if (!student && !selectedCourses.includes('DT')) {
@@ -153,6 +158,7 @@ const disabledCourses = (selectedCourses: string[], student: boolean): string[] 
   }
   if (selectedCourses.includes('GT')) {
     result.push('DG');
+    result.push('DE');
   }
   return result;
 };
