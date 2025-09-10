@@ -22,8 +22,8 @@ export const Banner: FC<Props> = ({ variant, onClick }) => {
         <div className="d-flex justify-content-center align-items-center">
           <div className="me-2">
             {variant === 'lastChance'
-              ? <Image src={LastChanceImage} height="52" alt="Last Chance" />
-              : <Image src={BadgeImage} height="52" alt="" />
+              ? <Image src={LastChanceImage} height="64" alt="Last Chance" />
+              : <Image src={BadgeImage} height="48" alt="" />
             }
           </div>
           <div>

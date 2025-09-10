@@ -1,6 +1,7 @@
 import type { CSSProperties, FC, PropsWithChildren, ReactNode } from 'react';
 
 type Props = {
+  id?: string;
   backgroundImage?: ReactNode;
   className?: string;
   style?: CSSProperties;
@@ -14,8 +15,8 @@ const getClassName = (noPadding: boolean, className?: string): string | undefine
   return className;
 };
 
-export const Section: FC<PropsWithChildren<Props>> = ({ backgroundImage, className, style, noPadding = false, children }) => (
-  <section className={getClassName(noPadding, className)} style={style}>
+export const Section: FC<PropsWithChildren<Props>> = ({ id, backgroundImage, className, style, noPadding = false, children }) => (
+  <section id={id} className={getClassName(noPadding, className)} style={style}>
     {backgroundImage}
     <div className="container">
       {children}

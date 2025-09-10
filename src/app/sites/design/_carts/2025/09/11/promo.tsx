@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import type { FC } from 'react';
 
 import { Banner } from './banner';
@@ -28,9 +29,11 @@ export const Design20250911Promo: FC<Props> = ({ date }) => {
   return (
     <>
       <Section style={{ backgroundColor }} noPadding>
-        <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero20250911 variant={variant} />
-        </div>
+        <Link href="#courses">
+          <div>
+            <Hero20250911 variant={variant} />
+          </div>
+        </Link>
       </Section>
       <Design20250911Modal show={showPopup} onHide={handleClick} />
       <CountDownTimerWrapper
