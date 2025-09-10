@@ -8,6 +8,7 @@ const courseGroups: CourseGroup[] = [
   {
     items: [
       { code: 'DG', name: 'Dog Grooming' },
+      { code: 'DE', name: 'Dog Grooming + Externship' },
       { code: 'GT', name: 'Grooming Technician' },
       { code: 'DT', name: 'Dog Training' },
       { code: 'DD', name: 'Dog Daycare' },
