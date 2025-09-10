@@ -22,11 +22,12 @@ type Props = {
   coursesOverride: boolean;
   dynamicCourseDescriptions?: DynamicCourseDescriptions;
   discountName?: string;
+  hideCourseTable: boolean;
 };
 
 export const CourseSelection: FC<Props> = props => {
   return (
-    <Section className="coursesSection">
+    <Section className="coursesSection" id="courses">
       {props.coursesOverride ? <Override {...props} /> : <Standard {...props} />}
     </Section>
   );
@@ -91,7 +92,7 @@ const Standard: FC<Props> = props => {
           );
         })}
         {props.dynamicCourseMessages?.map((C, i) => <div key={i} className={i === 0 ? 'mt-4' : 'mt-3'}><C /></div>)}
-        {priceState && props.dynamicCourseDescriptions === 'SHOW' && <div className="mt-4"><CourseTable discountName={props.discountName} courseGroups={props.courseGroups} /></div>}
+        {priceState && !props.hideCourseTable && props.dynamicCourseDescriptions === 'SHOW' && <div className="mt-4"><CourseTable discountName={props.discountName} courseGroups={props.courseGroups} /></div>}
       </div>
       {(props.dynamicCourseDescriptions === 'SHOW' || props.dynamicCourseDescriptions === 'REPLACE')
         ? (
@@ -101,7 +102,7 @@ const Standard: FC<Props> = props => {
         )
         : (
           <div className="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-0 mt-4 mt-md-0">
-            {priceState && <CourseTable discountName={props.discountName} courseGroups={props.courseGroups} />}
+            {priceState && !props.hideCourseTable && <CourseTable discountName={props.discountName} courseGroups={props.courseGroups} />}
           </div>
         )
       }
@@ -115,7 +116,7 @@ const Override: FC<Props> = props => {
   return (
     <div className="row">
       <div className="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3">
-        {!!priceState && <CourseTable discountName={props.discountName} courseGroups={props.courseGroups} />}
+        {!!priceState && !props.hideCourseTable && <CourseTable discountName={props.discountName} courseGroups={props.courseGroups} />}
       </div>
     </div>
   );

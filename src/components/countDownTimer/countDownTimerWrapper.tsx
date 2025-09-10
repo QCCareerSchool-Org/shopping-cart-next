@@ -1,7 +1,7 @@
 'use client';
 
 import { detect } from 'detect-browser';
-import type { CSSProperties, ReactElement } from 'react';
+import type { CSSProperties, FC, ReactElement } from 'react';
 import React, { memo, useEffect, useRef, useState } from 'react';
 
 import { CountDownTimer } from './countDownTimer';
@@ -17,9 +17,10 @@ type Props = {
   buttonInverse?: boolean;
   className?: string;
   style?: CSSProperties;
+  newHaus?: boolean;
 };
 
-export const CountDownTimerWrapper = memo(({ date, showDate, endDate, message, buttonInverse = false, className, style }: Props): ReactElement | null => {
+export const CountDownTimerWrapper: FC<Props> = memo(({ date, showDate, endDate, message, buttonInverse = false, className, style, newHaus }) => {
   const [ closed, setClosed ] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [ scrolledPast, setScrolledPast ] = useState(false);
@@ -66,7 +67,7 @@ export const CountDownTimerWrapper = memo(({ date, showDate, endDate, message, b
   };
 
   return (
-    <div ref={wrapperRef} className={`${styles.wrapper} ${className ?? ''} ${fixed && !closed ? styles.fixed : ''}`} style={style}>
+    <div ref={wrapperRef} className={`${styles.wrapper} ${className ?? ''} ${fixed && !closed ? styles.fixed : ''} ${newHaus ? styles.newHaus : ''}`} style={style}>
       {showTimer && (
         <div className={styles.padding}>
           {fixed && (
