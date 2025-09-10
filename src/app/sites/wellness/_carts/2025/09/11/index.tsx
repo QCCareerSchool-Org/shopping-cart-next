@@ -23,7 +23,7 @@ export const Wellness20250911: FC<Props> = ({ date }) => (
       agreementLinks={agreementLinks}
       dynamicCourseDescriptions="HIDE"
       visualPaymentPlans
-      promoCodeDefault="400OFF"
+      promoCodeDefault="300OFF"
       dynamicCourseMessages={[ Save50CourseMessage ]}
     />
   </>
