@@ -83,6 +83,7 @@ type Props = {
   };
   /** the default setting for "same as student address" */
   billingAddressDefault?: 'same' | 'different';
+  hideCourseTable?: boolean;
 };
 
 const showBillingAddress = (school: School, billingAddressDefault?: 'same' | 'different'): boolean => {
@@ -184,6 +185,7 @@ export const Form: FC<Props> = props => {
         discountName={props.discountName}
         coursesSubtitle={props.coursesSubtitle}
         coursesOverride={!!props.coursesOverride}
+        hideCourseTable={!!props.hideCourseTable}
       />
       <Address school={props.school} schoolVariant={props.schoolVariant} />
       <Suspense>{showBillingAddress(props.school, props.billingAddressDefault) && <BillingAddress />}</Suspense>

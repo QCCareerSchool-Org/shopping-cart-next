@@ -21,6 +21,11 @@
   }
 }
 
+.newHaus {
+  font-family: var(--qc-neue-haas-display);
+  letter-spacing: 1px;
+}
+
 .button {
   position: absolute;
   top: 8px;

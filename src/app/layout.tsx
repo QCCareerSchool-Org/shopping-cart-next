@@ -6,6 +6,7 @@ import Script from 'next/script';
 
 import type { GeoLocation } from '@/domain/geoLocation';
 import { defaultGeoLocation } from '@/domain/geoLocation';
+import { neueHaasDisplay, neueHaasText } from '@/fonts';
 import { fetchCountries, fetchProvinces } from '@/lib/fetch';
 import { needsProvince } from '@/lib/needProvince';
 import { Provider } from '@/providers';
@@ -63,7 +64,7 @@ const RootLayout: LayoutComponent = async ({ children }) => {
 
   return (
     <Provider geoLocation={geoLocation} countries={countries} provinces={provinces}>
-      <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable}`}>
+      <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable} ${neueHaasText.variable} ${neueHaasDisplay.variable}`}>
         <head>
           {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
           <Script id="paysafe" src="https://hosted.paysafe.com/js/v1/latest/paysafe.min.js" strategy="beforeInteractive" />
