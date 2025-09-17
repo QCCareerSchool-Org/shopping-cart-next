@@ -12,8 +12,8 @@ export const FSModal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
     <Modal.Header closeButton>Start Your Journey in Feng Shui Design</Modal.Header>
     <Modal.Body>
-      <p>For a limited time, enroll in Feng Shui Design for $998&mdash;that&apos;s a savings of $250 when you pay in full.</p>
-      <p>Prefer paying over time? Save up $150 with our monthly installment plan. This is your chance to launch your design career with our biggest savings ever. Act now before this offer is gone!</p>
+      <p>For a limited time, enroll in Feng Shui Design for $998&mdash;that&apos;s a savings of $600 when you pay in full.</p>
+      <p>Prefer paying over time? Save up to $150 with our monthly installment plan. This is your chance to launch your design career with our biggest savings ever. Act now before this offer is gone!</p>
 
       <hr />
       <h6 className="sans-serif">Learn From Expert Instructors</h6>
