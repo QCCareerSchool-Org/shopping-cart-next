@@ -27,7 +27,7 @@ export const Banner: FC<Props> = ({ variant, onClick }) => {
             }
           </div>
           <div>
-            <span className="me-2"><b>FLASH OFFER SAVE UP TO $550</b></span> <a href="#">learn more</a>
+            <span className="me-2">SAVE UP TO $550 + <b>FREE</b> VIRTUAL DESIGN TRAINING</span> <a href="#">learn more</a>
           </div>
         </div>
       </div>

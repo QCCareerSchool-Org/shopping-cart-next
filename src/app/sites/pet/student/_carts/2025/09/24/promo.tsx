@@ -6,7 +6,7 @@ import { Hero20250924 } from './hero';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 
-const backgroundColor = '#0f141a';
+const backgroundColor = '#ee7077';
 const firstLastChanceDate = Date.UTC(2025, 8, 26, 7); // 2025-09-26T03:00 (07:00 UTC)
 const firstEndDate = Date.UTC(2025, 8, 27, 7); // 2025-09-27T03:00 (07:00 UTC)
 const secondLastChanceDate = Date.UTC(2025, 8, 30, 7); // 2025-09-30T03:00 (07:00 UTC)
@@ -16,7 +16,7 @@ type Props = {
   date: number;
 };
 
-export const DesignStudent20250924Promo: FC<Props> = ({ date }) => {
+export const PetStudent20250924Promo: FC<Props> = ({ date }) => {
   const [ lastChanceDate, endDate ] = useMemo(() => {
     if (date > firstEndDate) {
       return [ secondLastChanceDate, secondEndDate ];
@@ -34,7 +34,7 @@ export const DesignStudent20250924Promo: FC<Props> = ({ date }) => {
         showDate={lastChanceDate}
         endDate={endDate}
         message={<span style={{ textTransform: 'uppercase' }}><strong>LAST CHANCE</strong> This special offer ends soon!</span>}
-        className="bg-black text-light"
+        className="bg-primary text-light"
       />
     </>
   );
