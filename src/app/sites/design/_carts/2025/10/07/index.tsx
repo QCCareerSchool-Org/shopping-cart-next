@@ -25,6 +25,7 @@ export const Design20251007: FC<Props> = ({ date }) => {
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
         dynamicCourseMessages={[ Save50CourseMessage ]}
+        promoCodeDefault="FREECOLOR"
         hideCourseTable
       />
     </>
