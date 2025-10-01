@@ -13,7 +13,7 @@ type Props = {
   date: number;
 };
 
-export const FDPromo: FC<Props> = ({ date }) => {
+export const FDPromo: FC<Props> = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
 
   const handleClick = (): void => {

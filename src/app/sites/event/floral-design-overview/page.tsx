@@ -4,8 +4,8 @@ import { courseGroups } from '@/app/sites/event/courseGroups';
 import { Guarantee } from '@/app/sites/event/guarantee';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
-import { PageComponent } from '@/serverComponent';
 import { getDate } from '@/lib/getDate';
+import type { PageComponent } from '@/serverComponent';
 
 const FloralDesignOverview: PageComponent = async ({ searchParams }) => {
   const date = await getDate(searchParams.date);
