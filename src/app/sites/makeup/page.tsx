@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { Makeup20251007 } from './_carts/2025/10/7';
+import { Makeup20251007 } from './_carts/2025/10/07';
 import { MakeupFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
