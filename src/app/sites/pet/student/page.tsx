@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 
-import { PetStudent20250820 } from './_carts/2025/08/20';
-import { PetStudent20250827 } from './_carts/2025/08/27';
+import { PetStudent20251007 } from './_carts/2025/10/07';
 import { PetStudentFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -11,11 +10,9 @@ const PetStudentPage: PageComponent = async ({ searchParams }) => {
 
   return (
     <Suspense>
-      {date >= Date.UTC(2025, 7, 20, 12) && date < Date.UTC(2025, 7, 27, 12) // 2025-08-20T8:00 (12:00 UTC) to 2025-08-27T08:00 (12:00 UTC)
-        ? <PetStudent20250820 date={date} />
-        : date >= Date.UTC(2025, 7, 27, 12) && date < Date.UTC(2025, 8, 5, 7) // 2025-08-27T08:00 (12:00 UTC) to 2025-09-05T03:00 (07:00 UTC)
-          ? <PetStudent20250827 date={date} />
-          : <PetStudentFallback date={date} />
+      {date >= Date.UTC(2025, 9, 7, 12) && date < Date.UTC(2025, 9, 18, 7) // 2025-10-07T08:00 (12:00 UTC) to 2025-10-18T03:00 (07:00 UTC)
+        ? <PetStudent20251007 date={date} />
+        : <PetStudentFallback date={date} />
       }
     </Suspense>
   );
