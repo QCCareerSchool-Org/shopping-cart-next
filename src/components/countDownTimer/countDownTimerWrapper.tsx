@@ -76,7 +76,6 @@ export const CountDownTimerWrapper: FC<Props> = memo(({ date, showDate, endDate,
             </div>
           )}
           {fixed && message && <div className={styles.message}>{message}</div>}
-          <h5 className="sans-serif mb-3">{message}</h5>
           <CountDownTimer now={now} endDate={endDate} />
         </div>
       )}
