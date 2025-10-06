@@ -4,7 +4,7 @@ import { Event20251007Promo } from './promo';
 import { agreementLinks } from '@/app/sites/event/agreementLinks';
 import { courseGroups } from '@/app/sites/event/courseGroups';
 import { Guarantee } from '@/app/sites/event/guarantee';
-import { BogoEventDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogoEvent';
+import { FreeEventSpecialtyDynamicMessage } from '@/components/dynamicCourseMessages/freeEventSpecialty';
 import { Form } from '@/components/form';
 
 type Props = {
@@ -24,7 +24,7 @@ export const Event20251007: FC<Props> = ({ date }) => (
       dynamicCourseDescriptions="HIDE"
       visualPaymentPlans
       promoCodeDefault="SPECIALTY100"
-      dynamicCourseMessages={[ BogoEventDynamicCourseMessage ]}
+      dynamicCourseMessages={[ FreeEventSpecialtyDynamicMessage ]}
     />
   </>
 );
