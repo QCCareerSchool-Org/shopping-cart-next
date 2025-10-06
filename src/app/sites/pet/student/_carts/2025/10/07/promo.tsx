@@ -26,7 +26,9 @@ export const PetStudent20251007Promo: FC<Props> = ({ date }) => {
   return (
     <>
       <Section style={{ backgroundColor }} noPadding>
-        <Hero20251007 />
+        <div onClick={handleClick} style={{ cursor: 'pointer' }}>
+          <Hero20251007 />
+        </div>
       </Section>
       <PetStudent20251007Modal show={showPopup} onHide={handleClick} />
       <CountDownTimerWrapper
