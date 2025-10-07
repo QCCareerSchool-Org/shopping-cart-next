@@ -21,11 +21,11 @@ type Props = {
 };
 
 export const Payment: FC<Props> = ({ date, school, showPromoCodeInput, visualPaymentPlans, discountName, courseGroups }) => {
-  const priceState = usePriceState();
+  // const priceState = usePriceState();
 
-  if (priceState && priceState.cost > 0 && priceState.plans.part.installmentSize === 0) {
-    return null;
-  }
+  // if (priceState && priceState.cost > 0 && priceState.plans.part.installmentSize === 0) {
+  //   return null;
+  // }
 
   return (
     <Section className="paymentSection">
