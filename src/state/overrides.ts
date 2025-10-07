@@ -58,8 +58,8 @@ export const overridesReducer = (state: OverridesState, action: OverridesAction)
       let value = round(action.payload.value); // the new value
       if (value > state.max) {
         value = state.max;
-      } else if (value < state.min) {
-        value = state.min;
+      } else if (value < 0) {
+        value = 0;
       }
       if (value >= state.default) { // update the individual courses' values in proportion to the difference between their default and max values
         const ratio = (value - state.default) / (state.max - state.default);
