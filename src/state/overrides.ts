@@ -128,8 +128,8 @@ export const overridesReducer = (state: OverridesState, action: OverridesAction)
       let courseValue = round(action.payload.value);
       if (courseValue > course.max) {
         courseValue = course.max;
-      } else if (courseValue < course.min) {
-        courseValue = course.min;
+      } else if (courseValue < 0) {
+        courseValue = 0;
       }
       course.value = courseValue;
       const value = sum(courses.map(c => c.value));
