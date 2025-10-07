@@ -85,7 +85,7 @@ export const Overrides: FC = () => {
                   <div className="row">
                     <div className="col-7 col-sm-9 col-lg-8">
                       <Slider
-                        min={d.min}
+                        min={0}
                         max={d.max}
                         step={0.01}
                         defaultValue={d.default}
