@@ -59,7 +59,6 @@ export const Overrides: FC = () => {
                     defaultValue={overridesState.default}
                     value={overridesState.value}
                     marks={{
-                      0: 0,
                       [overridesState.default]: overridesState.default.toFixed(2),
                       [overridesState.max]: overridesState.max.toFixed(2),
                     }}
