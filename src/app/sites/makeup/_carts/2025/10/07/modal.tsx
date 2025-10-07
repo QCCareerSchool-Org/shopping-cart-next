@@ -22,7 +22,7 @@ export const Makeup20251007Modal: FC<Props> = props => (
         <li>Create realistic injuries, scars, and wounds</li>
         <li>Apply prosthetics like hair pieces and special appliances</li>
       </ul>
-      <p>Plus, you&apos;ll receive <strong>QC&apos;s 16-Piece Luxe Pro Brush Collection,</strong> expertly designed to help professional makeup artists achieve flawless, polished results for every client.</p>
+      <p>Plus, get the <strong>entire Luminous Makeup Collection</strong> to build your professional makeup kit.</p>
       <LuminousKit />
     </Modal.Body>
     <Modal.Footer>
