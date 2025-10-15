@@ -2,7 +2,7 @@ import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { MakeupFreeSkincarePromo } from './promo';
-import { FreeSkincare300DynamicMessage } from '@/components/dynamicCourseMessages/freeSkincare300';
+import { FreeSkincareDynamicMessage } from '@/components/dynamicCourseMessages/freeSkincare';
 import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -21,8 +21,8 @@ const MakeupFreeSkincarePage: PageComponent = async ({ searchParams }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
-        dynamicCourseMessages={[ FreeSkincare300DynamicMessage ]}
-        promoCodeDefault="SKINCARE300"
+        dynamicCourseMessages={[ FreeSkincareDynamicMessage ]}
+        promoCodeDefault="SKINCARE"
       />
     </>
   );
