@@ -19,8 +19,8 @@ export const DesignBogo1Promo: FC = () => {
   };
 
   const [ deposit, fullDiscount, discount ] = priceState?.currency.code === 'GBP'
-    ? [ '£40', '£350', '£100' ]
-    : [ '$75', '$400', '$100' ];
+    ? [ '£40', '£500', '£100' ]
+    : [ '$75', '$500', '$100' ];
 
   return (
     <>
@@ -35,8 +35,7 @@ export const DesignBogo1Promo: FC = () => {
         </Modal.Header>
         <Modal.Body>
           <p>Ready to start your home design career?</p>
-          <p>For a limited time only, enroll in any design course and get a second certification course for FREE! You'll also save {discount} off your total tuition!</p>
-          <p className="mb-0">Get started for {deposit}, or save up to {fullDiscount} when you pay your tuition in full.</p>
+          <p>For a limited time only, enroll in any design course and get a second certification course for FREE! You'll also save {discount} off your total tuition, or save up to {fullDiscount} when you pay in full!</p>
         </Modal.Body>
       </Modal>
     </>
