@@ -7,7 +7,7 @@ import { FSModal } from './modal';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#010427';
+const backgroundColor = '#110503ff';
 
 type Props = {
   date: number;
