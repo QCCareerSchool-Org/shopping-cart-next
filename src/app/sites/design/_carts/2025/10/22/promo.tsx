@@ -7,6 +7,7 @@ import { Design20251022Modal } from './modal';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
+import { Banner } from './banner';
 
 const backgroundColor = '#010427';
 const lastChanceDate = Date.UTC(2025, 9, 31, 7); // 2025-10-31T03:00 (07:00 UTC)
@@ -40,6 +41,7 @@ export const Design20251022Promo: FC<Props> = ({ date }) => {
         className="bg-black text-light"
         newHaus
       />
+      <Banner variant={variant} onClick={handleClick} />
     </>
   );
 };
