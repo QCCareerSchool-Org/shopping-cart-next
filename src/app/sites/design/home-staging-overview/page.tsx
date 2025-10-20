@@ -22,6 +22,7 @@ const HomeStagingOverview: PageComponent = async ({ searchParams }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
+        promoCodeDefault="100OFF"
         dynamicCourseMessages={[ Save50CourseMessage ]}
         hideCourseTable
       />
