@@ -2,7 +2,7 @@ import { DesignAllCoursesPromo } from './promo';
 import { agreementLinks } from '../agreementLinks';
 import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
-import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
+import { BogoDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogo';
 import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -22,7 +22,8 @@ const DesignAllCoursesPage: PageComponent = async ({ searchParams }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
-        dynamicCourseMessages={[ Save50CourseMessage ]}
+        promoCodeDefault="BOGO"
+        dynamicCourseMessages={[ BogoDynamicCourseMessage ]}
       />
     </>
   );

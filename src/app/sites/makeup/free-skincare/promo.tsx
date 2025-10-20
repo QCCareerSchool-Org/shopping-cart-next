@@ -7,7 +7,6 @@ import { MakeupFreeSkincareHero } from './hero';
 import { agreementLinks } from '../agreementLinks';
 import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
-import { usePriceState } from '@/hooks/usePriceState';
 import { useToggle } from '@/hooks/useToggle';
 
 const backgroundColor = '#fff';
@@ -18,9 +17,6 @@ type Props = {
 
 export const MakeupFreeSkincarePromo: FC<Props> = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
-  const priceState = usePriceState();
-
-  const discount = priceState?.currency.code === 'GBP' ? '£300' : '$300';
 
   const handleClick = (): void => {
     togglePopup();
@@ -38,8 +34,7 @@ export const MakeupFreeSkincarePromo: FC<Props> = () => {
           <Modal.Title>Limited-Time Offer</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p className="lead">{discount} Off and Free Skincare Course</p>
-          <p>When you enroll in <strong>Master Makeup Artistry</strong>, you'll get {discount} off and QC's <strong>Skincare Consultant</strong> course for free!</p>
+          <p>When you enroll in <strong>Master Makeup Artistry</strong>, you'll get <strong>Skincare Consultant</strong> course for free!</p>
           <p className="lead">Free Luminous Collection Makup Kit</p>
           <p>Plus, <strong>get the entire Luminous Makeup Collection</strong> to build your professional makeup kit.</p>
           <p>Don't miss out—<strong>Enroll now</strong> and secure your spot!</p>
