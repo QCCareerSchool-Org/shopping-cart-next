@@ -2,12 +2,12 @@
 
 import type { FC } from 'react';
 
+import { Banner } from './banner';
 import { Hero20251022 } from './hero';
 import { Event20251022Modal } from './modal';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
-import { Banner } from './banner';
 
 const backgroundColor = '#2D222A';
 const lastChanceDate = Date.UTC(2025, 9, 31, 7); // 2025-10-31T03:00 (07:00 UTC)
