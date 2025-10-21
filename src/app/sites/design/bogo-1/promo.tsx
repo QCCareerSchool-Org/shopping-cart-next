@@ -18,9 +18,9 @@ export const DesignBogo1Promo: FC = () => {
     togglePopup();
   };
 
-  const [ deposit, fullDiscount, discount ] = priceState?.currency.code === 'GBP'
-    ? [ '£40', '£500', '£100' ]
-    : [ '$75', '$500', '$100' ];
+  const [ fullDiscount, discount ] = priceState?.currency.code === 'GBP'
+    ? [ '£500', '£100' ]
+    : [ '$500', '$100' ];
 
   return (
     <>
