@@ -13,7 +13,7 @@ export const Event20251022Modal: FC<Props> = props => {
     <Modal show={props.show} onHide={props.onHide}>
       <Modal.Header closeButton>Enroll Today & Start Booking Clients in Under 3 Months</Modal.Header>
       <Modal.Body>
-        <p>Our Black Friday offer is here early! For a limited time, enroll in any course and get two specialty courses FREE! This is the perfect opportunity to become a certified expert.</p>
+        <p>For a limited time, enroll in any course and get two specialty courses FREE! This is the perfect opportunity to become a certified expert.</p>
         <hr />
         <h6 className="sans-serif">Learn From Expert Instructors</h6>
         <p>We&apos;ve hand-selected the top event planning professionals in the industry to guide you through your course material.</p>

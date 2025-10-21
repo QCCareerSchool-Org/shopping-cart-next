@@ -14,8 +14,7 @@ export const Design20251022Modal: FC<Props> = props => {
     <Modal show={props.show} onHide={props.onHide}>
       <Modal.Header closeButton>Enroll Today & Start Booking Clients in Under 3 Months</Modal.Header>
       <Modal.Body>
-        <p>Our Black Friday offer is here early! For a limited time, enroll in any design course and get a second course FREE! This is the perfect opportunity to specialize in your design training and become a certified expert.</p>
-
+        <p>For a limited time, enroll in any design course and get a second course FREE! This is the perfect opportunity to specialize in your design training and become a certified expert.</p>
         <hr />
         <h6 className="sans-serif">Learn From Expert Instructors</h6>
         <p>We&apos;ve hand-selected the top home design professionals in the industry to guide you through your course material.</p>
