@@ -23,6 +23,7 @@ const FloralDesignOverview: PageComponent = async ({ searchParams }) => {
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
         dynamicCourseMessages={[ Save50CourseMessage ]}
+        promoCodeDefault="100OFF"
         hideCourseTable
       />
     </>
