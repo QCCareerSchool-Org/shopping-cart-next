@@ -16,9 +16,9 @@ const FloralDesignOverview: PageComponent = async ({ searchParams }) => {
       <Form
         date={date}
         courseGroups={courseGroups}
-        school="QC Design School"
+        school="QC Event School"
         guarantee={Guarantee}
-        successLink="https://www.qcdesignschool.com/welcome-to-the-school"
+        successLink="https://www.qceventplanning.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
