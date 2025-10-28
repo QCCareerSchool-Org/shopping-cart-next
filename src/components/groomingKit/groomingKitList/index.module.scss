@@ -1,0 +1,33 @@
+$circle-color: #57C3D8;
+
+.kitNumberedList {
+    list-style: none;
+    padding-left: 0;
+
+    .listItem {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        line-height: 1;
+    }
+
+    .circleNumber {
+        flex-shrink: 0;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-color: $circle-color;
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+        margin-right: 15px;
+    }
+
+    .listContent {
+        flex-grow: 1;
+        padding-top: 2px;
+    }
+}
