@@ -1,6 +1,6 @@
 {
   "name": "shopping-cart-next",
-  "version": "1.3.160",
+  "version": "1.3.161",
   "private": true,
   "scripts": {
     "dev": "next dev",
