@@ -10,7 +10,7 @@ const MakeupPage: PageComponent = async ({ searchParams }) => {
 
   return (
     <Suspense>
-      {date >= Date.UTC(2025, 9, 30, 12) && date < Date.UTC(2025, 10, 8, 7) // 2025-11-03T08:00 (12:00 UTC) to 2025-11-08T03:00 (07:00 UTC)
+      {date >= Date.UTC(2025, 10, 3, 12) && date < Date.UTC(2025, 10, 8, 7) // 2025-11-03T08:00 (12:00 UTC) to 2025-11-08T03:00 (07:00 UTC)
         ? <Makeup20251103 date={date} />
         : <MakeupFallback date={date} />
       }
