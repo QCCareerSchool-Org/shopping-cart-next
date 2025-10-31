@@ -4,7 +4,7 @@ import { Design20251103Promo } from './promo';
 import { agreementLinks } from '@/app/sites/design/agreementLinks';
 import { courseGroups } from '@/app/sites/design/courseGroups';
 import { Guarantee } from '@/app/sites/design/guarantee';
-import { FreeColorConsultantMessage } from '@/components/dynamicCourseMessages/freeColorConsultant';
+import { BogoVirtualDesignDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogoVirtualDesign';
 import { Form } from '@/components/form';
 
 type Props = {
@@ -24,7 +24,7 @@ export const Design20251103: FC<Props> = ({ date }) => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
-        dynamicCourseMessages={[ FreeColorConsultantMessage ]}
+        dynamicCourseMessages={[ BogoVirtualDesignDynamicCourseMessage ]}
         promoCodeDefault="BOGOVIRTUAL"
         hideCourseTable
       />
