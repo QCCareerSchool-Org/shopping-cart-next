@@ -6,8 +6,8 @@ import type { FC, MouseEventHandler } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'react-bootstrap';
 
 import Tag from './kit-included-tag.svg';
-import GroomingKitLabelled from '@/components/groomingKit/groomingKitList/kit-labelled.jpg';
 import GroomingKitList from '@/components/groomingKit/groomingKitList';
+import GroomingKitLabelled from '@/components/groomingKit/groomingKitList/kit-labelled.jpg';
 import { useToggle } from '@/hooks/useToggle';
 
 export const DogGroomingKitTag: FC = () => {
