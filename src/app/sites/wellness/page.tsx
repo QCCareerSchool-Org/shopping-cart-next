@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 
 import { Wellness20251022 } from './_carts/2025/10/22';
+import { Wellness20251103 } from './_carts/2025/11/03';
 import { WellnessFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -12,7 +13,9 @@ const DesignPage: PageComponent = async ({ searchParams }) => {
     <Suspense>
       {date >= Date.UTC(2025, 9, 22, 4) && date < Date.UTC(2025, 10, 1, 7) // 2025-10-22T00:00 (04:00 UTC) to 2025-11-01T03:00 (07:00 UTC)
         ? <Wellness20251022 date={date} />
-        : <WellnessFallback date={date} />
+        : date >= Date.UTC(2025, 10, 3, 13) && date < Date.UTC(2025, 10, 8, 8) // 2025-11-03T08:00 (13:00 UTC) to 2025-11-08T03:00 (08:00 UTC)
+          ? <Wellness20251103 date={date} />
+          : <WellnessFallback date={date} />
       }
     </Suspense>
   );
