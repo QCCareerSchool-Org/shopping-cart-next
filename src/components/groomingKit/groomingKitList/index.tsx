@@ -9,7 +9,7 @@ const GroomingKitList: React.FC = () => {
         <div className={`${styles.circleNumber}`}>1</div>
         <div className={`${styles.listContent}`}>
           <h4>Professional-Grade Grooming Scissors</h4>
-          <p style={{ lineHeight: '20px' }}>This kit includes a straight blade, a curved blade, and thinning scissors, wrapped in a beautiful leather case for portability and convenience</p>
+          <p>This kit includes a straight blade, a curved blade, and thinning scissors, wrapped in a beautiful leather case for portability and convenience</p>
         </div>
       </div>
       <div className={`${styles.listItem}`}>
