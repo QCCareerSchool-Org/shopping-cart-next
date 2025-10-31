@@ -1,21 +1,21 @@
-import React from 'react';
+import type { FC } from 'react';
 
 import styles from './index.module.scss';
 
-const GroomingKitList: React.FC = () => {
+export const GroomingKitList: FC = () => {
   return (
     <div className={`${styles.kitNumberedList} container my-5`}>
       <div className={`${styles.listItem}`}>
         <div className={`${styles.circleNumber}`}>1</div>
         <div className={`${styles.listContent}`}>
-          <h4>Professional-Grade Grooming Scissors</h4>
+          <h4 className="sans-serif">Professional-Grade Grooming Scissors</h4>
           <p>This kit includes a straight blade, a curved blade, and thinning scissors, wrapped in a beautiful leather case for portability and convenience</p>
         </div>
       </div>
       <div className={`${styles.listItem}`}>
         <div className={`${styles.circleNumber}`} style={{ backgroundColor: 'transparent' }} />
         <div className={`${styles.listContent}`}>
-          <h4>Grooming Tools Starter Kit</h4>
+          <h4 className="sans-serif">Grooming Tools Starter Kit</h4>
         </div>
       </div>
       <div className={`${styles.listItem}`}>
@@ -62,5 +62,3 @@ const GroomingKitList: React.FC = () => {
     </div>
   );
 };
-
-export default GroomingKitList;
