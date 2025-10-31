@@ -7,8 +7,8 @@ import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTime
 import { Section } from '@/components/section';
 
 const backgroundColor = '#000E35';
-const lastChanceDate = Date.UTC(2025, 10, 7, 7); // 2025-11-07T03:00 (07:00 UTC)
-const endDate = Date.UTC(2025, 10, 8, 7); // 2025-11-08T03:00 (07:00 UTC)
+const lastChanceDate = Date.UTC(2025, 10, 7, 8); // 2025-11-07T03:00 (08:00 UTC)
+const endDate = Date.UTC(2025, 10, 8, 8); // 2025-11-08T03:00 (08:00 UTC)
 
 type Props = {
   date: number;

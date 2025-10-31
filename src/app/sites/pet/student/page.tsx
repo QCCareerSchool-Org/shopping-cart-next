@@ -10,7 +10,7 @@ const PetStudentPage: PageComponent = async ({ searchParams }) => {
 
   return (
     <Suspense>
-      {date >= Date.UTC(2025, 10, 3, 12) && date < Date.UTC(2025, 10, 8, 7) // 2025-11-03T08:00 (12:00 UTC) to 2025-11-08T03:00 (07:00 UTC)
+      {date >= Date.UTC(2025, 10, 3, 13) && date < Date.UTC(2025, 10, 8, 8) // 2025-11-03T08:00 (13:00 UTC) to 2025-11-08T03:00 (08:00 UTC)
         ? <PetStudent20251103 date={date} />
         : <PetStudentFallback date={date} />
       }
