@@ -13,7 +13,7 @@ type Props = {
 
 export const Event20251108: FC<Props> = ({ date }) => (
   <>
-    <Event20251108Promo date={date} />
+    <Event20251110Promo date={date} />
     <Form
       date={date}
       courseGroups={courseGroups}
