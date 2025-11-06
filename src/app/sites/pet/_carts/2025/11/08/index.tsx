@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { Pet20251103Promo } from './promo';
+import { Pet20251108Promo } from './promo';
 import { agreementLinks } from '../../../../agreementLinks';
 import { courseGroups } from '../../../../courseGroups';
 import { Guarantee } from '../../../../guarantee';
