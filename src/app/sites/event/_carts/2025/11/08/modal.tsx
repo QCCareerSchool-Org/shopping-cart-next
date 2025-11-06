@@ -8,7 +8,7 @@ type Props = {
   onHide: () => void;
 };
 
-export const Event20251110Modal: FC<Props> = props => {
+export const Event20251108Modal: FC<Props> = props => {
   return(
     <Modal show={props.show} onHide={props.onHide}>
       <Modal.Header closeButton>Black Friday is here early!</Modal.Header>

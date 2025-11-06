@@ -3,8 +3,8 @@
 import type { FC } from 'react';
 
 import { Banner } from './banner';
-import { Hero20251110 } from './hero';
-import { Event20251110Modal } from './modal';
+import { Hero20251108 } from './hero';
+import { Event20251108Modal } from './modal';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
@@ -17,7 +17,7 @@ type Props = {
   date: number;
 };
 
-export const Event20251110Promo: FC<Props> = ({ date }) => {
+export const Event20251108Promo: FC<Props> = ({ date }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const variant = date >= lastChanceDate ? 'lastChance' : undefined;
 
@@ -29,10 +29,10 @@ export const Event20251110Promo: FC<Props> = ({ date }) => {
     <>
       <Section style={{ backgroundColor }} noPadding>
         <a href="#courses">
-          <Hero20251110 variant={variant} />
+          <Hero20251108 variant={variant} />
         </a>
       </Section>
-      <Event20251110Modal show={showPopup} onHide={handleClick} />
+      <Event20251108Modal show={showPopup} onHide={handleClick} />
       <CountDownTimerWrapper
         date={date}
         showDate={lastChanceDate}
