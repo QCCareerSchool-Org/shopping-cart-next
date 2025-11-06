@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { Design20251110Promo } from './promo';
+import { Design20251108Promo } from './promo';
 import { agreementLinks } from '@/app/sites/design/agreementLinks';
 import { courseGroups } from '@/app/sites/design/courseGroups';
 import { Guarantee } from '@/app/sites/design/guarantee';
@@ -11,10 +11,10 @@ type Props = {
   date: number;
 };
 
-export const Design20251110: FC<Props> = ({ date }) => {
+export const Design20251108: FC<Props> = ({ date }) => {
   return (
     <>
-      <Design20251110Promo date={date} />
+      <Design20251108Promo date={date} />
       <Form
         date={date}
         courseGroups={courseGroups}
