@@ -38,7 +38,7 @@ export const Pet20251108Promo: FC<Props> = ({ date }) => {
         showDate={lastChanceDate}
         endDate={endDate}
         message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
-        className="bg-primary text-light"
+        className="bg-black text-light"
       />
       <Banner variant={variant} onClick={handleClick} />
     </>
