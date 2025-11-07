@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { Event20251108Promo } from './promo';
+import { Event20251110Promo } from './promo';
 import { agreementLinks } from '@/app/sites/event/agreementLinks';
 import { courseGroups } from '@/app/sites/event/courseGroups';
 import { Guarantee } from '@/app/sites/event/guarantee';
@@ -11,9 +11,9 @@ type Props = {
   date: number;
 };
 
-export const Event20251108: FC<Props> = ({ date }) => (
+export const Event20251110: FC<Props> = ({ date }) => (
   <>
-    <Event20251108Promo date={date} />
+    <Event20251110Promo date={date} />
     <Form
       date={date}
       courseGroups={courseGroups}

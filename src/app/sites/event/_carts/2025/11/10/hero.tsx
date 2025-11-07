@@ -12,7 +12,7 @@ type Props = {
   variant?: 'lastChance';
 };
 
-export const Hero20251108: FC<Props> = ({ variant }) => {
+export const Hero20251110: FC<Props> = ({ variant }) => {
   const [ desktopSrc, mobileSrc ] = variant === 'lastChance'
     ? [ DesktopEnds, MobileEnds ]
     : [ Desktop, Mobile ];
