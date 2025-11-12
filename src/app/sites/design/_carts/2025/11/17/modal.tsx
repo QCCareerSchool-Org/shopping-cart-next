@@ -12,7 +12,7 @@ type Props = {
 
 export const Design20251117Modal: FC<Props> = props => {
   const priceState = usePriceState();
-  const blackFridayValue = priceState?.currency.code === 'GBP' ? '£1648' : '$1648';
+  const blackFridayValue = priceState?.currency.code === 'GBP' ? '£1098' : '$1648';
   const discount = priceState?.currency.code === 'GBP' ? '£100' : '$100';
 
   return (
