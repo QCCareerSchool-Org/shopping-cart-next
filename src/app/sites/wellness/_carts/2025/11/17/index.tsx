@@ -4,7 +4,6 @@ import { Wellness20251117Promo } from './promo';
 import { agreementLinks } from '../../../../agreementLinks';
 import { courseGroups } from '../../../../courseGroups';
 import { Guarantee } from '../../../../guarantee';
-import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 
 type Props = {
@@ -24,7 +23,6 @@ export const Wellness20251117: FC<Props> = ({ date }) => (
       dynamicCourseDescriptions="HIDE"
       visualPaymentPlans
       promoCodeDefault="400OFF"
-      dynamicCourseMessages={[ Save50CourseMessage ]}
     />
   </>
 );
