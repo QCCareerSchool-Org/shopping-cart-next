@@ -20,8 +20,8 @@ export const Banner: FC<PropsWithChildren<Props>> = ({ variant, onClick, backgro
     onClick();
   };
 
-  const badgeImage = badgeImageSrc ?? FallbackBadgeImage;
-  const lastChanceImage = lastChanceImageSrc ?? FallbackLastChanceImage;
+  const badgeImage = badgeImageSrc === null ? null : badgeImageSrc ?? FallbackBadgeImage;
+  const lastChanceImage = lastChanceImageSrc === null ? null : lastChanceImageSrc ?? FallbackLastChanceImage;
 
   return (
     <div className={styles.wrapper} onClick={handleClick} style={{ backgroundColor: backgroundColor ?? 'black' }}>
@@ -34,7 +34,7 @@ export const Banner: FC<PropsWithChildren<Props>> = ({ variant, onClick, backgro
             }
           </div>
           <div>
-            <span className="me-2">{children}|</span><a href="#">Learn More</a>
+            <span className="me-2">{children}</span><span className="me-2">|</span><a href="#">Learn More</a>
           </div>
         </div>
       </div>
