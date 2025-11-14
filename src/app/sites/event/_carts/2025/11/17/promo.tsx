@@ -34,7 +34,7 @@ export const Event20251117Promo: FC<Props> = ({ date }) => {
         message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
         className="bg-black text-light"
       />
-      <Banner variant={variant} onClick={handleClick} backgroundColor="#e00000">
+      <Banner variant={variant} badgeImageSrc={null} lastChanceImageSrc={null} onClick={handleClick} backgroundColor="#e00000">
         {variant === 'lastChance'
           ? <>Last Chance for Black Friday</>
           : <>Don&apos;t Miss the Black Friday Offer</>
