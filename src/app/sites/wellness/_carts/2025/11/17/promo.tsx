@@ -34,17 +34,17 @@ export const Wellness20251117Promo: FC<Props> = ({ date }) => {
         message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
         className="bg-black text-light"
       />
-      <Banner badgeImageSrc={null} lastChanceImageSrc={null} variant={variant} onClick={handleClick} backgroundColor="#e00000">
-        {variant === 'lastChance'
-          ? <>Last Chance for Black Friday</>
-          : <>Don&apos;t Miss the Black Friday Offer</>
-        }
-      </Banner>
       <Section style={{ backgroundColor }} noPadding>
         <a href="#courses">
           <Hero20251117 variant={variant} />
         </a>
       </Section>
+      <Banner badgeImageSrc={null} lastChanceImageSrc={null} variant={variant} onClick={handleClick} backgroundColor="#e00000">
+        {variant === 'lastChance'
+          ? <strong>Last Chance for Black Friday</strong>
+          : <strong>Don&apos;t Miss the Black Friday Offer</strong>
+        }
+      </Banner>
       <Wellness20251117Modal show={showPopup} onHide={handleClick} />
     </>
   );

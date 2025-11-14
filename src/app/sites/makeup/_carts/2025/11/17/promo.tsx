@@ -27,12 +27,6 @@ export const Makeup20251117Promo: FC<Props> = ({ date }) => {
 
   return (
     <>
-      <Section style={{ backgroundColor }} noPadding>
-        <a href="#courses">
-          <Hero20251117 variant={variant} />
-        </a>
-      </Section>
-      <Makeup20251117Modal show={showPopup} onHide={handleClick} />
       <CountDownTimerWrapper
         date={date}
         showDate={lastChanceDate}
@@ -40,7 +34,18 @@ export const Makeup20251117Promo: FC<Props> = ({ date }) => {
         message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
         className="bg-black text-light"
       />
-      <Banner variant={variant} onClick={handleClick} backgroundColor="#02011C">Don&apos;t Miss the BLACK FRIDAY OFFER</Banner>
+      <Section style={{ backgroundColor }} noPadding>
+        <a href="#courses">
+          <Hero20251117 variant={variant} />
+        </a>
+      </Section>
+      <Makeup20251117Modal show={showPopup} onHide={handleClick} />
+      <Banner variant={variant} onClick={handleClick} backgroundColor="#e00000">
+        {variant === 'lastChance'
+          ? <strong>Last Chance for Black Friday</strong>
+          : <strong>Start for $49 this Black Friday</strong>
+        }
+      </Banner>
     </>
   );
 };

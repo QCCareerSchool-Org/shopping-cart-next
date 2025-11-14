@@ -27,7 +27,7 @@ export const Banner: FC<PropsWithChildren<Props>> = ({ variant, onClick, backgro
     <div className={styles.wrapper} onClick={handleClick} style={{ backgroundColor: backgroundColor ?? 'black' }}>
       <div className="container">
         <div className="d-flex justify-content-center align-items-center">
-          <div>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: 64 }}>
             {variant === 'lastChance'
               ? <>{lastChanceImage !== null && <div className="me-2"><Image src={lastChanceImage} height="64" alt="Last Chance" /></div>}</>
               : <>{badgeImage !== null && <div className="me-2"><Image src={badgeImage} height="48" alt="" /></div>}</>
