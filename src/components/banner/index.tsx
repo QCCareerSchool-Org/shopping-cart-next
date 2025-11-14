@@ -30,7 +30,7 @@ export const Banner: FC<PropsWithChildren<Props>> = ({ variant, onClick, backgro
           <div>
             {variant === 'lastChance'
               ? <>{lastChanceImage !== null && <div className="me-2"><Image src={lastChanceImage} height="64" alt="Last Chance" /></div>}</>
-              : <>{badgeImageSrc !== null && <div className="me-2"><Image src={badgeImage} height="48" alt="" /></div>}</>
+              : <>{badgeImage !== null && <div className="me-2"><Image src={badgeImage} height="48" alt="" /></div>}</>
             }
           </div>
           <div>
