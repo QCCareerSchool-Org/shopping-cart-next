@@ -2,9 +2,9 @@
 
 import type { FC } from 'react';
 
-import { Banner } from '@/components/banner';
 import { Hero20251117 } from './hero';
 import { Wellness20251117Modal } from './modal';
+import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
@@ -27,20 +27,25 @@ export const Wellness20251117Promo: FC<Props> = ({ date }) => {
 
   return (
     <>
+      <CountDownTimerWrapper
+        date={date}
+        showDate={lastChanceDate}
+        endDate={endDate}
+        message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
+        className="bg-black text-light"
+      />
+      <Banner badgeImageSrc={null} lastChanceImageSrc={null} variant={variant} onClick={handleClick} backgroundColor="#e00000">
+        {variant === 'lastChance'
+          ? <>Last Chance for Black Friday</>
+          : <>Don&apos;t Miss the Black Friday Offer</>
+        }
+      </Banner>
       <Section style={{ backgroundColor }} noPadding>
         <a href="#courses">
           <Hero20251117 variant={variant} />
         </a>
       </Section>
       <Wellness20251117Modal show={showPopup} onHide={handleClick} />
-      <CountDownTimerWrapper
-        date={date}
-        showDate={lastChanceDate}
-        endDate={endDate}
-        message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
-        className="bg-primary text-light"
-      />
-      <Banner variant={variant} onClick={handleClick} backgroundColor='#02011C' text='Don&apos;t Miss the Black Friday Offer' />
     </>
   );
 };

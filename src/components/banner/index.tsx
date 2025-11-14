@@ -1,6 +1,6 @@
 import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
-import type { CSSProperties, FC, MouseEventHandler, ReactNode } from 'react';
+import type { CSSProperties, FC, MouseEventHandler, PropsWithChildren } from 'react';
 
 import FallbackBadgeImage from './badge.png';
 import styles from './banner.module.scss';
@@ -10,12 +10,11 @@ type Props = {
   variant?: 'lastChance';
   onClick: () => void;
   backgroundColor?: CSSProperties['backgroundColor'];
-  badgeImageSrc?: StaticImageData;
-  lastChanceImageSrc?: StaticImageData;
-  text: string | ReactNode;
+  badgeImageSrc?: StaticImageData | null;
+  lastChanceImageSrc?: StaticImageData | null;
 };
 
-export const Banner: FC<Props> = ({ variant, onClick, text, backgroundColor, badgeImageSrc, lastChanceImageSrc }) => {
+export const Banner: FC<PropsWithChildren<Props>> = ({ variant, onClick, backgroundColor, badgeImageSrc, lastChanceImageSrc, children }) => {
   const handleClick: MouseEventHandler = e => {
     e.preventDefault();
     onClick();
@@ -28,14 +27,14 @@ export const Banner: FC<Props> = ({ variant, onClick, text, backgroundColor, bad
     <div className={styles.wrapper} onClick={handleClick} style={{ backgroundColor: backgroundColor ?? 'black' }}>
       <div className="container">
         <div className="d-flex justify-content-center align-items-center">
-          <div className="me-2">
+          <div>
             {variant === 'lastChance'
-              ? <Image src={lastChanceImage} height="64" alt="Last Chance" />
-              : <Image src={badgeImage} height="48" alt="" />
+              ? <>{lastChanceImage !== null && <div className="me-2"><Image src={lastChanceImage} height="64" alt="Last Chance" /></div>}</>
+              : <>{badgeImageSrc !== null && <div className="me-2"><Image src={badgeImage} height="48" alt="" /></div>}</>
             }
           </div>
           <div>
-            <span className="me-2">{text} |</span><a href="#">Learn More</a>
+            <span className="me-2">{children}|</span><a href="#">Learn More</a>
           </div>
         </div>
       </div>
