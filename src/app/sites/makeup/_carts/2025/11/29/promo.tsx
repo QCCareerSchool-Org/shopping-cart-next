@@ -40,7 +40,12 @@ export const Makeup20251129Promo: FC<Props> = ({ date }) => {
         </a>
       </Section>
       <Makeup20251129Modal show={showPopup} onHide={handleClick} />
-      <Banner variant={variant} onClick={handleClick} backgroundColor="#02011C">Don&apos;t miss the Cyber Monday OFFER</Banner>
+      <Banner variant={variant} badgeImageSrc={null} lastChanceImageSrc={null} onClick={handleClick} backgroundColor="#e00000">
+        {variant === 'lastChance'
+          ? <strong>Last Chance for Cyber Monday</strong>
+          : <strong>Don&apos;t Miss the Cyber Monday Offer</strong>
+        }
+      </Banner>
     </>
   );
 };
