@@ -17,9 +17,9 @@ export const Wellness20251129Modal: FC<Props> = props => {
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
-      <Modal.Header closeButton>Become a Certified Sleep Consultant with Our Cyber Monday Deal</Modal.Header>
+      <Modal.Header closeButton>Become a Certified Sleep Consultant with Our Cyber Week Deal</Modal.Header>
       <Modal.Body>
-        <p>Don&apos;t miss out on a chance to boost your career this Cyber Monday. For a limited time, you can enroll in our Pediatric Sleep Consulting course and save {discount} on tuition, or save even more when you pay in full.</p>
+        <p>Don&apos;t miss out on a chance to boost your career this Cyber Week. For a limited time, you can enroll in our Pediatric Sleep Consulting course and save {discount} on tuition, or save even more when you pay in full.</p>
         <hr />
         <h6 className="sans-serif">Learn From An Expert Instructor</h6>
         <p>We&apos;ve hand-selected the top sleep consultant in the industry to guide you through your course material.</p>
