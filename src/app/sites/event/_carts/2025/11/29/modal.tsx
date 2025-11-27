@@ -17,9 +17,9 @@ export const Event20251129Modal: FC<Props> = props => {
 
   return(
     <Modal show={props.show} onHide={props.onHide}>
-      <Modal.Header closeButton>Become a Certified Expert with Our Cyber Monday Offer&mdash;Valued Up to {cyberMondayValue}</Modal.Header>
+      <Modal.Header closeButton>Become a Certified Expert with Our Cyber Week Offer&mdash;Valued Up to {cyberMondayValue}</Modal.Header>
       <Modal.Body>
-        <p>Our Cyber Monday Offer is here! For a limited time, enroll in any foundation course and get 2 FREE specialty courses, PLUS an extra {discount} off tuition!</p>
+        <p>Our Cyber Week Offer is here! For a limited time, enroll in any foundation course and get 2 FREE specialty courses, PLUS an extra {discount} off tuition!</p>
         <p className="lead">Enroll Today & Start Your Event Planning Career in 3 Months or Less</p>
         <hr />
         <h6 className="sans-serif">Learn From Expert Instructors</h6>
