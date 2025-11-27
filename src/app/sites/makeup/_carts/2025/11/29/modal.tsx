@@ -13,9 +13,9 @@ type Props = {
 
 export const Makeup20251129Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
-    <Modal.Header closeButton><strong>Don&apos;t Miss Out on these Cyber Monday Bonuses</strong></Modal.Header>
+    <Modal.Header closeButton><strong>Don&apos;t Miss Out on these Cyber Week Bonuses</strong></Modal.Header>
     <Modal.Body>
-      <p>Our Cyber Monday Offer is here! Enroll in Master Makeup Artistry and get QC&apos;s Skincare Consultant Course FREE!</p>
+      <p>Our Cyber Week Offer is here! Enroll in Master Makeup Artistry and get QC&apos;s Skincare Consultant Course FREE!</p>
       <p>This course lets you expand your makeup expertise while opening doors to a new career as a skincare consultant. You&apos;ll learn to:</p>
       <ul>
         <li>Assess skin types and conditions</li>

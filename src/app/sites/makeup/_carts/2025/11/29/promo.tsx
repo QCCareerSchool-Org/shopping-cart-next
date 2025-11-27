@@ -42,8 +42,8 @@ export const Makeup20251129Promo: FC<Props> = ({ date }) => {
       <Makeup20251129Modal show={showPopup} onHide={handleClick} />
       <Banner variant={variant} badgeImageSrc={null} lastChanceImageSrc={null} onClick={handleClick} backgroundColor="#e00000">
         {variant === 'lastChance'
-          ? <strong>Last Chance for Cyber Monday</strong>
-          : <strong>Don&apos;t Miss the Cyber Monday Offer</strong>
+          ? <strong>Last Chance for Cyber Week</strong>
+          : <strong>Don&apos;t Miss the Cyber Week OFFER</strong>
         }
       </Banner>
     </>
