@@ -16,9 +16,9 @@ export const Pet20251129Modal: FC<Props> = props => {
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
-      <Modal.Header closeButton>Start Your Pet Care Career with Our Cyber Monday Deal</Modal.Header>
+      <Modal.Header closeButton>Start Your Pet Care Career with Our Cyber Week Deal</Modal.Header>
       <Modal.Body>
-        <p>Don&apos;t miss out on a chance to boost your career this Cyber Monday. For a limited time, you can enroll in any pet care course and save {discount} on tuition, or save even more when you pay in full.</p>
+        <p>Don&apos;t miss out on a chance to boost your career this Cyber Week. For a limited time, you can enroll in any pet care course and save {discount} on tuition, or save even more when you pay in full.</p>
         <hr />
         <h6 className="sans-serif">Learn From Pet Care Mentors</h6>
         <p>We&apos;ve hand-selected the top pet care professionals in the industry to mentor you as you work through your course.</p>
