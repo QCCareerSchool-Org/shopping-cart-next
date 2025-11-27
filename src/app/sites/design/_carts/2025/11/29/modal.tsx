@@ -17,9 +17,9 @@ export const Design20251129Modal: FC<Props> = props => {
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
-      <Modal.Header closeButton>Enroll Today with Our Cyber Monday Offer&mdash;Valued Up to {cyberMondayValue}!</Modal.Header>
+      <Modal.Header closeButton>Enroll Today with Our Cyber Week Offer&mdash;Valued Up to {cyberMondayValue}!</Modal.Header>
       <Modal.Body>
-        <p>Our Cyber Monday Offer is here! For a limited time, enroll in any design course and get a second course FREE plus {discount} off tuition! Enroll today and become a certified expert in under 3 months.</p>
+        <p>Our Cyber Week Offer is here! For a limited time, enroll in any design course and get a second course FREE plus {discount} off tuition! Enroll today and become a certified expert in under 3 months.</p>
         <hr />
         <h6 className="sans-serif">Learn From Expert Instructors</h6>
         <p>We&apos;ve hand-selected the top home design professionals in the industry to guide you through your course material.</p>
