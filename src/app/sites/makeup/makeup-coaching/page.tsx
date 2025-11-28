@@ -1,10 +1,18 @@
 import { agreementLinks } from '../agreementLinks';
-import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { MakeupCoachingPromo } from './promo';
 import { Form } from '@/components/form';
+import type { CourseGroup } from '@/domain/courseGroup';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
+
+const courseGroups: CourseGroup[] = [
+  {
+    items: [
+      { code: 'PA', name: 'Makeup Coaching' },
+    ],
+  },
+];
 
 const MakeupCoachingPage: PageComponent = async ({ searchParams }) => {
   const date = await getDate(searchParams.date);
