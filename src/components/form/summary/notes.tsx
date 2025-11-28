@@ -45,6 +45,10 @@ const PartPaymentSummary: FC<{ price: PriceState; day: number }> = ({ price, day
     return;
   }
 
+  if (!price.plans.part) {
+    return null;
+  }
+
   return (
     <>
       <p>

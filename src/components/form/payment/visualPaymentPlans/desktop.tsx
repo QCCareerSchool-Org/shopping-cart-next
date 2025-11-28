@@ -119,41 +119,43 @@ export const Desktop: FC<Props> = ({ date, school, discountName, courseGroups })
           </div>
 
           {/* installment-option column */}
-          <div className={`${styles.partColumn} col-6`}>
-            <div onClick={handlePartClick} className={`${styles.box} ${styles.partBox} ${styles.rounded} ${paymentState.plan !== 'full' ? styles.selected : styles.faded}`} style={partStyle}>
-              <div className={styles.sidePadding}>
-                <h3 className={styles.boxTitle}>Installment Plan{paymentState.plan === 'part' && <> <Checkmark /></>}</h3>
-                <ul className={styles.planList}>
-                  {priceState && priceState.plans.full.discount > 0 && <li><strong>Start for {priceState.currency.symbol}{formatCurrency(priceState.plans.part.deposit)}</strong></li>}
-                  {kit?.partBullets.map((b, i) => <li key={i}>{b}</li>)}
-                </ul>
-              </div>
-              {kit?.images
-                ? (
-                  <>
-                    <div style={{ height: kit.images.height[screenSize], position: 'relative' }}>
-                      {kit.images.part.src && <Image src={kit.images.part.src} style={{ width: '100%', height: 'auto' }} alt="kit" />}
-                      {!kit.images.buttonBelow && (
-                        <div className="d-flex justify-content-center" style={{ position: 'absolute', left: 0, right: 0, top: kit.images.buttonOffset[screenSize], width: '100%' }}>
+          {priceState?.plans.part && (
+            <div className={`${styles.partColumn} col-6`}>
+              <div onClick={handlePartClick} className={`${styles.box} ${styles.partBox} ${styles.rounded} ${paymentState.plan !== 'full' ? styles.selected : styles.faded}`} style={partStyle}>
+                <div className={styles.sidePadding}>
+                  <h3 className={styles.boxTitle}>Installment Plan{paymentState.plan === 'part' && <> <Checkmark /></>}</h3>
+                  <ul className={styles.planList}>
+                    {priceState && <li><strong>Start for {priceState.currency.symbol}{formatCurrency(priceState.plans.part.deposit)}</strong></li>}
+                    {kit?.partBullets.map((b, i) => <li key={i}>{b}</li>)}
+                  </ul>
+                </div>
+                {kit?.images
+                  ? (
+                    <>
+                      <div style={{ height: kit.images.height[screenSize], position: 'relative' }}>
+                        {kit.images.part.src && <Image src={kit.images.part.src} style={{ width: '100%', height: 'auto' }} alt="kit" />}
+                        {!kit.images.buttonBelow && (
+                          <div className="d-flex justify-content-center" style={{ position: 'absolute', left: 0, right: 0, top: kit.images.buttonOffset[screenSize], width: '100%' }}>
+                            <Btn onClick={handlePartClick} active={paymentState.plan !== 'full'} variant={kit.images.part.buttonVariant ?? 'dark-grey'} />
+                          </div>
+                        )}
+                      </div>
+                      {!!kit.images.buttonBelow && (
+                        <div className="d-flex justify-content-center" style={{ width: '100%', marginTop: '0.5rem' }}>
                           <Btn onClick={handlePartClick} active={paymentState.plan !== 'full'} variant={kit.images.part.buttonVariant ?? 'dark-grey'} />
                         </div>
                       )}
+                    </>
+                  )
+                  : (
+                    <div className="d-flex justify-content-center">
+                      <Btn onClick={handlePartClick} active={paymentState.plan !== 'full'} variant="dark-grey" />
                     </div>
-                    {!!kit.images.buttonBelow && (
-                      <div className="d-flex justify-content-center" style={{ width: '100%', marginTop: '0.5rem' }}>
-                        <Btn onClick={handlePartClick} active={paymentState.plan !== 'full'} variant={kit.images.part.buttonVariant ?? 'dark-grey'} />
-                      </div>
-                    )}
-                  </>
-                )
-                : (
-                  <div className="d-flex justify-content-center">
-                    <Btn onClick={handlePartClick} active={paymentState.plan !== 'full'} variant="dark-grey" />
-                  </div>
-                )
-              }
+                  )
+                }
+              </div>
             </div>
-          </div>
+          )}
 
           {/* extra details */}
           {kit?.details && (

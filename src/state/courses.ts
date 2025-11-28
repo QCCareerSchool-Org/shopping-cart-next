@@ -174,7 +174,6 @@ const hiddenCourses = (selectedCourses: string[], student: boolean, countryCode:
     result.push('MS');
   }
   /* pet */
-  console.log(countryCode, provinceCode);
   if (!(countryCode === 'US' || (countryCode === 'CA' && provinceCode !== 'ON'))) {
     result.push('DE');
   }

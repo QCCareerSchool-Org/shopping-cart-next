@@ -34,7 +34,7 @@ type PriceDetails = {
   /** the discounted price (before payment plan discount) */
   discountedCost: number;
   /** the payment plans */
-  plans: { full: Plan; part: Plan };
+  plans: { full: Plan; part?: Plan };
   /** what our cost for shipping would be if we shipped */
   shipping: number;
 };
@@ -98,10 +98,10 @@ const isPriceDetails = (obj: unknown): obj is PriceDetails => {
     'shipping' in obj && typeof obj.shipping === 'number';
 };
 
-const isPlans = (obj: unknown): obj is { full: Plan; part: Plan } => {
+const isPlans = (obj: unknown): obj is { full: Plan; part?: Plan } => {
   return obj !== null && typeof obj === 'object' &&
     'full' in obj && isPlan(obj.full) &&
-    'part' in obj && isPlan(obj.part);
+    (!('part' in obj) || typeof obj.part === 'undefined' || ('part' in obj && isPlan(obj.part)));
 };
 
 const isPlan = (obj: unknown): obj is Plan => {

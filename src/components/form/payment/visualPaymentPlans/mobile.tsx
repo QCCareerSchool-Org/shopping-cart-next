@@ -70,7 +70,7 @@ export const Mobile: FC<Props> = ({ date, school, discountName, courseGroups }) 
               </a>
             </li>
           </ul>
-          {paymentState.plan === 'full'
+          {paymentState.plan === 'full' || typeof priceState?.plans.part === 'undefined'
             ? (
               <div className={`${styles.box} ${styles.fullBox} ${cornerStyle ? styles[cornerStyle] : ''} ${styles.roundedBottom}`} style={{ backgroundColor: kit?.images?.full.backgroundColor, color: kit?.images?.full.color, borderColor: kit?.images?.full.borderColor }}>
                 <div className={styles.sidePadding}>

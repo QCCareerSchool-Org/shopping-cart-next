@@ -13,7 +13,7 @@ import type { School, SchoolVariant } from '@/domain/school';
 import type { PriceQuery } from '@/lib/fetch';
 import { fetchPrice } from '@/lib/fetch';
 
-export const usePriceUpdater = (date: number, internal: boolean, school: School, schoolVariant?: SchoolVariant, promoCodeDefault?: string): void => {
+export const usePriceUpdater = (date: number, internal: boolean, school: School, schoolVariant?: SchoolVariant, promoCodeDefault?: string, coursesOverride?: string[]): void => {
   const addressState = useAddressState();
   const coursesState = useCoursesState();
   const metaState = useMetaState();
@@ -30,7 +30,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     const controller = new AbortController();
 
     const priceQuery: PriceQuery = {
-      courses: coursesState.selected,
+      courses: coursesOverride ?? coursesState.selected,
       countryCode: addressState.countryCode,
       provinceCode: addressState.provinceCode ?? undefined,
       options: {
@@ -47,17 +47,20 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     }
     fetchPrice(priceQuery, controller).then(price => {
       if (price) {
+        if (price.courses.some(c => !c.plans.part || c.plans.part.installments === 0)) {
+          paymentDispatch({ type: 'SET_PAYMENT_PLAN', payload: 'full' });
+        }
         overridesDispatch({
           type: 'INITIALIZE_OVERRIDES',
           payload: {
-            installments: Math.max(1, price.plans.part.originalInstallments),
+            installments: price.plans.part?.originalInstallments ?? 0,
             courses: price.courses.map(c => ({
               code: c.code,
               name: c.name,
-              min: c.plans.part.originalDeposit,
-              max: c.plans.part.total,
-              default: c.plans.part.originalDeposit,
-              value: c.plans.part.deposit,
+              min: c.plans.part?.originalDeposit ?? 0,
+              max: c.plans.part?.total ?? 0,
+              default: c.plans.part?.originalDeposit ?? 0,
+              value: c.plans.part?.deposit ?? 0,
             })),
           },
         });
@@ -67,13 +70,13 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     });
 
     return () => controller.abort();
-  }, [ date, internal, overridesDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, schoolVariant, promoCodeDefault ]);
+  }, [ date, internal, overridesDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, schoolVariant, promoCodeDefault, coursesOverride, paymentDispatch ]);
 
   useEffect(() => {
     const controller = new AbortController();
     const priceQuery: PriceQuery = {
       countryCode: addressState.countryCode,
-      courses: coursesState.selected,
+      courses: coursesOverride ?? coursesState.selected,
       options: {
         discountAll: metaState.student,
         studentDiscount: metaState.studentDiscount,
@@ -89,7 +92,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     if (internal) {
       priceQuery.options = {
         ...priceQuery.options,
-        installmentsOverride: Math.max(1, overridesState.installments),
+        installmentsOverride: overridesState.installments,
         depositOverrides: overridesState.courses.reduce<{ [key: string]: number }>((prev, cur) => {
           prev[cur.code] = cur.value;
           return prev;
@@ -100,7 +103,8 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     fetchPrice(priceQuery, controller).then(price => {
       if (price) {
         priceDispatch({ type: 'SET_PRICE', payload: price });
-        if (price.plans.part.installmentSize === 0) {
+        if (!price.plans.part || price.plans.part.installmentSize === 0) {
+          console.log('here!');
           paymentDispatch({ type: 'SET_PAYMENT_PLAN', payload: 'full' });
         }
       }
@@ -108,5 +112,5 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
       console.error(err);
     });
     return () => controller.abort();
-  }, [ date, internal, priceDispatch, paymentDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, schoolVariant, promoCodeDefault, overridesState ]);
+  }, [ date, internal, priceDispatch, paymentDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, schoolVariant, promoCodeDefault, overridesState, coursesOverride ]);
 };

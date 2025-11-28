@@ -84,6 +84,7 @@ type Props = {
   /** the default setting for "same as student address" */
   billingAddressDefault?: 'same' | 'different';
   hideCourseTable?: boolean;
+  hideCourseSelection?: boolean;
 };
 
 const showBillingAddress = (school: School, billingAddressDefault?: 'same' | 'different'): boolean => {
@@ -102,7 +103,7 @@ export const Form: FC<Props> = props => {
   }, []);
 
   useInitialData(props.school, props.schoolVariant, !!props.student, props.courseGroups, props.coursesOverride, props.billingAddressDefault);
-  usePriceUpdater(props.date, !!props.internal, props.school, props.schoolVariant, props.promoCodeDefault);
+  usePriceUpdater(props.date, !!props.internal, props.school, props.schoolVariant, props.promoCodeDefault, props.coursesOverride);
 
   const [ showConfirmationPopup, toggleConfirmationPopup ] = useToggle(false);
   const [ showPaysafeForm, togglePaysafeForm ] = useToggle(false);
@@ -186,6 +187,7 @@ export const Form: FC<Props> = props => {
         coursesSubtitle={props.coursesSubtitle}
         coursesOverride={!!props.coursesOverride}
         hideCourseTable={!!props.hideCourseTable}
+        hide={props.hideCourseSelection}
       />
       <Address school={props.school} schoolVariant={props.schoolVariant} />
       <Suspense>{showBillingAddress(props.school, props.billingAddressDefault) && <BillingAddress />}</Suspense>

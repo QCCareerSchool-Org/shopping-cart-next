@@ -23,9 +23,14 @@ type Props = {
   dynamicCourseDescriptions?: DynamicCourseDescriptions;
   discountName?: string;
   hideCourseTable: boolean;
+  hide?: boolean;
 };
 
 export const CourseSelection: FC<Props> = props => {
+  if (props.hide) {
+    return;
+  }
+
   return (
     <Section className="coursesSection" id="courses">
       {props.coursesOverride ? <Override {...props} /> : <Standard {...props} />}

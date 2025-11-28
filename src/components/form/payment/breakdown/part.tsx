@@ -21,6 +21,10 @@ export const Part: FC<Props> = ({ discountName, courseGroups }) => {
     return;
   }
 
+  if (!priceState.plans.part) {
+    return;
+  }
+
   return (
     <>
       {((priceState.courses.length > 1) || (priceState.courses.length > 0 && (priceState.courses[0].multiCourseDiscount > 0 || priceState.courses[0].free))) && (

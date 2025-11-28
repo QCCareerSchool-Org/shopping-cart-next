@@ -24,7 +24,7 @@ export const Hero: FC = () => {
       ? [ DesktopAU, MobileAU ]
       : priceState?.currency.code === 'NZD'
         ? [ DesktopNZ, MobileNZ ]
-        : priceState?.courses.some(c => c.plans.part.deposit === 116)
+        : priceState?.courses.some(c => c.plans.part?.deposit === 116)
           ? [ Desktop116, Mobile116 ]
           : [ Desktop, Mobile ];
 
