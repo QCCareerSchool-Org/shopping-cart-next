@@ -47,6 +47,9 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     }
     fetchPrice(priceQuery, controller).then(price => {
       if (price) {
+        if (price.courses.some(c => !c.plans.part || c.plans.part.installments === 0)) {
+          paymentDispatch({ type: 'SET_PAYMENT_PLAN', payload: 'full' });
+        }
         overridesDispatch({
           type: 'INITIALIZE_OVERRIDES',
           payload: {
@@ -67,7 +70,8 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     });
 
     return () => controller.abort();
-  }, [ date, internal, overridesDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, schoolVariant, promoCodeDefault, coursesOverride ]);
+  }, [ date, internal, overridesDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, schoolVariant, promoCodeDefault, coursesOverride, paymentDispatch ]);
+
   useEffect(() => {
     const controller = new AbortController();
     const priceQuery: PriceQuery = {
@@ -100,6 +104,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
       if (price) {
         priceDispatch({ type: 'SET_PRICE', payload: price });
         if (!price.plans.part || price.plans.part.installmentSize === 0) {
+          console.log('here!');
           paymentDispatch({ type: 'SET_PAYMENT_PLAN', payload: 'full' });
         }
       }

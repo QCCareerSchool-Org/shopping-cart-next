@@ -35,7 +35,7 @@ export const Address: FC<Props> = ({ school }) => {
   const heading = school === 'QC Design School' ? 'Shipping Address' : 'Student Address';
 
   return (
-    <Section className="addressSection">
+    <Section className="addressSection" id="address">
       <div className="row justify-content-center">
         <div className="col-12 col-lg-8 text-center">
           <h2 className="h1">{heading}</h2>

@@ -3,11 +3,21 @@ import { useId } from 'react';
 
 import { usePaymentDispatch } from '@/hooks/usePaymentDispatch';
 import { usePaymentState } from '@/hooks/usePaymentState';
+import { usePriceState } from '@/hooks/usePriceState';
 
 export const Part: FC = () => {
   const id = useId();
   const paymentState = usePaymentState();
   const paymentDispatch = usePaymentDispatch();
+  const priceState = usePriceState();
+
+  if (!priceState) {
+    return;
+  }
+
+  if (priceState.courses.some(c => !c.plans.part)) {
+    return;
+  }
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = e => {
     if (e.target.checked) {

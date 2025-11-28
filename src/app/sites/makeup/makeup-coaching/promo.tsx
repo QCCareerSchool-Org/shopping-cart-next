@@ -9,7 +9,7 @@ import { LuminousKit } from '@/components/luminousKit';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#fff';
+const backgroundColor = '#261b0a';
 
 type Props = {
   date: number;
@@ -25,9 +25,9 @@ export const MakeupCoachingPromo: FC<Props> = () => {
   return (
     <>
       <Section style={{ backgroundColor }} noPadding>
-        <div onClick={handleClick} style={{ cursor: 'pointer' }}>
+        <a href="#address">
           <MakeupCoachingHero />
-        </div>
+        </a>
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
         <Modal.Header closeButton>

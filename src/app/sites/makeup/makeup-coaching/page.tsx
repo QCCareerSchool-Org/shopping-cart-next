@@ -29,6 +29,7 @@ const MakeupCoachingPage: PageComponent = async ({ searchParams }) => {
         dynamicCourseDescriptions="SHOW"
         showPromoCodeInput
         coursesOverride={[ 'pa' ]}
+        hideCourseSelection
       />
     </>
   );
