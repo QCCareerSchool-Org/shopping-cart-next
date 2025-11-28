@@ -50,14 +50,14 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
         overridesDispatch({
           type: 'INITIALIZE_OVERRIDES',
           payload: {
-            installments: Math.max(1, price.plans.part.originalInstallments),
+            installments: price.plans.part?.originalInstallments ?? 0,
             courses: price.courses.map(c => ({
               code: c.code,
               name: c.name,
-              min: c.plans.part.originalDeposit,
-              max: c.plans.part.total,
-              default: c.plans.part.originalDeposit,
-              value: c.plans.part.deposit,
+              min: c.plans.part?.originalDeposit ?? 0,
+              max: c.plans.part?.total ?? 0,
+              default: c.plans.part?.originalDeposit ?? 0,
+              value: c.plans.part?.deposit ?? 0,
             })),
           },
         });
@@ -88,7 +88,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     if (internal) {
       priceQuery.options = {
         ...priceQuery.options,
-        installmentsOverride: Math.max(1, overridesState.installments),
+        installmentsOverride: overridesState.installments,
         depositOverrides: overridesState.courses.reduce<{ [key: string]: number }>((prev, cur) => {
           prev[cur.code] = cur.value;
           return prev;
@@ -99,7 +99,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     fetchPrice(priceQuery, controller).then(price => {
       if (price) {
         priceDispatch({ type: 'SET_PRICE', payload: price });
-        if (price.plans.part.installmentSize === 0) {
+        if (!price.plans.part || price.plans.part.installmentSize === 0) {
           paymentDispatch({ type: 'SET_PAYMENT_PLAN', payload: 'full' });
         }
       }

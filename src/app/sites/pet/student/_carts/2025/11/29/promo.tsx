@@ -15,7 +15,7 @@ type Props = {
 };
 
 export const PetStudent20251129Promo: FC<Props> = ({ date }) => {
-  
+
   return (
     <>
       <Section style={{ backgroundColor }} noPadding>

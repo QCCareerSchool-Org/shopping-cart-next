@@ -34,7 +34,7 @@ type PriceDetails = {
   /** the discounted price (before payment plan discount) */
   discountedCost: number;
   /** the payment plans */
-  plans: { full: Plan; part: Plan };
+  plans: { full: Plan; part?: Plan };
   /** what our cost for shipping would be if we shipped */
   shipping: number;
 };

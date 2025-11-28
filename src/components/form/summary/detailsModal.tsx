@@ -68,6 +68,10 @@ const PartBreakdown: FC<OuterProps> = ({ price, countryCode, provinceCode, cours
     return;
   }
 
+  if (!price.plans.part) {
+    return;
+  }
+
   return (
     <div>
       <p>The total cost of your courses is <strong>{price.currency.symbol}{price.plans.part.total.toFixed(2)}</strong>. Your payments are broken down as follows:</p>
@@ -107,10 +111,17 @@ const CostRows: React.FC<InnerProps> = ({ price, plan, countryCode, provinceCode
     return;
   }
 
+  if (!price.plans[plan]) {
+    return;
+  }
+
   let key = 0;
   return (
     <>
       {price.courses.filter(coursePrice => coursePrice.primary).map(coursePrice => {
+        if (!coursePrice.plans[plan]) {
+          return null;
+        }
         const course = getCourse(coursePrice.code, courseGroups);
         if (!course) {
           return null;
@@ -138,6 +149,9 @@ const CostRows: React.FC<InnerProps> = ({ price, plan, countryCode, provinceCode
         );
       })}
       {price.courses.filter(coursePrice => !coursePrice.primary).map(coursePrice => {
+        if (!coursePrice.plans[plan]) {
+          return null;
+        }
         const course = getCourse(coursePrice.code, courseGroups);
         if (!course) {
           return null;
@@ -193,10 +207,17 @@ const DepositRows: FC<InnerProps> = ({ price, plan, countryCode, provinceCode, c
     return;
   }
 
+  if (!price.plans[plan]) {
+    return null;
+  }
+
   let key = 0;
   return (
     <>
       {price.courses.filter(coursePrice => coursePrice.primary).map(coursePrice => {
+        if (!coursePrice.plans[plan]) {
+          return null;
+        }
         const course = getCourse(coursePrice.code, courseGroups);
         if (!course) {
           return null;
@@ -210,6 +231,9 @@ const DepositRows: FC<InnerProps> = ({ price, plan, countryCode, provinceCode, c
         );
       })}
       {price.courses.filter(coursePrice => !coursePrice.primary).map(coursePrice => {
+        if (!coursePrice.plans[plan]) {
+          return null;
+        }
         const course = getCourse(coursePrice.code, courseGroups);
         if (!course) {
           return null;
@@ -239,10 +263,17 @@ const InstallmentRows: FC<InnerProps> = ({ price, plan, countryCode, provinceCod
     return;
   }
 
+  if (!price.plans[plan]) {
+    return null;
+  }
+
   let key = 0;
   return (
     <>
       {price.courses.filter(coursePrice => coursePrice.primary).map(coursePrice => {
+        if (!coursePrice.plans[plan]) {
+          return null;
+        }
         const course = getCourse(coursePrice.code, courseGroups);
         if (!course) {
           return null;
@@ -256,6 +287,9 @@ const InstallmentRows: FC<InnerProps> = ({ price, plan, countryCode, provinceCod
         );
       })}
       {price.courses.filter(coursePrice => !coursePrice.primary).map(coursePrice => {
+        if (!coursePrice.plans[plan]) {
+          return null;
+        }
         const course = getCourse(coursePrice.code, courseGroups);
         if (!course) {
           return null;
