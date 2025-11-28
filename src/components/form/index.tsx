@@ -102,7 +102,7 @@ export const Form: FC<Props> = props => {
   }, []);
 
   useInitialData(props.school, props.schoolVariant, !!props.student, props.courseGroups, props.coursesOverride, props.billingAddressDefault);
-  usePriceUpdater(props.date, !!props.internal, props.school, props.schoolVariant, props.promoCodeDefault);
+  usePriceUpdater(props.date, !!props.internal, props.school, props.schoolVariant, props.promoCodeDefault, props.coursesOverride);
 
   const [ showConfirmationPopup, toggleConfirmationPopup ] = useToggle(false);
   const [ showPaysafeForm, togglePaysafeForm ] = useToggle(false);
@@ -176,19 +176,17 @@ export const Form: FC<Props> = props => {
     <>
       <GoogleReCaptcha onVerify={handleRecaptchaVerify} refreshReCaptcha={refreshCaptcha} />
       <Suspense>{!!props.internal && <Internal school={props.school} />}</Suspense>
-      {typeof props.coursesOverride === 'undefined' && (
-        <CourseSelection
-          internal={!!props.internal}
-          courseGroups={props.courseGroups}
-          showHiddenCourses={props.showHiddenCourses}
-          dynamicCourseDescriptions={props.dynamicCourseDescriptions}
-          dynamicCourseMessages={props.dynamicCourseMessages}
-          discountName={props.discountName}
-          coursesSubtitle={props.coursesSubtitle}
-          coursesOverride={!!props.coursesOverride}
-          hideCourseTable={!!props.hideCourseTable}
-        />
-      )}
+      <CourseSelection
+        internal={!!props.internal}
+        courseGroups={props.courseGroups}
+        showHiddenCourses={props.showHiddenCourses}
+        dynamicCourseDescriptions={props.dynamicCourseDescriptions}
+        dynamicCourseMessages={props.dynamicCourseMessages}
+        discountName={props.discountName}
+        coursesSubtitle={props.coursesSubtitle}
+        coursesOverride={!!props.coursesOverride}
+        hideCourseTable={!!props.hideCourseTable}
+      />
       <Address school={props.school} schoolVariant={props.schoolVariant} />
       <Suspense>{showBillingAddress(props.school, props.billingAddressDefault) && <BillingAddress />}</Suspense>
       <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} discountName={props.discountName} courseGroups={props.courseGroups} />
