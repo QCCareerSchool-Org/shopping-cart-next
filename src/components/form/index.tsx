@@ -176,17 +176,19 @@ export const Form: FC<Props> = props => {
     <>
       <GoogleReCaptcha onVerify={handleRecaptchaVerify} refreshReCaptcha={refreshCaptcha} />
       <Suspense>{!!props.internal && <Internal school={props.school} />}</Suspense>
-      <CourseSelection
-        internal={!!props.internal}
-        courseGroups={props.courseGroups}
-        showHiddenCourses={props.showHiddenCourses}
-        dynamicCourseDescriptions={props.dynamicCourseDescriptions}
-        dynamicCourseMessages={props.dynamicCourseMessages}
-        discountName={props.discountName}
-        coursesSubtitle={props.coursesSubtitle}
-        coursesOverride={!!props.coursesOverride}
-        hideCourseTable={!!props.hideCourseTable}
-      />
+      {typeof props.coursesOverride === 'undefined' && (
+        <CourseSelection
+          internal={!!props.internal}
+          courseGroups={props.courseGroups}
+          showHiddenCourses={props.showHiddenCourses}
+          dynamicCourseDescriptions={props.dynamicCourseDescriptions}
+          dynamicCourseMessages={props.dynamicCourseMessages}
+          discountName={props.discountName}
+          coursesSubtitle={props.coursesSubtitle}
+          coursesOverride={!!props.coursesOverride}
+          hideCourseTable={!!props.hideCourseTable}
+        />
+      )}
       <Address school={props.school} schoolVariant={props.schoolVariant} />
       <Suspense>{showBillingAddress(props.school, props.billingAddressDefault) && <BillingAddress />}</Suspense>
       <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} discountName={props.discountName} courseGroups={props.courseGroups} />
