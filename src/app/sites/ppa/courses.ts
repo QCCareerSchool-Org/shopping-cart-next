@@ -209,7 +209,7 @@ export const ppaCourses: PpaCourse[] = [
       'Reduce grooming stress',
       'Bond more with your pet',
     ],
-    testimonialIds: [ 'lucie', 'jason', 'meaghan' ],
+    testimonialIds: [ 'jason', 'meaghan', 'lucie' ],
   }),
   createCourse({
     name: 'How to Groom a Pug',
