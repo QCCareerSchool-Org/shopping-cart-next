@@ -424,6 +424,216 @@ a {
   margin-bottom: 0.4rem;
 }
 
+.ppaCheckout [data-form-variant='ppa'] .form-control.is-invalid,
+.ppaCheckout [data-form-variant='ppa'] .form-select.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.18);
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='5.25'/%3e%3cpath stroke-linecap='round' d='M6 3.25v3.5'/%3e%3ccircle cx='6' cy='8.75' r='.35' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  background-size: 0.95rem;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .form-control.is-invalid:focus,
+.ppaCheckout [data-form-variant='ppa'] .form-select.is-invalid:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.26);
+}
+
+.ppaCheckout [data-form-variant='ppa'] .summarySection .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--brand-teal);
+  border: none;
+  border-radius: 999px;
+  padding: 0.8rem 1.65rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(16, 196, 196, 0.28);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .summarySection .btn-primary:hover,
+.ppaCheckout [data-form-variant='ppa'] .summarySection .btn-primary:focus-visible {
+  background-color: #13ebeb;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(16, 196, 196, 0.35);
+}
+
+.ppaCheckout [data-form-variant='ppa'] .summarySection .btn-primary img {
+  height: 1rem;
+  width: auto;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .coupon-consent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .coupon-consent-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--foreground);
+}
+
+.ppaCheckout [data-form-variant='ppa'] .coupon-consent-item.form-check {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .coupon-consent-item .form-check-input {
+  margin-left: 0;
+  margin-top: 0.35rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 0.25rem;
+  border-color: rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .coupon-consent-item .form-check-input:checked {
+  background-color: var(--brand-teal);
+  border-color: var(--brand-teal);
+}
+
+.ppaCheckout [data-form-variant='ppa'] .coupon-consent-item .form-check-input:focus {
+  border-color: var(--brand-teal);
+  box-shadow: 0 0 0 0.2rem rgba(16, 196, 196, 0.25);
+}
+
+.ppaCheckout [data-form-variant='ppa'] .coupon-consent-item .form-check-label {
+  display: block;
+  line-height: 1.4;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .coupon-consent-item .invalid-feedback {
+  color: #dc3545;
+  margin-top: 0.2rem;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .terms-embed {
+  margin: 1.5rem 0 2rem;
+  padding: 1.1rem 1.35rem;
+  border: 1px solid rgba(16, 196, 196, 0.2);
+  border-radius: 20px;
+  background: #f4fffe;
+  box-shadow: 0 18px 40px rgba(10, 88, 88, 0.08);
+}
+
+.ppaCheckout [data-form-variant='ppa'] .terms-embed__title {
+  margin: 0 0 0.65rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--brand-teal);
+}
+
+.ppaCheckout [data-form-variant='ppa'] .terms-embed__frame {
+  border-radius: 14px;
+  border: 1px solid rgba(16, 196, 196, 0.15);
+  background: #fff;
+  height: clamp(200px, 32vh, 280px);
+  overflow-y: auto;
+  padding: 1.1rem 1.35rem;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .terms-embed__content {
+  font-size: 0.95rem;
+  color: var(--foreground);
+}
+
+.ppaCheckout [data-form-variant='ppa'] .terms-embed__content h4,
+.ppaCheckout [data-form-variant='ppa'] .terms-embed__content h5 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+  color: var(--foreground);
+}
+
+.ppaCheckout [data-form-variant='ppa'] .terms-embed__list {
+  padding-left: 1.25rem;
+  margin: 1rem 0;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .terms-embed__list li + li {
+  margin-top: 1rem;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .terms-embed__content ul {
+  padding-left: 1rem;
+  margin: 0.4rem 0;
+  list-style: disc;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .terms-embed__content ul li {
+  margin: 0.15rem 0;
+}
+
+
+.ppaCheckout [data-form-variant='ppa'] .summarySection .summary-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 576px) {
+  .ppaCheckout [data-form-variant='ppa'] .summarySection .summary-cta-row {
+    justify-content: flex-start;
+  }
+}
+
+.ppaCheckout [data-form-variant='ppa'] .summarySection .summary-payment-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.2rem;
+  flex-wrap: wrap;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .summarySection .summary-payment-icon {
+  height: 24px;
+  width: auto;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .summarySection .summary-trusted-icon {
+  height: 28px;
+  width: auto;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .coupon-apply-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--brand-teal);
+  background: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  margin-left: 0.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .coupon-apply-btn:hover,
+.ppaCheckout [data-form-variant='ppa'] .coupon-apply-btn:focus-visible {
+  color: var(--brand-teal-dark);
+  box-shadow: 0 4px 12px rgba(16, 196, 196, 0.18);
+}
+
+.ppaCheckout [data-form-variant='ppa'] .coupon-apply-icon {
+  font-size: 0.95rem;
+}
+
 .ppaHighlights {
   list-style: none;
   padding: 0;

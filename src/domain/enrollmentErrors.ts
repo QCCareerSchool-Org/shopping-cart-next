@@ -16,6 +16,11 @@ type Address = {
   emailAddress?: MissingEmptyInvalid;
 };
 
+type ConsentErrors = {
+  subscribe?: MissingEmpty;
+  terms?: MissingEmpty;
+};
+
 export type EnrollmentErrors = {
   courses?: MissingEmptyInvalid;
   studentAddress: Address;
@@ -23,6 +28,7 @@ export type EnrollmentErrors = {
   paymentPlan?: MissingEmptyInvalid;
   paymentDay?: MissingEmptyInvalid;
   captchaToken?: MissingInvalid;
+  consent?: ConsentErrors;
 };
 
 export const isEnrollmentErrors = (obj: unknown): obj is EnrollmentErrors => {
@@ -31,7 +37,8 @@ export const isEnrollmentErrors = (obj: unknown): obj is EnrollmentErrors => {
     'studentAddress' in obj && isAddress(obj.studentAddress) &&
     'billingAddress' in obj && isAddress(obj.billingAddress) &&
     (('paymentPlan' in obj && (isMissingEmptyInvalid(obj.paymentPlan) || typeof obj.paymentPlan === 'undefined')) || !('paymentPlan' in obj)) &&
-    (('paymentDay' in obj && (isMissingEmptyInvalid(obj.paymentDay) || typeof obj.paymentDay === 'undefined')) || !('paymentDay' in obj));
+    (('paymentDay' in obj && (isMissingEmptyInvalid(obj.paymentDay) || typeof obj.paymentDay === 'undefined')) || !('paymentDay' in obj)) &&
+    (('consent' in obj && (isConsent(obj.consent) || typeof obj.consent === 'undefined')) || !('consent' in obj));
 };
 
 const isAddress = (obj: unknown): obj is Address => {
@@ -59,4 +66,10 @@ const isMissingEmpty = (obj: unknown): obj is EnrollmentErrors['courses'] => {
 
 const isMissingInvalid = (obj: unknown): obj is EnrollmentErrors['courses'] => {
   return typeof obj === 'string' && (obj === 'missing' || obj === 'invalid');
+};
+
+const isConsent = (obj: unknown): obj is ConsentErrors => {
+  return obj !== null && typeof obj === 'object' &&
+    (('subscribe' in obj && (isMissingEmpty(obj.subscribe) || typeof obj.subscribe === 'undefined')) || !('subscribe' in obj)) &&
+    (('terms' in obj && (isMissingEmpty(obj.terms) || typeof obj.terms === 'undefined')) || !('terms' in obj));
 };

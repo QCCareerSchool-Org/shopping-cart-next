@@ -11,12 +11,17 @@ import { Payment } from './payment';
 import { ScrollIndicator } from './scrollIndicator';
 import { Summary } from './summary';
 import { FormStyleVariantProvider, type FormStyleVariant } from './formStyleContext';
+import { scrollToPosition } from '@/components/scroller';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
+import type { EnrollmentErrors } from '@/domain/enrollmentErrors';
 import { type School, type SchoolVariant, validVariant } from '@/domain/school';
 import { useAddressState } from '@/hooks/useAddressState';
+import { useBillingAddressState } from '@/hooks/useBillingAddressState';
 import { useCoursesState } from '@/hooks/useCoursesState';
 import { useEnroll } from '@/hooks/useEnroll';
+import { useErrorsDispatch } from '@/hooks/useErrorsDispatch';
+import { useErrorsState } from '@/hooks/useErrorsState';
 import { useInitialData } from '@/hooks/useInitialData';
 import { useMetaDispatch } from '@/hooks/useMetaDispatch';
 import { useMetaState } from '@/hooks/useMetaState';
@@ -25,6 +30,8 @@ import { usePriceState } from '@/hooks/usePriceState';
 import { usePriceUpdater } from '@/hooks/usePriceUpdater';
 import { useToggle } from '@/hooks/useToggle';
 import { getPaysafeCompany } from '@/lib/getPaysafeCompany';
+import { needsPostal } from '@/lib/needsPostal';
+import { needsProvince } from '@/lib/needProvince';
 import type { Paysafe } from '@/lib/paysafe';
 import type { AddressState } from '@/state/address';
 import type { MetaState } from '@/state/meta';
@@ -114,11 +121,15 @@ export const Form: FC<Props> = props => {
 
   const coursesState = useCoursesState();
   const addressState = useAddressState();
+  const billingAddressState = useBillingAddressState();
   const priceState = usePriceState();
   const paymentState = usePaymentState();
   const metaState = useMetaState();
   const metaDispatch = useMetaDispatch();
+  const { errors } = useErrorsState();
+  const errorsDispatch = useErrorsDispatch();
 
+  const billingSectionVisible = showBillingAddress(props.school, props.billingAddressDefault);
   const paysafeCompany = priceState ? getPaysafeCompany(priceState.currency.code) : undefined;
 
   const [ addToDatabase, handleCharge ] = useEnroll(!!props.internal, props.school, props.schoolVariant, props.successLink, props.promoCodeDefault);
@@ -132,6 +143,10 @@ export const Form: FC<Props> = props => {
   };
 
   const handleSubmit = (): void => {
+    if (!validateAddresses()) {
+      return;
+    }
+
     if (props.confirmation?.show?.(coursesState.selected, addressState, priceState, paymentState, metaState)) {
       toggleConfirmationPopup();
     } else {
@@ -146,6 +161,59 @@ export const Form: FC<Props> = props => {
   const handleConfirmationProceed = (): void => {
     toggleConfirmationPopup();
     showPaymentForm();
+  };
+
+  const validateAddresses = (): boolean => {
+    const nextErrors: EnrollmentErrors = {
+      ...errors,
+      studentAddress: {},
+      billingAddress: {},
+      consent: {},
+    };
+
+    const requireProvince = needsProvince(addressState.countryCode);
+    const requirePostal = needsPostal(addressState.countryCode);
+
+    if (!addressState.title) nextErrors.studentAddress.title = 'missing';
+    if (!addressState.firstName.trim()) nextErrors.studentAddress.firstName = 'missing';
+    if (!addressState.lastName.trim()) nextErrors.studentAddress.lastName = 'missing';
+    if (!addressState.emailAddress.trim()) nextErrors.studentAddress.emailAddress = 'missing';
+    if (!addressState.telephoneNumber.trim()) nextErrors.studentAddress.telephoneNumber = 'missing';
+    if (!addressState.countryCode) nextErrors.studentAddress.countryCode = 'missing';
+    if (!addressState.address1.trim()) nextErrors.studentAddress.address1 = 'missing';
+    if (!addressState.city.trim()) nextErrors.studentAddress.city = 'missing';
+    if (requireProvince && !addressState.provinceCode) nextErrors.studentAddress.provinceCode = 'missing';
+    if (requirePostal && !addressState.postalCode.trim()) nextErrors.studentAddress.postalCode = 'missing';
+
+    if (billingSectionVisible && !billingAddressState.sameAsShipping) {
+      const billingRequireProvince = needsProvince(billingAddressState.countryCode);
+      const billingRequirePostal = needsPostal(billingAddressState.countryCode);
+
+      if (!billingAddressState.title) nextErrors.billingAddress.title = 'missing';
+      if (!billingAddressState.firstName.trim()) nextErrors.billingAddress.firstName = 'missing';
+      if (!billingAddressState.lastName.trim()) nextErrors.billingAddress.lastName = 'missing';
+      if (!billingAddressState.emailAddress.trim()) nextErrors.billingAddress.emailAddress = 'missing';
+      if (!billingAddressState.telephoneNumber.trim()) nextErrors.billingAddress.telephoneNumber = 'missing';
+      if (!billingAddressState.countryCode) nextErrors.billingAddress.countryCode = 'missing';
+      if (!billingAddressState.address1.trim()) nextErrors.billingAddress.address1 = 'missing';
+      if (!billingAddressState.city.trim()) nextErrors.billingAddress.city = 'missing';
+      if (billingRequireProvince && !billingAddressState.provinceCode) nextErrors.billingAddress.provinceCode = 'missing';
+      if (billingRequirePostal && !billingAddressState.postalCode.trim()) nextErrors.billingAddress.postalCode = 'missing';
+    }
+
+    if (!metaState.termsConsent) nextErrors.consent.terms = 'missing';
+
+    const hasStudentErrors = Object.keys(nextErrors.studentAddress).length > 0;
+    const hasBillingErrors = Object.keys(nextErrors.billingAddress).length > 0;
+    const hasConsentErrors = Object.keys(nextErrors.consent).length > 0;
+
+    if (hasStudentErrors || hasBillingErrors || hasConsentErrors) {
+      errorsDispatch({ type: 'SET_ERRORS', payload: nextErrors });
+      scrollToPosition(hasStudentErrors ? 'shipping' : hasBillingErrors ? 'billing' : 'plan');
+      return false;
+    }
+
+    return true;
   };
 
   const showPaymentForm = (): void => {
