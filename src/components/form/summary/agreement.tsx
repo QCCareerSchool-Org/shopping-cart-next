@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 
+import { useFormStyleVariant } from '../formStyleContext';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import { useAddressState } from '@/hooks/useAddressState';
-import { useFormStyleVariant } from '../formStyleContext';
 
 type Props = {
   agreementLinks: AgreementLinks;
@@ -40,7 +40,7 @@ const TermsEmbed: FC = () => (
             <h5>Disclaimers</h5>
             <ul>
               <li><strong>Educational Purpose Only:</strong> Paw Parent Academy provides educational content, resources, and tutorials to assist you in grooming and caring for your dog at home. The techniques, methods, and knowledge you learn from this content will be applied entirely at your own risk.</li>
-              <li><strong>No Professional Veterinary or Medical Advice:</strong> Our courses do not provide professional veterinary or medical advice. For any health concerns regarding your pet, it is important to consult a qualified veterinarian. Paw Parent Academy disclaims any responsibility for issues arising from your pet’s health or safety due to improper application of grooming techniques.</li>
+              <li><strong>No Professional Veterinary or Medical Advice:</strong> Our courses do not provide professional veterinary or medical advice. For any health concerns regarding your pet, it is important to consult a qualified veterinarian. Paw Parent Academy disclaims any responsibility for issues arising from your pet's health or safety due to improper application of grooming techniques.</li>
             </ul>
           </li>
           <li>

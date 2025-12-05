@@ -6,7 +6,6 @@ import { Popup } from './popup';
 import { getPromos } from './promos';
 import { FormGroup } from '@/components/formGroup';
 import { PromoCode } from '@/components/promoCode';
-import { ucWords } from '@/lib/ucWords';
 import type { School } from '@/domain/school';
 import { useErrorsDispatch } from '@/hooks/useErrorsDispatch';
 import { useErrorsState } from '@/hooks/useErrorsState';
@@ -15,6 +14,7 @@ import { useMetaState } from '@/hooks/useMetaState';
 import { usePriceState } from '@/hooks/usePriceState';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 import { useToggle } from '@/hooks/useToggle';
+import { ucWords } from '@/lib/ucWords';
 
 type Props = {
   date: number;
