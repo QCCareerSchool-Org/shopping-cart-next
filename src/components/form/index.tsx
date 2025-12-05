@@ -10,6 +10,7 @@ import { ErrorModal } from './errorModal';
 import { Payment } from './payment';
 import { ScrollIndicator } from './scrollIndicator';
 import { Summary } from './summary';
+import { FormStyleVariantProvider, type FormStyleVariant } from './formStyleContext';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
 import { type School, type SchoolVariant, validVariant } from '@/domain/school';
@@ -85,6 +86,7 @@ type Props = {
   billingAddressDefault?: 'same' | 'different';
   hideCourseTable?: boolean;
   hideCourseSelection?: boolean;
+  fieldStyleVariant?: FormStyleVariant;
 };
 
 const showBillingAddress = (school: School, billingAddressDefault?: 'same' | 'different'): boolean => {
@@ -92,6 +94,7 @@ const showBillingAddress = (school: School, billingAddressDefault?: 'same' | 'di
 };
 
 export const Form: FC<Props> = props => {
+  const fieldStyleVariant = props.fieldStyleVariant ?? 'default';
   useEffect(() => {
     if (typeof paysafe === 'undefined') {
       if (window.confirm('There was an error loading required resources. Do you want to retry?')) {
@@ -174,7 +177,8 @@ export const Form: FC<Props> = props => {
   const handleButtonVisiblityChange = setPaymentButtonVisible;
 
   return (
-    <>
+    <FormStyleVariantProvider value={fieldStyleVariant}>
+      <div data-form-variant={fieldStyleVariant}>
       <GoogleReCaptcha onVerify={handleRecaptchaVerify} refreshReCaptcha={refreshCaptcha} />
       <Suspense>{!!props.internal && <Internal school={props.school} />}</Suspense>
       <CourseSelection
@@ -198,6 +202,7 @@ export const Form: FC<Props> = props => {
       <Suspense>{paysafeCompany && <PaysafeModal company={paysafeCompany} show={showPaysafeForm} onHide={handlePaymentFormHide} onCharge={handleCharge} />}</Suspense>
       <ScrollIndicator scrolledFarEnough={paymentButtonVisible} />
       <ErrorModal />
-    </>
+      </div>
+    </FormStyleVariantProvider>
   );
 };

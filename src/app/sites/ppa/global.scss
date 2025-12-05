@@ -1,0 +1,600 @@
+@use '@/styles.before.scss' as *;
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+/*
+  Consolidated global styles
+  - Brand variables and color-scheme
+  - Resets and layout base
+  - Typography & heading rules (heavier headings)
+  - Small helpers used across components
+*/
+
+:root {
+  /* brand colors */
+  --brand-teal: #10c4c4;
+  --brand-teal-dark: #0c7a7a;
+  --brand-pink: #ff4158;
+  --background: #ffffff;
+  --foreground: #171717;
+  --body-text: #595959;
+
+  /* typography */
+  --font-sans: 'Lato', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* make headings heavier */
+  --heading-weight-heavy: 700;
+  --heading-weight-bold: 600;
+  --muted: #6b7280;
+
+  /* legacy tokens preserved for scoped rules */
+  --ppa-primary: var(--brand-teal);
+  --ppa-dark: var(--brand-teal-dark);
+  --ppa-bg: #ffffff;
+}
+
+/* dark-mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* layout base */
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* resets */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* headings (branding) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+  margin: 0 0 0.6rem 0;
+  color: var(--foreground);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* sizes chosen to roughly match original layout */
+h1,
+.h1 {
+  font-size: clamp(2.75rem, 5.75vw, 4.5rem);
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+
+h2,
+.h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.8rem);
+  font-weight: var(--heading-weight-bold);
+  line-height: 1.2;
+  margin: 0.75rem 0 0;
+}
+
+h3,
+.h3 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.3;
+  font-weight: 500;
+  margin: 0.75rem 0;
+}
+
+/* optional utility for explicitly bold headings */
+.heading-strong {
+  font-weight: var(--heading-weight-heavy) !important;
+}
+
+/* utility / brand classes */
+.heading-accent,
+.text-accent {
+  color: var(--brand-teal) !important;
+  font-weight: var(--heading-weight-bold);
+}
+
+.header-secondary {
+  color: var(--brand-teal);
+  font-weight: var(--heading-weight-bold);
+}
+
+.link-brand-pink {
+  color: var(--brand-pink) !important;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.link-brand-pink:hover,
+.link-brand-pink:focus {
+  color: #ff6b79 !important;
+}
+
+/* body text */
+p,
+li {
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--body-text);
+}
+
+@media (max-width: 767px) {
+  p,
+  li {
+    line-height: 1.5;
+  }
+}
+
+/* small helpers */
+.lead {
+  font-size: 1.0625rem;
+  color: #374151;
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.text-dark {
+  color: #111111 !important;
+}
+
+.btn-pill-primary {
+  --btn-pill-scale: 1;
+  --btn-pill-padding-y: 0.85rem;
+  --btn-pill-padding-x: 1.35rem;
+  --btn-pill-font-size: 1rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--brand-teal);
+  color: #fff !important;
+  border-radius: 999px;
+  padding: calc(var(--btn-pill-padding-y) * var(--btn-pill-scale))
+    calc(var(--btn-pill-padding-x) * var(--btn-pill-scale));
+  font-weight: 700;
+  font-size: calc(var(--btn-pill-font-size) * var(--btn-pill-scale));
+  text-transform: none;
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(11, 102, 102, 0.18);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-pill-primary:hover,
+.btn-pill-primary:focus {
+  background-color: #13ebeb;
+  color: #fff !important;
+}
+
+.btn-pill-pink,
+.article-body .button {
+  --btn-pill-scale: 1;
+  --btn-pill-padding-y: 0.65rem;
+  --btn-pill-padding-x: 1.35rem;
+  --btn-pill-font-size: 0.95rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fd3a58;
+  color: #fff !important;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  padding: calc(var(--btn-pill-padding-y) * var(--btn-pill-scale))
+    calc(var(--btn-pill-padding-x) * var(--btn-pill-scale));
+  font-weight: 700;
+  font-size: calc(var(--btn-pill-font-size) * var(--btn-pill-scale));
+  text-transform: none;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(255, 65, 88, 0.2);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-pill-pink:hover,
+.btn-pill-pink:focus,
+.article-body .button:hover,
+.article-body .button:focus {
+  background-color: #ff5c70;
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(255, 65, 88, 0.25);
+}
+
+.btn-pill-pink:focus-visible,
+.article-body .button:focus-visible {
+  outline: 2px solid rgba(255, 65, 88, 0.35);
+  outline-offset: 3px;
+}
+
+.subtitle-teal {
+  color: var(--brand-teal);
+  font-weight: 700;
+}
+
+.teal-text {
+  color: var(--brand-teal);
+}
+
+/* link reset */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* visually hidden helper */
+.visually-hidden,
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl,
+  .container-xxl {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/*
+  PPA layout components
+  - Shared wrapper + card styling
+  - Landing hero, highlights, testimonials
+*/
+
+.ppaLayout {
+  display: flex;
+  flex-direction: column;
+  background: var(--ppa-bg);
+  min-height: 100vh;
+}
+
+.ppaLayout main {
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.ppaCheckoutBanner {
+  min-height: 150px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.ppaCheckoutContent {
+  width: min(1200px, 92vw);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
+}
+
+.ppaCheckoutGrid {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  align-items: start;
+}
+
+.ppaCheckoutPanel {
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid rgba(16, 196, 196, 0.2);
+  box-shadow: 0 25px 70px rgba(9, 68, 68, 0.12);
+  overflow: hidden;
+}
+
+.ppaCheckoutPanel__header {
+  padding: 1.75rem;
+  background: rgba(16, 196, 196, 0.08);
+  border-bottom: 1px solid rgba(16, 196, 196, 0.25);
+}
+
+.ppaCheckoutPanel__label {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 0.35rem;
+}
+
+.ppaCheckoutPanel__price {
+  font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+  font-weight: var(--heading-weight-bold);
+  margin: 0;
+  color: var(--foreground);
+}
+
+.ppaCheckoutPanel__body {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.ppaCheckoutInfo {
+  padding-right: clamp(1rem, 2vw, 1.5rem);
+}
+
+.ppaCheckoutInfo__media {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.ppaCheckoutInfo__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ppaCheckoutInfo__copy {
+  display: flex;
+  flex-direction: column;
+}
+
+.ppaCheckoutInfo__title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: var(--heading-weight-bold);
+  margin-bottom: 0.75rem;
+}
+
+.ppaCheckoutInfo__summary {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.ppaCheckoutPanel__body .addressSection h2,
+.ppaCheckoutPanel__body .paymentSection h2,
+.ppaCheckoutPanel__body .summarySection h2 {
+  display: none;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .form-control,
+.ppaCheckout [data-form-variant='ppa'] .form-select {
+  border-radius: 12px;
+  border: 1px solid rgba(23, 23, 23, 0.226);
+  background: #fff;
+  padding: 0.4rem 1.1rem;
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .form-control:focus,
+.ppaCheckout [data-form-variant='ppa'] .form-select:focus {
+  border-color: var(--brand-teal);
+  box-shadow: 0 0 0 3px rgba(16, 196, 196, 0.15);
+}
+
+.ppaCheckout [data-form-variant='ppa'] .mb-3 {
+  margin-bottom: 0.9rem;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .form-label {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.4rem;
+}
+
+.ppaHighlights {
+  list-style: none;
+  padding: 0;
+  margin: 0.35rem 0 0.5rem;
+}
+
+.ppaHighlights li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0;
+  font-weight: 400;
+  color: var(--foreground);
+}
+
+.ppaHighlights li::before {
+  content: '✓';
+  color: var(--ppa-primary);
+  font-weight: 700;
+}
+
+.ppaHighlightsCtaHeading {
+  margin: 0.6rem 0 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--foreground);
+}
+
+.ppaTestimonials {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+}
+
+.ppaTestimonials h5 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--foreground);
+  margin-bottom: 1.2rem;
+}
+
+.ppaTestimonialsList {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.ppaLegalLinks {
+  margin-top: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.ppaLegalLinks a {
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+.ppaLegalLinks a:hover,
+.ppaLegalLinks a:focus-visible {
+  color: var(--brand-teal);
+  text-decoration: underline;
+}
+
+.ppaTestimonial {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.ppaTestimonial img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ppaTestimonial q {
+  quotes: '“' '”';
+  font-style: italic;
+  color: var(--body-text);
+  display: block;
+}
+
+.ppaTestimonial__author {
+  margin-top: 0.35rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.ppaInfoBlock {
+  margin: 0.6rem 0;
+}
+
+.ppaInfoBlock h5 {
+  margin-bottom: 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--foreground);
+}
+
+.ppaInfoBlock--cta {
+  margin-top: 0.15rem;
+}
+
+.ppaInfoBlock .ppaTrustBadge {
+  margin-top: 0.6rem;
+}
+
+.ppaTrustBadge {
+  margin-top: 1.2rem;
+  text-align: center;
+}
+
+.ppaTrustBadge img {
+  width: auto;
+  max-width: min(540px, 100%);
+  height: auto;
+  margin: 0;
+  display: block;
+  margin-top: 1.25rem;
+}
+
+.ppaCourseList {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.ppaCourseList a {
+  border: 1px solid rgba(16, 196, 196, 0.3);
+  border-radius: 12px;
+  padding: 1rem;
+  font-weight: 600;
+  color: var(--ppa-dark);
+  background: #fff;
+  text-align: center;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.ppaCourseList a:hover {
+  border-color: var(--ppa-primary);
+  box-shadow: 0 12px 28px rgba(16, 196, 196, 0.18);
+}
+
+@media (max-width: 992px) {
+  .ppaCheckoutGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .ppaCheckoutBanner {
+    min-height: 120px;
+  }
+
+  .ppaCheckoutPanel__header {
+    text-align: center;
+  }
+
+  .ppaCheckoutInfo {
+    padding-right: 0;
+  }
+}

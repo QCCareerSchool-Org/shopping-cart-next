@@ -66,7 +66,7 @@ export const useInitialData = (school: School, schoolVariant: SchoolVariant | un
 
     alreadyRun.current = true;
 
-    paymentDispatch({ type: 'SET_PAYMENT_PLAN', payload: school === 'QC Pet Studies' || school === 'QC Design School' || school === 'QC Event School' ? 'full' : 'part' });
+    paymentDispatch({ type: 'SET_PAYMENT_PLAN', payload: school === 'QC Pet Studies' || school === 'QC Design School' || school === 'QC Event School' || school === 'Paw Parent Academy' ? 'full' : 'part' });
 
     if (student) {
       metaDispatch({ type: 'SET_STUDENT', payload: student });
