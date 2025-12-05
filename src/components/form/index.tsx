@@ -164,12 +164,12 @@ export const Form: FC<Props> = props => {
   };
 
   const validateAddresses = (): boolean => {
-    const nextErrors: EnrollmentErrors = {
+    const nextErrors = {
       ...errors,
       studentAddress: {},
       billingAddress: {},
       consent: {},
-    };
+    } as EnrollmentErrors;
 
     const requireProvince = needsProvince(addressState.countryCode);
     const requirePostal = needsPostal(addressState.countryCode);
@@ -201,11 +201,16 @@ export const Form: FC<Props> = props => {
       if (billingRequirePostal && !billingAddressState.postalCode.trim()) { nextErrors.billingAddress.postalCode = 'missing'; }
     }
 
-    if (!metaState.termsConsent) { nextErrors.consent.terms = 'missing'; }
+    if (!metaState.termsConsent) {
+      if (!nextErrors.consent) {
+        nextErrors.consent = {};
+      }
+      (nextErrors.consent as { terms?: string }).terms = 'missing';
+    }
 
     const hasStudentErrors = Object.keys(nextErrors.studentAddress).length > 0;
     const hasBillingErrors = Object.keys(nextErrors.billingAddress).length > 0;
-    const hasConsentErrors = Object.keys(nextErrors.consent).length > 0;
+    const hasConsentErrors = Object.keys(nextErrors.consent as Record<string, unknown> ?? {}).length > 0;
 
     if (hasStudentErrors || hasBillingErrors || hasConsentErrors) {
       errorsDispatch({ type: 'SET_ERRORS', payload: nextErrors });
