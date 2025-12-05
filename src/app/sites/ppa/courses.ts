@@ -1,8 +1,24 @@
 import type { StaticImageData } from 'next/image';
 
+import desheddingHeroImage from './images/deshedding-mastery/banner-deshed.jpg';
+import desheddingThumb from './images/deshedding-mastery/deshedding--thumb.jpg';
+import goldenHeroImage from './images/golden-retriever/banner-beta.jpg';
+import goldenThumb from './images/golden-retriever/golden-thumb-no-bg.jpg';
 import goldendoodleHeroImage from './images/goldendoodle/banner-doodle.jpg';
 import doodleThumb from './images/goldendoodle/doodle-cart-thumb.png';
+import nailTrimmingHeroImage from './images/nail-trimming/banner-nails.jpg';
+import nailTrimmingThumb from './images/nail-trimming/nail-trimming-thumb.jpg';
+import pawsitiveHeroImage from './images/pawsitive-grooming/banner-pawsitive.jpg';
+import pawsitiveThumb from './images/pawsitive-grooming/pawsitive-thumb-no-bg.jpg';
+import pugHeroImage from './images/pug/banner-pug.jpg';
+import pugThumb from './images/pug/pug-thumb-no-bg.jpg';
+import teddyBearHeroImage from './images/teddy-bear/banner-plush.jpg';
+import teddyBearThumb from './images/teddy-bear/teddy-bear-cart-thumb.jpg';
+import terrierHeroImage from './images/terrier/banner-terrier.jpg';
+import terrierThumb from './images/terrier/terrier-thumb-no-bg.jpg';
 import moneyBackImage from './images/trust-2.jpg';
+import yorkieHeroImage from './images/yorkie/banner-yorkie.jpg';
+import yorkieThumb from './images/yorkie/yorkie-2-thumb.jpg';
 import { resolveTestimonials, type Testimonial, type TestimonialId } from './testimonials';
 
 export type PpaCourse = {
@@ -116,48 +132,168 @@ export const ppaCourses: PpaCourse[] = [
     slug: 'teddy-bear-cuts',
     code: 'TB',
     summaryBody: 'Give your pup the picture-perfect teddy bear finish with pro tips for face, feet, and body.',
+    heroImage: teddyBearHeroImage,
+    productImage: teddyBearThumb,
+    tuitionLabel: 'Tuition shown at checkout',
+    tuitionSubLabel: '',
+    includes: [
+      'Step-by-step video tutorials',
+      'Lifetime access',
+      'Essential grooming printables',
+    ],
+    benefits: [
+      'Save time and money',
+      'Reduce grooming stress',
+      'Bond more with your pet',
+    ],
+    testimonialIds: [ 'lucie', 'jason', 'meaghan' ],
   }),
   createCourse({
     name: 'How to Groom a Yorkie',
     slug: 'how-to-groom-a-yorkie',
     code: 'YK',
     summaryBody: 'Keep silky coats shiny and healthy with layered lessons built just for Yorkies.',
+    heroImage: yorkieHeroImage,
+    productImage: yorkieThumb,
+    tuitionLabel: 'Tuition shown at checkout',
+    tuitionSubLabel: '',
+    includes: [
+      'Step-by-step video tutorials',
+      'Lifetime access',
+      'Essential grooming printables',
+    ],
+    benefits: [
+      'Save time and money',
+      'Reduce grooming stress',
+      'Bond more with your pet',
+    ],
+    testimonialIds: [ 'lucie', 'jason', 'meaghan' ],
   }),
   createCourse({
     name: 'How to Groom a Terrier',
     slug: 'how-to-groom-a-terrier',
     code: 'TR',
     summaryBody: 'Learn hand-stripping basics, blending, and maintenance that keeps energetic terriers comfortable.',
+    heroImage: terrierHeroImage,
+    productImage: terrierThumb,
+    tuitionLabel: 'Tuition shown at checkout',
+    tuitionSubLabel: '',
+    includes: [
+      'Step-by-step video tutorials',
+      'Lifetime access',
+      'Essential grooming printables',
+    ],
+    benefits: [
+      'Save time and money',
+      'Reduce grooming stress',
+      'Bond more with your pet',
+    ],
+    testimonialIds: [ 'lucie', 'jason', 'meaghan' ],
   }),
   createCourse({
     name: 'How to Groom a Golden Retriever',
     slug: 'how-to-groom-a-golden-retriever',
     code: 'GR',
     summaryBody: 'Maintain feathering, manage shedding seasons, and leave every golden looking show-ready.',
+    heroImage: goldenHeroImage,
+    productImage: goldenThumb,
+    tuitionLabel: 'Tuition shown at checkout',
+    tuitionSubLabel: '',
+    includes: [
+      'Step-by-step video tutorials',
+      'Lifetime access',
+      'Essential grooming printables',
+    ],
+    benefits: [
+      'Save time and money',
+      'Reduce grooming stress',
+      'Bond more with your pet',
+    ],
+    testimonialIds: [ 'lucie', 'jason', 'meaghan' ],
   }),
   createCourse({
     name: 'How to Groom a Pug',
     slug: 'how-to-groom-a-pug',
     code: 'PG',
     summaryBody: 'Focus on skin folds, paw care, and coat upkeep tailored to sensitive pugs.',
+    heroImage: pugHeroImage,
+    productImage: pugThumb,
+    tuitionLabel: 'Tuition shown at checkout',
+    tuitionSubLabel: '',
+    includes: [
+      'Step-by-step video tutorials',
+      'Lifetime access',
+      'Essential grooming printables',
+    ],
+    benefits: [
+      'Save time and money',
+      'Reduce grooming stress',
+      'Bond more with your pet',
+    ],
+    testimonialIds: [ 'lucie', 'jason', 'meaghan' ],
   }),
   createCourse({
     name: 'Nail Trimming Made Easy',
     slug: 'nail-trimming-made-easy',
     code: 'NT',
     summaryBody: 'Overcome the stress of nail trims with confidence-building techniques and tool demos.',
+    heroImage: nailTrimmingHeroImage,
+    productImage: nailTrimmingThumb,
+    tuitionLabel: 'Tuition shown at checkout',
+    tuitionSubLabel: '',
+    includes: [
+      'Step-by-step video tutorials',
+      'Lifetime access',
+      'Essential grooming printables',
+    ],
+    benefits: [
+      'Save time and money',
+      'Reduce grooming stress',
+      'Bond more with your pet',
+    ],
+    testimonialIds: [ 'lucie', 'jason', 'meaghan' ],
   }),
   createCourse({
     name: 'Deshedding Mastery',
     slug: 'deshedding-mastery',
     code: 'DS',
     summaryBody: 'Build a routine that keeps heavy shedders comfortable and your home fur-free.',
+    heroImage: desheddingHeroImage,
+    productImage: desheddingThumb,
+    tuitionLabel: 'Tuition shown at checkout',
+    tuitionSubLabel: '',
+    includes: [
+      'Step-by-step video tutorials',
+      'Lifetime access',
+      'Essential grooming printables',
+    ],
+    benefits: [
+      'Save time and money',
+      'Reduce grooming stress',
+      'Bond more with your pet',
+    ],
+    testimonialIds: [ 'lucie', 'jason', 'meaghan' ],
   }),
   createCourse({
     name: 'Paws-itive Grooming',
     slug: 'paws-itive-grooming',
     code: 'PW',
     summaryBody: 'Create calm, positive grooming sessions that strengthen the bond with your pet.',
+    heroImage: pawsitiveHeroImage,
+    productImage: pawsitiveThumb,
+    tuitionLabel: 'Tuition shown at checkout',
+    tuitionSubLabel: '',
+    includes: [
+      'Step-by-step video tutorials',
+      'Lifetime access',
+      'Essential grooming printables',
+    ],
+    benefits: [
+      'Save time and money',
+      'Reduce grooming stress',
+      'Bond more with your pet',
+    ],
+    testimonialIds: [ 'lucie', 'jason', 'meaghan' ],
   }),
 ];
 
