@@ -93,11 +93,11 @@ export const ppaCourses: PpaCourse[] = [
   createCourse({
     name: 'How to Groom a Goldendoodle',
     slug: 'how-to-groom-a-goldendoodle',
-    code: 'ppa-goldendoodle',
+    code: 'GD',
     summaryBody: 'Learn how to groom your doodle or other curly-coat breed!',
     heroImage: goldendoodleHeroImage,
     productImage: doodleThumb,
-    tuitionLabel: '$248.00 USD', /* need to fetch pricing data */
+    tuitionLabel: 'Tuition shown at checkout',
     tuitionSubLabel: '',
     includes: [
       'Step-by-step video tutorials',
@@ -114,49 +114,49 @@ export const ppaCourses: PpaCourse[] = [
   createCourse({
     name: 'Teddy Bear Cuts',
     slug: 'teddy-bear-cuts',
-    code: 'ppa-teddy-bear',
+    code: 'TB',
     summaryBody: 'Give your pup the picture-perfect teddy bear finish with pro tips for face, feet, and body.',
   }),
   createCourse({
     name: 'How to Groom a Yorkie',
     slug: 'how-to-groom-a-yorkie',
-    code: 'ppa-yorkie',
+    code: 'YK',
     summaryBody: 'Keep silky coats shiny and healthy with layered lessons built just for Yorkies.',
   }),
   createCourse({
     name: 'How to Groom a Terrier',
     slug: 'how-to-groom-a-terrier',
-    code: 'ppa-terrier',
+    code: 'TR',
     summaryBody: 'Learn hand-stripping basics, blending, and maintenance that keeps energetic terriers comfortable.',
   }),
   createCourse({
     name: 'How to Groom a Golden Retriever',
     slug: 'how-to-groom-a-golden-retriever',
-    code: 'ppa-golden-retriever',
+    code: 'GR',
     summaryBody: 'Maintain feathering, manage shedding seasons, and leave every golden looking show-ready.',
   }),
   createCourse({
     name: 'How to Groom a Pug',
     slug: 'how-to-groom-a-pug',
-    code: 'ppa-pug',
+    code: 'PG',
     summaryBody: 'Focus on skin folds, paw care, and coat upkeep tailored to sensitive pugs.',
   }),
   createCourse({
     name: 'Nail Trimming Made Easy',
     slug: 'nail-trimming-made-easy',
-    code: 'ppa-nail-trimming',
+    code: 'NT',
     summaryBody: 'Overcome the stress of nail trims with confidence-building techniques and tool demos.',
   }),
   createCourse({
     name: 'Deshedding Mastery',
     slug: 'deshedding-mastery',
-    code: 'ppa-deshedding',
+    code: 'DS',
     summaryBody: 'Build a routine that keeps heavy shedders comfortable and your home fur-free.',
   }),
   createCourse({
     name: 'Paws-itive Grooming',
     slug: 'paws-itive-grooming',
-    code: 'ppa-paws-itive',
+    code: 'PW',
     summaryBody: 'Create calm, positive grooming sessions that strengthen the bond with your pet.',
   }),
 ];

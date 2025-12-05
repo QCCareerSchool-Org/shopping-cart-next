@@ -519,6 +519,23 @@ a {
   margin-top: 0.2rem;
 }
 
+.ppaCheckout [data-form-variant='ppa'] .ppa-dynamic-price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.ppaCheckout [data-form-variant='ppa'] .ppa-dynamic-price__primary {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.ppaCheckout [data-form-variant='ppa'] .ppa-dynamic-price__secondary {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
 .ppaCheckout [data-form-variant='ppa'] .terms-embed {
   margin: 1.5rem 0 2rem;
   padding: 1.1rem 1.35rem;

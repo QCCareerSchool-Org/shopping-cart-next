@@ -4,6 +4,7 @@ import type { FC } from 'react';
 import { agreementLinks } from './agreementLinks';
 import { courseGroups } from './courseGroups';
 import type { PpaCourse } from './courses';
+import { PpaPriceDisplay } from './ppaPriceDisplay';
 import { Form } from '@/components/form';
 
 const successLink = 'https://www.pawparentacademy.com/thank-you';
@@ -116,7 +117,7 @@ export const PpaCart: FC<Props> = ({ date, course }) => {
               {course.tuitionSubLabel && (
                 <p className="ppaCheckoutPanel__label">{course.tuitionSubLabel}</p>
               )}
-              <p id="ppaCheckoutPrice" className="ppaCheckoutPanel__price">{course.tuitionLabel}</p>
+              <PpaPriceDisplay className="ppaCheckoutPanel__price" />
             </header>
             <div className="ppaCheckoutPanel__body">
               <Form
