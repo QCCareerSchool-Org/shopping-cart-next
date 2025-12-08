@@ -1,14 +1,16 @@
 'use client';
 
+import Link from 'next/link';
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
 import { Hero } from './hero';
+import { Banner } from '@/components/banner';
 import { Section } from '@/components/section';
 import { usePriceState } from '@/hooks/usePriceState';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#8ef0c0';
+const backgroundColor = '#b8bab9';
 
 export const EventFallbackPromo: FC = () => {
   const priceState = usePriceState();
@@ -19,16 +21,19 @@ export const EventFallbackPromo: FC = () => {
   };
 
   const [ deposit, fullDiscount ] = priceState?.currency.code === 'GBP'
-    ? [ '£49', '£150' ]
-    : [ '$49', '$300' ];
+    ? [ '£75', '£150' ]
+    : [ '$75', '$300' ];
 
   return (
     <>
       <Section style={{ backgroundColor }} noPadding>
-        <div onClick={handleClick} style={{ cursor: 'pointer' }}>
+        <Link href="#courses">
           <Hero />
-        </div>
+        </Link>
       </Section>
+      <Banner badgeImageSrc={null} lastChanceImageSrc={null} onClick={handleClick} backgroundColor="#000000">
+        <span className="lead">Start any course today for <strong className="fw-bold">only {priceState?.currency.code === 'GBP' ? '£75' : '$75'}</strong></span>
+      </Banner>
       <Modal show={showPopup} onHide={handleClick}>
         <Modal.Header closeButton>Special Offer</Modal.Header>
         <Modal.Body>
