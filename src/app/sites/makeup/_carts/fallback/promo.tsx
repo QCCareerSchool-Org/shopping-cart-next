@@ -7,7 +7,7 @@ import { MakeupFallbackModal } from './modal';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#fff';
+const backgroundColor = '#000';
 
 export const MakeupFallbackPromo: FC = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
