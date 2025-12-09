@@ -16,6 +16,7 @@ export type ErrorsAction =
 const initialErrors: EnrollmentErrors = {
   studentAddress: {},
   billingAddress: {},
+  consent: {},
 };
 
 export const initialErrorsState: ErrorsState = {

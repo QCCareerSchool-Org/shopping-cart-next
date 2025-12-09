@@ -1,4 +1,4 @@
-import qs from 'qs';
+import { stringify } from 'qs';
 
 import type { Country } from '@/domain/country';
 import { isCountries } from '@/domain/country';
@@ -77,7 +77,7 @@ export const fetchProvinces = async (countryCode: string, controller?: AbortCont
 
 export const fetchPrice = async (priceQuery: PriceQuery, controller?: AbortController): Promise<Price | undefined> => {
   try {
-    const url = pricesUrl + '?' + qs.stringify(priceQuery);
+    const url = pricesUrl + '?' + stringify(priceQuery);
     const response = await fetch(url, {
       headers: { 'X-API-Version': '2' },
       signal: controller?.signal,

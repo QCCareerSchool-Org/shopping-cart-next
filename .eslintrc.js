@@ -242,8 +242,28 @@ module.exports = {
         '@typescript-eslint/no-magic-numbers': 'off',
       },
     },
+    {
+      files: [
+        'next.config.js',
+        'next.config.mjs',
+        'next.config.cjs',
+      ],
+      parser: 'espree',
+      parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: 'module',
+      },
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
   ],
   settings: {
     react: { version: 'detect' },
+    'import/resolver': {
+      typescript: {
+        project: ['./tsconfig.json'],
+      },
+    },
   },
 };

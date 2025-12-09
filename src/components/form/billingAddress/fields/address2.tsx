@@ -17,7 +17,7 @@ export const Address2: FC = () => {
 
   let className = 'form-control';
 
-  if (errors.billingAddress.address2) {
+  if (errors.billingAddress.address2 && errors.billingAddress.address2 !== 'missing') {
     className += ' is-invalid';
   }
 

@@ -116,6 +116,10 @@ const getSchoolKits = (date: number): SchoolKits => ({
     fullBullets: writingBullets,
     partBullets: writingBullets,
   },
+  'Paw Parent Academy': {
+    fullBullets: petBullets,
+    partBullets: petBullets,
+  },
   'QC Career School': undefined,
 });
 

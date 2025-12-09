@@ -43,13 +43,15 @@ export const Summary: FC<Props> = props => {
           <Details courseGroups={props.courseGroups} />
           <Agreement agreementLinks={props.agreementLinks} />
           <div className="text-center text-sm-start">
-            <div className="mb-4">
+            <div className="summary-cta-row mb-4">
               <button ref={buttonRef} onClick={props.onSubmit} className="btn btn-primary">Proceed to Payment<Image src={RightArrowIcon as StaticImageData} alt="🡒" /></button>
+              <div className="summary-payment-icons" aria-label="Accepted payment methods and security">
+                <Image src={VisaLogo as StaticImageData} className="summary-payment-icon" alt="Visa" />
+                <Image src={MasterCardLogo as StaticImageData} className="summary-payment-icon" alt="Mastercard" />
+                <Image src={TrustedLogo} className="summary-trusted-icon" alt="Comodo Secure" />
+              </div>
             </div>
             <NoCoursesMessage />
-            <Image src={VisaLogo as StaticImageData} className="me-2" style={{ height: 32 }} alt="Visa" />
-            <Image src={MasterCardLogo as StaticImageData} className="me-2" style={{ height: 32 }} alt="Mastercard" />
-            <Image src={TrustedLogo} alt="Trusted Site Seal" />
           </div>
           <Disclaimers showPromoCodeInput={props.showPromoCodeInput} />
         </div>
