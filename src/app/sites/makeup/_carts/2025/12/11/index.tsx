@@ -23,7 +23,7 @@ export const Makeup20251211: FC<Props> = ({ date }) => (
       agreementLinks={agreementLinks}
       visualPaymentPlans={true}
       dynamicCourseDescriptions="SHOW"
-      promoCodeDefault="SKINCARE"
+      promoCodeDefault="PROLUMINOUS"
       dynamicCourseMessages={[ FreeSkincareDynamicMessage ]}
     />
   </>
