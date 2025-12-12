@@ -1,4 +1,4 @@
-import type { FC, MouseEventHandler, PropsWithChildren } from 'react';
+import type { FC, MouseEventHandler, PropsWithChildren, JSX } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'react-bootstrap';
 
 import { useToggle } from '@/hooks/useToggle';

@@ -45,7 +45,7 @@ export const PaysafeModal: FC<Props> = props => {
   const addressState = useAddressState();
   const billingAddressState = useBillingAddressState();
 
-  const instance = useRef<PaysafeInstance>();
+  const instance = useRef<PaysafeInstance>(undefined);
 
   const [ status, setStatus ] = useState<Status>({
     panValid: false,

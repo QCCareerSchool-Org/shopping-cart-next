@@ -5,7 +5,8 @@ import { EventFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const EventPage: PageComponent = async ({ searchParams }) => {
+const EventPage: PageComponent = async props => {
+  const searchParams = await props.searchParams;
   const date = await getDate(searchParams.date);
 
   return (

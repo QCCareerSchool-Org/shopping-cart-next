@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { useId, type JSX } from 'react';
 import { FaQuestionCircle } from 'react-icons/fa';
 
 import { DisabledCourseModal } from './disabledCourseModal';

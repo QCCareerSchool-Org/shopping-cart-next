@@ -17,7 +17,7 @@ export const config = {
   ],
 };
 
-const middleware = (req: NextRequest): NextResponse => {
+const proxy = (req: NextRequest): NextResponse => {
   const url = req.nextUrl;
   const hostname = req.headers.get('host');
   const site = findSite(hostname);
@@ -46,4 +46,4 @@ const middleware = (req: NextRequest): NextResponse => {
   return NextResponse.rewrite(url);
 };
 
-export default middleware;
+export default proxy;

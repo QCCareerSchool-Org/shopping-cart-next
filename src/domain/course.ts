@@ -1,5 +1,7 @@
 import type { GeoLocation } from './geoLocation';
 
+import type { JSX } from "react";
+
 export type GeoLocationFunction<T> = ((geoLocation: GeoLocation) => T) | T;
 
 export type Course = {

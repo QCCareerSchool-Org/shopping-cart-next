@@ -14,7 +14,8 @@ const courseGroups: CourseGroup[] = [
   },
 ];
 
-const MakeupCoachingPage: PageComponent = async ({ searchParams }) => {
+const MakeupCoachingPage: PageComponent = async props => {
+  const searchParams = await props.searchParams;
   const date = await getDate(searchParams.date);
   return (
     <>

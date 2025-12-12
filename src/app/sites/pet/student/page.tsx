@@ -6,7 +6,8 @@ import { PetStudentFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const PetStudentPage: PageComponent = async ({ searchParams }) => {
+const PetStudentPage: PageComponent = async props => {
+  const searchParams = await props.searchParams;
   const date = await getDate(searchParams.date);
 
   return (

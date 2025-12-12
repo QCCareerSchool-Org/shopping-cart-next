@@ -13,7 +13,7 @@ type Props = {
   date: number;
   showDate: number;
   endDate: number;
-  message?: string | ReactElement;
+  message?: string | ReactElement<any>;
   buttonInverse?: boolean;
   className?: string;
   style?: CSSProperties;

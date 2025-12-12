@@ -1,5 +1,7 @@
 import type { EnrollmentErrors } from '@/domain/enrollmentErrors';
 
+import type { JSX } from "react";
+
 export type ErrorsState = {
   errors: EnrollmentErrors;
   showPopup: boolean;

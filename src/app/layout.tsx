@@ -31,7 +31,7 @@ const openSans = Open_Sans({
 });
 
 const RootLayout: LayoutComponent = async ({ children }) => {
-  const headerList = headers();
+  const headerList = await headers();
 
   const countryCodeHeader = headerList.get('x-vercel-ip-country') ?? 'US';
   const provinceCodeHeader = headerList.get('x-vercel-ip-country-region');

@@ -7,7 +7,8 @@ import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const MakeupFreeSkincarePage: PageComponent = async ({ searchParams }) => {
+const MakeupFreeSkincarePage: PageComponent = async props => {
+  const searchParams = await props.searchParams;
   const date = await getDate(searchParams.date);
   return (
     <>

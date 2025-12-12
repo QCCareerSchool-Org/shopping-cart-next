@@ -8,7 +8,8 @@ import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const PetGrooming200OffPage: PageComponent = async ({ searchParams }) => {
+const PetGrooming200OffPage: PageComponent = async props => {
+  const searchParams = await props.searchParams;
   const date = await getDate(searchParams.date);
 
   return (

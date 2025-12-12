@@ -1,5 +1,5 @@
 import type { StaticImageData } from 'next/image';
-import type { CSSProperties, FC } from 'react';
+import type { CSSProperties, FC, JSX } from 'react';
 
 import { DetailsPopup } from './detailsPopup';
 // import DesignBooks from './kits/design-books.png';
