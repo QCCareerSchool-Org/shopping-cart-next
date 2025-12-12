@@ -5,10 +5,10 @@ import { Modal } from 'react-bootstrap';
 
 import { LuminousKit } from '@/components/luminousKit';
 
-type Props = {
+interface Props {
   show: boolean;
   onHide: () => void;
-};
+}
 
 export const Makeup20240708Modal: FC<Props> = props => {
   return (

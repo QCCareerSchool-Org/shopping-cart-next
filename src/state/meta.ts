@@ -1,4 +1,4 @@
-export type MetaState = {
+export interface MetaState {
   student: boolean;
   studentDiscount: boolean;
   withoutTools: boolean;
@@ -6,7 +6,7 @@ export type MetaState = {
   promoCodeInputValue: string;
   enrollment?: { id: number; code: string };
   captchaToken: string;
-};
+}
 
 export type MetaAction =
   | { type: 'SET_STUDENT'; payload: boolean }

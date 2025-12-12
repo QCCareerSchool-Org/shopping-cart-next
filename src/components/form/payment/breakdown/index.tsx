@@ -11,10 +11,10 @@ import { usePriceState } from '@/hooks/usePriceState';
 
 const freeShippingCourses = [ 'DG', 'MZ', 'SF', 'HS', 'I2', 'ST', 'LD', 'CC' ];
 
-type Props = {
+interface Props {
   discountName?: string;
   courseGroups: CourseGroup[];
-};
+}
 
 export const Breakdown: FC<Props> = ({ discountName, courseGroups }) => {
   const priceState = usePriceState();

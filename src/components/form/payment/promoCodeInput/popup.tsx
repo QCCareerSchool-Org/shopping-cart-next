@@ -5,13 +5,13 @@ import { Modal, ModalBody, ModalFooter, ModalHeader } from 'react-bootstrap';
 import { Ticket } from './ticket';
 import type { Promo } from '@/domain/promo';
 
-type Props = {
+interface Props {
   date: number;
   popup: boolean;
   onHide: () => void;
   apply: (code: string) => void;
   promos: Promo[];
-};
+}
 
 export const Popup: FC<Props> = props => {
   const [ allExpanded, setAllExpanded ] = useState(Array(props.promos.length).fill(undefined).map(() => false));

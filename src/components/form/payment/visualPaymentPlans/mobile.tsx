@@ -18,12 +18,12 @@ import { usePriceState } from '@/hooks/usePriceState';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 import { formatCurrency } from '@/lib/formatCurrency';
 
-type Props = {
+interface Props {
   date: number;
   school: School;
   discountName?: string;
   courseGroups: CourseGroup[];
-};
+}
 
 export const Mobile: FC<Props> = ({ date, school, discountName, courseGroups }) => {
   const screenWidth = useScreenWidth();

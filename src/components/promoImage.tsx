@@ -2,12 +2,12 @@ import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import type { FC } from 'react';
 
-type Props = {
+interface Props {
   desktopSrc: StaticImageData;
   mobileSrc: StaticImageData;
   maxWidth?: number;
   quality?: number;
-};
+}
 
 export const PromoImage: FC<Props> = ({ desktopSrc, mobileSrc, maxWidth = 1200, quality }) => (
   <div style={{ textAlign: 'center' }}>

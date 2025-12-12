@@ -2,9 +2,9 @@ import type { FC } from 'react';
 
 import { usePriceState } from '@/hooks/usePriceState';
 
-type Props = {
+interface Props {
   showPromoCodeInput: boolean;
-};
+}
 
 export const Disclaimers: FC<Props> = ({ showPromoCodeInput }) => {
   const priceState = usePriceState();

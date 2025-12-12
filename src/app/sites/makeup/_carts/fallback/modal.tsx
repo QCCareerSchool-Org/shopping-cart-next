@@ -6,10 +6,10 @@ import { Modal } from 'react-bootstrap';
 import { agreementLinks } from '../../agreementLinks';
 import { LuminousKit } from '@/components/luminousKit';
 
-type Props = {
+interface Props {
   show: boolean;
   onHide: () => void;
-};
+}
 
 export const MakeupFallbackModal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>

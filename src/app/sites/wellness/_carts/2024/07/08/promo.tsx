@@ -8,9 +8,9 @@ const backgroundColor = '#d7d8dc';
 const lastChanceDate = Date.UTC(2024, 6, 14, 14, 30); // 2024-07-14T09:30 (14:30 UTC)
 const endDate = Date.UTC(2024, 6, 19, 4); // 2024-07-19T00:00 (04:00 UTC)
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Wellness20240708Promo: FC<Props> = ({ date }) => {
   return (

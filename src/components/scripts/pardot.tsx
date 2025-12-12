@@ -1,11 +1,11 @@
 import Script from 'next/script';
 import type { FC } from 'react';
 
-type Props = {
+interface Props {
   accountId: string;
   campaignId: string;
   domain: string;
-};
+}
 
 export const Pardot: FC<Props> = ({ accountId, campaignId, domain }) => (
   <Script id="pardot" dangerouslySetInnerHTML={{ __html: getScript(accountId, campaignId, domain) }} />

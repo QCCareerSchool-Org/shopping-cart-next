@@ -13,9 +13,9 @@ import { PromoImage } from '@/components/promoImage';
 import type { CurrencyCode } from '@/domain/currencyCode';
 import { usePriceState } from '@/hooks/usePriceState';
 
-type Props = {
+interface Props {
   variant?: 'lastChance';
-};
+}
 
 export const Hero20250423: FC<Props> = ({ variant }) => {
   const priceState = usePriceState();

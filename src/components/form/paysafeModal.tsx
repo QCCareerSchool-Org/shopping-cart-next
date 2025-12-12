@@ -11,16 +11,16 @@ import { usePriceState } from '@/hooks/usePriceState';
 import type { PaysafeInstance } from '@/lib/paysafe';
 import { createInstance, getToken } from '@/lib/paysafe';
 
-type Props = {
+interface Props {
   company: PaysafeCompany;
   show: boolean;
   onHide: () => void;
   onCharge: (token: string, compay: PaysafeCompany) => Promise<boolean>;
-};
+}
 
-type Errors = { displayMessage?: string };
+interface Errors { displayMessage?: string }
 
-type Status = {
+interface Status {
   panValid: boolean;
   expValid: boolean;
   cvvValid: boolean;
@@ -29,7 +29,7 @@ type Status = {
   cvvFilled: boolean;
   submitted?: boolean;
   errors?: Errors;
-};
+}
 
 const isErrors = (obj: unknown): obj is Errors => {
   return obj !== null && typeof obj === 'object' && 'displayMessage' in obj && (typeof obj.displayMessage === 'undefined' || typeof obj.displayMessage === 'string');
@@ -80,7 +80,7 @@ export const PaysafeModal: FC<Props> = props => {
       i.fields('expiryDate').on('Blur', () => setStatus(s => ({ ...s, expFilled: true })));
       i.fields('cvv').on('Blur', () => setStatus(s => ({ ...s, cvvFilled: true })));
       instance.current = i;
-    }).catch(err => {
+    }).catch((err: unknown) => {
       console.error(err);
     });
   }, [ props.company, props.show, cardNumberId, expiryDateId, cvvId ]);
@@ -103,7 +103,7 @@ export const PaysafeModal: FC<Props> = props => {
         setStatus(s => ({ ...s, submitted: true }));
         const token = await getToken(instance.current, props.company, priceState.currency.code, addressState, billingAddressState, billingAddressState.sameAsShipping);
         const chargeResult = await props.onCharge(token, props.company);
-        if (chargeResult === false) {
+        if (!chargeResult) {
           props.onHide();
         } else {
           setSuccess(true);

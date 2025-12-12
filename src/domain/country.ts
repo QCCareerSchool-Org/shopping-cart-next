@@ -1,7 +1,7 @@
-export type Country = {
+export interface Country {
   name: string;
   code: string;
-};
+}
 
 export const isCountry = (obj: unknown): obj is Country => {
   return obj !== null && typeof obj === 'object' &&

@@ -1,10 +1,10 @@
 import type { PaymentPlan } from '@/domain/paymentPlan';
 
-export type PaymentState = {
+export interface PaymentState {
   plan: PaymentPlan;
   day: number;
   noShipping: boolean;
-};
+}
 
 export type PaymentAction =
   | { type: 'SET_PAYMENT_PLAN'; payload: PaymentPlan }

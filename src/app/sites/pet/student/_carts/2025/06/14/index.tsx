@@ -8,9 +8,9 @@ import { courseGroups } from '../../../../courseGroups';
 import { Daycare60DynamicMessage } from '@/components/dynamicCourseMessages/daycare60';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const PetStudent20250614: FC<Props> = ({ date }) => (
   <>

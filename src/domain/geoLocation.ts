@@ -1,7 +1,7 @@
-export type GeoLocation = {
+export interface GeoLocation {
   countryCode: string;
   provinceCode: string | null;
-};
+}
 
 export const isGeoLocation = (obj: unknown): obj is GeoLocation => {
   return obj !== null && typeof obj === 'object' &&

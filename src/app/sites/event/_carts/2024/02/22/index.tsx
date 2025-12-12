@@ -7,9 +7,9 @@ import { Guarantee } from '@/app/sites/event/guarantee';
 import { TwoFreeEventSpecialtyDynamicMessage } from '@/components/dynamicCourseMessages/twoFreeEventSpecialty';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Event20240222: FC<Props> = ({ date }) => (
   <>

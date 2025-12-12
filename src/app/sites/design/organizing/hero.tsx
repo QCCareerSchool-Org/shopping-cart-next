@@ -9,9 +9,9 @@ import Mobile from './mobile.jpg';
 import { PromoImage } from '@/components/promoImage';
 import { usePriceState } from '@/hooks/usePriceState';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const Hero: FC<Props> = ({ date }) => {

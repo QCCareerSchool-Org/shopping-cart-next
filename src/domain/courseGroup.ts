@@ -1,9 +1,9 @@
 import type { Course } from './course';
 
-export type CourseGroup = {
+export interface CourseGroup {
   name?: string;
   items: Course[];
-};
+}
 
 export const getCourse = (courseCode: string, courseGroups: CourseGroup[]): Course | undefined => {
   for (const g of courseGroups) {

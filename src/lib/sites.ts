@@ -1,6 +1,6 @@
 import type { School } from '@/domain/school';
 
-type Site = { name: School; domains: Array<string | RegExp>; path: string };
+interface Site { name: School; domains: (string | RegExp)[]; path: string }
 
 const sites: Site[] = [
   { name: 'QC Design School', domains: [ 'enroll.qcdesignschool.com', 'design.enrolltest.qccareerschool.com', 'design.nextenroll.qccareerschool.com', /^design.localhost(?::\d+)$/iu ], path: '/design' },

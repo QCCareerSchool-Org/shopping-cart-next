@@ -12,9 +12,9 @@ const backgroundColor = '#000';
 const lastChanceDate = Date.UTC(2024, 8, 17, 4); // 2024-09-17T00:00 (04:00 UTC)
 const endDate = Date.UTC(2024, 8, 21, 4); //  2024-09-21T00:00 (04:00 UTC)
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Pet20240912Promo: FC<Props> = ({ date }) => {
   const [ showPopup, togglePopup ] = useToggle(false);

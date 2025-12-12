@@ -13,10 +13,10 @@ import { usePriceState } from '@/hooks/usePriceState';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 import { useToggle } from '@/hooks/useToggle';
 
-type Props = {
+interface Props {
   date: number;
   school: School;
-};
+}
 
 export const PromoCodeInput: FC<Props> = ({ date, school }) => {
   const screenWidth = useScreenWidth();

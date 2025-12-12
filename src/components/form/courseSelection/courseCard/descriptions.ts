@@ -1,6 +1,4 @@
-type Descriptions = {
-  [key: string]: string;
-};
+type Descriptions = Record<string, string>;
 
 const descriptions: Descriptions = {
   MZ: '<p class="card-text">Learn everything you need to know to become a successful professional makeup artist. This course is ideal for beginners and experienced MUAs alike!</p><ul><li>You\'ll master core makeup techniques including blending, contouring, highlighting, and more</li><li>Become an expert in daytime, nighttime, bridal, and glamour makeup</li><li>Learn how to confidently work with all types of clients</li><li>Launch your own makeup business, or freelance</li></ul><p class="card-text">This course comes with the <strong>Luminous Collection makeup kit!</strong></p>',

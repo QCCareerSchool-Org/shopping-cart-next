@@ -7,9 +7,9 @@ import type { Country } from '@/domain/country';
 
 export const CountriesStateContext = createContext<Country[] | undefined>(undefined);
 
-type Props = {
+interface Props {
   countries: Country[];
-};
+}
 
 export const CountriesProvider: FC<PropsWithChildren<Props>> = ({ countries, children }) => {
   const [ state ] = useState<Country[]>(countries);

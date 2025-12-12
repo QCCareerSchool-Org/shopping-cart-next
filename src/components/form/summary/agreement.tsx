@@ -3,9 +3,9 @@ import type { FC } from 'react';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import { useAddressState } from '@/hooks/useAddressState';
 
-type Props = {
+interface Props {
   agreementLinks: AgreementLinks;
-};
+}
 
 export const Agreement: FC<Props> = ({ agreementLinks }) => {
   const { countryCode } = useAddressState();

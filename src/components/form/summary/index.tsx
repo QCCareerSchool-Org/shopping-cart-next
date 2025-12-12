@@ -1,4 +1,3 @@
-import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import { type FC, useEffect, useRef } from 'react';
 
@@ -16,14 +15,14 @@ import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
-type Props = {
+interface Props {
   showPromoCodeInput: boolean;
   agreementLinks: AgreementLinks;
   guarantee: FC | null;
   onSubmit: () => void;
   courseGroups: CourseGroup[];
   onButtonVisibilityChange?: (visible: boolean) => void;
-};
+}
 
 export const Summary: FC<Props> = props => {
   const { onButtonVisibilityChange } = props;
@@ -44,11 +43,11 @@ export const Summary: FC<Props> = props => {
           <Agreement agreementLinks={props.agreementLinks} />
           <div className="text-center text-sm-start">
             <div className="mb-4">
-              <button ref={buttonRef} onClick={props.onSubmit} className="btn btn-primary">Proceed to Payment<Image src={RightArrowIcon as StaticImageData} alt="🡒" /></button>
+              <button ref={buttonRef} onClick={props.onSubmit} className="btn btn-primary">Proceed to Payment<Image src={RightArrowIcon} alt="🡒" /></button>
             </div>
             <NoCoursesMessage />
-            <Image src={VisaLogo as StaticImageData} className="me-2" style={{ height: 32 }} alt="Visa" />
-            <Image src={MasterCardLogo as StaticImageData} className="me-2" style={{ height: 32 }} alt="Mastercard" />
+            <Image src={VisaLogo} className="me-2" style={{ height: 32 }} alt="Visa" />
+            <Image src={MasterCardLogo} className="me-2" style={{ height: 32 }} alt="Mastercard" />
             <Image src={TrustedLogo} alt="Trusted Site Seal" />
           </div>
           <Disclaimers showPromoCodeInput={props.showPromoCodeInput} />

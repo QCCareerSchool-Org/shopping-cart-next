@@ -7,9 +7,9 @@ import { Guarantee } from '../../../../../guarantee';
 import { FreeVirtualDesignDynamicMessage } from '@/components/dynamicCourseMessages/freeVirtualDesign';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const DesignStudent20250614: FC<Props> = ({ date }) => {
   return (

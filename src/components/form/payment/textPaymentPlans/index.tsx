@@ -13,13 +13,13 @@ import { usePriceState } from '@/hooks/usePriceState';
 
 const PromoCodeInput = lazy(async () => import('../promoCodeInput').then(m => ({ default: m.PromoCodeInput })));
 
-type Props = {
+interface Props {
   date: number;
   school: School;
   showPromoCodeInput: boolean;
   discountName?: string;
   courseGroups: CourseGroup[];
-};
+}
 
 const getReverse = (school: School): boolean => school === 'QC Makeup Academy';
 

@@ -6,9 +6,9 @@ import MobileEnds from './mobile-ends.jpg';
 import Mobile from './mobile.jpg';
 import { PromoImage } from '@/components/promoImage';
 
-type Props = {
+interface Props {
   lastChance: boolean;
-};
+}
 
 export const Hero20241213: FC<Props> = ({ lastChance }) => {
   const [ desktopSrc, mobileSrc ] = lastChance

@@ -8,7 +8,7 @@ import type { MetaState } from '@/state/meta';
 import type { OverridesState } from '@/state/overrides';
 import type { PaymentState } from '@/state/payment';
 
-export type EnrollmentPayload = {
+export interface EnrollmentPayload {
   courses: string[];
   studentAddress: {
     title: Title;
@@ -47,25 +47,25 @@ export type EnrollmentPayload = {
   existingStudent: boolean;
   options?: Options;
   captchaToken: string;
-};
+}
 
-type Options = {
+interface Options {
   discountAll: boolean;
   studentDiscount: boolean;
   school: School;
   promoCode?: string;
   installmentsOverride?: number;
-  depositOverrides?: { [key: string]: number };
-};
+  depositOverrides?: Record<string, number>;
+}
 
-export type AddEnrollmentResponse = { id: number; code: string };
+export interface AddEnrollmentResponse { id: number; code: string }
 
-export type AddEnrollmentErrorResponse = {
+export interface AddEnrollmentErrorResponse {
   errorCode: number;
   errors: EnrollmentErrors;
-};
+}
 
-type ChargeResponse = { success: boolean };
+interface ChargeResponse { success: boolean }
 
 const isChargeResponse = (obj: unknown): obj is ChargeResponse => {
   return obj !== null && typeof obj === 'object' &&
@@ -134,7 +134,7 @@ export const createEnrollmentPayload = (internal: boolean, school: School, schoo
 
   if (internal) {
     options.installmentsOverride = Math.max(1, overridesState.installments);
-    options.depositOverrides = overridesState.courses.reduce<{ [key: string]: number }>((prev, cur) => {
+    options.depositOverrides = overridesState.courses.reduce<Record<string, number>>((prev, cur) => {
       prev[cur.code] = cur.value;
       return prev;
     }, {});
@@ -210,13 +210,13 @@ export const chargeEnrollment = async (id: number, token: string, company: 'CA' 
     if (response.status >= 400 && response.status < 500) {
       const responseBody: unknown = await response.json();
       if (responseBody !== null && typeof responseBody === 'object' && 'code' in responseBody && typeof responseBody.code === 'number') {
-        if ([ 3009, 3014, 3023, 3024 ].includes(responseBody.code)) { // eslint-disable-line @typescript-eslint/no-magic-numbers
+        if ([ 3009, 3014, 3023, 3024 ].includes(responseBody.code)) {
           throw Error('Declined by bank');
-        } else if (responseBody.code === 3022) { // eslint-disable-line @typescript-eslint/no-magic-numbers
+        } else if (responseBody.code === 3022) {
           throw Error('NSF');
-        } else if (responseBody.code === 3016) { // eslint-disable-line @typescript-eslint/no-magic-numbers
+        } else if (responseBody.code === 3016) {
           throw Error('Hold card');
-        } else if (responseBody.code === 3007) { // eslint-disable-line @typescript-eslint/no-magic-numbers
+        } else if (responseBody.code === 3007) {
           throw Error('AVS check failed');
         }
       }

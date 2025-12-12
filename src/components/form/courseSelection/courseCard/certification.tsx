@@ -34,67 +34,67 @@ import VM from './certifications/vm.svg';
 const getImage = (courseCode: string): StaticImageData | undefined => {
   switch (courseCode) {
     case 'AB':
-      return AB as StaticImageData;
+      return AB;
     case 'AP':
-      return AP as StaticImageData;
+      return AP;
     case 'CC':
-      return CC as StaticImageData;
+      return CC;
     case 'DB':
-      return DB as StaticImageData;
+      return DB;
     case 'DC':
-      return DC as StaticImageData;
+      return DC;
     case 'DD':
-      return DD as StaticImageData;
+      return DD;
     case 'DG':
-      return DG as StaticImageData;
+      return DG;
     case 'DT':
-      return DT as StaticImageData;
+      return DT;
     case 'GT':
-      return GT as StaticImageData;
+      return GT;
     case 'ED':
-      return ED as StaticImageData;
+      return ED;
     case 'FD':
-      return FD as StaticImageData;
+      return FD;
     case 'FS':
-      return FS as StaticImageData;
+      return FS;
     case 'GB':
-      return GB as StaticImageData;
+      return GB;
     case 'HS':
-      return HS as StaticImageData;
+      return HS;
     case 'I2':
-      return I2 as StaticImageData;
+      return I2;
     case 'LD':
-      return LD as StaticImageData;
+      return LD;
     case 'MK':
-      return MK as StaticImageData;
+      return MK;
     case 'MS':
-      return MS as StaticImageData;
+      return MS;
     case 'MW':
-      return MW as StaticImageData;
+      return MW;
     case 'MZ':
-      return MZ as StaticImageData;
+      return MZ;
     case 'PF':
-      return PF as StaticImageData;
+      return PF;
     case 'PO':
-      return PO as StaticImageData;
+      return PO;
     case 'PW':
-      return PW as StaticImageData;
+      return PW;
     case 'SF':
-      return SF as StaticImageData;
+      return SF;
     case 'SK':
-      return SK as StaticImageData;
+      return SK;
     case 'ST':
-      return ST as StaticImageData;
+      return ST;
     case 'VD':
-      return VD as StaticImageData;
+      return VD;
     case 'VM':
-      return VM as StaticImageData;
+      return VM;
   }
 };
 
-type Props = {
+interface Props {
   courseCode: string;
-};
+}
 
 export const Certification: FC<Props> = ({ courseCode }) => {
   const image = getImage(courseCode);

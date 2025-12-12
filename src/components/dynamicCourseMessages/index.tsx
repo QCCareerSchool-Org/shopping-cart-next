@@ -3,10 +3,10 @@ import { FaCheckCircle, FaExclamationCircle, FaInfoCircle } from 'react-icons/fa
 
 type Variant = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info';
 
-type Props = {
+interface Props {
   variant: Variant;
   hideIcon?: boolean;
-};
+}
 
 export const DynamicCourseAlert: FC<PropsWithChildren<Props>> = ({ variant, hideIcon, children }) => (
   <div className={`alert alert-${variant} mb-0`}>
@@ -15,9 +15,9 @@ export const DynamicCourseAlert: FC<PropsWithChildren<Props>> = ({ variant, hide
   </div>
 );
 
-type IconProps = {
+interface IconProps {
   variant: Variant;
-};
+}
 
 const iconStyle: CSSProperties = {
   position: 'relative',

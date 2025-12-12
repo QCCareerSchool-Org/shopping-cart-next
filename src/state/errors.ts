@@ -1,13 +1,13 @@
+import type { JSX } from 'react';
+
 import type { EnrollmentErrors } from '@/domain/enrollmentErrors';
 
-import type { JSX } from "react";
-
-export type ErrorsState = {
+export interface ErrorsState {
   errors: EnrollmentErrors;
   showPopup: boolean;
   popupTitle: string;
   popupMessage: JSX.Element | null;
-};
+}
 
 export type ErrorsAction =
   | { type: 'SET_ERRORS'; payload: EnrollmentErrors }

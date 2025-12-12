@@ -10,9 +10,9 @@ const lastChanceDate = Date.UTC(2024, 7, 26, 4); // 2024-08-26T00:00 (04:00 UTC)
 const firstEndDate = Date.UTC(2024, 7, 31, 4); //  2024-08-31T00:00 (04:00 UTC)
 const secondEndDate = Date.UTC(2024, 8, 7, 4); // 2024-09-07T00:00 (04:00 UTC)
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Wellness20240821Promo: FC<Props> = ({ date }) => {
   const endDate = useMemo(() => (date < firstEndDate ? firstEndDate : secondEndDate), [ date ]);

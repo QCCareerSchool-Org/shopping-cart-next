@@ -9,9 +9,9 @@ import { useToggle } from '@/hooks/useToggle';
 
 const backgroundColor = '#010427';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const STPromo: FC<Props> = () => {
   const [ showPopup, togglePopup ] = useToggle(false);

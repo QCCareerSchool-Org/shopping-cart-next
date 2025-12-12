@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { useAddressState } from './useAddressState';
 import { useBillingAddressState } from './useBillingAddressState';
 import { useCoursesState } from './useCoursesState';
@@ -11,8 +13,6 @@ import type { PaysafeCompany } from '@/domain/paysafeCompany';
 import type { School, SchoolVariant } from '@/domain/school';
 import { addEnrollment, chargeEnrollment, createEnrollmentPayload, EnrollmentError, updateEnrollment } from '@/lib/enroll';
 import { clearForm, saveForm } from '@/lib/persist';
-
-import type { JSX } from "react";
 
 type AddToDatabaseFunction = () => Promise<boolean>;
 type ChargeFunction = (token: string, company: PaysafeCompany) => Promise<boolean>;

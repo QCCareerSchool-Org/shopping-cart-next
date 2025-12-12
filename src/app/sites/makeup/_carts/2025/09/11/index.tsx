@@ -7,9 +7,9 @@ import { Guarantee } from '@/app/sites/makeup/guarantee';
 import { FreeProMakeupDynamicMessage } from '@/components/dynamicCourseMessages/freeProMakeup';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Makeup20250911: FC<Props> = ({ date }) => (
   <>

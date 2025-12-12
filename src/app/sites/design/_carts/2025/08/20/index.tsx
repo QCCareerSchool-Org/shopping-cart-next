@@ -7,9 +7,9 @@ import { Guarantee } from '@/app/sites/design/guarantee';
 import { BogoVirtualDesignDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogoVirtualDesign';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Design20250820: FC<Props> = ({ date }) => {
   return (

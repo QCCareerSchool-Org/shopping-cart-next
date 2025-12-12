@@ -4,9 +4,9 @@ import { memo } from 'react';
 import { Icon } from './icon';
 import { Tracker } from './tracker';
 
-type Props = {
+interface Props {
   scrolledFarEnough: boolean;
-};
+}
 
 export const ScrollIndicator: FC<Props> = memo(({ scrolledFarEnough }) => {
   return (

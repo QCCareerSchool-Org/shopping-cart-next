@@ -1,9 +1,9 @@
 import Script from 'next/script';
 import type { FC } from 'react';
 
-type Props = {
+interface Props {
   id: string;
-};
+}
 
 export const Bing: FC<Props> = ({ id }) => (
   <Script id="bing-uet" dangerouslySetInnerHTML={{ __html: getScript(id) }} />

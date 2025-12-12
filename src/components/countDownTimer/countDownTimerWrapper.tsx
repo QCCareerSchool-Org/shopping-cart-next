@@ -2,23 +2,23 @@
 
 import { detect } from 'detect-browser';
 import type { CSSProperties, FC, ReactElement } from 'react';
-import React, { memo, useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 
 import { CountDownTimer } from './countDownTimer';
 import styles from './countDownTimerWrapper.module.css';
 
 const browser = detect();
 
-type Props = {
+interface Props {
   date: number;
   showDate: number;
   endDate: number;
-  message?: string | ReactElement<any>;
+  message?: string | ReactElement;
   buttonInverse?: boolean;
   className?: string;
   style?: CSSProperties;
   newHaus?: boolean;
-};
+}
 
 export const CountDownTimerWrapper: FC<Props> = memo(({ date, showDate, endDate, message, buttonInverse = false, className, style, newHaus }) => {
   const [ closed, setClosed ] = useState(false);
@@ -40,7 +40,7 @@ export const CountDownTimerWrapper: FC<Props> = memo(({ date, showDate, endDate,
     if (element) {
       const scrollListener = (): void => {
         const show = element.offsetTop <= window.scrollY + 1;
-        if (browser && browser.os === 'iOS' && browser.name === 'safari') {
+        if (browser?.os === 'iOS' && browser.name === 'safari') {
           setScrolledPast(show); // set scrolledPast for eventual change
         } else {
           setFixed(show); // set immediately

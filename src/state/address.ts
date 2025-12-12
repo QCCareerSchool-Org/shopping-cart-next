@@ -3,7 +3,7 @@ import type { Title } from '@/domain/title';
 import { needsProvince } from '@/lib/needProvince';
 import { needsPostal } from '@/lib/needsPostal';
 
-export type AddressState = {
+export interface AddressState {
   title: Title;
   firstName: string;
   lastName: string;
@@ -16,7 +16,7 @@ export type AddressState = {
   postalCode: string;
   countryCode: string;
   provinces: Province[];
-};
+}
 
 export type AddressAction =
   | { type: 'SET_COUNTRY_CODE_WITH_PROVINCES'; payload: { countryCode: string; provinces: Province[] } }

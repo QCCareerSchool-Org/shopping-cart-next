@@ -7,9 +7,9 @@ import { Guarantee } from '@/app/sites/design/guarantee';
 import { FreeColorConsultantMessage } from '@/components/dynamicCourseMessages/freeColorConsultant';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Design20251007: FC<Props> = ({ date }) => {
   return (

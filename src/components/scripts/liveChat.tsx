@@ -1,10 +1,10 @@
 import Script from 'next/script';
 import type { FC } from 'react';
 
-type Props = {
+interface Props {
   license: number;
   group: number;
-};
+}
 
 export const LiveChat: FC<Props> = ({ license, group }) => (
   <>

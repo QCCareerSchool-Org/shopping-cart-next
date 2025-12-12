@@ -1,9 +1,9 @@
 import Script from 'next/script';
 import type { FC } from 'react';
 
-type Props = {
+interface Props {
   id: string;
-};
+}
 
 export const Tiktok: FC<Props> = ({ id }) => (
   <Script id="tiktok" dangerouslySetInnerHTML={{ __html: getScript(id) }} />

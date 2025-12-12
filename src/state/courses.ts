@@ -1,8 +1,8 @@
-export type CoursesState = {
+export interface CoursesState {
   selected: string[];
   disabled: string[];
   hidden: string[];
-};
+}
 
 export type CoursesAction =
   | { type: 'CLEAR_COURSES'; payload: { student?: boolean; countryCode: string; provinceCode: string | null } }

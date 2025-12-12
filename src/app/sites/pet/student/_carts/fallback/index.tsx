@@ -7,9 +7,9 @@ import { PetCoursesSubtitleFirstAid } from '../../../petCoursesSubtitleFirstAid'
 import { courseGroups } from '../../courseGroups';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const PetStudentFallback: FC<Props> = ({ date }) => (
   <>

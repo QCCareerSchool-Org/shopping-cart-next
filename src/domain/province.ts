@@ -1,7 +1,7 @@
-export type Province = {
+export interface Province {
   name: string;
   code: string;
-};
+}
 
 export const isProvince = (obj: unknown): obj is Province => {
   return obj !== null && typeof obj === 'object' &&

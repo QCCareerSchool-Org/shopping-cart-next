@@ -77,7 +77,7 @@ export const fetchProvinces = async (countryCode: string, controller?: AbortCont
 
 export const fetchPrice = async (priceQuery: PriceQuery, controller?: AbortController): Promise<Price | undefined> => {
   try {
-    const url = pricesUrl + '?' + qs.stringify(priceQuery);
+    const url = `${pricesUrl}?${qs.stringify(priceQuery)}`;
     const response = await fetch(url, {
       headers: { 'X-API-Version': '2' },
       signal: controller?.signal,
@@ -103,12 +103,12 @@ export interface PriceQuery {
   options?: PriceQueryOptions;
 }
 
-type PriceQueryOptions = {
+interface PriceQueryOptions {
   noShipping?: boolean;
   discountAll?: boolean;
-  discount?: { [d in CurrencyCode]?: number } & { default: number };
+  discount?: Partial<Record<CurrencyCode, number>> & { default: number };
   discountSignature?: string;
-  depositOverrides?: { [code: string]: number };
+  depositOverrides?: Record<string, number>;
   installmentsOverride?: number;
   studentDiscount?: boolean;
   withoutTools?: boolean;
@@ -116,7 +116,7 @@ type PriceQueryOptions = {
   schoolVariant?: SchoolVariant;
   promoCode?: string;
   dateOverride?: Date;
-};
+}
 
 export const getEnrollment = async (id: number, code: string): Promise<EnrollmentResponse> => {
   const url = `${process.env.NEXT_PUBLIC_ENROLLMENT_ENDPOINT}/${id}?code=${encodeURIComponent(code)}`;
@@ -134,7 +134,7 @@ export const getEnrollment = async (id: number, code: string): Promise<Enrollmen
   };
 };
 
-type Course = {
+interface Course {
   code: string;
   baseCost: number;
   planDiscount: number;
@@ -142,9 +142,9 @@ type Course = {
   deposit: number;
   installment: number;
   name: string;
-};
+}
 
-type BaseResponse = {
+interface BaseResponse {
   id: number;
   school: School;
   noShipping: boolean;
@@ -178,7 +178,7 @@ type BaseResponse = {
   currencyName: string | null;
   currencyExchangeRate: number | null;
   courses: Course[];
-};
+}
 
 type RawEnrollmentResponse = BaseResponse & {
   /** string date */

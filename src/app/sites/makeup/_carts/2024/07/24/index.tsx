@@ -8,9 +8,9 @@ import { FreeSkincareDynamicMessage } from '@/components/dynamicCourseMessages/f
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Makeup20240724: FC<Props> = ({ date }) => (
   <>

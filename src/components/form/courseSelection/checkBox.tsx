@@ -1,4 +1,4 @@
-import { useId, type JSX } from 'react';
+import { type JSX, useId } from 'react';
 import { FaQuestionCircle } from 'react-icons/fa';
 
 import { DisabledCourseModal } from './disabledCourseModal';
@@ -8,12 +8,12 @@ import { useCoursesState } from '@/hooks/useCoursesState';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 import { useToggle } from '@/hooks/useToggle';
 
-type Props = {
+interface Props {
   course: Course;
   onMouseOver?: () => void;
   onCheck: (courseCode: string) => void;
   onUncheck: (courseCode: string) => void;
-};
+}
 
 export const CheckBox: React.FC<Props> = props => {
   const id = useId();

@@ -11,10 +11,10 @@ import { billingAddressReducer, initialBillingAddressState } from '@/state/billi
 export const BillingAddressStateContext = createContext<BillingAddressState | undefined>(undefined);
 export const BillingAddressDispatchContext = createContext<Dispatch<BillingAddressAction> | undefined>(undefined);
 
-type Props = {
+interface Props {
   geoLocation: GeoLocation;
   provinces: Province[];
-};
+}
 
 export const BillingAddressProvider: FC<PropsWithChildren<Props>> = ({ geoLocation, provinces, children }) => {
   const [ state, dispatch ] = useReducer(billingAddressReducer, {

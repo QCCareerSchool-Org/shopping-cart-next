@@ -6,9 +6,9 @@ import type { School } from '@/domain/school';
 import { useMetaDispatch } from '@/hooks/useMetaDispatch';
 import { useMetaState } from '@/hooks/useMetaState';
 
-type Props = {
+interface Props {
   school: School;
-};
+}
 
 export const Internal: FC<Props> = ({ school }) => {
   const id = useId();

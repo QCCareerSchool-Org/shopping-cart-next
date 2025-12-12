@@ -40,7 +40,7 @@ declare const paysafe: Paysafe | undefined;
 
 export type DynamicCourseDescriptions = 'SHOW' | 'HIDE' | 'REPLACE';
 
-type Props = {
+interface Props {
   date: number;
   courseGroups: CourseGroup[];
   showHiddenCourses?: boolean;
@@ -85,7 +85,7 @@ type Props = {
   billingAddressDefault?: 'same' | 'different';
   hideCourseTable?: boolean;
   hideCourseSelection?: boolean;
-};
+}
 
 const showBillingAddress = (school: School, billingAddressDefault?: 'same' | 'different'): boolean => {
   return typeof billingAddressDefault !== 'undefined' || school === 'QC Pet Studies';

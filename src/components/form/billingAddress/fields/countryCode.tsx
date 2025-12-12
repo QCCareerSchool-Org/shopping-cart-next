@@ -32,7 +32,7 @@ export const CountryCode: FC = () => {
           throw Error('No provinces returned');
         }
         billingAddressDispatch({ type: 'SET_BILLING_COUNTRY_CODE_WITH_PROVINCES', payload: { countryCode, provinces } });
-      }).catch(err => {
+      }).catch((err: unknown) => {
         console.error(err);
       });
     } else {

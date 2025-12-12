@@ -8,10 +8,10 @@ import { Kit } from './kit';
 import { usePriceState } from '@/hooks/usePriceState';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 
-type Props = {
+interface Props {
   courseCode: string;
   name: string;
-};
+}
 
 const bannerCertifications = [ 'MZ', 'AB', 'HS', 'MW', 'SF', 'SK' ];
 

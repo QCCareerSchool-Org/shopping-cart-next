@@ -3,7 +3,7 @@ import type { AddressState } from '@/state/address';
 import type { BillingAddressState } from '@/state/billingAddress';
 import type { PaymentState } from '@/state/payment';
 
-type Address = {
+interface Address {
   title: string;
   firstName: string;
   lastName: string;
@@ -15,17 +15,17 @@ type Address = {
   provinceCode: string | null;
   postalCode: string;
   countryCode: string;
-};
+}
 
 type BillingAddress = Address & { sameAsShipping: boolean };
 
-export type StoredData = {
+export interface StoredData {
   courses: string[];
   studentAddress: Address;
   billingAddress: BillingAddress;
   paymentDay: number;
   paymentPlan: PaymentPlan;
-};
+}
 
 const isAddress = (obj: unknown): obj is Address => {
   return obj !== null && typeof obj === 'object' &&

@@ -9,9 +9,9 @@ import { LuxeProCollection } from '@/components/luxeProCollection';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 const backgroundColor = '#fff';
 

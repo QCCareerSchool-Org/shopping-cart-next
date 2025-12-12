@@ -1,14 +1,13 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers */
 import { Big } from 'big.js';
 
 import { round } from '@/lib/round';
 
-type Data = {
+interface Data {
   min: number;
   max: number;
   default: number;
   value: number;
-};
+}
 
 type CourseData = Data & {
   code: string;

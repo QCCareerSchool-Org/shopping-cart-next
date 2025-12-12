@@ -7,9 +7,9 @@ import { Guarantee } from '../../../../guarantee';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Wellness20240807: FC<Props> = ({ date }) => (
   <>

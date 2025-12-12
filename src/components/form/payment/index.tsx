@@ -11,14 +11,14 @@ import { usePriceState } from '@/hooks/usePriceState';
 const VisualPaymentPlans = lazy(async () => import('./visualPaymentPlans').then(m => ({ default: m.VisualPaymentPlans })));
 const TextPaymentPlans = lazy(async () => import('./textPaymentPlans').then(m => ({ default: m.TextPaymentPlans })));
 
-type Props = {
+interface Props {
   date: number;
   school: School;
   showPromoCodeInput: boolean;
   visualPaymentPlans: boolean;
   discountName?: string;
   courseGroups: CourseGroup[];
-};
+}
 
 export const Payment: FC<Props> = ({ date, school, showPromoCodeInput, visualPaymentPlans, discountName, courseGroups }) => {
   const priceState = usePriceState();

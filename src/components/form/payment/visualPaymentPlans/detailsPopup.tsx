@@ -1,13 +1,13 @@
-import type { FC, MouseEventHandler, PropsWithChildren, JSX } from 'react';
+import type { FC, JSX, MouseEventHandler, PropsWithChildren } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'react-bootstrap';
 
 import { useToggle } from '@/hooks/useToggle';
 
-type Props = {
+interface Props {
   anchor?: string | JSX.Element;
   title: string;
   footerText?: string | JSX.Element;
-};
+}
 
 export const DetailsPopup: FC<PropsWithChildren<Props>> = ({ anchor, title, footerText, children }) => {
   const [ popup, togglePopup ] = useToggle(false);

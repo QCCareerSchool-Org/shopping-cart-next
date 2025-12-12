@@ -39,9 +39,9 @@ const getModifiedCourseGroups = (defaultCourseGroups: CourseGroup[]): CourseGrou
 
 const orderedCourseGroups = getModifiedCourseGroups(courseGroups);
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const DesignOrganizingInner: FC<Props> = ({ date }) => {
   return (

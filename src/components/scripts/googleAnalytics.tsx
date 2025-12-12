@@ -4,10 +4,10 @@ import { GoogleAnalytics as NextGoogleAnalytics } from '@next/third-parties/goog
 import Script from 'next/script';
 import type { FC } from 'react';
 
-type Props = {
+interface Props {
   id: string;
   adsId?: string;
-};
+}
 
 // export const GoogleAnalytics: FC<Props> = ({ id, adsId }) => {
 //   const pathname = usePathname();

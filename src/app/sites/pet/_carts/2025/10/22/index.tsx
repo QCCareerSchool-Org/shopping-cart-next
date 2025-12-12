@@ -7,9 +7,9 @@ import { Guarantee } from '../../../../guarantee';
 import { PetCoursesSubtitleFirstAid } from '@/app/sites/pet/petCoursesSubtitleFirstAid';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Pet20251022: FC<Props> = ({ date }) => (
   <>

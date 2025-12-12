@@ -1,13 +1,13 @@
 import type { FC } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'react-bootstrap';
 
-type Props = {
+interface Props {
   show: boolean;
   onCancel: () => void;
   onProceed: () => void;
   body: FC;
   heading?: string;
-};
+}
 
 export const ConfirmPopup: FC<Props> = props => {
   return (

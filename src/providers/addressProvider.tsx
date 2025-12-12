@@ -11,10 +11,10 @@ import { addressReducer, initialAddressState } from '@/state/address';
 export const AddressStateContext = createContext<AddressState | undefined>(undefined);
 export const AddressDispatchContext = createContext<Dispatch<AddressAction> | undefined>(undefined);
 
-type Props = {
+interface Props {
   geoLocation: GeoLocation;
   provinces: Province[];
-};
+}
 
 export const AddressProvider: FC<PropsWithChildren<Props>> = ({ geoLocation, provinces, children }) => {
   const [ state, dispatch ] = useReducer(addressReducer, {

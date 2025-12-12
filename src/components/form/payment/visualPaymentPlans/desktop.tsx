@@ -20,12 +20,12 @@ import { usePriceState } from '@/hooks/usePriceState';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 import { formatCurrency } from '@/lib/formatCurrency';
 
-type Props = {
+interface Props {
   date: number;
   school: School;
   discountName?: string;
   courseGroups: CourseGroup[];
-};
+}
 
 const checkCircleStyle: CSSProperties = { position: 'relative', top: -1 };
 
@@ -184,11 +184,11 @@ export const Desktop: FC<Props> = ({ date, school, discountName, courseGroups })
   );
 };
 
-type BtnProps = {
+interface BtnProps {
   active: boolean;
   onClick: () => void;
   variant: KitImage['buttonVariant'];
-};
+}
 
 const Btn: FC<BtnProps> = props => (
   <button onClick={props.onClick} className={`btn btn-${props.variant} ${styles.rounded}`} style={{ textTransform: 'uppercase', width: 130, pointerEvents: props.active ? 'none' : 'auto' }}>
