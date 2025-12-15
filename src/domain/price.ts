@@ -3,7 +3,7 @@ import { isCurrency } from './currency';
 import type { NoShipping } from './noShipping';
 import { isNoShipping } from './noShipping';
 
-type Plan = {
+interface Plan {
   /** the discount based on the payment plan */
   discount: number;
   /** the amount to be paid today */
@@ -20,9 +20,9 @@ type Plan = {
   originalDeposit: number;
   /** the original number of installments, before overrides */
   originalInstallments: number;
-};
+}
 
-type PriceDetails = {
+interface PriceDetails {
   /** the base price before any discounts */
   cost: number;
   /** the discount on courses after the first course */
@@ -37,7 +37,7 @@ type PriceDetails = {
   plans: { full: Plan; part?: Plan };
   /** what our cost for shipping would be if we shipped */
   shipping: number;
-};
+}
 
 export type Price = {
   countryCode: string;

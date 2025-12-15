@@ -1,5 +1,5 @@
 import type { StaticImageData } from 'next/image';
-import type { CSSProperties, FC } from 'react';
+import type { CSSProperties, FC, JSX } from 'react';
 
 import { DetailsPopup } from './detailsPopup';
 // import DesignBooks from './kits/design-books.png';
@@ -11,30 +11,30 @@ import { LuminousKit } from '@/components/luminousKit';
 import { LuxeProCollection } from '@/components/luxeProCollection';
 import type { School } from '@/domain/school';
 
-export type KitImage = {
+export interface KitImage {
   src?: StaticImageData;
   backgroundColor?: CSSProperties['backgroundColor'];
   color?: CSSProperties['color'];
   borderColor?: CSSProperties['borderColor'];
   buttonVariant?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'black' | 'dark-grey';
-};
+}
 
 type ScreenSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
-type Images = {
+interface Images {
   full: KitImage;
   part: KitImage;
   height: Record<ScreenSizes, number | undefined>;
   buttonOffset: Record<ScreenSizes, number | undefined>;
   buttonBelow?: boolean;
-};
+}
 
-export type Kit = {
+export interface Kit {
   images?: Images;
-  fullBullets: Array<string | JSX.Element>;
-  partBullets: Array<string | JSX.Element>;
+  fullBullets: (string | JSX.Element)[];
+  partBullets: (string | JSX.Element)[];
   details?: JSX.Element;
-};
+}
 
 export type CourseKit = {
   courseCode: string | string[];
@@ -122,7 +122,6 @@ const getSchoolKits = (date: number): SchoolKits => ({
 const tariffSwitchDate = Date.UTC(2025, 4, 10, 7);
 const makeupKitDate = Date.UTC(2025, 7, 6, 12);
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getCourseKits = (date: number): CourseKit[] => [
   {
     courseCode: 'MZ',

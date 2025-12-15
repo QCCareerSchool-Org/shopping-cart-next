@@ -12,9 +12,9 @@ const backgroundColor = '#d7d8dc';
 const lastChanceDate = Date.UTC(2025, 0, 31, 8); // 2025-01-31T03:00 (08:00 UTC)
 const endDate = Date.UTC(2025, 1, 1, 8); // 2025-02-01T03:00 (08:00 UTC)
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Wellness20250129Promo: FC<Props> = ({ date }) => {
   const [ showPopup, togglePopup ] = useToggle(false);

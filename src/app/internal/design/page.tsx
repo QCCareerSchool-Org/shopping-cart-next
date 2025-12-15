@@ -48,7 +48,8 @@ const courseGroups: CourseGroup[] = [
   },
 ];
 
-const InternalDesignPage: PageComponent = async ({ searchParams }) => {
+const InternalDesignPage: PageComponent = async props => {
+  const searchParams = await props.searchParams;
   const date = await getDate(searchParams.date);
   return (
     <>

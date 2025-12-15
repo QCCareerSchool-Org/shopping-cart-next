@@ -9,9 +9,9 @@ import Mobile from './mobile.jpg';
 import { PromoImage } from '@/components/promoImage';
 import { usePriceState } from '@/hooks/usePriceState';
 
-type Props = {
+interface Props {
   variant?: 'lastChance';
-};
+}
 
 export const Hero20251117: FC<Props> = () => {
   const priceState = usePriceState();

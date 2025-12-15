@@ -5,10 +5,10 @@ import type { CoursePrice } from '@/domain/price';
 import { useAddressState } from '@/hooks/useAddressState';
 import { usePriceState } from '@/hooks/usePriceState';
 
-type Props = {
+interface Props {
   coursePrice: CoursePrice;
   course: Course;
-};
+}
 
 export const CourseTableRow: FC<Props> = ({ coursePrice, course }) => {
   const { countryCode, provinceCode } = useAddressState();
@@ -29,7 +29,7 @@ export const CourseTableRow: FC<Props> = ({ coursePrice, course }) => {
       </tr>
       {multiCourseDiscountPercentage && (
         <tr className="text-primary">
-          <td>{coursePrice.discountMessage ? coursePrice.discountMessage : <>{multiCourseDiscountPercentage}% Discount</>}</td>
+          <td>{coursePrice.discountMessage ?? <>{multiCourseDiscountPercentage}% Discount</>}</td>
           <td className="text-end text-nowrap align-bottom">&minus; {priceState.currency.symbol}{coursePrice.multiCourseDiscount.toFixed(2)}</td>
         </tr>
       )}

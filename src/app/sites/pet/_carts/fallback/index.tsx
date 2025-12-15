@@ -8,9 +8,9 @@ import { PetCoursesSubtitleBogoFirstAid } from '../../petCoursesSubtitleBogoFirs
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const PetFallback: FC<Props> = ({ date }) => {
   return (

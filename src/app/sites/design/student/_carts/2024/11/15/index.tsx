@@ -6,9 +6,9 @@ import { courseGroups } from '../../../../../courseGroups';
 import { Guarantee } from '../../../../../guarantee';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const DesignStudent20241115: FC<Props> = ({ date }) => {
   return (

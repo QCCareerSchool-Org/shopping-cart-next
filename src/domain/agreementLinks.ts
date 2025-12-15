@@ -1,7 +1,7 @@
-export type AgreementLinks = {
+export interface AgreementLinks {
   default: string;
-  custom: Array<{
+  custom: {
     countryCodes: string[];
     link: string;
-  }>;
-};
+  }[];
+}

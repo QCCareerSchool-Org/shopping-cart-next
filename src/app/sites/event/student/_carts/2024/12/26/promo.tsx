@@ -10,9 +10,9 @@ import { Section } from '@/components/section';
 const backgroundColor = '#727274';
 const extensionDate = Date.UTC(2025, 0, 4, 8); // 2024-01-04T03:00 (08:00 UTC)
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const EventStudent20241226Promo: FC<Props> = ({ date }) => {
   const [ lastChanceDate, endDate ] = useMemo(() => {

@@ -7,10 +7,10 @@ import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { LuminousKit } from '@/components/luminousKit';
 import { usePriceState } from '@/hooks/usePriceState';
 
-type Props = {
+interface Props {
   show: boolean;
   onHide: () => void;
-};
+}
 
 export const Makeup20250416Modal: FC<Props> = props => {
   const priceState = usePriceState();

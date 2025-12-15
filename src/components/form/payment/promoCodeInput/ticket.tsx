@@ -6,13 +6,13 @@ import { PromoCode } from '@/components/promoCode';
 import type { Promo } from '@/domain/promo';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 
-type Props = {
+interface Props {
   date: number;
   promo: Promo;
   onApplyButtonClick: MouseEventHandler<HTMLButtonElement>;
   expanded: boolean;
   onExpandTogle: (value: boolean) => void;
-};
+}
 
 const getEndOfMonth = (date: number): number => {
   const endOfMonth = new Date(date);
@@ -56,7 +56,7 @@ export const Ticket: FC<Props> = props => {
                 ? <h5 className="m-0"><PromoCode>{props.promo.code}</PromoCode></h5>
                 : <small className="m-0"><PromoCode>{props.promo.code}</PromoCode></small>
               }
-              <div className={`${desktop ? '' : 'mt-2'}`} style={{ lineHeight: '1rem' }}>
+              <div className={desktop ? '' : 'mt-2'} style={{ lineHeight: '1rem' }}>
                 <button onClick={() => props.onExpandTogle(true)} className="btn btn-link p-0 border-0 btn-no-hover-shadow" style={{ lineHeight: 'inherit', textDecoration: 'none' }}><small>details</small></button>
               </div>
             </div>

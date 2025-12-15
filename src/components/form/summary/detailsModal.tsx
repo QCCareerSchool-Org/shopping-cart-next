@@ -10,11 +10,11 @@ import { usePriceState } from '@/hooks/usePriceState';
 import { formatCurrency } from '@/lib/formatCurrency';
 import type { PriceState } from '@/state/price';
 
-type Props = {
+interface Props {
   show: boolean;
   onHide: () => void;
   courseGroups: CourseGroup[];
-};
+}
 
 export const DetailsModal: FC<Props> = props => {
   const priceState = usePriceState();
@@ -39,12 +39,12 @@ export const DetailsModal: FC<Props> = props => {
   );
 };
 
-type OuterProps = {
+interface OuterProps {
   price: PriceState;
   countryCode: string;
   provinceCode: string | null;
   courseGroups: CourseGroup[];
-};
+}
 
 const FullBreakdown: FC<OuterProps> = ({ price, countryCode, provinceCode, courseGroups }) => {
   if (!price) {
@@ -98,13 +98,13 @@ const PartBreakdown: FC<OuterProps> = ({ price, countryCode, provinceCode, cours
   );
 };
 
-type InnerProps = {
+interface InnerProps {
   price: PriceState;
   plan: 'full' | 'part';
   countryCode: string;
   provinceCode: string | null;
   courseGroups: CourseGroup[];
-};
+}
 
 const CostRows: React.FC<InnerProps> = ({ price, plan, countryCode, provinceCode, courseGroups }) => {
   if (!price) {

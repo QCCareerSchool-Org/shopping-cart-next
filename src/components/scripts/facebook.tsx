@@ -1,9 +1,9 @@
 import Script from 'next/script';
 import type { FC } from 'react';
 
-type Props = {
+interface Props {
   id: string;
-};
+}
 
 export const Facebook: FC<Props> = ({ id }) => (
   <>

@@ -24,9 +24,9 @@ const getImage = (courseCode: string): StaticImageData | undefined => {
   }
 };
 
-type Props = {
+interface Props {
   courseCode: string;
-};
+}
 
 export const Kit: FC<Props> = ({ courseCode }) => {
   const image = getImage(courseCode);

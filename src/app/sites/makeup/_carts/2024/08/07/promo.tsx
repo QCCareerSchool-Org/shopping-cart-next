@@ -12,9 +12,9 @@ const backgroundColor = '#000';
 const lastChanceDate = Date.UTC(2024, 7, 13, 13, 30); // 2024-08-13T09:30 (13:30 UTC)
 const endDate = Date.UTC(2024, 7, 17, 4); // 2024-08-17T00:00 (04:00 UTC)
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Makeup20240807Promo: FC<Props> = ({ date }) => {
   const [ showPopup, togglePopup ] = useToggle(false);

@@ -5,9 +5,9 @@ import { Full } from './full';
 import { Part } from './part';
 import { usePriceState } from '@/hooks/usePriceState';
 
-type Props = {
+interface Props {
   reverse: boolean;
-};
+}
 
 export const PaymentOptions: FC<Props> = memo(({ reverse }) => {
   const priceState = usePriceState();

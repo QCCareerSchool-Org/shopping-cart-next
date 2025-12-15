@@ -6,7 +6,8 @@ import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const EventFloralDesign200OffPage: PageComponent = async ({ searchParams }) => {
+const EventFloralDesign200OffPage: PageComponent = async props => {
+  const searchParams = await props.searchParams;
   const date = await getDate(searchParams.date);
   return (
     <>

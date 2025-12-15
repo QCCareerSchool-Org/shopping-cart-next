@@ -7,9 +7,9 @@ import { Section } from '@/components/section';
 
 const backgroundColor = '#1a1c1e';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const DesignOrganizingPromo: FC<Props> = ({ date }) => {
   return (

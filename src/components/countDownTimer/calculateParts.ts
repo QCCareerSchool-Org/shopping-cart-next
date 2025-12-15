@@ -1,9 +1,9 @@
-type CalculatePartsResult = {
+interface CalculatePartsResult {
   days: number;
   hours: number;
   minutes: number;
   seconds: number;
-};
+}
 
 export const calculateParts = (durationInMs: number): CalculatePartsResult => {
   const duration = durationInMs / 1000;

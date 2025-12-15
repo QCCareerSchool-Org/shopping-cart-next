@@ -1,13 +1,13 @@
-import type { FC } from 'react';
+import type { FC, JSX } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'react-bootstrap';
 
-type Props = {
+interface Props {
   course: string;
   name: string;
   message: string | JSX.Element;
   show: boolean;
   onHide: () => void;
-};
+}
 
 /**
  * A popup that explains why a particular course selection is disabled

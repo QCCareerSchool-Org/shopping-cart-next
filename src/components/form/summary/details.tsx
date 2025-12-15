@@ -5,9 +5,9 @@ import type { CourseGroup } from '@/domain/courseGroup';
 import { usePriceState } from '@/hooks/usePriceState';
 import { useToggle } from '@/hooks/useToggle';
 
-type Props = {
+interface Props {
   courseGroups: CourseGroup[];
-};
+}
 
 export const Details: FC<Props> = ({ courseGroups }) => {
   const priceState = usePriceState();

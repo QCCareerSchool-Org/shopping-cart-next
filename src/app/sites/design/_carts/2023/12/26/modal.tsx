@@ -3,10 +3,10 @@ import { Modal } from 'react-bootstrap';
 
 import { CareerEssentials } from '@/components/careerEssentials';
 
-type Props = {
+interface Props {
   show: boolean;
   onHide: () => void;
-};
+}
 
 export const Design20231226Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>

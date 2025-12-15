@@ -13,9 +13,9 @@ const backgroundColor = '#b2b3ae';
 const firstEndDate = Date.UTC(2025, 3, 1, 7); // 2025-04–01T03:00 (07:00 UTC)
 const secondEndDate = Date.UTC(2025, 3, 3, 7); // 2025-04–03T03:00 (07:00 UTC)
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Event20250327Promo: FC<Props> = ({ date }) => {
   const [ showPopup, togglePopup ] = useToggle(false);

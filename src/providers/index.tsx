@@ -16,11 +16,11 @@ import type { Country } from '@/domain/country';
 import type { GeoLocation } from '@/domain/geoLocation';
 import type { Province } from '@/domain/province';
 
-type Props = {
+interface Props {
   geoLocation: GeoLocation;
   countries: Country[];
   provinces: Province[];
-};
+}
 
 export const Provider: FC<PropsWithChildren<Props>> = ({ geoLocation, countries, provinces, children }) => (
   <ErrorsProvider>

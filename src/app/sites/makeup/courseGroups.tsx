@@ -1,4 +1,3 @@
-import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 
 import MostPopular from '../../most-pop.svg';
@@ -11,7 +10,7 @@ export const courseGroups: CourseGroup[] = [
       {
         code: 'MZ',
         name: 'Master Makeup Artistry',
-        badge: <Image src={MostPopular as StaticImageData} width="81" height="28" style={{ marginTop: -4, marginBottom: -5, marginLeft: 6 }} alt="Most Popular" />,
+        badge: <Image src={MostPopular} width="81" height="28" style={{ marginTop: -4, marginBottom: -5, marginLeft: 6 }} alt="Most Popular" />,
       },
       {
         code: 'SK',

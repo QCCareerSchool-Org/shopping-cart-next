@@ -8,9 +8,9 @@ import { PetCoursesSubtitleFirstAid } from '@/app/sites/pet/petCoursesSubtitleFi
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Pet20250620: FC<Props> = ({ date }) => (
   <>

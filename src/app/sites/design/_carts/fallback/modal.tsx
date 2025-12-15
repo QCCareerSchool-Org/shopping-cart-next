@@ -1,10 +1,10 @@
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
-type Props = {
+interface Props {
   show: boolean;
   onHide: () => void;
-};
+}
 
 export const DesignFallbackModal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>

@@ -6,13 +6,13 @@ import FallbackBadgeImage from './badge.png';
 import styles from './banner.module.scss';
 import FallbackLastChanceImage from './last-chance.png';
 
-type Props = {
+interface Props {
   variant?: 'lastChance';
   onClick: () => void;
   backgroundColor?: CSSProperties['backgroundColor'];
   badgeImageSrc?: StaticImageData | null;
   lastChanceImageSrc?: StaticImageData | null;
-};
+}
 
 export const Banner: FC<PropsWithChildren<Props>> = ({ variant, onClick, backgroundColor, badgeImageSrc, lastChanceImageSrc, children }) => {
   const handleClick: MouseEventHandler = e => {

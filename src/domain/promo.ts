@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import type { School } from './school';
 
-export type Promo = {
+export interface Promo {
   code: string;
   schools: School[];
   student: 'ALLOWED' | 'DENIED' | 'ONLY';
@@ -14,4 +14,4 @@ export type Promo = {
   endDate?: number;
   /** the expiry date to display to visitors (if undefined, we'll use endDate, or end of current month if endDate is undefined) */
   displayEndDate?: number;
-};
+}

@@ -1,8 +1,10 @@
+import type { JSX } from 'react';
+
 import type { GeoLocation } from './geoLocation';
 
 export type GeoLocationFunction<T> = ((geoLocation: GeoLocation) => T) | T;
 
-export type Course = {
+export interface Course {
   code: string;
   name: GeoLocationFunction<string>;
   description?: string;
@@ -10,4 +12,4 @@ export type Course = {
   hidden?: GeoLocationFunction<boolean>;
   badge?: JSX.Element;
   alwaysShown?: boolean;
-};
+}

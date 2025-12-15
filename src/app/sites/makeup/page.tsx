@@ -5,7 +5,8 @@ import { MakeupFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const MakeupPage: PageComponent = async ({ searchParams }) => {
+const MakeupPage: PageComponent = async props => {
+  const searchParams = await props.searchParams;
   const date = await getDate(searchParams.date);
 
   return (

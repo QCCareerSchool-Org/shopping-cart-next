@@ -2,11 +2,11 @@ import type { FC } from 'react';
 
 import styles from './countDownDigits.module.css';
 
-type Props = {
+interface Props {
   label: string;
   value: number;
   muted?: boolean;
-};
+}
 
 export const CountDownDigits: FC<Props> = ({ label, value, muted = false }) => (
   <div className={styles.digitGroup}>

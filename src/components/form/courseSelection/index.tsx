@@ -13,7 +13,7 @@ import { useCoursesState } from '@/hooks/useCoursesState';
 import { useMetaState } from '@/hooks/useMetaState';
 import { usePriceState } from '@/hooks/usePriceState';
 
-type Props = {
+interface Props {
   internal: boolean;
   courseGroups: CourseGroup[];
   showHiddenCourses?: boolean;
@@ -24,7 +24,7 @@ type Props = {
   discountName?: string;
   hideCourseTable: boolean;
   hide?: boolean;
-};
+}
 
 export const CourseSelection: FC<Props> = props => {
   if (props.hide) {

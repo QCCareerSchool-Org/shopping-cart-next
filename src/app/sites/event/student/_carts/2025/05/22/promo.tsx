@@ -10,9 +10,9 @@ const backgroundColor = '#000d35';
 const lastChanceDate = Date.UTC(2025, 4, 30, 7); // 2025-05-30T03:00 (07:00 UTC)
 const endDate = Date.UTC(2025, 4, 31, 7); // 2025-05-31T03:00 (07:00 UTC)
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const EventStudent20250522Promo: FC<Props> = ({ date }) => (
   <>

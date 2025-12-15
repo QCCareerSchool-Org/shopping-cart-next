@@ -8,10 +8,10 @@ import { getCourse } from '@/domain/courseGroup';
 import { useAddressState } from '@/hooks/useAddressState';
 import { usePriceState } from '@/hooks/usePriceState';
 
-type Props = {
+interface Props {
   discountName?: string;
   courseGroups: CourseGroup[];
-};
+}
 
 export const Full: FC<Props> = ({ discountName, courseGroups }) => {
   const priceState = usePriceState();
@@ -39,7 +39,7 @@ export const Full: FC<Props> = ({ discountName, courseGroups }) => {
                 </tr>
                 {!coursePrice.free && coursePrice.multiCourseDiscount > 0 && (
                   <tr>
-                    <td className="text-primary text-md-end">{coursePrice.discountMessage ? coursePrice.discountMessage : <>{Math.round(coursePrice.multiCourseDiscount / coursePrice.cost * 100)}% Discount</>}</td>
+                    <td className="text-primary text-md-end">{coursePrice.discountMessage ?? <>{Math.round(coursePrice.multiCourseDiscount / coursePrice.cost * 100)}% Discount</>}</td>
                     <td className="text-primary text-end text-nowrap align-bottom">&minus; {priceState.currency.symbol}{coursePrice.multiCourseDiscount.toFixed(2)}</td>
                   </tr>
                 )}

@@ -1,12 +1,12 @@
 import type { CSSProperties, FC, PropsWithChildren, ReactNode } from 'react';
 
-type Props = {
+interface Props {
   id?: string;
   backgroundImage?: ReactNode;
   className?: string;
   style?: CSSProperties;
   noPadding?: boolean;
-};
+}
 
 const getClassName = (noPadding: boolean, className?: string): string | undefined => {
   if (noPadding) {

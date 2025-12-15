@@ -31,7 +31,7 @@ const openSans = Open_Sans({
 });
 
 const RootLayout: LayoutComponent = async ({ children }) => {
-  const headerList = headers();
+  const headerList = await headers();
 
   const countryCodeHeader = headerList.get('x-vercel-ip-country') ?? 'US';
   const provinceCodeHeader = headerList.get('x-vercel-ip-country-region');
@@ -66,7 +66,7 @@ const RootLayout: LayoutComponent = async ({ children }) => {
     <Provider geoLocation={geoLocation} countries={countries} provinces={provinces}>
       <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable} ${neueHaasText.variable} ${neueHaasDisplay.variable}`}>
         <head>
-          {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
+          { }
           <Script id="paysafe" src="https://hosted.paysafe.com/js/v1/latest/paysafe.min.js" strategy="beforeInteractive" />
         </head>
         <body>{children}</body>

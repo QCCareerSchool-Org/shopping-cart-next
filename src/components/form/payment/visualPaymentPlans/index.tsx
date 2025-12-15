@@ -8,12 +8,12 @@ import { useScreenWidth } from '@/hooks/useScreenWidth';
 const Desktop = lazy(async () => import('./desktop').then(m => ({ default: m.Desktop })));
 const Mobile = lazy(async () => import('./mobile').then(m => ({ default: m.Mobile })));
 
-type Props = {
+interface Props {
   date: number;
   school: School;
   discountName?: string;
   courseGroups: CourseGroup[];
-};
+}
 
 export const VisualPaymentPlans: FC<Props> = ({ school, date, discountName, courseGroups }) => {
   const screenWidth = useScreenWidth();

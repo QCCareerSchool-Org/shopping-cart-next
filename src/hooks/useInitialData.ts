@@ -19,7 +19,7 @@ import { needsProvince } from '@/lib/needProvince';
 import { needsPostal } from '@/lib/needsPostal';
 import { loadForm } from '@/lib/persist';
 
-type Address = {
+interface Address {
   title: string | null;
   firstName: string | null;
   lastName: string | null;
@@ -31,18 +31,18 @@ type Address = {
   provinceCode: string | null;
   postalCode: string | null;
   countryCode: string | null;
-};
+}
 
 type BillingAddress = Address & { sameAsShipping: boolean | null };
 
-type Data = {
+interface Data {
   courses: string[] | null;
   studentAddress: Address;
   billingAddress: BillingAddress;
   paymentDay: number | null;
   paymentPlan: PaymentPlan | null;
   promoCode: string | null;
-};
+}
 
 export const useInitialData = (school: School, schoolVariant: SchoolVariant | undefined, student: boolean, courseGroups: CourseGroup[], coursesOverride?: string[], billingAddressDefault?: 'same' | 'different'): void => {
   const searchParams = useSearchParams();

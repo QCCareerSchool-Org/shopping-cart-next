@@ -8,9 +8,9 @@ import { FreeProMakeupDynamicMessage } from '@/components/dynamicCourseMessages/
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Makeup20240307: FC<Props> = ({ date }) => (
   <>

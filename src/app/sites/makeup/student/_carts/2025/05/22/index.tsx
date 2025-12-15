@@ -7,9 +7,9 @@ import { Guarantee } from '../../../../../guarantee';
 import { PersonalStyling60DynamicMessage } from '@/components/dynamicCourseMessages/personalStyling60';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const MakeupStudent20250522: FC<Props> = ({ date }) => {
   return (

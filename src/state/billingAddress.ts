@@ -3,7 +3,7 @@ import type { Title } from '@/domain/title';
 import { needsProvince } from '@/lib/needProvince';
 import { needsPostal } from '@/lib/needsPostal';
 
-export type BillingAddressState = {
+export interface BillingAddressState {
   /** whether to reuse the shipping address or not */
   sameAsShipping: boolean;
   title: Title;
@@ -18,7 +18,7 @@ export type BillingAddressState = {
   postalCode: string;
   countryCode: string;
   provinces: Province[];
-};
+}
 
 export type BillingAddressAction =
   | { type: 'SET_BILLING_DISABLED'; payload: boolean }

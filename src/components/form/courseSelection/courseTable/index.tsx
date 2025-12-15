@@ -6,10 +6,10 @@ import type { CourseGroup } from '@/domain/courseGroup';
 import { getCourse } from '@/domain/courseGroup';
 import { usePriceState } from '@/hooks/usePriceState';
 
-type Props = {
+interface Props {
   discountName?: string;
   courseGroups: CourseGroup[];
-};
+}
 
 export const CourseTable: FC<Props> = ({ discountName, courseGroups }) => {
   const priceState = usePriceState();

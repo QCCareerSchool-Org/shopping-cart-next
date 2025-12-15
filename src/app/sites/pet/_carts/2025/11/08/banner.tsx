@@ -5,10 +5,10 @@ import BadgeImage from './badge.png';
 import styles from './banner.module.scss';
 import LastChanceImage from './last-chance.png';
 
-type Props = {
+interface Props {
   variant?: 'lastChance';
   onClick: () => void;
-};
+}
 
 export const Banner: FC<Props> = ({ variant, onClick }) => {
   const handleClick: MouseEventHandler = e => {

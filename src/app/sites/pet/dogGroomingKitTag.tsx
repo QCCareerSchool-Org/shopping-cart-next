@@ -1,6 +1,5 @@
 'use client';
 
-import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import type { FC, MouseEventHandler } from 'react';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'react-bootstrap';
@@ -24,7 +23,7 @@ export const DogGroomingKitTag: FC = () => {
 
   return (
     <>
-      <a onClick={handleTagClick} href="#"><Image src={Tag as StaticImageData} style={{ position: 'absolute', height: 32, marginTop: -4, marginLeft: 6 }} alt="dog grooming kit included" /></a>
+      <a onClick={handleTagClick} href="#"><Image src={Tag} style={{ position: 'absolute', height: 32, marginTop: -4, marginLeft: 6 }} alt="dog grooming kit included" /></a>
       <Modal show={showPopup} onHide={handleClose}>
         <ModalHeader closeButton><strong>Dog Grooming Starter Kit</strong></ModalHeader>
         <ModalBody>

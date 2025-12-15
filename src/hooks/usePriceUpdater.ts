@@ -65,7 +65,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
           },
         });
       }
-    }).catch(err => {
+    }).catch((err: unknown) => {
       console.error(err);
     });
 
@@ -93,7 +93,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
       priceQuery.options = {
         ...priceQuery.options,
         installmentsOverride: overridesState.installments,
-        depositOverrides: overridesState.courses.reduce<{ [key: string]: number }>((prev, cur) => {
+        depositOverrides: overridesState.courses.reduce<Record<string, number>>((prev, cur) => {
           prev[cur.code] = cur.value;
           return prev;
         }, {}),
@@ -108,7 +108,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
           paymentDispatch({ type: 'SET_PAYMENT_PLAN', payload: 'full' });
         }
       }
-    }).catch(err => {
+    }).catch((err: unknown) => {
       console.error(err);
     });
     return () => controller.abort();

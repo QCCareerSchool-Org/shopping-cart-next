@@ -2,9 +2,9 @@ import type { FC } from 'react';
 
 import { usePriceState } from '@/hooks/usePriceState';
 
-type Props = {
+interface Props {
   discountName?: string;
-};
+}
 
 export const PromotionalDiscountRow: FC<Props> = ({ discountName }) => {
   const priceState = usePriceState();

@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { useAddressState } from './useAddressState';
 import { useBillingAddressState } from './useBillingAddressState';
 import { useCoursesState } from './useCoursesState';

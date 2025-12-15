@@ -3,10 +3,10 @@
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
-type Props = {
+interface Props {
   show: boolean;
   onHide: () => void;
-};
+}
 
 export const Event20241115Modal: FC<Props> = props => {
   return (

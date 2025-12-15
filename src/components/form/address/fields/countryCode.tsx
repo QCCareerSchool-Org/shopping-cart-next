@@ -37,7 +37,7 @@ export const CountryCode: FC = () => {
         }
         addressDispatch({ type: 'SET_COUNTRY_CODE_WITH_PROVINCES', payload: { countryCode, provinces } });
         coursesDispatch({ type: 'RECALCULATE', payload: { student: metaState.student, countryCode, provinceCode: provinces[0].code } });
-      }).catch(err => {
+      }).catch((err: unknown) => {
         console.error(err);
       });
     } else {

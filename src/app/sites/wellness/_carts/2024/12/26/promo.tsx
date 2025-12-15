@@ -12,9 +12,9 @@ import { useToggle } from '@/hooks/useToggle';
 const backgroundColor = '#d7d8dc';
 const extensionDate = Date.UTC(2025, 0, 4, 8); // 2024-01-04T03:00 (08:00 UTC)
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Wellness20241226Promo: FC<Props> = ({ date }) => {
   const [ showPopup, togglePopup ] = useToggle(false);

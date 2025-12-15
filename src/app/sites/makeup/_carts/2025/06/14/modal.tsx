@@ -6,10 +6,10 @@ import { Modal } from 'react-bootstrap';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { LuxeProCollection } from '@/components/luxeProCollection';
 
-type Props = {
+interface Props {
   show: boolean;
   onHide: () => void;
-};
+}
 
 export const Makeup20250614Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>

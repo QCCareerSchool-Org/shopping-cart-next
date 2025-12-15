@@ -20,10 +20,10 @@ import { usePriceState } from '@/hooks/usePriceState';
 import { needsProvince } from '@/lib/needProvince';
 import { needsPostal } from '@/lib/needsPostal';
 
-type Props = {
+interface Props {
   school: School;
   schoolVariant?: SchoolVariant;
-};
+}
 
 export const Address: FC<Props> = ({ school }) => {
   const { countryCode } = useAddressState();

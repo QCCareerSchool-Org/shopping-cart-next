@@ -8,9 +8,9 @@ const subsequentDelayMs = 20_000;
 /** how often to update the elapsed time */
 const interval = 300;
 
-type Props = {
+interface Props {
   scrolledFarEnough: boolean;
-};
+}
 
 export const Tracker: FC<PropsWithChildren<Props>> = ({ scrolledFarEnough, children }) => {
   const [ elapsedTime, setElapsedTime ] = useState(0);

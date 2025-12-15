@@ -1,12 +1,12 @@
 import type { CurrencyCode } from './currencyCode';
 import { isCurrencyCode } from './currencyCode';
 
-export type Currency = {
+export interface Currency {
   code: CurrencyCode;
   symbol: string;
   name: string;
   exchangeRate: number;
-};
+}
 
 export const isCurrency = (obj: unknown): obj is Currency => {
   return obj !== null && typeof obj === 'object' &&

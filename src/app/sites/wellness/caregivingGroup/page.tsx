@@ -7,7 +7,8 @@ import type { PageComponent } from '@/serverComponent';
 
 const coursesOverride = [ 'FC' ];
 
-const CaregivingGroupPage: PageComponent = async ({ searchParams }) => {
+const CaregivingGroupPage: PageComponent = async props => {
+  const searchParams = await props.searchParams;
   const date = await getDate(searchParams.date);
   return (
     <Form

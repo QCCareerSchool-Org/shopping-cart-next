@@ -5,10 +5,10 @@ import { calculateParts } from './calculateParts';
 import { CountDownDigits } from './countDownDigits';
 import styles from './countDownTimer.module.css';
 
-type Props = {
+interface Props {
   now: number;
   endDate: number;
-};
+}
 
 export const CountDownTimer: FC<Props> = memo(({ now, endDate }) => {
   const timeRemaining = endDate - now;

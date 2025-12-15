@@ -29,9 +29,9 @@ for (const group of filteredCourseGroups) {
   }
 }
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const DesignMasterclass150OffInner: FC<Props> = ({ date }) => {
   return (

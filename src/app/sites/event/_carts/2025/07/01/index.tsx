@@ -7,9 +7,9 @@ import { Guarantee } from '@/app/sites/event/guarantee';
 import { BogoEventDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogoEvent';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Event20250701: FC<Props> = ({ date }) => (
   <>

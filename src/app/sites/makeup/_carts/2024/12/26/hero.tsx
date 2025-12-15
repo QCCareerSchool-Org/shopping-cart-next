@@ -8,9 +8,9 @@ import MobileExtended from './mobile-extended.jpg';
 import Mobile from './mobile.jpg';
 import { PromoImage } from '@/components/promoImage';
 
-type Props = {
+interface Props {
   variant?: 'lastChance' | 'extended';
-};
+}
 
 export const Hero20241226: FC<Props> = ({ variant }) => {
   const [ desktopSrc, mobileSrc ] = variant === 'extended'

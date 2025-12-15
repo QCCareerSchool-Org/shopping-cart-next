@@ -3,7 +3,7 @@ import type { PaysafeCompany } from '@/domain/paysafeCompany';
 
 type Environment = 'LIVE' | 'TEST';
 
-type SetupOptions = {
+interface SetupOptions {
   environment: Environment;
   // currencyCode: CurrencyCode;
   fields: {
@@ -19,24 +19,24 @@ type SetupOptions = {
       'color'?: string;
     };
   };
-};
+}
 
-export type Paysafe = {
+export interface Paysafe {
   fields: {
     setup: (apiKey: string, options: SetupOptions, callback: (instance: PaysafeInstance, err: Error | null) => void) => void;
   };
   threedsecure: {
     start: (apiKey: string, data: ThreeDSecureData, callback: (deviceFingerprintingId: string, err: unknown) => void) => void;
   };
-};
+}
 
-type ThreeDSecureData = {
+interface ThreeDSecureData {
   environment: Environment;
   accountId: number;
   card: {
     paymentToken: string;
   };
-};
+}
 
 declare const paysafe: Paysafe;
 
@@ -121,7 +121,7 @@ const setup = async (apiKey: string, options: SetupOptions): Promise<PaysafeInst
   return new Promise<PaysafeInstance>((resolve, reject) => {
     paysafe.fields.setup(apiKey, options, (instance: PaysafeInstance, err: Error | null) => {
       if (err) {
-        return reject(err);
+        reject(err); return;
       }
       resolve(instance);
     });
@@ -138,7 +138,7 @@ export async function createInstance(company: PaysafeCompany, cardNumberId: stri
   return setup(apiKeys[company], options);
 }
 
-type Address = {
+interface Address {
   firstName: string;
   lastName: string;
   address1: string;
@@ -147,11 +147,11 @@ type Address = {
   provinceCode: string | null;
   postalCode: string;
   countryCode: string;
-};
+}
 
 const getTokenizeOptions = (company: PaysafeCompany, currencyCode: CurrencyCode, address: Address, billingAddress: Address, billingAddressSame: boolean): TokenizeOptions | undefined => {
   if (company === 'GB' && currencyCode === 'GBP') {
-    const accountId = (accounts[company] as { [key: string]: number })[currencyCode];
+    const accountId = (accounts[company] as Record<string, number>)[currencyCode];
     if (typeof accountId === 'undefined') {
       throw Error(`Currency ${currencyCode} not supported by ${company} company`);
     }
@@ -225,14 +225,16 @@ const tokenize = async (instance: PaysafeInstance, options?: TokenizeOptions): P
     if (typeof options === 'undefined') {
       instance.tokenize((tokenInstance, err, result) => {
         if (err) {
-          return reject(err);
+          // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
+          reject(err); return;
         }
         resolve(result.token);
       });
     } else {
       instance.tokenize(options, (tokenInstance, err, result) => {
         if (err) {
-          return reject(err);
+          // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
+          reject(err); return;
         }
         resolve(result.token);
       });
@@ -260,7 +262,8 @@ export async function threeDSecureStart(apiKey: string, accountId: number, payme
     };
     paysafe.threedsecure.start(apiKey, data, (deviceFingerprintingId: string, err: unknown) => {
       if (err) {
-        return reject(err);
+        // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
+        reject(err); return;
       }
       resolve(deviceFingerprintingId);
     });

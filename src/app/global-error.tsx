@@ -5,10 +5,10 @@ import { useEffect } from 'react';
 
 import TrackJs from '@/lib/trackJsIsomorphic';
 
-type Props = {
+interface Props {
   error: Error & { digest?: string };
   reset: () => void;
-};
+}
 
 const GlobalError: FC<Props> = ({ error, reset }) => {
   useEffect(() => {

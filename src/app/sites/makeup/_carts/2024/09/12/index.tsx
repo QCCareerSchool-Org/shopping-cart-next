@@ -7,9 +7,9 @@ import { Guarantee } from '@/app/sites/makeup/guarantee';
 import { MasterMakeupSave300AndSkincare } from '@/components/dynamicCourseMessages/masterMakeupSave300AndSkincare';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Makeup20240912: FC<Props> = ({ date }) => (
   <>

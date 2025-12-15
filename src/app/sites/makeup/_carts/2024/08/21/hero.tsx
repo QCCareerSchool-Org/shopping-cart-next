@@ -17,10 +17,10 @@ import Round2Mobile from './round2-mobile.jpg';
 import { PromoImage } from '@/components/promoImage';
 import { usePriceState } from '@/hooks/usePriceState';
 
-type Props = {
+interface Props {
   round2: boolean;
   lastChance: boolean;
-};
+}
 
 export const Hero: FC<Props> = ({ round2, lastChance }) => {
   const priceState = usePriceState();

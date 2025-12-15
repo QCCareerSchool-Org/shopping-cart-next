@@ -7,9 +7,9 @@ import { Section } from '@/components/section';
 const backgroundColor = '#aaaba9';
 const endDate = Date.UTC(2024, 4, 10, 10); // May 10 6:00PM ET (10:00 UTC)
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const EventStudent60Promo: FC<Props> = ({ date }) => (
   <>

@@ -2,7 +2,7 @@ type MissingEmptyInvalid = 'missing' | 'empty' | 'invalid';
 type MissingEmpty = 'missing' | 'empty';
 type MissingInvalid = 'missing' | 'invalid';
 
-type Address = {
+interface Address {
   title?: MissingEmptyInvalid;
   firstName?: MissingEmptyInvalid;
   lastName?: MissingEmptyInvalid;
@@ -14,16 +14,16 @@ type Address = {
   postalCode?: MissingEmptyInvalid;
   telephoneNumber?: MissingEmpty;
   emailAddress?: MissingEmptyInvalid;
-};
+}
 
-export type EnrollmentErrors = {
+export interface EnrollmentErrors {
   courses?: MissingEmptyInvalid;
   studentAddress: Address;
   billingAddress: Address;
   paymentPlan?: MissingEmptyInvalid;
   paymentDay?: MissingEmptyInvalid;
   captchaToken?: MissingInvalid;
-};
+}
 
 export const isEnrollmentErrors = (obj: unknown): obj is EnrollmentErrors => {
   return obj !== null && typeof obj === 'object' &&
