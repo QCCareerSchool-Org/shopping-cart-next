@@ -25,7 +25,7 @@ export const Design20260107: FC<Props> = ({ date }) => {
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
         dynamicCourseMessages={[ BogoDynamicCourseMessage ]}
-        promoCodeDefault="BOGO"
+        promoCodeDefault="BOGO100"
         hideCourseTable
       />
     </>
