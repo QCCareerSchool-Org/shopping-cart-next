@@ -16,14 +16,17 @@ import { usePriceState } from '@/hooks/usePriceState';
 type Props = {
   variant?: 'lastChance';
   onClick?: () => void;
+  handleClick?: () => void;
 };
 
-export const Hero: FC<Props> = ({ variant, onClick }) => {
+export const Hero: FC<Props> = ({ variant, onClick, handleClick }) => {
   const priceState = usePriceState();
+
+  const handlePromoImageClick = onClick ?? handleClick;
 
   const [ desktopSrc, mobileSrc ] = variant === 'lastChance'
     ? priceState?.currency.code === 'GBP' ? [ DesktopUKEnds, MobileUKEnds ] : [ DesktopEnds, MobileEnds ]
     : priceState?.currency.code === 'GBP' ? [ DesktopUK, MobileUK ] : [ Desktop, Mobile ];
 
-  return <PromoImage desktopSrc={desktopSrc} mobileSrc={mobileSrc} onClick={onClick} />;
+  return <PromoImage desktopSrc={desktopSrc} mobileSrc={mobileSrc} onClick={handlePromoImageClick} />;
 };
