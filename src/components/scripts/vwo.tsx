@@ -8,7 +8,7 @@ interface Props {
 export const VWO: FC<Props> = ({ id }) => (
   <>
     <link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
-    <Script id="vwoCode" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: getScript(id) }} />
+    <Script id="vwoCode" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: getScript(id) }} />
   </>
 );
 
