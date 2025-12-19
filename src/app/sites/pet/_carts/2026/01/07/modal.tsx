@@ -5,10 +5,10 @@ import { Modal } from 'react-bootstrap';
 
 import { usePriceState } from '@/hooks/usePriceState';
 
-type Props = {
+interface Props {
   show: boolean;
   onHide: () => void;
-};
+}
 
 export const Pet20260107Modal: FC<Props> = props => {
   const priceState = usePriceState();

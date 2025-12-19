@@ -4,7 +4,6 @@ import type { FC } from 'react';
 
 import { Hero20251226 } from './hero';
 import { Design20251226Modal } from './modal';
-import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
@@ -13,9 +12,9 @@ const backgroundColor = '#29201B';
 const lastChanceDate = Date.UTC(2026, 0, 2, 8); // 2026-01-02T03:00 (08:00 UTC)
 const endDate = Date.UTC(2026, 0, 3, 8); // 2026-01-03T03:00 (08:00 UTC)
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Design20251226Promo: FC<Props> = ({ date }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
@@ -39,9 +38,6 @@ export const Design20251226Promo: FC<Props> = ({ date }) => {
           <Hero20251226 variant={variant} />
         </div>
       </Section>
-      <Banner variant={variant} badgeImageSrc={null} lastChanceImageSrc={null} onClick={handleClick} backgroundColor="#e00000">
-        <>Valued up to <strong>$1548</strong></>
-      </Banner>
       <Design20251226Modal show={showPopup} onHide={handleClick} />
     </>
   );

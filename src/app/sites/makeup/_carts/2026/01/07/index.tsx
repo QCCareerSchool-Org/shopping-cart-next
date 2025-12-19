@@ -4,12 +4,12 @@ import { Makeup20260107Promo } from './promo';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { courseGroups } from '@/app/sites/makeup/courseGroups';
 import { Guarantee } from '@/app/sites/makeup/guarantee';
-import { FreeProMakeupDynamicMessage } from '@/components/dynamicCourseMessages/freeProMakeup';
+import { FreeSkincareDynamicMessage } from '@/components/dynamicCourseMessages/freeSkincare';
 import { Form } from '@/components/form';
 
-type Props = {
+interface Props {
   date: number;
-};
+}
 
 export const Makeup20260107: FC<Props> = ({ date }) => (
   <>
@@ -24,7 +24,7 @@ export const Makeup20260107: FC<Props> = ({ date }) => (
       visualPaymentPlans={true}
       dynamicCourseDescriptions="SHOW"
       promoCodeDefault="SKINCARE"
-      dynamicCourseMessages={[ FreeProMakeupDynamicMessage ]}
+      dynamicCourseMessages={[ FreeSkincareDynamicMessage ]}
     />
   </>
 );
