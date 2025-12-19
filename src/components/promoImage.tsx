@@ -21,13 +21,15 @@ export const PromoImage: FC<Props> = ({ desktopSrc, mobileSrc, maxWidth = 1200, 
     }
   };
 
+  const isInteractive = Boolean(handleClick);
+
   return (
     <div
-      role="button"
-      tabIndex={0}
+      role={isInteractive ? 'button' : undefined}
+      tabIndex={isInteractive ? 0 : undefined}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      style={{ textAlign: 'center', cursor: handleClick ? 'pointer' : undefined }}
+      style={{ textAlign: 'center', cursor: isInteractive ? 'pointer' : undefined }}
     >
       <Image src={desktopSrc} priority quality={quality} alt="" className="img-fluid d-none d-sm-inline" style={{ width: '100%', maxWidth }} />
       <Image src={mobileSrc} priority quality={quality} alt="" className="img-fluid d-sm-none" style={{ width: '100%' }} />
