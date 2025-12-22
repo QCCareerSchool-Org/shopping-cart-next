@@ -1,7 +1,7 @@
 import 'server-only';
 
 import { redirect } from 'next/navigation';
-import qs from 'qs';
+import { stringify } from 'qs';
 
 import type { EnrollmentResponse } from '@/lib/fetch';
 import { getEnrollment } from '@/lib/fetch';
@@ -29,7 +29,7 @@ const getLocation = async (id: number, code: string): Promise<string> => {
 };
 
 const getQueryString = (enrollmentResponse: EnrollmentResponse): string => {
-  return qs.stringify({
+  return stringify({
     title: enrollmentResponse.title,
     firstName: enrollmentResponse.firstName,
     lastName: enrollmentResponse.lastName,
