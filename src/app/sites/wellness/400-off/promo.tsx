@@ -7,7 +7,7 @@ import { Wellness400Modal } from './modal';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#AFB0B4';
+const backgroundColor = '#afb0b4';
 
 export const Wellness400OffPromo: FC = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
