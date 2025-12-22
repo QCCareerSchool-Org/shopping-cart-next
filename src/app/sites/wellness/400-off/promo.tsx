@@ -19,7 +19,9 @@ export const Wellness400OffPromo: FC = () => {
   return (
     <>
       <Section style={{ backgroundColor }} noPadding>
-        <Hero onClick={handleClick} />
+        <div onClick={handleClick} style={{ cursor: 'pointer' }}>
+          <Hero />
+        </div>
       </Section>
       <Wellness400Modal show={showPopup} onHide={handleClick} />
     </>
