@@ -6,26 +6,32 @@ import { Popup } from './popup';
 import { getPromos } from './promos';
 import { FormGroup } from '@/components/formGroup';
 import { PromoCode } from '@/components/promoCode';
+import type { Promo } from '@/domain/promo';
 import type { School } from '@/domain/school';
 import { useMetaDispatch } from '@/hooks/useMetaDispatch';
 import { useMetaState } from '@/hooks/useMetaState';
 import { usePriceState } from '@/hooks/usePriceState';
 import { useScreenWidth } from '@/hooks/useScreenWidth';
 import { useToggle } from '@/hooks/useToggle';
+import type { PriceState } from '@/state/price';
 
 interface Props {
   date: number;
   school: School;
+  promosOverride?: (date: number, price: PriceState, school: School, student: boolean) => Promo[];
 }
 
-export const PromoCodeInput: FC<Props> = ({ date, school }) => {
+export const PromoCodeInput: FC<Props> = ({ date, school, promosOverride }) => {
   const screenWidth = useScreenWidth();
   const { promoCode, promoCodeInputValue, student } = useMetaState();
   const priceState = usePriceState();
   const metaDispatch = useMetaDispatch();
   const [ popup, togglePopup ] = useToggle(false);
 
-  const promos = useMemo(() => getPromos(date, priceState, school, student), [ date, priceState, school, student ]);
+  const promos = useMemo(() => (promosOverride
+    ? promosOverride(date, priceState, school, student)
+    : getPromos(date, priceState, school, student)
+  ), [ date, priceState, school, student, promosOverride ]);
 
   const handleViewButtonClick: MouseEventHandler<HTMLButtonElement> = e => {
     e.preventDefault();

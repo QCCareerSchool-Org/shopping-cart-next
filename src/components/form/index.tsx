@@ -12,6 +12,7 @@ import { ScrollIndicator } from './scrollIndicator';
 import { Summary } from './summary';
 import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
+import type { Promo } from '@/domain/promo';
 import { type School, type SchoolVariant, validVariant } from '@/domain/school';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useCoursesState } from '@/hooks/useCoursesState';
@@ -40,7 +41,7 @@ declare const paysafe: Paysafe | undefined;
 
 export type DynamicCourseDescriptions = 'SHOW' | 'HIDE' | 'REPLACE';
 
-interface Props {
+export interface Props {
   date: number;
   courseGroups: CourseGroup[];
   showHiddenCourses?: boolean;
@@ -61,6 +62,8 @@ interface Props {
   student?: boolean;
   /** whether to show the promo code input or not */
   showPromoCodeInput?: boolean;
+  /** use constant reference */
+  promosOverride?: (date: number, price: PriceState, school: School, student: boolean) => Promo[];
   /** a default promo code */
   promoCodeDefault?: string;
   /** whether to show the dynamic course descriptions */
@@ -191,7 +194,7 @@ export const Form: FC<Props> = props => {
       />
       <Address school={props.school} schoolVariant={props.schoolVariant} />
       <Suspense>{showBillingAddress(props.school, props.billingAddressDefault) && <BillingAddress />}</Suspense>
-      <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} visualPaymentPlans={!!props.visualPaymentPlans} discountName={props.discountName} courseGroups={props.courseGroups} />
+      <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} promosOverride={props.promosOverride} visualPaymentPlans={!!props.visualPaymentPlans} discountName={props.discountName} courseGroups={props.courseGroups} />
       <Suspense>{!!props.internal && <Overrides />}</Suspense>
       <Summary onSubmit={handleSubmit} agreementLinks={props.agreementLinks} showPromoCodeInput={!!props.showPromoCodeInput} guarantee={props.guarantee} courseGroups={props.courseGroups} onButtonVisibilityChange={handleButtonVisiblityChange} />
       <Suspense>{props.confirmation && <ConfirmPopup show={showConfirmationPopup} onCancel={handleConfirmationCancel} onProceed={handleConfirmationProceed} body={props.confirmation.body} heading={props.confirmation.heading} />}</Suspense>
