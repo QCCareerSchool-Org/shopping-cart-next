@@ -1,7 +1,7 @@
 import { agreementLinks } from '../agreementLinks';
 import { Guarantee } from '../guarantee';
-import { MakeupCoachingPromo } from './promo';
-import { Form } from '@/components/form';
+import { Client } from './client';
+import { MakeupCoachingPromo } from '../makeup-coaching-50-off/promo';
 import type { CourseGroup } from '@/domain/courseGroup';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -14,13 +14,15 @@ const courseGroups: CourseGroup[] = [
   },
 ];
 
+const coursesOverride = [ 'pa' ];
+
 const MakeupCoachingPage: PageComponent = async props => {
   const searchParams = await props.searchParams;
   const date = await getDate(searchParams.date);
   return (
     <>
       <MakeupCoachingPromo date={date} />
-      <Form
+      <Client
         date={date}
         courseGroups={courseGroups}
         school="QC Makeup Academy"
@@ -29,11 +31,12 @@ const MakeupCoachingPage: PageComponent = async props => {
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
         showPromoCodeInput
-        coursesOverride={[ 'pa' ]}
+        coursesOverride={coursesOverride}
         hideCourseSelection
       />
     </>
   );
+
 };
 
 export default MakeupCoachingPage;
