@@ -17,7 +17,7 @@ const DesignPage: PageComponent = async props => {
         ? <Design20251211 date={date} />
         : date >= Date.UTC(2025, 11, 26, 8) && date < Date.UTC(2026, 0, 3, 8) // 2025-12-26T03:00 (8:00 UTC) to 2026-01-03T03:00 (8:00 UTC)
           ? <Design20251226 date={date} />
-          : date >= Date.UTC(2026, 0, 7, 8) && date < Date.UTC(2026, 0, 17, 8) // 2026-01-07T03:00 (8:00 UTC) to 2026-01-17T03:00 (8:00 UTC)
+          : date >= Date.UTC(2026, 0, 5, 8) && date < Date.UTC(2026, 0, 17, 8) // 2026-01-05T03:00 (8:00 UTC) to 2026-01-17T03:00 (8:00 UTC)
             ? <Design20260107 date={date} />
             : <DesignFallback date={date} />
       }

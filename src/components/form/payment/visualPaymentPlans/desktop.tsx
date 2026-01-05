@@ -25,11 +25,12 @@ interface Props {
   school: School;
   discountName?: string;
   courseGroups: CourseGroup[];
+  hideTaxRefund?: boolean;
 }
 
 const checkCircleStyle: CSSProperties = { position: 'relative', top: -1 };
 
-export const Desktop: FC<Props> = ({ date, school, discountName, courseGroups }) => {
+export const Desktop: FC<Props> = ({ date, school, discountName, courseGroups, hideTaxRefund }) => {
   const screenWidth = useScreenWidth();
   const priceState = usePriceState();
   const paymentState = usePaymentState();
@@ -170,7 +171,7 @@ export const Desktop: FC<Props> = ({ date, school, discountName, courseGroups })
       {/* result column */}
       <div className="col-12 col-md-6 col-lg-4">
         <Breakdown discountName={discountName} courseGroups={courseGroups} />
-        {priceState && priceState.courses.length > 0 && priceState.countryCode === 'CA' && (
+        {priceState && priceState.courses.length > 0 && !hideTaxRefund && priceState.countryCode === 'CA' && (
           <div>
             <Card className="mt-4 text-center" style={{ marginLeft: 'auto' }}>
               <CardBody>

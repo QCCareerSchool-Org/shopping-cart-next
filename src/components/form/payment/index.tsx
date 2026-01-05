@@ -21,9 +21,10 @@ interface Props {
   visualPaymentPlans: boolean;
   discountName?: string;
   courseGroups: CourseGroup[];
+  hideTaxRefund?: boolean;
 }
 
-export const Payment: FC<Props> = ({ date, school, showPromoCodeInput, promosOverride, visualPaymentPlans, discountName, courseGroups }) => {
+export const Payment: FC<Props> = ({ date, school, showPromoCodeInput, promosOverride, visualPaymentPlans, discountName, courseGroups, hideTaxRefund }) => {
   const priceState = usePriceState();
   const plansEnabled = priceState && priceState.courses.every(c => c.plans.part);
 
@@ -32,8 +33,8 @@ export const Payment: FC<Props> = ({ date, school, showPromoCodeInput, promosOve
       <h2 className="h1">{plansEnabled ? 'Select a Payment Plan' : 'Payment Plan'}</h2>
       <Suspense>
         {visualPaymentPlans
-          ? <VisualPaymentPlans date={date} school={school} discountName={discountName} courseGroups={courseGroups} />
-          : <TextPaymentPlans date={date} school={school} showPromoCodeInput={showPromoCodeInput} promosOverride={promosOverride} discountName={discountName} courseGroups={courseGroups} />
+          ? <VisualPaymentPlans date={date} school={school} discountName={discountName} courseGroups={courseGroups} hideTaxRefund={hideTaxRefund} />
+          : <TextPaymentPlans date={date} school={school} showPromoCodeInput={showPromoCodeInput} promosOverride={promosOverride} discountName={discountName} courseGroups={courseGroups} hideTaxRefund={hideTaxRefund} />
         }
       </Suspense>
     </Section>

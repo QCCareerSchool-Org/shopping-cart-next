@@ -22,11 +22,12 @@ interface Props {
   promosOverride?: (date: number, price: PriceState, school: School, student: boolean) => Promo[];
   discountName?: string;
   courseGroups: CourseGroup[];
+  hideTaxRefund?: boolean;
 }
 
 const getReverse = (school: School): boolean => school === 'QC Makeup Academy';
 
-export const TextPaymentPlans: FC<Props> = ({ date, school, showPromoCodeInput, promosOverride, discountName, courseGroups }) => {
+export const TextPaymentPlans: FC<Props> = ({ date, school, showPromoCodeInput, promosOverride, discountName, courseGroups, hideTaxRefund }) => {
   const paymentState = usePaymentState();
   const priceState = usePriceState();
 
@@ -48,7 +49,7 @@ export const TextPaymentPlans: FC<Props> = ({ date, school, showPromoCodeInput, 
                   <Breakdown discountName={discountName} courseGroups={courseGroups} />
                 </CardBody>
               </Card>
-              {priceState?.countryCode === 'CA' && (
+              {!hideTaxRefund && priceState?.countryCode === 'CA' && (
                 <div className="mt-4" style={{ maxWidth: 308 }}>
                   <CanadaTaxCredits />
                 </div>
