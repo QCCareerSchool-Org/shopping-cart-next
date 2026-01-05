@@ -1,7 +1,7 @@
-import { agreementLinks } from '../agreementLinks';
-import { Guarantee } from '../guarantee';
+import { Guarantee } from './guarantee';
 import { MakeupCoachingPromo } from './promo';
 import { Form } from '@/components/form';
+import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -13,6 +13,11 @@ const courseGroups: CourseGroup[] = [
     ],
   },
 ];
+
+const agreementLinks: AgreementLinks = {
+  default: 'https://www.qcmakeupacademy.com/pm-enrollment-agreement.html',
+  custom: [],
+};
 
 const MakeupCoachingPage: PageComponent = async props => {
   const searchParams = await props.searchParams;
