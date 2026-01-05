@@ -23,9 +23,10 @@ interface Props {
   school: School;
   discountName?: string;
   courseGroups: CourseGroup[];
+  hideTaxRefund?: boolean;
 }
 
-export const Mobile: FC<Props> = ({ date, school, discountName, courseGroups }) => {
+export const Mobile: FC<Props> = ({ date, school, discountName, courseGroups, hideTaxRefund }) => {
   const screenWidth = useScreenWidth();
   const priceState = usePriceState();
   const paymentState = usePaymentState();
@@ -112,7 +113,7 @@ export const Mobile: FC<Props> = ({ date, school, discountName, courseGroups }) 
         </div>
         <div className="col-12 col-sm-10">
           <Breakdown discountName={discountName} courseGroups={courseGroups} />
-          {priceState && priceState.courses.length > 0 && priceState?.countryCode === 'CA' && (
+          {priceState && priceState.courses.length > 0 && !hideTaxRefund && priceState?.countryCode === 'CA' && (
             <div>
               <Card className="mt-4 text-center" style={{ marginLeft: 'auto' }}>
                 <CardBody>

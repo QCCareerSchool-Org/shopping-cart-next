@@ -31,6 +31,7 @@ const MakeupCoachingPage: PageComponent = async props => {
         promoCodeDefault="COACHING50"
         coursesOverride={[ 'pa' ]}
         hideCourseSelection
+        hideTaxRefund
       />
     </>
   );

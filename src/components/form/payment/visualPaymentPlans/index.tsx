@@ -13,9 +13,10 @@ interface Props {
   school: School;
   discountName?: string;
   courseGroups: CourseGroup[];
+  hideTaxRefund?: boolean;
 }
 
-export const VisualPaymentPlans: FC<Props> = ({ school, date, discountName, courseGroups }) => {
+export const VisualPaymentPlans: FC<Props> = ({ school, date, discountName, courseGroups, hideTaxRefund }) => {
   const screenWidth = useScreenWidth();
 
   const md = screenWidth >= 768;
@@ -26,7 +27,9 @@ export const VisualPaymentPlans: FC<Props> = ({ school, date, discountName, cour
 
   return (
     <Suspense>
-      {md ? <Desktop date={date} school={school} discountName={discountName} courseGroups={courseGroups} /> : <Mobile date={date} school={school} discountName={discountName} courseGroups={courseGroups} />}
+      {md
+        ? <Desktop date={date} school={school} discountName={discountName} courseGroups={courseGroups} hideTaxRefund={hideTaxRefund} />
+        : <Mobile date={date} school={school} discountName={discountName} courseGroups={courseGroups} hideTaxRefund={hideTaxRefund} />}
     </Suspense>
   );
 };
