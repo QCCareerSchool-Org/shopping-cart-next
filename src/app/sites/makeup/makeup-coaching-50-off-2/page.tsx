@@ -1,7 +1,7 @@
-import { agreementLinks } from '../agreementLinks';
-import { Guarantee } from '../guarantee';
 import { Client } from './client';
+import { Guarantee } from '../makeup-coaching-50-off/guarantee';
 import { MakeupCoachingPromo } from '../makeup-coaching-50-off/promo';
+import type { AgreementLinks } from '@/domain/agreementLinks';
 import type { CourseGroup } from '@/domain/courseGroup';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
@@ -15,6 +15,11 @@ const courseGroups: CourseGroup[] = [
 ];
 
 const coursesOverride = [ 'pa' ];
+
+const agreementLinks: AgreementLinks = {
+  default: 'https://www.qcmakeupacademy.com/pm-enrollment-agreement.html',
+  custom: [],
+};
 
 const MakeupCoachingPage: PageComponent = async props => {
   const searchParams = await props.searchParams;
