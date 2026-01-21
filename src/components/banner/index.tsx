@@ -12,9 +12,10 @@ interface Props {
   backgroundColor?: CSSProperties['backgroundColor'];
   badgeImageSrc?: StaticImageData | null;
   lastChanceImageSrc?: StaticImageData | null;
+  hideLink?: boolean;
 }
 
-export const Banner: FC<PropsWithChildren<Props>> = ({ variant, onClick, backgroundColor, badgeImageSrc, lastChanceImageSrc, children }) => {
+export const Banner: FC<PropsWithChildren<Props>> = ({ variant, onClick, backgroundColor, badgeImageSrc, lastChanceImageSrc, hideLink, children }) => {
   const handleClick: MouseEventHandler = e => {
     e.preventDefault();
     onClick();
@@ -33,8 +34,8 @@ export const Banner: FC<PropsWithChildren<Props>> = ({ variant, onClick, backgro
               : <>{badgeImage !== null && <div className="me-2"><Image src={badgeImage} height="48" alt="" /></div>}</>
             }
           </div>
-          <div>
-            <span className="me-2">{children}</span><span className="me-2">|</span><a href="#">Learn More</a>
+          <div className="d-flex">
+            <span className="text-center"><span className="me-2">{children}</span>{!hideLink && <><span className="me-2">|</span><a href="#">Learn More</a></>}</span>
           </div>
         </div>
       </div>
