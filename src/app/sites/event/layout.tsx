@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 const EventLayout: LayoutComponent = async ({ children }) => {
   const jwt = (await cookies()).get('user')?.value;
-  const result = jwt ? await decodeJwt(jwt, 'QC Design School') : undefined;
+  const result = jwt ? await decodeJwt(jwt, 'QC Event School') : undefined;
   const raw = result?.success ? result.value : undefined;
   const userValues = raw && isUserValues(raw) ? raw : undefined;
 
