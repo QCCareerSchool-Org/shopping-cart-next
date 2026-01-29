@@ -12,7 +12,7 @@ const PetPage: PageComponent = async props => {
 
   return (
     <Suspense>
-      {date >= Date.UTC(2026, 0, 21, 8) && date < Date.UTC(2026, 0, 31, 8) // 2026-01-21T03:00 (08:00 UTC) to 2026-01-31T03:00 (08:00 UTC)
+      {date >= Date.UTC(2026, 0, 21, 8) // && date < Date.UTC(2026, 0, 31, 8) // 2026-01-21T03:00 (08:00 UTC) to 2026-01-31T03:00 (08:00 UTC)
         ? <Pet20260121 date={date} />
         : date >= Date.UTC(2026, 0, 5, 8) && date < Date.UTC(2026, 0, 21, 8) // 2026-01-05T03:00 (8:00 UTC) to 2026-01-21T03:00 (8:00 UTC)
           ? <Pet20260107 date={date} />
