@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import Script from 'next/script';
 
 import { Footer } from './footer';
@@ -6,6 +7,9 @@ import { Header } from './header';
 import { Bing } from '@/components/scripts/bing';
 import { Facebook } from '@/components/scripts/facebook';
 import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
+import { isUserValues } from '@/domain/userValues';
+import { decodeJwt } from '@/lib/jwt';
+import { UserValuesProvider } from '@/providers/userValuesProvider';
 import type { LayoutComponent } from '@/serverComponent';
 
 import './global.scss';
@@ -26,18 +30,24 @@ export const metadata: Metadata = {
   other: { 'msapplication-config': '/design/browserconfig.xml' },
 };
 
-const DesignLayout: LayoutComponent = ({ children }) => {
+const DesignLayout: LayoutComponent = async ({ children }) => {
+  const jwt = (await cookies()).get('user')?.value;
+  const result = jwt ? await decodeJwt(jwt, 'QC Design School') : undefined;
+  const raw = result?.success ? result.value : undefined;
+  const userValues = raw && isUserValues(raw) ? raw : undefined;
+
   return (
     <div>
-      <GoogleAnalytics id="G-DV480L9S3Y" adsId="AW-1071836607" />
-      <Header />
-      {children}
-      <Footer />
-      <Facebook id="5372705592757225" />
-      {/* <Tiktok id="" /> */}
+      <GoogleAnalytics id="G-DV480L9S3Y" adsId="AW-1071836607" userValues={userValues} />
+      <Facebook id="5372705592757225" userValues={userValues} />
       <Bing id="5105217" />
+      <UserValuesProvider {...userValues}>
+        <Header />
+        {children}
+        <Footer />
+      </UserValuesProvider>
+      {/* <Tiktok id="" /> */}
       <Script src="/design/chat.js" />
-      <Script id="perfect-audience" src="/design/perfectAudience.js" />
     </div>
   );
 };
