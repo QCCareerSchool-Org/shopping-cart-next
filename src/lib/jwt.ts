@@ -24,7 +24,7 @@ const secrets: Record<School, Buffer<ArrayBuffer>> = {
   'QC Career School': Buffer.from(base64SecretEvent, 'base64'),
 };
 
-for (const [ , value ] of Object.entries(secrets)) {
+for (const value of Object.values(secrets)) {
   if (value.length !== 32) {
     throw new Error('key must decode to 32 bytes');
   }
@@ -76,9 +76,6 @@ export const decodeJwt = async (jwt: string, school: School): Promise<Result<Rec
     const { payload } = await jose.jwtDecrypt<Record<string, unknown>>(jwt, secret, { issuer, audience });
     return success(payload);
   } catch (err) {
-    if (err instanceof Error) {
-      return failure(err);
-    }
-    return failure(Error('Unknown error'));
+    return failure(err instanceof Error ? err : Error(String(err)));
   }
 };

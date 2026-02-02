@@ -9,10 +9,12 @@ import type { PageComponent } from '@/serverComponent';
 
 export const Resume: PageComponent = async ({ searchParams }) => {
   let location = '/';
-  if ('id' in searchParams && typeof searchParams.id === 'string' && 'code' in searchParams && typeof searchParams.code === 'string') {
-    const id = parseInt(searchParams.id, 10);
+  const params = await searchParams;
+
+  if ('id' in params && typeof params.id === 'string' && 'code' in params && typeof params.code === 'string') {
+    const id = parseInt(params.id, 10);
     if (!isNaN(id)) {
-      location = await getLocation(id, searchParams.code);
+      location = await getLocation(id, params.code);
     }
   }
   redirect(location);
