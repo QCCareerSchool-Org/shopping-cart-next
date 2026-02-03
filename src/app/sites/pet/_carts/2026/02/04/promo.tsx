@@ -1,0 +1,44 @@
+'use client';
+
+import type { FC } from 'react';
+
+import { Hero20260204 } from './hero';
+import { Pet20260204Modal } from './modal';
+import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
+import { Section } from '@/components/section';
+import { useToggle } from '@/hooks/useToggle';
+import type { PromotionPeriodObject } from '@/lib/promotionPeriod';
+
+const backgroundColor = '#1A7B81';
+
+interface Props {
+  date: number;
+  promotionPeriod: PromotionPeriodObject;
+}
+
+export const Pet20260204Promo: FC<Props> = ({ date, promotionPeriod }) => {
+  const [ showPopup, togglePopup ] = useToggle(false);
+  const variant = typeof promotionPeriod.lastChance !== 'undefined' && date >= promotionPeriod.lastChance ? 'lastChance' : undefined;
+
+  const handleClick = (): void => {
+    togglePopup();
+  };
+
+  return (
+    <>
+      {promotionPeriod.lastChance && <CountDownTimerWrapper
+        date={date}
+        showDate={promotionPeriod.lastChance}
+        endDate={promotionPeriod.end}
+        message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
+        className="bg-black text-light"
+      />}
+      <Section style={{ backgroundColor }} noPadding>
+        <div onClick={handleClick} style={{ cursor: 'pointer' }}>
+          <Hero20260204 variant={variant} />
+        </div>
+      </Section>
+      <Pet20260204Modal show={showPopup} onHide={handleClick} />
+    </>
+  );
+};
