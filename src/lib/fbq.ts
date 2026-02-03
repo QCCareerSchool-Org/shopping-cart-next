@@ -1,3 +1,4 @@
+import { normalizeCity, normalizeEmailAddress, normalizeName, normalizeState, normalizeTelephoneNumber } from './hash';
 import type { Enrollment } from '@/domain/enrollment';
 
 interface Options {
@@ -38,13 +39,13 @@ export const fbqPageview = (url?: string): void => {
 };
 
 interface AdditionalData {
-  emailAddress?: string;
-  telephoneNumber?: string;
-  firstName?: string;
-  lastName?: string;
-  city?: string;
-  province?: string;
-  country?: string;
+  emailAddress: string;
+  telephoneNumber: string | null;
+  firstName: string | null;
+  lastName: string | null;
+  city: string | null;
+  province: string | null;
+  country: string | null;
 }
 
 export const fbqLead = (eventId?: string, additionalData?: AdditionalData): void => {
@@ -53,22 +54,22 @@ export const fbqLead = (eventId?: string, additionalData?: AdditionalData): void
   if (facebookId && additionalData) {
     const params: InitParams = {};
     if (additionalData.emailAddress) {
-      params.em = additionalData.emailAddress.toLowerCase();
+      params.em = normalizeEmailAddress(additionalData.emailAddress);
     }
     if (additionalData.telephoneNumber) {
-      params.ph = additionalData.telephoneNumber.replace(/\D/gu, '');
+      params.ph = normalizeTelephoneNumber(additionalData.telephoneNumber);
     }
     if (additionalData.firstName) {
-      params.fn = additionalData.firstName.toLowerCase();
+      params.fn = normalizeName(additionalData.firstName);
     }
     if (additionalData.lastName) {
-      params.ln = additionalData.lastName.toLowerCase();
+      params.ln = normalizeName(additionalData.lastName);
     }
     if (additionalData.city) {
-      params.ct = additionalData.city.toLowerCase();
+      params.ct = normalizeCity(additionalData.city);
     }
     if (additionalData.province) {
-      params.st = additionalData.province.toLowerCase();
+      params.st = normalizeState(additionalData.province);
     }
     if (additionalData.country) {
       params.country = additionalData.country.toLowerCase();
@@ -87,7 +88,20 @@ export const fbqLead = (eventId?: string, additionalData?: AdditionalData): void
 export const fbqSale = (enrollment: Enrollment): void => {
   const facebookId = process.env.FACEBOOK_ID;
   if (facebookId) {
-    window.fbq?.('init', facebookId, { em: enrollment.emailAddress });
+    const initParams: InitParams = {
+      em: normalizeEmailAddress(enrollment.emailAddress),
+      fn: normalizeName(enrollment.firstName),
+      ln: normalizeName(enrollment.lastName),
+      ph: normalizeTelephoneNumber(enrollment.telephoneNumber),
+      ct: normalizeCity(enrollment.city),
+      country: enrollment.countryCode.toLowerCase(),
+    };
+
+    if (enrollment.provinceCode) {
+      initParams.st = normalizeState(enrollment.provinceCode);
+    }
+
+    window.fbq?.('init', facebookId, initParams);
   }
   window.fbq?.('track', 'Purchase', { value: enrollment.cost, currency: enrollment.currencyCode }, { eventID: enrollment.id.toString() });
 };

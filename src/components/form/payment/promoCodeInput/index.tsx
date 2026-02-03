@@ -46,7 +46,7 @@ export const PromoCodeInput: FC<Props> = ({ date, school, promosOverride }) => {
     metaDispatch({ type: 'SET_PROMO_CODE_INPUT_VALUE', payload: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent): void => {
+  const handleSubmit = (e: React.SubmitEvent): void => {
     e.preventDefault();
     metaDispatch({ type: 'SET_PROMO_CODE', payload: promoCodeInputValue });
   };

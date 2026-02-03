@@ -3,7 +3,7 @@ import Script from 'next/script';
 
 import { Footer } from './footer';
 import { Header } from './header';
-import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
+import { GoogleAnalytics } from '@/scripts/googleAnalytics';
 import type { LayoutComponent } from '@/serverComponent';
 
 import './global.scss';

@@ -14,11 +14,16 @@ if (!base64SecretEvent) {
   throw new Error('Environment variable JWT_SECRET_BASE64_EVENT not found');
 }
 
+const base64SecretPet = process.env.JWT_SECRET_BASE64_PET;
+if (!base64SecretPet) {
+  throw new Error('Environment variable JWT_SECRET_BASE64_PET not found');
+}
+
 const secrets: Record<School, Buffer<ArrayBuffer>> = {
   'QC Design School': Buffer.from(base64SecretDesign, 'base64'),
   'QC Event School': Buffer.from(base64SecretEvent, 'base64'),
   'QC Makeup Academy': Buffer.from(base64SecretEvent, 'base64'),
-  'QC Pet Studies': Buffer.from(base64SecretEvent, 'base64'),
+  'QC Pet Studies': Buffer.from(base64SecretPet, 'base64'),
   'QC Wellness Studies': Buffer.from(base64SecretEvent, 'base64'),
   'Winghill Writing School': Buffer.from(base64SecretEvent, 'base64'),
   'QC Career School': Buffer.from(base64SecretEvent, 'base64'),
@@ -35,31 +40,31 @@ const getInfo = (school: School): [ issuer: string, audience: string, secret: Bu
   let secret: Buffer<ArrayBuffer>;
   switch (school) {
     case 'QC Design School':
-      urn = 'urn:www.qcdesignschool.com:';
+      urn = 'urn:qcdesignschool.com:';
       secret = secrets['QC Design School'];
       break;
     case 'QC Event School':
-      urn = 'urn:www.qceventplanning.com:';
+      urn = 'urn:qceventplanning.com:';
       secret = secrets['QC Event School'];
       break;
     case 'QC Makeup Academy':
-      urn = 'urn:www.qcmakeupacademy.com:';
+      urn = 'urn:qcmakeupacademy.com:';
       secret = secrets['QC Makeup Academy'];
       break;
     case 'QC Pet Studies':
-      urn = 'urn:www.qcpetstudies.com:';
+      urn = 'urn:qcpetstudies.com:';
       secret = secrets['QC Pet Studies'];
       break;
     case 'Winghill Writing School':
-      urn = 'urn:www.winghill.com:';
+      urn = 'urn:winghill.com:';
       secret = secrets['Winghill Writing School'];
       break;
     case 'QC Wellness Studies':
-      urn = 'urn:www.qcwellnessstudies.com:';
+      urn = 'urn:qcwellnessstudies.com:';
       secret = secrets['QC Wellness Studies'];
       break;
     case 'QC Career School':
-      urn = 'urn:www.qccareerschool.com:';
+      urn = 'urn:qccareerschool.com:';
       secret = secrets['QC Career School'];
       break;
   }

@@ -4,10 +4,10 @@ import Script from 'next/script';
 import { Footer } from './footer';
 import { Header } from './header';
 import './global.scss';
-import { Bing } from '@/components/scripts/bing';
-import { Facebook } from '@/components/scripts/facebook';
-import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
-import { Tiktok } from '@/components/scripts/tiktok';
+import { Bing } from '@/scripts/bing';
+import { Facebook } from '@/scripts/facebook';
+import { GoogleAnalytics } from '@/scripts/googleAnalytics';
+import { Tiktok } from '@/scripts/tiktok';
 import type { LayoutComponent } from '@/serverComponent';
 
 export const metadata: Metadata = {
@@ -30,14 +30,13 @@ const MakeupLayout: LayoutComponent = ({ children }) => {
   return (
     <div>
       <GoogleAnalytics id="G-BS7XJJLV0G" adsId="AW-1071836607" />
-      <Header />
-      {children}
-      <Footer />
       <Facebook id="1531219047676834" />
       <Tiktok id="CJ6H6NBC77UC1837TT70" />
       <Bing id="5105215" />
+      <Header />
+      {children}
+      <Footer />
       <Script src="/makeup/chat.js" />
-      <Script id="perfect-audience" src="/makeup/perfectAudience.js" />
     </div>
   );
 };

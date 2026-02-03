@@ -3,9 +3,9 @@ import Script from 'next/script';
 
 import { Footer } from './footer';
 import { Header } from './header';
-import { Bing } from '@/components/scripts/bing';
-import { Facebook } from '@/components/scripts/facebook';
-import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
+import { Bing } from '@/scripts/bing';
+import { Facebook } from '@/scripts/facebook';
+import { GoogleAnalytics } from '@/scripts/googleAnalytics';
 import type { LayoutComponent } from '@/serverComponent';
 
 import './global.scss';
@@ -30,14 +30,12 @@ const WellnessLayout: LayoutComponent = ({ children }) => {
   return (
     <div>
       <GoogleAnalytics id="G-6SYYDWV4WE" adsId="AW-1071836607" />
+      <Facebook id="1725004270923176" />
+      <Bing id="28484716" />
       <Header />
       {children}
       <Footer />
-      <Facebook id="1725004270923176" />
-      {/* <Tiktok id="" /> */}
-      <Bing id="28484716" />
       <Script src="/wellness/chat.js" />
-      {/* <Script id="perfect-audience" src="/wellness/perfectAudience.js" /> */}
     </div>
   );
 };
