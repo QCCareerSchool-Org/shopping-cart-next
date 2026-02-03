@@ -1,4 +1,4 @@
-import type { FC, FormEventHandler } from 'react';
+import type { FC, SubmitEventHandler } from 'react';
 import { useEffect, useId, useRef, useState } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'react-bootstrap';
 import { FaCalendarAlt, FaCcMastercard, FaCcVisa, FaCreditCard, FaShieldAlt } from 'react-icons/fa';
@@ -89,7 +89,7 @@ export const PaysafeModal: FC<Props> = props => {
     return null;
   }
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = e => {
     e.preventDefault();
     if (submitting || success) {
       return;

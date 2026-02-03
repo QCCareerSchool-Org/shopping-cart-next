@@ -4,12 +4,12 @@ import Script from 'next/script';
 
 import { Footer } from './footer';
 import { Header } from './header';
-import { Bing } from '@/scripts/bing';
-import { Facebook } from '@/scripts/facebook';
-import { GoogleAnalytics } from '@/scripts/googleAnalytics';
 import { isUserValues } from '@/domain/userValues';
 import { decodeJwt } from '@/lib/jwt';
 import { UserValuesProvider } from '@/providers/userValuesProvider';
+import { Bing } from '@/scripts/bing';
+import { Facebook } from '@/scripts/facebook';
+import { GoogleAnalytics } from '@/scripts/googleAnalytics';
 import type { LayoutComponent } from '@/serverComponent';
 
 import './global.scss';
@@ -51,7 +51,6 @@ const DesignLayout: LayoutComponent = async ({ children }) => {
         {children}
         <Footer />
       </UserValuesProvider>
-      {/* <Tiktok id="" /> */}
       <Script src="/design/chat.js" />
     </div>
   );

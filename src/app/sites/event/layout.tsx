@@ -5,12 +5,12 @@ import Script from 'next/script';
 import { Footer } from './footer';
 import { Header } from './header';
 import './global.scss';
-import { Bing } from '@/scripts/bing';
-import { Facebook } from '@/scripts/facebook';
-import { GoogleAnalytics } from '@/scripts/googleAnalytics';
 import { isUserValues } from '@/domain/userValues';
 import { decodeJwt } from '@/lib/jwt';
 import { UserValuesProvider } from '@/providers/userValuesProvider';
+import { Bing } from '@/scripts/bing';
+import { Facebook } from '@/scripts/facebook';
+import { GoogleAnalytics } from '@/scripts/googleAnalytics';
 import type { LayoutComponent } from '@/serverComponent';
 
 export const metadata: Metadata = {
