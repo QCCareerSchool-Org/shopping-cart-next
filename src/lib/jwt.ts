@@ -14,11 +14,16 @@ if (!base64SecretEvent) {
   throw new Error('Environment variable JWT_SECRET_BASE64_EVENT not found');
 }
 
+const base64SecretPet = process.env.JWT_SECRET_BASE64_PET;
+if (!base64SecretPet) {
+  throw new Error('Environment variable JWT_SECRET_BASE64_PET not found');
+}
+
 const secrets: Record<School, Buffer<ArrayBuffer>> = {
   'QC Design School': Buffer.from(base64SecretDesign, 'base64'),
   'QC Event School': Buffer.from(base64SecretEvent, 'base64'),
   'QC Makeup Academy': Buffer.from(base64SecretEvent, 'base64'),
-  'QC Pet Studies': Buffer.from(base64SecretEvent, 'base64'),
+  'QC Pet Studies': Buffer.from(base64SecretPet, 'base64'),
   'QC Wellness Studies': Buffer.from(base64SecretEvent, 'base64'),
   'Winghill Writing School': Buffer.from(base64SecretEvent, 'base64'),
   'QC Career School': Buffer.from(base64SecretEvent, 'base64'),

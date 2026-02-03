@@ -3,6 +3,7 @@ import type { FC } from 'react';
 
 import type { UserValues } from '@/domain/userValues';
 import type { InitParams } from '@/lib/fbq';
+import { normalizeCity, normalizeEmailAddress, normalizeName, normalizeState, normalizeTelephoneNumber } from '@/lib/hash';
 
 interface Props {
   id: string;
@@ -19,25 +20,25 @@ export const Facebook: FC<Props> = ({ id, userValues }) => (
 const getScript = (id: string, userValues?: UserValues): string => {
   const params: InitParams = {};
   if (userValues?.emailAddress) {
-    params.em = userValues.emailAddress.toLowerCase();
+    params.em = normalizeEmailAddress(userValues.emailAddress);
   }
   if (userValues?.firstName) {
-    params.fn = userValues.firstName.toLowerCase();
+    params.fn = normalizeName(userValues.firstName);
   }
   if (userValues?.lastName) {
-    params.ln = userValues.lastName.toLowerCase();
+    params.ln = normalizeName(userValues.lastName);
   }
   if (userValues?.city) {
-    params.ct = userValues.city.toLowerCase();
+    params.ct = normalizeCity(userValues.city);
   }
   if (userValues?.provinceCode) {
-    params.st = userValues.provinceCode.toLowerCase();
+    params.st = normalizeState(userValues.provinceCode);
   }
   if (userValues?.countryCode) {
     params.country = userValues.countryCode.toLowerCase();
   }
   if (userValues?.telephoneNumber) {
-    params.ph = userValues.telephoneNumber.replace(/\D/gu, '');
+    params.ph = normalizeTelephoneNumber(userValues.telephoneNumber);
   }
 
   return `

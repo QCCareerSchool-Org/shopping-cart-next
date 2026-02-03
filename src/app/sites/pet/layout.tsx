@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import Script from 'next/script';
 
 import { Footer } from './footer';
 import { Header } from './header';
-import { Bing } from '@/components/scripts/bing';
-import { Facebook } from '@/components/scripts/facebook';
-import { GoogleAnalytics } from '@/components/scripts/googleAnalytics';
+import { isUserValues } from '@/domain/userValues';
+import { decodeJwt } from '@/lib/jwt';
+import { UserValuesProvider } from '@/providers/userValuesProvider';
+import { Bing } from '@/scripts/bing';
+import { Facebook } from '@/scripts/facebook';
+import { GoogleAnalytics } from '@/scripts/googleAnalytics';
 import type { LayoutComponent } from '@/serverComponent';
 
 import './global.scss';
@@ -26,18 +30,28 @@ export const metadata: Metadata = {
   other: { 'msapplication-config': '/pet/browserconfig.xml' },
 };
 
-const PetLayout: LayoutComponent = ({ children }) => {
+const PetLayout: LayoutComponent = async ({ children }) => {
+  const jwt = (await cookies()).get('user')?.value;
+  const result = jwt ? await decodeJwt(jwt, 'QC Pet Studies') : undefined;
+  if (result) {
+    if (!result.success) {
+      console.error(result.error);
+    }
+  }
+  const raw = result?.success ? result.value : undefined;
+  const userValues = raw && isUserValues(raw) ? raw : undefined;
+
   return (
     <div>
-      <GoogleAnalytics id="G-SBCT33RN69" adsId="AW-1071836607" />
-      <Header />
-      {children}
-      <Footer />
-      <Facebook id="3226622604235515" />
-      {/* <Tiktok id="" /> */}
+      <GoogleAnalytics id="G-SBCT33RN69" adsId="AW-1071836607" userValues={userValues} />
+      <Facebook id="3226622604235515" userValues={userValues} />
       <Bing id="5751420" />
+      <UserValuesProvider {...userValues}>
+        <Header />
+        {children}
+        <Footer />
+      </UserValuesProvider>
       <Script src="/pet/chat.js" />
-      {/* <Script id="perfect-audience" src="/pet/perfectAudience.js" /> */}
     </div>
   );
 };
