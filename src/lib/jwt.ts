@@ -40,31 +40,31 @@ const getInfo = (school: School): [ issuer: string, audience: string, secret: Bu
   let secret: Buffer<ArrayBuffer>;
   switch (school) {
     case 'QC Design School':
-      urn = 'urn:www.qcdesignschool.com:';
+      urn = 'urn:qcdesignschool.com:';
       secret = secrets['QC Design School'];
       break;
     case 'QC Event School':
-      urn = 'urn:www.qceventplanning.com:';
+      urn = 'urn:qceventplanning.com:';
       secret = secrets['QC Event School'];
       break;
     case 'QC Makeup Academy':
-      urn = 'urn:www.qcmakeupacademy.com:';
+      urn = 'urn:qcmakeupacademy.com:';
       secret = secrets['QC Makeup Academy'];
       break;
     case 'QC Pet Studies':
-      urn = 'urn:www.qcpetstudies.com:';
+      urn = 'urn:qcpetstudies.com:';
       secret = secrets['QC Pet Studies'];
       break;
     case 'Winghill Writing School':
-      urn = 'urn:www.winghill.com:';
+      urn = 'urn:winghill.com:';
       secret = secrets['Winghill Writing School'];
       break;
     case 'QC Wellness Studies':
-      urn = 'urn:www.qcwellnessstudies.com:';
+      urn = 'urn:qcwellnessstudies.com:';
       secret = secrets['QC Wellness Studies'];
       break;
     case 'QC Career School':
-      urn = 'urn:www.qccareerschool.com:';
+      urn = 'urn:qccareerschool.com:';
       secret = secrets['QC Career School'];
       break;
   }
