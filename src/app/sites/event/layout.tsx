@@ -44,7 +44,7 @@ const EventLayout: LayoutComponent = async ({ children }) => {
     <div>
       <GoogleAnalytics id="G-PZ2L57Z948" adsId="AW-1071836607" userValues={userValues} />
       <Facebook id="520626392908502" userValues={userValues} />
-      <Bing id="5105216" />
+      <Bing id="5105216" userValues={userValues} />
       <UserValuesProvider {...userValues}>
         <Header />
         {children}

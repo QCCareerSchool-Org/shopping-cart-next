@@ -1,12 +1,20 @@
 import Script from 'next/script';
 import type { FC } from 'react';
 
+import type { UserValues } from '@/domain/userValues';
+import type { UETUserData } from '@/lib/uet';
+import { uetStandardizeEmailAddress } from '@/lib/uet';
+
 interface Props {
   id: string;
+  userValues?: UserValues;
 }
 
-export const Bing: FC<Props> = ({ id }) => (
-  <Script id="bing-uet" dangerouslySetInnerHTML={{ __html: getScript(id) }} />
+export const Bing: FC<Props> = ({ id, userValues }) => (
+  <>
+    <Script id="bing-uet" dangerouslySetInnerHTML={{ __html: getScript(id) }} />
+    {userValues && <Script id="bing-uet-enhanced" dangerouslySetInnerHTML={{ __html: getEnchancedScript(userValues) }} />}
+  </>
 );
 
 const getScript = (id: string): string => `
@@ -23,3 +31,19 @@ const getScript = (id: string): string => `
   i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)
 })(window,document,"script","//bat.bing.com/bat.js","uetq");
 `;
+
+const getEnchancedScript = (userValues: UserValues) => {
+  const enhancedData: UETUserData = {};
+  if (userValues.emailAddress) {
+    enhancedData.em = uetStandardizeEmailAddress(userValues.emailAddress);
+  }
+  if (userValues.telephoneNumber) {
+    enhancedData.ph = userValues.telephoneNumber;
+  }
+  return `
+window.uetq = window.uetq || [];
+window.uetq.push('set', {
+  pid: ${JSON.stringify(enhancedData)},
+});
+`;
+};

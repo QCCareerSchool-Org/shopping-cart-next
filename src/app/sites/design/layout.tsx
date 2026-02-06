@@ -45,7 +45,7 @@ const DesignLayout: LayoutComponent = async ({ children }) => {
     <div>
       <GoogleAnalytics id="G-DV480L9S3Y" adsId="AW-1071836607" userValues={userValues} />
       <Facebook id="5372705592757225" userValues={userValues} />
-      <Bing id="5105217" />
+      <Bing id="5105217" userValues={userValues} />
       <UserValuesProvider {...userValues}>
         <Header />
         {children}
