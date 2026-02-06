@@ -45,7 +45,7 @@ const PetLayout: LayoutComponent = async ({ children }) => {
     <div>
       <GoogleAnalytics id="G-SBCT33RN69" adsId="AW-1071836607" userValues={userValues} />
       <Facebook id="3226622604235515" userValues={userValues} />
-      <Bing id="5751420" />
+      <Bing id="5751420" userValues={userValues} />
       <UserValuesProvider {...userValues}>
         <Header />
         {children}
