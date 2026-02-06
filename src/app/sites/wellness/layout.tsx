@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import Script from 'next/script';
 
 import { Footer } from './footer';
@@ -12,7 +13,6 @@ import { GoogleAnalytics } from '@/scripts/googleAnalytics';
 import type { LayoutComponent } from '@/serverComponent';
 
 import './global.scss';
-import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
   title: 'Enroll Online - QC Wellness Studies',
