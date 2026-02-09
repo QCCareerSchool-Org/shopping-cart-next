@@ -66,7 +66,8 @@ export const Address: FC<Props> = ({ school }) => {
             : showProvince && <FormGroup><ProvinceCode /></FormGroup>
           }
         </div>
-        {price?.noShipping && (
+        {/* eslint-disable-next-line no-constant-binary-expression */}
+        {false && price?.noShipping && (
           <div className="col-12 col-lg-8 mt-4">
             <NoShippingAlert />
           </div>
