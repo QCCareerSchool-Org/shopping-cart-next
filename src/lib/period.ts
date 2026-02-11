@@ -23,9 +23,26 @@ export interface ILastChancePeriod extends IPeriod, BaseLastChancePeriod {
 export class Period implements IPeriod {
   protected static readonly formatter = new Intl.DateTimeFormat('en-CA', { year: 'numeric', month: '2-digit', day: '2-digit' });
 
-  constructor(public readonly start: number, public readonly end: number) {
-    if (start > end) {
-      throw new Error('Range start must be <= end');
+  public readonly start: number;
+  public readonly end: number;
+
+  constructor(start: number, end: number);
+  constructor(period: BasePeriod);
+
+  constructor(a: number | BasePeriod, b?: number) {
+    if (typeof a === 'number') {
+      this.start = a;
+      if (typeof b === 'undefined') {
+        throw Error('Missing argument');
+      }
+      this.end = b;
+    } else {
+      this.start = a.start;
+      this.end = a.end;
+    }
+
+    if (this.start > this.end) {
+      throw Error('Range start must be <= end');
     }
   }
 
@@ -36,7 +53,7 @@ export class Period implements IPeriod {
    */
   public static span(...ranges: readonly BasePeriod[]): Period {
     if (ranges.length === 0) {
-      throw new Error('Need at least one range');
+      throw Error('Need at least one range');
     }
 
     let start = ranges[0].start;
@@ -62,14 +79,28 @@ export class Period implements IPeriod {
 }
 
 export class LastChancePeriod extends Period implements ILastChancePeriod {
+  public readonly lastChance: number;
 
-  constructor(public readonly start: number, public readonly lastChance: number, public readonly end: number) {
-    super(start, end);
-    if (lastChance > end) {
-      throw new Error('Last chance date must be <= end date');
+  constructor(start: number, lastChance: number, end: number);
+  constructor(period: BaseLastChancePeriod);
+
+  constructor(a: number | BaseLastChancePeriod, b?: number, c?: number) {
+    if (typeof a === 'number') {
+      if (typeof b === 'undefined' || typeof c === 'undefined') {
+        throw Error('Missing argument');
+      }
+      super(a, c);
+      this.lastChance = b;
+    } else {
+      super(a.start, a.end);
+      this.lastChance = a.lastChance;
     }
-    if (start > lastChance) {
-      throw new Error('Start date must be <= last chance date');
+
+    if (this.lastChance > this.end) {
+      throw Error('Last chance date must be <= end date');
+    }
+    if (this.start > this.lastChance) {
+      throw Error('Start date must be <= last chance date');
     }
   }
 
