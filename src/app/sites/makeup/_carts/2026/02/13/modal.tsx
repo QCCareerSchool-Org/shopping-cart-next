@@ -13,14 +13,14 @@ interface Props {
 
 export const Makeup20260213Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
-    <Modal.Header closeButton><strong>Take Charge of Your Makeup Career</strong></Modal.Header>
+    <Modal.Header closeButton><strong>A Makeup Career You'll Love</strong></Modal.Header>
     <Modal.Body>
-      <p>This is your moment to invest in your future. Enroll in <strong>Master Makeup Artistry</strong> and get QC&apos;s <strong>Skincare Consultant Course FREE</strong>&mdash;so you can build your skills, your confidence, and your opportunities.</p>
-      <p>This course lets you expand your makeup expertise while opening doors to a new career as a skincare consultant. You&apos;ll learn to:</p>
+      <p>This is your moment to invest in your future. Enroll in <strong>Master Makeup Artistry</strong> and get QC's <strong>Personal Styling Course FREE</strong>—so you can build your skills, your confidence, and your opportunities.</p>
+      <p>This course lets you expand your expertise while opening doors to a new career as a certified personal stylist. You'll learn to:</p>
       <ul>
-        <li>Assess skin types and conditions</li>
-        <li>Conduct personalized skincare consultations and recommend products</li>
-        <li>Create DIY skincare recipes and understand anti-aging techniques</li>
+        <li>Build flattering wardrobes for different body types</li>
+        <li>Use color theory and styling principles to enhance any look</li>
+        <li>Conduct professional personal styling consultations</li>
       </ul>
       <p>Plus, <strong>get the entire Luminous Makeup Collection</strong> to build your professional makeup kit.</p>
       <LuminousKit />
