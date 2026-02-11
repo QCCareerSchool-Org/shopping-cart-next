@@ -12,8 +12,7 @@ interface Props {
 
 export const Wellness20260213Modal: FC<Props> = props => {
   const priceState = usePriceState();
-
-  const discount = priceState?.currency.code === 'GBP' ? '£300' : '$300';
+  const discount = priceState?.currency.code === 'GBP' ? '£400' : '$400';
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
