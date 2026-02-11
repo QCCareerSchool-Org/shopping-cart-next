@@ -2,22 +2,22 @@
 
 import type { FC } from 'react';
 
-import { Hero20260204 } from './hero';
-import { Makeup20260204Modal } from './modal';
+import { Hero20260213 } from './hero';
+import { Wellness20260213Modal } from './modal';
 import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 import type { PromotionPeriodWithLastChanceObject } from '@/lib/promotionPeriod';
 
-const backgroundColor = '#030303';
+const backgroundColor = '#6A6C6D';
 
 interface Props {
   date: number;
   promotionPeriod: PromotionPeriodWithLastChanceObject;
 }
 
-export const Makeup20260204Promo: FC<Props> = ({ date, promotionPeriod }) => {
+export const Wellness20260213Promo: FC<Props> = ({ date, promotionPeriod }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const variant = typeof promotionPeriod.lastChance !== 'undefined' && date >= promotionPeriod.lastChance ? 'lastChance' : undefined;
 
@@ -36,13 +36,13 @@ export const Makeup20260204Promo: FC<Props> = ({ date, promotionPeriod }) => {
       />}
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero20260204 variant={variant} />
+          <Hero20260213 variant={variant} />
         </div>
       </Section>
       <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
         You'll Also Receive <strong>50% Off Each Additional Course</strong>
       </Banner>
-      <Makeup20260204Modal show={showPopup} onHide={handleClick} />
+      <Wellness20260213Modal show={showPopup} onHide={handleClick} />
     </>
   );
 };

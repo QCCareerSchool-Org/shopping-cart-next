@@ -5,11 +5,11 @@ import { agreementLinks } from '../../../../agreementLinks';
 import { courseGroups } from '../../../../courseGroups';
 import { Guarantee } from '../../../../guarantee';
 import { Form } from '@/components/form';
-import type { PromotionPeriodObject } from '@/lib/promotionPeriod';
+import type { PromotionPeriodWithLastChanceObject } from '@/lib/promotionPeriod';
 
 interface Props {
   date: number;
-  promotionPeriod: PromotionPeriodObject;
+  promotionPeriod: PromotionPeriodWithLastChanceObject;
 }
 
 export const Wellness20260204: FC<Props> = ({ date, promotionPeriod }) => (

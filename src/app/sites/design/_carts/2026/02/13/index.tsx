@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { Design20260204Promo } from './promo';
+import { Design20260213Promo } from './promo';
 import { agreementLinks } from '@/app/sites/design/agreementLinks';
 import { courseGroups } from '@/app/sites/design/courseGroups';
 import { Guarantee } from '@/app/sites/design/guarantee';
@@ -13,10 +13,10 @@ interface Props {
   promotionPeriod: PromotionPeriodWithLastChanceObject;
 }
 
-export const Design20260204: FC<Props> = ({ date, promotionPeriod }) => {
+export const Design20260213: FC<Props> = ({ date, promotionPeriod }) => {
   return (
     <>
-      <Design20260204Promo date={date} promotionPeriod={promotionPeriod} />
+      <Design20260213Promo date={date} promotionPeriod={promotionPeriod} />
       <Form
         date={date}
         courseGroups={courseGroups}
@@ -27,7 +27,7 @@ export const Design20260204: FC<Props> = ({ date, promotionPeriod }) => {
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
         dynamicCourseMessages={[ BogoDynamicCourseMessage ]}
-        promoCodeDefault="BOGO"
+        promoCodeDefault="BOGO100"
         hideCourseTable
       />
     </>

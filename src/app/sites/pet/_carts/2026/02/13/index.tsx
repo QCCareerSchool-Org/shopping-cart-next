@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { Pet20260204Promo } from './promo';
+import { Pet20260213Promo } from './promo';
 import { agreementLinks } from '../../../../agreementLinks';
 import { courseGroups } from '../../../../courseGroups';
 import { Guarantee } from '../../../../guarantee';
@@ -13,9 +13,9 @@ interface Props {
   promotionPeriod: PromotionPeriodWithLastChanceObject;
 }
 
-export const Pet20260204: FC<Props> = ({ date, promotionPeriod }) => (
+export const Pet20260213: FC<Props> = ({ date, promotionPeriod }) => (
   <>
-    <Pet20260204Promo date={date} promotionPeriod={promotionPeriod} />
+    <Pet20260213Promo date={date} promotionPeriod={promotionPeriod} />
     <Form
       date={date}
       courseGroups={courseGroups}

@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { Event20260204Promo } from './promo';
+import { Event20260213Promo } from './promo';
 import { agreementLinks } from '@/app/sites/event/agreementLinks';
 import { courseGroups } from '@/app/sites/event/courseGroups';
 import { Guarantee } from '@/app/sites/event/guarantee';
@@ -13,9 +13,9 @@ interface Props {
   promotionPeriod: PromotionPeriodWithLastChanceObject;
 }
 
-export const Event20260204: FC<Props> = ({ date, promotionPeriod }) => (
+export const Event20260213: FC<Props> = ({ date, promotionPeriod }) => (
   <>
-    <Event20260204Promo date={date} promotionPeriod={promotionPeriod} />
+    <Event20260213Promo date={date} promotionPeriod={promotionPeriod} />
     <Form
       date={date}
       courseGroups={courseGroups}
@@ -25,7 +25,7 @@ export const Event20260204: FC<Props> = ({ date, promotionPeriod }) => (
       agreementLinks={agreementLinks}
       dynamicCourseDescriptions="HIDE"
       visualPaymentPlans
-      promoCodeDefault="2SPECIALTY"
+      promoCodeDefault="2SPECIALTY100"
       dynamicCourseMessages={[ TwoFreeEventSpecialtyDynamicMessage ]}
     />
   </>
