@@ -6,11 +6,11 @@ import { courseGroups } from '@/app/sites/event/courseGroups';
 import { Guarantee } from '@/app/sites/event/guarantee';
 import { TwoFreeEventSpecialtyDynamicMessage } from '@/components/dynamicCourseMessages/twoFreeEventSpecialty';
 import { Form } from '@/components/form';
-import type { PromotionPeriodWithLastChanceObject } from '@/lib/promotionPeriod';
+import type { BaseLastChancePeriod } from '@/lib/period';
 
 interface Props {
   date: number;
-  promotionPeriod: PromotionPeriodWithLastChanceObject;
+  promotionPeriod: BaseLastChancePeriod;
 }
 
 export const Event20260213: FC<Props> = ({ date, promotionPeriod }) => (

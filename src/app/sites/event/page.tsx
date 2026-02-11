@@ -5,7 +5,7 @@ import { Event20260204 } from './_carts/2026/02/04';
 import { Event20260213 } from './_carts/2026/02/13';
 import { EventFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
-import { feb04, feb13, jan21 } from '@/lib/promotionPeriods';
+import { feb04, feb13, jan21 } from '@/lib/periods';
 import type { PageComponent } from '@/serverComponent';
 
 const EventPage: PageComponent = async props => {

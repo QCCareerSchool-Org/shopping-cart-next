@@ -6,11 +6,11 @@ import { courseGroups } from '@/app/sites/makeup/courseGroups';
 import { Guarantee } from '@/app/sites/makeup/guarantee';
 import { FreeStyleDynamicMessage } from '@/components/dynamicCourseMessages/freeStyle';
 import { Form } from '@/components/form';
-import type { PromotionPeriodWithLastChanceObject } from '@/lib/promotionPeriod';
+import type { BaseLastChancePeriod } from '@/lib/period';
 
 interface Props {
   date: number;
-  promotionPeriod: PromotionPeriodWithLastChanceObject;
+  promotionPeriod: BaseLastChancePeriod;
 }
 
 export const Makeup20260213: FC<Props> = ({ date, promotionPeriod }) => (

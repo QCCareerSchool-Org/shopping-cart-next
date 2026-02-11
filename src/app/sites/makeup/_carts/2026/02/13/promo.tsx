@@ -8,13 +8,13 @@ import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
-import type { PromotionPeriodWithLastChanceObject } from '@/lib/promotionPeriod';
+import type { BaseLastChancePeriod } from '@/lib/period';
 
 const backgroundColor = '#87827e';
 
 interface Props {
   date: number;
-  promotionPeriod: PromotionPeriodWithLastChanceObject;
+  promotionPeriod: BaseLastChancePeriod;
 }
 
 export const Makeup20260213Promo: FC<Props> = ({ date, promotionPeriod }) => {

@@ -5,7 +5,7 @@ import { Design20260204 } from './_carts/2026/02/04';
 import { Design20260213 } from './_carts/2026/02/13';
 import { DesignFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
-import { feb04, feb13, jan21 } from '@/lib/promotionPeriods';
+import { feb04, feb13, jan21 } from '@/lib/periods';
 import type { PageComponent } from '@/serverComponent';
 
 const DesignPage: PageComponent = async props => {
