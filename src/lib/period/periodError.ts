@@ -1,5 +1,6 @@
 export type PeriodErrorCode =
   | 'MISSING_ARGUMENT'
+  | 'INVALID_ARGUMENT'
   | 'RANGE_INVALID';
 
 export class PeriodError extends Error {

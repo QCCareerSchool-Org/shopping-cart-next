@@ -5,16 +5,16 @@ import { agreementLinks } from '../../../../agreementLinks';
 import { courseGroups } from '../../../../courseGroups';
 import { Guarantee } from '../../../../guarantee';
 import { Form } from '@/components/form';
-import type { BaseLastChancePeriod } from '@/lib/period';
+import type { LastChancePeriodDTO } from '@/lib/period';
 
 interface Props {
   date: number;
-  promotionPeriod: BaseLastChancePeriod;
+  period: LastChancePeriodDTO;
 }
 
-export const Wellness20260213: FC<Props> = ({ date, promotionPeriod }) => (
+export const Wellness20260213: FC<Props> = ({ date, period }) => (
   <>
-    <Wellness20260213Promo date={date} promotionPeriod={promotionPeriod} />
+    <Wellness20260213Promo date={date} period={period} />
     <Form
       date={date}
       courseGroups={courseGroups}

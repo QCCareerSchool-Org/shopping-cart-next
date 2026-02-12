@@ -8,18 +8,18 @@ import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
-import type { BaseLastChancePeriod } from '@/lib/period';
+import type { LastChancePeriodDTO } from '@/lib/period';
 
 const backgroundColor = '#87827e';
 
 interface Props {
   date: number;
-  promotionPeriod: BaseLastChancePeriod;
+  period: LastChancePeriodDTO;
 }
 
-export const Makeup20260213Promo: FC<Props> = ({ date, promotionPeriod }) => {
+export const Makeup20260213Promo: FC<Props> = ({ date, period }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
-  const variant = typeof promotionPeriod.lastChance !== 'undefined' && date >= promotionPeriod.lastChance ? 'lastChance' : undefined;
+  const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
 
   const handleClick = (): void => {
     togglePopup();
@@ -27,10 +27,10 @@ export const Makeup20260213Promo: FC<Props> = ({ date, promotionPeriod }) => {
 
   return (
     <>
-      {promotionPeriod.lastChance && <CountDownTimerWrapper
+      {period.lastChance && <CountDownTimerWrapper
         date={date}
-        showDate={promotionPeriod.lastChance}
-        endDate={promotionPeriod.end}
+        showDate={period.lastChance}
+        endDate={period.end}
         message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
         className="bg-black text-light"
       />}

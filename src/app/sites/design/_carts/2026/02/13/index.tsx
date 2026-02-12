@@ -6,17 +6,17 @@ import { courseGroups } from '@/app/sites/design/courseGroups';
 import { Guarantee } from '@/app/sites/design/guarantee';
 import { BogoDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogo';
 import { Form } from '@/components/form';
-import type { BaseLastChancePeriod } from '@/lib/period';
+import type { LastChancePeriodDTO } from '@/lib/period';
 
 interface Props {
   date: number;
-  promotionPeriod: BaseLastChancePeriod;
+  period: LastChancePeriodDTO;
 }
 
-export const Design20260213: FC<Props> = ({ date, promotionPeriod }) => {
+export const Design20260213: FC<Props> = ({ date, period }) => {
   return (
     <>
-      <Design20260213Promo date={date} promotionPeriod={promotionPeriod} />
+      <Design20260213Promo date={date} period={period} />
       <Form
         date={date}
         courseGroups={courseGroups}

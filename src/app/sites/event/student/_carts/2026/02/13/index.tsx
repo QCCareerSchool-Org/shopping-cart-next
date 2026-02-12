@@ -5,17 +5,17 @@ import { agreementLinks } from '../../../../../agreementLinks';
 import { courseGroups } from '../../../../../courseGroups';
 import { Guarantee } from '../../../../../guarantee';
 import { Form } from '@/components/form';
-import type { BaseLastChancePeriod } from '@/lib/period';
+import type { LastChancePeriodDTO } from '@/lib/period';
 
 interface Props {
   date: number;
-  promotionPeriod: BaseLastChancePeriod;
+  period: LastChancePeriodDTO;
 }
 
-export const EventStudent20260213: FC<Props> = ({ date, promotionPeriod }) => {
+export const EventStudent20260213: FC<Props> = ({ date, period }) => {
   return (
     <>
-      <EventStudent20260213Promo date={date} promotionPeriod={promotionPeriod} />
+      <EventStudent20260213Promo date={date} period={period} />
       <Form
         date={date}
         courseGroups={courseGroups}
