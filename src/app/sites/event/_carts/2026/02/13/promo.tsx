@@ -14,12 +14,12 @@ const backgroundColor = '#4c4236';
 
 interface Props {
   date: number;
-  promotionPeriod: BaseLastChancePeriod;
+  period: BaseLastChancePeriod;
 }
 
-export const Event20260213Promo: FC<Props> = ({ date, promotionPeriod }) => {
+export const Event20260213Promo: FC<Props> = ({ date, period }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
-  const variant = typeof promotionPeriod.lastChance !== 'undefined' && date >= promotionPeriod.lastChance ? 'lastChance' : undefined;
+  const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
 
   const handleClick = (): void => {
     togglePopup();
@@ -27,10 +27,10 @@ export const Event20260213Promo: FC<Props> = ({ date, promotionPeriod }) => {
 
   return (
     <>
-      {promotionPeriod.lastChance && <CountDownTimerWrapper
+      {period.lastChance && <CountDownTimerWrapper
         date={date}
-        showDate={promotionPeriod.lastChance}
-        endDate={promotionPeriod.end}
+        showDate={period.lastChance}
+        endDate={period.end}
         message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
         className="bg-black text-light"
       />}

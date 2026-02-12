@@ -15,7 +15,7 @@ const MakeupPage: PageComponent = async props => {
   return (
     <Suspense>
       {feb13.contains(date)
-        ? <Makeup20260213 date={date} promotionPeriod={feb13.toObject()} />
+        ? <Makeup20260213 date={date} period={feb13.toObject()} />
         : jan21.contains(date)
           ? <Makeup20260121 date={date} />
           : feb04.contains(date)

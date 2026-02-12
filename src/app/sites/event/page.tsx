@@ -15,7 +15,7 @@ const EventPage: PageComponent = async props => {
   return (
     <Suspense>
       {feb13.contains(date)
-        ? <Event20260213 date={date} promotionPeriod={feb13.toObject()} />
+        ? <Event20260213 date={date} period={feb13.toObject()} />
         : jan21.contains(date)
           ? <Event20260121 date={date} />
           : feb04.contains(date)

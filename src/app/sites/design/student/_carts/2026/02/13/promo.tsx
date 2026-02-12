@@ -11,18 +11,18 @@ const backgroundColor = '#0f141a';
 
 interface Props {
   date: number;
-  promotionPeriod: BaseLastChancePeriod;
+  period: BaseLastChancePeriod;
 }
 
-export const DesignStudent20260213Promo: FC<Props> = ({ date, promotionPeriod }) => (
+export const DesignStudent20260213Promo: FC<Props> = ({ date, period }) => (
   <>
     <Section style={{ backgroundColor }} noPadding>
       <Hero20260213 />
     </Section>
     <CountDownTimerWrapper
       date={date}
-      showDate={promotionPeriod.lastChance}
-      endDate={promotionPeriod.end}
+      showDate={period.lastChance}
+      endDate={period.end}
       message={<span style={{ textTransform: 'uppercase' }}>This special offer ends soon!</span>}
       className="bg-black text-light"
     />

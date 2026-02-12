@@ -7,14 +7,14 @@ import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTime
 import { Section } from '@/components/section';
 import type { BaseLastChancePeriod } from '@/lib/period';
 
-const backgroundColor = '#000E35';
+const backgroundColor = '#000';
 
 interface Props {
   date: number;
   period: BaseLastChancePeriod;
 }
 
-export const EventStudent20260213Promo: FC<Props> = ({ date, period }) => (
+export const MakeupStudent20260213Promo: FC<Props> = ({ date, period }) => (
   <>
     <Section style={{ backgroundColor }} noPadding>
       <Hero20260213 />
@@ -23,7 +23,7 @@ export const EventStudent20260213Promo: FC<Props> = ({ date, period }) => (
       date={date}
       showDate={period.lastChance}
       endDate={period.end}
-      message={<span style={{ textTransform: 'uppercase' }}>This special offer ends soon!</span>}
+      message={<span style={{ textTransform: 'uppercase' }}><strong>LAST CHANCE</strong> This special offer ends soon!</span>}
       className="bg-black text-light"
     />
   </>

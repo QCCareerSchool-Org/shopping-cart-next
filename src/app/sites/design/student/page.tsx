@@ -13,7 +13,7 @@ const DesignStudentPage: PageComponent = async props => {
   return (
     <Suspense>
       {feb13.contains(date)
-        ? <DesignStudent20260213 date={date} promotionPeriod={feb13.toObject()} />
+        ? <DesignStudent20260213 date={date} period={feb13.toObject()} />
         : <DesignStudentFallback date={date} />
       }
     </Suspense>

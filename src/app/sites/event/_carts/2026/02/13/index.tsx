@@ -10,12 +10,12 @@ import type { BaseLastChancePeriod } from '@/lib/period';
 
 interface Props {
   date: number;
-  promotionPeriod: BaseLastChancePeriod;
+  period: BaseLastChancePeriod;
 }
 
-export const Event20260213: FC<Props> = ({ date, promotionPeriod }) => (
+export const Event20260213: FC<Props> = ({ date, period }) => (
   <>
-    <Event20260213Promo date={date} promotionPeriod={promotionPeriod} />
+    <Event20260213Promo date={date} period={period} />
     <Form
       date={date}
       courseGroups={courseGroups}

@@ -15,7 +15,7 @@ const PetPage: PageComponent = async props => {
   return (
     <Suspense>
       {feb13.contains(date)
-        ? <Pet20260213 date={date} promotionPeriod={feb13.toObject()} />
+        ? <Pet20260213 date={date} period={feb13.toObject()} />
         : jan21.contains(date)
           ? <Pet20260121 date={date} />
           : feb04.contains(date)
