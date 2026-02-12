@@ -7,13 +7,13 @@ import { PetStudent20260213Modal } from './modal';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
-import type { BaseLastChancePeriod } from '@/lib/period';
+import type { LastChancePeriodDTO } from '@/lib/period';
 
 const backgroundColor = '#030406';
 
 interface Props {
   date: number;
-  period: BaseLastChancePeriod;
+  period: LastChancePeriodDTO;
 }
 
 export const PetStudent20260213Promo: FC<Props> = ({ date, period }) => {

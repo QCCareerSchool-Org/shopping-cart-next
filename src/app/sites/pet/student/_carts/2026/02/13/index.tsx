@@ -6,11 +6,11 @@ import { Guarantee } from '../../../../../guarantee';
 import { PetCoursesSubtitleFirstAid } from '../../../../../petCoursesSubtitleFirstAid';
 import { courseGroups } from '../../../../courseGroups';
 import { Form } from '@/components/form';
-import type { BaseLastChancePeriod } from '@/lib/period';
+import type { LastChancePeriodDTO } from '@/lib/period';
 
 interface Props {
   date: number;
-  period: BaseLastChancePeriod;
+  period: LastChancePeriodDTO;
 }
 
 export const PetStudent20260213: FC<Props> = ({ date, period }) => (

@@ -5,13 +5,13 @@ import type { FC } from 'react';
 import { Hero20260213 } from './hero';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
-import type { BaseLastChancePeriod } from '@/lib/period';
+import type { LastChancePeriodDTO } from '@/lib/period';
 
 const backgroundColor = '#000E35';
 
 interface Props {
   date: number;
-  period: BaseLastChancePeriod;
+  period: LastChancePeriodDTO;
 }
 
 export const EventStudent20260213Promo: FC<Props> = ({ date, period }) => (

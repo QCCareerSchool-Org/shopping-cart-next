@@ -6,11 +6,11 @@ import { courseGroups } from '@/app/sites/makeup/courseGroups';
 import { Guarantee } from '@/app/sites/makeup/guarantee';
 import { FreeStyleDynamicMessage } from '@/components/dynamicCourseMessages/freeStyle';
 import { Form } from '@/components/form';
-import type { BaseLastChancePeriod } from '@/lib/period';
+import type { LastChancePeriodDTO } from '@/lib/period';
 
 interface Props {
   date: number;
-  period: BaseLastChancePeriod;
+  period: LastChancePeriodDTO;
 }
 
 export const Makeup20260213: FC<Props> = ({ date, period }) => (
