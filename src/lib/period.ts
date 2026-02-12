@@ -1,3 +1,5 @@
+import { PeriodError } from './periodError';
+
 /** what can be passed from server to client components */
 export interface BasePeriod {
   start: number;
@@ -33,7 +35,7 @@ export class Period implements IPeriod {
     if (typeof a === 'number') {
       this.start = a;
       if (typeof b === 'undefined') {
-        throw Error('Missing argument');
+        throw new PeriodError('MISSING_ARGUMENT', 'Second argument is missing', { start: a });
       }
       this.end = b;
     } else {
@@ -42,7 +44,7 @@ export class Period implements IPeriod {
     }
 
     if (this.start > this.end) {
-      throw Error('Range start must be <= end');
+      throw new PeriodError('RANGE_INVALID', 'Range start must be <= end', { start: this.start, end: this.end });
     }
   }
 
@@ -53,7 +55,7 @@ export class Period implements IPeriod {
    */
   public static span(...ranges: readonly BasePeriod[]): Period {
     if (ranges.length === 0) {
-      throw Error('Need at least one range');
+      throw new PeriodError('MISSING_ARGUMENT', 'Need at least one range');
     }
 
     let start = ranges[0].start;
@@ -86,8 +88,11 @@ export class LastChancePeriod extends Period implements ILastChancePeriod {
 
   constructor(a: number | BaseLastChancePeriod, b?: number, c?: number) {
     if (typeof a === 'number') {
-      if (typeof b === 'undefined' || typeof c === 'undefined') {
-        throw Error('Missing argument');
+      if (typeof b === 'undefined') {
+        throw new PeriodError('MISSING_ARGUMENT', 'Second argument is missing', { start: a });
+      }
+      if (typeof c === 'undefined') {
+        throw new PeriodError('MISSING_ARGUMENT', 'Third argument is missing', { start: a });
       }
       super(a, c);
       this.lastChance = b;
@@ -97,10 +102,10 @@ export class LastChancePeriod extends Period implements ILastChancePeriod {
     }
 
     if (this.lastChance > this.end) {
-      throw Error('Last chance date must be <= end date');
+      throw new PeriodError('RANGE_INVALID', 'Range last chance date must be <= end date', { start: this.start, lastChance: this.lastChance, end: this.end });
     }
     if (this.start > this.lastChance) {
-      throw Error('Start date must be <= last chance date');
+      throw new PeriodError('RANGE_INVALID', 'Range start date must be <= last chance date', { start: this.start, lastChance: this.lastChance, end: this.end });
     }
   }
 
