@@ -6,11 +6,11 @@ import { courseGroups } from '../../../../courseGroups';
 import { Guarantee } from '../../../../guarantee';
 import { PetCoursesSubtitleFirstAid } from '@/app/sites/pet/petCoursesSubtitleFirstAid';
 import { Form } from '@/components/form';
-import type { PromotionPeriodObject } from '@/lib/promotionPeriod';
+import type { BaseLastChancePeriod } from '@/lib/period';
 
 interface Props {
   date: number;
-  promotionPeriod: PromotionPeriodObject;
+  promotionPeriod: BaseLastChancePeriod;
 }
 
 export const Pet20260204: FC<Props> = ({ date, promotionPeriod }) => (

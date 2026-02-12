@@ -8,13 +8,13 @@ import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
-import type { PromotionPeriodObject } from '@/lib/promotionPeriod';
+import type { BaseLastChancePeriod } from '@/lib/period';
 
 const backgroundColor = '#1a1a22';
 
 interface Props {
   date: number;
-  promotionPeriod: PromotionPeriodObject;
+  promotionPeriod: BaseLastChancePeriod;
 }
 
 export const Event20260204Promo: FC<Props> = ({ date, promotionPeriod }) => {
@@ -40,8 +40,6 @@ export const Event20260204Promo: FC<Props> = ({ date, promotionPeriod }) => {
         </div>
       </Section>
       <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
-        Don't Miss Out&mdash;Get 2 FREE Specialty Courses and Triple Your Credentials
-        <br />
         You'll Also Receive <strong>50% Off Each Additional Course</strong>
       </Banner>
       <Event20260204Modal show={showPopup} onHide={handleClick} />
