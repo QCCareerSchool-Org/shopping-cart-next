@@ -31,6 +31,7 @@ const secrets: Record<School, Buffer<ArrayBuffer>> = {
   'QC Pet Studies': Buffer.from(base64SecretPet, 'base64'),
   'QC Wellness Studies': Buffer.from(base64SecretWellness, 'base64'),
   'Winghill Writing School': Buffer.from(base64SecretEvent, 'base64'),
+  'Paw Parent Academy': Buffer.from(base64SecretEvent, 'base64'),
   'QC Career School': Buffer.from(base64SecretEvent, 'base64'),
 };
 
@@ -40,7 +41,7 @@ for (const value of Object.values(secrets)) {
   }
 }
 
-const getInfo = (school: School): [ issuer: string, audience: string, secret: Buffer<ArrayBuffer> ] => {
+const getInfo = (school: School): [issuer: string, audience: string, secret: Buffer<ArrayBuffer>] => {
   let urn: string;
   let secret: Buffer<ArrayBuffer>;
   switch (school) {
@@ -67,6 +68,10 @@ const getInfo = (school: School): [ issuer: string, audience: string, secret: Bu
     case 'QC Wellness Studies':
       urn = 'urn:qcwellnessstudies.com:';
       secret = secrets['QC Wellness Studies'];
+      break;
+    case 'Paw Parent Academy':
+      urn = 'urn:pawparentacademy.com:';
+      secret = secrets['Paw Parent Academy'];
       break;
     case 'QC Career School':
       urn = 'urn:qccareerschool.com:';

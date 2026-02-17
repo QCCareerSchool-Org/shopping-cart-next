@@ -1,0 +1,26 @@
+.header {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(16, 196, 196, 0.2);
+  padding: 1rem 0;
+}
+
+.inner {
+  margin: 0 auto;
+  width: min(1200px, 90vw);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #0f5c5c;
+}
+
+.tagline {
+  color: #0c7a7a;
+  font-weight: 600;
+}

@@ -128,3 +128,9 @@ class LastChancePeriodImpl extends PeriodImpl implements LastChancePeriod {
 
   public toDTO = (): LastChancePeriodDTO => ({ __type: 'DTO', start: this.start, end: this.end, lastChance: this.lastChance });
 };
+
+export class PeriodSet {
+  constructor(public readonly ranges: readonly PeriodImpl[]) { }
+
+  public contains = (d: number): boolean => this.ranges.some(r => r.contains(d));
+}

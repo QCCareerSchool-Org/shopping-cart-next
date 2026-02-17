@@ -9,7 +9,10 @@ import type { LayoutComponent } from '@/serverComponent';
 import './global.scss';
 
 export const metadata: Metadata = {
-  title: 'Enroll Online - Winghill Writing School',
+  title: {
+    template: '%s - Winghill Writing School',
+    default: 'Enroll Online - Winghill Writing School',
+  },
   icons: {
     icon: [
       { type: 'image/png', url: '/writing/favicon-16x16.png', sizes: '16x16' },
