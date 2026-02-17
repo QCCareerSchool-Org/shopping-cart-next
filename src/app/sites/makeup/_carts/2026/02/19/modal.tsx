@@ -13,14 +13,14 @@ interface Props {
 
 export const Makeup20260219Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
-    <Modal.Header closeButton><strong>A Makeup Career You'll Love</strong></Modal.Header>
+    <Modal.Header closeButton><strong>Take Charge of Your Makeup Career</strong></Modal.Header>
     <Modal.Body>
-      <p>This is your moment to invest in your future. Enroll in <strong>Master Makeup Artistry</strong> and get QC's <strong>Personal Styling Course FREE</strong>—so you can build your skills, your confidence, and your opportunities.</p>
-      <p>This course lets you expand your expertise while opening doors to a new career as a certified personal stylist. You'll learn to:</p>
+      <p>This is your moment to invest in your future. Enroll in <strong>Master Makeup Artistry</strong> and get QC's <strong>Pro Makeup Workshop FREE</strong>—so you can build your skills, your confidence, and your opportunities.</p>
+      <p>This 3-part masterclass led by celebrity makeup artist Nathan Johnson is designed to build on your foundational training and take your career to the next level! You'll learn:</p>
       <ul>
-        <li>Build flattering wardrobes for different body types</li>
-        <li>Use color theory and styling principles to enhance any look</li>
-        <li>Conduct professional personal styling consultations</li>
+        <li>Glamour Makeup for the Limelight</li>
+        <li>Creative Smoky Eye & Pin-Up Looks</li>
+        <li>Advanced Bridal Applications</li>
       </ul>
       <p>Plus, <strong>get the entire Luminous Makeup Collection</strong> to build your professional makeup kit.</p>
       <LuminousKit />
