@@ -16,9 +16,9 @@ export const Event20260219Modal: FC<Props> = props => {
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
-      <Modal.Header closeButton>Build a Career You'll Love in Event Planning</Modal.Header>
+      <Modal.Header closeButton>Become a Certified Expert in Less Than 3 Months!</Modal.Header>
       <Modal.Body>
-        <p>A new year means new opportunities—and now's your moment to act. For a limited time, enroll in any foundation course and get <strong>2 FREE specialty courses PLUS {discount} OFF tuition.</strong></p>
+        <p>This is your moment to invest in your future. For a limited time, enroll in any foundation course and get <strong>FREE second course PLUS {discount} OFF tuition.</strong></p>
         <hr />
         <h6 className="sans-serif">Enroll Today & Start Building Your Event Career in 3 Months or Less</h6>
         <p>Turn your creativity and organization skills into a career you own&mdash;faster than you think.</p>

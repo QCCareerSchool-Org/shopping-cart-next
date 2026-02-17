@@ -16,7 +16,7 @@ export const Design20260219Modal: FC<Props> = props => {
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
-      <Modal.Header closeButton>Build a Career You'll Love in Design</Modal.Header>
+      <Modal.Header closeButton>Become a Certified Expert in Less Than 3 Months!</Modal.Header>
       <Modal.Body>
         <p>This is your moment to invest in your future. For a limited time, enroll in any design course and get a <strong>second course FREE</strong> plus <strong>{discount}</strong> OFF your tuition. Start today and become a certified design expert in under 3 months.</p>
         <hr />
