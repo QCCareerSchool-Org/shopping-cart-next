@@ -13,7 +13,10 @@ import { Provider } from '@/providers';
 import type { LayoutComponent } from '@/serverComponent';
 
 export const metadata: Metadata = {
-  title: 'Enroll Online - QC Career School',
+  title: {
+    template: '%s - QC Career School',
+    default: 'Enroll Online - QC Career School',
+  },
 };
 
 const playfairDisplay = Playfair_Display({
@@ -63,15 +66,14 @@ const RootLayout: LayoutComponent = async ({ children }) => {
   }
 
   return (
-    <Provider geoLocation={geoLocation} countries={countries} provinces={provinces}>
-      <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable} ${neueHaasText.variable} ${neueHaasDisplay.variable}`}>
-        <head>
-          { }
-          <Script id="paysafe" src="https://hosted.paysafe.com/js/v1/latest/paysafe.min.js" strategy="beforeInteractive" />
-        </head>
+    <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable} ${neueHaasText.variable} ${neueHaasDisplay.variable}`}>
+      <head>
+        <Script id="paysafe" src="https://hosted.paysafe.com/js/v1/latest/paysafe.min.js" strategy="beforeInteractive" />
+      </head>
+      <Provider geoLocation={geoLocation} countries={countries} provinces={provinces}>
         <body>{children}</body>
-      </html>
-    </Provider>
+      </Provider>
+    </html>
   );
 };
 

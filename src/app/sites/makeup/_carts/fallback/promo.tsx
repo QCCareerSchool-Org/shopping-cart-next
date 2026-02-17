@@ -4,6 +4,7 @@ import type { FC } from 'react';
 
 import { Hero } from './hero';
 import { MakeupFallbackModal } from './modal';
+import { Banner } from '@/components/banner';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
@@ -23,6 +24,9 @@ export const MakeupFallbackPromo: FC = () => {
           <Hero />
         </div>
       </Section>
+      <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
+        You'll Also Receive <strong>50% Off Each Additional Course</strong>
+      </Banner>
       <MakeupFallbackModal show={showPopup} onHide={handleClick} />
     </>
   );

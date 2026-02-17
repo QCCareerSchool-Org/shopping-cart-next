@@ -3,7 +3,7 @@ import type { FC, ReactNode } from 'react';
 
 type EmptyRecord = Record<never, string>;
 
-interface PageProps<RouteParams extends Record<string, string> = EmptyRecord> {
+export interface PageProps<RouteParams extends Record<string, string> = EmptyRecord> {
   params: Promise<RouteParams>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }

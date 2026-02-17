@@ -9,6 +9,7 @@ const sites: Site[] = [
   { name: 'QC Pet Studies', domains: [ 'enroll.qcpetstudies.com', 'pet.enrolltest.qccareerschool.com', 'pet.nextenroll.qccareerschool.com', /^pet.localhost(?::\d+)$/iu ], path: '/pet' },
   { name: 'QC Wellness Studies', domains: [ 'enroll.qcwellnessstudies.com', 'wellness.enrolltest.qccareerschool.com', 'wellness.nextenroll.qccareerschool.com', /^wellness.localhost(?::\d+)$/iu ], path: '/wellness' },
   { name: 'Winghill Writing School', domains: [ 'enroll.winghill.com', 'writing.enrolltest.qccareerschool.com', 'writing.nextenroll.qccareerschool.com', /^writing.localhost(?::\d+)$/iu ], path: '/writing' },
+  { name: 'Paw Parent Academy', domains: [ 'enroll.pawparentacademy.com', 'ppa.enrolltest.qccareerschool.com', 'ppa.nextenroll.qccareerschool.com', /^ppa.localhost(?::\d+)$/iu ], path: '/ppa' },
 ];
 
 export const findSite = (hostname: string | null): Site | undefined => {

@@ -15,7 +15,10 @@ import type { LayoutComponent } from '@/serverComponent';
 import './global.scss';
 
 export const metadata: Metadata = {
-  title: 'Enroll Online - QC Wellness Studies',
+  title: {
+    template: '%s - QC Wellness Studies',
+    default: 'Enroll Online - QC Wellness Studies',
+  },
   icons: {
     icon: [
       { type: 'image/png', url: '/wellness/favicon-16x16.png', sizes: '16x16' },

@@ -31,8 +31,8 @@ export const EventFallbackPromo: FC = () => {
           <Hero />
         </Link>
       </Section>
-      <Banner badgeImageSrc={null} lastChanceImageSrc={null} onClick={handleClick} backgroundColor="#000000">
-        <span className="lead">Start any course today for <strong className="fw-bold">only {priceState?.currency.code === 'GBP' ? '£75' : '$75'}</strong></span>
+      <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
+        You'll Also Receive <strong>50% Off Each Additional Course</strong>
       </Banner>
       <Modal show={showPopup} onHide={handleClick}>
         <Modal.Header closeButton>Special Offer</Modal.Header>

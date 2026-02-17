@@ -24,9 +24,14 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": [ "./src/*" ],
+      "@/design/*": [ "./src/app/sites/design/*" ],
+      "@/event/*": [ "./src/app/sites/event/*" ],
+      "@/makeup/*": [ "./src/app/sites/makeup/*" ],
+      "@/per/*": [ "./src/app/sites/pet/*" ],
+      "@/wellness/*": [ "./src/app/sites/wellness/*" ],
+      "@/writing/*": [ "./src/app/sites/writing/*" ],
+      "@/ppa/*": [ "./src/app/sites/ppa/*" ],
     }
   },
   "include": [
