@@ -1,9 +1,10 @@
 import type { FC } from 'react';
 
-import { Wellness20260213Promo } from './promo';
+import { Pet20260219Promo } from './promo';
 import { agreementLinks } from '../../../../agreementLinks';
 import { courseGroups } from '../../../../courseGroups';
 import { Guarantee } from '../../../../guarantee';
+import { PetCoursesSubtitleFirstAid } from '@/app/sites/pet/petCoursesSubtitleFirstAid';
 import { Form } from '@/components/form';
 import type { LastChancePeriodDTO } from '@/lib/period';
 
@@ -12,19 +13,20 @@ interface Props {
   period: LastChancePeriodDTO;
 }
 
-export const Wellness20260213: FC<Props> = ({ date, period }) => (
+export const Pet20260219: FC<Props> = ({ date, period }) => (
   <>
-    <Wellness20260213Promo date={date} period={period} />
+    <Pet20260219Promo date={date} period={period} />
     <Form
       date={date}
       courseGroups={courseGroups}
-      school="QC Wellness Studies"
+      school="QC Pet Studies"
       guarantee={Guarantee}
-      successLink="https://www.qcwellnessstudies.com/welcome-to-the-school"
+      coursesSubtitle={PetCoursesSubtitleFirstAid}
+      successLink="https://www.qcpetstudies.com/welcome-to-the-school"
       agreementLinks={agreementLinks}
-      dynamicCourseDescriptions="HIDE"
+      dynamicCourseDescriptions="SHOW"
       visualPaymentPlans
-      promoCodeDefault="300OFF"
+      promoCodeDefault="PET400OFF"
     />
   </>
 );

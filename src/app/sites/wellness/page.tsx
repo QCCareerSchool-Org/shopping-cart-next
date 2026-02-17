@@ -1,11 +1,9 @@
 import { Suspense } from 'react';
 
-import { Wellness20260121 } from './_carts/2026/01/21';
-import { Wellness20260204 } from './_carts/2026/02/04';
-import { Wellness20260213 } from './_carts/2026/02/13';
+import { Wellness20260219 } from './_carts/2026/02/19';
 import { WellnessFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
-import { feb04, feb13, jan21 } from '@/lib/period/periods';
+import { feb19 } from '@/lib/period/periods';
 import type { PageComponent } from '@/serverComponent';
 
 const DesignPage: PageComponent = async props => {
@@ -14,13 +12,9 @@ const DesignPage: PageComponent = async props => {
 
   return (
     <Suspense>
-      {feb13.contains(date)
-        ? <Wellness20260213 date={date} period={feb13.toDTO()} />
-        : jan21.contains(date)
-          ? <Wellness20260121 date={date} />
-          : feb04.contains(date)
-            ? <Wellness20260204 date={date} promotionPeriod={feb04.toDTO()} />
-            : <WellnessFallback date={date} />
+      {feb19.contains(date)
+        ? <Wellness20260219 date={date} period={feb19.toDTO()} />
+        : <WellnessFallback date={date} />
       }
     </Suspense>
   );
