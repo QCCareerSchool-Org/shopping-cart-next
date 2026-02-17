@@ -12,11 +12,11 @@ interface Props {
 
 export const Wellness20260213Modal: FC<Props> = props => {
   const priceState = usePriceState();
-  const discount = priceState?.currency.code === 'GBP' ? '£400' : '$400';
+  const discount = priceState?.currency.code === 'GBP' ? '£300' : '$300';
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
-      <Modal.Header closeButton>Take Control of Your Future in Sleep Consulting</Modal.Header>
+      <Modal.Header closeButton>Become a Certified Expert in Less Than 3 Months!</Modal.Header>
       <Modal.Body>
         <p>For a limited time, you can enroll in our Pediatric Sleep Consulting course and save {discount} on tuition, or save even more when you pay in full.</p>
         <hr />

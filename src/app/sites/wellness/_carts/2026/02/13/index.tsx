@@ -24,7 +24,7 @@ export const Wellness20260213: FC<Props> = ({ date, period }) => (
       agreementLinks={agreementLinks}
       dynamicCourseDescriptions="HIDE"
       visualPaymentPlans
-      promoCodeDefault="400OFF"
+      promoCodeDefault="300OFF"
     />
   </>
 );

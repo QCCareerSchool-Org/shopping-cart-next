@@ -10,7 +10,7 @@ interface Props {
 
 export const Pet20260219Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
-    <Modal.Header closeButton>Build a Career You'll Love in Pet Care</Modal.Header>
+    <Modal.Header closeButton>Start Your Pet Care Career</Modal.Header>
     <Modal.Body>
       <p>This is your moment to invest in your future. For a limited time, you can enroll in any pet care course and get a <strong>second course FREE.</strong></p>
       <hr />

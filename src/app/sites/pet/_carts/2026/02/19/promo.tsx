@@ -10,7 +10,7 @@ import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 import type { LastChancePeriodDTO } from '@/lib/period';
 
-const backgroundColor = '#4b0304';
+const backgroundColor = '#1c9797';
 
 interface Props {
   date: number;
