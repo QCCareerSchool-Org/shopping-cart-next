@@ -1,26 +1,12 @@
 import type { Metadata } from 'next';
-import { Abel, Lato } from 'next/font/google';
 
 import { Header } from './_components/header';
-import { Navbar } from './_components/Navbar';
+import { Footer } from './_components/xFooter';
+import { Navbar } from './_components/xNavbar';
 import type { LayoutComponent } from '@/serverComponent';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './global.scss';
-
-const lato = Lato({
-  weight: [ '300', '400', '700', '900' ],
-  subsets: [ 'latin' ],
-  display: 'swap',
-  variable: '--qc-font-lato',
-});
-
-const abel = Abel({
-  weight: [ '400' ],
-  subsets: [ 'latin' ],
-  display: 'swap',
-  variable: '--qc-font-able',
-});
 
 export const metadata: Metadata = {
   title: {
@@ -42,14 +28,15 @@ export const metadata: Metadata = {
 };
 
 const PpaLayout: LayoutComponent = ({ children }) => (
-  <div className={`${lato.variable} ${abel.variable}`}>
+  <>
     <Header>
       <Navbar />
     </Header>
     <main>
       {children}
     </main>
-  </div>
+    <Footer />
+  </>
 );
 
 export default PpaLayout;
