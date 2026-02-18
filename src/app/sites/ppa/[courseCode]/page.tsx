@@ -2,47 +2,46 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { PpaCart } from '../cart';
-import { getPpaCourseBySlug } from '../courses';
+import { ppaCourseMap } from '../ppaCourse';
+import type { PPACourseCode } from '@/domain/ppaCourseCode';
 import { getDate } from '@/lib/getDate';
 import type { GenerateMetadata, PageComponent } from '@/serverComponent';
 
-// export const generateStaticParams = (): { course: string }[] => {
-//   return ppaCourses.map(course => ({ course: course.slug }));
-// };
-
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 type RouteParams = {
-  course: string;
+  courseCode: PPACourseCode;
 };
 
 export const generateMetadata: GenerateMetadata<RouteParams> = async (props): Promise<Metadata> => {
   const params = await props.params;
-  const courseSlug = params.course;
-  const course = getPpaCourseBySlug(courseSlug);
-  if (!course) {
+  const courseCode = params.courseCode;
+
+  const courseMetadata = ppaCourseMap[courseCode];
+  if (!courseMetadata) {
     return {};
   }
 
   return {
-    title: course.name,
-    description: course.summaryBody,
+    title: courseMetadata.title,
+    description: courseMetadata.description,
   };
 };
 
 const PpaCoursePage: PageComponent<RouteParams> = async props => {
-  const [ searchParams, params ] = await Promise.all([
-    props.searchParams,
+  const [ params, searchParams ] = await Promise.all([
     props.params,
+    props.searchParams,
   ]);
-
   const date = await getDate(searchParams.date);
-  const courseSlug = params.course;
-  const course = getPpaCourseBySlug(courseSlug);
-  if (!course) {
+
+  const courseCode = params.courseCode;
+
+  const courseMetadata = ppaCourseMap[courseCode];
+  if (!courseMetadata) {
     notFound();
   }
 
-  return <PpaCart date={date} course={course} />;
+  return <PpaCart date={date} courseCode={courseCode} />;
 };
 
 export default PpaCoursePage;

@@ -1,14 +1,14 @@
 import Link from 'next/link';
 
-import { ppaCourses } from './courses';
+import { ppaCourseCodes } from '@/domain/ppaCourseCode';
 import type { PageComponent } from '@/serverComponent';
 
 const PpaLandingPage: PageComponent = () => {
   return (
     <div className="ppaCourseList">
-      {ppaCourses.map(course => (
-        <Link key={course.slug} href={`/${course.slug}`}>
-          {course.name}
+      {ppaCourseCodes.map(c => (
+        <Link key={c} href={`/${c}`}>
+          xxx
         </Link>
       ))}
     </div>

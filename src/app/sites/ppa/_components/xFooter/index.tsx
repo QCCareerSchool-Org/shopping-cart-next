@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { FC } from 'react';
 
-import styles from './Footer.module.scss';
-import whiteLogoIcon from '@/images/ppa-logo.jpg';
+import styles from './index.module.scss';
+import whiteLogoIcon from './logo.webp';
 
 const socialLinks = [
   {
@@ -109,48 +110,46 @@ const socialLinks = [
   },
 ];
 
-export default function Footer() {
-  return (
-    <footer className={styles.footer} role="contentinfo">
-      <div className="container">
-        <div className={styles.inner}>
-          <div className={styles.brand}>
-            <Link href="/" aria-label="Paw Parent Academy home">
-              <Image src={whiteLogoIcon} alt="Paw Parent Academy logo" width={52} height={52} />
-            </Link>
-          </div>
-
-          <div className={styles.meta}>
-            <nav aria-label="Footer links" className={styles.links}>
-              <Link href="/contact" className={styles.link}>
-                Contact Us
-              </Link>
-              <span aria-hidden="true" className={styles.separator}>
-                |
-              </span>
-              <Link href="/privacy-policy" className={styles.link}>
-                Privacy Policy
-              </Link>
-            </nav>
-            <p className={styles.copy}>© 2025 Paw Parent Academy</p>
-          </div>
-
-          <nav aria-label="Social media" className={styles.social}>
-            {socialLinks.map(link => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={styles.socialLink}
-                aria-label={`Visit Paw Parent Academy on ${link.name}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {link.icon}
-              </Link>
-            ))}
-          </nav>
+export const Footer: FC = () => (
+  <footer className={styles.footer} role="contentinfo">
+    <div className="container">
+      <div className={styles.inner}>
+        <div className={styles.brand}>
+          <Link href="/" aria-label="Paw Parent Academy home">
+            <Image src={whiteLogoIcon} alt="Paw Parent Academy logo" width={52} height={52} />
+          </Link>
         </div>
+
+        <div className={styles.meta}>
+          <nav aria-label="Footer links" className={styles.links}>
+            <Link href="/contact" className={styles.link}>
+              Contact Us
+            </Link>
+            <span aria-hidden="true" className={styles.separator}>
+              |
+            </span>
+            <Link href="/privacy-policy" className={styles.link}>
+              Privacy Policy
+            </Link>
+          </nav>
+          <p className={styles.copy}>© 2025 Paw Parent Academy</p>
+        </div>
+
+        <nav aria-label="Social media" className={styles.social}>
+          {socialLinks.map(link => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={styles.socialLink}
+              aria-label={`Visit Paw Parent Academy on ${link.name}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {link.icon}
+            </Link>
+          ))}
+        </nav>
       </div>
-    </footer>
-  );
-}
+    </div>
+  </footer>
+);

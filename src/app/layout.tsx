@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 // eslint-disable-next-line camelcase
-import { Open_Sans, Playfair_Display } from 'next/font/google';
+import { Lato, Open_Sans, Playfair_Display } from 'next/font/google';
 import { headers } from 'next/headers';
 import Script from 'next/script';
 
@@ -31,6 +31,13 @@ const openSans = Open_Sans({
   weight: [ '300', '400', '500' ],
   subsets: [ 'latin' ],
   variable: '--qc-open-sans',
+});
+
+const lato = Lato({
+  weight: [ '300', '400', '700', '900' ],
+  subsets: [ 'latin' ],
+  display: 'swap',
+  variable: '--qc-font-lato',
 });
 
 const RootLayout: LayoutComponent = async ({ children }) => {
@@ -66,7 +73,7 @@ const RootLayout: LayoutComponent = async ({ children }) => {
   }
 
   return (
-    <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable} ${neueHaasText.variable} ${neueHaasDisplay.variable}`}>
+    <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable} ${neueHaasText.variable} ${neueHaasDisplay.variable} ${lato.variable}`}>
       <head>
         <Script id="paysafe" src="https://hosted.paysafe.com/js/v1/latest/paysafe.min.js" strategy="beforeInteractive" />
       </head>
