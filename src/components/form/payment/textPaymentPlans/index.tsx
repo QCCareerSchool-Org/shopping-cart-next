@@ -36,8 +36,12 @@ export const TextPaymentPlans: FC<Props> = ({ date, school, showPromoCodeInput, 
   return (
     <div className="row justify-content-center">
       <div className="col-12 col-sm-10 col-md-5 mb-4 mb-md-0">
-        <PaymentOptions reverse={reverse} />
-        {paymentState.plan === 'part' && <div className="mt-4"><Schedule /></div>}
+        {typeof priceState?.plans.part?.installmentSize !== 'undefined' && priceState.plans.part.installmentSize > 0 && (
+          <>
+            <PaymentOptions reverse={reverse} />
+            {paymentState.plan === 'part' && <div className="mt-4"><Schedule /></div>}
+          </>
+        )}
         {showPromoCodeInput && <Suspense><PromoCodeInput date={date} school={school} promosOverride={promosOverride} /></Suspense>}
       </div>
       <div className="col-12 col-sm-10 col-md-7">
