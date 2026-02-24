@@ -40,7 +40,6 @@ export const AllAccessPromo: FC = () => {
             <li>Festivals & Live Events</li>
             <li>Accelerate Your Business</li>
           </ul>
-
           <h4 className="h6">Learn From Industry Experts</h4>
           <p>Every course includes guidance from experienced event planners and practical assignments with feedback.</p>
           <h4 className="h6">Earn Multiple Professional Certifications</h4>
