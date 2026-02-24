@@ -28,7 +28,7 @@ export const AllAccessPromo: FC = () => {
           <Modal.Title>Everything You Need to Launch a Full-Service Event Business</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Enroll in the All-Access Program and get complete access to every QC Event Planning course. Complete each course to gain certification, or simply review the course materials.</p>
+          <p>Enroll in the All-Access Program and unlock full access to every QC Event Planning course. Complete each course to earn your professional certifications, or simply review the lessons to gain specialized expertise.</p>
           <h4 className="h6">Courses Included:</h4>
           <ul>
             <li>Event & Wedding Planning</li>
