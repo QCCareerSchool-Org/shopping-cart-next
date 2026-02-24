@@ -2,10 +2,16 @@ import { agreementLinks } from '../agreementLinks';
 import { Guarantee } from '../guarantee';
 import { AllAccessPromo } from './promo';
 import { Form } from '@/components/form';
+import type { CourseGroup } from '@/domain/courseGroup';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
 const coursesOverride = [ 'AA', 'CP', 'ED', 'DW', 'LW', 'PE', 'FL', 'EB', 'VE' ];
+const courseGroups: CourseGroup[] = [
+  {
+    items: [ { name: 'All-Access Program', code: 'AA' } ],
+  },
+];
 
 const AllAccessPage: PageComponent = async props => {
   const searchParams = await props.searchParams;
@@ -15,7 +21,7 @@ const AllAccessPage: PageComponent = async props => {
       <AllAccessPromo />
       <Form
         date={date}
-        courseGroups={[]}
+        courseGroups={courseGroups}
         school="QC Event School"
         guarantee={Guarantee}
         successLink="https://www.qceventplanning.com/welcome-to-the-school"
