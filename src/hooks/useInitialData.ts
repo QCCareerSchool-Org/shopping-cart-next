@@ -75,9 +75,9 @@ export const useInitialData = (school: School, schoolVariant: SchoolVariant | un
     coursesDispatch({ type: 'CLEAR_COURSES', payload: { student, countryCode: addressState.countryCode, provinceCode: addressState.provinceCode } });
     if (coursesOverride) {
       for (const c of coursesOverride) {
-        if (courseGroups.some(g => g.items.some(i => i.code.toUpperCase() === c.toUpperCase()))) {
-          coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode: c, student, countryCode: addressState.countryCode, provinceCode: addressState.provinceCode } });
-        }
+        // if (courseGroups.some(g => g.items.some(i => i.code.toUpperCase() === c.toUpperCase()))) {
+        coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode: c, student, countryCode: addressState.countryCode, provinceCode: addressState.provinceCode } });
+        // }
       }
     }
 
