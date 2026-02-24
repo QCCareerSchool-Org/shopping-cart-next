@@ -28,7 +28,7 @@ export const AllAccessPromo: FC = () => {
           <Modal.Title>Everything You Need to Launch a Full-Service Event Business</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Enroll in the All-Access Program and get complete access to every QC Event Planning course.</p>
+          <p>Enroll in the All-Access Program and get complete access to every QC Event Planning course. Complete each course to gain certification, or simply review the course materials.</p>
           <h4 className="h6">Courses Included:</h4>
           <ul>
             <li>Event & Wedding Planning</li>
@@ -40,12 +40,13 @@ export const AllAccessPromo: FC = () => {
             <li>Festivals & Live Events</li>
             <li>Accelerate Your Business</li>
           </ul>
-          <h4 className="h6">Learn From Expert Instructors</h4>
-          <p>We've hand-selected the top event planning professionals in the industry to guide you through your course material.</p>
-          <h4 className="h6">Industry-Recognized Certifications</h4>
-          <p>Graduate with three professional event planning certifications and open up a world of career & business opportunities.</p>
-          <h4 className="h6">Business Training Included</h4>
-          <p className="mb-0">Each course includes built-in business training to help you launch your career and grow your clientele as a newly certified event planner.</p>
+
+          <h4 className="h6">Learn From Industry Experts</h4>
+          <p>Every course includes guidance from experienced event planners and practical assignments with feedback.</p>
+          <h4 className="h6">Earn Multiple Professional Certifications</h4>
+          <p>Graduate with up to ten industry-recognized certifications, including the Master Planner Certificate, to build credibility and attract clients.</p>
+          <h4 className="h6">Business Training Built In</h4>
+          <p className="mb-0">Each course provides strategies and mentorship to help you confidently launch, market, and grow your event services. Plus, get six months free access to AislePlanner software.</p>
         </Modal.Body>
       </Modal>
     </>
