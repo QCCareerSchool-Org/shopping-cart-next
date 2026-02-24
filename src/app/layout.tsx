@@ -73,12 +73,12 @@ const RootLayout: LayoutComponent = async ({ children }) => {
   }
 
   return (
-    <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable} ${neueHaasText.variable} ${neueHaasDisplay.variable} ${lato.variable}`}>
+    <html lang="en" className={`${openSans.variable} ${playfairDisplay.variable} ${neueHaasText.variable} ${neueHaasDisplay.variable} ${lato.variable} h-100`}>
       <head>
         <Script id="paysafe" src="https://hosted.paysafe.com/js/v1/latest/paysafe.min.js" strategy="beforeInteractive" />
       </head>
       <Provider geoLocation={geoLocation} countries={countries} provinces={provinces}>
-        <body>{children}</body>
+        <body className="d-flex flex-column h-100">{children}</body>
       </Provider>
     </html>
   );

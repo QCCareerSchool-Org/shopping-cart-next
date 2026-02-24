@@ -32,7 +32,7 @@ const PpaLayout: LayoutComponent = ({ children }) => (
     <Header>
       <Navbar />
     </Header>
-    <main>
+    <main className="flex-shrink-0">
       {children}
     </main>
     <Footer />

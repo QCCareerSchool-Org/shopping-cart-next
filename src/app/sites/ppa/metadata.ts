@@ -1,11 +1,11 @@
 import type { PPACourseCode } from '@/domain/ppaCourseCode';
 
-export interface PPACourse {
+export interface Metadata {
   title: string;
   description: string;
 }
 
-export const ppaCourseMap: Record<PPACourseCode, PPACourse> = {
+export const metadataMap: Record<PPACourseCode, Metadata> = {
   DM: {
     title: '',
     description: '',

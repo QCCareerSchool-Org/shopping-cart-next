@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { PpaCart } from '../cart';
-import { ppaCourseMap } from '../ppaCourse';
+import { metadataMap } from '../metadata';
 import type { PPACourseCode } from '@/domain/ppaCourseCode';
 import { getDate } from '@/lib/getDate';
 import type { GenerateMetadata, PageComponent } from '@/serverComponent';
@@ -16,14 +16,14 @@ export const generateMetadata: GenerateMetadata<RouteParams> = async (props): Pr
   const params = await props.params;
   const courseCode = params.courseCode;
 
-  const courseMetadata = ppaCourseMap[courseCode];
-  if (!courseMetadata) {
+  const metadata = metadataMap[courseCode];
+  if (!metadata) {
     return {};
   }
 
   return {
-    title: courseMetadata.title,
-    description: courseMetadata.description,
+    title: metadata.title,
+    description: metadata.description,
   };
 };
 
@@ -36,8 +36,8 @@ const PpaCoursePage: PageComponent<RouteParams> = async props => {
 
   const courseCode = params.courseCode;
 
-  const courseMetadata = ppaCourseMap[courseCode];
-  if (!courseMetadata) {
+  const metadata = metadataMap[courseCode];
+  if (!metadata) {
     notFound();
   }
 
