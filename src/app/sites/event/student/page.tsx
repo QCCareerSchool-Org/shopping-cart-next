@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { EventStudent20260213 } from './_carts/2026/02/13';
 import { EventStudentFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
-import { feb13 } from '@/lib/period/periods';
+import { feb13 } from '@/periods';
 import type { PageComponent } from '@/serverComponent';
 
 const EventStudentPage: PageComponent = async props => {
