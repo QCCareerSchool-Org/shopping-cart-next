@@ -12,7 +12,7 @@ export const Event20260304Modal: FC<Props> = props => (
   <Modal show={props.show} onHide={props.onHide}>
     <Modal.Header closeButton>Turn Passion into Proof!</Modal.Header>
     <Modal.Body>
-      <p>A new year means new opportunities&mdash;and now's your moment to act. For a limited time, enroll in any foundation course and get <strong>2 FREE specialty courses</strong>.</p>
+      <p>This is your moment to invest in your future and get certified! For a limited time, enroll in any foundation course and get <strong>2 FREE specialty courses</strong>.</p>
       <hr />
       <h6 className="sans-serif">Enroll Today & Start Building Your Event Career in 3 Months or Less</h6>
       <p>Turn your creativity and organization skills into a career you own&mdash;faster than you think.</p>
