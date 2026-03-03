@@ -6,12 +6,25 @@ import { Modal } from 'react-bootstrap';
 import { AllAccessHero } from './hero';
 import styles from './promo.module.scss';
 import { Section } from '@/components/section';
+import { useAddressState } from '@/hooks/useAddressState';
 import { useToggle } from '@/hooks/useToggle';
+// import { audCountry, gbpCountry, nzdCountry } from '@/lib/currencies';
 
 const backgroundColor = '#030419';
 
 export const AllAccessPromo: FC = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
+  const { countryCode, provinceCode } = useAddressState();
+
+  const [ price, deposit ] = countryCode === 'CA' && provinceCode === 'ON'
+    ? [ '$1998', '$398' ]
+    // : gbpCountry(countryCode)
+    //   ? [ '', '' ]
+    //   : audCountry(countryCode)
+    //     ? [ '', '' ]
+    //     : nzdCountry(countryCode)
+    //       ? [ '', '' ]
+    : [ '$2998', '$398' ];
 
   const handleClick = (): void => {
     togglePopup();
@@ -29,7 +42,7 @@ export const AllAccessPromo: FC = () => {
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
         <Modal.Header closeButton>
-          <Modal.Title><span className={styles.title}>Sign Up for the All-Access Program for only <del className={styles.del}>$8026</del> <strong>$2998*</strong></span></Modal.Title>
+          <Modal.Title><span className={styles.title}>Sign Up for the All-Access Program for only <del className={styles.del}>$8026</del> <strong>{price}*</strong></span></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>Enroll in the All-Access Program and unlock full access to every QC Event Planning course.</p>
@@ -52,7 +65,7 @@ export const AllAccessPromo: FC = () => {
           <p className="mb-0">Each course provides strategies and mentorship to help you confidently launch, market, and grow your event services. Plus, get six months free access to AislePlanner software.</p>
         </Modal.Body>
         <Modal.Footer>
-          * or start for only <strong>$398</strong>
+          * or start for only <strong>{deposit}</strong>
         </Modal.Footer>
       </Modal>
     </>
