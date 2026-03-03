@@ -9,7 +9,7 @@ import { Section } from '@/components/section';
 import { usePriceState } from '@/hooks/usePriceState';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#57c3d7';
+const backgroundColor = '#000';
 
 export const PetFallbackPromo: FC = () => {
   const priceState = usePriceState();
