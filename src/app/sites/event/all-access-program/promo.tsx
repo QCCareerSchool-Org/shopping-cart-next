@@ -17,7 +17,7 @@ export const AllAccessPromo: FC = () => {
   const { countryCode, provinceCode } = useAddressState();
 
   const [ price, deposit ] = countryCode === 'CA' && provinceCode === 'ON'
-    ? [ '$1998', '$398' ]
+    ? [ '$1698', '$398' ]
     // : gbpCountry(countryCode)
     //   ? [ '', '' ]
     //   : audCountry(countryCode)
