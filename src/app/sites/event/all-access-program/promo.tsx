@@ -42,7 +42,7 @@ export const AllAccessPromo: FC = () => {
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
         <Modal.Header closeButton>
-          <Modal.Title><span className={styles.title}>Sign Up for the All-Access Program for only <del className={styles.del}>$8026</del> <strong>{price}*</strong></span></Modal.Title>
+          <Modal.Title><span className={styles.title}>Sign Up for the All-Access Program for only <del className={styles.del}>$7331</del> <strong>{price}*</strong></span></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>Enroll in the All-Access Program and unlock full access to every QC Event Planning course.</p>
@@ -56,6 +56,7 @@ export const AllAccessPromo: FC = () => {
             <li>Promotional Event Planning</li>
             <li>Festivals & Live Events</li>
             <li>Accelerate Your Business</li>
+            <li>Virtual Events Training</li>
           </ul>
           <h4 className="h6">Learn From Industry Experts</h4>
           <p>Every course includes guidance from experienced event planners and practical assignments with feedback.</p>
