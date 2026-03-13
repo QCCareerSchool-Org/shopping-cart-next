@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { Design20260304 } from './_carts/2026/03/04';
 import { DesignFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
-import { mar04 } from '@/periods';
+import { mar04, mar04extended } from '@/periods';
 import type { PageComponent } from '@/serverComponent';
 
 const DesignPage: PageComponent = async props => {
@@ -14,7 +14,9 @@ const DesignPage: PageComponent = async props => {
     <Suspense>
       {mar04.contains(date)
         ? <Design20260304 date={date} period={mar04.toDTO()} />
-        : <DesignFallback date={date} />
+        : mar04extended.contains(date)
+          ? <Design20260304 date={date} period={mar04extended.toDTO()} />
+          : <DesignFallback date={date} />
       }
     </Suspense>
   );
