@@ -1,7 +1,7 @@
 import type { StaticImageData } from 'next/image';
 
 import DM from './dm.jpg';
-import GD from './gd.jpg';
+import GD from './gd.png';
 import GR from './gr.jpg';
 import NT from './nt.jpg';
 import PG from './pg.jpg';
