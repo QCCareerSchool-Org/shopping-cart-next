@@ -4,35 +4,13 @@
   color: #d7dde5;
   padding: 1.25rem 0;
   font-size: 0.95rem;
-  margin-top: auto;
-}
-
-.inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.brand img {
-  width: 52px;
-  height: auto;
-  display: block;
-}
-
-.meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.4rem;
-  text-align: left;
+  flex-shrink: 0;
 }
 
 .social {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
   flex-wrap: wrap;
   gap: 0.75rem;
 }
@@ -57,12 +35,6 @@
   outline: none;
 }
 
-.socialIcon {
-  width: auto;
-  height: auto;
-  display: block;
-}
-
 .links {
   display: flex;
   align-items: center;
@@ -77,6 +49,7 @@
 
 .separator {
   color: #7a8392;
+  padding: 0 0.625rem;
 }
 
 .copy {
