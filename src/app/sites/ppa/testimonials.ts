@@ -4,12 +4,12 @@ import jasonMoore from './images/testimonials/jason-moore.jpg';
 import lucieMichaels from './images/testimonials/lucie-michaels.jpg';
 import meaghanAubin from './images/testimonials/meaghan-aubin.jpg';
 
-export type Testimonial = {
+export interface Testimonial {
   id: string;
   quote: string;
   author: string;
   avatar: string | StaticImageData;
-};
+}
 
 const testimonialLibrary = {
   lucie: {

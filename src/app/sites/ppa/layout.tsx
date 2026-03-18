@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
+import { Footer } from './_components/footer';
 import { Header } from './_components/header';
-import { Footer } from './_components/xFooter';
-import { Navbar } from './_components/xNavbar';
+import { Navbar } from './_components/navbar';
 import type { LayoutComponent } from '@/serverComponent';
 
 import 'bootstrap/dist/css/bootstrap.min.css';

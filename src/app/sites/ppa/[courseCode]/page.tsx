@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { PpaCart } from '../cart';
+import { PpaCart } from '../_components/cart';
 import { metadataMap } from '../metadata';
 import type { PPACourseCode } from '@/domain/ppaCourseCode';
 import { getDate } from '@/lib/getDate';
