@@ -1,8 +1,9 @@
 import type { FC } from 'react';
 
-import { Hero } from './_components/hero';
-import { agreementLinks } from './agreementLinks';
-import { courseGroups } from './courseGroups';
+import { Hero } from './hero';
+import { agreementLinks } from '../agreementLinks';
+import { courseGroups } from '../courseGroups';
+import { Guarantee } from './guarantee';
 import { Form } from '@/components/form';
 import type { PPACourseCode } from '@/domain/ppaCourseCode';
 
@@ -23,7 +24,7 @@ export const PpaCart: FC<Props> = ({ date, courseCode }) => (
       school="Paw Parent Academy"
       successLink="https://www.pawparentacademy.com/welcome-to-the-school"
       agreementLinks={agreementLinks}
-      guarantee={null}
+      guarantee={Guarantee}
       showPromoCodeInput
       visualPaymentPlans={false}
     />

@@ -122,31 +122,18 @@ export const Footer: FC = () => (
 
         <div className={styles.meta}>
           <nav aria-label="Footer links" className={styles.links}>
-            <Link href="/contact" className={styles.link}>
-              Contact Us
-            </Link>
+            <Link href="/contact" className={styles.link}>Contact Us</Link>
             <span aria-hidden="true" className={styles.separator}>
               |
             </span>
-            <Link href="/privacy-policy" className={styles.link}>
-              Privacy Policy
-            </Link>
+            <Link href="/privacy-policy" className={styles.link}>Privacy Policy</Link>
           </nav>
-          <p className={styles.copy}>© 2025 Paw Parent Academy</p>
+          <p className={styles.copy}>© {new Date().getFullYear()} Paw Parent Academy</p>
         </div>
 
         <nav aria-label="Social media" className={styles.social}>
           {socialLinks.map(link => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={styles.socialLink}
-              aria-label={`Visit Paw Parent Academy on ${link.name}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {link.icon}
-            </Link>
+            <Link key={link.name} href={link.href} className={styles.socialLink} aria-label={`Visit Paw Parent Academy on ${link.name}`} target="_blank" rel="noreferrer">{link.icon}</Link>
           ))}
         </nav>
       </div>
