@@ -27,6 +27,7 @@ export const PpaCart: FC<Props> = ({ date, courseCode }) => (
       guarantee={Guarantee}
       showPromoCodeInput
       visualPaymentPlans={false}
+      addressHeadingOverride="Course Registration"
     />
   </>
 );

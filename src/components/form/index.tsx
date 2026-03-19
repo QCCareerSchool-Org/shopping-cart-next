@@ -89,6 +89,7 @@ export interface Props {
   hideCourseTable?: boolean;
   hideCourseSelection?: boolean;
   hideTaxRefund?: boolean;
+  addressHeadingOverride?: string;
 }
 
 const showBillingAddress = (school: School, billingAddressDefault?: 'same' | 'different'): boolean => {
@@ -193,7 +194,7 @@ export const Form: FC<Props> = props => {
         hideCourseTable={!!props.hideCourseTable}
         hide={props.hideCourseSelection}
       />
-      <Address school={props.school} schoolVariant={props.schoolVariant} />
+      <Address school={props.school} schoolVariant={props.schoolVariant} headingOverride={props.addressHeadingOverride} />
       <Suspense>{showBillingAddress(props.school, props.billingAddressDefault) && <BillingAddress />}</Suspense>
       <Payment date={props.date} school={props.school} showPromoCodeInput={!!props.showPromoCodeInput && !props.promoCodeDefault} promosOverride={props.promosOverride} visualPaymentPlans={!!props.visualPaymentPlans} discountName={props.discountName} courseGroups={props.courseGroups} hideTaxRefund={props.hideTaxRefund} />
       <Suspense>{!!props.internal && <Overrides />}</Suspense>
