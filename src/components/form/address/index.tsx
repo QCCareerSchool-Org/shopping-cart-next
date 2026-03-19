@@ -33,7 +33,7 @@ export const Address: FC<Props> = ({ school, headingOverride }) => {
   const showPostal = needsPostal(countryCode);
   const showProvince = needsProvince(countryCode);
 
-  const heading = headingOverride ?? school === 'QC Design School' ? 'Shipping Address' : 'Student Address';
+  const heading = headingOverride ?? (school === 'QC Design School' ? 'Shipping Address' : 'Student Address');
 
   return (
     <Section className="addressSection" id="address">
