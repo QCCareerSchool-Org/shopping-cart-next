@@ -23,16 +23,17 @@ import { needsPostal } from '@/lib/needsPostal';
 interface Props {
   school: School;
   schoolVariant?: SchoolVariant;
+  headingOverride?: string;
 }
 
-export const Address: FC<Props> = ({ school }) => {
+export const Address: FC<Props> = ({ school, headingOverride }) => {
   const { countryCode } = useAddressState();
   const price = usePriceState();
 
   const showPostal = needsPostal(countryCode);
   const showProvince = needsProvince(countryCode);
 
-  const heading = school === 'QC Design School' ? 'Shipping Address' : 'Student Address';
+  const heading = headingOverride ?? school === 'QC Design School' ? 'Shipping Address' : 'Student Address';
 
   return (
     <Section className="addressSection" id="address">
