@@ -6,7 +6,7 @@ export type GeoLocationFunction<T> = ((geoLocation: GeoLocation) => T) | T;
 
 export interface Course {
   code: string;
-  name: GeoLocationFunction<string>;
+  name: GeoLocationFunction<string | JSX.Element>;
   description?: string;
   disabledMessage?: GeoLocationFunction<string | JSX.Element>;
   hidden?: GeoLocationFunction<boolean>;
