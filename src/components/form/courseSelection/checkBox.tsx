@@ -37,9 +37,9 @@ export const CheckBox: React.FC<Props> = props => {
 
   const disabled = coursesState.disabled.includes(props.course.code);
 
-  const name = typeof props.course.name === 'string'
-    ? props.course.name
-    : props.course.name({ countryCode, provinceCode });
+  const name = typeof props.course.name === 'function'
+    ? props.course.name({ countryCode, provinceCode })
+    : props.course.name;
 
   let disabledMessage: string | JSX.Element | undefined;
 

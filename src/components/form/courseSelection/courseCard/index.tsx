@@ -1,3 +1,4 @@
+import type { JSX } from 'react';
 import { Card, CardBody } from 'react-bootstrap';
 
 import { Banner } from './banner';
@@ -10,7 +11,7 @@ import { useScreenWidth } from '@/hooks/useScreenWidth';
 
 interface Props {
   courseCode: string;
-  name: string;
+  name: string | JSX.Element;
 }
 
 const bannerCertifications = [ 'MZ', 'AB', 'HS', 'MW', 'SF', 'SK' ];

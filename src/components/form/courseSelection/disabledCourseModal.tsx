@@ -3,7 +3,7 @@ import { Modal, ModalBody, ModalHeader } from 'react-bootstrap';
 
 interface Props {
   course: string;
-  name: string;
+  name: string | JSX.Element;
   message: string | JSX.Element;
   show: boolean;
   onHide: () => void;

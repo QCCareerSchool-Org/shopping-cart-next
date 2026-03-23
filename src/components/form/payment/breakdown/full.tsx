@@ -30,7 +30,7 @@ export const Full: FC<Props> = ({ discountName, courseGroups }) => {
             if (!course) {
               return null;
             }
-            const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+            const name = typeof course.name === 'function' ? course.name({ countryCode, provinceCode }) : course.name;
             return (
               <Fragment key={coursePrice.code}>
                 <tr>

@@ -126,7 +126,7 @@ const CostRows: React.FC<InnerProps> = ({ price, plan, countryCode, provinceCode
         if (!course) {
           return null;
         }
-        const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+        const name = typeof course.name === 'function' ? course.name({ countryCode, provinceCode }) : course.name;
         return (
           <Fragment key={key++}>
             <tr>
@@ -156,7 +156,7 @@ const CostRows: React.FC<InnerProps> = ({ price, plan, countryCode, provinceCode
         if (!course) {
           return null;
         }
-        const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+        const name = typeof course.name === 'function' ? course.name({ countryCode, provinceCode }) : course.name;
         return (
           <Fragment key={key++}>
             <tr>
@@ -222,7 +222,7 @@ const DepositRows: FC<InnerProps> = ({ price, plan, countryCode, provinceCode, c
         if (!course) {
           return null;
         }
-        const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+        const name = typeof course.name === 'function' ? course.name({ countryCode, provinceCode }) : course.name;
         return (
           <tr key={key++}>
             <td>{name}{coursePrice.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
@@ -238,7 +238,7 @@ const DepositRows: FC<InnerProps> = ({ price, plan, countryCode, provinceCode, c
         if (!course) {
           return null;
         }
-        const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+        const name = typeof course.name === 'function' ? course.name({ countryCode, provinceCode }) : course.name;
         return (
           <tr key={key++}>
             <td>{name}{coursePrice.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
@@ -278,7 +278,7 @@ const InstallmentRows: FC<InnerProps> = ({ price, plan, countryCode, provinceCod
         if (!course) {
           return null;
         }
-        const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+        const name = typeof course.name === 'function' ? course.name({ countryCode, provinceCode }) : course.name;
         return (
           <tr key={key++}>
             <td>{name}{coursePrice.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>
@@ -294,7 +294,7 @@ const InstallmentRows: FC<InnerProps> = ({ price, plan, countryCode, provinceCod
         if (!course) {
           return null;
         }
-        const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+        const name = typeof course.name === 'function' ? course.name({ countryCode, provinceCode }) : course.name;
         return (
           <tr key={key++}>
             <td>{name}{coursePrice.free && <>{' '}<strong className="text-primary">FREE!</strong></>}</td>

@@ -18,7 +18,7 @@ export const CourseTableRow: FC<Props> = ({ coursePrice, course }) => {
     return null;
   }
 
-  const name = typeof course.name === 'string' ? course.name : course.name({ countryCode, provinceCode });
+  const name = typeof course.name === 'function' ? course.name({ countryCode, provinceCode }) : course.name;
 
   const multiCourseDiscountPercentage = !coursePrice.free && coursePrice.multiCourseDiscount > 0 && Math.round(coursePrice.multiCourseDiscount / coursePrice.cost * 100);
   return (
