@@ -73,9 +73,6 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
   }, [ date, internal, overridesDispatch, coursesState.selected, addressState.countryCode, addressState.provinceCode, metaState.student, metaState.studentDiscount, metaState.withoutTools, metaState.promoCode, school, schoolVariant, promoCodeDefault, coursesOverride, paymentDispatch ]);
 
   useEffect(() => {
-    if (overridesState.courses.length !== coursesState.selected.length) {
-      return;
-    }
     const controller = new AbortController();
     const priceQuery: PriceQuery = {
       countryCode: addressState.countryCode,
@@ -92,7 +89,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     if (addressState.provinceCode !== null) {
       priceQuery.provinceCode = addressState.provinceCode;
     }
-    if (internal) {
+    if (internal && overridesState.courses.length !== coursesState.selected.length) {
       priceQuery.options = {
         ...priceQuery.options,
         installmentsOverride: overridesState.installments,
