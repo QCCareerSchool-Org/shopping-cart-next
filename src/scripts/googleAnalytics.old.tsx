@@ -1,6 +1,5 @@
 'use client';
 
-import { GoogleAnalytics as NextGoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 import type { FC } from 'react';
 
@@ -15,11 +14,17 @@ interface Props {
 
 export const GoogleAnalytics: FC<Props> = ({ id, adsId, userValues }) => (
   <>
-    <NextGoogleAnalytics gaId={id} />
+    <Script id="google-analytics" dangerouslySetInnerHTML={{ __html: getScript(id) }} />
     {adsId && <Script id="google-analytics-google-ads" dangerouslySetInnerHTML={{ __html: getAdsScript(adsId) }} />}
     {userValues && <Script id="google-analytics-set" dangerouslySetInnerHTML={{ __html: getSetScript(userValues) }} />}
   </>
 );
+
+const getScript = (id: string): string => `
+window['dataLayer'] = window['dataLayer'] || [];
+function gtag(){window['dataLayer'].push(arguments);}
+gtag('js', new Date());
+gtag('config', ${JSON.stringify(id)} );\n`;
 
 const getAdsScript = (adsId: string): string => {
   return `gtag('config', \`${adsId.replace(/`/ug, '\\`')}\`, { allow_enhanced_conversions: true });\n`;
