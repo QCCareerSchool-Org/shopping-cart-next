@@ -9,7 +9,7 @@ import Mobile from './mobile.jpg';
 import { PromoImage } from '@/components/promoImage';
 import { usePriceState } from '@/hooks/usePriceState';
 
-export const AllAccessHero: FC = () => {
+export const ProfitPivotHero: FC = () => {
   const priceState = usePriceState();
 
   const [ desktopSrc, mobileSrc ] = priceState?.currency.code === 'GBP'

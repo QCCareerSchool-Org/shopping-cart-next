@@ -3,7 +3,7 @@
 import type { FC } from 'react';
 import { Modal } from 'react-bootstrap';
 
-import { AllAccessHero } from './hero';
+import { ProfitPivotHero } from './hero';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
@@ -20,11 +20,8 @@ export const ProfitPivotPromo: FC = () => {
     <>
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <AllAccessHero />
+          <ProfitPivotHero />
         </div>
-      </Section>
-      <Section className="text-center">
-        <h2>Enroll in the All-Access Program</h2>
       </Section>
       <Modal show={showPopup} onHide={handleClick}>
         <Modal.Header closeButton>
