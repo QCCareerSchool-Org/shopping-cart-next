@@ -31,7 +31,7 @@ export const ProfitPivotPromo: FC = () => {
           <Modal.Title>Become a Certified Expert in less than 3 months!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>This is your opportunity to make a strategic move toward higher-paying events. For a limited time, enroll in any foundation course and get 2 FREE specialty courses + $100 OFF tuition&mdash;combined value of over $1,200!</p>
+          <p>This is your opportunity to make a strategic move toward higher-paying events. For a limited time, enroll in any foundation course and get <strong>2 FREE specialty courses + $100 OFF tuition&mdash;combined value of over $1,200!</strong></p>
           <h4 className="h6">Start Your Profit Pivot Today</h4>
           <p>Upgrade your skills, reposition your services, and begin attracting higher-value clients—so you can book more profitable events, faster than you think.</p>
           <h4 className="h6">Learn From Industry Experts</h4>
