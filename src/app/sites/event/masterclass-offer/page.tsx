@@ -1,17 +1,10 @@
 import { agreementLinks } from '../agreementLinks';
+import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { ProfitPivotPromo } from './promo';
 import { Form } from '@/components/form';
-import type { CourseGroup } from '@/domain/courseGroup';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
-
-const coursesOverride = [ 'AA', 'CP', 'ED', 'DW', 'LW', 'PE', 'FL', 'EB', 'VE' ];
-const courseGroups: CourseGroup[] = [
-  {
-    items: [ { name: 'All-Access Program', code: 'AA' } ],
-  },
-];
 
 const ProfitPivotPage: PageComponent = async props => {
   const searchParams = await props.searchParams;
@@ -26,8 +19,6 @@ const ProfitPivotPage: PageComponent = async props => {
         guarantee={Guarantee}
         successLink="https://www.qceventplanning.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
-        coursesOverride={coursesOverride}
-        hideCourseSelection
         dynamicCourseDescriptions="HIDE"
         visualPaymentPlans
         promoCodeDefault="PROFITPIVOT"
