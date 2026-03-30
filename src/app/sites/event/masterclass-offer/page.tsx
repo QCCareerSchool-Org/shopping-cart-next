@@ -4,7 +4,10 @@ import { Guarantee } from '../guarantee';
 import { ProfitPivotPromo } from './promo';
 import { Form } from '@/components/form';
 import { getDate } from '@/lib/getDate';
+import { moveCourse } from '@/lib/moveCourse';
 import type { PageComponent } from '@/serverComponent';
+
+const customizedCourseGroup = moveCourse(courseGroups, 'ed', 'Foundation Courses', 'Specialty Courses');
 
 const ProfitPivotPage: PageComponent = async props => {
   const searchParams = await props.searchParams;
@@ -14,7 +17,7 @@ const ProfitPivotPage: PageComponent = async props => {
       <ProfitPivotPromo />
       <Form
         date={date}
-        courseGroups={courseGroups}
+        courseGroups={customizedCourseGroup}
         school="QC Event School"
         guarantee={Guarantee}
         successLink="https://www.qceventplanning.com/welcome-to-the-school"
