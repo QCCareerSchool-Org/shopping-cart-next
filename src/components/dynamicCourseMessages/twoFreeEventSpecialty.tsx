@@ -9,6 +9,10 @@ import { isEventFoundationCourse, isEventSpecialtyCourse } from '@/lib/courses';
 export const TwoFreeEventSpecialtyDynamicMessage: FC = () => {
   const coursesState = useCoursesState();
 
+  if (coursesState.selected.includes('AA')) {
+    return null;
+  }
+
   if (!coursesState.selected.length) {
     return null;
   }

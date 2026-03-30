@@ -7,6 +7,11 @@ import { useCoursesState } from '@/hooks/useCoursesState';
 
 export const Save50CourseMessage: FC = () => {
   const coursesState = useCoursesState();
+
+  if (coursesState.selected.includes('AA')) {
+    return null;
+  }
+
   const courseCount = coursesState.selected.length;
   if (courseCount >= 1) {
     return (

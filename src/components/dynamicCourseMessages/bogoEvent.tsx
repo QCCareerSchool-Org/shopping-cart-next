@@ -10,6 +10,10 @@ export const BogoEventDynamicCourseMessage: FC = () => {
   const coursesState = useCoursesState();
   const courseCount = coursesState.selected.length;
 
+  if (coursesState.selected.includes('AA')) {
+    return null;
+  }
+
   if (courseCount === 0) {
     return null;
   }

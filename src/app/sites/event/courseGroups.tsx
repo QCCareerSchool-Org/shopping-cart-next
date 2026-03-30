@@ -16,6 +16,12 @@ const flDisabledMessage = (
 
 export const courseGroups: CourseGroup[] = [
   {
+    name: 'Best Value',
+    items: [
+      { code: 'AA', name: 'All-Access Program' },
+    ],
+  },
+  {
     name: 'Foundation Courses',
     items: [
       { code: 'EP', name: 'Event & Wedding Planning' },
