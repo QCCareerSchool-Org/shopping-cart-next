@@ -7,7 +7,7 @@ import { getDate } from '@/lib/getDate';
 import { moveCourse } from '@/lib/moveCourse';
 import type { PageComponent } from '@/serverComponent';
 
-const customizedCourseGroup = moveCourse(courseGroups, 'ed', 'Foundation Courses', 'Specialty Courses');
+const customizedCourseGroup = moveCourse(courseGroups, 'ED', 'Foundation Courses', 'Specialty Courses');
 
 const ProfitPivotPage: PageComponent = async props => {
   const searchParams = await props.searchParams;
