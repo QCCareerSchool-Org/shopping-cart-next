@@ -2,7 +2,7 @@
 
 import type { FC } from 'react';
 
-import { DynamicCourseAlert } from '.';
+import { AAPDynamicCourseAlert, DynamicCourseAlert } from '.';
 import { useCoursesState } from '@/hooks/useCoursesState';
 import { isEventFoundationCourse, isEventSpecialtyCourse } from '@/lib/courses';
 
@@ -10,7 +10,7 @@ export const FreeEventSpecialtyDynamicMessage: FC = () => {
   const coursesState = useCoursesState();
 
   if (coursesState.selected.includes('AA')) {
-    return null;
+    return <AAPDynamicCourseAlert />;
   }
 
   if (!coursesState.selected.length) {

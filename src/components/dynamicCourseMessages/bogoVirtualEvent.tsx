@@ -2,7 +2,7 @@
 
 import type { FC } from 'react';
 
-import { DynamicCourseAlert } from '.';
+import { AAPDynamicCourseAlert, DynamicCourseAlert } from '.';
 import { useCoursesState } from '@/hooks/useCoursesState';
 
 export const BogoVirtualEventDynamicCourseMessage: FC = () => {
@@ -11,7 +11,7 @@ export const BogoVirtualEventDynamicCourseMessage: FC = () => {
   const ve = coursesState.selected.includes('VE');
 
   if (coursesState.selected.includes('AA')) {
-    return null;
+    return <AAPDynamicCourseAlert />;
   }
 
   if (courseCount === 0) {
