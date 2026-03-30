@@ -13,11 +13,11 @@ export const TwoFreeEventSpecialtyEDDynamicMessage: FC = () => {
     return null;
   }
 
-  if (!coursesState.selected.some(c => isEventFoundationCourse(c) || c === 'ED')) {
+  if (!coursesState.selected.some(c => isEventFoundationCourse(c) && c !== 'ED')) {
     return <DynamicCourseAlert variant="danger">Select a foundation course to get two free specialty courses</DynamicCourseAlert>;
   }
 
-  const specialtyCount = coursesState.selected.filter(c => isEventSpecialtyCourse(c) && c !== 'ED').length;
+  const specialtyCount = coursesState.selected.filter(c => isEventSpecialtyCourse(c) || c === 'ED').length;
 
   if (specialtyCount === 0) {
     return <DynamicCourseAlert variant="warning">Don't forget to select your two free specialty courses</DynamicCourseAlert>;
