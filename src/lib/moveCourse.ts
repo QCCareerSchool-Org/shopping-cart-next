@@ -5,8 +5,16 @@ export const moveCourse = (groups: CourseGroup[], courseCode: string, fromGroupN
   const toGroup = groups.find(group => group.name === toGroupName);
   const course = fromGroup?.items.find(item => item.code === courseCode);
 
-  if (!fromGroup || !toGroup || !course) {
-    return groups.map(group => ({ ...group, items: [ ...group.items ] }));
+  if (!fromGroup) {
+    throw Error(`No course group found with name ${fromGroupName}`);
+  }
+
+  if (!toGroup) {
+    throw Error(`No course group found with name ${toGroupName}`);
+  }
+
+  if (!course) {
+    throw Error(`No course found with code ${courseCode} in course group ${fromGroupName}`);
   }
 
   return groups.map(group => {
