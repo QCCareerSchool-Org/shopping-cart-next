@@ -46,7 +46,6 @@ This file defines repo-specific working rules for coding agents in this project.
 
 ## Verification
 
-- Run lint after code changes when feasible.
 - If lint or build cannot run because the shell environment is missing `node` or `npm`, say so explicitly and report the exact blocker.
 - For routing or tenant-resolution changes, verify the affected hostname-to-path mapping logically against `src/lib/sites.ts` and `src/proxy.ts`, even if a full runtime test is not possible.
 
