@@ -33,8 +33,6 @@ export const ProfitPivotPromo: FC = () => {
           <p>Upgrade your skills, reposition your services, and begin attracting higher-value clients—so you can book more profitable events, faster than you think.</p>
           <h4 className="h6">Learn From Industry Experts</h4>
           <p>Every course includes guidance from experienced event planners and practical assignments with feedback.</p>
-          <h4 className="h6">Earn Multiple Professional Certifications</h4>
-          <p>Graduate with up to ten industry-recognized certifications, including the Master Planner Certificate, to build credibility and attract clients. Need more time? Simply contact the school and we'll extend your one-year completion time.</p>
           <h4 className="h6">Business Training Built In</h4>
           <p className="mb-0">Each course provides strategies and mentorship to help you confidently launch, market, and grow your event services. Plus, get six months free access to AislePlanner software.</p>
         </Modal.Body>
