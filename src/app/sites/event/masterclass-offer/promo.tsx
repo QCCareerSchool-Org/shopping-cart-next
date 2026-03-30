@@ -7,7 +7,7 @@ import { ProfitPivotHero } from './hero';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 
-const backgroundColor = '#030419';
+const backgroundColor = '#5a4332';
 
 export const ProfitPivotPromo: FC = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
