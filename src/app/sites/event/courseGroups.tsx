@@ -26,7 +26,7 @@ export const courseGroups: CourseGroup[] = [
         contents: {
           heading: 'All-Access Program',
           body: (
-            <div className="p-3">
+            <div className="p-sm-1 p-lg-3">
               <div className="row justify-content-center mb-4">
                 <div className="col-12 col-lg-10 text-center">
                   <h4 className="lead fw-bold">Get the Most Comprehensive Training Available—with Expert Mentorship Included</h4>
