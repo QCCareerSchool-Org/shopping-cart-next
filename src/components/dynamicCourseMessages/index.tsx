@@ -15,6 +15,10 @@ export const DynamicCourseAlert: FC<PropsWithChildren<Props>> = ({ variant, hide
   </div>
 );
 
+export const AAPDynamicCourseAlert: FC = () => (
+  <DynamicCourseAlert variant="info">The current promotion does not apply to the All-Access Program, which already offers the greatest overall value and maximum savings.</DynamicCourseAlert>
+);
+
 interface IconProps {
   variant: Variant;
 }

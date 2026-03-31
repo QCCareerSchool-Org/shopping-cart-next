@@ -160,6 +160,13 @@ const disabledCourses = (selectedCourses: string[], student: boolean): string[] 
     result.push('DG');
     result.push('DE');
   }
+  const AAPExclusions = [ 'EP', 'WP', 'CE', 'CP', 'ED', 'LW', 'DW', 'PE', 'FL', 'EB', 'VE' ];
+  if (selectedCourses.find(s => AAPExclusions.includes(s))) {
+    result.push('AA');
+  }
+  if (selectedCourses.includes('AA')) {
+    result.push(...AAPExclusions);
+  }
   return result;
 };
 
