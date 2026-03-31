@@ -10,13 +10,13 @@ interface Props {
   onHide: () => void;
 }
 
-export const Design20260318Modal: FC<Props> = props => {
+export const Design20260401Modal: FC<Props> = props => {
   const priceState = usePriceState();
   const discount = priceState?.currency.code === 'GBP' ? '£100' : '$100';
 
   return (
     <Modal show={props.show} onHide={props.onHide}>
-      <Modal.Header closeButton>Turn Passion into Proof!</Modal.Header>
+      <Modal.Header closeButton>Design a future that grows with you!</Modal.Header>
       <Modal.Body>
         <p>This is your moment to invest in your future and get certified. For a limited time, enroll in any design course and get a second course FREE plus {discount} OFF your tuition. Start today and become a certified design expert in under 3 months.</p>
         <hr />

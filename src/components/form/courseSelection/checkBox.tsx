@@ -1,7 +1,7 @@
 'use client';
 
-import type { MouseEventHandler } from 'react';
-import { type JSX, useId, useState } from 'react';
+import type { FC, JSX, MouseEventHandler } from 'react';
+import { useId, useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import { FaQuestionCircle } from 'react-icons/fa';
 
@@ -20,7 +20,7 @@ interface Props {
   onUncheck: (courseCode: string) => void;
 }
 
-export const CheckBox: React.FC<Props> = props => {
+export const CheckBox: FC<Props> = props => {
   const id = useId();
   const coursesState = useCoursesState();
   const { countryCode, provinceCode } = useAddressState();

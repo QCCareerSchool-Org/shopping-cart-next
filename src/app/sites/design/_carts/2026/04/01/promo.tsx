@@ -2,22 +2,22 @@
 
 import type { FC } from 'react';
 
-import { Hero20260318 } from './hero';
-import { Design20260318Modal } from './modal';
+import { Hero20260401 } from './hero';
+import { Design20260401Modal } from './modal';
 import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 import type { LastChancePeriodDTO } from '@/lib/period';
 
-const backgroundColor = '#88817b';
+const backgroundColor = '#7c7973';
 
 interface Props {
   date: number;
   period: LastChancePeriodDTO;
 }
 
-export const Design20260318Promo: FC<Props> = ({ date, period }) => {
+export const Design20260401Promo: FC<Props> = ({ date, period }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
 
@@ -36,13 +36,13 @@ export const Design20260318Promo: FC<Props> = ({ date, period }) => {
       />}
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero20260318 variant={variant} />
+          <Hero20260401 variant={variant} />
         </div>
       </Section>
       <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
         You'll Also Receive <strong>50% Off Each Additional Course</strong>
       </Banner>
-      <Design20260318Modal show={showPopup} onHide={handleClick} />
+      <Design20260401Modal show={showPopup} onHide={handleClick} />
     </>
   );
 };

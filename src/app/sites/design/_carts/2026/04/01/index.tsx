@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { Design20260318Promo } from './promo';
+import { Design20260401Promo } from './promo';
 import { agreementLinks } from '@/app/sites/design/agreementLinks';
 import { courseGroups } from '@/app/sites/design/courseGroups';
 import { Guarantee } from '@/app/sites/design/guarantee';
@@ -13,10 +13,10 @@ interface Props {
   period: LastChancePeriodDTO;
 }
 
-export const Design20260318: FC<Props> = ({ date, period }) => {
+export const Design20260401: FC<Props> = ({ date, period }) => {
   return (
     <>
-      <Design20260318Promo date={date} period={period} />
+      <Design20260401Promo date={date} period={period} />
       <Form
         date={date}
         courseGroups={courseGroups}

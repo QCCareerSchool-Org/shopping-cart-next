@@ -15,7 +15,7 @@ interface Props {
   variant?: 'lastChance';
 }
 
-export const Hero20260318: FC<Props> = ({ variant }) => {
+export const Hero20260401: FC<Props> = ({ variant }) => {
   const priceState = usePriceState();
 
   const [ desktopSrc, mobileSrc ] = variant === 'lastChance'
