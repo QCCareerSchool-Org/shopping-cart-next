@@ -2,8 +2,8 @@
 
 import type { MouseEventHandler } from 'react';
 import { type FC, useState } from 'react';
+import { Modal } from 'react-bootstrap';
 
-import styles from './courseTableRow.module.css';
 import type { Course } from '@/domain/course';
 import type { CoursePrice } from '@/domain/price';
 import { useAddressState } from '@/hooks/useAddressState';
@@ -22,6 +22,10 @@ export const CourseTableRow: FC<Props> = ({ coursePrice, course }) => {
   const handleClick: MouseEventHandler = ev => {
     ev.preventDefault();
     setExpanded(e => !e);
+  };
+
+  const handleHide = () => {
+    setExpanded(false);
   };
 
   if (!priceState) {
@@ -47,11 +51,12 @@ export const CourseTableRow: FC<Props> = ({ coursePrice, course }) => {
         <tr>
           <td colSpan={2}>
             <a href="#" onClick={handleClick} className="small" style={{ textDecoration: 'none' }}>See What's Included</a>
-            {expanded && (
-              <div className={`small ${styles.noMarginBottom}`}>
-                {course.contents}
-              </div>
-            )}
+            <Modal show={expanded} onHide={handleHide}>
+              <Modal.Header closeButton>{course.contents.heading}</Modal.Header>
+              <Modal.Body>
+                {course.contents.body}
+              </Modal.Body>
+            </Modal>
           </td>
         </tr>
       )}

@@ -22,9 +22,9 @@ export const courseGroups: CourseGroup[] = [
         code: 'AA',
         name: 'All-Access Program',
         badge: <span className="ms-2 badge bg-primary text-uppercase">Most Popular</span>,
-        contents: (
-          <>
-            <strong>Included courses:</strong>
+        contents: {
+          heading: 'Included Courses',
+          body: (
             <ul>
               <li>Event & Wedding Planning</li>
               <li>Corporate Event Planning</li>
@@ -36,8 +36,8 @@ export const courseGroups: CourseGroup[] = [
               <li>Accelerate Your Business</li>
               <li>Virtual Events Training</li>
             </ul>
-          </>
-        ),
+          ),
+        },
       },
     ],
   },

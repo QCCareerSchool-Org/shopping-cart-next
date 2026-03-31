@@ -12,5 +12,5 @@ export interface Course {
   hidden?: GeoLocationFunction<boolean>;
   badge?: JSX.Element;
   alwaysShown?: boolean;
-  contents?: ReactNode;
+  contents?: { heading: ReactNode; body: ReactNode };
 }
