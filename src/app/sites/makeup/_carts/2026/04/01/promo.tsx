@@ -3,21 +3,21 @@
 import type { FC } from 'react';
 
 import { Hero20260401 } from './hero';
-import { Design20260401Modal } from './modal';
+import { Makeup20260401Modal } from './modal';
 import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 import type { LastChancePeriodDTO } from '@/lib/period';
 
-const backgroundColor = '#7c7973';
+const backgroundColor = '#060916';
 
 interface Props {
   date: number;
   period: LastChancePeriodDTO;
 }
 
-export const Design20260401Promo: FC<Props> = ({ date, period }) => {
+export const Makeup20260401Promo: FC<Props> = ({ date, period }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
 
@@ -42,7 +42,7 @@ export const Design20260401Promo: FC<Props> = ({ date, period }) => {
       <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
         You'll Also Receive <strong>50% Off Each Additional Course</strong>
       </Banner>
-      <Design20260401Modal show={showPopup} onHide={handleClick} />
+      <Makeup20260401Modal show={showPopup} onHide={handleClick} />
     </>
   );
 };

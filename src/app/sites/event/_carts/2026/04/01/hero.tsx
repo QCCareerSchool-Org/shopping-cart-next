@@ -17,9 +17,9 @@ interface Props {
 
 export const Hero20260401: FC<Props> = ({ variant }) => {
   const priceState = usePriceState();
-
   const [ desktopSrc, mobileSrc ] = variant === 'lastChance'
     ? [ DesktopEnds, MobileEnds ]
     : priceState?.currency.code === 'GBP' ? [ DesktopUK, MobileUK ] : [ Desktop, Mobile ];
+
   return <PromoImage desktopSrc={desktopSrc} mobileSrc={mobileSrc} />;
 };
