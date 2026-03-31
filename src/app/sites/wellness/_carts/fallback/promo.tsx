@@ -6,7 +6,7 @@ import { Hero } from './hero';
 import { Banner } from '@/components/banner';
 import { Section } from '@/components/section';
 
-const backgroundColor = '#d7d8dc';
+const backgroundColor = '#aeb0b4';
 
 export const WellnessFallbackPromo: FC = () => {
 
