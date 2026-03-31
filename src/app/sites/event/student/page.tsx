@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { EventStudent20260213 } from './_carts/2026/02/13';
+import { EventStudent20260401 } from './_carts/2026/04/01';
 import { EventStudentFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
 import { feb13 } from '@/periods';
@@ -13,7 +13,7 @@ const EventStudentPage: PageComponent = async props => {
   return (
     <Suspense>
       {feb13.contains(date)
-        ? <EventStudent20260213 date={date} period={feb13.toDTO()} />
+        ? <EventStudent20260401 date={date} period={feb13.toDTO()} />
         : <EventStudentFallback date={date} />
       }
     </Suspense>
