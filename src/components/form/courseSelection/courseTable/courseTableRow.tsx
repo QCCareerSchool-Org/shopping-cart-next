@@ -3,7 +3,9 @@
 import type { MouseEventHandler } from 'react';
 import { type FC, useState } from 'react';
 import { Modal } from 'react-bootstrap';
+import { FaStar } from 'react-icons/fa';
 
+import styles from './courseTableRow.module.css';
 import type { Course } from '@/domain/course';
 import type { CoursePrice } from '@/domain/price';
 import { useAddressState } from '@/hooks/useAddressState';
@@ -50,10 +52,10 @@ export const CourseTableRow: FC<Props> = ({ coursePrice, course }) => {
       {course.contents && (
         <tr>
           <td colSpan={2}>
-            <a href="#" onClick={handleClick} className="small" style={{ textDecoration: 'none' }}>See What's Included</a>
+            <a href="#" onClick={handleClick} className="small" style={{ textDecoration: 'none' }}><FaStar size={12} style={{ position: 'relative', top: -1 }} /> See What's Included</a>
             <Modal show={expanded} onHide={handleHide}>
-              <Modal.Header closeButton>{course.contents.heading}</Modal.Header>
-              <Modal.Body>
+              <Modal.Header closeButton><h3 className="h6 mb-0">{course.contents.heading}</h3></Modal.Header>
+              <Modal.Body className={styles.noMarginBottom}>
                 {course.contents.body}
               </Modal.Body>
             </Modal>
