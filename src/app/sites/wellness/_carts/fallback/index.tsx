@@ -23,7 +23,7 @@ export const WellnessFallback: FC<Props> = ({ date }) => {
         successLink="https://www.qcwellnessstudies.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="HIDE"
-        promoCodeDefault="100OFF"
+        promoCodeDefault="400OFF"
         visualPaymentPlans
         dynamicCourseMessages={[ Save50CourseMessage ]}
       />
