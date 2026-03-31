@@ -1,4 +1,4 @@
-import type { JSX } from 'react';
+import type { JSX, ReactNode } from 'react';
 
 import type { GeoLocation } from './geoLocation';
 
@@ -12,4 +12,5 @@ export interface Course {
   hidden?: GeoLocationFunction<boolean>;
   badge?: JSX.Element;
   alwaysShown?: boolean;
+  contents?: ReactNode;
 }

@@ -22,6 +22,22 @@ export const courseGroups: CourseGroup[] = [
         code: 'AA',
         name: 'All-Access Program',
         badge: <span className="ms-2 badge bg-primary text-uppercase">Most Popular</span>,
+        contents: (
+          <>
+            <strong>Included courses:</strong>
+            <ul>
+              <li>Event & Wedding Planning</li>
+              <li>Corporate Event Planning</li>
+              <li>Event Decor</li>
+              <li>Luxury Wedding & Event Planning</li>
+              <li>Destination Wedding Planning</li>
+              <li>Promotional Event Planning</li>
+              <li>Festivals & Live Events</li>
+              <li>Accelerate Your Business</li>
+              <li>Virtual Events Training</li>
+            </ul>
+          </>
+        ),
       },
     ],
   },

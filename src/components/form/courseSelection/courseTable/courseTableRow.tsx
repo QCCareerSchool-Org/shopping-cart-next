@@ -1,5 +1,9 @@
-import type { FC } from 'react';
+'use client';
 
+import type { MouseEventHandler } from 'react';
+import { type FC, useState } from 'react';
+
+import styles from './courseTableRow.module.css';
 import type { Course } from '@/domain/course';
 import type { CoursePrice } from '@/domain/price';
 import { useAddressState } from '@/hooks/useAddressState';
@@ -13,6 +17,12 @@ interface Props {
 export const CourseTableRow: FC<Props> = ({ coursePrice, course }) => {
   const { countryCode, provinceCode } = useAddressState();
   const priceState = usePriceState();
+  const [ expanded, setExpanded ] = useState(false);
+
+  const handleClick: MouseEventHandler = ev => {
+    ev.preventDefault();
+    setExpanded(e => !e);
+  };
 
   if (!priceState) {
     return null;
@@ -31,6 +41,18 @@ export const CourseTableRow: FC<Props> = ({ coursePrice, course }) => {
         <tr className="text-primary">
           <td>{coursePrice.discountMessage ?? <>{multiCourseDiscountPercentage}% Discount</>}</td>
           <td className="text-end text-nowrap align-bottom">&minus; {priceState.currency.symbol}{coursePrice.multiCourseDiscount.toFixed(2)}</td>
+        </tr>
+      )}
+      {course.contents && (
+        <tr>
+          <td colSpan={2}>
+            <a href="#" onClick={handleClick} className="small" style={{ textDecoration: 'none' }}>See What's Included</a>
+            {expanded && (
+              <div className={`small ${styles.noMarginBottom}`}>
+                {course.contents}
+              </div>
+            )}
+          </td>
         </tr>
       )}
     </>
