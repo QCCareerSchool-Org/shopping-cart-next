@@ -20,10 +20,11 @@ export const coursesReducer = (state: CoursesState, action: CoursesAction): Cour
   switch (action.type) {
     case 'RECALCULATE': {
       const hidden = hiddenCourses([], !!action.payload.student, action.payload.countryCode, action.payload.provinceCode); // recalculate which courses are hidden
+      const selected = state.selected.filter(c => !hidden.includes(c));
       return {
         ...state,
-        selected: state.selected.filter(c => !hidden.includes(c)),
-        disabled: disabledCourses([], !!action.payload.student), // recalculate which courses are disabled,
+        selected,
+        disabled: disabledCourses(selected, !!action.payload.student), // recalculate which courses are disabled,
         hidden,
       };
     }
