@@ -40,7 +40,14 @@ export const ScreenSizeProvider: FC<PropsWithChildren> = ({ children }) => {
     if (typeof window === 'undefined') {
       return [];
     }
-    return breakpoints.map(b => ({ name: b.name, mql: window.matchMedia(getQuery(b)) }));
+    let lastSize: number | null = null;
+    return breakpoints.map(b => {
+      lastSize ??= b.min;
+      if (b.min < lastSize) {
+        throw Error('Breakpoints must be in order from smallest to largest');
+      }
+      return { name: b.name, mql: window.matchMedia(getQuery(b)) };
+    });
   }, []);
 
   const subscribe = useCallback((onStoreChange: () => void) => {
@@ -49,6 +56,7 @@ export const ScreenSizeProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [ mqls ]);
 
   const getSnapshot = useCallback((): ScreenSize => {
+    // go through the list backwards and find the largest size that matches
     for (let i = mqls.length - 1; i >= 0; i--) {
       if (mqls[i].mql.matches) {
         return mqls[i].name;

@@ -7,24 +7,21 @@ import MobileEnds from './mobile-ends.jpg';
 import Mobile from './mobile.jpg';
 import TabletEnds from './tablet-ends.jpg';
 import Tablet from './tablet.jpg';
-import { useScreenSizeContext } from '@/hooks/useScreenSizeContext';
 
 interface Props {
   variant?: 'lastChance';
 }
 
 export const Hero20260409: FC<Props> = ({ variant }) => {
-  const { gte } = useScreenSizeContext();
-
-  const src = gte('xl')
-    ? variant === 'lastChance' ? DesktopEnds : Desktop
-    : gte('md')
-      ? variant === 'lastChance' ? TabletEnds : Tablet
-      : variant === 'lastChance' ? MobileEnds : Mobile;
+  const [ desktopSrc, tabletSrc, mobileSrc ] = variant === 'lastChance'
+    ? [ DesktopEnds, TabletEnds, MobileEnds ]
+    : [ Desktop, Tablet, Mobile ];
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <Image src={src} priority alt="" className="img-fluid" style={{ width: '100%' }} />
+      <Image src={desktopSrc} priority alt="" className="img-fluid d-none d-xl-block" style={{ width: '100%' }} />
+      <Image src={tabletSrc} priority alt="" className="img-fluid d-none d-md-block d-xl-none" style={{ width: '100%' }} />
+      <Image src={mobileSrc} priority alt="" className="img-fluid d-md-none" style={{ width: '100%' }} />
     </div>
   );
 };
