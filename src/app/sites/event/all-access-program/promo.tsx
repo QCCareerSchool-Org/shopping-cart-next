@@ -15,16 +15,6 @@ export const AllAccessPromo: FC = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const { countryCode, provinceCode } = useAddressState();
 
-  const [ price, deposit ] = countryCode === 'CA' && provinceCode === 'ON'
-    ? [ '$1698', '$398' ]
-    // : gbpCountry(countryCode)
-    //   ? [ '', '' ]
-    //   : audCountry(countryCode)
-    //     ? [ '', '' ]
-    //     : nzdCountry(countryCode)
-    //       ? [ '', '' ]
-    : [ '$2998', '$398' ];
-
   const handleClick = (): void => {
     togglePopup();
   };
@@ -39,7 +29,7 @@ export const AllAccessPromo: FC = () => {
       <Section className="text-center">
         <h2>Enroll in the All-Access Program</h2>
       </Section>
-      <AllAccessModal show={showPopup} onHide={handleClick} price={price} deposit={deposit} />
+      <AllAccessModal show={showPopup} onHide={handleClick} countryCode={countryCode} provinceCode={provinceCode} />
     </>
   );
 };
