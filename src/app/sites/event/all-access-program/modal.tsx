@@ -25,7 +25,13 @@ export const AllAccessModal: FC<Props> = props => {
 
   const [ standardPrice, price, deposit, fullSavings ] = props.countryCode === 'CA' && props.provinceCode === 'ON'
     ? [ '$7331', '$1998', '$398', '$100' ]
-    : [ '$7331', '$2998', '$398', '$400' ];
+    : props.countryCode === 'AU'
+      ? [ '$10,270', '$4898', '$398', '$500' ]
+      : props.countryCode === 'NZ'
+        ? [ '$10,818', '$5898', '$398', '$700' ]
+        : props.countryCode === 'GB'
+          ? [ '£6108', '£2558', '£398', '£300' ]
+          : [ '$7331', '$3398', '$398', '$400' ];
 
   return (
     <Modal show={props.show} onHide={props.onHide} size="xl" contentClassName="bg-white rounded-4">
