@@ -10,8 +10,7 @@ import { MetaProvider } from './metaProvider';
 import { OverridesProvider } from './overridesProvider';
 import { PaymentProvider } from './paymentProvider';
 import { PriceProvider } from './priceProvider';
-import { ScreenWidthProvider } from './screenWidthProvider';
-import { ScrollPositionProvider } from './scrollPositionProvider';
+import { ScreenSizeProvider } from './screenSizeProvider';
 import type { Country } from '@/domain/country';
 import type { GeoLocation } from '@/domain/geoLocation';
 import type { Province } from '@/domain/province';
@@ -32,13 +31,11 @@ export const Provider: FC<PropsWithChildren<Props>> = ({ geoLocation, countries,
               <PaymentProvider>
                 <OverridesProvider>
                   <MetaProvider>
-                    <ScreenWidthProvider>
-                      <ScrollPositionProvider>
-                        <CaptchaProvider>
-                          {children}
-                        </CaptchaProvider>
-                      </ScrollPositionProvider>
-                    </ScreenWidthProvider>
+                    <ScreenSizeProvider>
+                      <CaptchaProvider>
+                        {children}
+                      </CaptchaProvider>
+                    </ScreenSizeProvider>
                   </MetaProvider>
                 </OverridesProvider>
               </PaymentProvider>

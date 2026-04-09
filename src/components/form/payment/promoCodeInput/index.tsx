@@ -11,7 +11,7 @@ import type { School } from '@/domain/school';
 import { useMetaDispatch } from '@/hooks/useMetaDispatch';
 import { useMetaState } from '@/hooks/useMetaState';
 import { usePriceState } from '@/hooks/usePriceState';
-import { useScreenWidth } from '@/hooks/useScreenWidth';
+import { useScreenSizeContext } from '@/hooks/useScreenSizeContext';
 import { useToggle } from '@/hooks/useToggle';
 import type { PriceState } from '@/state/price';
 
@@ -22,7 +22,7 @@ interface Props {
 }
 
 export const PromoCodeInput: FC<Props> = ({ date, school, promosOverride }) => {
-  const screenWidth = useScreenWidth();
+  const { gte } = useScreenSizeContext();
   const { promoCode, promoCodeInputValue, student } = useMetaState();
   const priceState = usePriceState();
   const metaDispatch = useMetaDispatch();
@@ -78,7 +78,7 @@ export const PromoCodeInput: FC<Props> = ({ date, school, promosOverride }) => {
               <FormGroup>
                 <div className="d-flex align-items-center">
                   <input onChange={handleChange} type="text" className="form-control text-center text-uppercase fw-bold me-2" style={{ letterSpacing: '0.75px', maxWidth: 200 }} value={promoCodeInputValue} aria-describedby="promoHelp" />
-                  <button type="submit" className="btn btn-secondary">{screenWidth >= 365 && <><FaTag />{' '}</>}Apply</button>
+                  <button type="submit" className="btn btn-secondary">{gte('sm') && <><FaTag />{' '}</>}Apply</button>
                 </div>
               </FormGroup>
               {promos.length > 0 && (
