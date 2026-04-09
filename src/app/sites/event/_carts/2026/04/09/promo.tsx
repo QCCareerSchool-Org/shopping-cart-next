@@ -22,15 +22,15 @@ export const Event20260409Promo: FC<Props> = ({ date, period }) => {
   const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
   const { countryCode, provinceCode } = useAddressState();
 
-  const [ price, deposit ] = countryCode === 'CA' && provinceCode === 'ON'
-    ? [ '$1698', '$398' ]
+  const [ standardPrice, price, deposit, savings ] = countryCode === 'CA' && provinceCode === 'ON'
+    ? [ '$7331', '$1998', '$398', '$5333' ]
     // : gbpCountry(countryCode)
     //   ? [ '', '' ]
     //   : audCountry(countryCode)
     //     ? [ '', '' ]
     //     : nzdCountry(countryCode)
     //       ? [ '', '' ]
-    : [ '$2998', '$398' ];
+    : [ '$7331', '$2998', '$398', '$4333' ];
 
   const handleClick = (): void => {
     togglePopup();
@@ -50,7 +50,7 @@ export const Event20260409Promo: FC<Props> = ({ date, period }) => {
           <Hero20260409 variant={variant} />
         </div>
       </Section>
-      <AllAccessModal show={showPopup} onHide={handleClick} price={price} deposit={deposit} />
+      <AllAccessModal show={showPopup} onHide={handleClick} standardPrice={standardPrice} price={price} deposit={deposit} savings={savings} />
     </>
   );
 };
