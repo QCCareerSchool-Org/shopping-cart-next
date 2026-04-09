@@ -5,20 +5,27 @@ import { Modal } from 'react-bootstrap';
 import { FaAward, FaBriefcase, FaChartLine, FaCheckCircle, FaShieldAlt, FaUsers } from 'react-icons/fa';
 
 import styles from './modal.module.css';
+import { useCoursesDispatch } from '@/hooks/useCoursesDispatch';
 
 interface Props {
   show: boolean;
   onHide: () => void;
-  standardPrice: string;
-  price: string;
-  deposit: string;
-  savings: string;
+  countryCode: string;
+  provinceCode: string | null;
 }
 
 export const AllAccessModal: FC<Props> = props => {
-  const handleViewPaymentPlansClick = () => {
+  const coursesDispatch = useCoursesDispatch();
+
+  const handleClick = () => {
+    coursesDispatch({ type: 'CLEAR_COURSES', payload: { countryCode: props.countryCode, provinceCode: props.provinceCode } });
+    coursesDispatch({ type: 'ADD_COURSE', payload: { courseCode: 'aa', countryCode: props.countryCode, provinceCode: props.provinceCode } });
     props.onHide();
   };
+
+  const [ standardPrice, price, deposit, fullSavings ] = props.countryCode === 'CA' && props.provinceCode === 'ON'
+    ? [ '$7331', '$1998', '$398', '$100' ]
+    : [ '$7331', '$2998', '$398', '$400' ];
 
   return (
     <Modal show={props.show} onHide={props.onHide} size="xl" contentClassName="bg-white rounded-4">
@@ -28,22 +35,22 @@ export const AllAccessModal: FC<Props> = props => {
         <div className="bg-white border-bottom p-4 px-lg-5 d-flex flex-column flex-lg-row align-items-md-center justify-content-between gap-4 position-relative overflow-hidden flex-shrink-0">
           <div className="position-relative z-1 flex-grow-1">
             <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill small fw-bold text-uppercase mb-3" style={{ backgroundColor: 'rgba(29, 209, 161, 0.1)', color: '#0f766e', border: '1px solid rgba(29, 209, 161, 0.2)' }}>
-              <FaShieldAlt /> ALL-ACCESS PROGRAM
+              <FaShieldAlt /> All-Access Program
             </div>
             <h2 className={`fs-2 fw-bolder ${styles['text-dark-blue']} mb-2`}>Unlock Your Event Planning Career</h2>
-            <p className="text-secondary mb-0">Enroll once, unlock full access to every QC Event Planning course.</p>
+            <p className="text-secondary mb-0">Enroll once, unlock full access to every event planning course.</p>
           </div>
 
           {/* Pricing Block */}
           <div className="position-relative z-1 text-center text-md-end bg-light p-3 rounded-3 border" style={{ minWidth: 190 }}>
             <div className="small text-secondary mb-1">
-              Standard Value <span className={styles.crossedOut}>{props.standardPrice}</span>
+              Standard Value <span className={styles.crossedOut}>{standardPrice}</span>
             </div>
-            <div className="d-flex align-items-top justify-content-center mb-2">
-              <span className={`fs-1 fw-bold ${styles['text-dark-blue']}`} style={{ lineHeight: 1.1 }}>{props.price}</span>
+            <div className="d-flex align-items-top justify-content-center  justify-content-md-end mb-2">
+              <span className={`fs-1 fw-bold ${styles['text-dark-blue']}`} style={{ lineHeight: 1.1 }}>{price}</span>
               <span className="small fw-medium text-secondary">*</span>
             </div>
-            <div className="small fw-medium text-primary">You save {props.savings} today</div>
+            <div className="small">Save an additional <strong className="text-primary fw-medium">{fullSavings}</strong> if you pay in full today.</div>
           </div>
         </div>
 
@@ -107,12 +114,12 @@ export const AllAccessModal: FC<Props> = props => {
         <div className="bg-white border-top p-4 px-xl-5 flex-shrink-0 d-flex flex-column flex-lg-row align-items-center justify-content-between w-100 z-1 gap-4">
           <div className="text-center text-sm-start mb-sm-0">
             <p className="small mb-1 text-nowrap text-secondary">* Flexible payment plans available.</p>
-            <p className={`${styles['text-dark-blue']} fw-bold mb-0 text-nowrap`}>Start your journey today for only <span className="text-primary">{props.deposit}</span>.</p>
+            <p className={`${styles['text-dark-blue']} fw-bold mb-0 text-nowrap`}>Start your journey today for only <span className="text-primary">{deposit}</span>.</p>
           </div>
 
           <div className="d-flex flex-column flex-sm-row gap-3">
-            <button onClick={handleViewPaymentPlansClick} className={`btn bg-white fw-bold ${styles['text-dark-blue']}`} style={{ border: '1px solid #e2e8f0', padding: '0.6rem 1.5rem', borderRadius: '0.5rem' }}>View Payment Plans</button>
-            <button onClick={handleViewPaymentPlansClick} className="btn btn-primary fw-bold" style={{ padding: '0.6rem 1.5rem', borderRadius: '0.5rem' }}>Enroll Now</button>
+            <button onClick={props.onHide} className={`btn bg-white fw-bold ${styles['text-dark-blue']}`} style={{ border: '1px solid #e2e8f0', padding: '0.6rem 1.5rem', borderRadius: '0.5rem' }}>Close</button>
+            <button onClick={handleClick} className="btn btn-primary fw-bold" style={{ padding: '0.6rem 1.5rem', borderRadius: '0.5rem' }}>Enroll Now</button>
           </div>
         </div>
 
