@@ -10,7 +10,7 @@ import { DisabledCourseModal } from './disabledCourseModal';
 import type { Course } from '@/domain/course';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useCoursesState } from '@/hooks/useCoursesState';
-import { useScreenWidth } from '@/hooks/useScreenWidth';
+import { useScreenSizeContext } from '@/hooks/useScreenSizeContext';
 import { useToggle } from '@/hooks/useToggle';
 
 interface Props {
@@ -25,7 +25,7 @@ export const CheckBox: FC<Props> = props => {
   const coursesState = useCoursesState();
   const { countryCode, provinceCode } = useAddressState();
   // const coursesDispatch = useCoursesDispatch();
-  const screenWidth = useScreenWidth();
+  const { gte } = useScreenSizeContext();
   const [ showDisabledMessage, toggleDisabledMessage ] = useToggle(false);
 
   const [ expanded, setExpanded ] = useState(false);
@@ -90,7 +90,7 @@ export const CheckBox: FC<Props> = props => {
             </button>
           )}
         </label>
-        {screenWidth >= 375 && props.course.badge}
+        {gte('sm') && props.course.badge}
         {disabledMessage && <DisabledCourseModal course={props.course.code} name={name} message={disabledMessage} show={showDisabledMessage} onHide={handleToggle} />}
       </div>
       {props.course.contents && (

@@ -3,7 +3,7 @@ import { lazy, Suspense } from 'react';
 
 import type { CourseGroup } from '@/domain/courseGroup';
 import type { School } from '@/domain/school';
-import { useScreenWidth } from '@/hooks/useScreenWidth';
+import { useScreenSizeContext } from '@/hooks/useScreenSizeContext';
 
 const Desktop = lazy(async () => import('./desktop').then(m => ({ default: m.Desktop })));
 const Mobile = lazy(async () => import('./mobile').then(m => ({ default: m.Mobile })));
@@ -17,11 +17,11 @@ interface Props {
 }
 
 export const VisualPaymentPlans: FC<Props> = ({ school, date, discountName, courseGroups, hideTaxRefund }) => {
-  const screenWidth = useScreenWidth();
+  const { screenSize, gte } = useScreenSizeContext();
 
-  const md = screenWidth >= 768;
+  const md = gte('md');
 
-  if (screenWidth === 0) {
+  if (screenSize === null) {
     return;
   }
 

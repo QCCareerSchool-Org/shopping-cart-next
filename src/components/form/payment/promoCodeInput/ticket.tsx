@@ -4,7 +4,7 @@ import { FaTag } from 'react-icons/fa';
 
 import { PromoCode } from '@/components/promoCode';
 import type { Promo } from '@/domain/promo';
-import { useScreenWidth } from '@/hooks/useScreenWidth';
+import { useScreenSizeContext } from '@/hooks/useScreenSizeContext';
 
 interface Props {
   date: number;
@@ -30,9 +30,9 @@ const formatDate = (date: number): string => {
 };
 
 export const Ticket: FC<Props> = props => {
-  const screenWidth = useScreenWidth();
+  const { gte } = useScreenSizeContext();
 
-  const desktop = screenWidth >= 450;
+  const desktop = gte('sm');
 
   let endDate: number;
   if (props.promo.displayEndDate && props.promo.displayEndDate > props.date) {

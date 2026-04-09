@@ -7,7 +7,7 @@ import { getCertificationName } from './certificationName';
 import { getCourseCardDescription } from './descriptions';
 import { Kit } from './kit';
 import { usePriceState } from '@/hooks/usePriceState';
-import { useScreenWidth } from '@/hooks/useScreenWidth';
+import { useScreenSizeContext } from '@/hooks/useScreenSizeContext';
 
 interface Props {
   courseCode: string;
@@ -18,9 +18,9 @@ const bannerCertifications = [ 'MZ', 'AB', 'HS', 'MW', 'SF', 'SK' ];
 
 export const CourseCard: React.FC<Props> = ({ courseCode, name }) => {
   const priceState = usePriceState();
-  const screenWidth = useScreenWidth();
+  const { gte } = useScreenSizeContext();
 
-  const lgOrGreater = screenWidth >= 992;
+  const lgOrGreater = gte('lg');
 
   const description = getCourseCardDescription(courseCode);
 

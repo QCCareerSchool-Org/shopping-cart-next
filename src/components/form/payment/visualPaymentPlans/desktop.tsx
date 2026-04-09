@@ -17,7 +17,7 @@ import { useCoursesState } from '@/hooks/useCoursesState';
 import { usePaymentDispatch } from '@/hooks/usePaymentDispatch';
 import { usePaymentState } from '@/hooks/usePaymentState';
 import { usePriceState } from '@/hooks/usePriceState';
-import { useScreenWidth } from '@/hooks/useScreenWidth';
+import { useScreenSizeContext } from '@/hooks/useScreenSizeContext';
 import { formatCurrency } from '@/lib/formatCurrency';
 
 interface Props {
@@ -31,19 +31,11 @@ interface Props {
 const checkCircleStyle: CSSProperties = { position: 'relative', top: -1 };
 
 export const Desktop: FC<Props> = ({ date, school, discountName, courseGroups, hideTaxRefund }) => {
-  const screenWidth = useScreenWidth();
+  const { screenSize, lt } = useScreenSizeContext();
   const priceState = usePriceState();
   const paymentState = usePaymentState();
   const coursesState = useCoursesState();
   const paymentDispatch = usePaymentDispatch();
-
-  const sm = screenWidth >= 576;
-  const md = screenWidth >= 768;
-  const lg = screenWidth >= 992;
-  const xl = screenWidth >= 1200;
-  const xxl = screenWidth >= 1400;
-
-  const screenSize = xxl ? 'xxl' : xl ? 'xl' : lg ? 'lg' : md ? 'md' : sm ? 'sm' : 'xs' as const;
 
   const handleFullClick = (): void => {
     paymentDispatch({ type: 'SET_PAYMENT_PLAN', payload: 'full' });
@@ -55,7 +47,7 @@ export const Desktop: FC<Props> = ({ date, school, discountName, courseGroups, h
 
   const kit = useMemo(() => getKit(date, coursesState.selected, school), [ coursesState.selected, date, school ]);
 
-  if (!md) {
+  if (screenSize === null || lt('md')) {
     return null;
   }
 

@@ -15,7 +15,7 @@ import { useCoursesState } from '@/hooks/useCoursesState';
 import { usePaymentDispatch } from '@/hooks/usePaymentDispatch';
 import { usePaymentState } from '@/hooks/usePaymentState';
 import { usePriceState } from '@/hooks/usePriceState';
-import { useScreenWidth } from '@/hooks/useScreenWidth';
+import { useScreenSizeContext } from '@/hooks/useScreenSizeContext';
 import { formatCurrency } from '@/lib/formatCurrency';
 
 interface Props {
@@ -27,13 +27,13 @@ interface Props {
 }
 
 export const Mobile: FC<Props> = ({ date, school, discountName, courseGroups, hideTaxRefund }) => {
-  const screenWidth = useScreenWidth();
+  const { gte } = useScreenSizeContext();
   const priceState = usePriceState();
   const paymentState = usePaymentState();
   const coursesState = useCoursesState();
   const paymentDispatch = usePaymentDispatch();
 
-  const md = screenWidth >= 768;
+  const md = gte('md');
 
   const handleFullClick: MouseEventHandler = e => {
     e.preventDefault();
@@ -67,7 +67,7 @@ export const Mobile: FC<Props> = ({ date, school, discountName, courseGroups, hi
             </li>
             <li className={styles.navItem}>
               <a className={`${styles.navLink} ${styles.partNavLink} ${paymentState.plan !== 'full' ? styles.active : ''}`} style={{ backgroundColor: kit?.images?.part.backgroundColor, color: kit?.images?.part.color, borderColor: kit?.images?.part.borderColor }} href="#" onClick={handlePartClick}>
-                {paymentState.plan !== 'full' ? <FaCheckCircle className="text-primary" style={{ position: 'relative', top: -1 }} /> : <FaCircle className={styles.muted} style={{ position: 'relative', top: -1 }} />}<span style={{ marginLeft: 8 }}>{screenWidth > 382 ? 'Installment Plan' : 'Installments'}</span>
+                {paymentState.plan !== 'full' ? <FaCheckCircle className="text-primary" style={{ position: 'relative', top: -1 }} /> : <FaCircle className={styles.muted} style={{ position: 'relative', top: -1 }} />}<span style={{ marginLeft: 8 }}>{md ? 'Installment Plan' : 'Installments'}</span>
               </a>
             </li>
           </ul>

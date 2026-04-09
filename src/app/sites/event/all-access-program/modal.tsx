@@ -32,7 +32,7 @@ export const AllAccessModal: FC<Props> = props => {
       <div className="bg-light w-100 d-flex flex-column overflow-hidden rounded-5">
 
         {/* Modal Header */}
-        <div className="bg-white border-bottom p-4 px-lg-5 d-flex flex-column flex-lg-row align-items-md-center justify-content-between gap-4 position-relative overflow-hidden flex-shrink-0">
+        <div className="bg-white border-bottom p-4 px-xl-5 d-flex flex-column flex-lg-row align-items-md-center justify-content-between gap-4 position-relative overflow-hidden flex-shrink-0">
           <div className="position-relative z-1 flex-grow-1">
             <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill small fw-bold text-uppercase mb-3" style={{ backgroundColor: 'rgba(29, 209, 161, 0.1)', color: '#0f766e', border: '1px solid rgba(29, 209, 161, 0.2)' }}>
               <FaShieldAlt /> All-Access Program
@@ -42,11 +42,11 @@ export const AllAccessModal: FC<Props> = props => {
           </div>
 
           {/* Pricing Block */}
-          <div className="position-relative z-1 text-center text-md-end bg-light p-3 rounded-3 border" style={{ minWidth: 190 }}>
+          <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 260 }}>
             <div className="small text-secondary mb-1">
               Standard Value <span className={styles.crossedOut}>{standardPrice}</span>
             </div>
-            <div className="d-flex align-items-top justify-content-center  justify-content-md-end mb-2">
+            <div className="d-flex align-items-top justify-content-center justify-content-lg-end mb-2">
               <span className={`fs-1 fw-bold ${styles['text-dark-blue']}`} style={{ lineHeight: 1.1 }}>{price}</span>
               <span className="small fw-medium text-secondary">*</span>
             </div>
