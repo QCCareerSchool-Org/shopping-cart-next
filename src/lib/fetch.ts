@@ -39,7 +39,7 @@ export const fetchGeoLocation = async (headers: Record<string, string>, controll
 
 export const fetchCountries = async (controller?: AbortController): Promise<Country[] | undefined> => {
   try {
-    const url = 'https://api.qccareerschool.com/geoLocation/countries';
+    const url = 'https://geolocation.qccareerschool.com/countries';
     const response = await fetch(url, {
       signal: controller?.signal,
     });
@@ -58,7 +58,7 @@ export const fetchCountries = async (controller?: AbortController): Promise<Coun
 
 export const fetchProvinces = async (countryCode: string, controller?: AbortController): Promise<Province[] | undefined> => {
   try {
-    const url = 'https://api.qccareerschool.com/geoLocation/provinces?countryCode=' + encodeURIComponent(countryCode);
+    const url = 'https://geolocation.qccareerschool.com/provinces?countryCode=' + encodeURIComponent(countryCode);
     const response = await fetch(url, {
       signal: controller?.signal,
     });
