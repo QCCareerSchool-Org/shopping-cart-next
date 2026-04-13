@@ -34,14 +34,14 @@ export const AllAccessModal: FC<Props> = props => {
           : [ '$7331', '$3398', '$398', '$400' ];
 
   return (
-    <Modal show={props.show} onHide={props.onHide} size="xl" contentClassName="bg-white rounded-4">
-      <div className="bg-light w-100 d-flex flex-column overflow-hidden rounded-5 position-relative">
-
-        <div onClick={handleClick} className={styles.closeButtonWrapper}>
-          <div className={styles.closeButtonCircle}>
-            <button type="button" className={`btn-close ${styles.closeButton}`} aria-label="Close" />
-          </div>
+    <Modal animation={false} show={props.show} onHide={props.onHide} size="xl" contentClassName="bg-white rounded-4">
+      <div onClick={handleClick} className={styles.closeButtonWrapper}>
+        <div className={styles.closeButtonCircle}>
+          <button type="button" className={`btn-close ${styles.closeButton}`} aria-label="Close" />
         </div>
+      </div>
+
+      <div className="bg-light w-100 d-flex flex-column overflow-hidden rounded-5 position-relative">
 
         {/* Modal Header */}
         <div className="bg-white border-bottom p-4 px-xl-5 d-flex flex-column flex-lg-row align-items-md-center justify-content-between gap-4 position-relative overflow-hidden flex-shrink-0">
