@@ -17,13 +17,10 @@ import { isTitle } from '@/domain/title';
 
 const pricesUrl = process.env.NEXT_PUBLIC_PRICES_ENDPOINT;
 
-export const fetchGeoLocation = async (headers: Record<string, string>, controller?: AbortController): Promise<GeoLocation | undefined> => {
+export const fetchGeoLocation = async (headers: Record<string, string>, signal?: AbortSignal): Promise<GeoLocation | undefined> => {
   try {
     const url = 'https://api.qccareerschool.com/geoLocation/ip';
-    const response = await fetch(url, {
-      headers,
-      signal: controller?.signal,
-    });
+    const response = await fetch(url, { headers, signal });
     if (response.ok) {
       const body: unknown = await response.json();
       if (isGeoLocation(body)) {
@@ -31,18 +28,16 @@ export const fetchGeoLocation = async (headers: Record<string, string>, controll
       }
     }
   } catch (err) {
-    if (!controller?.signal.aborted) {
+    if (!signal?.aborted) {
       console.error(err);
     }
   }
 };
 
-export const fetchCountries = async (controller?: AbortController): Promise<Country[] | undefined> => {
+export const fetchCountries = async (signal?: AbortSignal): Promise<Country[] | undefined> => {
   try {
     const url = 'https://geolocation.qccareerschool.com/countries';
-    const response = await fetch(url, {
-      signal: controller?.signal,
-    });
+    const response = await fetch(url, { signal });
     if (response.ok) {
       const body: unknown = await response.json();
       if (isCountries(body)) {
@@ -50,18 +45,16 @@ export const fetchCountries = async (controller?: AbortController): Promise<Coun
       }
     }
   } catch (err) {
-    if (!controller?.signal.aborted) {
+    if (!signal?.aborted) {
       console.error(err);
     }
   }
 };
 
-export const fetchProvinces = async (countryCode: string, controller?: AbortController): Promise<Province[] | undefined> => {
+export const fetchProvinces = async (countryCode: string, signal?: AbortSignal): Promise<Province[] | undefined> => {
   try {
     const url = 'https://geolocation.qccareerschool.com/provinces?countryCode=' + encodeURIComponent(countryCode);
-    const response = await fetch(url, {
-      signal: controller?.signal,
-    });
+    const response = await fetch(url, { signal });
     if (response.ok) {
       const body: unknown = await response.json();
       if (isProvinces(body)) {
@@ -69,19 +62,17 @@ export const fetchProvinces = async (countryCode: string, controller?: AbortCont
       }
     }
   } catch (err) {
-    if (!controller?.signal.aborted) {
+    if (!signal?.aborted) {
       console.error(err);
     }
   }
 };
 
-export const fetchPrice = async (priceQuery: PriceQuery, controller?: AbortController): Promise<Price | undefined> => {
+export const fetchPrice = async (priceQuery: PriceQuery, signal?: AbortSignal): Promise<Price | undefined> => {
   try {
     const url = `${pricesUrl}?${stringify(priceQuery)}`;
-    const response = await fetch(url, {
-      headers: { 'X-API-Version': '2' },
-      signal: controller?.signal,
-    });
+    const headers = { 'X-API-Version': '2' };
+    const response = await fetch(url, { headers, signal });
     if (!response.ok) {
       throw Error(response.statusText);
     }
@@ -90,7 +81,7 @@ export const fetchPrice = async (priceQuery: PriceQuery, controller?: AbortContr
       return responseBody;
     }
   } catch (err) {
-    if (!controller?.signal.aborted) {
+    if (!signal?.aborted) {
       console.error(err);
     }
   }
@@ -228,13 +219,13 @@ const isRawEnrollmentResponse = (obj: unknown): obj is RawEnrollmentResponse => 
 
 const isCourse = (obj: unknown): obj is Course => {
   return obj !== null && typeof obj === 'object' &&
-  'code' in obj && typeof obj.code === 'string' &&
-  'baseCost' in obj && typeof obj.baseCost === 'number' &&
-  'planDiscount' in obj && typeof obj.planDiscount === 'number' &&
-  'discount' in obj && typeof obj.discount === 'number' &&
-  'deposit' in obj && typeof obj.deposit === 'number' &&
-  'installment' in obj && typeof obj.installment === 'number' &&
-  'name' in obj && typeof obj.name === 'string';
+    'code' in obj && typeof obj.code === 'string' &&
+    'baseCost' in obj && typeof obj.baseCost === 'number' &&
+    'planDiscount' in obj && typeof obj.planDiscount === 'number' &&
+    'discount' in obj && typeof obj.discount === 'number' &&
+    'deposit' in obj && typeof obj.deposit === 'number' &&
+    'installment' in obj && typeof obj.installment === 'number' &&
+    'name' in obj && typeof obj.name === 'string';
 };
 
 const isCourses = (obj: unknown): obj is Course => {

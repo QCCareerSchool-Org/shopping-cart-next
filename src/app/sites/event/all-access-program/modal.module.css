@@ -57,3 +57,38 @@
   @media screen and (min-width: 992px) { width: 53%; }
   @media screen and (min-width: 1200px) { width: calc(53% - 1rem); }
 }
+
+.closeButtonWrapper {
+  position: fixed;
+  z-index: 2;
+  top: 1.25rem;
+  right: 2.25rem;
+}
+
+.closeButtonCircle {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 32px;
+ height: 32px;
+ background: white;
+ border-radius: 16px;
+ box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.5);
+}
+
+@media only screen and (min-width: 576px) {
+  .closeButtonCircle {
+    width: 48px;
+    height: 48px;
+    background: white;
+    border-radius: 24px;
+  }
+}
+
+.closeButtonCircle:active {
+  box-shadow: 0 0 0 0.125rem rgba(20, 169, 138, 0.5);
+}
+
+.closeButton {
+  box-shadow: none !important;
+}

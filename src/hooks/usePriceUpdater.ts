@@ -45,7 +45,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
     if ((process.env.VERCEL_ENV === 'development' || process.env.VERCEL_ENV === 'preview') && priceQuery.options) {
       priceQuery.options.dateOverride = new Date(date);
     }
-    fetchPrice(priceQuery, controller).then(price => {
+    fetchPrice(priceQuery, controller.signal).then(price => {
       if (price) {
         if (price.courses.some(c => !c.plans.part || c.plans.part.installments === 0)) {
           paymentDispatch({ type: 'SET_PAYMENT_PLAN', payload: 'full' });
@@ -100,7 +100,7 @@ export const usePriceUpdater = (date: number, internal: boolean, school: School,
         dateOverride: new Date(date),
       };
     }
-    fetchPrice(priceQuery, controller).then(price => {
+    fetchPrice(priceQuery, controller.signal).then(price => {
       if (price) {
         priceDispatch({ type: 'SET_PRICE', payload: price });
         if (!price.plans.part || price.plans.part.installmentSize === 0) {
