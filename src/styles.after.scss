@@ -2,9 +2,12 @@
 $section-padding: 3rem;
 $section-padding-lg: 4rem;
 
-body {
-  overflow-y: scroll; /* Show scrollbars */
-  --scrollbar-width: calc(100vw - 100%);
+html {
+  scrollbar-gutter: stable;
+}
+
+html:has(body.modal-open) {
+  scrollbar-gutter: auto;
 }
 
 .btn-primary {
