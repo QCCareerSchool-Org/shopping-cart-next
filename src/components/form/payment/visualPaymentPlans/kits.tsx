@@ -10,6 +10,8 @@ import { GroomingKit } from '@/components/groomingKit';
 import { LuminousKit } from '@/components/luminousKit';
 import { LuxeProCollection } from '@/components/luxeProCollection';
 import type { School } from '@/domain/school';
+import type { ScreenSize } from '@/providers/screenSizeProvider';
+import { smallest } from '@/providers/screenSizeProvider';
 
 export interface KitImage {
   src?: StaticImageData;
@@ -19,13 +21,11 @@ export interface KitImage {
   buttonVariant?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'black' | 'dark-grey';
 }
 
-type ScreenSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
-
 interface Images {
   full: KitImage;
   part: KitImage;
-  height: Record<ScreenSizes, number | undefined>;
-  buttonOffset: Record<ScreenSizes, number | undefined>;
+  height: Record<ScreenSize, number | undefined>;
+  buttonOffset: Record<ScreenSize, number | undefined>;
   buttonBelow?: boolean;
 }
 
@@ -130,15 +130,15 @@ const getCourseKits = (date: number): CourseKit[] => [
       ? {
         full: { src: MZBrush },
         part: { src: MZBrush, backgroundColor: 'white' },
-        height: { xs: undefined, sm: undefined, md: 168, lg: 150, xl: 180, xxl: 212 },
-        buttonOffset: { xs: undefined, sm: undefined, md: 62, lg: 49, xl: 68, xxl: 0 },
+        height: { [smallest]: undefined, sm: undefined, md: 168, lg: 150, xl: 180, xxl: 212 },
+        buttonOffset: { [smallest]: undefined, sm: undefined, md: 62, lg: 49, xl: 68, xxl: 0 },
         buttonBelow: true,
       }
       : {
         full: { src: MZMakeup },
         part: { src: MZMakeup, backgroundColor: 'white' },
-        height: { xs: undefined, sm: undefined, md: 148, lg: 130, xl: 157, xxl: 183 },
-        buttonOffset: { xs: undefined, sm: undefined, md: 62, lg: 49, xl: 68, xxl: 68 },
+        height: { [smallest]: undefined, sm: undefined, md: 148, lg: 130, xl: 157, xxl: 183 },
+        buttonOffset: { [smallest]: undefined, sm: undefined, md: 62, lg: 49, xl: 68, xxl: 68 },
         buttonBelow: true,
       },
     fullBullets: date >= tariffSwitchDate && date < makeupKitDate ? [ <strong key={0}>Luxe Pro Brush Collection</strong>, ...makeupBullets ] : [ <strong key={0}>Luminous Pro Makeup Kit</strong>, ...makeupBullets ],

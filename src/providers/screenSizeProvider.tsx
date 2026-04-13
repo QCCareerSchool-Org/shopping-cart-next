@@ -3,9 +3,11 @@
 import type { FC, PropsWithChildren } from 'react';
 import { createContext, useCallback, useMemo, useSyncExternalStore } from 'react';
 
+export const smallest = Symbol('below smallest named breakpoint');
+
 type BreakpointSize = 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
-export type ScreenSize = 'xs' | BreakpointSize;
+export type ScreenSize = typeof smallest | BreakpointSize;
 
 interface Breakpoint {
   name: BreakpointSize;
@@ -20,7 +22,7 @@ const breakpoints = [
   { name: 'xxl', min: 1400 },
 ] as const satisfies Breakpoint[];
 
-const SIZE_ORDER = [ 'xs', ...breakpoints.map(b => b.name) ] as const;
+const SIZE_ORDER = [ smallest, ...breakpoints.map(b => b.name) ] as const;
 
 export const ScreenSizeContext = createContext<ScreenSizeState | undefined>(undefined);
 
@@ -62,7 +64,7 @@ export const ScreenSizeProvider: FC<PropsWithChildren> = ({ children }) => {
         return mqls[i].name;
       }
     }
-    return 'xs';
+    return smallest;
   }, [ mqls ]);
 
   const screenSize = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
@@ -70,11 +72,11 @@ export const ScreenSizeProvider: FC<PropsWithChildren> = ({ children }) => {
   const index = screenSize !== null ? SIZE_ORDER.indexOf(screenSize) : -1;
 
   const state: ScreenSizeState = {
-    eq: (s: ScreenSize) => index === SIZE_ORDER.indexOf(s),
-    gte: (s: ScreenSize) => index >= SIZE_ORDER.indexOf(s),
-    lte: (s: ScreenSize) => index <= SIZE_ORDER.indexOf(s),
-    gt: (s: ScreenSize) => index > SIZE_ORDER.indexOf(s),
-    lt: (s: ScreenSize) => index < SIZE_ORDER.indexOf(s),
+    eq: s => index === SIZE_ORDER.indexOf(s),
+    gte: s => index >= SIZE_ORDER.indexOf(s),
+    lte: s => index <= SIZE_ORDER.indexOf(s),
+    gt: s => index > SIZE_ORDER.indexOf(s),
+    lt: s => index < SIZE_ORDER.indexOf(s),
     screenSize,
   };
 
