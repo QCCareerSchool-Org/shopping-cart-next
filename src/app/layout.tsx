@@ -51,8 +51,8 @@ const RootLayout: LayoutComponent = async ({ children }) => {
   const provinceRequired = needsProvince(geoLocation.countryCode);
 
   const [ countries, provinces ] = await Promise.all([
-    fetchCountries(),
-    provinceRequired ? fetchProvinces(geoLocation.countryCode) : Promise.resolve([]),
+    fetchCountries(undefined, process.env.FIREWALL_BYPASS_SECRET),
+    provinceRequired ? fetchProvinces(geoLocation.countryCode, undefined, process.env.FIREWALL_BYPASS_SECRET) : Promise.resolve([]),
   ]);
 
   if (!countries) {

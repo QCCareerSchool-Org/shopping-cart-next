@@ -22,7 +22,7 @@ export const Resume: PageComponent = async ({ searchParams }) => {
 
 const getLocation = async (id: number, code: string): Promise<string> => {
   try {
-    const enrollment = await getEnrollment(id, code);
+    const enrollment = await getEnrollment(id, code, undefined, process.env.FIREWALL_BYPASS_SECRET);
     return `${enrollment.url}?${getQueryString(enrollment)}`;
   } catch (err) {
     console.error(err);

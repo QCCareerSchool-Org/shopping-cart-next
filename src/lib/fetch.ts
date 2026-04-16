@@ -17,9 +17,12 @@ import { isTitle } from '@/domain/title';
 
 const pricesUrl = process.env.NEXT_PUBLIC_PRICES_ENDPOINT;
 
-export const fetchGeoLocation = async (headers: Record<string, string>, signal?: AbortSignal): Promise<GeoLocation | undefined> => {
+export const fetchGeoLocation = async (headers: Record<string, string>, signal?: AbortSignal, firewallBypassSecret?: string): Promise<GeoLocation | undefined> => {
   try {
     const url = 'https://api.qccareerschool.com/geoLocation/ip';
+    if (firewallBypassSecret) {
+      headers['X-Firewall-Bypass-Secret'] = firewallBypassSecret;
+    }
     const response = await fetch(url, { headers, signal });
     if (response.ok) {
       const body: unknown = await response.json();
@@ -34,10 +37,11 @@ export const fetchGeoLocation = async (headers: Record<string, string>, signal?:
   }
 };
 
-export const fetchCountries = async (signal?: AbortSignal): Promise<Country[] | undefined> => {
+export const fetchCountries = async (signal?: AbortSignal, firewallBypassSecret?: string): Promise<Country[] | undefined> => {
   try {
     const url = 'https://geolocation.qccareerschool.com/countries';
-    const response = await fetch(url, { signal });
+    const headers = firewallBypassSecret ? { 'X-Firewall-Bypass-Secret': firewallBypassSecret } : undefined;
+    const response = await fetch(url, { headers, signal });
     if (response.ok) {
       const body: unknown = await response.json();
       if (isCountries(body)) {
@@ -51,10 +55,11 @@ export const fetchCountries = async (signal?: AbortSignal): Promise<Country[] | 
   }
 };
 
-export const fetchProvinces = async (countryCode: string, signal?: AbortSignal): Promise<Province[] | undefined> => {
+export const fetchProvinces = async (countryCode: string, signal?: AbortSignal, firewallBypassSecret?: string): Promise<Province[] | undefined> => {
   try {
     const url = 'https://geolocation.qccareerschool.com/provinces?countryCode=' + encodeURIComponent(countryCode);
-    const response = await fetch(url, { signal });
+    const headers = firewallBypassSecret ? { 'X-Firewall-Bypass-Secret': firewallBypassSecret } : undefined;
+    const response = await fetch(url, { headers, signal });
     if (response.ok) {
       const body: unknown = await response.json();
       if (isProvinces(body)) {
@@ -68,10 +73,13 @@ export const fetchProvinces = async (countryCode: string, signal?: AbortSignal):
   }
 };
 
-export const fetchPrice = async (priceQuery: PriceQuery, signal?: AbortSignal): Promise<Price | undefined> => {
+export const fetchPrice = async (priceQuery: PriceQuery, signal?: AbortSignal, firewallBypassSecret?: string): Promise<Price | undefined> => {
   try {
     const url = `${pricesUrl}?${stringify(priceQuery)}`;
-    const headers = { 'X-API-Version': '2' };
+    const headers: Record<string, string> = { 'X-API-Version': '2' };
+    if (firewallBypassSecret) {
+      headers['X-Firewall-Bypass-Secret'] = firewallBypassSecret;
+    }
     const response = await fetch(url, { headers, signal });
     if (!response.ok) {
       throw Error(response.statusText);
@@ -109,9 +117,10 @@ interface PriceQueryOptions {
   dateOverride?: Date;
 }
 
-export const getEnrollment = async (id: number, code: string): Promise<EnrollmentResponse> => {
+export const getEnrollment = async (id: number, code: string, signal?: AbortSignal, firewallBypassSecret?: string): Promise<EnrollmentResponse> => {
   const url = `${process.env.NEXT_PUBLIC_ENROLLMENT_ENDPOINT}/${id}?code=${encodeURIComponent(code)}`;
-  const response = await fetch(url);
+  const headers = firewallBypassSecret ? { 'X-Firewall-Bypass-Secret': firewallBypassSecret } : undefined;
+  const response = await fetch(url, { headers, signal });
   if (!response.ok) {
     throw Error(response.statusText);
   }
