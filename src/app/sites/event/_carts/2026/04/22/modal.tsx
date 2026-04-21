@@ -87,24 +87,6 @@ const Event20260422ModalFeatures: FC = () => (
   </div>
 );
 
-const Event20260422ModalFeaturesOld: FC = () => (
-  <div>
-    <div className="d-flex flex-column gap-4">
-      {features.map(feature => (
-        <div key={feature.title} className="d-flex gap-3">
-          <div className="flex-shrink-0 d-flex align-items-center justify-content-center bg-white border shadow-sm" style={{ width: 48, height: 48, borderRadius: '50%' }}>
-            {feature.icon}
-          </div>
-          <div>
-            <h4 className="fs-5 sans-serif mb-1" style={{ color: '#0A0F3D' }}>{feature.title}</h4>
-            <p className="text-secondary mb-0">{feature.description}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
 const services = [
   'Plan unforgettable weddings and events clients rave about',
   'Design stunning event spaces that elevate every experience',
