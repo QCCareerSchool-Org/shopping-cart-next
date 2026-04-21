@@ -1,0 +1,57 @@
+.text-dark-blue { color: #0A0F3D !important; }
+.bg-dark-blue { background-color: #0A0F3D !important; }
+
+.crossedOut {
+  text-decoration: 1.5px rgba(255, 34, 74, 0.7) line-through;
+}
+
+.colLeft {
+  @media screen and (min-width: 992px) { width: calc(47% - 1px); }
+  @media screen and (min-width: 1200px) { width: calc(47% - 1rem); }
+}
+
+.colCenter {
+  width: 1px;
+  padding: 0;
+  @media screen and (min-width: 1200px) { padding-inline: 1rem; }
+}
+
+.colRight {
+  @media screen and (min-width: 992px) { width: 53%; }
+  @media screen and (min-width: 1200px) { width: calc(53% - 1rem); }
+}
+
+.closeButtonWrapper {
+  position: fixed;
+  z-index: 2;
+  top: 1.25rem;
+  right: 1.25rem;
+}
+
+.closeButtonCircle {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 40px;
+ height: 40px;
+ background: white;
+ border-radius: 20px;
+ box-shadow: 1px 1px 5px 0 rgba(0,0,0,0.5);
+}
+
+@media only screen and (min-width: 576px) {
+  .closeButtonCircle {
+    width: 48px;
+    height: 48px;
+    background: white;
+    border-radius: 24px;
+  }
+}
+
+.closeButtonCircle:active {
+  box-shadow: 0 0 0 0.125rem rgba(20, 169, 138, 0.5);
+}
+
+.closeButton {
+  box-shadow: none !important;
+}
