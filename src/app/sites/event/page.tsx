@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 
-import { Event20260409 } from './_carts/2026/04/09';
+import { Event20260422 } from './_carts/2026/04/22';
 import { EventFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
-import { april9 } from '@/periods';
+import { april22 } from '@/periods';
 import type { PageComponent } from '@/serverComponent';
 
 const EventPage: PageComponent = async props => {
@@ -12,8 +12,8 @@ const EventPage: PageComponent = async props => {
 
   return (
     <Suspense>
-      {april9.contains(date)
-        ? <Event20260409 date={date} period={april9.toDTO()} />
+      {april22.contains(date)
+        ? <Event20260422 date={date} period={april22.toDTO()} />
         : <EventFallback date={date} />
       }
     </Suspense>
