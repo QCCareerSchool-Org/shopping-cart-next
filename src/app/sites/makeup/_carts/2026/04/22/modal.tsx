@@ -6,24 +6,36 @@ import { FaAward, FaCheckCircle, FaMagic, FaPalette, FaUsers } from 'react-icons
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { LuminousKit } from '@/components/luminousKit';
 import { PromoModal, PromoModalDarkBlueBox } from '@/components/promoModal';
+import { useAddressState } from '@/hooks/useAddressState';
+import { useCoursesDispatch } from '@/hooks/useCoursesDispatch';
 
 interface Props {
   show: boolean;
   onHide: () => void;
 }
 
-export const Makeup20260422Modal: FC<Props> = props => (
-  <PromoModal
-    show={props.show}
-    onHide={props.onHide}
-    onPrimaryClick={props.onHide}
-    heading={<Makeup20260422ModalHeading />}
-    left={<Makeup20260422ModalLeft />}
-    right={<Makeup20260422ModalRight />}
-    headerAside={<Makeup20260422ModalOffer />}
-    footerMessage={<>Start your journey today for only <span className="text-primary">$49</span>.</>}
-  />
-);
+export const Makeup20260422Modal: FC<Props> = props => {
+  const coursesDispatch = useCoursesDispatch();
+  const { countryCode, provinceCode } = useAddressState();
+  const handleClick = () => {
+    coursesDispatch({ type: 'CLEAR_COURSES', payload: { countryCode, provinceCode } });
+    coursesDispatch({ type: 'ADD_COURSE', payload: { countryCode, provinceCode, courseCode: 'mz' } });
+    props.onHide();
+  };
+
+  return (
+    <PromoModal
+      show={props.show}
+      onHide={props.onHide}
+      onPrimaryClick={handleClick}
+      heading={<Makeup20260422ModalHeading />}
+      left={<Makeup20260422ModalLeft />}
+      right={<Makeup20260422ModalRight />}
+      headerAside={<Makeup20260422ModalOffer />}
+      footerMessage={<>Start your journey today for only <span className="text-primary">$49</span>.</>}
+    />
+  );
+};
 
 const Makeup20260422ModalHeading: FC = () => (
   <div className="position-relative z-1 flex-grow-1">
