@@ -12,7 +12,8 @@ const DesignPage: PageComponent = async props => {
 
   return (
     <Suspense>
-      {april22.contains(date)
+      {/* eslint-disable-next-line no-constant-condition, no-constant-binary-expression */}
+      {false && april22.contains(date)
         ? <Design20260422 date={date} period={april22.toDTO()} />
         : <DesignFallback date={date} />
       }

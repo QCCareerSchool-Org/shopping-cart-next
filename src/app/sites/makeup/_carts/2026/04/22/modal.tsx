@@ -55,18 +55,8 @@ const Makeup20260422ModalOffer: FC = () => (
 );
 
 const Makeup20260422ModalLeft: FC = () => (
-  <div>
-    <h3 className="fs-5 sans-serif fw-bold mb-4" style={{ color: '#0A0F3D' }}>Expand Your Services With</h3>
+  <>
     <div className="d-flex flex-column gap-4">
-      {services.map(service => (
-        <div key={service.title}>
-          <h4 className="fs-6 sans-serif fw-bold mb-1" style={{ color: '#0A0F3D' }}>{service.title}</h4>
-          <p className="small text-secondary mb-0">{service.description}</p>
-        </div>
-      ))}
-    </div>
-
-    <div className="d-flex flex-column gap-4 mt-5">
       {features.map(feature => (
         <div key={feature.title} className="d-flex gap-3">
           <div className="flex-shrink-0 d-flex align-items-center justify-content-center bg-white border shadow-sm" style={{ width: 48, height: 48, borderRadius: '50%' }}>
@@ -79,11 +69,6 @@ const Makeup20260422ModalLeft: FC = () => (
         </div>
       ))}
     </div>
-  </div>
-);
-
-const Makeup20260422ModalRight: FC = () => (
-  <div>
     <PromoModalDarkBlueBox>
       <h4 className="fw-bold sans-serif fs-4 mb-2 d-flex align-items-center gap-2">
         <span className="bg-primary small px-2 py-1 rounded text-uppercase fw-bold" style={{ color: '#0A0F3D', fontSize: '0.75rem' }}>Plus</span>
@@ -91,28 +76,15 @@ const Makeup20260422ModalRight: FC = () => (
       </h4>
       <p className="small mb-0">Get the entire Luminous Makeup Collection to build your professional makeup kit.</p>
     </PromoModalDarkBlueBox>
-
-    <div className="bg-white border rounded-4 p-4 shadow-sm mt-4">
-      <LuminousKit />
-      <p className="small text-secondary mb-0 mt-3">Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
-    </div>
-  </div>
+  </>
 );
 
-const services = [
-  {
-    title: '✨ Skincare Consultant',
-    description: 'Add skincare services to your business and confidently guide clients with product recommendations and personalized consultations.',
-  },
-  {
-    title: '✨ Pro Makeup Workshop',
-    description: 'Qualify for advanced work in bridal, editorial, runway, and film while building the skills to grow your makeup business and increase your earning potential.',
-  },
-  {
-    title: '✨ Special Effects Makeup',
-    description: 'Work in film, television, and theatre by creating realistic character transformations, injuries, and prosthetics.',
-  },
-];
+const Makeup20260422ModalRight: FC = () => (
+  <div className="bg-white border rounded-4 p-4 shadow-sm">
+    <LuminousKit />
+    <p className="small text-secondary mb-0 mt-3">Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
+  </div>
+);
 
 const features = [
   {

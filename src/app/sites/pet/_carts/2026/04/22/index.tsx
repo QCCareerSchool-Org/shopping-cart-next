@@ -2,6 +2,7 @@ import type { FC } from 'react';
 
 import { Pet20260422Promo } from './promo';
 import { PetCoursesSubtitleFirstAid } from '@/app/sites/pet/petCoursesSubtitleFirstAid';
+import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 import type { LastChancePeriodDTO } from '@/lib/period';
 import { agreementLinks } from '@/pet/agreementLinks';
@@ -25,6 +26,7 @@ export const Pet20260422: FC<Props> = ({ date, period }) => (
       successLink="https://www.qcpetstudies.com/welcome-to-the-school"
       agreementLinks={agreementLinks}
       dynamicCourseDescriptions="SHOW"
+      dynamicCourseMessages={[ Save50CourseMessage ]}
       visualPaymentPlans
       promoCodeDefault="PET200OFF"
     />

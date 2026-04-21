@@ -41,20 +41,21 @@ const Pet20260422ModalOffer: FC = () => (
 );
 
 const Pet20260422ModalLeft: FC = () => (
-  <>
-    <Pet20260422ModalCourses />
-    <Pet20260422ModalFeatures />
-  </>
+  <Pet20260422ModalCourses />
 );
 
 const Pet20260422ModalRight: FC = () => (
-  <PromoModalDarkBlueBox>
-    <h4 className="fw-bold sans-serif fs-4 mb-2 d-flex align-items-center gap-2">
-      <span className="bg-primary small px-2 py-1 rounded text-uppercase fw-bold" style={{ color: '#0A0F3D', fontSize: '0.75rem' }}>Bonus</span>
-      50% Off Additional Courses
-    </h4>
-    <p className="small mb-0">Build a broader skill set with half off any additional pet care courses you add today.</p>
-  </PromoModalDarkBlueBox>
+  <>
+    <Pet20260422ModalFeatures />
+
+    <PromoModalDarkBlueBox>
+      <h4 className="fw-bold sans-serif fs-4 mb-2 d-flex align-items-center gap-2">
+        <span className="bg-primary small px-2 py-1 rounded text-uppercase fw-bold" style={{ color: '#0A0F3D', fontSize: '0.75rem' }}>Bonus</span>
+        50% Off Additional Courses
+      </h4>
+      <p className="small mb-0">Build a broader skill set with half off any additional pet care courses you add today.</p>
+    </PromoModalDarkBlueBox>
+  </>
 );
 
 const Pet20260422ModalCourses: FC = () => (
@@ -71,20 +72,18 @@ const Pet20260422ModalCourses: FC = () => (
 );
 
 const Pet20260422ModalFeatures: FC = () => (
-  <div className="mt-5">
-    <div className="d-flex flex-column gap-4">
-      {features.map(feature => (
-        <div key={feature.title} className="d-flex gap-3">
-          <div className="flex-shrink-0 d-flex align-items-center justify-content-center bg-white border shadow-sm" style={{ width: 48, height: 48, borderRadius: '50%' }}>
-            {feature.icon}
-          </div>
-          <div>
-            <h4 className="fs-5 sans-serif mb-1" style={{ color: '#0A0F3D' }}>{feature.title}</h4>
-            <p className="text-secondary mb-0">{feature.description}</p>
-          </div>
+  <div className="d-flex flex-column gap-4">
+    {features.map(feature => (
+      <div key={feature.title} className="d-flex gap-3">
+        <div className="flex-shrink-0 d-flex align-items-center justify-content-center bg-white border shadow-sm" style={{ width: 48, height: 48, borderRadius: '50%' }}>
+          {feature.icon}
         </div>
-      ))}
-    </div>
+        <div>
+          <h4 className="fs-5 sans-serif mb-1" style={{ color: '#0A0F3D' }}>{feature.title}</h4>
+          <p className="text-secondary mb-0">{feature.description}</p>
+        </div>
+      </div>
+    ))}
   </div>
 );
 
