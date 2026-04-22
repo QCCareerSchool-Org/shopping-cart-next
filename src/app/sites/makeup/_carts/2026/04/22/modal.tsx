@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { FaAward, FaCheckCircle, FaMagic, FaPalette, FaUsers } from 'react-icons/fa';
 
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
-import { LuminousKit } from '@/components/luminousKit';
+import { LuminousKitWithoutConcealer } from '@/components/luminousKitWithoutConcealer';
 import { PromoModal, PromoModalDarkBlueBox } from '@/components/promoModal';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useCoursesDispatch } from '@/hooks/useCoursesDispatch';
@@ -40,7 +40,7 @@ export const Makeup20260422Modal: FC<Props> = props => {
 const Makeup20260422ModalHeading: FC = () => (
   <div className="position-relative z-1 flex-grow-1">
     <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill small fw-bold text-uppercase mb-3" style={{ backgroundColor: 'rgba(13, 110, 253, 0.1)', color: '#0A0F3D', border: '1px solid rgba(13, 110, 253, 0.2)' }}>
-      <FaMagic /> Makeup Career
+      <FaMagic /> Globally Recognized MIMP&trade; Certification
     </div>
     <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>A Makeup Career that Grows With You</h2>
     <p className="text-secondary mb-0">Enroll in Master Makeup Artistry today and get 50% off additional courses.</p>
@@ -81,7 +81,7 @@ const Makeup20260422ModalLeft: FC = () => (
 
 const Makeup20260422ModalRight: FC = () => (
   <div className="bg-white border rounded-4 p-4 shadow-sm">
-    <LuminousKit />
+    <LuminousKitWithoutConcealer />
     <p className="small text-secondary mb-0 mt-3">Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
   </div>
 );

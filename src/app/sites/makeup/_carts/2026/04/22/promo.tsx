@@ -40,7 +40,7 @@ export const Makeup20260422Promo: FC<Props> = ({ date, period }) => {
         </div>
       </Section>
       <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
-        You'll Also Receive <strong>50% Off Each Additional Course</strong>
+        You'll Also Receive <strong>the Luminous Makeup Kit Free</strong>
       </Banner>
       <Makeup20260422Modal show={showPopup} onHide={handleClick} />
     </>
