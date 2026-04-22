@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
 
-import { Design20260422 } from './_carts/2026/04/22';
+import { Design20260423 } from './_carts/2026/04/23';
 import { DesignFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
-import { april22 } from '@/periods';
+import { april23 } from '@/periods';
 import type { PageComponent } from '@/serverComponent';
 
 const DesignPage: PageComponent = async props => {
@@ -12,9 +12,8 @@ const DesignPage: PageComponent = async props => {
 
   return (
     <Suspense>
-      {/* eslint-disable-next-line no-constant-condition, no-constant-binary-expression */}
-      {false && april22.contains(date)
-        ? <Design20260422 date={date} period={april22.toDTO()} />
+      {april23.contains(date)
+        ? <Design20260423 date={date} period={april23.toDTO()} />
         : <DesignFallback date={date} />
       }
     </Suspense>
