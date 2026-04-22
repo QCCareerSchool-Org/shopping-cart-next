@@ -10,13 +10,13 @@ export const LuminousKitWithoutConcealer: FC = () => (
       <Image src={LuminousKitImage} width="650" height="1056" className="img-fluid" alt="Luminous Kit" />
     </div>
     <ol className={styles.coloredList}>
-      <li>17-piece professional brush set</li>
-      <li>88-shade eye shadow palette</li>
-      <li>32-shade lip palette</li>
+      <li>5-shade eyebrow palette</li>
       <li>28-shade blush palette</li>
+      <li>17-piece professional brush set</li>
+      <li>32-shade lip palette</li>
+      <li>88-shade eye shadow palette</li>
       <li>9-shade contour palette</li>
       <li>4-shade highlight palette</li>
-      <li>5-shade eyebrow palette</li>
     </ol>
   </div>
 );
