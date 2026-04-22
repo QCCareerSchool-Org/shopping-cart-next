@@ -7,7 +7,7 @@ import MZBrush from './kits/brush-kit-luxe.jpg';
 import MZMakeup from './kits/makeup-kit-white.jpg';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { GroomingKit } from '@/components/groomingKit';
-import { LuminousKit } from '@/components/luminousKit';
+import { LuminousKitWithoutConcealer } from '@/components/luminousKitWithoutConcealer';
 import { LuxeProCollection } from '@/components/luxeProCollection';
 import type { School } from '@/domain/school';
 import type { ScreenSize } from '@/providers/screenSizeProvider';
@@ -194,7 +194,7 @@ const MZBrushDetails: FC = () => (
 const MZMakeupDetails: FC = () => (
   <DetailsPopup title="Luminous Collection" footerText={<div className="text-start"><small>Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></small></div>}>
     <p>Get the entire <strong>Luminous Collection</strong> when you enroll in <strong>Master Makeup Artistry</strong>.</p>
-    <LuminousKit />
+    <LuminousKitWithoutConcealer />
   </DetailsPopup>
 );
 
