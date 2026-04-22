@@ -6,7 +6,7 @@ import LuminousKitImage from './pop-up-kit.jpg';
 
 export const LuminousKitWithoutConcealer: FC = () => (
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-    <div>
+    <div className="mb-3">
       <Image src={LuminousKitImage} width="650" height="1056" className="img-fluid" alt="Luminous Kit" />
     </div>
     <ol className={styles.coloredList}>
