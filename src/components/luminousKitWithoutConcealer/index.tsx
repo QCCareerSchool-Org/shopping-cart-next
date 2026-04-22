@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import type { FC } from 'react';
 
-import LuminousKitImage from './deluxe-no-lashes-kit-numbers-no-description.jpg';
 import styles from './index.module.css';
+import LuminousKitImage from './pop-up-kit.jpg';
 
 export const LuminousKitWithoutConcealer: FC = () => (
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
