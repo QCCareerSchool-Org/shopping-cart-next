@@ -65,9 +65,9 @@ export const PromoModal: FC<Props> = props => (
       </div>
 
       <div className="bg-white border-top p-4 px-xl-5 flex-shrink-0 d-flex flex-column flex-lg-row align-items-center justify-content-between w-100 z-1 gap-4">
-        <div className="text-center text-sm-start mb-sm-0">
-          <p className="small mb-1 text-nowrap text-secondary">{props.footerDisclaimer ?? '* Flexible payment plans available.'}</p>
-          <p className={`${styles['text-dark-blue']} fw-bold mb-0 text-nowrap`}>
+        <div className={`text-center text-sm-start mb-sm-0 ${styles.footerCopy}`}>
+          <p className="small mb-1 text-secondary">{props.footerDisclaimer ?? '* Flexible payment plans available.'}</p>
+          <p className={`${styles['text-dark-blue']} fw-bold mb-0`}>
             {props.footerMessage ?? <>Start your journey today for only <span className="text-primary">{props.deposit}</span>.</>}
           </p>
         </div>
