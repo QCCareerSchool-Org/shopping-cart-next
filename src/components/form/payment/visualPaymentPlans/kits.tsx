@@ -4,7 +4,7 @@ import type { CSSProperties, FC, JSX } from 'react';
 import { DetailsPopup } from './detailsPopup';
 // import DesignBooks from './kits/design-books.png';
 import MZBrush from './kits/brush-kit-luxe.jpg';
-import MZMakeup from './kits/makeup-kit-white.jpg';
+import MZMakeup from './kits/makeup-kit-white-no-concealer.webp';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { GroomingKit } from '@/components/groomingKit';
 import { LuminousKitWithoutConcealer } from '@/components/luminousKitWithoutConcealer';
