@@ -4,7 +4,7 @@ import type { FC } from 'react';
 
 import DG from './kits/dg.jpg';
 import GT from './kits/gt.jpg';
-import MZKit from './kits/mz-kit.jpg';
+import MZKit from './kits/mz-kit-no-concealer.webp';
 import MZ from './kits/mz.jpg';
 
 const getImage = (courseCode: string): StaticImageData | undefined => {
