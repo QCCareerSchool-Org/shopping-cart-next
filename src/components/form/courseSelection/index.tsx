@@ -1,4 +1,4 @@
-import type { FC, JSX } from 'react';
+import type { FC, ReactNode } from 'react';
 import { Fragment, useState } from 'react';
 
 import { CheckBox } from './checkBox';
@@ -51,11 +51,17 @@ const Standard: FC<Props> = props => {
     setHoveredCourseCode(code);
   };
 
-  let hoveredCourseName: string | JSX.Element | undefined;
+  let hoveredCourseName: ReactNode;
   for (const group of props.courseGroups) {
     for (const item of group.items) {
       if (item.code === hoveredCourseCode) {
-        hoveredCourseName = typeof item.name === 'function' ? item.name({ countryCode, provinceCode }) : item.name;
+        hoveredCourseName = typeof item.courseCardName === 'function'
+          ? item.courseCardName({ countryCode, provinceCode })
+          : typeof item.courseCardName !== 'undefined' && item.courseCardName
+            ? item.courseCardName
+            : typeof item.name === 'function'
+              ? item.name({ countryCode, provinceCode })
+              : item.name;
         break;
       }
     }

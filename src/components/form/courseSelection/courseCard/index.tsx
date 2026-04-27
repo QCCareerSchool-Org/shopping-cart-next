@@ -1,4 +1,4 @@
-import type { JSX } from 'react';
+import type { ReactNode } from 'react';
 import { Card, CardBody } from 'react-bootstrap';
 
 import { Banner } from './banner';
@@ -11,7 +11,7 @@ import { useScreenSizeContext } from '@/hooks/useScreenSizeContext';
 
 interface Props {
   courseCode: string;
-  name: string | JSX.Element;
+  name: ReactNode;
 }
 
 const bannerCertifications = [ 'MZ', 'AB', 'HS', 'MW', 'SF', 'SK' ];

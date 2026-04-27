@@ -1,5 +1,6 @@
 'use client';
 
+import { InteriorDecoratingTag } from './interiorDecoratingTag';
 import type { CourseGroup } from '@/domain/courseGroup';
 import type { GeoLocation } from '@/domain/geoLocation';
 
@@ -16,6 +17,7 @@ export const courseGroups: CourseGroup[] = [
       {
         code: 'I2',
         name: g => (decorating(g) ? 'Interior Decorating' : 'Interior Design'),
+        courseCardName: g => (decorating(g) ? 'Interior Decorating: Career Accelerator' : 'Interior Design: Career Accelerator'),
         disabledMessage: g => (
           <>
             The <span className="text-primary">{decorating(g) ? 'Interior Decorating' : 'Interior Design'}</span> and the <span className="text-primary">Home Staging</span> courses{' '}
@@ -23,6 +25,7 @@ export const courseGroups: CourseGroup[] = [
             then select both <span className="text-primary">{decorating(g) ? 'Interior Decorating' : 'Interior Design'}</span> and <span className="text-primary">Staging For Designers</span>.
           </>
         ),
+        badge: <InteriorDecoratingTag />,
       },
       {
         code: 'MS',
