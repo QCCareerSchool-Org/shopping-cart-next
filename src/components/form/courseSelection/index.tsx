@@ -57,7 +57,7 @@ const Standard: FC<Props> = props => {
       if (item.code === hoveredCourseCode) {
         hoveredCourseName = typeof item.courseCardName === 'function'
           ? item.courseCardName({ countryCode, provinceCode })
-          : typeof item.courseCardName === 'string' && item.courseCardName
+          : typeof item.courseCardName !== 'undefined' && item.courseCardName
             ? item.courseCardName
             : typeof item.name === 'function'
               ? item.name({ countryCode, provinceCode })
