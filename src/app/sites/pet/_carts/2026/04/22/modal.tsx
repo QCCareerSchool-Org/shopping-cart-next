@@ -28,13 +28,13 @@ const Pet20260422ModalHeading: FC = () => (
       <FaDog /> Pet Care Career
     </div>
     <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>Unlock Your Pet Care Career</h2>
-    <p className="text-secondary mb-0">Enroll in any pet care course and save an extra $200 on your tuition!</p>
+    <p className="text-secondary mb-0">Enroll in any pet care course and save an extra $300 on your tuition!</p>
   </div>
 );
 
 const Pet20260422ModalOffer: FC = () => (
   <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 300 }}>
-    <div className="fs-2 fw-bold" style={{ color: '#0A0F3D', lineHeight: 1.1 }}>$200 OFF</div>
+    <div className="fs-2 fw-bold" style={{ color: '#0A0F3D', lineHeight: 1.1 }}>$300 OFF</div>
     <div className="small fw-bold text-uppercase mb-2">All Courses</div>
     <div className="small text-secondary">+ Get <strong className="text-primary">50% off</strong> any additional courses.</div>
   </div>
