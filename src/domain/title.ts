@@ -1,7 +1,9 @@
-export type Title = 'Mrs.' | 'Miss' | 'Ms.' | 'Mr.';
+export const titles = [ 'Mrs.', 'Miss', 'Ms.', 'Mr.' ] as const;
+
+export type Title = typeof titles[number];
+
+const titleSet = new Set<Title>(titles);
 
 export const isTitle = (obj: unknown): obj is Title => {
-  return obj === 'Mrs.' || obj === 'Miss' || obj === 'Ms.' || obj === 'Mr.';
+  return typeof obj === 'string' && titleSet.has(obj as Title);
 };
-
-export const titles: Title[] = [ 'Mrs.', 'Miss', 'Ms.', 'Mr.' ];

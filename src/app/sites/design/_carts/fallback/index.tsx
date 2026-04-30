@@ -5,6 +5,7 @@ import { agreementLinks } from '../../agreementLinks';
 import { courseGroups } from '../../courseGroups';
 import { Guarantee } from '../../guarantee';
 import { FreeColorConsultantMessage } from '@/components/dynamicCourseMessages/freeColorConsultant';
+import { FreeEBVDDynamicCourseMessage } from '@/components/dynamicCourseMessages/freeEBVD';
 import { Form } from '@/components/form';
 
 interface Props {
@@ -25,7 +26,7 @@ export const DesignFallback: FC<Props> = ({ date }) => {
         dynamicCourseDescriptions="SHOW"
         visualPaymentPlans
         promoCodeDefault="FREECOLOR"
-        dynamicCourseMessages={[ FreeColorConsultantMessage ]}
+        dynamicCourseMessages={[ FreeEBVDDynamicCourseMessage, FreeColorConsultantMessage ]}
       />
     </>
   );
