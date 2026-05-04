@@ -43,7 +43,7 @@ const Makeup20260506ModalHeading: FC = () => (
       <FaMagic /> Globally Recognized MIMP&trade; Certification
     </div>
     <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>A Makeup Career that Grows With You</h2>
-    <p className="text-secondary mb-0">Enroll in Master Makeup Artistry today and get 50% off additional courses.</p>
+    <p className="text-secondary mb-0">Enroll in Master <strong>Makeup Artistry</strong> today and get the <strong>Skincare</strong> Course FREE.</p>
   </div>
 );
 
