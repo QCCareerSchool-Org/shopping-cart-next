@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import { FaAward, FaCheckCircle, FaMagic, FaPalette, FaUsers } from 'react-icons/fa';
+import { FaCheckCircle, FaMagic } from 'react-icons/fa';
 
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { LuminousKitWithoutConcealer } from '@/components/luminousKitWithoutConcealer';
@@ -56,18 +56,18 @@ const Makeup20260506ModalOffer: FC = () => (
 
 const Makeup20260506ModalLeft: FC = () => (
   <>
-    <div className="d-flex flex-column gap-4">
-      {features.map(feature => (
-        <div key={feature.title} className="d-flex gap-3">
-          <div className="flex-shrink-0 d-flex align-items-center justify-content-center bg-white border shadow-sm" style={{ width: 48, height: 48, borderRadius: '50%' }}>
-            {feature.icon}
-          </div>
-          <div>
-            <h4 className="fs-5 sans-serif mb-1" style={{ color: '#0A0F3D' }}>{feature.title}</h4>
-            <p className="text-secondary mb-0">{feature.description}</p>
-          </div>
-        </div>
-      ))}
+    <div>
+      <p>The Skincare course lets you expand your makeup expertise while opening doors to a new career as a skincare consultant. You'll learn to:</p>
+      <ul className="list-unstyled d-flex flex-column gap-3 mb-0">
+        {features.map(feature => (
+          <li key={feature} className="d-flex gap-3">
+            <div className="flex-shrink-0 d-flex align-items-center justify-content-center">
+              <FaCheckCircle className="text-primary" />
+            </div>
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
     </div>
     <PromoModalDarkBlueBox>
       <h4 className="fw-bold sans-serif fs-4 mb-2 d-flex align-items-center gap-2">
@@ -87,24 +87,7 @@ const Makeup20260506ModalRight: FC = () => (
 );
 
 const features = [
-  {
-    icon: <FaAward className="fs-4 text-primary" />,
-    title: 'Lifetime Certification',
-    description: 'Earn globally recognized designations that build credibility and support your career long-term.',
-  },
-  {
-    icon: <FaUsers className="fs-4 text-primary" />,
-    title: 'Mentorship from Industry Experts',
-    description: 'Professional audio feedback sessions from a practicing event expert and business owner.',
-  },
-  {
-    icon: <FaCheckCircle className="fs-4 text-primary" />,
-    title: 'Business Training Built In',
-    description: 'Actionable strategies and mentorship to confidently launch, market, and grow your business.',
-  },
-  {
-    icon: <FaPalette className="fs-4 text-primary" />,
-    title: 'Professional Makeup Kit',
-    description: 'Build your kit with palettes, brushes, and tools selected for working makeup artists.',
-  },
+  'Assess skin types and conditions',
+  'Conduct personalized skincare consultations and recommend products',
+  'Create DIY skincare recipes and understand anti-aging techniques',
 ];
