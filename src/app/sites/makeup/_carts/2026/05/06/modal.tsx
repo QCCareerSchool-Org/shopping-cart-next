@@ -14,7 +14,7 @@ interface Props {
   onHide: () => void;
 }
 
-export const Makeup20260422Modal: FC<Props> = props => {
+export const Makeup20260506Modal: FC<Props> = props => {
   const coursesDispatch = useCoursesDispatch();
   const { countryCode, provinceCode } = useAddressState();
   const handleClick = () => {
@@ -28,16 +28,16 @@ export const Makeup20260422Modal: FC<Props> = props => {
       show={props.show}
       onHide={props.onHide}
       onPrimaryClick={handleClick}
-      heading={<Makeup20260422ModalHeading />}
-      left={<Makeup20260422ModalLeft />}
-      right={<Makeup20260422ModalRight />}
-      headerAside={<Makeup20260422ModalOffer />}
+      heading={<Makeup20260506ModalHeading />}
+      left={<Makeup20260506ModalLeft />}
+      right={<Makeup20260506ModalRight />}
+      headerAside={<Makeup20260506ModalOffer />}
       footerMessage={<>Start your journey today for only <span className="text-primary">$49</span>.</>}
     />
   );
 };
 
-const Makeup20260422ModalHeading: FC = () => (
+const Makeup20260506ModalHeading: FC = () => (
   <div className="position-relative z-1 flex-grow-1">
     <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill small fw-bold text-uppercase mb-3" style={{ backgroundColor: 'rgba(13, 110, 253, 0.1)', color: '#0A0F3D', border: '1px solid rgba(13, 110, 253, 0.2)' }}>
       <FaMagic /> Globally Recognized MIMP&trade; Certification
@@ -47,14 +47,14 @@ const Makeup20260422ModalHeading: FC = () => (
   </div>
 );
 
-const Makeup20260422ModalOffer: FC = () => (
+const Makeup20260506ModalOffer: FC = () => (
   <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 300 }}>
     <div className="fs-2 fw-bold" style={{ color: '#0A0F3D', lineHeight: 1.1 }}>50% OFF</div>
     <div className="small fw-bold text-uppercase">Additional Certifications</div>
   </div>
 );
 
-const Makeup20260422ModalLeft: FC = () => (
+const Makeup20260506ModalLeft: FC = () => (
   <>
     <div className="d-flex flex-column gap-4">
       {features.map(feature => (
@@ -79,7 +79,7 @@ const Makeup20260422ModalLeft: FC = () => (
   </>
 );
 
-const Makeup20260422ModalRight: FC = () => (
+const Makeup20260506ModalRight: FC = () => (
   <div className="bg-white border rounded-4 p-4 shadow-sm">
     <LuminousKitWithoutConcealer />
     <p className="small text-secondary mb-0 mt-3">Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>

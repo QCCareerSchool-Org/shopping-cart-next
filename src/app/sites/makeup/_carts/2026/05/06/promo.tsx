@@ -2,8 +2,8 @@
 
 import type { FC } from 'react';
 
-import { Hero20260422 } from './hero';
-import { Makeup20260422Modal } from './modal';
+import { Hero20260506 } from './hero';
+import { Makeup20260506Modal } from './modal';
 import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
@@ -17,7 +17,7 @@ interface Props {
   period: LastChancePeriodDTO;
 }
 
-export const Makeup20260422Promo: FC<Props> = ({ date, period }) => {
+export const Makeup20260506Promo: FC<Props> = ({ date, period }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
 
@@ -36,13 +36,13 @@ export const Makeup20260422Promo: FC<Props> = ({ date, period }) => {
       />}
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero20260422 variant={variant} />
+          <Hero20260506 variant={variant} />
         </div>
       </Section>
       <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
         You'll Also Receive <strong>the Luminous Makeup Kit Free</strong>
       </Banner>
-      <Makeup20260422Modal show={showPopup} onHide={handleClick} />
+      <Makeup20260506Modal show={showPopup} onHide={handleClick} />
     </>
   );
 };
