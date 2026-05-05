@@ -20,6 +20,7 @@ export const Makeup20260506Modal: FC<Props> = props => {
   const handleClick = () => {
     coursesDispatch({ type: 'CLEAR_COURSES', payload: { countryCode, provinceCode } });
     coursesDispatch({ type: 'ADD_COURSE', payload: { countryCode, provinceCode, courseCode: 'mz' } });
+    coursesDispatch({ type: 'ADD_COURSE', payload: { countryCode, provinceCode, courseCode: 'sk' } });
     props.onHide();
   };
 
