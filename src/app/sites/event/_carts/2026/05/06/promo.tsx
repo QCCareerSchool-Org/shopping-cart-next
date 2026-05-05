@@ -9,7 +9,7 @@ import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 import type { LastChancePeriodDTO } from '@/lib/period';
 
-const background = 'linear-gradient(#856037, #392816, #342516, #332416, #322216)';
+const backgroundColor = '#010329';
 
 interface Props {
   date: number;
@@ -33,7 +33,7 @@ export const Event20260506Promo: FC<Props> = ({ date, period }) => {
         message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
         className="bg-black text-light"
       />}
-      <Section style={{ background }} noPadding>
+      <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
           <Hero20260506 variant={variant} />
         </div>
