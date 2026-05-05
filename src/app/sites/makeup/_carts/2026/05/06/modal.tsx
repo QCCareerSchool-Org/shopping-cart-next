@@ -90,4 +90,7 @@ const features = [
   'Assess skin types and conditions',
   'Conduct personalized skincare consultations and recommend products',
   'Create DIY skincare recipes and understand anti-aging techniques',
+  'Address common skin concerns like acne, sensitivity, and aging',
+  'Understand skin anatomy and how it affects product selection',
+  'Build customized skincare routines tailored to each client',
 ];
