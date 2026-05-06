@@ -30,20 +30,35 @@ const Design20260506ModalHeading: FC = () => (
     <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill small fw-bold text-uppercase mb-3" style={{ backgroundColor: 'rgba(13, 110, 253, 0.1)', color: '#0A0F3D', border: '1px solid rgba(13, 110, 253, 0.2)' }}>
       <FaBriefcase /> Professional Design Career
     </div>
-    <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>Unlock Your Professional Design Career</h2>
-    <p className="text-secondary mb-0">Build diverse income streams with multiple professional designations&mdash;and offer clients MORE.</p>
+    <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>Interior Design Career Accelerator</h2>
+    <p className="text-secondary mb-0">Enroll in the Interior Design Certification today and claim your FREE Business & Virtual Design Workshops ($1,896 value).</p>
   </div>
 );
 
 const Design20260506ModalOffer: FC = () => (
   <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 300 }}>
-    <div className="fs-2 fw-bold" style={{ color: '#0A0F3D', lineHeight: 1.1 }}>50% OFF</div>
-    <div className="small fw-bold text-uppercase">Additional Certifications</div>
+    <div className="fs-2 fw-bold" style={{ color: '#0A0F3D', lineHeight: 1.1 }}>$2498</div>
+    <div className="small fw-bold text-uppercase">Save an additional $500 if you pay in full today.</div>
   </div>
 );
 
 const Design20260506ModalLeft: FC = () => (
-  <Design20260506ModalServices />
+  <div>
+    <h3 className="fs-5 sans-serif fw-bold mb-4 d-flex align-items-center gap-2" style={{ color: '#0A0F3D' }}>
+      <div>The Career Accelerator Program Includes:</div>
+    </h3>
+    <ul className="list-unstyled d-flex flex-column gap-3 mb-0">
+      {includedCourses.map(course => (
+        <li key={course.title} className="d-flex align-items-start gap-3">
+          <div style={{ width: 16 }}><FaCheckCircle className="text-primary mt-1 flex-shrink-0" /></div>
+          <div>
+            <h4 className="h5">{course.title}</h4>
+            <span>{course.text}</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
 );
 
 const Design20260506ModalRight: FC = () => (
@@ -72,44 +87,23 @@ const Design20260506ModalRight: FC = () => (
   </>
 );
 
-const Design20260506ModalServices: FC = () => (
-  <div>
-    <h3 className="fs-5 sans-serif fw-bold mb-3 d-flex align-items-center gap-2" style={{ color: '#0A0F3D' }}>
-      <div style={{ width: 20, position: 'relative', top: -1 }}><FaBriefcase className="text-primary" /></div>
-      <div>Expand Your Services &amp; Multiply Your Income</div>
-    </h3>
-    <p className="text-secondary mb-4">With multiple certifications, you'll have the skills and confidence to:</p>
-
-    <ul className="list-unstyled d-flex flex-column gap-3 mb-0">
-      {services.map(service => (
-        <li key={service} className="d-flex align-items-start gap-3">
-          <div style={{ width: 16 }}><FaCheckCircle className="text-primary mt-1 flex-shrink-0" /></div>
-          <span>{service}</span>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
-
-const services = [
-  'Design cohesive, functional interiors using professional space planning and styling techniques',
-  'Enhance properties with thoughtfully designed outdoor and landscape spaces',
-  'Stage homes strategically to attract buyers and maximize value',
-  'Create safe, accessible environments with Aging in Place expertise',
-  'Guide clients with confidence through color selection and design harmony',
-  'Build and grow a successful design business with professional systems and processes',
+const includedCourses = [
+  { title: 'Interior Design Certification Course', text: 'Get certified in Interior Design and Decorating with one-on-one mentorship from top design mentors, a flexible schedule and exclusive business training.' },
+  { title: 'Accelerate Your Business Workshop', text: 'Learn how to launch and grow your design business—from pricing your services to landing your first client and marketing yourself with confidence.' },
+  { title: 'Virtual Design Training', text: 'Develop in-demand skills to work with clients remotely using digital tools, allowing you to expand beyond your local market and reach a global audience.' },
+  { title: 'Career Launch Toolkit', text: 'Start like a pro with ready-to-use client contracts, onboarding packages, business resources and design software—so you have the tools to begin working right away.' },
 ];
 
 const features = [
   {
     icon: <FaAward className="fs-4 text-primary" />,
-    title: 'Lifetime Certification',
-    description: 'Earn globally recognized designations that build credibility and support your career long-term.',
+    title: 'Lifetime IDDP™ Certification',
+    description: 'Earn a globally recognized designation that builds credibility and supports your career in the long term.',
   },
   {
     icon: <FaUsers className="fs-4 text-primary" />,
     title: 'Mentorship from Industry Experts',
-    description: 'Professional audio feedback sessions from a practicing design expert and business owner.',
+    description: 'Seven 1-on-1 professional audio feedback sessions from a practicing design expert and business owner.',
   },
   {
     icon: <FaCheckCircle className="fs-4 text-primary" />,
