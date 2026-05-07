@@ -20,7 +20,7 @@ export const AllAccessPopup: FC = () => {
     <div className="ms-4">
       <a href="#" onClick={handleClick} className="small" style={{ textDecoration: 'none' }}>See What's Included</a>
       <Modal show={show} onHide={handleHide} size="xl">
-        <Modal.Header closeButton><h4>What's Included in the All-Access Program</h4></Modal.Header>
+        <Modal.Header closeButton><h4 className="mb-0">What's Included in the All-Access Program</h4></Modal.Header>
         <Modal.Body>
           <div className="p-sm-1 p-lg-3">
             <div className="row justify-content-center mb-4">
