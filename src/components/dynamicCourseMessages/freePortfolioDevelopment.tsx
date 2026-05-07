@@ -8,6 +8,10 @@ import { useCoursesState } from '@/hooks/useCoursesState';
 export const FreePortfolioDevelopmentMessage: FC = () => {
   const coursesState = useCoursesState();
 
+  if (coursesState.selected.includes('AM')) {
+    return <DynamicCourseAlert variant="info"><strong>Note:</strong> The current promotion does not apply to the All-Access Program, which already offers the greatest overall value and maximum savings.</DynamicCourseAlert>;
+  }
+
   if (!coursesState.selected.length) {
     return null;
   }

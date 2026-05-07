@@ -10,6 +10,10 @@ export const MasterMakeupSave300AndSkincare: FC = () => {
   const coursesState = useCoursesState();
   const priceState = usePriceState();
 
+  if (coursesState.selected.includes('AM')) {
+    return <DynamicCourseAlert variant="info"><strong>Note:</strong> The current promotion does not apply to the All-Access Program, which already offers the greatest overall value and maximum savings.</DynamicCourseAlert>;
+  }
+
   const discount = priceState?.currency.code === 'GBP' ? '£300' : '$300';
 
   if (!coursesState.selected.includes('MZ')) {

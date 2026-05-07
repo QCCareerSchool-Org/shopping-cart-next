@@ -1,5 +1,28 @@
-import { AllAccessModalContent } from './allAccessModal/content';
+'use client';
+
+import type { FC, MouseEventHandler } from 'react';
+
+import { AllAccessModal } from './allAccessModal';
 import type { CourseGroup } from '@/domain/courseGroup';
+import { useToggle } from '@/hooks/useToggle';
+
+const Popup: FC = () => {
+  const [ show, toggle ] = useToggle(false);
+
+  const handleClick: MouseEventHandler = e => {
+    e.preventDefault();
+    toggle();
+  };
+
+  const handleHide = toggle;
+
+  return (
+    <div className="ms-4">
+      <a href="#" onClick={handleClick} className="small" style={{ textDecoration: 'none' }}>See What's Included</a>
+      <AllAccessModal show={show} onHide={handleHide} />
+    </div>
+  );
+};
 
 export const courseGroups: CourseGroup[] = [
   {
@@ -9,10 +32,7 @@ export const courseGroups: CourseGroup[] = [
         code: 'AM',
         name: 'All-Access Program',
         badge: <span className="ms-2 badge bg-primary text-uppercase">Most Popular</span>,
-        contents: {
-          body: <AllAccessModalContent />,
-          modalSize: 'xl',
-        },
+        contents: <Popup />,
       },
     ],
   },

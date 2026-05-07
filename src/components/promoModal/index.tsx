@@ -8,6 +8,7 @@ import { PromoModalFrame } from './promoModalFrame';
 
 interface Props extends PromoModalContentProps {
   show: boolean;
+  onHide: () => void;
 }
 
 export const PromoModal: FC<Props> = props => (
