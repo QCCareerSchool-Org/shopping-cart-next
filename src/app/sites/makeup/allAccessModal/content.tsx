@@ -3,7 +3,7 @@ import { FaAward, FaBriefcase, FaChartLine, FaCheckCircle, FaMagic, FaUsers } fr
 
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { LuminousKitWithoutConcealer } from '@/components/luminousKitWithoutConcealer';
-import { PromoModalContent, PromoModalDarkBlueBox } from '@/components/promoModal';
+import { PromoModalContent, PromoModalDarkBlueBox, PromoModalPriceBox } from '@/components/promoModal';
 
 interface Props {
   onHide?: () => void;
@@ -17,10 +17,8 @@ export const AllAccessModalContent: FC<Props> = props => (
     heading={<AllAccessModalHeading />}
     left={<AllAccessModalCourses />}
     right={<AllAccessModalFeatures />}
-    standardPrice="$8287"
-    price="$3398"
-    deposit="$398"
-    fullSavings="$400"
+    headerAside={<PromoModalPriceBox standardValue="$8287" price="$3398" fullSavings="$400" />}
+    footerMessage={<>Start your journey today for only <span className="text-primary">$398</span>.</>}
   />
 );
 
