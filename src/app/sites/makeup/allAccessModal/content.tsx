@@ -6,7 +6,7 @@ import { LuminousKitWithoutConcealer } from '@/components/luminousKitWithoutConc
 import { PromoModalContent, PromoModalDarkBlueBox, PromoModalPriceBox } from '@/components/promoModal';
 
 interface Props {
-  onHide?: () => void;
+  onHide: () => void;
   onPrimaryClick?: () => void;
 }
 

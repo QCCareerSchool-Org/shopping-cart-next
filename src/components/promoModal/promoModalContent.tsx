@@ -5,7 +5,7 @@ import type { FC, ReactNode } from 'react';
 import styles from './promoModal.module.css';
 
 export interface PromoModalContentProps {
-  onHide?: () => void;
+  onHide: () => void;
   onPrimaryClick?: () => void;
   heading: ReactNode;
   left: ReactNode;
@@ -20,7 +20,6 @@ export const PromoModalContent: FC<PromoModalContentProps> = props => (
   <div className="bg-light w-100 d-flex flex-column overflow-hidden rounded-5 position-relative">
     <div className="bg-white border-bottom p-4 px-xl-5 d-flex flex-column flex-lg-row align-items-md-center justify-content-between gap-4 position-relative overflow-hidden flex-shrink-0">
       {props.heading}
-
       {props.headerAside}
     </div>
 
@@ -47,7 +46,7 @@ export const PromoModalContent: FC<PromoModalContentProps> = props => (
       </div>
 
       <div className="d-flex flex-column flex-sm-row gap-3">
-        {props.onHide && <button onClick={props.onHide} className={`btn bg-white fw-bold ${styles['text-dark-blue']}`} style={{ border: '1px solid #e2e8f0', padding: '0.6rem 1.5rem', borderRadius: '0.5rem' }}>Close</button>}
+        <button onClick={props.onHide} className={`btn bg-white fw-bold ${styles['text-dark-blue']}`} style={{ border: '1px solid #e2e8f0', padding: '0.6rem 1.5rem', borderRadius: '0.5rem' }}>Close</button>
         {props.onPrimaryClick && <button onClick={props.onPrimaryClick} className="btn btn-primary fw-bold" style={{ padding: '0.6rem 1.5rem', borderRadius: '0.5rem' }}>{props.primaryText ?? 'Enroll Now'}</button>}
       </div>
     </div>

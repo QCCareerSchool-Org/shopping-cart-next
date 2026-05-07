@@ -12,6 +12,10 @@ export const FreeSkincare300DynamicMessage: FC = () => {
 
   const discount = priceState?.currency.code === 'GBP' ? '£300' : '$300';
 
+  if (coursesState.selected.includes('AM')) {
+    return <DynamicCourseAlert variant="info"><strong>Note:</strong> The current promotion does not apply to the All-Access Program, which already offers the greatest overall value and maximum savings.</DynamicCourseAlert>;
+  }
+
   if (!coursesState.selected.length) {
     return <DynamicCourseAlert variant="info">Enroll in the <strong>Master Makeup Artistry</strong> course to get the <strong>Skincare Consultant</strong> course FREE! You'll also get {discount} off!</DynamicCourseAlert>;
   }
