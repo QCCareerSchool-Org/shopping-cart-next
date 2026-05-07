@@ -6,7 +6,7 @@ import { LuminousKitWithoutConcealer } from '@/components/luminousKitWithoutConc
 import { PromoModalContent, PromoModalDarkBlueBox } from '@/components/promoModal';
 
 interface Props {
-  onHide: () => void;
+  onHide?: () => void;
   onPrimaryClick?: () => void;
 }
 
@@ -36,6 +36,20 @@ const AllAccessModalHeading: FC = () => (
 
 const AllAccessModalCourses: FC = () => (
   <>
+    <div className="d-flex flex-column gap-4">
+      {features.map(feature => (
+        <div key={feature.title} className="d-flex gap-3">
+          <div className="flex-shrink-0 d-flex align-items-center justify-content-center bg-white border shadow-sm" style={{ width: 48, height: 48, borderRadius: '50%' }}>
+            {feature.icon}
+          </div>
+          <div>
+            <h4 className="fs-5 sans-serif mb-1" style={{ color: '#0A0F3D' }}>{feature.title}</h4>
+            <p className="text-secondary mb-0">{feature.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
     <div>
       <h3 className="fs-5 sans-serif fw-bold mb-4 d-flex align-items-center gap-2" style={{ color: '#0A0F3D' }}>
         <div style={{ width: 20, position: 'relative', top: -1 }}><FaBriefcase className="text-primary" /></div>
@@ -60,19 +74,6 @@ const AllAccessModalCourses: FC = () => (
 
 const AllAccessModalFeatures: FC = () => (
   <>
-    <div className="d-flex flex-column gap-4">
-      {features.map(feature => (
-        <div key={feature.title} className="d-flex gap-3">
-          <div className="flex-shrink-0 d-flex align-items-center justify-content-center bg-white border shadow-sm" style={{ width: 48, height: 48, borderRadius: '50%' }}>
-            {feature.icon}
-          </div>
-          <div>
-            <h4 className="fs-5 sans-serif mb-1" style={{ color: '#0A0F3D' }}>{feature.title}</h4>
-            <p className="text-secondary mb-0">{feature.description}</p>
-          </div>
-        </div>
-      ))}
-    </div>
 
     <PromoModalDarkBlueBox>
       <h4 className="fw-bold sans-serif fs-4 mb-2 d-flex align-items-center gap-2">
