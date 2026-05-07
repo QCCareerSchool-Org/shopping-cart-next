@@ -6,7 +6,7 @@ import { usePriceState } from '@/hooks/usePriceState';
 export const NoCoursesMessage: FC = () => {
   const priceState = usePriceState();
 
-  if (priceState && priceState.courses.length === 0) {
+  if (priceState?.courses.length === 0) {
     const handleClick = (): void => {
       scrollToPosition('courses');
     };

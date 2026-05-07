@@ -4,7 +4,6 @@ import type { FC } from 'react';
 
 import { Hero20260423 } from './hero';
 import { Design20260423Modal } from './modal';
-import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';

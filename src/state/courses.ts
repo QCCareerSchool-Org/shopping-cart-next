@@ -87,6 +87,9 @@ const convert = (course: string): string => {
   return course.toUpperCase();
 };
 
+const AAExclusions = [ 'EP', 'WP', 'CE', 'CP', 'ED', 'LW', 'DW', 'PE', 'FL', 'EB', 'VE' ];
+const AMExclusions = [ 'MZ', 'MA', 'SK', 'SF', 'MW', 'HS', 'AB', 'PW', 'PF' ];
+
 /**
  * Returns an array indicating which courses should be disabled based on which courses are selected
  * @param selectedCourses which courses are selected
@@ -161,12 +164,17 @@ const disabledCourses = (selectedCourses: string[], student: boolean): string[] 
     result.push('DG');
     result.push('DE');
   }
-  const AAPExclusions = [ 'EP', 'WP', 'CE', 'CP', 'ED', 'LW', 'DW', 'PE', 'FL', 'EB', 'VE' ];
-  if (selectedCourses.find(s => AAPExclusions.includes(s))) {
+  if (selectedCourses.find(s => AAExclusions.includes(s))) {
     result.push('AA');
   }
   if (selectedCourses.includes('AA')) {
-    result.push(...AAPExclusions);
+    result.push(...AAExclusions);
+  }
+  if (selectedCourses.find(s => AMExclusions.includes(s))) {
+    result.push('AM');
+  }
+  if (selectedCourses.includes('AM')) {
+    result.push(...AMExclusions);
   }
   return result;
 };

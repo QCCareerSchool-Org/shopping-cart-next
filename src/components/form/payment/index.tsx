@@ -26,7 +26,7 @@ interface Props {
 
 export const Payment: FC<Props> = ({ date, school, showPromoCodeInput, promosOverride, visualPaymentPlans, discountName, courseGroups, hideTaxRefund }) => {
   const priceState = usePriceState();
-  const plansEnabled = priceState && priceState.courses.every(c => c.plans.part);
+  const plansEnabled = priceState?.courses.every(c => c.plans.part);
 
   return (
     <Section className="paymentSection">

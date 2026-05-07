@@ -8,8 +8,8 @@ import { useCoursesState } from '@/hooks/useCoursesState';
 export const Save50CourseMessage: FC = () => {
   const coursesState = useCoursesState();
 
-  if (coursesState.selected.includes('AA')) {
-    return null;
+  if (coursesState.selected.includes('AA') || coursesState.selected.includes('AM')) {
+    return <DynamicCourseAlert variant="info"><strong>Note:</strong> The current promotion does not apply to the All-Access Program, which already offers the greatest overall value and maximum savings.</DynamicCourseAlert>;
   }
 
   const courseCount = coursesState.selected.length;

@@ -43,6 +43,7 @@ This file defines repo-specific working rules for coding agents in this project.
 - If a reusable helper is introduced, it must preserve current behavior exactly before any cleanup is considered complete.
 - When editing tenant pages, prefer tenant-local configuration over changing shared routing or shared tenant registries unless the request is explicitly infrastructural.
 - If a change touches shared files used by multiple tenants, call out the blast radius before editing.
+- For React components with children, prefer React's `PropsWithChildren` generic as `FC<PropsWithChildren<Props>>` over an explicit `children` prop or `interface Props extends PropsWithChildren`.
 
 ## Verification
 

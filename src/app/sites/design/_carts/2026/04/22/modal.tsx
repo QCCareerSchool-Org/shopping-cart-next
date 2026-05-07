@@ -3,7 +3,7 @@
 import type { FC } from 'react';
 import { FaAward, FaBriefcase, FaCheckCircle, FaLaptop, FaRocket, FaUsers } from 'react-icons/fa';
 
-import { PromoModal, PromoModalDarkBlueBox } from '@/components/promoModal';
+import { PromoModal, PromoModalDarkBlueBox, PromoModalPriceBox } from '@/components/promoModal';
 
 interface Props {
   show: boolean;
@@ -17,9 +17,8 @@ export const Design20260422Modal: FC<Props> = props => (
     heading={<Design20260422ModalHeading />}
     left={<Design20260422ModalLeft />}
     right={<Design20260422ModalRight />}
-    price="$2498"
-    fullSavings="$500"
-    deposit="$198"
+    headerAside={<PromoModalPriceBox price="$2498" fullSavings="$500" />}
+    footerMessage={<>Start your journey today for only <span className="text-primary">$198</span>.</>}
   />
 );
 

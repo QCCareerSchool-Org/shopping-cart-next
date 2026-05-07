@@ -1,11 +1,9 @@
 'use client';
 
-import type { FC, JSX, MouseEventHandler } from 'react';
-import { useId, useState } from 'react';
-import { Modal } from 'react-bootstrap';
+import type { FC, JSX } from 'react';
+import { useId } from 'react';
 import { FaQuestionCircle } from 'react-icons/fa';
 
-import styles from './checkBox.module.css';
 import { DisabledCourseModal } from './disabledCourseModal';
 import type { Course } from '@/domain/course';
 import { useAddressState } from '@/hooks/useAddressState';
@@ -27,17 +25,6 @@ export const CheckBox: FC<Props> = props => {
   // const coursesDispatch = useCoursesDispatch();
   const { gte } = useScreenSizeContext();
   const [ showDisabledMessage, toggleDisabledMessage ] = useToggle(false);
-
-  const [ expanded, setExpanded ] = useState(false);
-
-  const handleClick: MouseEventHandler = ev => {
-    ev.preventDefault();
-    setExpanded(e => !e);
-  };
-
-  const handleHide = () => {
-    setExpanded(false);
-  };
 
   const handleCourseChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.checked) {
@@ -93,17 +80,7 @@ export const CheckBox: FC<Props> = props => {
         {gte('sm') && props.course.badge}
         {disabledMessage && <DisabledCourseModal course={props.course.code} name={name} message={disabledMessage} show={showDisabledMessage} onHide={handleToggle} />}
       </div>
-      {props.course.contents && (
-        <div className="ms-4">
-          <a href="#" onClick={handleClick} className="small" style={{ textDecoration: 'none' }}>See What's Included</a>
-          <Modal size={props.course.contents.modalSize} show={expanded} onHide={handleHide}>
-            <Modal.Header closeButton><h3 className="h5 mb-0">{props.course.contents.heading}</h3></Modal.Header>
-            <Modal.Body className={styles.noMarginBottom}>
-              {props.course.contents.body}
-            </Modal.Body>
-          </Modal>
-        </div>
-      )}
+      {props.course.contents}
     </>
   );
 };
