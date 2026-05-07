@@ -99,9 +99,7 @@ export const PromoModalContent: FC<PromoModalContentProps> = props => (
   </div>
 );
 
-interface PromoModalDarkBlueBoxProps {}
-
-export const PromoModalDarkBlueBox: FC<PropsWithChildren<PromoModalDarkBlueBoxProps>> = ({ children }) => (
+export const PromoModalDarkBlueBox: FC<PropsWithChildren> = ({ children }) => (
   <div className={`position-relative overflow-hidden rounded-4 ${styles['bg-dark-blue']} text-white p-4 shadow`}>
     <div className="position-absolute rounded-circle bg-primary opacity-25 pointer-events-none" style={{ top: '-20px', right: '-20px', width: '100px', height: '100px', filter: 'blur(30px)' }} />
     <div className="position-relative z-1">
