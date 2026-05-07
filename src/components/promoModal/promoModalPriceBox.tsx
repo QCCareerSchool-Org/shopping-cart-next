@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const PromoModalPriceBox: FC<Props> = props => (
-  <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 260 }}>
+  <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border ms-auto" style={{ maxWidth: 260 }}>
     {props.standardValue && <div className="small text-secondary mb-1">
       Standard Value <span className={styles.crossedOut}>{props.standardValue}</span>
     </div>}
