@@ -20,3 +20,4 @@ export { PromoModalContent } from './promoModalContent';
 export type { PromoModalContentProps } from './promoModalContent';
 export { PromoModalDarkBlueBox } from './promoModalDarkBlueBox';
 export { PromoModalFrame } from './promoModalFrame';
+export { PromoModalPriceBox } from './promoModalPriceBox';

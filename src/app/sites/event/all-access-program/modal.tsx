@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { FaAward, FaBriefcase, FaChartLine, FaCheckCircle, FaShieldAlt, FaUsers } from 'react-icons/fa';
 
 import styles from './modal.module.css';
-import { PromoModal, PromoModalDarkBlueBox } from '@/components/promoModal';
+import { PromoModal, PromoModalDarkBlueBox, PromoModalPriceBox } from '@/components/promoModal';
 import { useCoursesDispatch } from '@/hooks/useCoursesDispatch';
 
 interface Props {
@@ -41,10 +41,8 @@ export const AllAccessModal: FC<Props> = props => {
       heading={<AllAccessModalHeading />}
       left={<AllAccessModalCourses />}
       right={<AllAccessModalFeatures />}
-      standardPrice={standardPrice}
-      price={price}
-      deposit={deposit}
-      fullSavings={fullSavings}
+      headerAside={<PromoModalPriceBox standardValue={standardPrice} price={price} fullSavings={fullSavings} />}
+      footerMessage={<>Start your journey today for only <span className="text-primary">{deposit}</span>.</>}
     />
   );
 };
