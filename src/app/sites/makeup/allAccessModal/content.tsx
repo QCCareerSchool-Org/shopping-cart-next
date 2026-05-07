@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { FaAward, FaBriefcase, FaChartLine, FaCheckCircle, FaMagic, FaUsers } from 'react-icons/fa';
+import { FaAward, FaChartLine, FaCheckCircle, FaMagic, FaUsers } from 'react-icons/fa';
 
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { LuminousKitWithoutConcealer } from '@/components/luminousKitWithoutConcealer';
@@ -34,27 +34,9 @@ const AllAccessModalHeading: FC = () => (
 
 const AllAccessModalCourses: FC = () => (
   <>
-    <div className="d-flex flex-column gap-4">
-      {features.map(feature => (
-        <div key={feature.title} className="d-flex gap-3">
-          <div className="flex-shrink-0 d-flex align-items-center justify-content-center bg-white border shadow-sm" style={{ width: 48, height: 48, borderRadius: '50%' }}>
-            {feature.icon}
-          </div>
-          <div>
-            <h4 className="fs-5 sans-serif mb-1" style={{ color: '#0A0F3D' }}>{feature.title}</h4>
-            <p className="text-secondary mb-0">{feature.description}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-
     <div>
-      <h3 className="fs-5 sans-serif fw-bold mb-4 d-flex align-items-center gap-2" style={{ color: '#0A0F3D' }}>
-        <div style={{ width: 20, position: 'relative', top: -1 }}><FaBriefcase className="text-primary" /></div>
-        <div className="text-nowrap">Certification Courses Included</div>
-      </h3>
-
-      <ul className="list-unstyled d-flex flex-column gap-3 flex-grow-1 mb-0">
+      <h3 className="fs-5 sans-serif fw-bold mb-4 d-flex align-items-center gap-2" style={{ color: '#0A0F3D' }}>Certification Courses Included</h3>
+      <ul className="list-unstyled d-flex flex-column gap-2 flex-grow-1 mb-0">
         {courses.map(course => (
           <li key={course} className="d-flex align-items-start gap-3">
             <div style={{ width: 14 }}><FaCheckCircle className="text-primary mt-1 flex-shrink-0" /></div>
@@ -62,6 +44,15 @@ const AllAccessModalCourses: FC = () => (
           </li>
         ))}
       </ul>
+    </div>
+
+    <div className="d-flex flex-column gap-3">
+      {features.map(feature => (
+        <div key={feature.title}>
+          <h4 className="fs-5 sans-serif mb-1" style={{ color: '#0A0F3D' }}>{feature.title}</h4>
+          <p className="text-secondary mb-0">{feature.description}</p>
+        </div>
+      ))}
     </div>
 
     <div className="p-3 rounded-3 border" style={{ backgroundColor: 'rgba(13, 110, 253, 0.08)', borderColor: 'rgba(13, 110, 253, 0.2)' }}>
@@ -72,12 +63,11 @@ const AllAccessModalCourses: FC = () => (
 
 const AllAccessModalFeatures: FC = () => (
   <>
-
     <PromoModalDarkBlueBox>
-      <h4 className="fw-bold sans-serif fs-4 mb-2 d-flex align-items-center gap-2">
+      <div className="mb-2">
         <span className="bg-primary small px-2 py-1 rounded text-uppercase fw-bold" style={{ color: '#0A0F3D', fontSize: '0.75rem' }}>Bonus</span>
-        Luminous Makeup Kit + Pro Discounts
-      </h4>
+      </div>
+      <h4 className="fw-bold sans-serif fs-4 mb-2 d-flex align-items-center">Luminous Makeup Kit + Pro Discounts</h4>
       <p className="small mb-4">Enroll today and get the Luminous Makeup Kit, included with the Master Makeup Artistry course + access to exclusive discounts to preferred makeup partners like Mac, Smashbox and more.</p>
       <div className="bg-white border rounded-4 p-3 shadow-sm text-dark">
         <LuminousKitWithoutConcealer />
