@@ -4,23 +4,32 @@ import { FaAward, FaChartLine, FaCheckCircle, FaMagic, FaUsers } from 'react-ico
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { LuminousKitWithoutConcealer } from '@/components/luminousKitWithoutConcealer';
 import { PromoModalContent, PromoModalDarkBlueBox, PromoModalPriceBox } from '@/components/promoModal';
+import { useAddressState } from '@/hooks/useAddressState';
 
 interface Props {
   onHide: () => void;
   onPrimaryClick?: () => void;
 }
 
-export const AllAccessModalContent: FC<Props> = props => (
-  <PromoModalContent
-    onHide={props.onHide}
-    onPrimaryClick={props.onPrimaryClick}
-    heading={<AllAccessModalHeading />}
-    left={<AllAccessModalCourses />}
-    right={<AllAccessModalFeatures />}
-    headerAside={<PromoModalPriceBox standardValue="$8287" price="$3398" fullSavings="$400" />}
-    footerMessage={<>Start your journey today for only <span className="text-primary">$398</span>.</>}
-  />
-);
+export const AllAccessModalContent: FC<Props> = props => {
+  const { countryCode, provinceCode } = useAddressState();
+
+  const [ price, fullSavings ] = countryCode === 'CA' && provinceCode === 'ON'
+    ? [ '$1998', '$100' ]
+    : [ '$3398', '$400' ];
+
+  return (
+    <PromoModalContent
+      onHide={props.onHide}
+      onPrimaryClick={props.onPrimaryClick}
+      heading={<AllAccessModalHeading />}
+      left={<AllAccessModalCourses />}
+      right={<AllAccessModalFeatures />}
+      headerAside={<PromoModalPriceBox standardValue="$8287" price={price} fullSavings={fullSavings} />}
+      footerMessage={<>Start your journey today for only <span className="text-primary">$398</span>.</>}
+    />
+  );
+};
 
 const AllAccessModalHeading: FC = () => (
   <div className="position-relative z-1 flex-grow-1">
