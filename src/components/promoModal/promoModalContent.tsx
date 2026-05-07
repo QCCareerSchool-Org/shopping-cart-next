@@ -1,12 +1,11 @@
 'use client';
 
-import type { FC, PropsWithChildren, ReactNode } from 'react';
-import { Modal } from 'react-bootstrap';
+import type { FC, ReactNode } from 'react';
 
 import styles from './promoModal.module.css';
 
 export interface PromoModalContentProps {
-  onHide: () => void;
+  onHide?: () => void;
   onPrimaryClick?: () => void;
   heading: ReactNode;
   left: ReactNode;
@@ -20,33 +19,6 @@ export interface PromoModalContentProps {
   footerMessage?: ReactNode;
   primaryText?: ReactNode;
 }
-
-interface PromoModalProps extends PromoModalContentProps {
-  show: boolean;
-}
-
-export const PromoModal: FC<PromoModalProps> = props => (
-  <PromoModalFrame show={props.show} onHide={props.onHide}>
-    <PromoModalContent {...props} />
-  </PromoModalFrame>
-);
-
-interface PromoModalFrameProps {
-  show: boolean;
-  onHide: () => void;
-}
-
-export const PromoModalFrame: FC<PropsWithChildren<PromoModalFrameProps>> = props => (
-  <Modal animation={false} show={props.show} onHide={props.onHide} size="xl" contentClassName="bg-white rounded-4">
-    <div onClick={props.onHide} className={styles.closeButtonWrapper}>
-      <div className={styles.closeButtonCircle}>
-        <button type="button" className={`btn-close ${styles.closeButton}`} aria-label="Close" />
-      </div>
-    </div>
-
-    {props.children}
-  </Modal>
-);
 
 export const PromoModalContent: FC<PromoModalContentProps> = props => (
   <div className="bg-light w-100 d-flex flex-column overflow-hidden rounded-5 position-relative">
@@ -92,18 +64,9 @@ export const PromoModalContent: FC<PromoModalContentProps> = props => (
       </div>
 
       <div className="d-flex flex-column flex-sm-row gap-3">
-        <button onClick={props.onHide} className={`btn bg-white fw-bold ${styles['text-dark-blue']}`} style={{ border: '1px solid #e2e8f0', padding: '0.6rem 1.5rem', borderRadius: '0.5rem' }}>Close</button>
+        {props.onHide && <button onClick={props.onHide} className={`btn bg-white fw-bold ${styles['text-dark-blue']}`} style={{ border: '1px solid #e2e8f0', padding: '0.6rem 1.5rem', borderRadius: '0.5rem' }}>Close</button>}
         {props.onPrimaryClick && <button onClick={props.onPrimaryClick} className="btn btn-primary fw-bold" style={{ padding: '0.6rem 1.5rem', borderRadius: '0.5rem' }}>{props.primaryText ?? 'Enroll Now'}</button>}
       </div>
-    </div>
-  </div>
-);
-
-export const PromoModalDarkBlueBox: FC<PropsWithChildren> = ({ children }) => (
-  <div className={`position-relative overflow-hidden rounded-4 ${styles['bg-dark-blue']} text-white p-4 shadow`}>
-    <div className="position-absolute rounded-circle bg-primary opacity-25 pointer-events-none" style={{ top: '-20px', right: '-20px', width: '100px', height: '100px', filter: 'blur(30px)' }} />
-    <div className="position-relative z-1">
-      {children}
     </div>
   </div>
 );

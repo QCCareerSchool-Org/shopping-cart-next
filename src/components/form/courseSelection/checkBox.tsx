@@ -5,7 +5,6 @@ import { useId, useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import { FaQuestionCircle } from 'react-icons/fa';
 
-import styles from './checkBox.module.css';
 import { DisabledCourseModal } from './disabledCourseModal';
 import type { Course } from '@/domain/course';
 import { useAddressState } from '@/hooks/useAddressState';
@@ -97,10 +96,10 @@ export const CheckBox: FC<Props> = props => {
         <div className="ms-4">
           <a href="#" onClick={handleClick} className="small" style={{ textDecoration: 'none' }}>See What's Included</a>
           <Modal size={props.course.contents.modalSize} show={expanded} onHide={handleHide}>
-            <Modal.Header closeButton><h3 className="h5 mb-0">{props.course.contents.heading}</h3></Modal.Header>
-            <Modal.Body className={styles.noMarginBottom}>
+            {props.course.contents.heading && <Modal.Header closeButton><h3 className="h5 mb-0">{props.course.contents.heading}</h3></Modal.Header>}
+            <div>
               {props.course.contents.body}
-            </Modal.Body>
+            </div>
           </Modal>
         </div>
       )}

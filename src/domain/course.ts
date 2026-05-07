@@ -14,7 +14,7 @@ export interface Course {
   badge?: JSX.Element;
   alwaysShown?: boolean;
   contents?: {
-    heading: string;
+    heading?: string;
     body: ReactNode;
     modalSize?: 'sm' | 'lg' | 'xl';
   };
