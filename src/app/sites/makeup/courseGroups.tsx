@@ -1,4 +1,4 @@
-import { AllAccessModalWithLink } from './allAccessModal/withLink';
+import { AllAccessModalWithLink } from './all-access-program/modal/withLink';
 import type { CourseGroup } from '@/domain/courseGroup';
 
 export const courseGroups: CourseGroup[] = [
