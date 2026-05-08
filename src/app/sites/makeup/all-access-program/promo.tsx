@@ -27,6 +27,9 @@ export const MakeupFreeMasterclassPromo: FC<Props> = () => {
           <MakeupFreeMasterclassHero />
         </div>
       </Section>
+      <Section className="text-center">
+        <h2>Enroll in the All-Access Program</h2>
+      </Section>
       <AllAccessModal show={showPopup} onHide={handleClick} />
     </>
   );
