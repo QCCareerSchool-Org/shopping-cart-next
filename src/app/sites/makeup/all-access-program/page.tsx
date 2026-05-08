@@ -19,8 +19,9 @@ const MakeupAllAccessPage: PageComponent = async props => {
         guarantee={Guarantee}
         successLink="https://www.qcmakeupacademy.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
-        dynamicCourseDescriptions="SHOW"
+        dynamicCourseDescriptions="HIDE"
         visualPaymentPlans
+        hideCourseSelection
         coursesOverride={[ 'am' ]}
       />
     </>
