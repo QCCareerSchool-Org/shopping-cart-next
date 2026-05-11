@@ -3,9 +3,10 @@
 import type { FC } from 'react';
 
 import { Hero20260506 } from './hero';
-import { Event20260506Modal } from './modal';
+import { AllAccessModal } from '@/app/sites/event/all-access-program/modal';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
+import { useAddressState } from '@/hooks/useAddressState';
 import { useToggle } from '@/hooks/useToggle';
 import type { LastChancePeriodDTO } from '@/lib/period';
 
@@ -19,6 +20,7 @@ interface Props {
 export const Event20260506Promo: FC<Props> = ({ date, period }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
+  const { countryCode, provinceCode } = useAddressState();
 
   const handleClick = (): void => {
     togglePopup();
@@ -38,7 +40,7 @@ export const Event20260506Promo: FC<Props> = ({ date, period }) => {
           <Hero20260506 variant={variant} />
         </div>
       </Section>
-      <Event20260506Modal show={showPopup} onHide={handleClick} />
+      <AllAccessModal show={showPopup} onHide={handleClick} countryCode={countryCode} provinceCode={provinceCode} />
     </>
   );
 };
