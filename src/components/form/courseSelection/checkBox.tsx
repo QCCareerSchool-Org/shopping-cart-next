@@ -8,7 +8,6 @@ import { DisabledCourseModal } from './disabledCourseModal';
 import type { Course } from '@/domain/course';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useCoursesState } from '@/hooks/useCoursesState';
-import { useScreenSizeContext } from '@/hooks/useScreenSizeContext';
 import { useToggle } from '@/hooks/useToggle';
 
 interface Props {
@@ -23,7 +22,6 @@ export const CheckBox: FC<Props> = props => {
   const coursesState = useCoursesState();
   const { countryCode, provinceCode } = useAddressState();
   // const coursesDispatch = useCoursesDispatch();
-  const { gte } = useScreenSizeContext();
   const [ showDisabledMessage, toggleDisabledMessage ] = useToggle(false);
 
   const handleCourseChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -77,7 +75,7 @@ export const CheckBox: FC<Props> = props => {
             </button>
           )}
         </label>
-        {gte('sm') && props.course.badge}
+        {props.course.badge}
         {disabledMessage && <DisabledCourseModal course={props.course.code} name={name} message={disabledMessage} show={showDisabledMessage} onHide={handleToggle} />}
       </div>
       {props.course.contents}
