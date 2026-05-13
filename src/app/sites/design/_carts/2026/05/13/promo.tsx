@@ -39,9 +39,6 @@ export const Design20260513Promo: FC<Props> = ({ date, period }) => {
           <Hero20260513 variant={variant} />
         </div>
       </Section>
-      <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
-        You'll Also Receive <strong>50% Off Each Additional Course</strong>
-      </Banner>
       <Design20260513Modal show={showPopup} onHide={handleClick} />
     </>
   );
