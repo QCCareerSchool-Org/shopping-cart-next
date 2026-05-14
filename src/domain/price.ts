@@ -36,7 +36,7 @@ interface PriceDetails {
   /** the payment plans */
   plans: { full: Plan; part?: Plan };
   /** what our cost for shipping would be if we shipped */
-  shipping: number;
+  // shipping: number;
 }
 
 export type Price = {
@@ -94,8 +94,8 @@ const isPriceDetails = (obj: unknown): obj is PriceDetails => {
     'promoDiscount' in obj && typeof obj.promoDiscount === 'number' &&
     'shippingDiscount' in obj && typeof obj.shippingDiscount === 'number' &&
     'discountedCost' in obj && typeof obj.discountedCost === 'number' &&
-    'plans' in obj && isPlans(obj.plans) &&
-    'shipping' in obj && typeof obj.shipping === 'number';
+    'plans' in obj && isPlans(obj.plans); // &&
+  // 'shipping' in obj && typeof obj.shipping === 'number';
 };
 
 const isPlans = (obj: unknown): obj is { full: Plan; part?: Plan } => {
