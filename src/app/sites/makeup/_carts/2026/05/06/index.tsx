@@ -4,7 +4,7 @@ import { Makeup20260506Promo } from './promo';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { courseGroups } from '@/app/sites/makeup/courseGroups';
 import { Guarantee } from '@/app/sites/makeup/guarantee';
-import { FreeSkincareDynamicMessage } from '@/components/dynamicCourseMessages/freeSkincare';
+import { FreeSKMWMessage } from '@/components/dynamicCourseMessages/freeSKMW';
 import { Form } from '@/components/form';
 import type { LastChancePeriodDTO } from '@/lib/period';
 
@@ -25,8 +25,8 @@ export const Makeup20260506: FC<Props> = ({ date, period }) => (
       agreementLinks={agreementLinks}
       visualPaymentPlans={true}
       dynamicCourseDescriptions="SHOW"
-      dynamicCourseMessages={[ FreeSkincareDynamicMessage ]}
-      promoCodeDefault="SKINCARE"
+      dynamicCourseMessages={[ FreeSKMWMessage ]}
+      promoCodeDefault="SKMWFREE"
     />
   </>
 );

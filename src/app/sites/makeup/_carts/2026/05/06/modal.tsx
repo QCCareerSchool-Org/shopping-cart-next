@@ -21,6 +21,7 @@ export const Makeup20260506Modal: FC<Props> = props => {
     coursesDispatch({ type: 'CLEAR_COURSES', payload: { countryCode, provinceCode } });
     coursesDispatch({ type: 'ADD_COURSE', payload: { countryCode, provinceCode, courseCode: 'mz' } });
     coursesDispatch({ type: 'ADD_COURSE', payload: { countryCode, provinceCode, courseCode: 'sk' } });
+    coursesDispatch({ type: 'ADD_COURSE', payload: { countryCode, provinceCode, courseCode: 'mw' } });
     props.onHide();
   };
 
@@ -41,10 +42,10 @@ export const Makeup20260506Modal: FC<Props> = props => {
 const Makeup20260506ModalHeading: FC = () => (
   <div className="position-relative z-1 flex-grow-1">
     <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill small fw-bold text-uppercase mb-3" style={{ backgroundColor: 'rgba(13, 110, 253, 0.1)', color: '#0A0F3D', border: '1px solid rgba(13, 110, 253, 0.2)' }}>
-      <FaMagic /> Globally Recognized MIMP&trade; Certification
+      <FaMagic /> Graduate with three professional certifications
     </div>
     <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>A Makeup Career that Grows With You</h2>
-    <p className="text-secondary mb-0">Enroll in Master <strong>Makeup Artistry</strong> today and get the <strong>Skincare</strong> Course FREE.</p>
+    <p className="mb-0">Enroll in Master <strong>Makeup Artistry</strong> today and get both the <strong>Skincare course + Pro Makeup Workshop</strong> FREE.</p>
   </div>
 );
 
@@ -58,10 +59,12 @@ const Makeup20260506ModalOffer: FC = () => (
 const Makeup20260506ModalLeft: FC = () => (
   <>
     <div>
-      <p>The Skincare course lets you expand your makeup expertise while opening doors to a new career as a skincare consultant. You'll learn to:</p>
+      <h3 className="h4 mb-3">Get Two Professional Courses FREE</h3>
+      <p>Unlock your full potential with this powerhouse combination. Build a foundation in professional makeup artistry while adding high-ticket skincare services and advanced artistry to your menu.</p>
+      <p className="fw-bold">Transform your career and learn to:</p>
       <ul className="list-unstyled d-flex flex-column gap-3 mb-0">
-        {features.map(feature => (
-          <li key={feature} className="d-flex gap-3">
+        {features.map((feature, i) => (
+          <li key={i} className="d-flex gap-3">
             <div className="flex-shrink-0 d-flex align-items-center justify-content-center">
               <FaCheckCircle className="text-primary" />
             </div>
@@ -88,10 +91,9 @@ const Makeup20260506ModalRight: FC = () => (
 );
 
 const features = [
-  'Assess skin types and conditions',
-  'Conduct personalized skincare consultations and recommend products',
-  'Create DIY skincare recipes and understand anti-aging techniques',
-  'Address common skin concerns like acne, sensitivity, and aging',
-  'Understand skin anatomy and how it affects product selection',
-  'Build customized skincare routines tailored to each client',
+  <><strong>Build Your Foundation:</strong> Master expert makeup application, color theory, and advanced blending for a flawless, long-wear finish.</>,
+  <><strong>Master Advanced Artistry:</strong> Refine your technique with pro-level makeup coaching and specialized skills for high-definition results.</>,
+  <><strong>Solve Skin Concerns:</strong> Confidently address acne, sensitivity, and advanced anti-aging needs for every client.</>,
+  <><strong>Offer Expert Consultations:</strong> Conduct professional skincare assessments and recommend personalized products to increase your value.</>,
+  <><strong>Scale Your Services:</strong> Create bespoke DIY skincare recipes and customized routines to boost your revenue and bookings.</>,
 ];
