@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { Makeup20260506 } from './_carts/2026/05/06';
 import { MakeupFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
-import { may06 } from '@/periods';
+import { may06, may16 } from '@/periods';
 import type { PageComponent } from '@/serverComponent';
 
 const MakeupPage: PageComponent = async props => {
@@ -12,9 +12,11 @@ const MakeupPage: PageComponent = async props => {
 
   return (
     <Suspense>
-      {may06.contains(date)
-        ? <Makeup20260506 date={date} period={may06.toDTO()} />
-        : <MakeupFallback date={date} />
+      {may16.contains(date)
+        ? <Makeup20260506 date={date} period={may16.toDTO()} />
+        : may06.contains(date)
+          ? <Makeup20260506 date={date} period={may06.toDTO()} />
+          : <MakeupFallback date={date} />
       }
     </Suspense>
   );
