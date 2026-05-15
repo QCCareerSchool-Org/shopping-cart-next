@@ -7,6 +7,7 @@ export const courseGroups: CourseGroup[] = [
       { code: 'DG', name: 'Dog Grooming', badge: <DogGroomingKitTag /> },
       { code: 'DE', name: 'Dog Grooming + Externship' },
       { code: 'DT', name: 'Dog Training' },
+      { code: 'TE', name: 'Dog Training + Externship' },
       {
         code: 'DC',
         name: 'Dog Behavior',
