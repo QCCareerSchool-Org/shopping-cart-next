@@ -2,8 +2,8 @@ import { lastChancePeriod } from './lib/period';
 
 export const may16 = lastChancePeriod(
   Date.UTC(2026, 4, 16, 7), // 2026-05-16T03:00 (07:00 UTC)
-  Date.UTC(2026, 4, 19, 7), // 2026-05-19T03:00 (07:00 UTC)
-  Date.UTC(2026, 4, 20, 7), // 2026-05-20T03:00 (07:00 UTC)
+  Date.UTC(2026, 4, 29, 7), // 2026-05-29T03:00 (07:00 UTC)
+  Date.UTC(2026, 4, 30, 7), // 2026-05-30T03:00 (07:00 UTC)
 );
 
 export const may06 = lastChancePeriod(
