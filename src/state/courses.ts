@@ -149,6 +149,12 @@ const disabledCourses = (selectedCourses: string[], student: boolean): string[] 
   if (selectedCourses.includes('DE')) {
     result.push('DG');
   }
+  if (selectedCourses.includes('DT')) {
+    result.push('TE');
+  }
+  if (selectedCourses.includes('TE')) {
+    result.push('DT');
+  }
   if (selectedCourses.includes('FA')) {
     result.push('DS');
   }
