@@ -4,13 +4,12 @@ import type { FC } from 'react';
 
 import { Hero20260513 } from './hero';
 import { Design20260513Modal } from './modal';
-import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
 import type { LastChancePeriodDTO } from '@/lib/period';
 
-const backgroundColor = '#1a100b';
+const backgroundColor = '#fdefe3';
 
 interface Props {
   date: number;
