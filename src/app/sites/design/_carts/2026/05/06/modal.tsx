@@ -18,29 +18,35 @@ export const Design20260506Modal: FC<Props> = props => {
     <PromoModal
       show={props.show}
       onHide={props.onHide}
-      heading={<Design20260506ModalHeading />}
+      header={<Design20260506ModalHeading />}
       left={<Design20260506ModalLeft />}
       right={<Design20260506ModalRight />}
-      headerAside={<Design20260506ModalOffer />}
       footerDisclaimer="* Flexible payment plans available."
+      footerClassName="bg-light"
       footerMessage={<span>Start your journey today for only <span className="text-primary">$198.</span></span>}
     />
   );
 };
 
 const Design20260506ModalHeading: FC = () => (
-  <div className="position-relative z-1 flex-grow-1">
-    <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>Unlock Your Professional Design Certification</h2>
-    <p className="text-secondary mb-0">Enroll in any design course and receive a second course FREE. For a limited time, every Interior Design & Decorating enrollment also includes complimentary textbooks — giving you even more value as you build your skills. </p>
-  </div>
-);
-
-const Design20260506ModalOffer: FC = () => (
-  <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 500 }}>
-    <div className="small fw-bold text-center">Save up to an additional</div>
-    <div className="fs-2 fw-bold text-center text-primary" style={{ lineHeight: 1.1 }}>$500</div>
-    <div className="small fw-bold text-center">when you pay in full today!*</div>
-  </div>
+  <>
+    <div className="row align-items-center p-4">
+      <div className="col-lg-8">
+        <div className="position-relative z-1 flex-grow-1">
+          <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>Unlock Your Professional Design Certification</h2>
+          <p className="text-secondary mb-0">Enroll in any design course and receive a second course FREE. For a limited time, every Interior Design & Decorating enrollment also includes complimentary textbooks — giving you even more value as you build your skills. </p>
+        </div>
+      </div>
+      <div className="col-lg-3">
+        <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 500 }}>
+          <div className="small fw-bold text-center">Save up to an additional</div>
+          <div className="fs-2 fw-bold text-center text-primary" style={{ lineHeight: 1.1 }}>$500</div>
+          <div className="small fw-bold text-center">when you pay in full today!*</div>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </>
 );
 
 const Design20260506ModalLeft: FC = () => (

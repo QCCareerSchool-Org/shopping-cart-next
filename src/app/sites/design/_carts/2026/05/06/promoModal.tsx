@@ -9,17 +9,18 @@ interface Props {
   show: boolean;
   onHide: () => void;
   onPrimaryClick?: () => void;
-  heading: ReactNode;
+  header: ReactNode;
   left: ReactNode;
   right: ReactNode;
   standardPrice?: ReactNode;
   price?: ReactNode;
   deposit?: ReactNode;
   fullSavings?: ReactNode;
-  headerAside?: ReactNode;
   footerDisclaimer?: ReactNode;
   footerMessage?: ReactNode;
   primaryText?: ReactNode;
+  footerClassName?: string;
+  bodyClassName?: string;
 }
 
 export const PromoModal: FC<Props> = props => (
@@ -30,27 +31,8 @@ export const PromoModal: FC<Props> = props => (
       </div>
     </div>
 
-    <div className="row align-items-center p-4">
-      <div className="col-lg-8">
-        {props.heading}
-      </div>
-      <div className="col-lg-3">
-        {props.headerAside ?? (props.price && props.fullSavings
-          ? <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ width: 400 }}>
-            {props.standardPrice && <div className="small text-secondary mb-1">
-              Standard Value <span className={styles.crossedOut}>{props.standardPrice}</span>
-            </div>}
-            <div className="d-flex align-items-top justify-content-center justify-content-lg-end mb-2">
-              <span className={`fs-1 fw-bold ${styles['text-dark-blue']}`} style={{ lineHeight: 1.1 }}>{props.price}</span>
-              <span className="small fw-medium text-secondary">*</span>
-            </div>
-            <div className="small">Save an additional <strong className="text-primary fw-medium">{props.fullSavings}</strong> if you pay in full today.</div>
-          </div>
-          : null)}
-      </div>
-    </div>
-
-    <div className="p-4 p-xl-5 flex-grow-1">
+    {props.header}
+    <div className={`p-4 p-xl-5 flex-grow-1 ${props.bodyClassName}`}>
       <div className="row g-5">
         <div className={`col-lg-6 d-flex flex-column gap-5 justify-content-between ${styles.colLeft}`}>
           {props.left}
@@ -66,7 +48,7 @@ export const PromoModal: FC<Props> = props => (
       </div>
     </div>
 
-    <div className="bg-light border-top p-4 px-xl-5 flex-shrink-0 d-flex flex-column flex-lg-row align-items-center justify-content-between w-100 z-1 gap-4">
+    <div className={`border-top p-4 px-xl-5 flex-shrink-0 d-flex flex-column flex-lg-row align-items-center justify-content-between w-100 z-1 gap-4 ${props.footerClassName}`}>
       <div className={`text-center text-sm-start mb-sm-0 ${styles.footerCopy}`}>
         <p className="small mb-1 text-secondary">{props.footerDisclaimer ?? '* Flexible payment plans available.'}</p>
         <p className={`${styles['text-dark-blue']} fw-bold mb-0`}>
