@@ -11,6 +11,7 @@ interface Props {
 }
 
 export const Hero20260513: FC<Props> = ({ variant }) => {
+
   const [ desktopSrc, mobileSrc ] = variant === 'lastChance'
     ? [ DesktopEnds, MobileEnds ]
     : [ Desktop, Mobile ];
