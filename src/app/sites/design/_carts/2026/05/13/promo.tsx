@@ -4,6 +4,7 @@ import type { FC } from 'react';
 
 import { Hero20260513 } from './hero';
 import { Design20260513Modal } from './modal';
+import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
@@ -38,6 +39,9 @@ export const Design20260513Promo: FC<Props> = ({ date, period }) => {
           <Hero20260513 variant={variant} />
         </div>
       </Section>
+      <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
+        You'll Also Receive <strong>50% Off Each Additional Course</strong>
+      </Banner>
       <Design20260513Modal show={showPopup} onHide={handleClick} />
     </>
   );
