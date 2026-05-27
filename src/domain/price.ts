@@ -1,5 +1,7 @@
 import type { Currency } from './currency';
 import { isCurrency } from './currency';
+import type { NoShipping } from './noShipping';
+import { isNoShipping } from './noShipping';
 
 interface Plan {
   /** the discount based on the payment plan */
@@ -44,7 +46,7 @@ export type Price = {
   disclaimers: string[];
   notes: string[];
   promoWarnings: string[];
-  noShipping: boolean;
+  noShipping: NoShipping;
   noShippingMessage?: string;
   promoCodeRecognized?: boolean;
   promoCode?: string;
@@ -67,7 +69,7 @@ export const isPrice = (obj: unknown): obj is Price => {
     'disclaimers' in obj && Array.isArray(obj.disclaimers) && obj.disclaimers.every(d => typeof d === 'string') &&
     'notes' in obj && Array.isArray(obj.notes) && obj.notes.every(d => typeof d === 'string') &&
     'promoWarnings' in obj && Array.isArray(obj.promoWarnings) && obj.promoWarnings.every(d => typeof d === 'string') &&
-    'noShipping' in obj && typeof obj.noShipping === 'boolean' &&
+    'noShipping' in obj && isNoShipping(obj.noShipping) && // typeof obj.noShipping === 'boolean' &&
     (('noShippingMessage' in obj && (typeof obj.noShippingMessage === 'string' || typeof obj.noShippingMessage === 'undefined')) || !('noShippingMessage' in obj)) &&
     (('promoCodeRecognized' in obj && (typeof obj.promoCodeRecognized === 'boolean' || typeof obj.promoCodeRecognized === 'undefined')) || !('promoCodeRecognized' in obj)) &&
     (('promoCode' in obj && (typeof obj.promoCode === 'string' || typeof obj.promoCode === 'undefined')) || !('promoCode' in obj)) &&
