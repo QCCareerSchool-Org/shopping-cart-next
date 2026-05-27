@@ -20,10 +20,12 @@ export interface PromoModalContentProps {
 
 export const PromoModalContent: FC<PromoModalContentProps> = props => (
   <div className="bg-light w-100 d-flex flex-column overflow-hidden rounded-5 position-relative">
-    <div className="bg-white border-bottom p-4 px-xl-5 d-flex flex-column flex-lg-row align-items-md-center justify-content-between gap-4 position-relative overflow-hidden flex-shrink-0">
-      {props.heading}
-      {props.headerAside}
-    </div>
+    {props.headerAside ? (
+      <div className="bg-white border-bottom p-4 px-xl-5 d-flex flex-column flex-lg-row align-items-md-center justify-content-between gap-4 position-relative overflow-hidden flex-shrink-0">
+        {props.heading}
+        {props.headerAside}
+      </div>
+    ) : (props.heading)}
 
     <div className={`p-4 p-xl-5 flex-grow-1 ${props.bodyClassName}`}>
       <div className="row g-5">
