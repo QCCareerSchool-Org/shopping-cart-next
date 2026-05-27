@@ -184,12 +184,6 @@ const CostRows: React.FC<InnerProps> = ({ price, plan, countryCode, provinceCode
           <td className="text-end text-primary text-nowrap align-bottom">&minus; {price.currency.symbol}{price.promoDiscount.toFixed(2)}</td>
         </tr>
       )}
-      {price.shippingDiscount > 0 && (
-        <tr>
-          <td>{price.noShipping === 'REQUIRED' ? 'No-Shipping' : 'Green'} Discount</td>
-          <td className="text-end text-primary text-nowrap align-bottom">&minus; {price.currency.symbol}{price.shippingDiscount.toFixed(2)}</td>
-        </tr>
-      )}
       <tr>
         <td />
         <td><hr className="my-1" /></td>
