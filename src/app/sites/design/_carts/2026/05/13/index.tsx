@@ -1,10 +1,10 @@
 import type { FC } from 'react';
 
-import { Design20260513Promo } from './promo';
+import { Design20260506Promo } from './promo';
 import { agreementLinks } from '@/app/sites/design/agreementLinks';
 import { courseGroups } from '@/app/sites/design/courseGroups';
 import { Guarantee } from '@/app/sites/design/guarantee';
-import { BogoDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogo';
+import { FreeEBVDDynamicCourseMessage } from '@/components/dynamicCourseMessages/freeEBVD';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 import type { LastChancePeriodDTO } from '@/lib/period';
@@ -14,10 +14,10 @@ interface Props {
   period: LastChancePeriodDTO;
 }
 
-export const Design20260513: FC<Props> = ({ date, period }) => {
+export const Design20260506: FC<Props> = ({ date, period }) => {
   return (
     <>
-      <Design20260513Promo date={date} period={period} />
+      <Design20260506Promo date={date} period={period} />
       <Form
         date={date}
         courseGroups={courseGroups}
@@ -26,9 +26,8 @@ export const Design20260513: FC<Props> = ({ date, period }) => {
         successLink="https://www.qcdesignschool.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
-        promoCodeDefault="BOGO"
         visualPaymentPlans
-        dynamicCourseMessages={[ BogoDynamicCourseMessage, Save50CourseMessage ]}
+        dynamicCourseMessages={[ FreeEBVDDynamicCourseMessage, Save50CourseMessage ]}
       />
     </>
   );
