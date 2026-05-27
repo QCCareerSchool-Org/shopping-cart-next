@@ -2,11 +2,10 @@
 
 import Image from 'next/image';
 import type { FC } from 'react';
-import { FaAward, FaUsers } from 'react-icons/fa';
-import { FaArrowTrendUp } from 'react-icons/fa6';
+import { FaAward, FaCheckCircle, FaUsers } from 'react-icons/fa';
 
 import BooksImage from './id-books.jpg';
-import { PromoModal } from './promoModal';
+import { PromoModal } from '@/components/promoModal';
 
 interface Props {
   show: boolean;
@@ -18,12 +17,13 @@ export const Design20260506Modal: FC<Props> = props => {
     <PromoModal
       show={props.show}
       onHide={props.onHide}
-      header={<Design20260506ModalHeading />}
+      heading={<Design20260506ModalHeading />}
       left={<Design20260506ModalLeft />}
       right={<Design20260506ModalRight />}
-      footerDisclaimer="* Flexible payment plans available."
-      footerClassName="bg-light"
+      footerDisclaimer="* Flexible payment plans available or save when you pay in full today."
       footerMessage={<span>Start your journey today for only <span className="text-primary">$198.</span></span>}
+      bodyClassName="bg-white"
+      footerClassName="bg-light"
     />
   );
 };
@@ -38,7 +38,7 @@ const Design20260506ModalHeading: FC = () => (
         </div>
       </div>
       <div className="col-lg-3">
-        <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 500 }}>
+        <div className="position-relative z-1 text-center bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 500 }}>
           <div className="small fw-bold text-center">Save up to an additional</div>
           <div className="fs-2 fw-bold text-center text-primary" style={{ lineHeight: 1.1 }}>$500</div>
           <div className="small fw-bold text-center">when you pay in full today!*</div>
@@ -67,30 +67,32 @@ const Design20260506ModalLeft: FC = () => (
 
 const Design20260506ModalRight: FC = () => (
   <>
-    <div className="container p-0 rounded overflow-hidden border">
-      <Image src={BooksImage} alt="" className="img-fluid" />
-      <div className="p-4 rounded bg-light">
-        <h4 className="fw-bold mb-2">TEXTBOOKS INCLUDED</h4>
-        <p>For a limited time only, course textbooks are included with every Interior Design & Decorating enrollment. </p>
+    <>
+      <div className="container p-0 rounded overflow-hidden border">
+        <Image src={BooksImage} alt="" className="img-fluid" />
+        <div className="p-4 rounded bg-light">
+          <h4 className="fw-bold mb-2">TEXTBOOKS INCLUDED</h4>
+          <p>For a limited time only, course textbooks are included with every Interior Design & Decorating enrollment. </p>
+        </div>
       </div>
-    </div>
+    </>
   </>
 );
 
 const features = [
   {
-    icon: <FaUsers className="fs-4 text-primary" />,
-    title: 'Learn From Expert Instructors',
-    description: 'We\'ve hand-selected the top home design professionals in the industry to guide you through your course material.',
-  },
-  {
     icon: <FaAward className="fs-4 text-primary" />,
-    title: 'Industry-Recognized Certifications',
-    description: 'Graduate with professional design certifications and open up a world of career & business opportunities.',
+    title: 'Lifetime IDDP™ Certification',
+    description: 'Earn a globally recognized designation that builds credibility and supports your career in the long term.',
   },
   {
-    icon: <FaArrowTrendUp className="fs-4 text-primary" />,
-    title: 'Business Training Included',
-    description: 'Each course includes built-in business training to help you launch your career and grow your clientele as a newly certified decorator or designer.',
+    icon: <FaUsers className="fs-4 text-primary" />,
+    title: 'Mentorship from Industry Experts',
+    description: 'Seven 1-on-1 professional audio feedback sessions from a practicing design expert and business owner.',
+  },
+  {
+    icon: <FaCheckCircle className="fs-4 text-primary" />,
+    title: 'Business Training Built In',
+    description: 'Actionable strategies and mentorship to confidently launch, market, and grow your business.',
   },
 ];
