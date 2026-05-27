@@ -38,7 +38,7 @@ const Design20260506ModalHeading: FC = () => (
 const Design20260506ModalOffer: FC = () => (
   <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 500 }}>
     <div className="small fw-bold text-center">Save up to an additional</div>
-    <div className="fs-2 fw-bold text-center text-primary" style={{ lineHeight: 1.1 }}>$500</div>
+    <div className="fs-2 fw-bold text-center text-primary" style={{ lineHeight: 1.1 }}>$700</div>
     <div className="small fw-bold text-center">when you pay in full today!*</div>
   </div>
 );
