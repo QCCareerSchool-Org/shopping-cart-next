@@ -90,10 +90,8 @@ const isPriceDetails = (obj: unknown): obj is PriceDetails => {
     'cost' in obj && typeof obj.cost === 'number' &&
     'multiCourseDiscount' in obj && typeof obj.multiCourseDiscount === 'number' &&
     'promoDiscount' in obj && typeof obj.promoDiscount === 'number' &&
-    // 'shippingDiscount' in obj && typeof obj.shippingDiscount === 'number' &&
     'discountedCost' in obj && typeof obj.discountedCost === 'number' &&
     'plans' in obj && isPlans(obj.plans); // &&
-  // 'shipping' in obj && typeof obj.shipping === 'number';
 };
 
 const isPlans = (obj: unknown): obj is { full: Plan; part?: Plan } => {
