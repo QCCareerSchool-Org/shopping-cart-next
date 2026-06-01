@@ -45,23 +45,20 @@ const Makeup20260603ModalHeading: FC = () => (
       <FaMagic /> Graduate with three professional certifications
     </div>
     <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>A Makeup Career that Grows With You</h2>
-    <p className="mb-0">Enroll in Master <strong>Makeup Artistry</strong> today and get both the <strong>Skincare course + Pro Makeup Workshop</strong> FREE.</p>
+    <p className="mb-0">Enroll in Master <strong>Makeup Artistry</strong> today and receive the <strong>Luminous Makeup Kit plus a BONUS set of lashes.</strong></p>
   </div>
 );
 
 const Makeup20260603ModalOffer: FC = () => (
   <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 300 }}>
-    <div className="fs-2 fw-bold" style={{ color: '#0A0F3D', lineHeight: 1.1 }}>50% OFF</div>
-    <div className="small fw-bold text-uppercase">Additional Certifications</div>
+    <div className="fs-2 fw-bold" style={{ color: '#0A0F3D', lineHeight: 1.1 }}>FREE Makeup Kit +</div>
+    <div className="small fw-bold text-uppercase">Bonus Lash Set</div>
   </div>
 );
 
 const Makeup20260603ModalLeft: FC = () => (
   <>
     <div>
-      <h3 className="h4 mb-3">Get Two Professional Courses FREE</h3>
-      <p>Unlock your full potential with this powerhouse combination. Build a foundation in professional makeup artistry while adding high-ticket skincare services and advanced artistry to your menu.</p>
-      <p className="fw-bold">Transform your career and learn to:</p>
       <ul className="list-unstyled d-flex flex-column gap-3 mb-0">
         {features.map((feature, i) => (
           <li key={i} className="d-flex gap-3">
@@ -76,9 +73,9 @@ const Makeup20260603ModalLeft: FC = () => (
     <PromoModalDarkBlueBox>
       <h4 className="fw-bold sans-serif fs-4 mb-2 d-flex align-items-center gap-2">
         <span className="bg-primary small px-2 py-1 rounded text-uppercase fw-bold" style={{ color: '#0A0F3D', fontSize: '0.75rem' }}>Plus</span>
-        Luminous Makeup Collection
+        Get a bonus lash set!
       </h4>
-      <p className="small mb-0">Get the entire Luminous Makeup Collection to build your professional makeup kit.</p>
+      <p className="small mb-0">Get the entire Luminous Makeup Collection plus bonus lashes to help build your professional makeup kit. </p>
     </PromoModalDarkBlueBox>
   </>
 );
@@ -91,9 +88,8 @@ const Makeup20260603ModalRight: FC = () => (
 );
 
 const features = [
-  <><strong>Build Your Foundation:</strong> Master expert makeup application, color theory, and advanced blending for a flawless, long-wear finish.</>,
-  <><strong>Master Advanced Artistry:</strong> Refine your technique with pro-level makeup coaching and specialized skills for high-definition results.</>,
-  <><strong>Solve Skin Concerns:</strong> Confidently address acne, sensitivity, and advanced anti-aging needs for every client.</>,
-  <><strong>Offer Expert Consultations:</strong> Conduct professional skincare assessments and recommend personalized products to increase your value.</>,
-  <><strong>Scale Your Services:</strong> Create bespoke DIY skincare recipes and customized routines to boost your revenue and bookings.</>,
+  <><strong>Lifetime Certification:</strong> Earn a globally recognized certification that builds credibility and supports your career long-term.</>,
+  <><strong>Mentorship from Industry Experts:</strong> Professional audio feedback sessions from a practicing makeup expert and business owner.</>,
+  <><strong>Business Training Built In:</strong> Actionable strategies and mentorship to confidently launch, market, and grow your business.</>,
+  <><strong>Hands-On Training:</strong> Conduct professional skincare assessments and recommend personalized products to increase your value.</>,
 ];

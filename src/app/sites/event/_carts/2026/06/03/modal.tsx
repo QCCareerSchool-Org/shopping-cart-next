@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import { FaAward, FaCheckCircle, FaLaptop, FaPlusCircle, FaUsers } from 'react-icons/fa';
+import { FaAward, FaCheckCircle, FaPlusCircle, FaUsers } from 'react-icons/fa';
 
 import { PromoModal, PromoModalDarkBlueBox } from '@/components/promoModal';
 
@@ -106,10 +106,5 @@ const features = [
     icon: <FaCheckCircle className="fs-4 text-primary" />,
     title: 'Business Training Built In',
     description: 'Actionable strategies and mentorship to confidently launch, market, and grow your business.',
-  },
-  {
-    icon: <FaLaptop className="fs-4 text-primary" />,
-    title: 'AislePlanner Included',
-    description: 'Use professional planning software to manage your clients, timelines, and event details.',
   },
 ];

@@ -4,7 +4,7 @@ import { Event20260603Promo } from './promo';
 import { agreementLinks } from '@/app/sites/event/agreementLinks';
 import { courseGroups } from '@/app/sites/event/courseGroups';
 import { Guarantee } from '@/app/sites/event/guarantee';
-import { TwoFreeEventSpecialtyDynamicMessage } from '@/components/dynamicCourseMessages/twoFreeEventSpecialty';
+import { BogoEvent50Off } from '@/components/dynamicCourseMessages/bogoEvent50Off'; ;
 import { Form } from '@/components/form';
 import type { LastChancePeriodDTO } from '@/lib/period';
 
@@ -26,7 +26,7 @@ export const Event20260603: FC<Props> = ({ date, period }) => (
       dynamicCourseDescriptions="HIDE"
       visualPaymentPlans
       promoCodeDefault="2SPECIALTY"
-      dynamicCourseMessages={[ TwoFreeEventSpecialtyDynamicMessage ]}
+      dynamicCourseMessages={[ BogoEvent50Off ]}
     />
   </>
 );
