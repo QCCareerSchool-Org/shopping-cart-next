@@ -4,7 +4,7 @@ import { Design20260513Promo } from './promo';
 import { agreementLinks } from '@/app/sites/design/agreementLinks';
 import { courseGroups } from '@/app/sites/design/courseGroups';
 import { Guarantee } from '@/app/sites/design/guarantee';
-import { FreeEBVDDynamicCourseMessage } from '@/components/dynamicCourseMessages/freeEBVD';
+import { BogoDynamicCourseMessage } from '@/components/dynamicCourseMessages/bogo';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
 import type { LastChancePeriodDTO } from '@/lib/period';
@@ -26,8 +26,9 @@ export const Design20260513: FC<Props> = ({ date, period }) => {
         successLink="https://www.qcdesignschool.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
+        promoCodeDefault="BOGO"
         visualPaymentPlans
-        dynamicCourseMessages={[ FreeEBVDDynamicCourseMessage, Save50CourseMessage ]}
+        dynamicCourseMessages={[ BogoDynamicCourseMessage, Save50CourseMessage ]}
       />
     </>
   );
