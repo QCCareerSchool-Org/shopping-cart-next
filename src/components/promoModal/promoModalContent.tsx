@@ -14,16 +14,20 @@ export interface PromoModalContentProps {
   footerDisclaimer?: ReactNode;
   footerMessage?: ReactNode;
   primaryText?: ReactNode;
+  bodyClassName?: string;
+  footerClassName?: string;
 }
 
 export const PromoModalContent: FC<PromoModalContentProps> = props => (
   <div className="bg-light w-100 d-flex flex-column overflow-hidden rounded-5 position-relative">
-    <div className="bg-white border-bottom p-4 px-xl-5 d-flex flex-column flex-lg-row align-items-md-center justify-content-between gap-4 position-relative overflow-hidden flex-shrink-0">
-      {props.heading}
-      {props.headerAside}
-    </div>
+    {props.headerAside ? (
+      <div className="bg-white border-bottom p-4 px-xl-5 d-flex flex-column flex-lg-row align-items-md-center justify-content-between gap-4 position-relative overflow-hidden flex-shrink-0">
+        {props.heading}
+        {props.headerAside}
+      </div>
+    ) : (props.heading)}
 
-    <div className="p-4 p-xl-5 flex-grow-1">
+    <div className={`p-4 p-xl-5 flex-grow-1 ${props.bodyClassName}`}>
       <div className="row g-5">
         <div className={`col-lg-6 d-flex flex-column gap-5 justify-content-between ${styles.colLeft}`}>
           {props.left}
@@ -39,7 +43,7 @@ export const PromoModalContent: FC<PromoModalContentProps> = props => (
       </div>
     </div>
 
-    <div className="bg-white border-top p-4 px-xl-5 flex-shrink-0 d-flex flex-column flex-lg-row align-items-center justify-content-between w-100 z-1 gap-4">
+    <div className={`border-top p-4 px-xl-5 flex-shrink-0 d-flex flex-column flex-lg-row align-items-center justify-content-between w-100 z-1 gap-4 ${props.footerClassName ?? 'bg-white'}`}>
       <div className={`text-center text-sm-start mb-sm-0 ${styles.footerCopy}`}>
         <p className="small mb-1 text-secondary">{props.footerDisclaimer ?? '* Flexible payment plans available.'}</p>
         {props.footerMessage && <p className={`${styles['text-dark-blue']} fw-bold mb-0`}>{props.footerMessage}</p>}
