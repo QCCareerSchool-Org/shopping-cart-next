@@ -1,5 +1,4 @@
 import { agreementLinks } from '../agreementLinks';
-import { courseGroups } from '../courseGroups';
 import { Guarantee } from '../guarantee';
 import { MakeupFreeMasterclassPromo } from './promo';
 import { Form } from '@/components/form';
