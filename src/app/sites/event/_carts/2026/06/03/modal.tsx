@@ -42,7 +42,8 @@ const Event20260506ModalOffer: FC = () => (
 
 const Event20260506ModalLeft: FC = () => (
   <div>
-    <h3 className="fs-5 sans-serif fw-bold mb-4" style={{ color: '#0A0F3D' }}>Expand Your Services with 2 Free Specialty Courses</h3>    <ul className="list-unstyled d-flex flex-column gap-3 mb-0">
+    <h3 className="fs-5 sans-serif fw-bold mb-4" style={{ color: '#0A0F3D' }}>Expand Your Services with 2 Free Specialty Courses</h3>
+    <ul className="list-unstyled d-flex flex-column gap-3 mb-0">
       {services.map(service => (
         <li key={service} className="d-flex align-items-start gap-3">
           <div style={{ width: 16 }}><FaCheckCircle className="text-primary mt-1 flex-shrink-0" /></div>
