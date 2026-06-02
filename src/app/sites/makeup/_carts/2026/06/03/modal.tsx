@@ -51,8 +51,8 @@ const Makeup20260603ModalHeading: FC = () => (
 
 const Makeup20260603ModalOffer: FC = () => (
   <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 300 }}>
-    <div className="fs-2 fw-bold" style={{ color: '#0A0F3D', lineHeight: 1.1 }}>FREE Makeup Kit +</div>
-    <div className="small fw-bold text-uppercase">Bonus Lash Set</div>
+    <div className="fs-2 fw-bold text-center" style={{ color: '#0A0F3D', lineHeight: 1.1 }}>FREE Makeup Kit +</div>
+    <div className="small fw-bold text-uppercase text-center text-primary">Bonus Lash Set!</div>
   </div>
 );
 
@@ -91,5 +91,5 @@ const features = [
   <><strong>Lifetime Certification:</strong> Earn a globally recognized certification that builds credibility and supports your career long-term.</>,
   <><strong>Mentorship from Industry Experts:</strong> Professional audio feedback sessions from a practicing makeup expert and business owner.</>,
   <><strong>Business Training Built In:</strong> Actionable strategies and mentorship to confidently launch, market, and grow your business.</>,
-  <><strong>Hands-On Training:</strong> Conduct professional skincare assessments and recommend personalized products to increase your value.</>,
+  <><strong>Hands-On Training:</strong> Practice the skills you're learning with real-world assignments and submit photos of your work to your tutor for review.</>,
 ];
