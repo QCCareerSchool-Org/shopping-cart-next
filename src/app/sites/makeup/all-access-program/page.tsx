@@ -27,7 +27,7 @@ const MakeupAllAccessPage: PageComponent = async props => {
         dynamicCourseDescriptions="HIDE"
         visualPaymentPlans
         hideCourseSelection
-        coursesOverride={[ 'am' ]}
+        coursesOverride={[ 'AM' ]}
       />
     </>
   );
