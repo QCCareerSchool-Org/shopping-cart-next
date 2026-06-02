@@ -28,7 +28,7 @@ const Event20260506ModalHeading: FC = () => (
       <FaPlusCircle /> Additional Certifications
     </div>
     <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>Unlock Your Event Planning Career</h2>
-    <p className="text-secondary mb-0">Enroll in any foundation course and get two specialty courses FREE!</p>
+    <p className="text-secondary mb-0">Enroll today and get a second course FREE!</p>
   </div>
 );
 
@@ -42,7 +42,7 @@ const Event20260506ModalOffer: FC = () => (
 
 const Event20260506ModalLeft: FC = () => (
   <div>
-    <h3 className="fs-5 sans-serif fw-bold mb-4" style={{ color: '#0A0F3D' }}>Expand Your Services with 2 Free Specialty Courses</h3>
+    <h3 className="fs-5 sans-serif fw-bold mb-4" style={{ color: '#0A0F3D' }}>Expand Your Services with a FREE second course</h3>
     <ul className="list-unstyled d-flex flex-column gap-3 mb-0">
       {services.map(service => (
         <li key={service} className="d-flex align-items-start gap-3">
