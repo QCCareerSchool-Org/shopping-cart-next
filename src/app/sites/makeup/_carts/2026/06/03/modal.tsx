@@ -52,7 +52,7 @@ const Makeup20260603ModalHeading: FC = () => (
 const Makeup20260603ModalOffer: FC = () => (
   <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 300 }}>
     <div className="fs-2 fw-bold text-center" style={{ color: '#0A0F3D', lineHeight: 1.1 }}>FREE Makeup Kit +</div>
-    <div className="small fw-bold text-uppercase text-center text-primary">Bonus Lash Set!</div>
+    <div className="small fw-bold text-uppercase text-center text-primary">Bonus Lash Set</div>
   </div>
 );
 
