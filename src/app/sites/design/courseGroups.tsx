@@ -2,27 +2,19 @@
 
 import { InteriorDecoratingTag } from './interiorDecoratingTag';
 import type { CourseGroup } from '@/domain/courseGroup';
-import type { GeoLocation } from '@/domain/geoLocation';
-
-const decorating = (geoLocation: GeoLocation): boolean => {
-  return geoLocation.countryCode === 'CA' ||
-    (geoLocation.countryCode === 'US' && geoLocation.provinceCode === 'LA') ||
-    (geoLocation.countryCode === 'US' && geoLocation.provinceCode === 'NV') ||
-    (geoLocation.countryCode === 'US' && geoLocation.provinceCode === 'DC');
-};
 
 export const courseGroups: CourseGroup[] = [
   {
     items: [
       {
         code: 'I2',
-        name: g => (decorating(g) ? 'Interior Decorating' : 'Interior Design'),
-        courseCardName: g => (decorating(g) ? 'Interior Decorating: Career Accelerator' : 'Interior Design: Career Accelerator'),
-        disabledMessage: g => (
+        name: 'Interior Design & Decorating',
+        courseCardName: 'Interior Design & Decorating: Career Accelerator',
+        disabledMessage: (
           <>
-            The <span className="text-primary">{decorating(g) ? 'Interior Decorating' : 'Interior Design'}</span> and the <span className="text-primary">Home Staging</span> courses{' '}
+            The <span className="text-primary">Interior Design & Decorating</span> and the <span className="text-primary">Home Staging</span> courses{' '}
             have course materials in common. If you would like training in both subjects, first <span className="fw-bold"><em>deselect</em> Home Staging</span>,{' '}
-            then select both <span className="text-primary">{decorating(g) ? 'Interior Decorating' : 'Interior Design'}</span> and <span className="text-primary">Staging For Designers</span>.
+            then select both <span className="text-primary">Interior Design & Decorating</span> and <span className="text-primary">Staging For Designers</span>.
           </>
         ),
         badge: <InteriorDecoratingTag />,
@@ -30,16 +22,16 @@ export const courseGroups: CourseGroup[] = [
       {
         code: 'MS',
         name: 'Staging for Designers',
-        disabledMessage: g => (
-          <><span className="text-primary">Staging for Designers</span> is an add-on to <span className="text-primary">{decorating(g) ? 'Interior Decorating' : 'Interior Design'}</span>. To enroll in <span className="text-primary">Staging for Designers</span>, please select <span className="text-primary">{decorating(g) ? 'Interior Decorating' : 'Interior Design'}</span> first.</>
+        disabledMessage: (
+          <><span className="text-primary">Staging for Designers</span> is an add-on to <span className="text-primary">Interior Design & Decorating</span>. To enroll in <span className="text-primary">Staging for Designers</span>, please select <span className="text-primary">Interior Design & Decorating</span> first.</>
         ),
       },
       {
         code: 'ST',
         name: 'Home Staging',
-        disabledMessage: g => (
+        disabledMessage: (
           <>
-            <span className="text-primary">Home Staging</span> has course materials in common with <span className="text-primary">{decorating(g) ? 'Interior Decorating' : 'Interior Design'}</span>.{' '}
+            <span className="text-primary">Home Staging</span> has course materials in common with <span className="text-primary">Interior Design & Decorating</span>.{' '}
             If you would like training in both subjects, select <span className="text-primary">Staging For Designers</span> instead.
           </>
         ),
