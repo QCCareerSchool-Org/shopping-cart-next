@@ -6,10 +6,10 @@ import type { CourseGroup } from '@/domain/courseGroup';
 import { getDate } from '@/lib/getDate';
 import type { PageComponent } from '@/serverComponent';
 
-const coursesOverride = [ 'AA', 'AD', 'ST', 'LD', 'PO', 'CC', 'AP', 'DB', 'VD' ];
+const coursesOverride = [ 'AD' ];
 const courseGroups: CourseGroup[] = [
   {
-    items: [ { name: 'All-Access Program', code: 'AA' } ],
+    items: [ { name: 'All-Access Program', code: 'AD' } ],
   },
 ];
 
@@ -30,7 +30,6 @@ const AllAccessPage: PageComponent = async props => {
         hideCourseSelection
         dynamicCourseDescriptions="HIDE"
         visualPaymentPlans
-        promoCodeDefault="ALLACCESS"
       />
     </>
   );
