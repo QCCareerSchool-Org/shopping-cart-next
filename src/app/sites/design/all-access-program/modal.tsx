@@ -97,7 +97,7 @@ export const AllAccessModalFeatures: FC = () => (
 
     <PromoModalDarkBlueBox>
       <h4 className="fw-bold sans-serif fs-4 mb-2 d-flex align-items-center gap-2"><span className={`bg-primary ${styles['text-dark-blue']} small px-2 py-1 rounded text-uppercase fw-bold`} style={{ fontSize: '0.75rem' }}>Bonus</span> Free Software Access</h4>
-      <p className="small mb-0">Enroll today and get six months of free access to <strong>AislePlanner</strong> software to streamline your new business.</p>
+      <p className="small mb-0">get four months of free access to <strong>DesignFiles</strong> software to streamline your business.</p>
     </PromoModalDarkBlueBox>
   </>
 );
