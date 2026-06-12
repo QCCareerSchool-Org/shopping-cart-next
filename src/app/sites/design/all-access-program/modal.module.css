@@ -1,0 +1,24 @@
+/* .text-teal { color: #1DD1A1 !important; }
+.bg-teal { background-color: #1DD1A1 !important; } */
+
+.text-dark-blue { color: #0A0F3D !important; }
+.feature-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover .feature-icon-wrapper {
+  background-color: #1DD1A1;
+  border-color: #1DD1A1;
+}
+
+.feature-item:hover .feature-icon-wrapper svg {
+  color: #0A0F3D !important;
+}
