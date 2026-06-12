@@ -7,13 +7,16 @@ import { AllAccessModal } from './modal';
 import { Section } from '@/components/section';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useToggle } from '@/hooks/useToggle';
-// import { audCountry, gbpCountry, nzdCountry } from '@/lib/currencies';
 
-const backgroundColor = '#030419';
+const backgroundColor = '#25231F';
 
 export const AllAccessPromo: FC = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const { countryCode, provinceCode } = useAddressState();
+
+  if (countryCode === 'CA' && provinceCode === 'ON') {
+    return null;
+  }
 
   const handleClick = (): void => {
     togglePopup();
@@ -21,6 +24,7 @@ export const AllAccessPromo: FC = () => {
 
   return (
     <>
+      {countryCode}{provinceCode}
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
           <AllAccessHero />
