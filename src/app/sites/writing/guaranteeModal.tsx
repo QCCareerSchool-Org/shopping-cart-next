@@ -2,7 +2,7 @@ import Image from 'next/image';
 import type { FC } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'react-bootstrap';
 
-import TwentyOneDays from '@/app/21-day.svg';
+import TwentyOneDays from '@/app/14-day.svg';
 
 interface Props {
   show: boolean;
