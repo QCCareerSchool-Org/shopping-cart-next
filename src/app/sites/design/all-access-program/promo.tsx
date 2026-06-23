@@ -14,10 +14,6 @@ export const AllAccessPromo: FC = () => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const { countryCode, provinceCode } = useAddressState();
 
-  if (countryCode === 'CA' && provinceCode === 'ON') {
-    return null;
-  }
-
   const handleClick = (): void => {
     togglePopup();
   };
