@@ -54,7 +54,7 @@ const Makeup20260627ModalHeading: FC = () => {
             : 'A Makeup Career that Grows With You'
         }
       </h2>
-      <p className="mb-0">Enroll in Master <strong>Makeup Artistry</strong> today and receive the <strong>Luminous Makeup Kit plus a BONUS set of lashes.</strong></p>
+      <p className="mb-0">Enroll in Master <strong>Makeup Artistry</strong> today and and get both the <strong>Skincare course + Pro Makeup Workshop FREE</strong>.</p>
     </div>
 
   );
