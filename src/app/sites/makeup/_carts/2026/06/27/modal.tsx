@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import { FaCheckCircle } from 'react-icons/fa';
+import { FaCheckCircle, FaMagic } from 'react-icons/fa';
 
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { LuminousKitWithoutConcealer } from '@/components/luminousKitWithoutConcealer';
@@ -43,15 +43,20 @@ const Makeup20260627ModalHeading: FC = () => {
   const { countryCode } = useAddressState();
   return (
     <div className="position-relative z-1 flex-grow-1">
+      <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill small fw-bold text-uppercase mb-3" style={{ backgroundColor: 'rgba(13, 110, 253, 0.1)', color: '#0A0F3D', border: '1px solid rgba(13, 110, 253, 0.2)' }}>
+        <FaMagic /> Graduate with three professional certifications
+      </div>
       <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>
         {countryCode === 'CA'
           ? 'Celebrate with our Canada Day Special!'
           : countryCode === 'US'
             ? 'Celebrate with our 4th of July Special!'
-            : 'Unlock Your Event Planning Career.'}
+            : 'A Makeup Career that Grows With You'
+        }
       </h2>
-      <p className="text-secondary mb-0">Enroll in any design course and get a <strong>second course FREE, plus enjoy an extra $100 OFF tuition.</strong></p>
+      <p className="mb-0">Enroll in Master <strong>Makeup Artistry</strong> today and receive the <strong>Luminous Makeup Kit plus a BONUS set of lashes.</strong></p>
     </div>
+
   );
 };
 

@@ -40,7 +40,7 @@ const Design20260627ModalHeading: FC = () => {
           ? 'Celebrate with our Canada Day Special!'
           : countryCode === 'US'
             ? 'Celebrate with our 4th of July Special!'
-            : 'Unlock Your Event Planning Career.'}
+            : 'Unlock Your Professional Design Career.'}
       </h2>
       <p className="text-secondary mb-0">Enroll in any design course and get a <strong>second course FREE, plus enjoy an extra $100 OFF tuition.</strong></p>
     </div>
