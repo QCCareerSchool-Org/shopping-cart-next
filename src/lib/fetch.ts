@@ -17,14 +17,12 @@ import { isTitle } from '@/domain/title';
 
 const pricesUrl = process.env.NEXT_PUBLIC_PRICES_ENDPOINT;
 
-let cache = 0;
-
 export const fetchGeoLocation = async (headers: Record<string, string>, signal?: AbortSignal, firewallBypassSecret?: string): Promise<GeoLocation | undefined> => {
   try {
     const url = new URL('https://api.qccareerschool.com/geoLocation/ip');
 
     if (process.env.VERCEL_ENV !== 'production') {
-      url.searchParams.set('cache', String(cache++));
+      url.searchParams.set('cache', String(Date.now()));
     }
 
     if (firewallBypassSecret) {
@@ -49,7 +47,7 @@ export const fetchCountries = async (signal?: AbortSignal, firewallBypassSecret?
     const url = new URL('https://geolocation.qccareerschool.com/countries');
 
     if (process.env.VERCEL_ENV !== 'production') {
-      url.searchParams.set('cache', String(cache++));
+      url.searchParams.set('cache', String(Date.now()));
     }
 
     const headers = firewallBypassSecret ? { 'X-Firewall-Bypass-Secret': firewallBypassSecret } : undefined;
@@ -73,7 +71,7 @@ export const fetchProvinces = async (countryCode: string, signal?: AbortSignal, 
     url.searchParams.set('countryCode', countryCode);
 
     if (process.env.VERCEL_ENV !== 'production') {
-      url.searchParams.set('cache', String(cache++));
+      url.searchParams.set('cache', String(Date.now()));
     }
 
     const headers = firewallBypassSecret ? { 'X-Firewall-Bypass-Secret': firewallBypassSecret } : undefined;
