@@ -34,7 +34,7 @@ const Event20260506ModalHeading: FC = () => {
             ? 'Celebrate with our 4th of July Special!'
             : 'Unlock Your Event Planning Career.'}
       </h2>
-      <p className="text-secondary mb-0">Enroll in any design course and get a <strong>second course FREE, plus enjoy an extra $100 OFF tuition.</strong></p>
+      <p className="text-secondary mb-0">Enroll in any foundation course and get <strong>two specialty courses FREE, plus enjoy an extra $100 OFF tuition.</strong></p>
     </div>
   );
 };
