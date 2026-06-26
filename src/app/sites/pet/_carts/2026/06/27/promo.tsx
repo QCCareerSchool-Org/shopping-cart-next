@@ -3,22 +3,23 @@
 import type { FC } from 'react';
 
 import { Hero20260627 } from './hero';
-import { Design20260627Modal } from './modal';
+import { Pet20260627Modal } from './modal';
 import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
+import { usePriceState } from '@/hooks/usePriceState';
 import { useToggle } from '@/hooks/useToggle';
 import type { LastChancePeriodDTO } from '@/lib/period';
-
-const backgroundColor = '#333d37';
 
 interface Props {
   date: number;
   period: LastChancePeriodDTO;
 }
 
-export const Design20260627Promo: FC<Props> = ({ date, period }) => {
+export const Pet20260627Promo: FC<Props> = ({ date, period }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
+  const priceState = usePriceState();
+  const backgroundColor = priceState?.currency.code === 'CAD' ? '#c1c3ca' : priceState?.currency.code === 'USD' ? '#cba788' : '#6bc0b9';
   const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
 
   const handleClick = (): void => {
@@ -40,9 +41,9 @@ export const Design20260627Promo: FC<Props> = ({ date, period }) => {
         </div>
       </Section>
       <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
-        You'll also receive FREE printed textbooks
+        You'll Also Receive <strong>50% Off Each Additional Course</strong>
       </Banner>
-      <Design20260627Modal show={showPopup} onHide={handleClick} />
+      <Pet20260627Modal show={showPopup} onHide={handleClick} />
     </>
   );
 };
