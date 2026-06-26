@@ -7,6 +7,7 @@ import { Design20260627Modal } from './modal';
 import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
+import { useAddressState } from '@/hooks/useAddressState';
 import { useToggle } from '@/hooks/useToggle';
 import type { LastChancePeriodDTO } from '@/lib/period';
 
@@ -18,8 +19,14 @@ interface Props {
 }
 
 export const Design20260627Promo: FC<Props> = ({ date, period }) => {
+  const { countryCode } = useAddressState();
   const [ showPopup, togglePopup ] = useToggle(false);
   const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
+  const bannerText = countryCode === 'CA'
+    ? 'Canada Day Special: Free Textbooks Included'
+    : countryCode === 'US'
+      ? 'Independence Day Special: Free Textbooks Included!'
+      : 'You\'ll Also Receive Free Printed Textbooks.';
 
   const handleClick = (): void => {
     togglePopup();
@@ -40,7 +47,7 @@ export const Design20260627Promo: FC<Props> = ({ date, period }) => {
         </div>
       </Section>
       <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
-        You'll also receive FREE printed textbooks
+        {bannerText}
       </Banner>
       <Design20260627Modal show={showPopup} onHide={handleClick} />
     </>

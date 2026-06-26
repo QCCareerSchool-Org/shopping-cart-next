@@ -42,7 +42,7 @@ export const Makeup20260627Modal: FC<Props> = props => {
 const Makeup20260627ModalHeading: FC = () => {
   const { countryCode } = useAddressState();
   return (
-    <div className="position-relative z-1 flex-grow-1">
+    <div className="position-relative z-1 flex-grow-1 text-center text-lg-start">
       <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill small fw-bold text-uppercase mb-3" style={{ backgroundColor: 'rgba(13, 110, 253, 0.1)', color: '#0A0F3D', border: '1px solid rgba(13, 110, 253, 0.2)' }}>
         <FaMagic /> Graduate with three professional certifications
       </div>

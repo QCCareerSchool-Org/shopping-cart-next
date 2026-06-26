@@ -26,7 +26,7 @@ export const Event20260627Modal: FC<Props> = props => (
 const Event20260506ModalHeading: FC = () => {
   const { countryCode } = useAddressState();
   return (
-    <div className="position-relative z-1 flex-grow-1">
+    <div className="position-relative z-1 flex-grow-1 text-center text-lg-start">
       <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>
         {countryCode === 'CA'
           ? 'Celebrate with our Canada Day Special!'
