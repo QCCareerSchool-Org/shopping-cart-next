@@ -26,7 +26,7 @@ export const Pet20260627Promo: FC<Props> = ({ date, period }) => {
   const bannerText = countryCode === 'CA'
     ? 'Canada Day Special: Receive 50% Off Each Additional Course'
     : countryCode === 'US'
-      ? 'Independence Day Special: Receive 50% Off Each Additional Course'
+      ? '4th of July Special: Receive 50% Off Each Additional Course'
       : 'You\'ll Also Receive 50% Off Each Additional Course.';
 
   const handleClick = (): void => {

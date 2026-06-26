@@ -25,7 +25,7 @@ export const Design20260627Promo: FC<Props> = ({ date, period }) => {
   const bannerText = countryCode === 'CA'
     ? 'Canada Day Special: Free Textbooks Included'
     : countryCode === 'US'
-      ? 'Independence Day Special: Free Textbooks Included!'
+      ? '4th of July Special: Free Textbooks Included!'
       : 'You\'ll Also Receive Free Printed Textbooks.';
 
   const handleClick = (): void => {
