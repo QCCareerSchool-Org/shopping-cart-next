@@ -43,7 +43,9 @@ const proxy = (req: NextRequest): NextResponse => {
     url.pathname = `/sites${site.path}${pathname}`;
   }
 
-  return NextResponse.rewrite(url);
+  return NextResponse.rewrite(url, {
+    ...(site ? { headers: { site: site.name } } : undefined),
+  });
 };
 
 export default proxy;
