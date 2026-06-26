@@ -17,9 +17,15 @@ import { isTitle } from '@/domain/title';
 
 const pricesUrl = process.env.NEXT_PUBLIC_PRICES_ENDPOINT;
 
+let cache = 0;
+
 export const fetchGeoLocation = async (headers: Record<string, string>, signal?: AbortSignal, firewallBypassSecret?: string): Promise<GeoLocation | undefined> => {
   try {
-    const url = 'https://api.qccareerschool.com/geoLocation/ip';
+    let url = 'https://api.qccareerschool.com/geoLocation/ip';
+    if (process.env.VERCEL_ENV !== 'production') {
+      url += `?cache=${cache++}`;
+    }
+
     if (firewallBypassSecret) {
       headers['X-Firewall-Bypass-Secret'] = firewallBypassSecret;
     }
@@ -39,7 +45,11 @@ export const fetchGeoLocation = async (headers: Record<string, string>, signal?:
 
 export const fetchCountries = async (signal?: AbortSignal, firewallBypassSecret?: string): Promise<Country[] | undefined> => {
   try {
-    const url = 'https://geolocation.qccareerschool.com/countries';
+    let url = 'https://geolocation.qccareerschool.com/countries';
+    if (process.env.VERCEL_ENV !== 'production') {
+      url += `?cache=${cache++}`;
+    }
+
     const headers = firewallBypassSecret ? { 'X-Firewall-Bypass-Secret': firewallBypassSecret } : undefined;
     const response = await fetch(url, { headers, signal });
     if (response.ok) {
@@ -57,7 +67,10 @@ export const fetchCountries = async (signal?: AbortSignal, firewallBypassSecret?
 
 export const fetchProvinces = async (countryCode: string, signal?: AbortSignal, firewallBypassSecret?: string): Promise<Province[] | undefined> => {
   try {
-    const url = 'https://geolocation.qccareerschool.com/provinces?countryCode=' + encodeURIComponent(countryCode);
+    let url = 'https://geolocation.qccareerschool.com/provinces?countryCode=' + encodeURIComponent(countryCode);
+    if (process.env.VERCEL_ENV !== 'production') {
+      url += `&cache=${cache++}`;
+    }
     const headers = firewallBypassSecret ? { 'X-Firewall-Bypass-Secret': firewallBypassSecret } : undefined;
     const response = await fetch(url, { headers, signal });
     if (response.ok) {
