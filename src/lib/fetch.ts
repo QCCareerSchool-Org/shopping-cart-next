@@ -22,7 +22,7 @@ let cache = 0;
 export const fetchGeoLocation = async (headers: Record<string, string>, signal?: AbortSignal, firewallBypassSecret?: string): Promise<GeoLocation | undefined> => {
   try {
     let url = 'https://api.qccareerschool.com/geoLocation/ip';
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.VERCEL_ENV !== 'production') {
       url += `?cache=${cache++}`;
     }
 
@@ -46,7 +46,7 @@ export const fetchGeoLocation = async (headers: Record<string, string>, signal?:
 export const fetchCountries = async (signal?: AbortSignal, firewallBypassSecret?: string): Promise<Country[] | undefined> => {
   try {
     let url = 'https://geolocation.qccareerschool.com/countries';
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.VERCEL_ENV !== 'production') {
       url += `?cache=${cache++}`;
     }
 
@@ -68,7 +68,7 @@ export const fetchCountries = async (signal?: AbortSignal, firewallBypassSecret?
 export const fetchProvinces = async (countryCode: string, signal?: AbortSignal, firewallBypassSecret?: string): Promise<Province[] | undefined> => {
   try {
     let url = 'https://geolocation.qccareerschool.com/provinces?countryCode=' + encodeURIComponent(countryCode);
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.VERCEL_ENV !== 'production') {
       url += `&cache=${cache++}`;
     }
     const headers = firewallBypassSecret ? { 'X-Firewall-Bypass-Secret': firewallBypassSecret } : undefined;
