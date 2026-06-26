@@ -27,7 +27,7 @@ export const PromoModalContent: FC<PromoModalContentProps> = props => (
       </div>
     ) : (props.heading)}
 
-    <div className={`p-4 p-xl-5 flex-grow-1 ${props.bodyClassName}`}>
+    <div className={`p-4 p-xl-5 flex-grow-1 ${props.bodyClassName} text-center text-lg-start`}>
       <div className="row g-5">
         <div className={`col-lg-6 d-flex flex-column gap-5 justify-content-between ${styles.colLeft}`}>
           {props.left}
