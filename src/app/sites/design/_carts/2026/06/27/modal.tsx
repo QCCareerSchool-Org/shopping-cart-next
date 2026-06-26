@@ -34,13 +34,13 @@ export const Design20260627Modal: FC<Props> = props => {
 const Design20260627ModalHeading: FC = () => {
   const { countryCode } = useAddressState();
   return (
-    <div className="position-relative z-1 flex-grow-1">
+    <div className="position-relative z-1 flex-grow-1 text-center text-lg-start">
       <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>
         {countryCode === 'CA'
           ? 'Celebrate with our Canada Day Special!'
           : countryCode === 'US'
             ? 'Celebrate with our 4th of July Special!'
-            : 'Unlock Your Event Planning Career.'}
+            : 'Unlock Your Professional Design Career.'}
       </h2>
       <p className="text-secondary mb-0">Enroll in any design course and get a <strong>second course FREE, plus enjoy an extra $100 OFF tuition.</strong></p>
     </div>

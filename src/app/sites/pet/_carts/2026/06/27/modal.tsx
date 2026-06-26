@@ -25,16 +25,19 @@ export const Pet20260627Modal: FC<Props> = props => (
 
 const Pet20260627ModalHeading: FC = () => {
   const { countryCode } = useAddressState();
+
   return (
-    <div className="position-relative z-1 flex-grow-1">
+    <div className="position-relative z-1 flex-grow-1 text-center text-lg-start">
+      <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill small fw-bold text-uppercase mb-3" style={{ backgroundColor: 'rgba(13, 110, 253, 0.1)', color: '#0A0F3D', border: '1px solid rgba(13, 110, 253, 0.2)' }}>
+        <FaDog /> Pet Care Career
+      </div>
       <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>
         {countryCode === 'CA'
           ? 'Celebrate with our Canada Day Special!'
           : countryCode === 'US'
             ? 'Celebrate with our 4th of July Special!'
-            : 'Unlock Your Event Planning Career.'}
-      </h2>
-      <p className="text-secondary mb-0">Enroll in any design course and get a <strong>second course FREE, plus enjoy an extra $100 OFF tuition.</strong></p>
+            : 'Unlock Your Pet Care Career.'}</h2>
+      <p className="text-secondary mb-0">Enroll in any pet care course and save an extra $400 on your tuition!</p>
     </div>
   );
 };

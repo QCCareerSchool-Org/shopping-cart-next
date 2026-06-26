@@ -7,6 +7,7 @@ import { Event20260627Modal } from './modal';
 import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
+import { useAddressState } from '@/hooks/useAddressState';
 import { useToggle } from '@/hooks/useToggle';
 import type { LastChancePeriodDTO } from '@/lib/period';
 
@@ -20,6 +21,12 @@ interface Props {
 export const Event20260627Promo: FC<Props> = ({ date, period }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
+  const { countryCode } = useAddressState();
+  const bannerText = countryCode === 'CA'
+    ? 'Canada Day Special: Receive 50% Off Each Additional Course'
+    : countryCode === 'US'
+      ? 'Independence Day Special: Receive 50% Off Each Additional Course'
+      : 'You\'ll Also Receive 50% Off Each Additional Course.';
 
   const handleClick = (): void => {
     togglePopup();
@@ -40,7 +47,7 @@ export const Event20260627Promo: FC<Props> = ({ date, period }) => {
         </div>
       </Section>
       <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
-        You'll Also Receive <strong>50% Off Each Additional Course</strong>
+        {bannerText}
       </Banner>
       <Event20260627Modal show={showPopup} onHide={handleClick} />
     </>
