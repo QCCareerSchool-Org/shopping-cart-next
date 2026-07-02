@@ -19,7 +19,7 @@ export interface PromoModalContentProps {
 }
 
 export const PromoModalContent: FC<PromoModalContentProps> = props => (
-  <div className="bg-light w-100 d-flex flex-column overflow-hidden rounded-5 position-relative">
+  <div className="bg-light w-100 d-flex flex-column overflow-hidden rounded-5 position-relative text-center text-lg-start">
     {props.headerAside ? (
       <div className="bg-white border-bottom p-4 px-xl-5 d-flex flex-column flex-lg-row align-items-md-center justify-content-between gap-4 position-relative overflow-hidden flex-shrink-0">
         {props.heading}
