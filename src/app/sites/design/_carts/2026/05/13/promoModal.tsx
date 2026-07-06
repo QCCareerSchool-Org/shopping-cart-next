@@ -31,7 +31,7 @@ export const PromoModal: FC<Props> = props => (
     </div>
 
     <div className="row align-items-center p-4">
-      <div className="col-lg-8">
+      <div className="col-lg-8 text-center text-lg-start mb-2">
         {props.heading}
       </div>
       <div className="col-lg-3">
