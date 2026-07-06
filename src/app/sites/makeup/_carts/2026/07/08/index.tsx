@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { Makeup20260706Promo } from './promo';
+import { Makeup20260708Promo } from './promo';
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
 import { courseGroups } from '@/app/sites/makeup/courseGroups';
 import { Guarantee } from '@/app/sites/makeup/guarantee';
@@ -13,9 +13,9 @@ interface Props {
   period: LastChancePeriodDTO;
 }
 
-export const Makeup20260706: FC<Props> = ({ date, period }) => (
+export const Makeup20260708: FC<Props> = ({ date, period }) => (
   <>
-    <Makeup20260706Promo date={date} period={period} />
+    <Makeup20260708Promo date={date} period={period} />
     <Form
       date={date}
       courseGroups={courseGroups}
