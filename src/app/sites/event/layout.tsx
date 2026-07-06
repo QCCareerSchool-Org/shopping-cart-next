@@ -7,6 +7,7 @@ import { Header } from './header';
 import { isUserValues } from '@/domain/userValues';
 import { decodeJwt } from '@/lib/jwt';
 import { UserValuesProvider } from '@/providers/userValuesProvider';
+import { ActiveCampaign } from '@/scripts/activeCampaign';
 import { Bing } from '@/scripts/bing';
 import { Facebook } from '@/scripts/facebook';
 import { GoogleAnalytics } from '@/scripts/googleAnalytics';
@@ -46,6 +47,7 @@ const EventLayout: LayoutComponent = async ({ children }) => {
       <GoogleAnalytics id="G-PZ2L57Z948" adsId="AW-1071836607" userValues={userValues} />
       <Facebook id="520626392908502" userValues={userValues} />
       <Bing id="5105216" userValues={userValues} />
+      {process.env.ACTIVE_CAMPAIGN_ID && <ActiveCampaign id={process.env.ACTIVE_CAMPAIGN_ID} userValues={userValues} />}
       <UserValuesProvider {...userValues}>
         <Header />
         {children}

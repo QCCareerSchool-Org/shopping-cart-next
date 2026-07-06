@@ -7,6 +7,7 @@ import { Header } from './header';
 import { isUserValues } from '@/domain/userValues';
 import { decodeJwt } from '@/lib/jwt';
 import { UserValuesProvider } from '@/providers/userValuesProvider';
+import { ActiveCampaign } from '@/scripts/activeCampaign';
 import { Bing } from '@/scripts/bing';
 import { Facebook } from '@/scripts/facebook';
 import { GoogleAnalytics } from '@/scripts/googleAnalytics';
@@ -46,6 +47,7 @@ const PetLayout: LayoutComponent = async ({ children }) => {
       <GoogleAnalytics id="G-SBCT33RN69" adsId="AW-1071836607" userValues={userValues} />
       <Facebook id="3226622604235515" userValues={userValues} />
       <Bing id="5751420" userValues={userValues} />
+      {process.env.ACTIVE_CAMPAIGN_ID && <ActiveCampaign id={process.env.ACTIVE_CAMPAIGN_ID} userValues={userValues} />}
       <UserValuesProvider {...userValues}>
         <Header />
         {children}

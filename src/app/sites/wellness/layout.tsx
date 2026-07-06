@@ -7,6 +7,7 @@ import { Header } from './header';
 import { isUserValues } from '@/domain/userValues';
 import { decodeJwt } from '@/lib/jwt';
 import { UserValuesProvider } from '@/providers/userValuesProvider';
+import { ActiveCampaign } from '@/scripts/activeCampaign';
 import { Bing } from '@/scripts/bing';
 import { Facebook } from '@/scripts/facebook';
 import { GoogleAnalytics } from '@/scripts/googleAnalytics';
@@ -49,6 +50,7 @@ const WellnessLayout: LayoutComponent = async ({ children }) => {
       <GoogleAnalytics id="G-6SYYDWV4WE" adsId="AW-1071836607" userValues={userValues} />
       <Facebook id="1725004270923176" userValues={userValues} />
       <Bing id="28484716" userValues={userValues} />
+      {process.env.ACTIVE_CAMPAIGN_ID && <ActiveCampaign id={process.env.ACTIVE_CAMPAIGN_ID} userValues={userValues} />}
       <UserValuesProvider {...userValues}>
         <Header />
         {children}

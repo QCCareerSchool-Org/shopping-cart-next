@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { Footer } from './footer';
 import { Header } from './header';
 import './global.scss';
+import { ActiveCampaign } from '@/scripts/activeCampaign';
 import { Bing } from '@/scripts/bing';
 import { Facebook } from '@/scripts/facebook';
 import { GoogleAnalytics } from '@/scripts/googleAnalytics';
@@ -33,6 +34,7 @@ const MakeupLayout: LayoutComponent = ({ children }) => {
       <Facebook id="1531219047676834" />
       <Tiktok id="CJ6H6NBC77UC1837TT70" />
       <Bing id="5105215" />
+      {process.env.ACTIVE_CAMPAIGN_ID && <ActiveCampaign id={process.env.ACTIVE_CAMPAIGN_ID} />}
       <Header />
       {children}
       <Footer />
