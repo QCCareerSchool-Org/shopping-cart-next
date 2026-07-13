@@ -32,6 +32,9 @@ const getLocation = async (id: number, code: string): Promise<string> => {
 
 const getQueryString = (enrollmentResponse: EnrollmentResponse): string => {
   return stringify({
+    utm_source: 'sendgrid', // eslint-disable-line camelcase
+    utm_medium: 'email', // eslint-disable-line camelcase
+    utm_campaign: 'Abandoned Cart', // eslint-disable-line camelcase
     title: enrollmentResponse.title,
     firstName: enrollmentResponse.firstName,
     lastName: enrollmentResponse.lastName,
