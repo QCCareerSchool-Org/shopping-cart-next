@@ -4,7 +4,7 @@ export const july22 = lastChancePeriod(
   Date.UTC(2026, 6, 22, 7), // 2026-07-22T03:00 (07:00 UTC)
   Date.UTC(2026, 6, 31, 7), // 2026-07-31T03:00 (07:00 UTC)
   Date.UTC(2026, 7, 1, 7), // 2026-08-01T03:00 (07:00 UTC)
-)
+);
 
 export const july8 = lastChancePeriod(
   Date.UTC(2026, 6, 8, 7), // 2026-07-10T03:00 (07:00 UTC)
