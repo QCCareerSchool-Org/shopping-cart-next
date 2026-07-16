@@ -93,6 +93,6 @@ const Makeup20260722ModalRight: FC = () => (
 
 const features = [
   <>Create editorial, bridal, and high-fashion makeup looks</>,
-  <>Master advanced techniques like smoky eyes, glitter applications, and precision liner</>,
+  <>Master advanced techniques like smoky eyes, glitter applications, and intricate eyeliner</>,
   <>Adapt your skills to suit a wide range of clients, occasions, and makeup styles</>,
 ];
