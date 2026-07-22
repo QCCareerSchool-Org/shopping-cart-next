@@ -59,7 +59,8 @@ const Makeup20260722ModalOffer: FC = () => (
 const Makeup20260722ModalLeft: FC = () => (
   <>
     <div>
-      <p>The Pro Makeup Workshop takes your artistry beyond the fundamentals, helping you build the advanced skills needed to attract more clients and expand your makeup career. You'll learn to:</p>
+      <p>The Pro Makeup Workshop takes your artistry beyond the fundamentals, helping you build the advanced skills needed to attract more clients and expand your makeup career.</p>
+      <p><strong>You'll learn to:</strong></p>
       <ul className="list-unstyled d-flex flex-column gap-3 mb-0">
         {features.map((feature, i) => (
           <li key={i} className="d-flex gap-3">
