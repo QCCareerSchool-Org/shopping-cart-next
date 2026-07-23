@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
-import Script from 'next/script';
 
 import { Footer } from './footer';
 import { Header } from './header';
@@ -11,6 +10,7 @@ import { ActiveCampaign } from '@/scripts/activeCampaign';
 import { Bing } from '@/scripts/bing';
 import { Facebook } from '@/scripts/facebook';
 import { GoogleAnalytics } from '@/scripts/googleAnalytics';
+import { LiveChat } from '@/scripts/liveChat';
 import type { LayoutComponent } from '@/serverComponent';
 
 import './global.scss';
@@ -53,7 +53,7 @@ const DesignLayout: LayoutComponent = async ({ children }) => {
         {children}
         <Footer />
       </UserValuesProvider>
-      <Script src="/design/chat.js" />
+      {process.env.LIVECHAT_LICENSE && <LiveChat school="QC Design School" license={process.env.LIVECHAT_LICENSE} group="2" userValues={userValues} />}
     </div>
   );
 };

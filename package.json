@@ -1,6 +1,6 @@
 {
   "name": "shopping-cart-next",
-  "version": "1.3.323",
+  "version": "1.3.324",
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",

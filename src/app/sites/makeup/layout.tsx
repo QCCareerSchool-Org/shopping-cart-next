@@ -1,13 +1,16 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
+import { cookies } from 'next/headers';
 
 import { Footer } from './footer';
 import { Header } from './header';
 import './global.scss';
+import { isUserValues } from '@/domain/userValues';
+import { decodeJwt } from '@/lib/jwt';
 import { ActiveCampaign } from '@/scripts/activeCampaign';
 import { Bing } from '@/scripts/bing';
 import { Facebook } from '@/scripts/facebook';
 import { GoogleAnalytics } from '@/scripts/googleAnalytics';
+import { LiveChat } from '@/scripts/liveChat';
 import { Tiktok } from '@/scripts/tiktok';
 import type { LayoutComponent } from '@/serverComponent';
 
@@ -27,18 +30,28 @@ export const metadata: Metadata = {
   other: { 'msapplication-config': '/makeup/browserconfig.xml' },
 };
 
-const MakeupLayout: LayoutComponent = ({ children }) => {
+const MakeupLayout: LayoutComponent = async ({ children }) => {
+  const jwt = (await cookies()).get('user')?.value;
+  const result = jwt ? await decodeJwt(jwt, 'QC Makeup Academy') : undefined;
+  if (result) {
+    if (!result.success) {
+      console.error(result.error);
+    }
+  }
+  const raw = result?.success ? result.value : undefined;
+  const userValues = raw && isUserValues(raw) ? raw : undefined;
+
   return (
     <div>
-      <GoogleAnalytics id="G-BS7XJJLV0G" adsId="AW-1071836607" />
-      <Facebook id="1531219047676834" />
+      <GoogleAnalytics id="G-BS7XJJLV0G" adsId="AW-1071836607" userValues={userValues} />
+      <Facebook id="1531219047676834" userValues={userValues} />
       <Tiktok id="CJ6H6NBC77UC1837TT70" />
-      <Bing id="5105215" />
-      {process.env.ACTIVE_CAMPAIGN_ID && <ActiveCampaign id={process.env.ACTIVE_CAMPAIGN_ID} />}
+      <Bing id="5105215" userValues={userValues} />
+      {process.env.ACTIVE_CAMPAIGN_ID && <ActiveCampaign id={process.env.ACTIVE_CAMPAIGN_ID} userValues={userValues} />}
       <Header />
       {children}
       <Footer />
-      <Script src="/makeup/chat.js" />
+      {process.env.LIVECHAT_LICENSE && <LiveChat school="QC Makeup Academy" license={process.env.LIVECHAT_LICENSE} group="1" userValues={userValues} />}
     </div>
   );
 };
