@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Footer } from './_components/footer';
 import { Header } from './_components/header';
 import { Navbar } from './_components/navbar';
+import { LiveChat } from '@/scripts/liveChat';
 import type { LayoutComponent } from '@/serverComponent';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -35,6 +36,7 @@ const PpaLayout: LayoutComponent = ({ children }) => (
     <main className="flex-shrink-0">
       {children}
     </main>
+    {process.env.LIVECHAT_LICENSE && <LiveChat school="Paw Parent Academy" license={process.env.LIVECHAT_LICENSE} group="5" />}
     <Footer />
   </>
 );

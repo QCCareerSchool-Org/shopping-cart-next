@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { cookies } from 'next/headers';
-import Script from 'next/script';
 
 import { Footer } from './footer';
 import { Header } from './header';
@@ -11,6 +10,7 @@ import { ActiveCampaign } from '@/scripts/activeCampaign';
 import { Bing } from '@/scripts/bing';
 import { Facebook } from '@/scripts/facebook';
 import { GoogleAnalytics } from '@/scripts/googleAnalytics';
+import { LiveChat } from '@/scripts/liveChat';
 import type { LayoutComponent } from '@/serverComponent';
 
 import './global.scss';
@@ -54,7 +54,7 @@ const EventLayout: LayoutComponent = async ({ children }) => {
         <Footer />
       </UserValuesProvider>
       {/* <Tiktok id="" /> */}
-      <Script src="/event/chat.js" />
+      {process.env.LIVECHAT_LICENSE && <LiveChat school="QC Event School" license={process.env.LIVECHAT_LICENSE} group="3" userValues={userValues} />}
     </div>
   );
 };
