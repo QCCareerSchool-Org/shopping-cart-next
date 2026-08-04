@@ -20,7 +20,7 @@ interface Props {
 export const Design20260806Promo: FC<Props> = ({ date, period }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
-  const bannerText = 'Flash Offer: Plus, save an extra $100 on tuition';
+  const bannerText = 'Flash Offer: Save an extra $100 on tuition';
 
   const handleClick = (): void => {
     togglePopup();
