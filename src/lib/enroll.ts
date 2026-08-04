@@ -172,8 +172,8 @@ export const addEnrollment = async (payload: EnrollmentPayload): Promise<AddEnro
   return responseBody;
 };
 
-export const updateEnrollment = async (id: number, payload: EnrollmentPayload): Promise<AddEnrollmentResponse> => {
-  const response = await fetch(`${baseUrl}/${id}`, {
+export const updateEnrollment = async (id: number, code: string, payload: EnrollmentPayload): Promise<AddEnrollmentResponse> => {
+  const response = await fetch(`${baseUrl}/${id}?code=${encodeURIComponent(code)}`, {
     method: 'put',
     headers: {
       'Content-Type': 'application/json',

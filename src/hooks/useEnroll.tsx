@@ -33,7 +33,7 @@ export const useEnroll = (internal: boolean, school: School, schoolVariant: Scho
     const payload = createEnrollmentPayload(internal, school, schoolVariant, coursesState.selected, addressState, billingAddressState, paymentState, overridesState, metaState, promoCodeDefault);
     try {
       if (metaState.enrollment) {
-        const addEnrollmentResponse = await updateEnrollment(metaState.enrollment.id, payload);
+        const addEnrollmentResponse = await updateEnrollment(metaState.enrollment.id, metaState.enrollment.code, payload);
         metaDispatch({ type: 'SET_ENROLLMENT', payload: addEnrollmentResponse });
       } else {
         const addEnrollmentResponse = await addEnrollment(payload);
