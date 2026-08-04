@@ -14,7 +14,7 @@ const MakeupPage: PageComponent = async props => {
   return (
     <Suspense>
       {august06.contains(date)
-        ? <Makeup20260506 date={date} period={july22.toDTO()} />
+        ? <Makeup20260506 date={date} period={august06.toDTO()} />
         : july22.contains(date)
           ? <Makeup20260722 date={date} period={july8.toDTO()} />
           : <MakeupFallback date={date} />
