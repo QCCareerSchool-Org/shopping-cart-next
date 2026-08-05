@@ -17,7 +17,7 @@
     "jose": "^6.2.6",
     "lucide-react": "^1.28.0",
     "next": "16.2.12",
-    "paysafe-form": "^0.3.8",
+    "paysafe-form": "^0.4.0",
     "qs": "^6.15.3",
     "rc-slider": "^10.6.2",
     "react": "19.2.8",

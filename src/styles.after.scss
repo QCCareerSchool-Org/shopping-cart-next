@@ -88,3 +88,11 @@ h4, .h4 { font-size: 1.375rem }
 .grecaptcha-badge { 
   visibility: hidden !important;
 }
+
+.form-control.is-valid,.form-control.is-invalid,
+.was-validated .form-control:valid,.was-validated .form-control:invalid,
+.form-select.is-valid,.form-select.is-invalid,
+.was-validated .form-select:valid,.was-validated .form-select:invalid {
+  background-image: none !important;
+  // padding-right: calc(1.5em + 0.75rem) !important; /* Optional: Resets the padded spacing used for the icon */
+}

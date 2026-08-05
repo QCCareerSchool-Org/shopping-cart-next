@@ -25,7 +25,6 @@ import { usePriceState } from '@/hooks/usePriceState';
 import { usePriceUpdater } from '@/hooks/usePriceUpdater';
 import { useToggle } from '@/hooks/useToggle';
 import { getPaysafeCompany } from '@/lib/getPaysafeCompany';
-import type { Paysafe } from '@/lib/paysafe';
 import type { AddressState } from '@/state/address';
 import type { MetaState } from '@/state/meta';
 import type { PaymentState } from '@/state/payment';
@@ -36,8 +35,6 @@ const Overrides = lazy(async () => import('./overrides').then(m => ({ default: m
 const BillingAddress = lazy(async () => import('./billingAddress').then(m => ({ default: m.BillingAddress })));
 const ConfirmPopup = lazy(async () => import('./confirmPopup').then(m => ({ default: m.ConfirmPopup })));
 const PaysafeModal = lazy(async () => import('./paysafeModal').then(m => ({ default: m.PaysafeModal })));
-
-declare const paysafe: Paysafe | undefined;
 
 export type DynamicCourseDescriptions = 'SHOW' | 'HIDE' | 'REPLACE';
 
@@ -98,7 +95,7 @@ const showBillingAddress = (school: School, billingAddressDefault?: 'same' | 'di
 
 export const Form: FC<Props> = props => {
   useEffect(() => {
-    if (typeof paysafe === 'undefined') {
+    if (typeof window.paysafe === 'undefined') {
       if (window.confirm('There was an error loading required resources. Do you want to retry?')) {
         window.location.reload();
       } else {
