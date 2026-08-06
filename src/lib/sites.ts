@@ -12,6 +12,16 @@ const sites: Site[] = [
   { name: 'Paw Parent Academy', domains: [ 'enroll.pawparentacademy.com', 'ppa.enrolltest.qccareerschool.com', 'ppa.nextenroll.qccareerschool.com', /^ppa.localhost(?::\d+)$/iu ], path: '/ppa' },
 ];
 
+if (process.env.NODE_ENV === 'development' || process.env.VERCEL_ENV === 'development') {
+  sites.find(s => s.name === 'QC Design School')?.domains.push(/^design.$/iu);
+  sites.find(s => s.name === 'QC Event School')?.domains.push(/^event.$/iu);
+  sites.find(s => s.name === 'QC Makeup Academy')?.domains.push(/^makeup.$/iu);
+  sites.find(s => s.name === 'QC Pet Studies')?.domains.push(/^pet.$/iu);
+  sites.find(s => s.name === 'QC Wellness Studies')?.domains.push(/^wellness.$/iu);
+  sites.find(s => s.name === 'Winghill Writing School')?.domains.push(/^writing.$/iu);
+  sites.find(s => s.name === 'Paw Parent Academy')?.domains.push(/^ppa.$/iu);
+}
+
 export const findSite = (hostname: string | null): Site | undefined => {
   if (!hostname) {
     return;
