@@ -3,23 +3,23 @@ import type { School } from '@/domain/school';
 interface Site { name: School; domains: (string | RegExp)[]; path: string }
 
 const sites: Site[] = [
-  { name: 'QC Design School', domains: [ 'enroll.qcdesignschool.com', 'design.enrolltest.qccareerschool.com', 'design.nextenroll.qccareerschool.com', /^design.localhost(?::\d+)$/iu ], path: '/design' },
-  { name: 'QC Event School', domains: [ 'enroll.qceventplanning.com', 'event.enrolltest.qccareerschool.com', 'event.nextenroll.qccareerschool.com', /^event.localhost(?::\d+)$/iu ], path: '/event' },
-  { name: 'QC Makeup Academy', domains: [ 'enroll.qcmakeupacademy.com', 'makeup.enrolltest.qccareerschool.com', 'makeup.nextenroll.qccareerschool.com', /^makeup.localhost(?::\d+)$/iu ], path: '/makeup' },
-  { name: 'QC Pet Studies', domains: [ 'enroll.qcpetstudies.com', 'pet.enrolltest.qccareerschool.com', 'pet.nextenroll.qccareerschool.com', /^pet.localhost(?::\d+)$/iu ], path: '/pet' },
-  { name: 'QC Wellness Studies', domains: [ 'enroll.qcwellnessstudies.com', 'wellness.enrolltest.qccareerschool.com', 'wellness.nextenroll.qccareerschool.com', /^wellness.localhost(?::\d+)$/iu ], path: '/wellness' },
-  { name: 'Winghill Writing School', domains: [ 'enroll.winghill.com', 'writing.enrolltest.qccareerschool.com', 'writing.nextenroll.qccareerschool.com', /^writing.localhost(?::\d+)$/iu ], path: '/writing' },
-  { name: 'Paw Parent Academy', domains: [ 'enroll.pawparentacademy.com', 'ppa.enrolltest.qccareerschool.com', 'ppa.nextenroll.qccareerschool.com', /^ppa.localhost(?::\d+)$/iu ], path: '/ppa' },
+  { name: 'QC Design School', domains: [ 'enroll.qcdesignschool.com', 'design.enrolltest.qccareerschool.com', 'design.nextenroll.qccareerschool.com', /^design\.localhost(?::\d+)$/iu ], path: '/design' },
+  { name: 'QC Event School', domains: [ 'enroll.qceventplanning.com', 'event.enrolltest.qccareerschool.com', 'event.nextenroll.qccareerschool.com', /^event\.localhost(?::\d+)$/iu ], path: '/event' },
+  { name: 'QC Makeup Academy', domains: [ 'enroll.qcmakeupacademy.com', 'makeup.enrolltest.qccareerschool.com', 'makeup.nextenroll.qccareerschool.com', /^makeup\.localhost(?::\d+)$/iu ], path: '/makeup' },
+  { name: 'QC Pet Studies', domains: [ 'enroll.qcpetstudies.com', 'pet.enrolltest.qccareerschool.com', 'pet.nextenroll.qccareerschool.com', /^pet\.localhost(?::\d+)$/iu ], path: '/pet' },
+  { name: 'QC Wellness Studies', domains: [ 'enroll.qcwellnessstudies.com', 'wellness.enrolltest.qccareerschool.com', 'wellness.nextenroll.qccareerschool.com', /^wellness\.localhost(?::\d+)$/iu ], path: '/wellness' },
+  { name: 'Winghill Writing School', domains: [ 'enroll.winghill.com', 'writing.enrolltest.qccareerschool.com', 'writing.nextenroll.qccareerschool.com', /^writing\.localhost(?::\d+)$/iu ], path: '/writing' },
+  { name: 'Paw Parent Academy', domains: [ 'enroll.pawparentacademy.com', 'ppa.enrolltest.qccareerschool.com', 'ppa.nextenroll.qccareerschool.com', /^ppa\.localhost(?::\d+)$/iu ], path: '/ppa' },
 ];
 
 if (process.env.NODE_ENV === 'development' || process.env.VERCEL_ENV === 'development') {
-  sites.find(s => s.name === 'QC Design School')?.domains.push(/^design.$/iu);
-  sites.find(s => s.name === 'QC Event School')?.domains.push(/^event.$/iu);
-  sites.find(s => s.name === 'QC Makeup Academy')?.domains.push(/^makeup.$/iu);
-  sites.find(s => s.name === 'QC Pet Studies')?.domains.push(/^pet.$/iu);
-  sites.find(s => s.name === 'QC Wellness Studies')?.domains.push(/^wellness.$/iu);
-  sites.find(s => s.name === 'Winghill Writing School')?.domains.push(/^writing.$/iu);
-  sites.find(s => s.name === 'Paw Parent Academy')?.domains.push(/^ppa.$/iu);
+  sites.find(s => s.name === 'QC Design School')?.domains.push(/^design\./iu);
+  sites.find(s => s.name === 'QC Event School')?.domains.push(/^event\./iu);
+  sites.find(s => s.name === 'QC Makeup Academy')?.domains.push(/^makeup\./iu);
+  sites.find(s => s.name === 'QC Pet Studies')?.domains.push(/^pet\./iu);
+  sites.find(s => s.name === 'QC Wellness Studies')?.domains.push(/^wellness\./iu);
+  sites.find(s => s.name === 'Winghill Writing School')?.domains.push(/^writing\./iu);
+  sites.find(s => s.name === 'Paw Parent Academy')?.domains.push(/^ppa\./iu);
 }
 
 export const findSite = (hostname: string | null): Site | undefined => {
