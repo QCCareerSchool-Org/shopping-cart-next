@@ -12,6 +12,10 @@ const sites: Site[] = [
   { name: 'Paw Parent Academy', domains: [ 'enroll.pawparentacademy.com', 'ppa.enrolltest.qccareerschool.com', 'ppa.nextenroll.qccareerschool.com', /^ppa\.localhost(?::\d+)$/iu ], path: '/ppa' },
 ];
 
+if (process.env.VERCEL_ENV === 'development') {
+  sites[0].domains.push('shopping-cart-next-git-feature-library-qccareerschool.vercel.app');
+}
+
 export const findSite = (hostname: string | null): Site | undefined => {
   if (!hostname) {
     return;
