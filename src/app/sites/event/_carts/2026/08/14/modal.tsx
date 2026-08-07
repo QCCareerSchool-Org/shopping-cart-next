@@ -71,7 +71,7 @@ const Event20260506ModalRight: FC = () => (
       <Image src={BooksImage} alt="" className="img-fluid" />
       <div className="p-4 rounded bg-light">
         <h4 className="fw-bold mb-2">TEXTBOOKS + PORTFOLIO INCLUDED</h4>
-        <p>For a limited time only, course textbooks and leather portfolios are included with every Event & Wedding Planning enrollment.</p>
+        <p>For a limited time only, course textbooks and a leather portfolio are included with every Event & Wedding Planning enrollment.</p>
       </div>
     </div>
 
