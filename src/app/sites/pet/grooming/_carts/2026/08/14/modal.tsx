@@ -46,18 +46,9 @@ const Grooming20260814ModalLeft: FC = () => (
 
 const Grooming20260814ModalRight: FC = () => (
   <div>
-
     <h4>Pro Dog Grooming Kit Included </h4>
     <p>Get hands-on training with a professional grooming kit valued at over $200, packed with the essential tools you'll use throughout your course and into your grooming career.</p>
     <GroomingKit hideScissorsDescription />
-
-    <PromoModalDarkBlueBox>
-      <h4 className="fw-bold sans-serif fs-4 mb-2 d-flex align-items-center gap-2">
-        <span className="bg-primary small px-2 py-1 rounded text-uppercase fw-bold" style={{ color: '#0A0F3D', fontSize: '0.75rem' }}>Bonus</span>
-        50% Off Additional Courses
-      </h4>
-      <p className="small mb-0">Build a broader skill set with half off any additional pet care courses you add today.</p>
-    </PromoModalDarkBlueBox>
   </div>
 );
 
@@ -76,6 +67,13 @@ const Grooming20260814ModalCourses: FC = () => (
         ))}
       </ul>
     </div>
+    <PromoModalDarkBlueBox>
+      <h4 className="fw-bold sans-serif fs-4 mb-2 d-flex align-items-center gap-2">
+        <span className="bg-primary small px-2 py-1 rounded text-uppercase fw-bold" style={{ color: '#0A0F3D', fontSize: '0.75rem' }}>Bonus</span>
+        50% Off Additional Courses
+      </h4>
+      <p className="small mb-0">Build a broader skill set with half off any additional pet care courses you add today.</p>
+    </PromoModalDarkBlueBox>
   </div>
 );
 
