@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 
 import { Grooming20260814Promo } from './promo';
-import { agreementLinks } from '../../../../agreementLinks';
-import { courseGroups } from '../../../../courseGroups';
-import { Guarantee } from '../../../../guarantee';
+import { agreementLinks } from '../../../../../agreementLinks';
+import { courseGroups } from '../../../../../courseGroups';
+import { Guarantee } from '../../../../../guarantee';
 import { PetCoursesSubtitleFirstAid } from '@/app/sites/pet/petCoursesSubtitleFirstAid';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
