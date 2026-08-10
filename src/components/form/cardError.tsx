@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const CardError: FC<Props> = ({ error }) => (
-  <div className="alert alert-danger mt-3">
+  <div className="alert alert-danger my-0 small">
     {getMessage(error)}
   </div>
 );
