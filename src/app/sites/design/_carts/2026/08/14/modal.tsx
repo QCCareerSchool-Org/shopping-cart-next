@@ -5,7 +5,7 @@ import type { FC } from 'react';
 import { FaAward, FaUsers } from 'react-icons/fa';
 import { FaArrowTrendUp } from 'react-icons/fa6';
 
-import BooksImage from './id-books.jpg';
+import BooksImage from './design-book-portfolio-image-full.jpg';
 import { PromoModal } from '@/components/promoModal';
 
 interface Props {
