@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 
 import Desktop from './desktop.jpg';
-import Mobile from './mobile.jpg';
+import Mobile from './mobile.png';
 import { PromoImage } from '@/components/promoImage';
 
 interface Props {

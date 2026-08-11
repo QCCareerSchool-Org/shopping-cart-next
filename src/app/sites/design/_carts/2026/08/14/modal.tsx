@@ -71,7 +71,7 @@ const Design20260814ModalRight: FC = () => (
       <Image src={BooksImage} alt="" className="img-fluid" />
       <div className="p-4 rounded bg-light">
         <h4 className="fw-bold mb-2">TEXTBOOKS + PORTFOLIO INCLUDED</h4>
-        <p>For a limited time only, course textbooks and a leather portfolio are included with every Interior Design & Decorating enrollment.</p>
+        <p>For a limited-time only, course textbooks and a leather portfolio are included with every Interior Design & Decorating enrollment.</p>
       </div>
     </div>
   </>
