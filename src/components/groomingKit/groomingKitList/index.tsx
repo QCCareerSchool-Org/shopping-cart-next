@@ -2,22 +2,28 @@ import type { FC } from 'react';
 
 import styles from './index.module.scss';
 
-export const GroomingKitList: FC = () => {
+interface Props {
+  hideScissorsDescription?: boolean;
+}
+
+export const GroomingKitList: FC<Props> = ({ hideScissorsDescription }) => {
   return (
     <div className={`${styles.kitNumberedList} container my-5`}>
       <div className={styles.listItem}>
         <div className={styles.circleNumber}>1</div>
         <div className={styles.listContent}>
           <h4 className="sans-serif">Professional-Grade Grooming Scissors</h4>
-          <p>This kit includes a straight blade, a curved blade, and thinning scissors, wrapped in a beautiful leather case for portability and convenience</p>
+          {!hideScissorsDescription && <p>This kit includes a straight blade, a curved blade, and thinning scissors, wrapped in a beautiful leather case for portability and convenience</p>}
         </div>
       </div>
-      <div className={styles.listItem}>
-        <div className={styles.circleNumber} style={{ backgroundColor: 'transparent' }} />
-        <div className={styles.listContent}>
-          <h4 className="sans-serif">Grooming Tools Starter Kit</h4>
+      {!hideScissorsDescription && (
+        <div className={styles.listItem}>
+          <div className={styles.circleNumber} style={{ backgroundColor: 'transparent' }} />
+          <div className={styles.listContent}>
+            <h4 className="sans-serif">Grooming Tools Starter Kit</h4>
+          </div>
         </div>
-      </div>
+      )}
       <div className={styles.listItem}>
         <div className={styles.circleNumber}>2</div>
         <div className={styles.listContent}>
