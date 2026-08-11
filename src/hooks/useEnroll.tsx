@@ -66,7 +66,7 @@ export const useEnroll = (internal: boolean, school: School, schoolVariant: Scho
       if (!metaState.enrollment) {
         throw Error('enrollment is undefined');
       }
-      await chargeEnrollment(metaState.enrollment.id, token, company);
+      await chargeEnrollment(metaState.enrollment.id, metaState.enrollment.code, token, company);
       clearForm();
       if (internal) {
         window.location.href = `${successLink}?enrollmentId=${metaState.enrollment.id}&code=${metaState.enrollment.code}&utm_source=secure.qccareerschool.com&utm_medium=phone`;

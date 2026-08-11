@@ -197,14 +197,14 @@ export const updateEnrollment = async (id: number, code: string, payload: Enroll
   return responseBody;
 };
 
-export const chargeEnrollment = async (id: number, token: string, company: 'CA' | 'US' | 'GB'): Promise<void> => {
+export const chargeEnrollment = async (id: number, code: string, token: string, company: 'CA' | 'US' | 'GB'): Promise<void> => {
   const response = await fetch(`${baseUrl}/${id}/profiles`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
       'X-API-Version': '2',
     },
-    body: JSON.stringify({ token, company }),
+    body: JSON.stringify({ token, code, company }),
   });
   if (!response.ok) {
     if (response.status >= 400 && response.status < 500) {

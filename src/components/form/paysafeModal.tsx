@@ -58,6 +58,13 @@ export const PaysafeModal: FC<Props> = props => {
     paymentType: 'CARD',
     merchantRefNum: getMerchantRefNum(metaState.enrollment?.id),
     customerDetails: {
+      holderName: 'Dave Welsh',
+      profile: {
+        firstName: address.lastName,
+        lastName: address.firstName,
+        email: address.emailAddress,
+        phone: address.telephoneNumber,
+      },
       billingDetails: {
         street: address.address1,
         street2: address.address2,
@@ -70,7 +77,12 @@ export const PaysafeModal: FC<Props> = props => {
     threeDs: {
       deviceChannel: 'BROWSER',
       merchantUrl: 'https://www.qccareerschool.com',
+      requestorChallengePreference: 'CHALLENGE_REQUESTED',
       useThreeDSecureVersion2: true,
+      profile: {
+        email: address.emailAddress,
+        phone: address.telephoneNumber,
+      },
     },
   }), [ address, metaState.enrollment ]);
 
