@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { FaCheckCircle, FaMagic } from 'react-icons/fa';
 
 import { agreementLinks } from '@/app/sites/makeup/agreementLinks';
-import { LuminousKitWithoutConcealer } from '@/components/luminousKitWithoutConcealer';
+import { LuminousKitWithoutContour } from '@/components/luminousKitWithoutContour';
 import { PromoModal, PromoModalDarkBlueBox } from '@/components/promoModal';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useCoursesDispatch } from '@/hooks/useCoursesDispatch';
@@ -88,7 +88,7 @@ const Makeup20260826ModalRight: FC = () => (
 
     <h3 className="h4 mb-3 mt-4">Your Luminous Makeup Kit Includes:</h3>
     <div className="bg-white border rounded-4 p-4 shadow-sm">
-      <LuminousKitWithoutConcealer />
+      <LuminousKitWithoutContour />
       <p className="small text-secondary mb-0 mt-3">Kits will be sent after 30 days to students with accounts in good standing. Items in the kit are subject to change. <a target="_blank" rel="noreferrer" href={agreementLinks.default}>Read more</a></p>
     </div>
   </div>
