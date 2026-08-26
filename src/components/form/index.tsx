@@ -197,7 +197,7 @@ export const Form: FC<Props> = props => {
       <Suspense>{!!props.internal && <Overrides />}</Suspense>
       <Summary onSubmit={handleSubmit} agreementLinks={props.agreementLinks} showPromoCodeInput={!!props.showPromoCodeInput} guarantee={props.guarantee} courseGroups={props.courseGroups} onButtonVisibilityChange={handleButtonVisiblityChange} />
       <Suspense>{props.confirmation && <ConfirmPopup show={showConfirmationPopup} onCancel={handleConfirmationCancel} onProceed={handleConfirmationProceed} body={props.confirmation.body} heading={props.confirmation.heading} />}</Suspense>
-      <Suspense>{paysafeCompany && <PaysafeModal company={paysafeCompany} show={showPaysafeForm} onHide={handlePaymentFormHide} onCharge={handleCharge} />}</Suspense>
+      <Suspense>{paysafeCompany && <PaysafeModal school={props.school} company={paysafeCompany} show={showPaysafeForm} onHide={handlePaymentFormHide} onCharge={handleCharge} />}</Suspense>
       <ScrollIndicator scrolledFarEnough={paymentButtonVisible} />
       <ErrorModal />
     </>
