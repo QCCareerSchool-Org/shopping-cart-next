@@ -1,3 +1,4 @@
+import type { Brand } from './brand';
 import { PeriodError } from './periodError';
 
 interface PeriodLike {
@@ -9,16 +10,11 @@ interface LastChancePeriodLike extends PeriodLike {
   readonly lastChance: number;
 }
 
-type DTO<T> = T & {
-  /** to ensure we don't accidentally pass the class as a prop */
-  readonly __type: 'DTO';
-};
+/** what can be passed from server to client components */
+export type PeriodDTO = Brand<PeriodLike, 'DTO'>;
 
 /** what can be passed from server to client components */
-export type PeriodDTO = DTO<PeriodLike>;
-
-/** what can be passed from server to client components */
-export type LastChancePeriodDTO = DTO<LastChancePeriodLike>;
+export type LastChancePeriodDTO = Brand<LastChancePeriodLike, 'DTO'>;
 
 export interface Period extends PeriodLike {
   contains: (date: number) => boolean;
@@ -105,7 +101,7 @@ class PeriodImpl implements Period {
 
   public toString = (): string => `[${PeriodImpl.formatter.format(this.start)}, ${PeriodImpl.formatter.format(this.end)})`;
 
-  public toDTO = (): PeriodDTO => ({ __type: 'DTO', start: this.start, end: this.end });
+  public toDTO = (): PeriodDTO => ({ start: this.start, end: this.end } as PeriodDTO);
 }
 
 class LastChancePeriodImpl extends PeriodImpl implements LastChancePeriod {
@@ -126,7 +122,7 @@ class LastChancePeriodImpl extends PeriodImpl implements LastChancePeriod {
 
   public toString = (): string => `[${PeriodImpl.formatter.format(this.start)}, ${PeriodImpl.formatter.format(this.lastChance)}, ${PeriodImpl.formatter.format(this.end)})`;
 
-  public toDTO = (): LastChancePeriodDTO => ({ __type: 'DTO', start: this.start, end: this.end, lastChance: this.lastChance });
+  public toDTO = (): LastChancePeriodDTO => ({ start: this.start, end: this.end, lastChance: this.lastChance } as LastChancePeriodDTO);
 };
 
 export class PeriodSet {
