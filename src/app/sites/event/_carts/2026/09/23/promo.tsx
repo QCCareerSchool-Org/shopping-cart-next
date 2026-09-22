@@ -3,7 +3,7 @@
 import type { FC } from 'react';
 
 import { Hero20260923 } from './hero';
-import { Event20260923Modal } from './modal';
+import { Event20260516Modal } from '../../05/16/modal';
 import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
@@ -42,7 +42,7 @@ export const Event20260923Promo: FC<Props> = ({ date, period }) => {
       <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
         You'll Also Receive <strong>50% Off Each Additional Course</strong>
       </Banner>
-      <Event20260923Modal show={showPopup} onHide={handleClick} />
+      <Event20260516Modal show={showPopup} onHide={handleClick} />
     </>
   );
 };
