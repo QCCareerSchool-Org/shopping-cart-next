@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { Pet20260909Promo } from './promo';
+import { Pet20260923Promo } from './promo';
 import { PetCoursesSubtitleFirstAid } from '@/app/sites/pet/petCoursesSubtitleFirstAid';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
@@ -14,9 +14,9 @@ interface Props {
   period: LastChancePeriodDTO;
 }
 
-export const Pet20260909: FC<Props> = ({ date, period }) => (
+export const Pet20260923: FC<Props> = ({ date, period }) => (
   <>
-    <Pet20260909Promo date={date} period={period} />
+    <Pet20260923Promo date={date} period={period} />
     <Form
       date={date}
       courseGroups={courseGroups}

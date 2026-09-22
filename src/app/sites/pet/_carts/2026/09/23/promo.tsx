@@ -2,8 +2,8 @@
 
 import type { FC } from 'react';
 
-import { Hero20260909 } from './hero';
-import { Pet20260909Modal } from './modal';
+import { Hero20260923 } from './hero';
+import { Pet20260923Modal } from './modal';
 import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
@@ -17,7 +17,7 @@ interface Props {
   period: LastChancePeriodDTO;
 }
 
-export const Pet20260909Promo: FC<Props> = ({ date, period }) => {
+export const Pet20260923Promo: FC<Props> = ({ date, period }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
 
@@ -36,13 +36,13 @@ export const Pet20260909Promo: FC<Props> = ({ date, period }) => {
       />}
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
-          <Hero20260909 variant={variant} />
+          <Hero20260923 variant={variant} />
         </div>
       </Section>
       <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
         You'll Also Receive <strong>50% Off Each Additional Course</strong>
       </Banner>
-      <Pet20260909Modal show={showPopup} onHide={handleClick} />
+      <Pet20260923Modal show={showPopup} onHide={handleClick} />
     </>
   );
 };

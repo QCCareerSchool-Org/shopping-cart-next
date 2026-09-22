@@ -10,19 +10,19 @@ interface Props {
   onHide: () => void;
 }
 
-export const Pet20260909Modal: FC<Props> = props => (
+export const Pet20260923Modal: FC<Props> = props => (
   <PromoModal
     show={props.show}
     onHide={props.onHide}
-    heading={<Pet20260909ModalHeading />}
-    left={<Pet20260909ModalLeft />}
-    right={<Pet20260909ModalRight />}
-    headerAside={<Pet20260909ModalOffer />}
+    heading={<Pet20260923ModalHeading />}
+    left={<Pet20260923ModalLeft />}
+    right={<Pet20260923ModalRight />}
+    headerAside={<Pet20260923ModalOffer />}
     footerMessage={<>Start your journey today for only <span className="text-primary">$99</span>.</>}
   />
 );
 
-const Pet20260909ModalHeading: FC = () => (
+const Pet20260923ModalHeading: FC = () => (
   <div className="position-relative z-1 flex-grow-1">
     <div className="d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill small fw-bold text-uppercase mb-3" style={{ backgroundColor: 'rgba(13, 110, 253, 0.1)', color: '#0A0F3D', border: '1px solid rgba(13, 110, 253, 0.2)' }}>
       <FaDog /> Pet Care Career
@@ -32,7 +32,7 @@ const Pet20260909ModalHeading: FC = () => (
   </div>
 );
 
-const Pet20260909ModalOffer: FC = () => (
+const Pet20260923ModalOffer: FC = () => (
   <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 300 }}>
     <div className="fs-2 fw-bold" style={{ color: '#0A0F3D', lineHeight: 1.1 }}>$300 OFF</div>
     <div className="small fw-bold text-uppercase mb-2">All Courses</div>
@@ -40,13 +40,13 @@ const Pet20260909ModalOffer: FC = () => (
   </div>
 );
 
-const Pet20260909ModalLeft: FC = () => (
-  <Pet20260909ModalCourses />
+const Pet20260923ModalLeft: FC = () => (
+  <Pet20260923ModalCourses />
 );
 
-const Pet20260909ModalRight: FC = () => (
+const Pet20260923ModalRight: FC = () => (
   <>
-    <Pet20260909ModalFeatures />
+    <Pet20260923ModalFeatures />
 
     <PromoModalDarkBlueBox>
       <h4 className="fw-bold sans-serif fs-4 mb-2 d-flex align-items-center gap-2">
@@ -58,7 +58,7 @@ const Pet20260909ModalRight: FC = () => (
   </>
 );
 
-const Pet20260909ModalCourses: FC = () => (
+const Pet20260923ModalCourses: FC = () => (
   <div>
     <div className="d-flex flex-column gap-4">
       {courses.map(course => (
@@ -71,7 +71,7 @@ const Pet20260909ModalCourses: FC = () => (
   </div>
 );
 
-const Pet20260909ModalFeatures: FC = () => (
+const Pet20260923ModalFeatures: FC = () => (
   <div className="d-flex flex-column gap-4">
     {features.map(feature => (
       <div key={feature.title} className="d-flex gap-3">
