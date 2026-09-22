@@ -3,7 +3,7 @@
 import type { FC } from 'react';
 
 import { Hero20260923 } from './hero';
-import { Pet20260923Modal } from './modal';
+import { Pet20260826Modal } from '../../08/26/modal';
 import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
@@ -42,7 +42,7 @@ export const Pet20260923Promo: FC<Props> = ({ date, period }) => {
       <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
         You'll Also Receive <strong>50% Off Each Additional Course</strong>
       </Banner>
-      <Pet20260923Modal show={showPopup} onHide={handleClick} />
+      <Pet20260826Modal show={showPopup} onHide={handleClick} />
     </>
   );
 };
