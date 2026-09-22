@@ -20,7 +20,6 @@ interface Props {
 export const Design20260826Promo: FC<Props> = ({ date, period }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
   const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
-  const bannerText = 'You\'ll Also Receive 50% Off Each Additional Course';
 
   const handleClick = (): void => {
     togglePopup();
@@ -41,7 +40,7 @@ export const Design20260826Promo: FC<Props> = ({ date, period }) => {
         </div>
       </Section>
       <Banner onClick={handleClick} badgeImageSrc={null} hideLink>
-        {bannerText}
+        You'll also receive course textbooks shipped to your door
       </Banner>
       <Design20260826Modal show={showPopup} onHide={handleClick} />
     </>
