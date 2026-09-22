@@ -12,8 +12,7 @@ interface Props {
 
 export const Hero20260909: FC<Props> = ({ variant }) => {
 
-  const [ desktopSrc, mobileSrc ] = variant === 'lastChance'
-    ? [ DesktopEnds, MobileEnds ]
+  const [ desktopSrc, mobileSrc ] = variant === 'lastChance' ? [ DesktopEnds, MobileEnds ]
     : [ Desktop, Mobile ];
 
   return <PromoImage desktopSrc={desktopSrc} mobileSrc={mobileSrc} />;
