@@ -1,10 +1,9 @@
 import { Suspense } from 'react';
 
-import { Pet20260826 } from './_carts/2026/08/26';
-import { Pet20260909 } from './_carts/2026/09/09';
+import { Pet20260923 } from './_carts/2026/09/23';
 import { PetFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
-import { august26, september09 } from '@/periods';
+import { september23 } from '@/periods';
 import type { PageComponent } from '@/serverComponent';
 
 const PetPage: PageComponent = async props => {
@@ -13,11 +12,9 @@ const PetPage: PageComponent = async props => {
 
   return (
     <Suspense>
-      {september09.contains(date)
-        ? <Pet20260909 date={date} period={september09.toDTO()} />
-        : august26.contains(date)
-          ? <Pet20260826 date={date} period={august26.toDTO()} />
-          : <PetFallback date={date} />
+      {september23.contains(date)
+        ? <Pet20260923 date={date} period={september23.toDTO()} />
+        : <PetFallback date={date} />
       }
     </Suspense>
   );

@@ -1,4 +1,4 @@
-import type { Brand } from './brand';
+import type { Brand } from '../brand';
 import { PeriodError } from './periodError';
 
 interface PeriodLike {
