@@ -41,7 +41,7 @@ export const Makeup20261021Modal: FC<Props> = props => {
 const Makeup20261021ModalHeading: FC = () => (
   <div className="position-relative z-1 flex-grow-1">
     <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>A Makeup Career that Grows With You</h2>
-    <p className="mb-0">Enroll in Master <strong>Makeup Artistry</strong> today and get both the <strong>Special FX Makeup course</strong> and <strong>Pro Makeup Workshop</strong> FREE.</p>
+    <p className="mb-0">Enroll in Master <strong>Makeup Artistry</strong> today and get both the <strong>Special FX Makeup course</strong> and <strong>Skincare Consultant course</strong> FREE.</p>
   </div>
 );
 
