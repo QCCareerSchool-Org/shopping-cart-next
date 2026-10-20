@@ -1,10 +1,9 @@
 import { Suspense } from 'react';
 
-import { DesignStudent20260826 } from './_carts/2026/08/26';
-import { DesignStudent20260909 } from './_carts/2026/09/09';
+import { DesignStudent20261021 } from './_carts/2026/11/21';
 import { DesignStudentFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
-import { august26, september09 } from '@/periods';
+import { october21 } from '@/periods';
 import type { PageComponent } from '@/serverComponent';
 
 const DesignStudentPage: PageComponent = async props => {
@@ -13,12 +12,9 @@ const DesignStudentPage: PageComponent = async props => {
 
   return (
     <Suspense>
-      {september09.contains(date)
-        ? <DesignStudent20260909 date={date} period={september09.toDTO()} />
-        :
-        august26.contains(date)
-          ? <DesignStudent20260826 date={date} period={august26.toDTO()} />
-          : <DesignStudentFallback date={date} />
+      {october21.contains(date)
+        ? <DesignStudent20261021 date={date} period={october21.toDTO()} />
+        : <DesignStudentFallback date={date} />
       }
     </Suspense>
   );
