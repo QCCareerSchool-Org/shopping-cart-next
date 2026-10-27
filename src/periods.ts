@@ -1,9 +1,10 @@
-import { lastChancePeriod } from './lib/period';
+import { lastChancePeriod, lastChanceWithExtensionPeriod } from './lib/period';
 
-export const october21 = lastChancePeriod(
+export const october21 = lastChanceWithExtensionPeriod(
   Date.UTC(2026, 9, 21, 7), // 2026-10-21T03:00 (07:00 UTC)
   Date.UTC(2026, 9, 30, 7), // 2026-10-30T03:00 (07:00 UTC)
   Date.UTC(2026, 9, 31, 7), // 2026-10-31T03:00 (07:00 UTC)
+  Date.UTC(2026, 10, 2, 8), // 2026-11-02T03:00 (08:00 UTC)
 );
 
 export const october07 = lastChancePeriod(

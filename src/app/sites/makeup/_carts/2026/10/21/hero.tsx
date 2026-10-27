@@ -7,11 +7,11 @@ import Mobile from './mobile.jpg';
 import { PromoImage } from '@/components/promoImage';
 
 interface Props {
-  variant?: 'lastChance';
+  variant?: 'lastChance' | 'extension';
 }
 
 export const Hero20261021: FC<Props> = ({ variant }) => {
-  const [ desktopSrc, mobileSrc ] = variant === 'lastChance'
+  const [ desktopSrc, mobileSrc ] = variant === 'lastChance' || variant === 'extension'
     ? [ DesktopEnds, MobileEnds ]
     : [ Desktop, Mobile ];
 

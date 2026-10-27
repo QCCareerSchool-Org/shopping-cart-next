@@ -66,6 +66,10 @@ export const CountDownTimerWrapper: FC<Props> = memo(({ date, showDate, endDate,
     setClosed(true);
   };
 
+  if (date < showDate || date >= endDate) {
+    return;
+  }
+
   return (
     <div ref={wrapperRef} className={`${styles.wrapper} ${className ?? ''} ${fixed && !closed ? styles.fixed : ''} ${newHaus ? styles.newHaus : ''}`} style={style}>
       {showTimer && (
