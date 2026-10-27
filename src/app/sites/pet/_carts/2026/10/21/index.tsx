@@ -4,14 +4,14 @@ import { Pet20261021Promo } from './promo';
 import { PetCoursesSubtitleFirstAid } from '@/app/sites/pet/petCoursesSubtitleFirstAid';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
-import type { LastChancePeriodDTO } from '@/lib/period';
+import type { LastChanceWithExtensionPeriodDTO } from '@/lib/period';
 import { agreementLinks } from '@/pet/agreementLinks';
 import { courseGroups } from '@/pet/courseGroups';
 import { Guarantee } from '@/pet/guarantee';
 
 interface Props {
   date: number;
-  period: LastChancePeriodDTO;
+  period: LastChanceWithExtensionPeriodDTO;
 }
 
 export const Pet20261021: FC<Props> = ({ date, period }) => (

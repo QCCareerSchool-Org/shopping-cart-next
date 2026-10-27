@@ -12,13 +12,13 @@ import { PromoImage } from '@/components/promoImage';
 import { usePriceState } from '@/hooks/usePriceState';
 
 interface Props {
-  variant?: 'lastChance';
+  variant?: 'lastChance' | 'extension';
 }
 
 export const Hero20261021: FC<Props> = ({ variant }) => {
   const priceState = usePriceState();
 
-  const [ desktopSrc, mobileSrc ] = variant === 'lastChance'
+  const [ desktopSrc, mobileSrc ] = variant === 'lastChance' || variant === 'extension'
     ? [ DesktopEnds, MobileEnds ]
     : priceState?.currency.code === 'GBP' ? [ DesktopUK, MobileUK ] : [ Desktop, Mobile ];
 
