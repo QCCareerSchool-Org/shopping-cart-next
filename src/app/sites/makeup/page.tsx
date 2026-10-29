@@ -1,9 +1,10 @@
 import { Suspense } from 'react';
 
 import { Makeup20261021 } from './_carts/2026/10/21';
+import { Makeup20261104 } from './_carts/2026/11/04';
 import { MakeupFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
-import { october21 } from '@/periods';
+import { november04, october21 } from '@/periods';
 import type { PageComponent } from '@/serverComponent';
 
 const MakeupPage: PageComponent = async props => {
@@ -14,7 +15,9 @@ const MakeupPage: PageComponent = async props => {
     <Suspense>
       {october21.contains(date)
         ? <Makeup20261021 date={date} period={october21.toDTO()} />
-        : <MakeupFallback date={date} />
+        : november04.contains(date)
+          ? <Makeup20261104 date={date} period={november04.toDTO()} />
+          : <MakeupFallback date={date} />
       }
     </Suspense>
   );
