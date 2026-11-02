@@ -2,22 +2,22 @@
 
 import type { FC } from 'react';
 
-import { AAPDynamicCourseAlert, DynamicCourseAlert } from '.';
+import { DynamicCourseAlert } from '.';
 import { useCoursesState } from '@/hooks/useCoursesState';
 import { isEventFoundationCourse, isEventSpecialtyCourse } from '@/lib/courses';
 
 export const TwoFreeEventSpecialtyEDDynamicMessage: FC = () => {
   const coursesState = useCoursesState();
 
-  if (coursesState.selected.includes('AA')) {
-    return <AAPDynamicCourseAlert />;
-  }
+  // if (coursesState.selected.includes('AA')) {
+  //   return <AAPDynamicCourseAlert />;
+  // }
 
   if (!coursesState.selected.length) {
     return null;
   }
 
-  if (!coursesState.selected.some(c => isEventFoundationCourse(c) && c !== 'ED')) {
+  if (!coursesState.selected.some(c => (isEventFoundationCourse(c) && c !== 'ED') || c === 'AA')) {
     return <DynamicCourseAlert variant="danger">Select a foundation course to get two free specialty courses</DynamicCourseAlert>;
   }
 
