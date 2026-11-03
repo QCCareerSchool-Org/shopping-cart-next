@@ -7,7 +7,7 @@ import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTime
 import { Section } from '@/components/section';
 import type { LastChancePeriodDTO } from '@/lib/period';
 
-const backgroundColor = '#000207';
+const backgroundColor = '#000000';
 
 interface Props {
   date: number;
