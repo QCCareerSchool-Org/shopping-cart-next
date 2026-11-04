@@ -5,7 +5,7 @@ import type { FC } from 'react';
 import { FaAward, FaUsers } from 'react-icons/fa';
 import { FaArrowTrendUp } from 'react-icons/fa6';
 
-import BonusItemsImage from './design-color-combo-items-2.jpg';
+import BonusItemsImage from './color-kit-v2.jpg';
 import { PromoModal } from '@/components/promoModal';
 
 interface Props {
