@@ -70,8 +70,8 @@ const Design20261104ModalRight: FC = () => (
     <div className="container p-0 rounded overflow-hidden border">
       <Image src={BonusItemsImage} alt="" className="img-fluid" />
       <div className="p-4 rounded bg-light">
-        <h4 className="fw-bold mb-2">TEXTBOOKS + COLOR WHEEL + FANDECK INCLUDED</h4>
-        <p>For a limited time, enroll in QC's Interior Design & Decorating Course and receive course textbooks, a color wheel, and a fan deck at no extra cost!</p>
+        <h4 className="fw-bold mb-2">COLOR WHEEL + FANDECK INCLUDED</h4>
+        <p>For a limited time, enroll in any QC Design School course and receive a color wheel and a fan deck at no extra cost!</p>
       </div>
     </div>
   </>
