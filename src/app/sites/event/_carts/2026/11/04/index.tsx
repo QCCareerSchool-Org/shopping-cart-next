@@ -7,11 +7,11 @@ import { Guarantee } from '@/app/sites/event/guarantee';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { TwoFreeEventSpecialtyEDDynamicMessage } from '@/components/dynamicCourseMessages/twoFreeEventSpecialtyED';
 import { Form } from '@/components/form';
-import type { LastChancePeriodDTO } from '@/lib/period';
+import type { LastChanceWithExtensionPeriodDTO } from '@/lib/period';
 
 interface Props {
   date: number;
-  period: LastChancePeriodDTO;
+  period: LastChanceWithExtensionPeriodDTO;
 }
 
 export const Event20261104: FC<Props> = ({ date, period }) => (
