@@ -5,11 +5,11 @@ import { agreementLinks } from '../../../../../agreementLinks';
 import { courseGroups } from '../../../../../courseGroups';
 import { Guarantee } from '../../../../../guarantee';
 import { Form } from '@/components/form';
-import type { LastChancePeriodDTO } from '@/lib/period';
+import type { LastChanceWithExtensionPeriodDTO } from '@/lib/period';
 
 interface Props {
   date: number;
-  period: LastChancePeriodDTO;
+  period: LastChanceWithExtensionPeriodDTO;
 }
 
 export const EventStudent20261104: FC<Props> = ({ date, period }) => {

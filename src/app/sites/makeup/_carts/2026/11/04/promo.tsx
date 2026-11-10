@@ -8,13 +8,13 @@ import { Banner } from '@/components/banner';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
 import { useToggle } from '@/hooks/useToggle';
-import type { LastChancePeriodDTO } from '@/lib/period';
+import type { LastChanceWithExtensionPeriodDTO } from '@/lib/period';
 
 const backgroundColor = '#010102';
 
 interface Props {
   date: number;
-  period: LastChancePeriodDTO;
+  period: LastChanceWithExtensionPeriodDTO;
 }
 
 export const Makeup20261104Promo: FC<Props> = ({ date, period }) => {
@@ -30,6 +30,13 @@ export const Makeup20261104Promo: FC<Props> = ({ date, period }) => {
       {period.lastChance && <CountDownTimerWrapper
         date={date}
         showDate={period.lastChance}
+        endDate={period.extension}
+        message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
+        className="bg-black text-light"
+      />}
+      {period.lastChance && <CountDownTimerWrapper
+        date={date}
+        showDate={period.extension}
         endDate={period.end}
         message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
         className="bg-black text-light"
