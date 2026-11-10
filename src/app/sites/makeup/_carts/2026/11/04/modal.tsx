@@ -45,7 +45,7 @@ const Makeup20261104ModalHeading: FC = () => (
       <FaMagic /> Graduate with three professional certifications
     </div>
     <h2 className="fs-2 fw-bolder mb-2" style={{ color: '#0A0F3D' }}>A Makeup Career that Grows With You</h2>
-    <p className="mb-0">Enroll in Master <strong>Makeup Artistry</strong> today and get both the <strong>Skincare course + Pro Makeup Workshop</strong> FREE.</p>
+    <p className="mb-0">Enroll in <strong>Master Makeup Artistry</strong> today and get both the <strong>Skincare course + Pro Makeup Workshop</strong> FREE.</p>
   </div>
 );
 
