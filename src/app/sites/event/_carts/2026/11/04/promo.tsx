@@ -19,7 +19,7 @@ interface Props {
 
 export const Event20261104Promo: FC<Props> = ({ date, period }) => {
   const [ showPopup, togglePopup ] = useToggle(false);
-  const variant = typeof period.lastChance !== 'undefined' && date >= period.lastChance ? 'lastChance' : undefined;
+  const variant = date >= period.extension ? 'extension' : date >= period.lastChance ? 'lastChance' : undefined;
 
   const handleClick = (): void => {
     togglePopup();
@@ -27,20 +27,8 @@ export const Event20261104Promo: FC<Props> = ({ date, period }) => {
 
   return (
     <>
-      {period.lastChance && <CountDownTimerWrapper
-        date={date}
-        showDate={period.lastChance}
-        endDate={period.extension}
-        message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
-        className="bg-black text-light"
-      />}
-      {period.lastChance && <CountDownTimerWrapper
-        date={date}
-        showDate={period.extension}
-        endDate={period.end}
-        message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>}
-        className="bg-black text-light"
-      />}
+      {variant === 'lastChance' && <CountDownTimerWrapper date={date} showDate={period.lastChance} endDate={period.extension} message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>} className="bg-black text-light" />}
+      {variant === 'extension' && <CountDownTimerWrapper date={date} showDate={period.extension} endDate={period.end} message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>} className="bg-black text-light" />}
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>
           <Hero20261104 variant={variant} />
