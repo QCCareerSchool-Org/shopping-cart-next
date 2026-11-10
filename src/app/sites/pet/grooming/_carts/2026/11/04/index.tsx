@@ -7,11 +7,11 @@ import { Guarantee } from '../../../../../guarantee';
 import { PetCoursesSubtitleFirstAid } from '@/app/sites/pet/petCoursesSubtitleFirstAid';
 import { Save50CourseMessage } from '@/components/dynamicCourseMessages/save50';
 import { Form } from '@/components/form';
-import type { LastChancePeriodDTO } from '@/lib/period';
+import type { LastChanceWithExtensionPeriodDTO } from '@/lib/period';
 
 interface Props {
   date: number;
-  period: LastChancePeriodDTO;
+  period: LastChanceWithExtensionPeriodDTO;
 }
 
 export const Grooming20261104: FC<Props> = ({ date, period }) => (

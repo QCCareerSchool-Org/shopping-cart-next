@@ -5,13 +5,13 @@ import type { FC } from 'react';
 import { Hero20261104 } from './hero';
 import { CountDownTimerWrapper } from '@/components/countDownTimer/countDownTimerWrapper';
 import { Section } from '@/components/section';
-import type { LastChancePeriodDTO } from '@/lib/period';
+import type { LastChanceWithExtensionPeriodDTO } from '@/lib/period';
 
 const backgroundColor = '#000000';
 
 interface Props {
   date: number;
-  period: LastChancePeriodDTO;
+  period: LastChanceWithExtensionPeriodDTO;
 }
 
 export const EventStudent20261104Promo: FC<Props> = ({ date, period }) => (
@@ -22,6 +22,13 @@ export const EventStudent20261104Promo: FC<Props> = ({ date, period }) => (
     <CountDownTimerWrapper
       date={date}
       showDate={period.lastChance}
+      endDate={period.extension}
+      message={<span style={{ textTransform: 'uppercase' }}>This special offer ends soon!</span>}
+      className="bg-black text-light"
+    />
+    <CountDownTimerWrapper
+      date={date}
+      showDate={period.extension}
       endDate={period.end}
       message={<span style={{ textTransform: 'uppercase' }}>This special offer ends soon!</span>}
       className="bg-black text-light"
