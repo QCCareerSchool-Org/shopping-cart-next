@@ -5,6 +5,7 @@ import styles from './index.module.css';
 import { Part } from './part';
 import type { CourseGroup } from '@/domain/courseGroup';
 import { useAddressState } from '@/hooks/useAddressState';
+import { useCoursesState } from '@/hooks/useCoursesState';
 import { usePaymentState } from '@/hooks/usePaymentState';
 import { usePriceState } from '@/hooks/usePriceState';
 
@@ -13,12 +14,17 @@ interface Props {
   courseGroups: CourseGroup[];
 }
 
+const countriesWithShipping = [ 'MZ', 'DG' ];
+
 export const Breakdown: FC<Props> = ({ discountName, courseGroups }) => {
   const priceState = usePriceState();
+  const { selected } = useCoursesState();
   const addressState = useAddressState();
   const paymentState = usePaymentState();
 
-  const showFreeShippingMessage = addressState.countryCode === 'US'
+  const showShippingMessage = selected.some(c => countriesWithShipping.includes(c));
+
+  const freeShipping = addressState.countryCode === 'US'
     || addressState.countryCode === 'CA'
     || addressState.countryCode === 'AU'
     || addressState.countryCode === 'NZ'
@@ -37,10 +43,14 @@ export const Breakdown: FC<Props> = ({ discountName, courseGroups }) => {
         </tbody>
       </table>
       <p className="text-center text-lg-end">All prices are in {priceState.currency.name}.</p>
-      {showFreeShippingMessage
-        ? <p className="text-center text-lg-end text-primary small">This purchase qualifies for free shipping.</p>
-        : <p className="text-center text-lg-end small">International shipping fees, tariffs, and delivery restrictions may apply.</p>
-      }
+      {showShippingMessage && (
+        <>
+          {freeShipping
+            ? <p className="text-center text-lg-end text-primary small">This purchase qualifies for free shipping.</p>
+            : <p className="text-center text-lg-end small">International shipping fees, tariffs, and delivery restrictions may apply.</p>
+          }
+        </>
+      )}
     </>
   );
 };
