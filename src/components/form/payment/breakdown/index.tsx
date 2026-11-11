@@ -1,15 +1,12 @@
 import type { FC } from 'react';
-import { useMemo } from 'react';
 
 import { Full } from './full';
 import styles from './index.module.css';
 import { Part } from './part';
 import type { CourseGroup } from '@/domain/courseGroup';
-import { useCoursesState } from '@/hooks/useCoursesState';
+import { useAddressState } from '@/hooks/useAddressState';
 import { usePaymentState } from '@/hooks/usePaymentState';
 import { usePriceState } from '@/hooks/usePriceState';
-
-const freeShippingCourses = [ 'DG', 'MZ', 'SF', 'HS', 'I2', 'ST', 'LD', 'CC' ];
 
 interface Props {
   discountName?: string;
@@ -18,12 +15,14 @@ interface Props {
 
 export const Breakdown: FC<Props> = ({ discountName, courseGroups }) => {
   const priceState = usePriceState();
-  const { selected } = useCoursesState();
+  const addressState = useAddressState();
   const paymentState = usePaymentState();
 
-  const showFreeShippingMessage = useMemo(() => {
-    return selected.some(c => freeShippingCourses.includes(c));
-  }, [ selected ]);
+  const showFreeShippingMessage = addressState.countryCode === 'US'
+    || addressState.countryCode === 'CA'
+    || addressState.countryCode === 'AU'
+    || addressState.countryCode === 'NZ'
+    || addressState.countryCode === 'GB';
 
   if (!priceState || priceState.courses.length === 0) {
     return;
@@ -38,7 +37,10 @@ export const Breakdown: FC<Props> = ({ discountName, courseGroups }) => {
         </tbody>
       </table>
       <p className="text-center text-lg-end">All prices are in {priceState.currency.name}.</p>
-      {showFreeShippingMessage && <p className="text-center text-lg-end text-primary small">This purchase qualifies for free shipping.</p>}
+      {showFreeShippingMessage
+        ? <p className="text-center text-lg-end text-primary small">This purchase qualifies for free shipping.</p>
+        : <p className="text-center text-lg-end small">International shipping fees, tariffs, and delivery restrictions may apply.</p>
+      }
     </>
   );
 };
