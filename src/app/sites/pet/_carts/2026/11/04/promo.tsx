@@ -27,7 +27,7 @@ export const Pet20261104Promo: FC<Props> = ({ date, period }) => {
 
   return (
     <>
-      {period.lastChance && <CountDownTimerWrapper date={date} showDate={period.lastChance} endDate={period.extension} message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>} className="bg-black text-light" />}
+      {period.lastChance && <CountDownTimerWrapper date={date} showDate={period.lastChance} endDate={period.lastChance + (24 * 60 * 60 * 1000)} message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>} className="bg-black text-light" />}
       {period.lastChance && <CountDownTimerWrapper date={date} showDate={period.extension} endDate={period.end} message={<span style={{ textTransform: 'uppercase' }}>This exclusive offer ends soon!</span>} className="bg-black text-light" />}
       <Section style={{ backgroundColor }} noPadding>
         <div onClick={handleClick} style={{ cursor: 'pointer' }}>

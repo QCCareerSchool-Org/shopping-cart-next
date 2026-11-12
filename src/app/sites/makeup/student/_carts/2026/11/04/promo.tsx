@@ -22,7 +22,7 @@ export const MakeupStudent20261104Promo: FC<Props> = ({ date, period }) => (
     <CountDownTimerWrapper
       date={date}
       showDate={period.lastChance}
-      endDate={period.extension}
+      endDate={period.lastChance + (24 * 60 * 60 * 1000)}
       message={<span style={{ textTransform: 'uppercase' }}>This special offer ends soon!</span>}
       className="bg-black text-light"
     />
