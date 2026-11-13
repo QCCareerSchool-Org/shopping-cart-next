@@ -28,7 +28,7 @@ export const Grooming20261116: FC<Props> = ({ date, period }) => (
       dynamicCourseDescriptions="SHOW"
       visualPaymentPlans
       dynamicCourseMessages={[ Save50CourseMessage ]}
-      promoCodeDefault="BLACKFRIDAY26"
+      promoCodeDefault="PET400OFF"
     />
   </>
 );
