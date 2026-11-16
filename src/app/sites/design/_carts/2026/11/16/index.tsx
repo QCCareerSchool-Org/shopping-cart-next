@@ -26,7 +26,7 @@ export const Design20261116: FC<Props> = ({ date, period }) => {
         successLink="https://www.qcdesignschool.com/welcome-to-the-school"
         agreementLinks={agreementLinks}
         dynamicCourseDescriptions="SHOW"
-        promoCodeDefault="BLACKFRIDAY26"
+        promoCodeDefault="BOGO"
         visualPaymentPlans
         dynamicCourseMessages={[ BogoDynamicCourseMessage, Save50CourseMessage ]}
       />
