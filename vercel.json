@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/grooming", "destination": "/" }
+  ],
   "redirects": [
     { "source": "/pro-plus-luminous-kit", "destination": "/free-masterclass", "permanent": true },
     { "source": "/skincare-plus-luminous-kit", "destination": "/free-skincare", "permanent": true }
