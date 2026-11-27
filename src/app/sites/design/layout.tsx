@@ -44,7 +44,7 @@ const DesignLayout: LayoutComponent = async ({ children }) => {
 
   return (
     <div>
-      <GoogleAnalytics id="G-DV480L9S3Y" adsId="AW-1071836607" userValues={userValues} />
+      {process.env.NEXT_PUBLIC_DESIGN_GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.NEXT_PUBLIC_DESIGN_GOOGLE_ANALYTICS_ID} adsId={process.env.NEXT_PUBLIC_DESIGN_GOOGLE_ADS_ID} userValues={userValues} />}
       <Facebook id="5372705592757225" userValues={userValues} />
       <Bing id="5105217" userValues={userValues} />
       {process.env.ACTIVE_CAMPAIGN_ID && <ActiveCampaign id={process.env.ACTIVE_CAMPAIGN_ID} userValues={userValues} />}

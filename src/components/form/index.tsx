@@ -17,6 +17,7 @@ import { type School, type SchoolVariant, validVariant } from '@/domain/school';
 import { useAddressState } from '@/hooks/useAddressState';
 import { useCoursesState } from '@/hooks/useCoursesState';
 import { useEnroll } from '@/hooks/useEnroll';
+import { useGtagCartEvents } from '@/hooks/useGtagCartEvents';
 import { useInitialData } from '@/hooks/useInitialData';
 import { useMetaDispatch } from '@/hooks/useMetaDispatch';
 import { useMetaState } from '@/hooks/useMetaState';
@@ -25,6 +26,8 @@ import { usePriceState } from '@/hooks/usePriceState';
 import { usePriceUpdater } from '@/hooks/usePriceUpdater';
 import { useToggle } from '@/hooks/useToggle';
 import { getPaysafeCompany } from '@/lib/getPaysafeCompany';
+import { getGoogleIds } from '@/lib/googleIds';
+import { gaCartEvent } from '@/lib/gtag';
 import type { Paysafe } from '@/lib/paysafe';
 import type { AddressState } from '@/state/address';
 import type { MetaState } from '@/state/meta';
@@ -109,6 +112,7 @@ export const Form: FC<Props> = props => {
 
   useInitialData(props.school, props.schoolVariant, !!props.student, props.courseGroups, props.coursesOverride, props.billingAddressDefault);
   usePriceUpdater(props.date, !!props.internal, props.school, props.schoolVariant, props.promoCodeDefault, props.coursesOverride);
+  useGtagCartEvents(props.school, !props.internal);
 
   const [ showConfirmationPopup, toggleConfirmationPopup ] = useToggle(false);
   const [ showPaysafeForm, togglePaysafeForm ] = useToggle(false);
@@ -157,6 +161,10 @@ export const Form: FC<Props> = props => {
     void addToDatabase().then(result => {
       setRefreshCaptcha(r => !r);
       if (result) {
+        if (!props.internal) {
+          const { analyticsId, adsId } = getGoogleIds(props.school);
+          gaCartEvent('begin_checkout', [ analyticsId, adsId ], priceState, priceState.courses, paymentState.plan);
+        }
         togglePaysafeForm();
       }
     });
