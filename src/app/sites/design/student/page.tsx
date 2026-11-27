@@ -1,11 +1,10 @@
 import { Suspense } from 'react';
 
-import { DesignStudent20261021 as DesignStudent20261104 } from './_carts/2026/11/04';
 import { DesignStudent20261116 } from './_carts/2026/11/16';
-import { DesignStudent20261021 } from './_carts/2026/11/21';
+import { DesignStudent20261128 } from './_carts/2026/11/28';
 import { DesignStudentFallback } from './_carts/fallback';
 import { getDate } from '@/lib/getDate';
-import { november04, november16, october21 } from '@/periods';
+import { november16, november28 } from '@/periods';
 import type { PageComponent } from '@/serverComponent';
 
 const DesignStudentPage: PageComponent = async props => {
@@ -14,13 +13,11 @@ const DesignStudentPage: PageComponent = async props => {
 
   return (
     <Suspense>
-      {october21.contains(date)
-        ? <DesignStudent20261021 date={date} period={october21.toDTO()} />
-        : november04.contains(date)
-          ? <DesignStudent20261104 date={date} period={november04.toDTO()} />
-          : november16.contains(date)
-            ? <DesignStudent20261116 date={date} period={november16.toDTO()} />
-            : <DesignStudentFallback date={date} />
+      {november28.contains(date)
+        ? <DesignStudent20261128 date={date} period={november28.toDTO()} />
+        : november16.contains(date)
+          ? <DesignStudent20261116 date={date} period={november16.toDTO()} />
+          : <DesignStudentFallback date={date} />
       }
     </Suspense>
   );
