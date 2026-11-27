@@ -51,7 +51,7 @@ const Makeup20261128ModalHeading: FC = () => (
 
 const Makeup20261128ModalOffer: FC = () => (
   <div className="position-relative z-1 text-center text-lg-end bg-light p-3 rounded-3 border mx-auto" style={{ maxWidth: 300 }}>
-    <div className="small fw-bold text-uppercase">+ Bonus Lashes</div>
+    <div className="small fw-bold text-center text-uppercase">+ Bonus Lashes</div>
   </div>
 );
 
