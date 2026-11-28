@@ -3,6 +3,7 @@ import Script from 'next/script';
 
 import { Footer } from './footer';
 import { Header } from './header';
+import { getGoogleIds } from '@/lib/googleIds';
 import { GoogleAnalytics } from '@/scripts/googleAnalytics';
 import type { LayoutComponent } from '@/serverComponent';
 
@@ -28,9 +29,10 @@ export const metadata: Metadata = {
 };
 
 const WritingLayout: LayoutComponent = ({ children }) => {
+  const googleIds = getGoogleIds('Winghill Writing School');
   return (
     <div>
-      {process.env.NEXT_PUBLIC_WRITING_GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.NEXT_PUBLIC_WRITING_GOOGLE_ANALYTICS_ID} adsId={process.env.NEXT_PUBLIC_WRITING_GOOGLE_ADS_ID} />}
+      {googleIds.analyticsId && <GoogleAnalytics id={googleIds.analyticsId} adsId={googleIds.adsId} />}
       <Header />
       {children}
       <Footer />

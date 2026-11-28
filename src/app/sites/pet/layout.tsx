@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 import { Footer } from './footer';
 import { Header } from './header';
 import { isUserValues } from '@/domain/userValues';
+import { getGoogleIds } from '@/lib/googleIds';
 import { decodeJwt } from '@/lib/jwt';
 import { UserValuesProvider } from '@/providers/userValuesProvider';
 import { ActiveCampaign } from '@/scripts/activeCampaign';
@@ -32,6 +33,7 @@ export const metadata: Metadata = {
 };
 
 const PetLayout: LayoutComponent = async ({ children }) => {
+  const googleIds = getGoogleIds('QC Pet Studies');
   const jwt = (await cookies()).get('user')?.value;
   const result = jwt ? await decodeJwt(jwt, 'QC Pet Studies') : undefined;
   if (result) {
@@ -44,7 +46,7 @@ const PetLayout: LayoutComponent = async ({ children }) => {
 
   return (
     <div>
-      {process.env.NEXT_PUBLIC_PET_GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.NEXT_PUBLIC_PET_GOOGLE_ANALYTICS_ID} adsId={process.env.NEXT_PUBLIC_PET_GOOGLE_ADS_ID} userValues={userValues} />}
+      {googleIds.analyticsId && <GoogleAnalytics id={googleIds.analyticsId} adsId={googleIds.adsId} userValues={userValues} />}
       <Facebook id="3226622604235515" userValues={userValues} />
       <Bing id="5751420" userValues={userValues} />
       {process.env.ACTIVE_CAMPAIGN_ID && <ActiveCampaign id={process.env.ACTIVE_CAMPAIGN_ID} userValues={userValues} />}

@@ -5,6 +5,7 @@ import { Footer } from './footer';
 import { Header } from './header';
 import './global.scss';
 import { isUserValues } from '@/domain/userValues';
+import { getGoogleIds } from '@/lib/googleIds';
 import { decodeJwt } from '@/lib/jwt';
 import { ActiveCampaign } from '@/scripts/activeCampaign';
 import { Bing } from '@/scripts/bing';
@@ -31,6 +32,7 @@ export const metadata: Metadata = {
 };
 
 const MakeupLayout: LayoutComponent = async ({ children }) => {
+  const googleIds = getGoogleIds('QC Makeup Academy');
   const jwt = (await cookies()).get('user')?.value;
   const result = jwt ? await decodeJwt(jwt, 'QC Makeup Academy') : undefined;
   if (result) {
@@ -43,7 +45,7 @@ const MakeupLayout: LayoutComponent = async ({ children }) => {
 
   return (
     <div>
-      {process.env.NEXT_PUBLIC_MAKEUP_GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.NEXT_PUBLIC_MAKEUP_GOOGLE_ANALYTICS_ID} adsId={process.env.NEXT_PUBLIC_MAKEUP_GOOGLE_ADS_ID} userValues={userValues} />}
+      {googleIds.analyticsId && <GoogleAnalytics id={googleIds.analyticsId} adsId={googleIds.adsId} userValues={userValues} />}
       <Facebook id="1531219047676834" userValues={userValues} />
       <Tiktok id="CJ6H6NBC77UC1837TT70" />
       <Bing id="5105215" userValues={userValues} />

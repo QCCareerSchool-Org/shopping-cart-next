@@ -4,6 +4,7 @@ import { cookies } from 'next/headers';
 import { Footer } from './footer';
 import { Header } from './header';
 import { isUserValues } from '@/domain/userValues';
+import { getGoogleIds } from '@/lib/googleIds';
 import { decodeJwt } from '@/lib/jwt';
 import { UserValuesProvider } from '@/providers/userValuesProvider';
 import { ActiveCampaign } from '@/scripts/activeCampaign';
@@ -35,6 +36,7 @@ export const metadata: Metadata = {
 };
 
 const WellnessLayout: LayoutComponent = async ({ children }) => {
+  const googleIds = getGoogleIds('QC Wellness Studies');
   const jwt = (await cookies()).get('user')?.value;
   const result = jwt ? await decodeJwt(jwt, 'QC Design School') : undefined;
   if (result) {
@@ -47,7 +49,7 @@ const WellnessLayout: LayoutComponent = async ({ children }) => {
 
   return (
     <div>
-      {process.env.NEXT_PUBLIC_WELLNESS_GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.NEXT_PUBLIC_WELLNESS_GOOGLE_ANALYTICS_ID} adsId={process.env.NEXT_PUBLIC_WELLNESS_GOOGLE_ADS_ID} userValues={userValues} />}
+      {googleIds.analyticsId && <GoogleAnalytics id={googleIds.analyticsId} adsId={googleIds.adsId} userValues={userValues} />}
       <Facebook id="1725004270923176" userValues={userValues} />
       <Bing id="28484716" userValues={userValues} />
       {process.env.ACTIVE_CAMPAIGN_ID && <ActiveCampaign id={process.env.ACTIVE_CAMPAIGN_ID} userValues={userValues} />}

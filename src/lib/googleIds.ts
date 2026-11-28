@@ -8,6 +8,9 @@ export interface GoogleIds {
 /**
  * Returns the Google Analytics and Google Ads IDs for a school
  *
+ * This is the only place the IDs should be read from the environment, so that the
+ * gtag configuration in the layouts and the event send_to values can't drift apart.
+ *
  * NEXT_PUBLIC_ variables are inlined at build time, so each one must be referenced statically
  */
 export const getGoogleIds = (school: School): GoogleIds => {
