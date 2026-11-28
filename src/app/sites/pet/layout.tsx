@@ -44,7 +44,7 @@ const PetLayout: LayoutComponent = async ({ children }) => {
 
   return (
     <div>
-      <GoogleAnalytics id="G-SBCT33RN69" adsId="AW-1071836607" userValues={userValues} />
+      {process.env.NEXT_PUBLIC_PET_GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.NEXT_PUBLIC_PET_GOOGLE_ANALYTICS_ID} adsId={process.env.NEXT_PUBLIC_PET_GOOGLE_ADS_ID} userValues={userValues} />}
       <Facebook id="3226622604235515" userValues={userValues} />
       <Bing id="5751420" userValues={userValues} />
       {process.env.ACTIVE_CAMPAIGN_ID && <ActiveCampaign id={process.env.ACTIVE_CAMPAIGN_ID} userValues={userValues} />}

@@ -43,7 +43,7 @@ const MakeupLayout: LayoutComponent = async ({ children }) => {
 
   return (
     <div>
-      <GoogleAnalytics id="G-BS7XJJLV0G" adsId="AW-1071836607" userValues={userValues} />
+      {process.env.NEXT_PUBLIC_MAKEUP_GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.NEXT_PUBLIC_MAKEUP_GOOGLE_ANALYTICS_ID} adsId={process.env.NEXT_PUBLIC_MAKEUP_GOOGLE_ADS_ID} userValues={userValues} />}
       <Facebook id="1531219047676834" userValues={userValues} />
       <Tiktok id="CJ6H6NBC77UC1837TT70" />
       <Bing id="5105215" userValues={userValues} />

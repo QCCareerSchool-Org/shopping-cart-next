@@ -47,7 +47,7 @@ const WellnessLayout: LayoutComponent = async ({ children }) => {
 
   return (
     <div>
-      <GoogleAnalytics id="G-6SYYDWV4WE" adsId="AW-1071836607" userValues={userValues} />
+      {process.env.NEXT_PUBLIC_WELLNESS_GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.NEXT_PUBLIC_WELLNESS_GOOGLE_ANALYTICS_ID} adsId={process.env.NEXT_PUBLIC_WELLNESS_GOOGLE_ADS_ID} userValues={userValues} />}
       <Facebook id="1725004270923176" userValues={userValues} />
       <Bing id="28484716" userValues={userValues} />
       {process.env.ACTIVE_CAMPAIGN_ID && <ActiveCampaign id={process.env.ACTIVE_CAMPAIGN_ID} userValues={userValues} />}

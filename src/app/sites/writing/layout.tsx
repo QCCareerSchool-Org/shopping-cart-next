@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 const WritingLayout: LayoutComponent = ({ children }) => {
   return (
     <div>
-      <GoogleAnalytics id="G-WTB6KD3MKE" adsId="AW-1071836607" />
+      {process.env.NEXT_PUBLIC_WRITING_GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.NEXT_PUBLIC_WRITING_GOOGLE_ANALYTICS_ID} adsId={process.env.NEXT_PUBLIC_WRITING_GOOGLE_ADS_ID} />}
       <Header />
       {children}
       <Footer />

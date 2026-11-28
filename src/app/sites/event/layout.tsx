@@ -44,7 +44,7 @@ const EventLayout: LayoutComponent = async ({ children }) => {
 
   return (
     <div>
-      <GoogleAnalytics id="G-PZ2L57Z948" adsId="AW-1071836607" userValues={userValues} />
+      {process.env.NEXT_PUBLIC_EVENT_GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={process.env.NEXT_PUBLIC_EVENT_GOOGLE_ANALYTICS_ID} adsId={process.env.NEXT_PUBLIC_EVENT_GOOGLE_ADS_ID} userValues={userValues} />}
       <Facebook id="520626392908502" userValues={userValues} />
       <Bing id="5105216" userValues={userValues} />
       {process.env.ACTIVE_CAMPAIGN_ID && <ActiveCampaign id={process.env.ACTIVE_CAMPAIGN_ID} userValues={userValues} />}
